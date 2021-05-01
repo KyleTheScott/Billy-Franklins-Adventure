@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
     [SerializeField] Transform aimCone = null;
 
     //current charges, max charges
-    public UnityEvent<int, int> onLightChargesChanged; //DarkBOrder will subscribe, charges text ui will subscibre this
+    public UnityEvent<int, int> onLightChargesChanged; //DarkBOrder will subscribe, charges text ui will subscribe this
 
 
     // Start is called before the first frame update
