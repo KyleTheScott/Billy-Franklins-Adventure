@@ -341,7 +341,7 @@ public class Player : MonoBehaviour
                     RaycastHit2D hit = Physics2D.Raycast(loadedProjectile.transform.position, lastShootingLine, rayDist, aimLineCollisionMask);
                     if (hit.collider != null)
                     {
-                        Debug.Log(hit.collider.name);
+                        //Debug.Log(hit.collider.name);
 
                         //SEt aim line
                         aimLine.SetEndPoint(hit.point);
