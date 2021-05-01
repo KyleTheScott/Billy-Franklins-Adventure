@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour
 
     public float speed = 5f; //projectile speed
 
-    public Player owner = null; //Who ownes this projectile?
+    public Player owner = null; //Who owns this projectile?
 
     // Start is called before the first frame update
     void Start()
