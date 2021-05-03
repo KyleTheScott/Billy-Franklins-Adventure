@@ -14,6 +14,9 @@ public class Rope : MonoBehaviour
     //sets how many links in the rope
     [SerializeField] int links = 100;
 
+    [SerializeField] private float currentStartPosYOffset = 0.1f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,11 @@ public class Rope : MonoBehaviour
         {
             //creates a link and connects it to the previous link
             GameObject link = Instantiate(linkPrefab, transform);
+
+
+            link.transform.position = new Vector2(transform.position.x, transform.position.y - currentStartPosYOffset);
+            currentStartPosYOffset += 0.1f;
+
             HingeJoint2D joint = link.GetComponent<HingeJoint2D>();
             joint.connectedBody = previousRB;
 
