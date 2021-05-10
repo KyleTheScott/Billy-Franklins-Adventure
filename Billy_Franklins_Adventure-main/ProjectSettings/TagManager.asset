@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Lightning
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -44,4 +45,7 @@ TagManager:
     locked: 0
   - name: Metal
     uniqueID: 3216375631
+    locked: 0
+  - name: Water
+    uniqueID: 3195002295
     locked: 0
