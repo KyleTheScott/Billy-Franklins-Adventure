@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Lightning
   - Water
+  - Metal
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - Projectile
   - Metal
   - Player
-  - 
-  - 
+  - NonPlayer
+  - Platforms
   - 
   - 
   - 
@@ -43,9 +44,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 2192783301
+    locked: 0
+  - name: Platforms
+    uniqueID: 150694545
+    locked: 0
   - name: Metal
     uniqueID: 3216375631
     locked: 0
   - name: Water
     uniqueID: 3195002295
+    locked: 0
+  - name: Bucket
+    uniqueID: 2425811557
+    locked: 0
+  - name: Player
+    uniqueID: 1816281827
+    locked: 0
+  - name: UI
+    uniqueID: 1789967905
     locked: 0

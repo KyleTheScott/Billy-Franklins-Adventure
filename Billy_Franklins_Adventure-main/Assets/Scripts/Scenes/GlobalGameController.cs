@@ -24,7 +24,8 @@ public class GlobalGameController : MonoBehaviour
     #endregion
 
     [SerializeField] int currentLitLanternNum = 0;
-    [SerializeField] int maxLitLanternNum = 0;
+    [SerializeField] private int maxLitLanternNum = 0;
+
 
     [HideInInspector]
     public UnityEvent onAllLanternOn; //Invoke when all lantern is on, Lamp will subscribe this

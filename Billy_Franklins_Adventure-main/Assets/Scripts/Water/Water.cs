@@ -4,30 +4,44 @@ using UnityEngine;
 
 public class Water : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private bool electrified = false;
+    [SerializeField] private List<GameObject> connectedGO = new List<GameObject>();
+
+    public bool GetElectrified()
     {
-        
+        return electrified;
+    }
+    public void SetElectrified(bool state)
+    {
+        electrified = state;
+        if (connectedGO.Count > 0 && electrified)
+        {
+            foreach (GameObject electric in connectedGO)
+            {
+                //metal
+                if (electric.gameObject.layer == 11)
+                {
+                    electric.GetComponent<Metal>().SetElectrified(true);
+                }
+                //water
+                else if (electric.gameObject.layer == 4)
+                {
+                    electric.GetComponent<Water>().SetElectrified(true);
+                }
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
         //If rope is hit by lightning...
         if (collision.CompareTag("Lightning"))
         {
-            // I might cache this later but it is only happening the one time when it is hit
-            // If I cache it then every link will have the platform // might be better
-            Transform platform = transform.parent.Find("SuspendedPlatform");
-            platform.gameObject.GetComponent<SuspendedPlatform>().SetGrounded();
-
-            //destroy rope link
-            Destroy(gameObject);
+            if (!electrified)
+            {
+                SetElectrified(true);
+            }
         }
     }
 
