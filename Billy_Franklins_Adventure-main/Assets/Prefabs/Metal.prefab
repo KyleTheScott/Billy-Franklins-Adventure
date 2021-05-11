@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 5594739182090962415}
   - component: {fileID: 5594739182090962412}
   - component: {fileID: 1994736630}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Metal
   m_TagString: Metal
   m_Icon: {fileID: 0}
