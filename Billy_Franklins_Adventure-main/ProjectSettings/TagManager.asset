@@ -7,6 +7,8 @@ TagManager:
   - Lightning
   - Water
   - Metal
+  - Bucket
+  - Lantern
   layers:
   - Default
   - TransparentFX

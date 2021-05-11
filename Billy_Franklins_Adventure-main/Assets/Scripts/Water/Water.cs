@@ -7,6 +7,22 @@ public class Water : MonoBehaviour
     [SerializeField] private bool electrified = false;
     [SerializeField] private List<GameObject> connectedGO = new List<GameObject>();
 
+    private Animator waterAnimator;
+
+    void Start()
+    {
+        waterAnimator = gameObject.GetComponent<Animator>();
+    }
+
+    public void SpillWater(bool facingRight)
+    {
+        if (!facingRight)
+        {
+            transform.localScale = new Vector2(-transform.lossyScale.x, transform.lossyScale.y);
+        }
+        waterAnimator.SetBool("WaterSpilt", true);
+    }
+
     public bool GetElectrified()
     {
         return electrified;

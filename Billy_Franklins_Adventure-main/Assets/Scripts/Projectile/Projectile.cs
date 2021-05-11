@@ -16,6 +16,9 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        //organize the projectiles into one parent gameObject
+        GameObject projectiles = GameObject.Find("Projectiles");
+        transform.parent = projectiles.transform; 
         gameObject.SetActive(false);
 
         mainCam = Camera.main;

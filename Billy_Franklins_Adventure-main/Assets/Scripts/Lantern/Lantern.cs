@@ -56,7 +56,7 @@ public class Lantern : MonoBehaviour, IInteractable
 
     private void LanternToggle()
     {
-        //Chnage lanter's sprite
+        //Change lantern's sprite
         if (spriteRenderer != null && lanternOnSprite != null && lanternOffSprite != null)
         {
             if (spriteRenderer.sprite == lanternOnSprite)
