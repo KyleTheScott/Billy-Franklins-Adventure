@@ -179,11 +179,13 @@ public class Player : MonoBehaviour
                     if (comp != null)
                     {
                         comp.Interact();
-
-                        UseLightCharges();
+                        if (result.CompareTag("Lantern"))
+                        {
+                            UseLightCharges();
+                        }
                     }
                 }
-            }
+            }                          
         }
 
         MouseInputHandle();

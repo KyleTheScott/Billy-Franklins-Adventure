@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Metal : MonoBehaviour
+public class Metal : MonoBehaviour, IInteractable
 {
     [SerializeField] private bool electrified = false;
     [SerializeField] private int numOfElectricConnections = 0;
@@ -12,6 +12,38 @@ public class Metal : MonoBehaviour
 
     [SerializeField] List<GameObject> connectedGameObjects = new List<GameObject>();
 
+    [SerializeField] private GameObject player;
+    private float distToPlayerXOffset;
+    [SerializeField] private bool beingMoved = false;
+
+
+    public void Interact()
+    {
+
+        if (beingMoved)
+        {
+            beingMoved = false;
+        }
+        else
+        {
+            beingMoved = true;
+            distToPlayerXOffset = transform.position.x - player.transform.position.x;
+        }
+    }
+
+    private void Update()
+    {
+        Movement();
+    }
+
+    private void Movement()
+    {
+        if (beingMoved)
+        {
+            float moveWithPlayerX = player.transform.position.x + distToPlayerXOffset;
+            transform.position = new Vector2(moveWithPlayerX, transform.position.y);
+        }
+    } 
 
     public bool GetElectrified()
     {

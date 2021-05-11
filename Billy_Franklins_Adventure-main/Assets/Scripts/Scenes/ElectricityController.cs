@@ -29,7 +29,7 @@ public class ElectricityController : MonoBehaviour
     public void AddObject(GameObject electricalObject)
     {
         
-    }
+    } 
 
     // Start is called before the first frame update
     void Start()
