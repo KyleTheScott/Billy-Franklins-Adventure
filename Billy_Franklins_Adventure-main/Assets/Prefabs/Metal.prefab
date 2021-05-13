@@ -207,6 +207,7 @@ MonoBehaviour:
   connectedToWater: 0
   electrifiedByObject: {fileID: 0}
   connectedToElectrifiedMetal: 0
+  metalCollider: {fileID: 5594739182090962414}
   connectedGameObjects: []
   player: {fileID: 0}
   beingMoved: 0
