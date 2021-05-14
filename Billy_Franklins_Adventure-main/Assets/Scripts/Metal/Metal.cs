@@ -7,12 +7,8 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
 {
     [SerializeField] private bool electrified = false;
     [SerializeField] private bool temporaryElectrified = false;
-
     [SerializeField] private Collider2D metalCollider;
-
     [SerializeField] private List<GameObject> connectedGameObjects = new List<GameObject>();
-
-
     [SerializeField] private GameObject player;
     private float distToPlayerXOffset;
     [SerializeField] private bool beingMoved = false;
@@ -59,7 +55,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
             float moveWithPlayerX = player.transform.position.x + distToPlayerXOffset;
             transform.position = new Vector2(moveWithPlayerX, transform.position.y);
         }
-    } 
+    }
 
     public bool GetElectrified()
     {
