@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8181144266666333441}
   - component: {fileID: 8181144266666333444}
   - component: {fileID: -7863115331637910122}
-  - component: {fileID: 2206553352226933784}
+  - component: {fileID: 5086777683881558972}
   m_Layer: 4
-  m_Name: Water
+  m_Name: WaterByItself
   m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
   connectedGameObjects: []
   waterCollider: {fileID: 0}
   colliderStayCheck: 0
-  waterByItself: 0
+  waterByItself: 1
   lanternInWater: {fileID: 0}
 --- !u!50 &-7863115331637910122
 Rigidbody2D:
@@ -151,7 +151,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &2206553352226933784
+--- !u!95 &5086777683881558972
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0

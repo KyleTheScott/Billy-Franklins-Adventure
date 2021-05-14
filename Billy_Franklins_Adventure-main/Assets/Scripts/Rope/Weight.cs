@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Weight : MonoBehaviour
 {
-    [SerializeField] private SuspendedPlatform connectedPlatform;
+    [SerializeField] private GameObject connectedPlatform;
     [SerializeField] float distanceFromChainEnd = .1f;
 
     //connects the final weight link to the last link
