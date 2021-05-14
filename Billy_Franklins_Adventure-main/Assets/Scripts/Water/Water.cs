@@ -75,6 +75,7 @@ public class Water : MonoBehaviour, IElectrifiable
         {
             Debug.Log("Lightning Shot Water");
             ElectricityController.instanceElectrical.ElectrifyConnectedObjects(gameObject, waterCollider);
+            colliderStayCheck = false;
         }
         else if (collision.CompareTag("Metal"))
         {
@@ -83,6 +84,7 @@ public class Water : MonoBehaviour, IElectrifiable
             bool object2Electrified = collision.gameObject.GetComponent<Metal>().GetElectrified();
             ElectricityController.instanceElectrical.ConnectObjects(gameObject, waterCollider, electrified,
                 collision.gameObject, collision, object2Electrified);
+            colliderStayCheck = false;
 
             Debug.Log("Metal On Metal 2");
         }
@@ -92,6 +94,7 @@ public class Water : MonoBehaviour, IElectrifiable
             bool object2Electrified = collision.gameObject.GetComponent<Water>().GetElectrified();
             ElectricityController.instanceElectrical.ConnectObjects(gameObject, waterCollider, electrified,
                 collision.gameObject, collision, object2Electrified);
+            colliderStayCheck = false;
         }
     }
 
@@ -129,7 +132,40 @@ public class Water : MonoBehaviour, IElectrifiable
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-
+        if (collision.CompareTag("Metal"))
+        {
+            Debug.Log("Disconnect before 1");
+            bool object2Electrified = collision.gameObject.GetComponent<Metal>().GetElectrified();
+            ElectricityController.instanceElectrical.DisconnectObjects(gameObject, waterCollider, electrified,
+                collision.gameObject, collision, object2Electrified);
+            GameObject tempGameObject = gameObject;
+            for (int i = 0; i < connectedGameObjects.Count; i++)
+            {
+                Debug.Log("Remove: " + i + connectedGameObjects[i]);
+                if (connectedGameObjects[i] == collision.gameObject)
+                {
+                    Debug.Log("Remove " + i + ": " + connectedGameObjects[i]);
+                    connectedGameObjects.RemoveAt(i);
+                }
+            }
+            Debug.Log("Disconnect before 2");
+        }
+        else if (collision.CompareTag("Water"))
+        {
+            bool object2Electrified = collision.gameObject.GetComponent<Water>().GetElectrified();
+            ElectricityController.instanceElectrical.DisconnectObjects(gameObject, waterCollider, electrified,
+                collision.gameObject, collision, object2Electrified);
+            GameObject tempGameObject = collision.gameObject;
+            for (int i = 0; i < connectedGameObjects.Count; i++)
+            {
+                Debug.Log("Remove: " + i + connectedGameObjects[i]);
+                if (connectedGameObjects[i] == collision.gameObject)
+                {
+                    Debug.Log("Remove " + i + ": " + connectedGameObjects[i]);
+                    connectedGameObjects.RemoveAt(i);
+                }
+            }
+        }
 
     }
 

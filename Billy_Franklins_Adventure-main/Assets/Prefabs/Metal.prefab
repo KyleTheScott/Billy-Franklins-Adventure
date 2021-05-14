@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 5594739182090962415}
   - component: {fileID: 5594739182090962412}
   - component: {fileID: 1994736630}
+  - component: {fileID: 8748672256712832840}
   m_Layer: 9
   m_Name: Metal
   m_TagString: Metal
@@ -203,11 +204,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   electrified: 0
-  numOfElectricConnections: 0
-  connectedToWater: 0
-  electrifiedByObject: {fileID: 0}
-  connectedToElectrifiedMetal: 0
+  temporaryElectrified: 0
   metalCollider: {fileID: 5594739182090962414}
   connectedGameObjects: []
   player: {fileID: 0}
   beingMoved: 0
+--- !u!95 &8748672256712832840
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5594739182090962413}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 986dbf4a47e4c934b9bfd51487f7ff79, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
