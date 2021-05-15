@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -33,8 +34,6 @@ public class ElectricityController : MonoBehaviour
     public void ConnectObjects(GameObject object1, Collider2D gameObjectCollider1, bool electricState1,
         GameObject object2, Collider2D gameObjectCollider2, bool electricState2)
     {
-        Debug.Log("Enter Connect Objects");
-
         // keeps track of where the objects are in the connectedGameObjects list or
         // stays -1 if the objects are not in the list 
         int object1Pos = -1;
@@ -77,7 +76,6 @@ public class ElectricityController : MonoBehaviour
                 //starts a new group and sets their electrified status
                 else
                 {
-                    Debug.Log( "Neither are in a group" );
                     if (electricState1 || electricState2)
                     {
                         if (!electricState1)
@@ -163,7 +161,6 @@ public class ElectricityController : MonoBehaviour
         //isn't any groups of connected objects
         else
         {
-            Debug.Log("No Groups");
             if (electricState1 || electricState2)
             {
                 if (!electricState1)
@@ -207,9 +204,7 @@ public class ElectricityController : MonoBehaviour
     public void DisconnectObjects(GameObject object1, Collider2D gameObjectCollider1, bool electricState1,
         GameObject object2, Collider2D gameObjectCollider2, bool electricState2)
     {
-        
-        Debug.Log("Disconnect 1");
-
+        //I will probably remove these variables that are not used but I might need them in the future
         //used to keep track of the position of object 1 positions
         int object1PosI = -1;
         int object1PosK = -1;
@@ -217,12 +212,15 @@ public class ElectricityController : MonoBehaviour
         int object2PosI = -1;
         int object2PosK = -1;
 
-        //keeps track of if objects are water
-        bool isObject1Water = false;
-        bool isObject2Water = false;
+        //to keep track of what game objects are connected to directly not just what they are grouped with
         List<GameObject> tempConnectedGameObjects1 = new List<GameObject>();
         List<GameObject> tempConnectedGameObjects2 = new List<GameObject>();
+
+        tempConnectedGameObjects1 = object1.GetComponent<IElectrifiable>().GetConnectedObjects();
+        tempConnectedGameObjects2 = object2.GetComponent<IElectrifiable>().GetConnectedObjects();
+
         //groups of objects already exists
+        //checking the objects positions within connectedGameObjects list to set the variables
         if (connectedGameObjects.Count > 0)
         {
             for (int i = 0; i < connectedGameObjects.Count; i++)
@@ -236,14 +234,12 @@ public class ElectricityController : MonoBehaviour
                         {
                             object1PosI = i;
                             object1PosK = k;
-                            tempConnectedGameObjects1 = object1.GetComponent<IElectrifiable>().GetConnectedObjects();
                         }
                         //finds the positions of object2
                         if (connectedGameObjects[i][k] == object2)
                         {
                             object2PosI = i;
                             object2PosK = k;
-                            tempConnectedGameObjects2 = object2.GetComponent<IElectrifiable>().GetConnectedObjects();
                         }
                     }
                 }
@@ -254,6 +250,7 @@ public class ElectricityController : MonoBehaviour
         bool object1StillConnectedToWater = false;
         bool object2StillConnectedToWater = false;
 
+        //checks if objects are still connected in the same grouping
         for (int i = 0; i < tempConnectedGameObjects1.Count; i++)
         {
             for (int k = 0; k < tempConnectedGameObjects2.Count; k++)
@@ -270,7 +267,7 @@ public class ElectricityController : MonoBehaviour
 
         if (!objectsStillConnected)
         {
-            //checks if object1 is water
+            //checks if each object is still connected to water still after being separated
             if (gameObjectCollider1.CompareTag("Water"))
             {
                 object1StillConnectedToWater = true;
@@ -288,7 +285,7 @@ public class ElectricityController : MonoBehaviour
                     }
                 }
             }
-            //checks if object2 is water
+            
             if (gameObjectCollider2.CompareTag("Water"))
             {
                 object2StillConnectedToWater = true;
@@ -306,10 +303,8 @@ public class ElectricityController : MonoBehaviour
                     }
                 }
             }
-        }
 
-        if (!objectsStillConnected)
-        {
+            //checks if each object is still connected to water and if not turns off electricity for itself and other connect objects
             if (electricState1)
             {
                 if (!object1StillConnectedToWater)
@@ -323,7 +318,6 @@ public class ElectricityController : MonoBehaviour
                     }
                 }
             }
-
             if (electricState2)
             {
                 if (!object2StillConnectedToWater)
@@ -338,45 +332,6 @@ public class ElectricityController : MonoBehaviour
                 }
             }
 
-
-            if (tempConnectedGameObjects1.Count > 0)
-            {
-                //connectedGameObjects.Add(tempConnectedGameObjects1);
-                //connectedGameObjects[connectedGameObjects.Count - 1].Remove(object2);
-                //int object2RemovePos = -1;
-                //for (int i = 0; i < tempConnectedGameObjects1.Count; i++)
-                //{
-                //    if (tempConnectedGameObjects1[i] == object2)
-                //    {
-                //        object2RemovePos = i;
-                //    }
-                //}
-                //tempConnectedGameObjects1.RemoveAt(object2RemovePos);
-            }
-            else
-            {
-                
-                Debug.Log("----------1 Other-----------");
-            }
-
-            if (tempConnectedGameObjects2.Count > 0)
-            {
-                //connectedGameObjects.Add(tempConnectedGameObjects2);
-                //connectedGameObjects[connectedGameObjects.Count - 1].Remove(object1);
-                //int object1RemovePos = -1;
-                //for (int i = 0; i < tempConnectedGameObjects2.Count; i++)
-                //{
-                //    if (tempConnectedGameObjects2[i] == object1)
-                //    {
-                //        object1RemovePos = i;
-                //    }
-                //}
-                //tempConnectedGameObjects2.RemoveAt(object1RemovePos);
-            }
-            else
-            {
-                Debug.Log("----------2 Other-----------");
-            }
             if (object1PosI != -1)
             {
                 connectedGameObjects.RemoveAt(object1PosI);
@@ -408,9 +363,10 @@ public class ElectricityController : MonoBehaviour
 
     }
 
+    //electrifies objects as they are shot with lightning
     public void ElectrifyConnectedObjects(GameObject object1, Collider2D gameObjectCollider1)
     {
-       Debug.Log("Electrifying Objects 1");
+        //stores the position of object in connectedGameObjects list 
         int object1Pos = -1;
         if (connectedGameObjects.Count > 0)
         {
@@ -428,9 +384,8 @@ public class ElectricityController : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Electrifying Objects 2");
+        //checks if the object is water or is in a grouping in connectedGameObjects list that has water
         bool isWater = false;
-
         if (gameObjectCollider1.CompareTag("Water"))
         {
             isWater = true;
@@ -449,7 +404,9 @@ public class ElectricityController : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Electrifying Objects 3");
+        
+        //checks if object is water or object is in a group in connectedGameObjects list that has water
+        //it then electrifies the grouping if true
         if (isWater)
         {
             if (object1Pos == -1)
@@ -467,74 +424,5 @@ public class ElectricityController : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Electrifying Objects 4");
     }
 }
-
-
-//Debug.Log("Disconnect 4");
-
-//if (object1PosI != -1 && object2PosK != -1)
-//{
-//    Debug.Log("Disconnect 5 pos 1: " + object1PosI + " pos 2: " + object2PosK);
-
-//    if (!object2StillConnected)
-//    {
-//        if (!isObject2Water)
-//        {
-//            object2.GetComponent<IElectrifiable>().SetElectrified(false);
-//        }
-//    }
-//    else
-//    {
-//        if (!isObject2Water && !object2StillConnectedToWater)
-//        {
-//            object2.GetComponent<IElectrifiable>().SetElectrified(false);
-//        }
-//    }
-
-//    if (!object2StillConnected)
-//    {
-//        if (isObject2Water)
-//        {
-//            Debug.Log("Disconnect 6");
-//            connectedGameObjects[object1PosI].RemoveAt(object2PosK);
-//        }
-//        else
-//        {
-//            Debug.Log("Disconnect 7");
-//            object2.GetComponent<IElectrifiable>().SetElectrified(false);
-//            Debug.Log("Disconnect 8");
-//            connectedGameObjects[object1PosI].RemoveAt(object2PosK);
-//            Debug.Log("Disconnect 9");
-//        }
-//    }
-//    else
-//    {
-//        if (!isObject2Water && !object2StillConnectedToWater)
-//        {
-//            object2.GetComponent<IElectrifiable>().SetElectrified(false);
-//        }
-//    }
-//}
-//else
-//{
-//    if (!object1StillConnected)
-//    {
-//        if (!isObject1Water)
-//        {
-//            Debug.Log("Disconnect 10");
-//            object2.GetComponent<IElectrifiable>().SetElectrified(false);
-//            Debug.Log("Disconnect 11");
-//        }
-//    }
-
-//    if (!object2StillConnected)
-//    {
-//        if (!isObject2Water)
-//        {
-//            object2.GetComponent<IElectrifiable>().SetElectrified(false);
-
-//        }
-//    }
-//}

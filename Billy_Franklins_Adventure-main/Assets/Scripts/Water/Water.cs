@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class Water : MonoBehaviour, IElectrifiable
 {
+    [Header("Electrical")]
     [SerializeField] private bool electrified = false;
     [SerializeField] List<GameObject> connectedGameObjects = new List<GameObject>();
+
+    [Header("General")]
     [SerializeField] private BoxCollider2D waterCollider;
     [SerializeField] private bool colliderStayCheck = false;
     [SerializeField] private bool waterByItself;
     [SerializeField] private GameObject lanternInWater = null;
-
     private Animator waterAnimator;
 
-    public bool GetElectrified()
-    {
-        return electrified;
-    }
+   
 
     void Start()
     {
@@ -28,6 +27,7 @@ public class Water : MonoBehaviour, IElectrifiable
         }
     }
 
+    //this is called from the bucket and spills the water out of the tipped bucket
     public void SpillWater(bool facingRight)
     {
         if (!facingRight)
@@ -38,7 +38,11 @@ public class Water : MonoBehaviour, IElectrifiable
 
     }
 
-
+    public bool GetElectrified()
+    {
+        return electrified;
+    }
+    //set whether the water is electrified and changes animation
     public void SetElectrified(bool state)
     {
         electrified = state;
@@ -50,6 +54,7 @@ public class Water : MonoBehaviour, IElectrifiable
         }
     }
 
+    //gets all the objects directly connected
     public List<GameObject> GetConnectedObjects()
     {
         return connectedGameObjects;
@@ -63,11 +68,13 @@ public class Water : MonoBehaviour, IElectrifiable
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        //elecrify water
         if (collision.CompareTag("Lightning"))
         {
             ElectricityController.instanceElectrical.ElectrifyConnectedObjects(gameObject, waterCollider);
             colliderStayCheck = false;
         }
+        //connected game objects 
         else if (collision.CompareTag("Metal"))
         {
             connectedGameObjects.Add(collision.gameObject);
@@ -85,7 +92,7 @@ public class Water : MonoBehaviour, IElectrifiable
             colliderStayCheck = false;
         }
     }
-
+    //used for if the collider is enabled and already is colliding and On trigger enter doesn't get called 
     public void OnTriggerStay2D(Collider2D collision)
     {
         if (colliderStayCheck)
@@ -114,21 +121,20 @@ public class Water : MonoBehaviour, IElectrifiable
         }
     }
 
+    //disconnecting game object and removing from the list of direcdtly connected objects
+    //might still be in the same grouping
     public void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Metal"))
         {
-            Debug.Log("Disconnect before 1");
             bool object2Electrified = collision.gameObject.GetComponent<Metal>().GetElectrified();
             ElectricityController.instanceElectrical.DisconnectObjects(gameObject, waterCollider, electrified,
                 collision.gameObject, collision, object2Electrified);
             GameObject tempGameObject = gameObject;
             for (int i = 0; i < connectedGameObjects.Count; i++)
             {
-                Debug.Log("Remove: " + i + connectedGameObjects[i]);
                 if (connectedGameObjects[i] == collision.gameObject)
                 {
-                    Debug.Log("Remove " + i + ": " + connectedGameObjects[i]);
                     connectedGameObjects.RemoveAt(i);
                 }
             }
