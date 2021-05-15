@@ -44,6 +44,7 @@ public class SuspendedPlatform : MonoBehaviour
         }
     }
 
+    //set so object doesn't move once it is on the ground
     public void SetGrounded()
     {
         grounded = true;

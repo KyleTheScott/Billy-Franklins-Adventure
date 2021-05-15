@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 public class Lantern : MonoBehaviour, IInteractable
 {
-    SpriteRenderer spriteRenderer = null; //spriteRenderer of this lantern
     Light2D light2D = null;
     BoxCollider2D boxCollider = null;
     [SerializeField] private bool lanternInWater;
@@ -15,7 +14,6 @@ public class Lantern : MonoBehaviour, IInteractable
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         light2D = GetComponentInChildren<Light2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         lanternAnimator = GetComponent<Animator>();
@@ -42,6 +40,7 @@ public class Lantern : MonoBehaviour, IInteractable
         }
     }
 
+    // called when you press E and are within the Interactable circle
     public void Interact()
     {
         LanternToggle();
@@ -53,10 +52,12 @@ public class Lantern : MonoBehaviour, IInteractable
         }
     }
 
+    //lights candle if it is not lit
     public void LanternToggle()
     {
         if (!lanterOn)
         {
+            lanterOn = true;
             lanternAnimator.SetBool("Lit", true);
             if (light2D != null)
             {
