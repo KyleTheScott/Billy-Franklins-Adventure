@@ -60,7 +60,9 @@ public class Player : MonoBehaviour
     //current charges, max charges
     public UnityEvent<int, int> onLightChargesChanged; //DarkBOrder will subscribe, charges text ui will subscribe this
 
-    
+
+    private bool moving;
+
     private enum AimLineState 
     {
         NOT_AIMED,
@@ -72,7 +74,7 @@ public class Player : MonoBehaviour
     private bool mouseClick;
     //public static bool visibleCursor;
     float timeLeft = 1;
-    float visibleCursorTimer = 2f;
+    float visibleCursorTimer = .5f;
     float cursorPosition;
     float cursorPosY;
     //Vector2 cursorSensitivity;
@@ -103,6 +105,7 @@ public class Player : MonoBehaviour
         mainCam = Camera.main;
 
         aimLine = GetComponentInChildren<AimLine>();
+        aimLineState = AimLineState.NOT_AIMED;
     }
 
     // Update is called once per frame
@@ -122,7 +125,7 @@ public class Player : MonoBehaviour
 
         //Change player's velocity
         //only can move when not aiming
-        if (loadedProjectile == null)
+        if (moving)
         {
             Vector2 tempVel = rb.velocity;
             tempVel.x = moveDir.x * moveSpeed;
@@ -135,93 +138,6 @@ public class Player : MonoBehaviour
         //animator.SetInteger("Direction", (int)moveDir.x);
     }
 
-    void HandleInput()
-    {
-        //Horizontal move
-        if (Input.GetKey(KeyCode.A))
-        {
-            moveDir.x = -1;
-
-            //Characte flip
-            if (isFacingRight == true)
-            {
-                
-                isFacingRight = false;
-                transform.Rotate(0f, 180f, 0f);
-                lastShootingLine.x = -1;
-                //transform.localScale = new Vector3(1, 1, 1);
-            }
-
-            if (aimLineState == AimLineState.AIMING)
-            {
-                aimLineState = AimLineState.NOT_AIMED;
-                UnloadProjectile();
-                StopAiming();
-            }
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            moveDir.x = 1;
-
-            //Characte flip
-            if (isFacingRight == false)
-            {
-                
-                isFacingRight = true;
-                transform.Rotate(0f, 180f, 0f);
-                lastShootingLine.x = 1;
-                //transform.localScale = new Vector3(-1, 1, 1);
-            }
-            if (aimLineState == AimLineState.AIMING)
-            {
-                aimLineState = AimLineState.NOT_AIMED;
-                UnloadProjectile();
-                StopAiming();
-            }
-        }
-        else
-        {
-            moveDir.x = 0f;
-            MouseInputHandle();
-        }
-
-
-        //Jump
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //Only can jump if player is on ground and not loaded projectile
-            if (IsPlayerOnGround() == true && loadedProjectile == null)
-            {
-                //SoundManager.instance.PLaySE(JumpSound);
-                shouldJump = true;
-            }
-        }
-
-        //Interact
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            if (lightCharges != 0)
-            {
-                //Find any interactable object within circle
-                Collider2D result = Physics2D.OverlapCircle(transform.position, interactRadius, interactLayer);
-                if (result != null)
-                {
-                    //Call interact interface function
-                    IInteractable comp = result.gameObject.GetComponent<IInteractable>();
-                    if (comp != null)
-                    {
-                        comp.Interact();
-                        if (result.CompareTag("Lantern"))
-                        {
-                            UseLightCharges();
-                        }
-                    }
-                }
-            }                          
-        }
-
-        
-    }
 
     void ShootProjectile()
     {
@@ -279,36 +195,143 @@ public class Player : MonoBehaviour
         }
     }
 
+
+    void HandleInput()
+    {
+
+        //Horizontal move
+        if (Input.GetKey(KeyCode.A))
+        {
+            //Character flip
+            if (isFacingRight == true)
+            {
+
+                isFacingRight = false;
+                transform.Rotate(0f, 180f, 0f);
+                lastShootingLine.x = -1;
+                //transform.localScale = new Vector3(1, 1, 1);
+            }
+
+            //if (aimLineState == AimLineState.AIMING)
+            //{
+            //    aimLineState = AimLineState.NOT_AIMED;
+            //    UnloadProjectile();
+            //    StopAiming();
+            //}
+            if (aimLineState == AimLineState.NOT_AIMED)
+            {
+                moveDir.x = -1;
+                moving = true;
+            }
+            else
+            {
+                moving = false;
+                moveDir.x = 0f;
+            }
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+
+
+            //Characte flip
+            if (isFacingRight == false)
+            {
+
+                isFacingRight = true;
+                transform.Rotate(0f, 180f, 0f);
+                lastShootingLine.x = 1;
+                //transform.localScale = new Vector3(-1, 1, 1);
+            }
+
+            //if (aimLineState == AimLineState.AIMING)
+            //{
+            //    aimLineState = AimLineState.NOT_AIMED;
+            //    UnloadProjectile();
+            //    StopAiming();
+            //}
+            if (aimLineState == AimLineState.NOT_AIMED)
+            {
+                moveDir.x = 1;
+                moving = true;
+            }
+            else
+            {
+                moving = false;
+                moveDir.x = 0f;
+            }
+        }
+        else
+        {
+            moving = false;
+            moveDir.x = 0f;
+        }
+
+        MouseInputHandle();
+        //Jump
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            //Only can jump if player is on ground and not loaded projectile
+            if (IsPlayerOnGround() == true && loadedProjectile == null)
+            {
+                //SoundManager.instance.PLaySE(JumpSound);
+                shouldJump = true;
+            }
+        }
+
+        //Interact
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (lightCharges != 0)
+            {
+                //Find any interactable object within circle
+                Collider2D result = Physics2D.OverlapCircle(transform.position, interactRadius, interactLayer);
+                if (result != null)
+                {
+                    //Call interact interface function
+                    IInteractable comp = result.gameObject.GetComponent<IInteractable>();
+                    if (comp != null)
+                    {
+                        comp.Interact();
+                        if (result.CompareTag("Lantern"))
+                        {
+                            UseLightCharges();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     private void MouseInputHandle()
     {
+        //checks mouse position
         if (catchCursor)
         {
             catchCursor = false;
 
-            //Vector2 mouseMovement = new Vector2(Input.GetAxisRaw("Mouse X") * cursorSensitivity.x,
-            //                    Input.GetAxisRaw("Mouse Y") * cursorSensitivity.y);
             cursorPosition = Input.GetAxis("Mouse X");
-
-            //cursorCollider.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
-
+        //checks if mouse is stopped
         if (Input.GetAxis("Mouse X") == cursorPosition)
         {
+            //aiming but not touching mouse
             if (aimLineState == AimLineState.AIMING)
             {
                 timeLeft -= Time.deltaTime;
-
+                //if time runs out
                 if (timeLeft < 0)
                 {
+                    Debug.Log("Mouse Stopped");
+                    //not aiming anymore
                     aimLineState = AimLineState.NOT_AIMED;
                     UnloadProjectile();
                     StopAiming();
                     //mouseGlitchFix = false;
                     timeLeft = visibleCursorTimer;
                     //cursorSpriteRenderer.sprite = null;
-
-                    //visibleCursor = false;
                     catchCursor = true;
+                    //visibleCursor = false;
+
                 }
                 else
                 {
@@ -337,12 +360,13 @@ public class Player : MonoBehaviour
                     }
                 }
             }
+            
         }
         else
         {
+            timeLeft = visibleCursorTimer;
             if (aimLineState == AimLineState.NOT_AIMED)
             {
-                //Debug.Log("Not Aiming");
                 //Can only shoot when player is on ground and if there is any lightCharges left
                 if (canShoot == true && IsPlayerOnGround() && lightCharges != 0)
                 {
@@ -350,12 +374,6 @@ public class Player : MonoBehaviour
                     //Get projectile from list
                     if (listOfProjectile.Count != 0)
                     {
-                        if (loadedProjectile != null)
-                        {
-                            UnloadProjectile();
-                            loadedProjectile = null;
-                        }
-
                         loadedProjectile = listOfProjectile.Dequeue();
 
                         //Activate projectile
@@ -384,42 +402,47 @@ public class Player : MonoBehaviour
                 timeLeft = visibleCursorTimer;
                 //Cursor.visible = true;
                 //visibleCursor = true;
-                catchCursor = true;
+                
             }
             else if (aimLineState == AimLineState.AIMING)
             {
                 //Debug.Log("Aiming");
                 if (Input.GetMouseButtonDown(0))
                 {
-                    //Debug.Log("Shoot");
-                    aimLineState = AimLineState.NOT_AIMED;
                     if (loadedProjectile != null)
                     {
-                        loadedProjectile.SetProjectileDirection(lastShootingLine);
-                        loadedProjectile.GetComponent<Collider2D>().enabled = true;
-                        StopAiming();
+                        //Debug.Log("Shoot");
+                        aimLineState = AimLineState.NOT_AIMED;
+                        if (loadedProjectile != null)
+                        {
+                            loadedProjectile.SetProjectileDirection(lastShootingLine);
+                            loadedProjectile.GetComponent<Collider2D>().enabled = true;
+                            StopAiming();
 
-                        //Can't shoot projectile continousely
-                        canShoot = false;
-                        UseLightCharges();
-                        //Set projectile's parent to player
-                        //loadedProjectile.transform.SetParent(null);
-                        //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                            //Can't shoot projectile continousely
+                            canShoot = false;
+                            UseLightCharges();
+                            //Set projectile's parent to player
+                            //loadedProjectile.transform.SetParent(null);
+                            //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
+                        }
                     }
                 }
                 else
                 {
                     Aiming();
+                    
                 }
-                catchCursor = true;
             }
+            catchCursor = true;
             //else if (aimLineState == AimLineState.SHOOTING)
             //{
             //    loadedProjectile.SetProjectileDirection(lastShootingLine);
             //}
-        }
 
+        }
+        
 
 
 
@@ -567,12 +590,14 @@ public class Player : MonoBehaviour
 
     private void StopAiming()
     {
+        loadedProjectile = null;
+        canShoot = false;
         //Turn off aimcone
         aimCone.gameObject.SetActive(false);
         //Turn off aimline
         aimLine.gameObject.SetActive(false);
         Invoke("ResetShootCoolDown", shootCoolTime);
-        loadedProjectile = null;
+        
     }
 
     private void UnloadProjectile()
@@ -580,10 +605,6 @@ public class Player : MonoBehaviour
         if (loadedProjectile != null)
         {
             loadedProjectile.gameObject.SetActive(false);
-        }
-        foreach(Projectile shot in listOfProjectile)
-        {
-            
         }
     }
 

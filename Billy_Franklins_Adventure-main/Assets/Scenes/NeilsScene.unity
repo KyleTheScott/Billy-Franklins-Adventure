@@ -1097,18 +1097,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1331914316}
     m_Modifications:
-    - target: {fileID: 1960187259448106063, guid: a76febffa624ff14786263883f6436ab, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 1960187259448106063, guid: a76febffa624ff14786263883f6436ab, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 1960187259448106096, guid: a76febffa624ff14786263883f6436ab, type: 3}
-      propertyPath: lanternInWater
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3672700163184857758, guid: a76febffa624ff14786263883f6436ab, type: 3}
       propertyPath: m_Name
       value: BucketOfWaterWithLantern
@@ -1157,10 +1145,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8457893897505030283, guid: a76febffa624ff14786263883f6436ab, type: 3}
-      propertyPath: lanternInWater
-      value: 
-      objectReference: {fileID: 2069585769}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a76febffa624ff14786263883f6436ab, type: 3}
 --- !u!1 &918858130
@@ -2770,10 +2754,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8457893897505030287, guid: df457950002931047b484e941fe27c1f, type: 3}
-      propertyPath: m_TagString
-      value: Water
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df457950002931047b484e941fe27c1f, type: 3}
 --- !u!4 &1752235038 stripped
@@ -3473,11 +3453,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2069585769 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1960187259448106061, guid: a76febffa624ff14786263883f6436ab, type: 3}
-  m_PrefabInstance: {fileID: 823751177}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2100857772
 GameObject:
   m_ObjectHideFlags: 0
