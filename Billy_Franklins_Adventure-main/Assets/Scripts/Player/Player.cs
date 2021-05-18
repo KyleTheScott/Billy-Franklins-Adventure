@@ -14,8 +14,9 @@ public class Player : MonoBehaviour
     [SerializeField] bool debugMode = false;
 
     [Header("Attribute")]
-    public float moveSpeed = 3.0f;
-    public float jumpForce = 10f; //How strong does player jump
+    [SerializeField] private float moveSpeed = 3.0f;
+    [SerializeField] private float jumpForce = 10f; //How strong does player jump
+    [SerializeField] private float moveVelocity;
     public float shootCoolTime = 0.5f; //Projectile shoot cool time
     public int hp = 10;
     public int lightCharges = 3; //how many lighting can character use?
@@ -76,7 +77,6 @@ public class Player : MonoBehaviour
     float timeLeft = 1;
     float visibleCursorTimer = .5f;
     float cursorPosition;
-    float cursorPosY;
     //Vector2 cursorSensitivity;
     bool catchCursor = true;
 
@@ -119,22 +119,29 @@ public class Player : MonoBehaviour
         //Jump
         if (shouldJump == true)
         {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            rb.velocity = new Vector2 (rb.velocity.x,  jumpForce);
             shouldJump = false;
         }
 
+        moveVelocity = 0;
         //Change player's velocity
         //only can move when not aiming
         if (moving)
         {
-            Vector2 tempVel = rb.velocity;
-            tempVel.x = moveDir.x * moveSpeed;
-            rb.velocity = tempVel;
+            if (isFacingRight)
+            {
+                moveVelocity = moveSpeed;
+            }
+            else
+            {
+                moveVelocity = 0f - moveSpeed;
+            }
+            //Vector2 tempVel = rb.velocity;
+            //tempVel.x = moveDir.x * moveSpeed;
+            //rb.velocity = tempVel;
         }
-        else
-        {
-            rb.velocity = Vector2.zero;
-        }
+
+        rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
         //animator.SetInteger("Direction", (int)moveDir.x);
     }
 
