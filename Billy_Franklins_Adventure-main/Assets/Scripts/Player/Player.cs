@@ -7,6 +7,8 @@ using UnityEngine.Events;
 [DefaultExecutionOrder(-100)] //ensure this script runs before all other player scripts to prevent laggy input
 public class Player : MonoBehaviour
 {
+  
+
     Rigidbody2D rb = null; //player's rigid body
     CapsuleCollider2D capsuleCollider2D = null; //Player's capsule collider
     AimLine aimLine = null; //player's aiming line
@@ -79,6 +81,9 @@ public class Player : MonoBehaviour
     float cursorPosition;
     //Vector2 cursorSensitivity;
     bool catchCursor = true;
+
+   
+
 
 
 
@@ -238,9 +243,7 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.D))
         {
-
-
-            //Characte flip
+            //Character flip
             if (isFacingRight == false)
             {
 
@@ -290,22 +293,27 @@ public class Player : MonoBehaviour
         {
             if (lightCharges != 0)
             {
-                //Find any interactable object within circle
-                Collider2D result = Physics2D.OverlapCircle(transform.position, interactRadius, interactLayer);
-                if (result != null)
+                ////Find any interactable object within circle
+                //Collider2D result = Physics2D.OverlapCircle(transform.position, interactRadius, interactLayer);
+                //if (result != null)
+                //{
+                //    //Call interact interface function
+                //    IInteractable comp = result.gameObject.GetComponent<IInteractable>();
+                GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject();
+                if (comp != null)
                 {
-                    //Call interact interface function
-                    IInteractable comp = result.gameObject.GetComponent<IInteractable>();
-                    if (comp != null)
+                    comp.GetComponent<IInteractable>().Interact();
+                    if (comp.GetComponent<Collider2D>().CompareTag("Lantern"))
                     {
-                        comp.Interact();
-                        if (result.CompareTag("Lantern"))
-                        {
-                            UseLightCharges();
-                        }
+                        UseLightCharges();
                     }
                 }
+                //}
             }
+        }
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            PlayerObjectInteractions.playerObjectIInstance.ToggleObjects();
         }
     }
 
@@ -685,7 +693,7 @@ public class Player : MonoBehaviour
                 else
                 {
 
-                    //SEt aim line
+                    //Set aim line
                     aimLine.SetEndPoint(loadedProjectile.transform.position + (lastShootingLine * rayDist));
                 }
             }

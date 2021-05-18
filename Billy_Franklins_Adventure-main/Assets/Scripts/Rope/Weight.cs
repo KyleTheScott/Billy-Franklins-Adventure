@@ -14,6 +14,5 @@ public class Weight : MonoBehaviour
         joint.connectedBody = endRB;
         joint.anchor = Vector2.zero;
         joint.connectedAnchor = new Vector2(0f, -distanceFromChainEnd);
-
     }
 }
