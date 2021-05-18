@@ -9,6 +9,7 @@ TagManager:
   - Metal
   - Bucket
   - Lantern
+  - Rope
   layers:
   - Default
   - TransparentFX
