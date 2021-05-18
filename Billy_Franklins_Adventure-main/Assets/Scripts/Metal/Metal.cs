@@ -80,8 +80,6 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         return connectedGameObjects;
     }
 
-
-
     public void OnTriggerEnter2D(Collider2D collision)
     {
         //electrifies object
