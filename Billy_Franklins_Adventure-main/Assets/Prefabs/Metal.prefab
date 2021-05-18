@@ -205,8 +205,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   electrified: 0
   temporaryElectrified: 0
-  metalCollider: {fileID: 5594739182090962414}
   connectedGameObjects: []
+  metalCollider: {fileID: 5594739182090962414}
   player: {fileID: 0}
   beingMoved: 0
 --- !u!95 &8748672256712832840
