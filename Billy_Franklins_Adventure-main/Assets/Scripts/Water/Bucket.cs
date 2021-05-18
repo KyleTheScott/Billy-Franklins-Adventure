@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Bucket : MonoBehaviour, IInteractable
@@ -9,19 +8,26 @@ public class Bucket : MonoBehaviour, IInteractable
     [SerializeField] private GameObject waterObject;
     private Animator bucketAnimator;
     private bool tippedOver;
-    
+    [SerializeField] private GameObject highlight;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        bucketAnimator = gameObject.GetComponent<Animator>();
+        player = GameObject.Find("Player");
+    }
+
+    //called when you the bucket is within the interactable circle
+    //tips over the bucket and spills the water if it isn't already spilt
     public void Interact()
     {
-        Debug.Log("Tipped");
-        //change bucket here
         if (!tippedOver)
         {
             tippedOver = true;
             bool facingRight = true;
             if (player.transform.position.x >= transform.position.x)
             {
-                transform.localScale = new Vector2(-transform.lossyScale.x, transform.lossyScale.y);
+                transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
                 facingRight = false;
                 bucketAnimator.SetBool("FacingRight", false);
             }
@@ -34,16 +40,8 @@ public class Bucket : MonoBehaviour, IInteractable
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void SetHighlighted(bool state)
     {
-        bucketAnimator = gameObject.GetComponent<Animator>();
-        player = GameObject.Find("Player");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        highlight.SetActive(state);
     }
 }

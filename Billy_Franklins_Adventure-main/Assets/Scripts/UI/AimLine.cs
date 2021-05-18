@@ -12,18 +12,6 @@ public class AimLine : MonoBehaviour
         lineRenderer.positionCount = 2;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SetStartPoint(Vector3 startPos)
     {
         lineRenderer.SetPosition(0, startPos);

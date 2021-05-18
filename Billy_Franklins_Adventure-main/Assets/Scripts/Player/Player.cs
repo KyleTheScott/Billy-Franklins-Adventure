@@ -7,6 +7,8 @@ using UnityEngine.Events;
 [DefaultExecutionOrder(-100)] //ensure this script runs before all other player scripts to prevent laggy input
 public class Player : MonoBehaviour
 {
+  
+
     Rigidbody2D rb = null; //player's rigid body
     CapsuleCollider2D capsuleCollider2D = null; //Player's capsule collider
     AimLine aimLine = null; //player's aiming line
@@ -14,8 +16,9 @@ public class Player : MonoBehaviour
     [SerializeField] bool debugMode = false;
 
     [Header("Attribute")]
-    public float moveSpeed = 3.0f;
-    public float jumpForce = 10f; //How strong does player jump
+    [SerializeField] private float moveSpeed = 3.0f;
+    [SerializeField] private float jumpForce = 10f; //How strong does player jump
+    [SerializeField] private float moveVelocity;
     public float shootCoolTime = 0.5f; //Projectile shoot cool time
     public int hp = 10;
     public int lightCharges = 3; //how many lighting can character use?
@@ -61,6 +64,29 @@ public class Player : MonoBehaviour
     public UnityEvent<int, int> onLightChargesChanged; //DarkBOrder will subscribe, charges text ui will subscribe this
 
 
+    private bool moving;
+
+    private enum AimLineState 
+    {
+        NOT_AIMED,
+        AIMING
+    };
+
+    [SerializeField] private AimLineState aimLineState = AimLineState.NOT_AIMED;
+
+    private bool mouseClick;
+    //public static bool visibleCursor;
+    float timeLeft = 1;
+    float visibleCursorTimer = .5f;
+    float cursorPosition;
+    //Vector2 cursorSensitivity;
+    bool catchCursor = true;
+
+   
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,6 +110,7 @@ public class Player : MonoBehaviour
         mainCam = Camera.main;
 
         aimLine = GetComponentInChildren<AimLine>();
+        aimLineState = AimLineState.NOT_AIMED;
     }
 
     // Update is called once per frame
@@ -97,99 +124,32 @@ public class Player : MonoBehaviour
         //Jump
         if (shouldJump == true)
         {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            rb.velocity = new Vector2 (rb.velocity.x,  jumpForce);
             shouldJump = false;
         }
 
+        moveVelocity = 0;
         //Change player's velocity
         //only can move when not aiming
-        if (loadedProjectile == null)
+        if (moving)
         {
-            Vector2 tempVel = rb.velocity;
-            tempVel.x = moveDir.x * moveSpeed;
-            rb.velocity = tempVel;
+            if (isFacingRight)
+            {
+                moveVelocity = moveSpeed;
+            }
+            else
+            {
+                moveVelocity = 0f - moveSpeed;
+            }
+            //Vector2 tempVel = rb.velocity;
+            //tempVel.x = moveDir.x * moveSpeed;
+            //rb.velocity = tempVel;
         }
-        else
-        {
-            rb.velocity = Vector2.zero;
-        }
+
+        rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
         //animator.SetInteger("Direction", (int)moveDir.x);
     }
 
-    void HandleInput()
-    {
-        //Horizontal move
-        if (Input.GetKey(KeyCode.A))
-        {
-            moveDir.x = -1;
-
-            //Characte flip
-            if (isFacingRight == true)
-            {
-                isFacingRight = false;
-                transform.Rotate(0f, 180f, 0f);
-                lastShootingLine.x = -1;
-                //transform.localScale = new Vector3(1, 1, 1);
-            }
-
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            moveDir.x = 1;
-
-            //Characte flip
-            if (isFacingRight == false)
-            {
-                isFacingRight = true;
-                transform.Rotate(0f, 180f, 0f);
-                lastShootingLine.x = 1;
-                //transform.localScale = new Vector3(-1, 1, 1);
-            }
-
-        }
-        else
-        {
-            moveDir.x = 0f;
-
-        }
-
-
-        //Jump
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //Only can jump if player is on ground and not loaded projectile
-            if (IsPlayerOnGround() == true && loadedProjectile == null)
-            {
-                //SoundManager.instance.PLaySE(JumpSound);
-                shouldJump = true;
-            }
-        }
-
-        //Interact
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            if (lightCharges != 0)
-            {
-                //Find any interactable object within circle
-                Collider2D result = Physics2D.OverlapCircle(transform.position, interactRadius, interactLayer);
-                if (result != null)
-                {
-                    //Call interact interface function
-                    IInteractable comp = result.gameObject.GetComponent<IInteractable>();
-                    if (comp != null)
-                    {
-                        comp.Interact();
-                        if (result.CompareTag("Lantern"))
-                        {
-                            UseLightCharges();
-                        }
-                    }
-                }
-            }                          
-        }
-
-        MouseInputHandle();
-    }
 
     void ShootProjectile()
     {
@@ -218,6 +178,7 @@ public class Player : MonoBehaviour
     void ResetShootCoolDown()
     {
         canShoot = true;
+        aimLineState = AimLineState.NOT_AIMED;
     }
 
     //Return projectile to pool
@@ -234,7 +195,7 @@ public class Player : MonoBehaviour
         //Debug.Log(result.collider);
 
         return (result.collider != null);
-    }
+    } 
 
     private void OnDrawGizmosSelected()
     {
@@ -246,147 +207,495 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void MouseInputHandle()
+
+    void HandleInput()
     {
-        //Left mouse down for spawn projectile
-        if (Input.GetMouseButtonDown(0))
+
+        //Horizontal move
+        if (Input.GetKey(KeyCode.A))
         {
-            //Can only shoot when player is on ground and if there is nay lightCharges left
-            if (canShoot == true && IsPlayerOnGround() && lightCharges != 0)
+            //Character flip
+            if (isFacingRight == true)
             {
-                //Get projectile from list
-                if (listOfProjectile.Count != 0)
-                {
-                    loadedProjectile = listOfProjectile.Dequeue();
 
-                    //Activate projectile
-                    loadedProjectile.gameObject.SetActive(true);
+                isFacingRight = false;
+                transform.Rotate(0f, 180f, 0f);
+                lastShootingLine.x = -1;
+                //transform.localScale = new Vector3(1, 1, 1);
+            }
 
-                    loadedProjectile.transform.position = transform.position + (-transform.right * projectileSpawnDistance);
+            //if (aimLineState == AimLineState.AIMING)
+            //{
+            //    aimLineState = AimLineState.NOT_AIMED;
+            //    UnloadProjectile();
+            //    StopAiming();
+            //}
+            if (aimLineState == AimLineState.NOT_AIMED)
+            {
+                moveDir.x = -1;
+                moving = true;
+            }
+            else
+            {
+                moving = false;
+                moveDir.x = 0f;
+            }
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            //Character flip
+            if (isFacingRight == false)
+            {
 
-                    loadedProjectile.GetComponent<Collider2D>().enabled = false;
+                isFacingRight = true;
+                transform.Rotate(0f, 180f, 0f);
+                lastShootingLine.x = 1;
+                //transform.localScale = new Vector3(-1, 1, 1);
+            }
 
-                    //Set projectile's parent to player
-                    //loadedProjectile.transform.SetParent(transform);
-                    //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            //if (aimLineState == AimLineState.AIMING)
+            //{
+            //    aimLineState = AimLineState.NOT_AIMED;
+            //    UnloadProjectile();
+            //    StopAiming();
+            //}
+            if (aimLineState == AimLineState.NOT_AIMED)
+            {
+                moveDir.x = 1;
+                moving = true;
+            }
+            else
+            {
+                moving = false;
+                moveDir.x = 0f;
+            }
+        }
+        else
+        {
+            moving = false;
+            moveDir.x = 0f;
+        }
 
-                    //Turn on aimcone
-                    aimCone.gameObject.SetActive(true);
-
-                    //SEt aim line
-                    aimLine.SetStartPoint(loadedProjectile.transform.position);
-                    aimLine.gameObject.SetActive(true);
-                }
+        MouseInputHandle();
+        //Jump
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            //Only can jump if player is on ground and not loaded projectile
+            if (IsPlayerOnGround() == true && loadedProjectile == null)
+            {
+                //SoundManager.instance.PLaySE(JumpSound);
+                shouldJump = true;
             }
         }
 
-        //If holding mouse left button, calculate loaded projectile's position
-        if (Input.GetMouseButton(0))
+        //Interact
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if (loadedProjectile != null)
+            if (lightCharges != 0)
             {
-                //GEt mouse position of world
-                Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-                mousePos.z = 0f;
-
-                //Get forward vector of player
-                Vector3 forwardVector = -transform.right;
-
-                //Calculate shooting line
-                shootingLine = mousePos - transform.position;
-                shootingLine.Normalize();
-
-                //Get angle between forward vector and shooting line
-                float angleBetween = Vector2.Angle(forwardVector, shootingLine);
-
-                //Set projectile based on shooting line
-                if (angleBetween <= 45)
+                ////Find any interactable object within circle
+                //Collider2D result = Physics2D.OverlapCircle(transform.position, interactRadius, interactLayer);
+                //if (result != null)
+                //{
+                //    //Call interact interface function
+                //    IInteractable comp = result.gameObject.GetComponent<IInteractable>();
+                GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject();
+                if (comp != null)
                 {
-                    loadedProjectile.transform.position = transform.position + (shootingLine * projectileSpawnDistance);
-                    lastShootingLine = shootingLine;
-
-                    //SEt aim line
-                    aimLine.SetStartPoint(loadedProjectile.transform.position);
-
-                    if (debugMode)
+                    comp.GetComponent<IInteractable>().Interact();
+                    if (comp.GetComponent<Collider2D>().CompareTag("Lantern"))
                     {
-                        //Draw shooting line
-                        Debug.DrawLine(loadedProjectile.transform.position, mousePos, Color.red);
+                        UseLightCharges();
                     }
+                }
+                //}
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            PlayerObjectInteractions.playerObjectIInstance.ToggleObjects();
+        }
+    }
 
-                    //float rayDist = (mousePos - loadedProjectile.transform.position).magnitude;
-                    float rayDist = 50.0f;
-                    RaycastHit2D hit = Physics2D.Raycast(loadedProjectile.transform.position, shootingLine, rayDist, aimLineCollisionMask);
-                    if (hit.collider != null)
+    private void MouseInputHandle()
+    {
+        //checks mouse position
+        if (catchCursor)
+        {
+            catchCursor = false;
+
+            cursorPosition = Input.GetAxis("Mouse X");
+        }
+        //checks if mouse is stopped
+        if (Input.GetAxis("Mouse X") == cursorPosition)
+        {
+            //aiming but not touching mouse
+            if (aimLineState == AimLineState.AIMING)
+            {
+                timeLeft -= Time.deltaTime;
+                //if time runs out
+                if (timeLeft < 0)
+                {
+                    Debug.Log("Mouse Stopped");
+                    //not aiming anymore
+                    aimLineState = AimLineState.NOT_AIMED;
+                    UnloadProjectile();
+                    StopAiming();
+                    //mouseGlitchFix = false;
+                    timeLeft = visibleCursorTimer;
+                    //cursorSpriteRenderer.sprite = null;
+                    catchCursor = true;
+                    //visibleCursor = false;
+
+                }
+                else
+                {
+                    if (Input.GetMouseButtonDown(0))
                     {
-                        //Debug.Log(hit.collider.name);
+                        //Debug.Log("Shoot");
+                        aimLineState = AimLineState.NOT_AIMED;
+                        if (loadedProjectile != null)
+                        {
+                            loadedProjectile.SetProjectileDirection(lastShootingLine);
+                            loadedProjectile.GetComponent<Collider2D>().enabled = true;
+                            StopAiming();
 
-                        //SEt aim line
-                        aimLine.SetEndPoint(hit.point);
+                            //Can't shoot projectile continously
+                            canShoot = false;
+                            UseLightCharges();
+                            //Set projectile's parent to player
+                            //loadedProjectile.transform.SetParent(null);
+                            //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+
+                        }
                     }
                     else
                     {
+                        Aiming();
+                    }
+                }
+            }
+            
+        }
+        else
+        {
+            timeLeft = visibleCursorTimer;
+            if (aimLineState == AimLineState.NOT_AIMED)
+            {
+                //Can only shoot when player is on ground and if there is any lightCharges left
+                if (canShoot == true && IsPlayerOnGround() && lightCharges != 0)
+                {
+                    aimLineState = AimLineState.AIMING;
+                    //Get projectile from list
+                    if (listOfProjectile.Count != 0)
+                    {
+                        loadedProjectile = listOfProjectile.Dequeue();
+
+                        //Activate projectile
+                        loadedProjectile.gameObject.SetActive(true);
+
+                        loadedProjectile.transform.position =
+                            transform.position + (-transform.right * projectileSpawnDistance);
+
+                        loadedProjectile.GetComponent<Collider2D>().enabled = false;
+
+                        //Set projectile's parent to player
+                        //loadedProjectile.transform.SetParent(transform);
+                        //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+
+                        //Turn on aimcone
+                        aimCone.gameObject.SetActive(true);
 
                         //SEt aim line
-                        aimLine.SetEndPoint(loadedProjectile.transform.position + (shootingLine * rayDist));
+                        aimLine.SetStartPoint(loadedProjectile.transform.position);
+                        aimLine.gameObject.SetActive(true);
+                    }
+                }
+
+
+                //cursorSpriteRenderer.sprite = cursorSprite;
+                timeLeft = visibleCursorTimer;
+                //Cursor.visible = true;
+                //visibleCursor = true;
+                
+            }
+            else if (aimLineState == AimLineState.AIMING)
+            {
+                //Debug.Log("Aiming");
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (loadedProjectile != null)
+                    {
+                        //Debug.Log("Shoot");
+                        aimLineState = AimLineState.NOT_AIMED;
+                        if (loadedProjectile != null)
+                        {
+                            loadedProjectile.SetProjectileDirection(lastShootingLine);
+                            loadedProjectile.GetComponent<Collider2D>().enabled = true;
+                            StopAiming();
+
+                            //Can't shoot projectile continousely
+                            canShoot = false;
+                            UseLightCharges();
+                            //Set projectile's parent to player
+                            //loadedProjectile.transform.SetParent(null);
+                            //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+
+                        }
                     }
                 }
                 else
                 {
-                    loadedProjectile.transform.position = transform.position + (lastShootingLine * projectileSpawnDistance);
+                    Aiming();
+                    
+                }
+            }
+            catchCursor = true;
+            //else if (aimLineState == AimLineState.SHOOTING)
+            //{
+            //    loadedProjectile.SetProjectileDirection(lastShootingLine);
+            //}
+
+        }
+
+        ////Left mouse down for spawn projectile
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    //Can only shoot when player is on ground and if there is nay lightCharges left
+        //    if (canShoot == true && IsPlayerOnGround() && lightCharges != 0)
+        //    {
+        //        //Get projectile from list
+        //        if (listOfProjectile.Count != 0)
+        //        {
+        //            loadedProjectile = listOfProjectile.Dequeue();
+
+        //            //Activate projectile
+        //            loadedProjectile.gameObject.SetActive(true);
+
+        //            loadedProjectile.transform.position = transform.position + (-transform.right * projectileSpawnDistance);
+
+        //            loadedProjectile.GetComponent<Collider2D>().enabled = false;
+
+        //            //Set projectile's parent to player
+        //            //loadedProjectile.transform.SetParent(transform);
+        //            //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+
+        //            //Turn on aimcone
+        //            aimCone.gameObject.SetActive(true);
+
+        //            //SEt aim line
+        //            aimLine.SetStartPoint(loadedProjectile.transform.position);
+        //            aimLine.gameObject.SetActive(true);
+        //        }
+        //    }
+        //}
+
+        ////If holding mouse left button, calculate loaded projectile's position
+        //if (Input.GetMouseButton(0))
+        //{
+        //    if (loadedProjectile != null)
+        //    {
+        //        //GEt mouse position of world
+        //        Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        //        mousePos.z = 0f;
+
+        //        //Get forward vector of player
+        //        Vector3 forwardVector = -transform.right;
+
+        //        //Calculate shooting line
+        //        shootingLine = mousePos - transform.position;
+        //        shootingLine.Normalize();
+
+        //        //Get angle between forward vector and shooting line
+        //        float angleBetween = Vector2.Angle(forwardVector, shootingLine);
+
+        //        //Set projectile based on shooting line
+        //        if (angleBetween <= 45)
+        //        {
+        //            loadedProjectile.transform.position = transform.position + (shootingLine * projectileSpawnDistance);
+        //            lastShootingLine = shootingLine;
+
+        //            //SEt aim line
+        //            aimLine.SetStartPoint(loadedProjectile.transform.position);
+
+        //            if (debugMode)
+        //            {
+        //                //Draw shooting line
+        //                Debug.DrawLine(loadedProjectile.transform.position, mousePos, Color.red);
+        //            }
+
+        //            //float rayDist = (mousePos - loadedProjectile.transform.position).magnitude;
+        //            float rayDist = 50.0f;
+        //            RaycastHit2D hit = Physics2D.Raycast(loadedProjectile.transform.position, shootingLine, rayDist, aimLineCollisionMask);
+        //            if (hit.collider != null)
+        //            {
+        //                //Debug.Log(hit.collider.name);
+
+        //                //SEt aim line
+        //                aimLine.SetEndPoint(hit.point);
+        //            }
+        //            else
+        //            {
+
+        //                //SEt aim line
+        //                aimLine.SetEndPoint(loadedProjectile.transform.position + (shootingLine * rayDist));
+        //            }
+        //        }
+        //        else
+        //        {
+        //            loadedProjectile.transform.position = transform.position + (lastShootingLine * projectileSpawnDistance);
+
+        //            //SEt aim line
+        //            aimLine.SetStartPoint(loadedProjectile.transform.position);
+
+
+        //            float rayDist = 50.0f;
+        //            RaycastHit2D hit = Physics2D.Raycast(loadedProjectile.transform.position, lastShootingLine, rayDist, aimLineCollisionMask);
+        //            if (hit.collider != null)
+        //            {
+        //                //Debug.Log(hit.collider.name);
+
+        //                //SEt aim line
+        //                aimLine.SetEndPoint(hit.point);
+        //            }
+        //            else
+        //            {
+
+        //                //SEt aim line
+        //                aimLine.SetEndPoint(loadedProjectile.transform.position + (lastShootingLine * rayDist));
+        //            }
+        //        }
+        //    }
+        //}
+
+        ////If release mouse left button, shoot loaded projectile
+        //if (Input.GetMouseButtonUp(0))
+        //{
+        //    if (loadedProjectile != null)
+        //    {
+        //        Debug.Log("Shooting");
+        //        loadedProjectile.SetProjectileDirection(lastShootingLine);
+        //        loadedProjectile.GetComponent<Collider2D>().enabled = true;
+
+        //        //Set projectile's parent to player
+        //        //loadedProjectile.transform.SetParent(null);
+        //        //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+
+        //        loadedProjectile = null;
+
+        //        //Can't shoot projectile continousely
+        //        canShoot = false;
+
+        //        UseLightCharges();
+
+        //        //Turn off aimcone
+        //        aimCone.gameObject.SetActive(false);
+
+        //        //Turn off aimline
+        //        aimLine.gameObject.SetActive(false);
+
+        //        Invoke("ResetShootCoolDown", shootCoolTime);
+        //    }
+        //}
+    }
+
+    private void StopAiming()
+    {
+        loadedProjectile = null;
+        canShoot = false;
+        //Turn off aimcone
+        aimCone.gameObject.SetActive(false);
+        //Turn off aimline
+        aimLine.gameObject.SetActive(false);
+        Invoke("ResetShootCoolDown", shootCoolTime);
+        
+    }
+
+    private void UnloadProjectile()
+    {
+        if (loadedProjectile != null)
+        {
+            loadedProjectile.gameObject.SetActive(false);
+        }
+    }
+
+    private void Aiming()
+    {
+        if (loadedProjectile != null)
+        {
+            //GEt mouse position of world
+            Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0f;
+
+            //Get forward vector of player
+            Vector3 forwardVector = -transform.right;
+
+            //Calculate shooting line
+            shootingLine = mousePos - transform.position;
+            shootingLine.Normalize();
+
+            //Get angle between forward vector and shooting line
+            float angleBetween = Vector2.Angle(forwardVector, shootingLine);
+
+            //Set projectile based on shooting line
+            if (angleBetween <= 45)
+            {
+                loadedProjectile.transform.position = transform.position + (shootingLine * projectileSpawnDistance);
+                lastShootingLine = shootingLine;
+
+                //SEt aim line
+                aimLine.SetStartPoint(loadedProjectile.transform.position);
+
+                if (debugMode)
+                {
+                    //Draw shooting line
+                    Debug.DrawLine(loadedProjectile.transform.position, mousePos, Color.red);
+                }
+
+                //float rayDist = (mousePos - loadedProjectile.transform.position).magnitude;
+                float rayDist = 50.0f;
+                RaycastHit2D hit = Physics2D.Raycast(loadedProjectile.transform.position, shootingLine, rayDist, aimLineCollisionMask);
+                if (hit.collider != null)
+                {
+                    //Debug.Log(hit.collider.name);
 
                     //SEt aim line
-                    aimLine.SetStartPoint(loadedProjectile.transform.position);
+                    aimLine.SetEndPoint(hit.point);
+                }
+                else
+                {
+
+                    //SEt aim line
+                    aimLine.SetEndPoint(loadedProjectile.transform.position + (shootingLine * rayDist));
+                }
+            }
+            else
+            {
+                loadedProjectile.transform.position = transform.position + (lastShootingLine * projectileSpawnDistance);
+
+                //SEt aim line
+                aimLine.SetStartPoint(loadedProjectile.transform.position);
 
 
-                    float rayDist = 50.0f;
-                    RaycastHit2D hit = Physics2D.Raycast(loadedProjectile.transform.position, lastShootingLine, rayDist, aimLineCollisionMask);
-                    if (hit.collider != null)
-                    {
-                        //Debug.Log(hit.collider.name);
+                float rayDist = 50.0f;
+                RaycastHit2D hit = Physics2D.Raycast(loadedProjectile.transform.position, lastShootingLine, rayDist, aimLineCollisionMask);
+                if (hit.collider != null)
+                {
+                    //Debug.Log(hit.collider.name);
 
-                        //SEt aim line
-                        aimLine.SetEndPoint(hit.point);
-                    }
-                    else
-                    {
+                    //SEt aim line
+                    aimLine.SetEndPoint(hit.point);
+                }
+                else
+                {
 
-                        //SEt aim line
-                        aimLine.SetEndPoint(loadedProjectile.transform.position + (lastShootingLine * rayDist));
-                    }
+                    //Set aim line
+                    aimLine.SetEndPoint(loadedProjectile.transform.position + (lastShootingLine * rayDist));
                 }
             }
         }
-
-        //If release mosue left button, shoot loaded projectile
-        if (Input.GetMouseButtonUp(0))
-        {
-            if (loadedProjectile != null)
-            {
-                loadedProjectile.SetProjectileDirection(lastShootingLine);
-                loadedProjectile.GetComponent<Collider2D>().enabled = true;
-
-                //Set projectile's parent to player
-                //loadedProjectile.transform.SetParent(null);
-                //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-
-                loadedProjectile = null;
-
-                //Can't shoot projectile continousely
-                canShoot = false;
-
-                UseLightCharges();
-
-                //Turn off aimcone
-                aimCone.gameObject.SetActive(false);
-
-                //Turn off aimline
-                aimLine.gameObject.SetActive(false);
-
-                Invoke("ResetShootCoolDown", shootCoolTime);
-            }
-        }
     }
+
 
     void UseLightCharges()
     {

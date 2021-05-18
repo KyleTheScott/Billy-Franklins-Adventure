@@ -4,19 +4,20 @@ using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 public class Lantern : MonoBehaviour, IInteractable
 {
-    SpriteRenderer spriteRenderer = null; //spriteRenderer of this lantern
     Light2D light2D = null;
     BoxCollider2D boxCollider = null;
+    [SerializeField] private bool lanternInWater;
+    [SerializeField] private bool lanterOn = false;
+    private Animator lanternAnimator;
+    [SerializeField] private GameObject highlight;
 
-    [SerializeField] Sprite lanternOnSprite = null;
-    [SerializeField] Sprite lanternOffSprite = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         light2D = GetComponentInChildren<Light2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+        lanternAnimator = GetComponent<Animator>();
     }
 
     //// Update is called once per frame
@@ -28,21 +29,19 @@ public class Lantern : MonoBehaviour, IInteractable
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //If lantern collided with lightning...
-        if(collision.CompareTag("Lightning"))
+        if (collision.CompareTag("Lightning"))
         {
             LanternToggle();
 
             //Turn off collider
-            if(boxCollider != null)
+            if (boxCollider != null)
             {
                 boxCollider.enabled = false;
             }
-
-            //Increase current lit lantern number
-            GlobalGameController.instance.IncreaseCurrentLitLanternNum();
         }
     }
 
+    // called when you press E and are within the Interactable circle
     public void Interact()
     {
         LanternToggle();
@@ -54,40 +53,29 @@ public class Lantern : MonoBehaviour, IInteractable
         }
     }
 
-    private void LanternToggle()
+    public void SetHighlighted(bool state)
     {
-        //Change lantern's sprite
-        if (spriteRenderer != null && lanternOnSprite != null && lanternOffSprite != null)
-        {
-            if (spriteRenderer.sprite == lanternOnSprite)
-            {
-                spriteRenderer.sprite = lanternOffSprite;
+        highlight.SetActive(state);
+    }
 
-                if(light2D != null)
-                {
-                    light2D.intensity = 0.0f;
-                }
-                else
-                {
-                    Debug.LogWarning("Light2D is null, Check Lantern");
-                }
+    //lights candle if it is not lit
+    public void LanternToggle()
+    {
+        if (!lanterOn)
+        {
+            lanterOn = true;
+            lanternAnimator.SetBool("Lit", true);
+            if (light2D != null)
+            {
+                light2D.intensity = 1.0f;
             }
             else
             {
-                spriteRenderer.sprite = lanternOnSprite;
-                if (light2D != null)
-                {
-                    light2D.intensity = 1.0f;
-                }
-                else
-                {
-                    Debug.LogWarning("Light2D is null, Check Lantern");
-                }
+                Debug.LogWarning("Light2D is null, Check Lantern");
             }
-        }
-        else
-        {
-            Debug.Log("Lantern On, Off sprite is not set!!!");
+
+            //Increase current lit lantern number
+            GlobalGameController.instance.IncreaseCurrentLitLanternNum();
         }
     }
 }

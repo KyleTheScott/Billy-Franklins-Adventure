@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -24,15 +25,17 @@ public class ElectricityController : MonoBehaviour
     }
     #endregion
 
-    //left the SerializeField in to sho a 2D list will not show up in the inspector 
+    //left the SerializeField in to show a 2D list will not show up in the inspector 
     [SerializeField] private List<List<GameObject>> connectedGameObjects = new List<List<GameObject>>(10);
     [SerializeField] private bool debugging = true;
 
 
+    // connects to objects and groups them accordingly
     public void ConnectObjects(GameObject object1, Collider2D gameObjectCollider1, bool electricState1,
         GameObject object2, Collider2D gameObjectCollider2, bool electricState2)
     {
-        Debug.Log("Enter Connect Objects");
+        // keeps track of where the objects are in the connectedGameObjects list or
+        // stays -1 if the objects are not in the list 
         int object1Pos = -1;
         int object2Pos = -1;
 
@@ -70,9 +73,9 @@ public class ElectricityController : MonoBehaviour
 
                 }
                 //neither object is in a previous group
+                //starts a new group and sets their electrified status
                 else
                 {
-                    Debug.Log( "Neither are in a group" );
                     if (electricState1 || electricState2)
                     {
                         if (!electricState1)
@@ -94,6 +97,7 @@ public class ElectricityController : MonoBehaviour
             //each object is in a separate group
             else if (object1Pos > -1 && object2Pos > -1)
             {
+                //sets the electrified status for each of the groups the 2 objects are in
                 if (electricState1 && !electricState2)
                 {
                     for (int i = 0; i < connectedGameObjects[object2Pos].Count; i++)
@@ -111,7 +115,7 @@ public class ElectricityController : MonoBehaviour
                 }
 
                 //adds all the objects from group 2 into group 1
-                //it sets the electrified true for group 2 if group 1 is electrified
+                
                 for (int i = 0; i < connectedGameObjects[object2Pos].Count; i++)
                 {
                     connectedGameObjects[object1Pos].Add(connectedGameObjects[object2Pos][i]);
@@ -134,7 +138,6 @@ public class ElectricityController : MonoBehaviour
                         connectedGameObjects[object1Pos][i].GetComponent<IElectrifiable>().SetElectrified(true);
                     }
                 }
-
                 connectedGameObjects[object1Pos].Add(object2);
             }
             //object 2 is in a group and object 1 is not in a group
@@ -152,14 +155,12 @@ public class ElectricityController : MonoBehaviour
                         connectedGameObjects[object2Pos][i].GetComponent<IElectrifiable>().SetElectrified(true);
                     }
                 }
-
                 connectedGameObjects[object2Pos].Add(object1);
             }
         }
         //isn't any groups of connected objects
         else
         {
-            Debug.Log("No Groups");
             if (electricState1 || electricState2)
             {
                 if (!electricState1)
@@ -178,7 +179,169 @@ public class ElectricityController : MonoBehaviour
             tempConnectedGameObjects.Add(object2);
             connectedGameObjects.Add(tempConnectedGameObjects);
         }
+        Debug.Log("Connected Groups");
+        Debug.Log("--------------------");
+        //Debugging
+        if (debugging)
+        {
+            if (connectedGameObjects.Count > 0)
+            {
+                for (int i = 0; i < connectedGameObjects.Count; i++)
+                {
+                    Debug.Log("Group" + i + ":");
+                    if (connectedGameObjects[i].Count > 0)
+                    {
+                        for (int k = 0; k < connectedGameObjects[i].Count; k++)
+                        {
+                            Debug.Log("Game Object " + k + ": " + connectedGameObjects[i][k]);
+                        }
+                    }
+                }
+            }
+        } 
+    }
 
+    public void DisconnectObjects(GameObject object1, Collider2D gameObjectCollider1, bool electricState1,
+        GameObject object2, Collider2D gameObjectCollider2, bool electricState2)
+    {
+        //I will probably remove these variables that are not used but I might need them in the future
+        //used to keep track of the position of object 1 positions
+        int object1PosI = -1;
+        int object1PosK = -1;
+        //used to keep track of the position of object 2 positions
+        int object2PosI = -1;
+        int object2PosK = -1;
+
+        //to keep track of what game objects are connected to directly not just what they are grouped with
+        List<GameObject> tempConnectedGameObjects1 = new List<GameObject>();
+        List<GameObject> tempConnectedGameObjects2 = new List<GameObject>();
+
+        tempConnectedGameObjects1 = object1.GetComponent<IElectrifiable>().GetConnectedObjects();
+        tempConnectedGameObjects2 = object2.GetComponent<IElectrifiable>().GetConnectedObjects();
+
+        //groups of objects already exists
+        //checking the objects positions within connectedGameObjects list to set the variables
+        if (connectedGameObjects.Count > 0)
+        {
+            for (int i = 0; i < connectedGameObjects.Count; i++)
+            {
+                if (connectedGameObjects[i].Count > 0)
+                {
+                    for (int k = 0; k < connectedGameObjects[i].Count; k++)
+                    {
+                        //finds the positions of object1
+                        if (connectedGameObjects[i][k] == object1)
+                        {
+                            object1PosI = i;
+                            object1PosK = k;
+                        }
+                        //finds the positions of object2
+                        if (connectedGameObjects[i][k] == object2)
+                        {
+                            object2PosI = i;
+                            object2PosK = k;
+                        }
+                    }
+                }
+            }
+        }
+
+        bool objectsStillConnected = false;
+        bool object1StillConnectedToWater = false;
+        bool object2StillConnectedToWater = false;
+
+        //checks if objects are still connected in the same grouping
+        for (int i = 0; i < tempConnectedGameObjects1.Count; i++)
+        {
+            for (int k = 0; k < tempConnectedGameObjects2.Count; k++)
+            {
+                if (tempConnectedGameObjects1[i] == tempConnectedGameObjects2[k])
+                {
+                    if (tempConnectedGameObjects1[i] != object2 && tempConnectedGameObjects2[k] != object1)
+                    {
+                        objectsStillConnected = true;
+                    }
+                }
+            }
+        }
+
+        if (!objectsStillConnected)
+        {
+            //checks if each object is still connected to water still after being separated
+            if (gameObjectCollider1.CompareTag("Water"))
+            {
+                object1StillConnectedToWater = true;
+            }
+            else
+            {
+                for (int i = 0; i < tempConnectedGameObjects1.Count; i++)
+                {
+                    if (tempConnectedGameObjects1[i] != object2)
+                    {
+                        if (tempConnectedGameObjects1[i].gameObject.GetComponent<BoxCollider2D>().CompareTag("Water"))
+                        {
+                            object1StillConnectedToWater = true;
+                        }
+                    }
+                }
+            }
+            
+            if (gameObjectCollider2.CompareTag("Water"))
+            {
+                object2StillConnectedToWater = true;
+            }
+            else
+            {
+                for (int i = 0; i < tempConnectedGameObjects2.Count; i++)
+                {
+                    if (tempConnectedGameObjects2[i] != object1)
+                    {
+                        if (tempConnectedGameObjects2[i].gameObject.GetComponent<BoxCollider2D>().CompareTag("Water"))
+                        {
+                            object2StillConnectedToWater = true;
+                        }
+                    }
+                }
+            }
+
+            //checks if each object is still connected to water and if not turns off electricity for itself and other connect objects
+            if (electricState1)
+            {
+                if (!object1StillConnectedToWater)
+                {
+                    for (int i = 0; i < tempConnectedGameObjects1.Count; i++)
+                    {
+                        if (tempConnectedGameObjects1[i] != object2)
+                        {
+                            tempConnectedGameObjects1[i].GetComponent<IElectrifiable>().SetElectrified(false);
+                        }
+                    }
+                }
+            }
+            if (electricState2)
+            {
+                if (!object2StillConnectedToWater)
+                {
+                    for (int i = 0; i < tempConnectedGameObjects2.Count; i++)
+                    {
+                        if (tempConnectedGameObjects2[i] != object1)
+                        {
+                            tempConnectedGameObjects2[i].GetComponent<IElectrifiable>().SetElectrified(false);
+                        }
+                    }
+                }
+            }
+
+            if (object1PosI != -1)
+            {
+                connectedGameObjects.RemoveAt(object1PosI);
+            }
+        }
+
+        
+
+        Debug.Log("Disconnected Groups");
+        Debug.Log("--------------------");
         //Debugging
         if (debugging)
         {
@@ -197,86 +360,13 @@ public class ElectricityController : MonoBehaviour
                 }
             }
         }
+
     }
 
-    public void DisconnectObjects(GameObject object1, Collider2D gameObjectCollider1, bool electricState1,
-        GameObject object2, Collider2D gameObjectCollider2, bool electricState2)
-    {
-
-        Debug.Log("Disconnect Objects 1");
-        int object1Pos = -1;
-        int object2Pos = -1;
-
-        bool isObject2Water = false;
-        List<GameObject> tempConnectedGameObjects = new List<GameObject>();
-        //groups of objects already exists
-        Debug.Log("Disconnect Objects 2");
-        if (connectedGameObjects.Count > 0)
-        {
-            for (int i = 0; i < connectedGameObjects.Count; i++)
-            {
-                if (connectedGameObjects[i].Count > 0)
-                {
-                    for (int k = 0; k < connectedGameObjects[i].Count; k++)
-                    {
-                        if (connectedGameObjects[i][k] == object1)
-                        {
-                            object1Pos = i;
-                        }
-                        if (connectedGameObjects[i][k] == object2)
-                        {
-                            object2Pos = k;
-                            if (gameObjectCollider2.CompareTag("Water"))
-                            {
-                                isObject2Water = true;
-                            }
-
-                            tempConnectedGameObjects = object2.GetComponent<IElectrifiable>().GetConnectedObjects();
-                        }
-                    }
-                }
-            }
-        }
-        Debug.Log("Disconnect Objects 3");
-        bool object2StillConnected = false;
-        if (object1Pos != -1)
-        {
-            for (int i = 0; i < connectedGameObjects[object1Pos].Count; i++)
-            {
-                for (int k = 0; k < tempConnectedGameObjects.Count; k++)
-                {
-                    if (connectedGameObjects[object1Pos][i] == tempConnectedGameObjects[k])
-                    {
-                        if (tempConnectedGameObjects[k] != object1)
-                        {
-                            object2StillConnected = true;
-                        }
-                    }
-                }
-            }
-        }
-
-        if (object1Pos != -1)
-        {
-            Debug.Log("Disconnect Objects 4");
-            if (!object2StillConnected)
-            {
-                if (isObject2Water)
-                {
-                    connectedGameObjects[object1Pos].RemoveAt(object2Pos);
-                }
-                else
-                {
-                    object2.GetComponent<IElectrifiable>().SetElectrified(false);
-                    connectedGameObjects[object1Pos].RemoveAt(object2Pos);
-                }
-            }
-        }
-    }
-
+    //electrifies objects as they are shot with lightning
     public void ElectrifyConnectedObjects(GameObject object1, Collider2D gameObjectCollider1)
     {
-       Debug.Log("Electrifying Objects 1");
+        //stores the position of object in connectedGameObjects list 
         int object1Pos = -1;
         if (connectedGameObjects.Count > 0)
         {
@@ -294,9 +384,8 @@ public class ElectricityController : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Electrifying Objects 2");
+        //checks if the object is water or is in a grouping in connectedGameObjects list that has water
         bool isWater = false;
-
         if (gameObjectCollider1.CompareTag("Water"))
         {
             isWater = true;
@@ -315,7 +404,9 @@ public class ElectricityController : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Electrifying Objects 3");
+        
+        //checks if object is water or object is in a group in connectedGameObjects list that has water
+        //it then electrifies the grouping if true
         if (isWater)
         {
             if (object1Pos == -1)
@@ -333,7 +424,5 @@ public class ElectricityController : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Electrifying Objects 4");
     }
 }
-

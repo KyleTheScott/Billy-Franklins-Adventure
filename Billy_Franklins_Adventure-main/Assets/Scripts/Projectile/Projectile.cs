@@ -83,23 +83,28 @@ public class Projectile : MonoBehaviour
 
         //    }
         //}    
-
-        //If collide with others
-        if (owner != null)
+        if (!collision.CompareTag("Bucket"))
         {
-            gameObject.SetActive(false);
-            owner.ReturnProjectile(this);
+            //If collide with others
+            if (owner != null)
+            {
+                gameObject.SetActive(false);
+                owner.ReturnProjectile(this);
+            }
         }
     }
 
     //Only trigger or collide with tile and interactable
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //If collide with others
-        if (owner != null)
+        if (!collision.gameObject.CompareTag("Bucket"))
         {
-            gameObject.SetActive(false);
-            owner.ReturnProjectile(this);
+            //If collide with others
+            if (owner != null)
+            {
+                gameObject.SetActive(false);
+                owner.ReturnProjectile(this);
+            }
         }
     }
 }

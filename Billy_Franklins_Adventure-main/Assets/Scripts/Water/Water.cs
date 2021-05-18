@@ -4,27 +4,30 @@ using UnityEngine;
 
 public class Water : MonoBehaviour, IElectrifiable
 {
+    [Header("Electrical")]
     [SerializeField] private bool electrified = false;
-    [SerializeField] private bool temporaryElectrified = false;
     [SerializeField] List<GameObject> connectedGameObjects = new List<GameObject>();
+
+    [Header("General")]
     [SerializeField] private BoxCollider2D waterCollider;
     [SerializeField] private bool colliderStayCheck = false;
-
+    [SerializeField] private bool waterByItself;
+    [SerializeField] private GameObject lanternInWater = null;
     private Animator waterAnimator;
 
-    public bool GetElectrified()
-    {
-        return electrified;
-    }
-
-
+   
 
     void Start()
     {
         waterAnimator = gameObject.GetComponent<Animator>();
         waterCollider = gameObject.GetComponent<BoxCollider2D>();
+        if (waterByItself)
+        {
+            waterAnimator.SetBool("WaterSpilt", true);
+        }
     }
 
+    //this is called from the bucket and spills the water out of the tipped bucket
     public void SpillWater(bool facingRight)
     {
         if (!facingRight)
@@ -32,59 +35,53 @@ public class Water : MonoBehaviour, IElectrifiable
             transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
         }
         waterAnimator.SetBool("WaterSpilt", true);
+
     }
 
-  
+    public bool GetElectrified()
+    {
+        return electrified;
+    }
+    //set whether the water is electrified and changes animation
     public void SetElectrified(bool state)
     {
         electrified = state;
-        //if (connectedGO.Count > 0 && electrified)
-        //{
-        //    foreach (GameObject electric in connectedGO)
-        //    {
-        //        //metal
-        //        if (electric.gameObject.layer == 11)
-        //        {
-        //            electric.GetComponent<Metal>().SetElectrified(true);
-        //        }
-        //        //water
-        //        else if (electric.gameObject.layer == 4)
-        //        {
-        //            electric.GetComponent<Water>().SetElectrified(true);
-        //        }
-        //    }
-        //}
+        waterAnimator.SetBool("Electrified", true);
+        if (lanternInWater != null)
+        {
+            lanternInWater.GetComponent<Lantern>().LanternToggle();
+            GlobalGameController.instance.IncreaseCurrentLitLanternNum();
+        }
     }
 
+    //gets all the objects directly connected
     public List<GameObject> GetConnectedObjects()
     {
         return connectedGameObjects;
     }
 
+    //called by an animation event to make sure the water collider collides when enabled and already in collision area
     public void SetColliderStayCheck()
     {
         colliderStayCheck = true;
     }
 
-
-
-
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        //elecrify water
         if (collision.CompareTag("Lightning"))
         {
-            Debug.Log("Lightning Shot Water");
             ElectricityController.instanceElectrical.ElectrifyConnectedObjects(gameObject, waterCollider);
+            colliderStayCheck = false;
         }
+        //connected game objects 
         else if (collision.CompareTag("Metal"))
         {
-            Debug.Log("Metal On Metal 1");
             connectedGameObjects.Add(collision.gameObject);
             bool object2Electrified = collision.gameObject.GetComponent<Metal>().GetElectrified();
             ElectricityController.instanceElectrical.ConnectObjects(gameObject, waterCollider, electrified,
                 collision.gameObject, collision, object2Electrified);
-
-            Debug.Log("Metal On Metal 2");
+            colliderStayCheck = false;
         }
         else if (collision.CompareTag("Water"))
         {
@@ -92,9 +89,10 @@ public class Water : MonoBehaviour, IElectrifiable
             bool object2Electrified = collision.gameObject.GetComponent<Water>().GetElectrified();
             ElectricityController.instanceElectrical.ConnectObjects(gameObject, waterCollider, electrified,
                 collision.gameObject, collision, object2Electrified);
+            colliderStayCheck = false;
         }
     }
-
+    //used for if the collider is enabled and already is colliding and On trigger enter doesn't get called 
     public void OnTriggerStay2D(Collider2D collision)
     {
         if (colliderStayCheck)
@@ -120,17 +118,40 @@ public class Water : MonoBehaviour, IElectrifiable
                     collision.gameObject, collision, object2Electrified);
                 colliderStayCheck = false;
             }
-            else
-            {
-                Debug.Log("Stay Colliding Other: " + collision.gameObject);
-            }
         }
     }
 
+    //disconnecting game object and removing from the list of direcdtly connected objects
+    //might still be in the same grouping
     public void OnTriggerExit2D(Collider2D collision)
     {
-
-
+        if (collision.CompareTag("Metal"))
+        {
+            bool object2Electrified = collision.gameObject.GetComponent<Metal>().GetElectrified();
+            ElectricityController.instanceElectrical.DisconnectObjects(gameObject, waterCollider, electrified,
+                collision.gameObject, collision, object2Electrified);
+            GameObject tempGameObject = gameObject;
+            for (int i = 0; i < connectedGameObjects.Count; i++)
+            {
+                if (connectedGameObjects[i] == collision.gameObject)
+                {
+                    connectedGameObjects.RemoveAt(i);
+                }
+            }
+        }
+        else if (collision.CompareTag("Water"))
+        {
+            bool object2Electrified = collision.gameObject.GetComponent<Water>().GetElectrified();
+            ElectricityController.instanceElectrical.DisconnectObjects(gameObject, waterCollider, electrified,
+                collision.gameObject, collision, object2Electrified);
+            GameObject tempGameObject = collision.gameObject;
+            for (int i = 0; i < connectedGameObjects.Count; i++)
+            {
+                if (connectedGameObjects[i] == collision.gameObject)
+                {
+                    connectedGameObjects.RemoveAt(i);
+                }
+            }
+        }
     }
-
 }

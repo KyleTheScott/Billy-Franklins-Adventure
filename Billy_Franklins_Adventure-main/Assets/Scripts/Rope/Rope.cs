@@ -41,6 +41,7 @@ public class Rope : MonoBehaviour
             joint.connectedBody = previousRB;
 
             //sets the previous or attaches the final link to the weight
+            // weight is attached to an object like suspended platform or metal
             if (i < links - 1)
             { 
                 previousRB = link.GetComponent<Rigidbody2D>();
