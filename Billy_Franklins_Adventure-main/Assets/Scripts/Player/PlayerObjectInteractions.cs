@@ -51,9 +51,12 @@ public class PlayerObjectInteractions : MonoBehaviour
             {
                 togglePos++;
             }
+            currentToggleObject.GetComponent<IInteractable>().SetHighlighted(false);
+            currentToggleObject = toggleObjects[togglePos];
+            currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
         }
-
-        currentToggleObject = toggleObjects[togglePos];
+        
+        
     }
 
     public GameObject GetCurrentObject()
@@ -69,6 +72,7 @@ public class PlayerObjectInteractions : MonoBehaviour
             if (toggleObjects.Count <= 0)
             {
                 currentToggleObject = collision.gameObject;
+                currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
                 togglePos = 0;
             }
 
@@ -81,6 +85,7 @@ public class PlayerObjectInteractions : MonoBehaviour
     {
         if (collision.gameObject == currentToggleObject)
         {
+            currentToggleObject.GetComponent<IInteractable>().SetHighlighted(false);
             currentToggleObject = null;
         }
         if (collision.gameObject.layer == 9)
@@ -94,6 +99,7 @@ public class PlayerObjectInteractions : MonoBehaviour
                     {
                         togglePos = 0;
                         currentToggleObject = toggleObjects[togglePos];
+                        currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
                     }
                 }
             }

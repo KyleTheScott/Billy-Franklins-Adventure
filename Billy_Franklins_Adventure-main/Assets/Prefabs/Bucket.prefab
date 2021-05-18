@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1849085467742818747}
   m_Layer: 9
   m_Name: Bucket
-  m_TagString: Untagged
+  m_TagString: Bucket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 649b341325194484297eeea5a8bc9847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   waterObject: {fileID: 0}
+  highlight: {fileID: 0}
 --- !u!58 &3153115257849690965
 CircleCollider2D:
   m_ObjectHideFlags: 0

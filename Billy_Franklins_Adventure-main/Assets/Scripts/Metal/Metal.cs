@@ -13,6 +13,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
     [SerializeField] private Collider2D metalCollider;
     private Animator metalAnimator;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject highlight;
     [Header("Movement")]
     private float distToPlayerXOffset;
     [SerializeField] private bool beingMoved = false;
@@ -36,6 +37,12 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
             distToPlayerXOffset = transform.position.x - player.transform.position.x;
         }
     }
+
+    public void SetHighlighted(bool state)
+    {
+        highlight.SetActive(state);
+    }
+
 
 
     private void Start()
