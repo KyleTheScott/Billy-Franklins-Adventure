@@ -8,6 +8,7 @@ public class Bucket : MonoBehaviour, IInteractable
     [SerializeField] private GameObject waterObject;
     private Animator bucketAnimator;
     private bool tippedOver;
+    [SerializeField] private GameObject highlight;
 
     // Start is called before the first frame update
     void Start()
@@ -37,5 +38,10 @@ public class Bucket : MonoBehaviour, IInteractable
             bucketAnimator.SetBool("BucketTipped", true);
             waterObject.GetComponent<Water>().SpillWater(facingRight);
         }
+    }
+
+    public void SetHighlighted(bool state)
+    {
+        highlight.SetActive(state);
     }
 }

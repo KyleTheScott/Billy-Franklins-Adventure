@@ -9,6 +9,7 @@ TagManager:
   - Metal
   - Bucket
   - Lantern
+  - Rope
   layers:
   - Default
   - TransparentFX
@@ -60,6 +61,9 @@ TagManager:
     locked: 0
   - name: Bucket
     uniqueID: 2425811557
+    locked: 0
+  - name: Highlight
+    uniqueID: 1492175765
     locked: 0
   - name: Player
     uniqueID: 1816281827

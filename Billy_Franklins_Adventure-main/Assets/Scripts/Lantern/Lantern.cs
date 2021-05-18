@@ -9,6 +9,7 @@ public class Lantern : MonoBehaviour, IInteractable
     [SerializeField] private bool lanternInWater;
     [SerializeField] private bool lanterOn = false;
     private Animator lanternAnimator;
+    [SerializeField] private GameObject highlight;
 
 
     // Start is called before the first frame update
@@ -50,6 +51,11 @@ public class Lantern : MonoBehaviour, IInteractable
         {
             boxCollider.enabled = false;
         }
+    }
+
+    public void SetHighlighted(bool state)
+    {
+        highlight.SetActive(state);
     }
 
     //lights candle if it is not lit
