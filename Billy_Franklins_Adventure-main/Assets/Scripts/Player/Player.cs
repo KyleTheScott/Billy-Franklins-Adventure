@@ -457,10 +457,6 @@ public class Player : MonoBehaviour
             //}
 
         }
-        
-
-
-
 
         ////Left mouse down for spawn projectile
         //if (Input.GetMouseButtonDown(0))
