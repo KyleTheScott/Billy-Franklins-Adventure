@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     Vector2 moveDir = Vector2.zero; //player's movement direction
 
     bool shouldJump = false; //Check if player should jump
-    bool canShoot = true; //Check if player can shoot projectile
+    [SerializeField] private bool canShoot = true; //Check if player can shoot projectile
 
     [Header("Projectile")]
     public int maxNumOfProjectile = 10; //Max number of projectile
@@ -82,7 +82,8 @@ public class Player : MonoBehaviour
     //Vector2 cursorSensitivity;
     bool catchCursor = true;
 
-   
+    [SerializeField] private float shootFixTimer = .5f;
+
 
 
 
@@ -178,7 +179,6 @@ public class Player : MonoBehaviour
     void ResetShootCoolDown()
     {
         canShoot = true;
-        aimLineState = AimLineState.NOT_AIMED;
     }
 
     //Return projectile to pool
@@ -329,6 +329,7 @@ public class Player : MonoBehaviour
         //checks if mouse is stopped
         if (Input.GetAxis("Mouse X") == cursorPosition)
         {
+            shootFixTimer = 0.5f;
             //aiming but not touching mouse
             if (aimLineState == AimLineState.AIMING)
             {
@@ -346,7 +347,6 @@ public class Player : MonoBehaviour
                     //cursorSpriteRenderer.sprite = null;
                     catchCursor = true;
                     //visibleCursor = false;
-
                 }
                 else
                 {
@@ -372,16 +372,25 @@ public class Player : MonoBehaviour
                     else
                     {
                         Aiming();
-                    }
+                    } 
                 }
+
             }
-            
         }
         else
         {
             timeLeft = visibleCursorTimer;
             if (aimLineState == AimLineState.NOT_AIMED)
             {
+                if (!canShoot)
+                {
+                    shootFixTimer--;
+                    if (shootFixTimer <= 0)
+                    {
+                        shootFixTimer = 0.5f;
+                        canShoot = true;
+                    }
+                }
                 //Can only shoot when player is on ground and if there is any lightCharges left
                 if (canShoot == true && IsPlayerOnGround() && lightCharges != 0)
                 {
@@ -411,13 +420,10 @@ public class Player : MonoBehaviour
                         aimLine.gameObject.SetActive(true);
                     }
                 }
-
-
                 //cursorSpriteRenderer.sprite = cursorSprite;
                 timeLeft = visibleCursorTimer;
                 //Cursor.visible = true;
                 //visibleCursor = true;
-                
             }
             else if (aimLineState == AimLineState.AIMING)
             {
