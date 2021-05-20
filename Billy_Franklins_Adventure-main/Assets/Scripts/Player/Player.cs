@@ -32,7 +32,9 @@ public class Player : MonoBehaviour
     [Header("Projectile")]
     public int maxNumOfProjectile = 10; //Max number of projectile
     public GameObject projectilePrefab = null; //Prefab for projectile
-    Queue<Projectile> listOfProjectile = null; //Queue for projectile pool
+    //Queue<Projectile> listOfProjectile = null; //Queue for projectile pool
+    [SerializeField] private List<Projectile> listOfProjectile = null;
+
     [SerializeField] float projectileSpawnDistance = 1f; //How far is projectile spanwed from player?
     Projectile loadedProjectile = null; //projectile that is wating for shooting
     Vector3 shootingLine = new Vector3(1, 0, 0); //Direction for loaded projectile
@@ -66,6 +68,8 @@ public class Player : MonoBehaviour
 
     private bool moving;
 
+    [SerializeField] private bool onGround;
+
     private enum AimLineState 
     {
         NOT_AIMED,
@@ -96,7 +100,7 @@ public class Player : MonoBehaviour
         //animator = GetComponentInChildren<Animator>();
 
         //Create queue for projectile pool
-        listOfProjectile = new Queue<Projectile>();
+        listOfProjectile = new List<Projectile>();
         for (int i = 0; i < maxNumOfProjectile; ++i)
         {
             GameObject projectile = Instantiate(projectilePrefab);
@@ -105,7 +109,7 @@ public class Player : MonoBehaviour
             projectile.GetComponent<Projectile>().owner = this;
 
             //Add to pool
-            listOfProjectile.Enqueue(projectile.GetComponent<Projectile>());
+            listOfProjectile.Add(projectile.GetComponent<Projectile>());
         }
 
         mainCam = Camera.main;
@@ -184,7 +188,7 @@ public class Player : MonoBehaviour
     //Return projectile to pool
     public void ReturnProjectile(Projectile projectile)
     {
-        listOfProjectile.Enqueue(projectile);
+        listOfProjectile.Add(projectile);
     }
 
     bool IsPlayerOnGround()
@@ -392,13 +396,20 @@ public class Player : MonoBehaviour
                     }
                 }
                 //Can only shoot when player is on ground and if there is any lightCharges left
-                if (canShoot == true && IsPlayerOnGround() && lightCharges != 0)
+
+                onGround = IsPlayerOnGround();
+                if (canShoot == true && onGround && lightCharges != 0)
                 {
                     aimLineState = AimLineState.AIMING;
                     //Get projectile from list
                     if (listOfProjectile.Count != 0)
                     {
-                        loadedProjectile = listOfProjectile.Dequeue();
+                        
+                        loadedProjectile = listOfProjectile[listOfProjectile.Count - 1];
+                        if (listOfProjectile.Count > 10)
+                        {
+                            listOfProjectile.RemoveAt(0);
+                        }
 
                         //Activate projectile
                         loadedProjectile.gameObject.SetActive(true);
