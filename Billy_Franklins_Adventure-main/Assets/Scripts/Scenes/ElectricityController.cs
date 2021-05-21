@@ -9,8 +9,6 @@ public class ElectricityController : MonoBehaviour
     #region Singleton
     public static ElectricityController instanceElectrical;
 
-   
-
     private void Awake()
     {
         //Make sure there is only one instance
@@ -39,7 +37,6 @@ public class ElectricityController : MonoBehaviour
         int object1Pos = -1;
         int object2Pos = -1;
 
-
         //groups of objects already exists
         if (connectedGameObjects.Count > 0)
         {
@@ -66,16 +63,33 @@ public class ElectricityController : MonoBehaviour
             //could be they are in the same group or neither are in a group 
             if (object1Pos == object2Pos)
             {
+                Debug.Log("Problem 3 1");
                 //both objects are already in the same previous group
                 //they should already have determined if they are electrified
                 if (object1Pos > -1)
                 {
+                    Debug.Log("Problem 3 2");
+                    if (electricState1 || electricState2)
+                    {
+                        
+                        if (!electricState1)
+                        {
+                            //object1.GetComponent<IElectrifiable>().SetElectrified(true);
+                            object1.GetComponent<IElectrifiable>().ElectrifyConnectedObjects();
+                        }
 
+                        if (!electricState2)
+                        {
+                            //object2.GetComponent<IElectrifiable>().SetElectrified(true);
+                            object1.GetComponent<IElectrifiable>().ElectrifyConnectedObjects();
+                        }
+                    }
                 }
                 //neither object is in a previous group
                 //starts a new group and sets their electrified status
                 else
                 {
+                    Debug.Log("Problem 3 3");
                     if (electricState1 || electricState2)
                     {
                         if (!electricState1)
@@ -115,7 +129,6 @@ public class ElectricityController : MonoBehaviour
                 }
 
                 //adds all the objects from group 2 into group 1
-                
                 for (int i = 0; i < connectedGameObjects[object2Pos].Count; i++)
                 {
                     connectedGameObjects[object1Pos].Add(connectedGameObjects[object2Pos][i]);
@@ -126,13 +139,16 @@ public class ElectricityController : MonoBehaviour
             //object 1 is in a group and object 2 is not in a group
             else if (object1Pos > -1 && object2Pos == -1)
             {
+                Debug.Log("Problem 1");
                 if (electricState1 && !electricState2)
                 {
+                    Debug.Log("Problem 1 2");
                     object2.GetComponent<IElectrifiable>().SetElectrified(true);
                 }
 
                 if (!electricState1 && electricState2)
                 {
+                    Debug.Log("Problem 1 3");
                     for (int i = 0; i < connectedGameObjects[object1Pos].Count; i++)
                     {
                         connectedGameObjects[object1Pos][i].GetComponent<IElectrifiable>().SetElectrified(true);
@@ -141,8 +157,9 @@ public class ElectricityController : MonoBehaviour
                 connectedGameObjects[object1Pos].Add(object2);
             }
             //object 2 is in a group and object 1 is not in a group
-            else
+            else if (object1Pos == -1 && object2Pos > -1)
             {
+                Debug.Log("Problem 2");
                 if (!electricState1 && electricState2)
                 {
                     object1.GetComponent<IElectrifiable>().SetElectrified(true);
@@ -179,7 +196,7 @@ public class ElectricityController : MonoBehaviour
             tempConnectedGameObjects.Add(object2);
             connectedGameObjects.Add(tempConnectedGameObjects);
         }
-        Debug.Log("Connected Groups");
+
         Debug.Log("--------------------");
         //Debugging
         if (debugging)
@@ -420,6 +437,7 @@ public class ElectricityController : MonoBehaviour
                     for (int i = 0; i < connectedGameObjects[object1Pos].Count; i++)
                     {
                         connectedGameObjects[object1Pos][i].GetComponent<IElectrifiable>().SetElectrified(true);
+                        connectedGameObjects[object1Pos][i].GetComponent<IElectrifiable>().ElectrifyConnectedObjects();
                     }
                 }
             }
