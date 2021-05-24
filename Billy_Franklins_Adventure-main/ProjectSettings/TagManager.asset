@@ -10,6 +10,7 @@ TagManager:
   - Bucket
   - Lantern
   - Rope
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

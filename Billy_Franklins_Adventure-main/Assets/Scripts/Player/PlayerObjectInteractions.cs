@@ -7,6 +7,8 @@ public class PlayerObjectInteractions : MonoBehaviour
     #region Singleton
     public static PlayerObjectInteractions playerObjectIInstance;
 
+    private CheckPointDeathSystem checkPointDeathSystem = null;
+
     private void Awake()
     {
         //Make sure there is only one instance
@@ -19,13 +21,16 @@ public class PlayerObjectInteractions : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        //reference checkpoint + death system script 
+        checkPointDeathSystem = GameObject.Find("GlobalGameController").GetComponent<CheckPointDeathSystem>();
     }
     #endregion
 
     [SerializeField] private List<GameObject> toggleObjects = new List<GameObject>(); // list of interactable objects in interactable circle 
     [SerializeField] private GameObject currentToggleObject; // current selected interactable object in interactable circle
     private int togglePos = 0; // position of selected interactable object in the list of interactable objects 
-
+    
     //toggles through objects in the list of interactable objects
     public void ToggleObjects()
     {
@@ -53,8 +58,6 @@ public class PlayerObjectInteractions : MonoBehaviour
         return currentToggleObject;
     }
 
-
-    
     public void OnTriggerEnter2D(Collider2D collision)
     {
         // checks if collision is with the interactable layer 9 and not rope
@@ -70,7 +73,23 @@ public class PlayerObjectInteractions : MonoBehaviour
             }
 
             toggleObjects.Add(collision.gameObject);
-            
+
+        }
+
+        //if player touches electrified water then indicate player death
+        if (collision.CompareTag("Water") && collision.GetComponent<Water>().GetElectrified()) 
+        {
+            checkPointDeathSystem.PlayerDeath();
+        }
+        //if player touches electrified metal then indicate player death
+        if (collision.CompareTag("Metal") && collision.GetComponent<Metal>().GetElectrified())
+        {
+            checkPointDeathSystem.PlayerDeath();
+        }
+        //if player hits a checkpoint then set checkpoint
+        if (collision.CompareTag("Checkpoint"))
+        {
+            checkPointDeathSystem.SetCheckpoint();
         }
     }
 

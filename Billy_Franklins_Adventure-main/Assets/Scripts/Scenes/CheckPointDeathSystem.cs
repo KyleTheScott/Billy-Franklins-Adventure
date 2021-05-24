@@ -12,17 +12,21 @@ public class CheckPointDeathSystem : MonoBehaviour
     {
         player = GameObject.Find("Player");
     }
-    //called by external script?
+
     public void SetCheckpoint()
     {
+        //Debug.Log("SetCheckpoint() called");
+
         //initialize checkpoint
         if(checkPoint == null)
         {
             checkPoint = new CheckPoint();
         }
         //set location and number of charges at checkpoint
-        checkPoint.SetCheckPointLocation(player.GetComponent<Transform>().position);
+        checkPoint.SetCheckPointLocation(player.GetComponent<Transform>().localPosition);
         checkPoint.SetCheckPointCharges(player.GetComponent<Player>().lightCharges);
+
+        //Debug.Log("Checkpoint staus (Set): Location= " + checkPoint.GetCheckPointLocation() + ", charges= " + checkPoint.GetCheckPointCharges());
     }
 
     public void PlayerDeath()
@@ -30,8 +34,10 @@ public class CheckPointDeathSystem : MonoBehaviour
         //if there is a check point then load it
         if(checkPoint != null)
         {
-            player.transform.position = checkPoint.GetCheckPointLocation();
-            player.GetComponent<Player>().lightCharges = checkPoint.GetCheckPointCharges();
+            //Debug.Log("Checkpoint staus (Death): Location= " + checkPoint.GetCheckPointLocation() + ", charges= " + checkPoint.GetCheckPointCharges());
+            player.transform.localPosition = checkPoint.GetCheckPointLocation();
+            player.GetComponent<Player>().lightCharges = checkPoint.GetCheckPointCharges() + 1;
+            player.GetComponent<Player>().UseLightCharges();
         }
         //if no checkpoint then reload level?
         else
