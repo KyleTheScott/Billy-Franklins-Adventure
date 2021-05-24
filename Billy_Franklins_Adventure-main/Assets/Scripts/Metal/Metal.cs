@@ -87,6 +87,15 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         return connectedGameObjects;
     }
 
+    public void ElectrifyConnectedObjects()
+    {
+        foreach (GameObject obj in connectedGameObjects)
+        {
+            obj.GetComponent<IElectrifiable>().SetElectrified(true);
+        }
+    }
+
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         //electrifies object

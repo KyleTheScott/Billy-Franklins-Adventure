@@ -68,6 +68,9 @@ TagManager:
   - name: Player
     uniqueID: 1816281827
     locked: 0
+  - name: Aiming
+    uniqueID: 2533448657
+    locked: 0
   - name: UI
     uniqueID: 1789967905
     locked: 0
