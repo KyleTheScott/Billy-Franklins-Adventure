@@ -10,4 +10,5 @@ public interface IElectrifiable
     void SetElectrified(bool state);
 
     List<GameObject> GetConnectedObjects();
+    void ElectrifyConnectedObjects();
 }

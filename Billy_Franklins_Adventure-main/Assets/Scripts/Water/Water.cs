@@ -60,6 +60,15 @@ public class Water : MonoBehaviour, IElectrifiable
         return connectedGameObjects;
     }
 
+    public void ElectrifyConnectedObjects()
+    {
+        foreach (GameObject obj in connectedGameObjects)
+        {
+            obj.GetComponent<IElectrifiable>().SetElectrified(true);
+        }
+    }
+
+
     //called by an animation event to make sure the water collider collides when enabled and already in collision area
     public void SetColliderStayCheck()
     {
