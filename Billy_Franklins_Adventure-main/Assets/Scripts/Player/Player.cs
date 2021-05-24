@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [DefaultExecutionOrder(-100)] //ensure this script runs before all other player scripts to prevent laggy input
 public class Player : MonoBehaviour
 {
-  
+    private CheckPointDeathSystem checkPointDeathSystem = null;
 
     Rigidbody2D rb = null; //player's rigid body
     CapsuleCollider2D capsuleCollider2D = null; //Player's capsule collider
@@ -90,6 +90,11 @@ public class Player : MonoBehaviour
 
 
 
+    private void Awake()
+    {
+        //reference checkpoint + death system script 
+        checkPointDeathSystem = GameObject.Find("GlobalGameController").GetComponent<CheckPointDeathSystem>();
+    }
 
 
     // Start is called before the first frame update
@@ -122,6 +127,12 @@ public class Player : MonoBehaviour
     void Update()
     {
         HandleInput();
+
+        //if there are no charges left then player has died
+        if(lightCharges == 0 && loadedProjectile == null)
+        {
+            checkPointDeathSystem.PlayerDeath();
+        }
     }
 
     private void FixedUpdate()
@@ -714,7 +725,7 @@ public class Player : MonoBehaviour
     }
 
 
-    void UseLightCharges()
+    public void UseLightCharges()
     {
         lightCharges -= 1;
 
