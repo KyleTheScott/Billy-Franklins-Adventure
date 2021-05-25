@@ -291,7 +291,7 @@ public class Player : MonoBehaviour
             moveDir.x = 0f;
             
         }
-        //MouseInputHandle();
+        MouseInputHandle();
 
         //Jump
         if (Input.GetKeyDown(KeyCode.Space))
