@@ -12,6 +12,8 @@ TagManager:
   - Rope
   - Checkpoint
   - Switch
+  - LevelRoot
+
   layers:
   - Default
   - TransparentFX

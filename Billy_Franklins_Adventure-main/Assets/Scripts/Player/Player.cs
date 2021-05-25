@@ -289,9 +289,10 @@ public class Player : MonoBehaviour
         {
             moving = false;
             moveDir.x = 0f;
+            
         }
+        //MouseInputHandle();
 
-        MouseInputHandle();
         //Jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
