@@ -81,6 +81,11 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         metalAnimator.SetBool("Electrified", electrified);
     }
 
+    public bool IsMoving()
+    {
+        return beingMoved;
+    }
+
     //returns objects directly connected
     public List<GameObject> GetConnectedObjects()
     {

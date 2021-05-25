@@ -11,6 +11,9 @@ TagManager:
   - Lantern
   - Rope
   - Checkpoint
+  - Switch
+  - Ground
+  - PlayerClose
   layers:
   - Default
   - TransparentFX
@@ -74,4 +77,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 1789967905
+    locked: 0
+  - name: Switch
+    uniqueID: 3981006421
     locked: 0

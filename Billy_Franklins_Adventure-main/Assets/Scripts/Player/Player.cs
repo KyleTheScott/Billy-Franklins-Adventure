@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering.UI;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
 [DefaultExecutionOrder(-100)] //ensure this script runs before all other player scripts to prevent laggy input
@@ -15,8 +17,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] bool debugMode = false;
 
-    [Header("Attribute")]
-    [SerializeField] private float moveSpeed = 3.0f;
+    [Header("Attribute")] [SerializeField] private float moveSpeed = 3.0f;
     [SerializeField] private float jumpForce = 10f; //How strong does player jump
     [SerializeField] private float moveVelocity;
     public float shootCoolTime = 0.5f; //Projectile shoot cool time
@@ -29,9 +30,34 @@ public class Player : MonoBehaviour
     bool shouldJump = false; //Check if player should jump
     [SerializeField] private bool canShoot = true; //Check if player can shoot projectile
 
-    [Header("Projectile")]
-    public int maxNumOfProjectile = 10; //Max number of projectile
+    private bool moving;
+
+    [SerializeField] private bool onGround;
+    [SerializeField] private SpriteRenderer playerSprite;
+
+    private bool movingObject;
+
+    private enum PlayerState
+    {
+
+        JUMPING,
+        WALKING,
+        MOVING_OBJECT
+
+    }
+
+    [SerializeField] private PlayerState playerState = PlayerState.WALKING;
+
+    private Vector2 lastPosition;
+
+    [SerializeField] private float inAirFriction = 0f;
+    [SerializeField] private float onGroundFriction = 1f;
+
+
+    [Header("Projectile")] public int maxNumOfProjectile = 10; //Max number of projectile
+
     public GameObject projectilePrefab = null; //Prefab for projectile
+
     //Queue<Projectile> listOfProjectile = null; //Queue for projectile pool
     [SerializeField] private List<Projectile> listOfProjectile = null;
 
@@ -47,15 +73,12 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask tileLayerMask; //Used to check if player is on ground
 
     // to Get SFX sound name 
-    [SerializeField]
-    private string ShootSound;
-    [SerializeField]
-    private string JumpSound;
+    [SerializeField] private string ShootSound;
+    [SerializeField] private string JumpSound;
 
     private Animator animator;
 
-    [Header("Interact")]
-    [SerializeField] float interactRadius = 5f;
+    [Header("Interact")] [SerializeField] float interactRadius = 5f;
     [SerializeField] LayerMask interactLayer;
 
     Camera mainCam = null;
@@ -66,11 +89,10 @@ public class Player : MonoBehaviour
     public UnityEvent<int, int> onLightChargesChanged; //DarkBOrder will subscribe, charges text ui will subscribe this
 
 
-    private bool moving;
 
-    [SerializeField] private bool onGround;
+    [SerializeField] private bool firstAiming = true;
 
-    private enum AimLineState 
+    private enum AimLineState
     {
         NOT_AIMED,
         AIMING
@@ -79,14 +101,21 @@ public class Player : MonoBehaviour
     [SerializeField] private AimLineState aimLineState = AimLineState.NOT_AIMED;
 
     private bool mouseClick;
+
     //public static bool visibleCursor;
     float timeLeft = 1;
     float visibleCursorTimer = .5f;
+
     float cursorPosition;
+
     //Vector2 cursorSensitivity;
     bool catchCursor = true;
 
     [SerializeField] private float shootFixTimer = .5f;
+
+
+    [SerializeField] private MovingObjectsCollision movingObjectsCollision;
+
 
 
 
@@ -118,6 +147,9 @@ public class Player : MonoBehaviour
         }
 
         mainCam = Camera.main;
+        isFacingRight = true;
+
+        transform.Rotate(0f, 180f, 0f);
 
         aimLine = GetComponentInChildren<AimLine>();
         aimLineState = AimLineState.NOT_AIMED;
@@ -129,7 +161,7 @@ public class Player : MonoBehaviour
         HandleInput();
 
         //if there are no charges left then player has died
-        if(lightCharges == 0 && loadedProjectile == null)
+        if (lightCharges == 0 && loadedProjectile == null)
         {
             checkPointDeathSystem.PlayerDeath();
         }
@@ -138,10 +170,11 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         //Jump
-        if (shouldJump == true)
+        if (playerState == PlayerState.JUMPING)
         {
-            rb.velocity = new Vector2 (rb.velocity.x,  jumpForce);
-            shouldJump = false;
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            //shouldJump = false;
+            playerState = PlayerState.WALKING;
         }
 
         moveVelocity = 0;
@@ -157,12 +190,14 @@ public class Player : MonoBehaviour
             {
                 moveVelocity = 0f - moveSpeed;
             }
+
             //Vector2 tempVel = rb.velocity;
             //tempVel.x = moveDir.x * moveSpeed;
             //rb.velocity = tempVel;
+            rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
         }
 
-        rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+        
         //animator.SetInteger("Direction", (int)moveDir.x);
     }
 
@@ -202,15 +237,17 @@ public class Player : MonoBehaviour
         listOfProjectile.Add(projectile);
     }
 
-    bool IsPlayerOnGround()
+    public bool IsPlayerOnGround()
     {
-        //Do capsule cast to downward of player so that it checks if player is on ground
-        RaycastHit2D result = Physics2D.CapsuleCast(capsuleCollider2D.bounds.center, capsuleCollider2D.bounds.size, CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.1f, tileLayerMask);
+        return onGround;
+        ////Do capsule cast to downward of player so that it checks if player is on ground
+        //RaycastHit2D result = Physics2D.CapsuleCast(capsuleCollider2D.bounds.center, capsuleCollider2D.bounds.size,
+        //    CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.1f, tileLayerMask);
 
-        //Debug.Log(result.collider);
+        ////Debug.Log(result.collider);
 
-        return (result.collider != null);
-    } 
+        //return (result.collider != null);
+    }
 
     private void OnDrawGizmosSelected()
     {
@@ -234,7 +271,10 @@ public class Player : MonoBehaviour
             {
 
                 isFacingRight = false;
+
                 transform.Rotate(0f, 180f, 0f);
+
+
                 lastShootingLine.x = -1;
                 //transform.localScale = new Vector3(1, 1, 1);
             }
@@ -263,17 +303,13 @@ public class Player : MonoBehaviour
             {
 
                 isFacingRight = true;
+
                 transform.Rotate(0f, 180f, 0f);
+
                 lastShootingLine.x = 1;
                 //transform.localScale = new Vector3(-1, 1, 1);
             }
 
-            //if (aimLineState == AimLineState.AIMING)
-            //{
-            //    aimLineState = AimLineState.NOT_AIMED;
-            //    UnloadProjectile();
-            //    StopAiming();
-            //}
             if (aimLineState == AimLineState.NOT_AIMED)
             {
                 moveDir.x = 1;
@@ -296,17 +332,19 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //Only can jump if player is on ground and not loaded projectile
-            if (IsPlayerOnGround() == true && loadedProjectile == null)
+            if (onGround && loadedProjectile == null && playerState == PlayerState.WALKING)
             {
+
                 //SoundManager.instance.PLaySE(JumpSound);
-                shouldJump = true;
+                //shouldJump = true;
+                playerState = PlayerState.JUMPING;
             }
         }
 
         //Interact
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (lightCharges != 0)
+            if (lightCharges != 0 && onGround)
             {
                 ////Find any interactable object within circle
                 //Collider2D result = Physics2D.OverlapCircle(transform.position, interactRadius, interactLayer);
@@ -322,7 +360,20 @@ public class Player : MonoBehaviour
                     {
                         UseLightCharges();
                     }
+
+                    if (comp.GetComponent<Collider2D>().CompareTag("Metal"))
+                    {
+                        if (comp.GetComponent<Metal>().IsMoving())
+                        {
+                            playerState = PlayerState.MOVING_OBJECT;
+                        }
+                        else
+                        {
+                            playerState = PlayerState.WALKING;
+                        }
+                    }
                 }
+
                 //}
             }
         }
@@ -341,6 +392,7 @@ public class Player : MonoBehaviour
 
             cursorPosition = Input.GetAxis("Mouse X");
         }
+
         //checks if mouse is stopped
         if (Input.GetAxis("Mouse X") == cursorPosition)
         {
@@ -352,7 +404,6 @@ public class Player : MonoBehaviour
                 //if time runs out
                 if (timeLeft < 0)
                 {
-                    Debug.Log("Mouse Stopped");
                     //not aiming anymore
                     aimLineState = AimLineState.NOT_AIMED;
                     UnloadProjectile();
@@ -387,7 +438,7 @@ public class Player : MonoBehaviour
                     else
                     {
                         Aiming();
-                    } 
+                    }
                 }
 
             }
@@ -408,14 +459,16 @@ public class Player : MonoBehaviour
                 }
                 //Can only shoot when player is on ground and if there is any lightCharges left
 
-                onGround = IsPlayerOnGround();
-                if (canShoot == true && onGround && lightCharges != 0)
+
+                //onGround = IsPlayerOnGround();
+                if (canShoot == true && onGround && lightCharges != 0 && !firstAiming)
                 {
+
                     aimLineState = AimLineState.AIMING;
                     //Get projectile from list
                     if (listOfProjectile.Count != 0)
                     {
-                        
+
                         loadedProjectile = listOfProjectile[listOfProjectile.Count - 1];
                         if (listOfProjectile.Count > 10)
                         {
@@ -442,10 +495,15 @@ public class Player : MonoBehaviour
                         aimLine.gameObject.SetActive(true);
                     }
                 }
+
                 //cursorSpriteRenderer.sprite = cursorSprite;
                 timeLeft = visibleCursorTimer;
                 //Cursor.visible = true;
                 //visibleCursor = true;
+                if (firstAiming)
+                {
+                    firstAiming = false;
+                }
             }
             else if (aimLineState == AimLineState.AIMING)
             {
@@ -475,9 +533,10 @@ public class Player : MonoBehaviour
                 else
                 {
                     Aiming();
-                    
+
                 }
             }
+
             catchCursor = true;
             //else if (aimLineState == AimLineState.SHOOTING)
             //{
@@ -636,7 +695,7 @@ public class Player : MonoBehaviour
         //Turn off aimline
         aimLine.gameObject.SetActive(false);
         Invoke("ResetShootCoolDown", shootCoolTime);
-        
+
     }
 
     private void UnloadProjectile()
@@ -682,7 +741,8 @@ public class Player : MonoBehaviour
 
                 //float rayDist = (mousePos - loadedProjectile.transform.position).magnitude;
                 float rayDist = 50.0f;
-                RaycastHit2D hit = Physics2D.Raycast(loadedProjectile.transform.position, shootingLine, rayDist, aimLineCollisionMask);
+                RaycastHit2D hit = Physics2D.Raycast(loadedProjectile.transform.position, shootingLine, rayDist,
+                    aimLineCollisionMask);
                 if (hit.collider != null)
                 {
                     //Debug.Log(hit.collider.name);
@@ -706,7 +766,8 @@ public class Player : MonoBehaviour
 
 
                 float rayDist = 50.0f;
-                RaycastHit2D hit = Physics2D.Raycast(loadedProjectile.transform.position, lastShootingLine, rayDist, aimLineCollisionMask);
+                RaycastHit2D hit = Physics2D.Raycast(loadedProjectile.transform.position, lastShootingLine, rayDist,
+                    aimLineCollisionMask);
                 if (hit.collider != null)
                 {
                     //Debug.Log(hit.collider.name);
@@ -716,7 +777,6 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-
                     //Set aim line
                     aimLine.SetEndPoint(loadedProjectile.transform.position + (lastShootingLine * rayDist));
                 }
@@ -732,6 +792,77 @@ public class Player : MonoBehaviour
         if (onLightChargesChanged != null)
         {
             onLightChargesChanged.Invoke(lightCharges, maxLightCharges);
+        }
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            onGround = true;
+            capsuleCollider2D.sharedMaterial.friction = onGroundFriction;
+        }
+    }
+
+   
+
+    //public void OnCollisionExit2D(Collision2D collision)
+        //{
+        //    if (collision.collider.CompareTag("Ground"))
+        //    {
+        //        if (!movingObjectsCollision.GetComponent<MovingObjectsCollision>().IsGrounded())
+        //        {
+        //            GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject();
+        //            if (comp != null)
+        //            {
+        //                comp.GetComponent<IInteractable>().Interact();
+        //                if (comp.GetComponent<Collider2D>().CompareTag("Lantern"))
+        //                {
+        //                    UseLightCharges();
+        //                }
+
+        //                if (comp.GetComponent<Collider2D>().CompareTag("Metal"))
+        //                {
+        //                    if (comp.GetComponent<Metal>().IsMoving())
+        //                    {
+        //                        playerState = PlayerState.MOVING_OBJECT;
+        //                    }
+        //                    else
+        //                    {
+        //                        playerState = PlayerState.WALKING;
+        //                    }
+        //                }
+        //            }
+
+        //            onGround = false;
+        //        }
+        //    }
+        //}
+
+        public void LeavingTheGround()
+    {
+        if (playerState == PlayerState.MOVING_OBJECT)
+        {
+            playerState = PlayerState.WALKING;
+            GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject();
+            if (comp != null)
+            {
+                if (comp.GetComponent<Collider2D>().CompareTag("Metal"))
+                {
+                    if (comp.GetComponent<Metal>().IsMoving())
+                    {
+                        Debug.Log("Miraculously moving");
+                        comp.GetComponent<IInteractable>().Interact();
+                        onGround = false;
+                        capsuleCollider2D.sharedMaterial.friction = inAirFriction;
+                    }
+                }
+            }
+        }
+        else
+        {
+            onGround = false;
+            capsuleCollider2D.sharedMaterial.friction = inAirFriction;
         }
     }
 }
