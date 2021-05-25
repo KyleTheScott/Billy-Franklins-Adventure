@@ -20,7 +20,6 @@ public class Projectile : MonoBehaviour
         GameObject projectiles = GameObject.Find("Projectiles");
         transform.parent = projectiles.transform; 
         gameObject.SetActive(false);
-
         mainCam = Camera.main;
     }
 
