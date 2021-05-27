@@ -48,12 +48,12 @@ public class DarkBorder : MonoBehaviour
     {
         if (darkBorderImage != null)
         {
-            Color newColor = darkBorderImage.color;
+            //Color newColor = darkBorderImage.color;
             
             //Set alpha based on charges left
-            newColor.a = 1 - ((float)lightCharges / (float)maxLightCharges);
+            //newColor.a = 1 - ((float)lightCharges / (float)maxLightCharges);
 
-            darkBorderImage.color = newColor;
+           // darkBorderImage.color = newColor;
         }
     }
 
