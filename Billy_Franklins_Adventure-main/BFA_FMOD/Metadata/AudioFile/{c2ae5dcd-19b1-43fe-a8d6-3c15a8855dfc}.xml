@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{c2ae5dcd-19b1-43fe-a8d6-3c15a8855dfc}">
+		<property name="assetPath">
+			<value>Rustling Leaves.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>39.664625000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{0cddd0b9-e3ac-406b-a60d-4832659dcf1e}</destination>
+		</relationship>
+	</object>
+</objects>
