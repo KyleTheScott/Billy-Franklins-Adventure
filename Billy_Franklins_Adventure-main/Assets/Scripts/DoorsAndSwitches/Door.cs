@@ -47,7 +47,7 @@ public class Door : MonoBehaviour
                 if (transform.position.y < moveMax)
                 {
                     transform.position += new Vector3(0, moveSpeed * Time.deltaTime, 0);
-                    Debug.Log("Y: " + transform.position.y + "Max: " + moveMax);
+                    //Debug.Log("Y: " + transform.position.y + "Max: " + moveMax);
                 }
                 else
                 {
@@ -59,7 +59,7 @@ public class Door : MonoBehaviour
                 if (transform.position.y > moveMin)
                 {
                     transform.position += new Vector3(0, -moveSpeed * Time.deltaTime, 0);
-                    Debug.Log("Y: " + transform.position.y + "Min: " + moveMin);
+                    //Debug.Log("Y: " + transform.position.y + "Min: " + moveMin);
                 }
                 else
                 {

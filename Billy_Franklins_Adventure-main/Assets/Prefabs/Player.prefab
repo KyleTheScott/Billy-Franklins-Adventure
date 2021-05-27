@@ -90,7 +90,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596798624625240177}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07, y: -3.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1596798626382368133}
@@ -160,6 +160,7 @@ MonoBehaviour:
   canShoot: 1
   maxNumOfProjectile: 10
   projectilePrefab: {fileID: 7641674986506221482, guid: 02094ac19ba79724681d7b03d1031ad6, type: 3}
+  listOfProjectile: []
   projectileSpawnDistance: 1
   aimLineCollisionMask:
     serializedVersion: 2
@@ -177,6 +178,7 @@ MonoBehaviour:
   onLightChargesChanged:
     m_PersistentCalls:
       m_Calls: []
+  onGround: 0
   aimLineState: 0
   shootFixTimer: 0.05
 --- !u!95 &1596798624625240180

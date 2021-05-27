@@ -73,23 +73,6 @@ public class PlayerObjectInteractions : MonoBehaviour
             }
 
             toggleObjects.Add(collision.gameObject);
-
-        }
-
-        //if player touches electrified water then indicate player death
-        if (collision.CompareTag("Water") && collision.GetComponent<Water>().GetElectrified()) 
-        {
-            checkPointDeathSystem.PlayerDeath();
-        }
-        //if player touches electrified metal then indicate player death
-        if (collision.CompareTag("Metal") && collision.GetComponent<Metal>().GetElectrified())
-        {
-            checkPointDeathSystem.PlayerDeath();
-        }
-        //if player hits a checkpoint then set checkpoint
-        if (collision.CompareTag("Checkpoint"))
-        {
-            checkPointDeathSystem.SetCheckpoint();
         }
     }
 
@@ -109,6 +92,13 @@ public class PlayerObjectInteractions : MonoBehaviour
             {
                 if (collision.gameObject == toggleObjects[i])
                 {
+                    if (collision.gameObject.CompareTag("Metal"))
+                    {
+                        if (collision.gameObject.GetComponent<Metal>().IsMoving())
+                        {
+                            collision.gameObject.GetComponent<Metal>().SetMoving(false);
+                        }
+                    }
                     toggleObjects.RemoveAt(i);
                 }
             }

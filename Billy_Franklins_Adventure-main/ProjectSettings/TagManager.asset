@@ -12,8 +12,8 @@ TagManager:
   - Rope
   - Checkpoint
   - Switch
-  - LevelRoot
-
+  - Ground
+  - PlayerClose
   layers:
   - Default
   - TransparentFX
