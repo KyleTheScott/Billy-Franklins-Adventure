@@ -5,20 +5,21 @@ using UnityEngine.Events;
 
 public class Metal : MonoBehaviour, IInteractable, IElectrifiable
 {
-    [Header("Electrical")]
-    [SerializeField] private bool electrified = false;
+    [Header("Electrical")] [SerializeField]
+    private bool electrified = false;
+
     [SerializeField] private bool temporaryElectrified = false;
     [SerializeField] private List<GameObject> connectedGameObjects = new List<GameObject>();
-    [Header("General")]
-    [SerializeField] private Collider2D metalCollider;
+    [Header("General")] [SerializeField] private Collider2D metalCollider;
     private Animator metalAnimator;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject highlight;
-    [Header("Movement")]
-    private float distToPlayerXOffset;
+    [Header("Movement")] private float distToPlayerXOffset;
     [SerializeField] private bool beingMoved = false;
 
-    
+    [SerializeField] private int groupNum = 0;
+
+
 
 
 
@@ -37,7 +38,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
             distToPlayerXOffset = transform.position.x - player.transform.position.x;
         }
     }
-
+    //makes highlight appear and disappear
     public void SetHighlighted(bool state)
     {
         highlight.SetActive(state);
@@ -47,7 +48,6 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
 
     private void Start()
     {
-        //ElectricityController.instanceElectrical.onConnectionChange.AddListener(OnConnectionChangeCallBack);
         player = GameObject.Find("Player");
         metalAnimator = gameObject.GetComponent<Animator>();
     }
@@ -69,6 +69,17 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         }
     }
 
+    // for number of group the metal is in ElectricityController connectedObjects
+    public int GetGroupNum()
+    {
+        return groupNum;
+    }
+    public void SetGroupNum(int num)
+    {
+        groupNum = num;
+    }
+
+    //get if metal is electrified
     public bool GetElectrified()
     {
         return electrified;
@@ -86,12 +97,19 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         return beingMoved;
     }
 
+    public void SetMoving(bool state)
+    {
+        beingMoved = state;
+    }
+
+
+
     //returns objects directly connected
     public List<GameObject> GetConnectedObjects()
     {
         return connectedGameObjects;
     }
-
+    // electrifies connected objects
     public void ElectrifyConnectedObjects()
     {
         foreach (GameObject obj in connectedGameObjects)
@@ -100,13 +118,12 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         }
     }
 
-
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        //electrifies object
         if (collision.CompareTag("Lightning"))
         {
-            ElectricityController.instanceElectrical.ElectrifyConnectedObjects(gameObject, metalCollider);
+            ElectricityController.instanceElectrical.ElectrifyConnectedObjects(
+                gameObject, metalCollider, electrified, groupNum);
         }
         //connects objects
         else if (collision.CompareTag("Metal"))
@@ -119,16 +136,19 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
                     alreadyExists = true;
                 }
             }
+
             if (!alreadyExists && collision.gameObject != gameObject)
             {
                 connectedGameObjects.Add(collision.gameObject);
             }
 
             bool object2Electrified = collision.gameObject.GetComponent<Metal>().GetElectrified();
-            ElectricityController.instanceElectrical.ConnectObjects(gameObject, metalCollider, electrified,
-                collision.gameObject, collision, object2Electrified);
+            int object2GroupNum = collision.gameObject.GetComponent<Metal>().GetGroupNum();
+            ElectricityController.instanceElectrical.ConnectObjects(
+                gameObject, metalCollider, electrified, groupNum,
+                collision.gameObject, collision, object2Electrified, object2GroupNum);
         }
-        else if (collision.CompareTag("Water"))
+        else if (collision.CompareTag("Water") && collision.gameObject.GetComponent<Water>().GetWaterByItself())
         {
             bool alreadyExists = false;
             for (int i = 0; i < connectedGameObjects.Count; i++)
@@ -138,25 +158,30 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
                     alreadyExists = true;
                 }
             }
+
             if (!alreadyExists)
             {
                 connectedGameObjects.Add(collision.gameObject);
 
             }
+
             bool object2Electrified = collision.gameObject.GetComponent<Water>().GetElectrified();
-            ElectricityController.instanceElectrical.ConnectObjects(gameObject, metalCollider, electrified,
-                collision.gameObject, collision, object2Electrified);
+            int object2GroupNum = collision.gameObject.GetComponent<Water>().GetGroupNum();
+            ElectricityController.instanceElectrical.ConnectObjects(
+                gameObject, metalCollider, electrified, groupNum,
+                collision.gameObject, collision, object2Electrified, object2GroupNum);
         }
     }
-
     public void OnTriggerExit2D(Collider2D collision)
     {
         //disconnect objects
         if (collision.CompareTag("Metal"))
         {
             bool object2Electrified = collision.gameObject.GetComponent<Metal>().GetElectrified();
-            ElectricityController.instanceElectrical.DisconnectObjects(gameObject, metalCollider, electrified,
-                collision.gameObject, collision, object2Electrified);
+            int object2GroupNum = collision.gameObject.GetComponent<Metal>().GetGroupNum();
+            ElectricityController.instanceElectrical.DisconnectObjects(
+                gameObject, metalCollider, electrified, groupNum, 
+                collision.gameObject, collision, object2Electrified, object2GroupNum );
             GameObject tempGameObject = gameObject;
             for (int i = 0; i < connectedGameObjects.Count; i++)
             {
@@ -166,11 +191,13 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
                 }
             }
         }
-        else if (collision.CompareTag("Water"))
+        else if (collision.CompareTag("Water") && collision.gameObject.GetComponent<Water>().GetWaterByItself())
         {
             bool object2Electrified = collision.gameObject.GetComponent<Water>().GetElectrified();
-            ElectricityController.instanceElectrical.DisconnectObjects(gameObject, metalCollider, electrified,
-                collision.gameObject, collision, object2Electrified);
+            int object2GroupNum = collision.gameObject.GetComponent<Water>().GetGroupNum();
+            ElectricityController.instanceElectrical.DisconnectObjects(
+                gameObject, metalCollider, electrified, groupNum,
+                collision.gameObject, collision, object2Electrified, object2GroupNum);
             GameObject tempGameObject = collision.gameObject;
             for (int i = 0; i < connectedGameObjects.Count; i++)
             {
@@ -187,3 +214,87 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         }
     }
 }
+//public void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    //electrifies object
+    //    if (collision.CompareTag("Lightning"))
+    //    {
+    //        ElectricityController.instanceElectrical.ElectrifyConnectedObjects(gameObject, metalCollider);
+    //    }
+    //    //connects objects
+    //    else if (collision.CompareTag("Metal"))
+    //    {
+    //        bool alreadyExists = false;
+    //        for (int i = 0; i < connectedGameObjects.Count; i++)
+    //        {
+    //            if (connectedGameObjects[i] == collision.gameObject)
+    //            {
+    //                alreadyExists = true;
+    //            }
+    //        }
+    //        if (!alreadyExists && collision.gameObject != gameObject)
+    //        {
+    //            connectedGameObjects.Add(collision.gameObject);
+    //        }
+
+    //        bool object2Electrified = collision.gameObject.GetComponent<Metal>().GetElectrified();
+    //        ElectricityController.instanceElectrical.ConnectObjects(gameObject, metalCollider, electrified,
+    //            collision.gameObject, collision, object2Electrified);
+    //    }
+    //    else if (collision.CompareTag("Water"))
+    //    {
+    //        bool alreadyExists = false;
+    //        for (int i = 0; i < connectedGameObjects.Count; i++)
+    //        {
+    //            if (connectedGameObjects[i] == collision.gameObject)
+    //            {
+    //                alreadyExists = true;
+    //            }
+    //        }
+    //        if (!alreadyExists )
+    //        {
+    //            connectedGameObjects.Add(collision.gameObject);
+
+    //        }
+    //        bool object2Electrified = collision.gameObject.GetComponent<Water>().GetElectrified();
+    //        ElectricityController.instanceElectrical.ConnectObjects(gameObject, metalCollider, electrified,
+    //            collision.gameObject, collision, object2Electrified);
+    //    }
+    //}
+
+    //public void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    //disconnect objects
+    //    if (collision.CompareTag("Metal"))
+    //    {
+    //        bool object2Electrified = collision.gameObject.GetComponent<Metal>().GetElectrified();
+    //        ElectricityController.instanceElectrical.DisconnectObjects(gameObject, metalCollider, electrified,
+    //            collision.gameObject, collision, object2Electrified);
+    //        GameObject tempGameObject = gameObject;
+    //        for (int i = 0; i < connectedGameObjects.Count; i++)
+    //        {
+    //            if (connectedGameObjects[i] == collision.gameObject)
+    //            {
+    //                connectedGameObjects.RemoveAt(i);
+    //            }
+    //        }
+    //    }
+    //    else if (collision.CompareTag("Water"))
+    //    {
+    //        bool object2Electrified = collision.gameObject.GetComponent<Water>().GetElectrified();
+    //        ElectricityController.instanceElectrical.DisconnectObjects(gameObject, metalCollider, electrified,
+    //            collision.gameObject, collision, object2Electrified);
+    //        GameObject tempGameObject = collision.gameObject;
+    //        for (int i = 0; i < connectedGameObjects.Count; i++)
+    //        {
+    //            if (connectedGameObjects[i] == collision.gameObject)
+    //            {
+    //                connectedGameObjects.RemoveAt(i);
+    //            }
+    //        }
+    //    }
+    //    if (connectedGameObjects.Count <= 0)
+    //    {
+    //        SetElectrified(false);
+    //    }
+    //}

@@ -92,6 +92,13 @@ public class PlayerObjectInteractions : MonoBehaviour
             {
                 if (collision.gameObject == toggleObjects[i])
                 {
+                    if (collision.gameObject.CompareTag("Metal"))
+                    {
+                        if (collision.gameObject.GetComponent<Metal>().IsMoving())
+                        {
+                            collision.gameObject.GetComponent<Metal>().SetMoving(false);
+                        }
+                    }
                     toggleObjects.RemoveAt(i);
                 }
             }
