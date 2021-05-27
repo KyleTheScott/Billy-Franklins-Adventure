@@ -449,15 +449,15 @@ public class Player : MonoBehaviour
             timeLeft = visibleCursorTimer;
             if (aimLineState == AimLineState.NOT_AIMED)
             {
-                if (!canShoot)
-                {
-                    shootFixTimer--;
-                    if (shootFixTimer <= 0)
-                    {
-                        shootFixTimer = 0.5f;
-                        canShoot = true;
-                    }
-                }
+                //if (!canShoot)
+                //{
+                //    shootFixTimer--;
+                //    if (shootFixTimer <= 0)
+                //    {
+                //        shootFixTimer = 0.5f;
+                //        canShoot = true;
+                //    }
+                //}
                 //Can only shoot when player is on ground and if there is any lightCharges left
 
 
