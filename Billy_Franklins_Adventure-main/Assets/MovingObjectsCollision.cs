@@ -60,7 +60,6 @@ public class MovingObjectsCollision : MonoBehaviour
 
             if (groundObjectsTouching.Count <= 0)
             {
-                Debug.Log("Left the ground");
                 player.GetComponent<Player>().LeavingTheGround();
             }
         }

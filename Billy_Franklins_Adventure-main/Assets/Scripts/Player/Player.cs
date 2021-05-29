@@ -59,13 +59,15 @@ public class Player : MonoBehaviour
     [SerializeField] private float inAirFriction = 0f;
     [SerializeField] private float onGroundFriction = 0f;
 
+    //changes in gravity
     [SerializeField] private float jumpGravity = 1f;
-    [SerializeField] private float groundGravity = 5f;
+    [SerializeField] private float fallGravity = 5f;
+    [SerializeField] private float groundGravity = 10f;
 
-    [Range(1, 10)] [SerializeField] private float jumpVelocity = 2;
+    //[Range(1, 10)] [SerializeField] private float jumpVelocity = 2;
 
-    [SerializeField] private float lowJumpMultiplier = 2.5f;
-    [SerializeField] private float fallMultiplier = 2.5f;
+    [SerializeField] private float lowJumpMultiplier = 2f;
+    [SerializeField] private float fallMultiplier = 4f;
 
 
     [Header("Projectile")] public int maxNumOfProjectile = 10; //Max number of projectile
@@ -188,7 +190,6 @@ public class Player : MonoBehaviour
             case PlayerState.IDLE:
                 if (lastPosition != transform.position)
                 {
-                    Debug.Log("Warning");
                     //rb.constraints = RigidbodyConstraints2D.FreezePositionX;
                     rb.velocity = Vector2.zero;
                     rb.isKinematic = true;
@@ -206,7 +207,7 @@ public class Player : MonoBehaviour
                 if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
                 {
                     //rb.velocity = Vector2.up * jumpVelocity;
-                    rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier * 1) * Time.deltaTime;
+                    rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier * 1) * Time.deltaTime;
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                     //if (isFacingRight)
                     //{
@@ -234,13 +235,10 @@ public class Player : MonoBehaviour
                     //}
                 }
                 
-                
-
-
-                if (onGround)
-                {
-                    playerState = PlayerState.WALKING;
-                }
+                //if (onGround)
+                //{
+                //    playerState = PlayerState.WALKING;
+                //}
                 break;
             case PlayerState.FALLING:
                 falling = true;
@@ -394,8 +392,7 @@ public class Player : MonoBehaviour
         else
         {
             if (playerState != PlayerState.MOVING_OBJECT && playerState != PlayerState.JUMP && 
-                playerState != PlayerState.JUMPING && playerState != PlayerState.FALLING
-            )
+                playerState != PlayerState.JUMPING && playerState != PlayerState.FALLING)
             {
                 playerState = PlayerState.IDLE;
             }
@@ -781,7 +778,7 @@ public class Player : MonoBehaviour
         Invoke("ResetShootCoolDown", shootCoolTime);
 
     }
-
+    
     private void UnloadProjectile()
     {
         if (loadedProjectile != null)
@@ -879,22 +876,24 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Ground"))
-        {
-            rb.gravityScale = groundGravity;
+    //public void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.collider.CompareTag("Ground"))
+    //    {
+    //        Debug.Log("Ground");
+            
 
-            //onGround = true;
-            capsuleCollider2D.sharedMaterial.friction = onGroundFriction;
-        }
-    }
-
+    //        //onGround = true;
+            
+    //    }
+    //}
+    //Set from PlayerCollision collider to set when the player is on the ground 
     public void SetOnGround(bool state)
     {
-        Debug.Log("On Ground After Fall");
         onGround = state;
         playerState = PlayerState.WALKING;
+        rb.gravityScale = groundGravity;
+        capsuleCollider2D.sharedMaterial.friction = onGroundFriction;
     }
 
     public bool GetFalling()
@@ -935,6 +934,7 @@ public class Player : MonoBehaviour
         //    }
         //}
 
+    //called from MovingObjectsCollision to handle the player hopping when moving metal objects
     public void LeavingTheGround()
     {
         if (playerState == PlayerState.MOVING_OBJECT)
@@ -947,11 +947,10 @@ public class Player : MonoBehaviour
                 {
                     if (comp.GetComponent<Metal>().IsMoving())
                     {
-                        Debug.Log("Miraculously moving");
                         comp.GetComponent<IInteractable>().Interact();
                         onGround = false;
                         playerState = PlayerState.FALLING;
-                        rb.gravityScale = groundGravity;
+                        rb.gravityScale = fallGravity;
                         capsuleCollider2D.sharedMaterial.friction = inAirFriction;
                     }
                 }
@@ -959,7 +958,6 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Debug.Log("What is happening?");
             onGround = false;
             
             if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING)
