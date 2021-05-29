@@ -28,7 +28,6 @@ public class MovingObjectsCollision : MonoBehaviour
             groundObjectsTouching.Add(collision.gameObject);
             onGround = true;
         }
-        
         //if player touches electrified water then indicate player death
         if (collision.CompareTag("Water") && collision.GetComponent<Water>().GetElectrified())
         {
