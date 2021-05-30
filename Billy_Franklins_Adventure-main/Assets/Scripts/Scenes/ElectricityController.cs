@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Transactions;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -396,15 +397,76 @@ public class ElectricityController : MonoBehaviour
                     }
                     if (objectGrouped1 && objectGrouped2)
                     {
-                        for (int i = 0; i < tempConnectedGameObjects2.Count; i++)
+                        bool atEnd = false;
+                        bool exitEarly = false;
+                        GameObject currentGameObject = object2;
+                        while (!atEnd)
                         {
-                            if (tempConnectedGameObjects2[i] != object1)
+                            List<GameObject> tempConnectedTo2GameObjects = new List<GameObject>();
+                            tempConnectedTo2GameObjects = currentGameObject.GetComponent<IElectrifiable>().GetConnectedObjects();
+
+                            if (tempConnectedTo2GameObjects.Count > 0)
                             {
-                                tempConnectedGameObjects2[i].GetComponent<IElectrifiable>().SetGroupNum(availableNum);
+                                for (int k = 0; k < tempConnectedTo2GameObjects.Count; k++)
+                                {
+                                    if (tempConnectedTo2GameObjects[k] != object1 &&
+                                        tempConnectedTo2GameObjects[k] != object2)
+                                    {
+                                        if (tempConnectedTo2GameObjects[k].GetComponent<IElectrifiable>().GetGroupNum() != availableNum)
+                                        {
+                                            tempConnectedTo2GameObjects[k].GetComponent<IElectrifiable>().SetGroupNum(availableNum);
+                                            currentGameObject = tempConnectedTo2GameObjects[k];
+                                            exitEarly = true;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            if (exitEarly)
+                            {
+                                exitEarly = false;
+                            }
+                            else
+                            {
+                                atEnd = true;
+                                currentGameObject.GetComponent<IElectrifiable>().SetGroupNum(availableNum);
                             }
                         }
+
+                        //for (int i = 0; i < tempConnectedGameObjects2.Count; i++)
+                        //{
+                        //    if (tempConnectedGameObjects2[i] != object1)
+                        //    {
+                        //        List<GameObject> tempConnectedTo2GameObjects = new List<GameObject>();
+                        //        tempConnectedTo2GameObjects = tempConnectedGameObjects2[i].GetComponent<IElectrifiable>().GetConnectedObjects();
+                                
+                              
+                        //    }
+                        //}
+
                         object2.GetComponent<IElectrifiable>().SetGroupNum(availableNum);
                         availableNum++;
+                        //for (int i = 0; i < tempConnectedGameObjects2.Count; i++)
+                        //{
+                        //    if (tempConnectedGameObjects2[i] != object1)
+                        //    {
+                        //        List<GameObject> tempConnectedTo2GameObjects = new List<GameObject>();
+                        //        tempConnectedTo2GameObjects = tempConnectedGameObjects2[i].GetComponent<IElectrifiable>().GetConnectedObjects();
+                        //        if (tempConnectedTo2GameObjects.Count > 0)
+                        //        {
+                        //            for (int k = 0; k < tempConnectedTo2GameObjects.Count; k++)
+                        //            {
+                        //                if (tempConnectedTo2GameObjects[k] != object1 &&
+                        //                    tempConnectedTo2GameObjects[k] != object2)
+                        //                {
+                        //                    tempConnectedTo2GameObjects[k].GetComponent<IElectrifiable>().SetGroupNum(availableNum);
+                        //                }
+                        //            }
+                        //        }
+                        //        tempConnectedGameObjects2[i].GetComponent<IElectrifiable>().SetGroupNum(availableNum);
+                        //    }
+                        //}
+
                     }
                 }
             }

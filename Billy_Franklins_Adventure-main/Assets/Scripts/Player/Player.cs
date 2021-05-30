@@ -335,12 +335,21 @@ public class Player : MonoBehaviour
             //Character flip
             if (isFacingRight)
             {
-                isFacingRight = false;
-                transform.Rotate(0f, 180f, 0f);
-                lastShootingLine.x = -1;
+                if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
+                    playerState != PlayerState.FALLING)
+                {
+                    isFacingRight = false;
+                    transform.Rotate(0f, 180f, 0f);
+                    lastShootingLine.x = -1;
+                }
             }
             rb.isKinematic = false;
-            moveVelocity = 0f - moveSpeed;
+            if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
+                playerState != PlayerState.FALLING)
+            {
+                moveVelocity = 0f - moveSpeed;
+            }
+
             falling = false;
             //rb.constraints = RigidbodyConstraints2D.None;
 
@@ -367,13 +376,21 @@ public class Player : MonoBehaviour
             //Character flip
             if (isFacingRight == false)
             {
-                
-                isFacingRight = true;
-                transform.Rotate(0f, 180f, 0f);
-                lastShootingLine.x = 1;
+                if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
+                    playerState != PlayerState.FALLING)
+                {
+                    isFacingRight = true;
+                    transform.Rotate(0f, 180f, 0f);
+                    lastShootingLine.x = 1;
+                }
             }
             rb.isKinematic = false;
-            moveVelocity = moveSpeed;
+            if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
+                playerState != PlayerState.FALLING)
+            {
+                moveVelocity = moveSpeed;
+            }
+
             falling = false;
             //rb.constraints = RigidbodyConstraints2D.None;
             if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
