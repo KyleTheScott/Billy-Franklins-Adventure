@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1756185054}
-  - component: {fileID: 1756185055}
+  - component: {fileID: 7268029807261055285}
   m_Layer: 13
   m_Name: NonPlayerCollider
   m_TagString: Untagged
@@ -31,8 +31,8 @@ Transform:
   m_Father: {fileID: 5594739182090962409}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1756185055
-BoxCollider2D:
+--- !u!70 &7268029807261055285
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -45,18 +45,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Direction: 1
 --- !u!1 &5594739182090962413
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +180,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &1994736630
 MonoBehaviour:
@@ -209,8 +199,10 @@ MonoBehaviour:
   connectedGameObjects: []
   metalCollider: {fileID: 5594739182090962414}
   player: {fileID: 0}
+  playerScript: {fileID: 0}
   highlight: {fileID: 6802927880165264314}
   beingMoved: 0
+  groupNum: 0
 --- !u!95 &8748672256712832840
 Animator:
   serializedVersion: 3
@@ -251,7 +243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7875326688881385857, guid: f8623ec7761ed0e479dfd20ec67909a2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7875326688881385857, guid: f8623ec7761ed0e479dfd20ec67909a2, type: 3}
       propertyPath: m_LocalRotation.x

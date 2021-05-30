@@ -14,6 +14,7 @@ TagManager:
   - Switch
   - Ground
   - PlayerClose
+  - Door
   layers:
   - Default
   - TransparentFX
