@@ -48,7 +48,11 @@ public class Player : MonoBehaviour
         JUMPING,
         FALLING,
         WALKING,
-        MOVING_OBJECT
+        MOVING_OBJECT,
+        MOVING_OBJECT_STOPPED_LEFT,
+        MOVING_OBJECT_LEFT,
+        MOVING_OBJECT_STOPPED_RIGHT,
+        MOVING_OBJECT_RIGHT
 
     }
 
@@ -261,6 +265,12 @@ public class Player : MonoBehaviour
             case PlayerState.MOVING_OBJECT:
                 rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                 break;
+            case PlayerState.MOVING_OBJECT_LEFT:
+                rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+                break;
+            case PlayerState.MOVING_OBJECT_RIGHT:
+                rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+                break;
         }
         lastPosition = transform.position;
 
@@ -336,8 +346,12 @@ public class Player : MonoBehaviour
             if (isFacingRight)
             {
                 if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
-                    playerState != PlayerState.FALLING)
+                    playerState != PlayerState.FALLING && playerState != PlayerState.MOVING_OBJECT_STOPPED_LEFT)
                 {
+                    if (playerState == PlayerState.MOVING_OBJECT_STOPPED_RIGHT)
+                    {
+                        playerState = PlayerState.MOVING_OBJECT_LEFT;
+                    }
                     isFacingRight = false;
                     transform.Rotate(0f, 180f, 0f);
                     lastShootingLine.x = -1;
@@ -345,7 +359,7 @@ public class Player : MonoBehaviour
             }
             rb.isKinematic = false;
             if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
-                playerState != PlayerState.FALLING)
+                playerState != PlayerState.FALLING && playerState != PlayerState.MOVING_OBJECT_STOPPED_LEFT)
             {
                 moveVelocity = 0f - moveSpeed;
             }
@@ -357,8 +371,7 @@ public class Player : MonoBehaviour
 
             //Change player's velocity
             //only can move when not aiming
-            if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING && 
-                playerState != PlayerState.FALLING && playerState != PlayerState.MOVING_OBJECT)
+            if (playerState == PlayerState.IDLE || playerState == PlayerState.WALKING)
             {
                 if (aimLineState == AimLineState.NOT_AIMED)
                 {
@@ -377,8 +390,12 @@ public class Player : MonoBehaviour
             if (isFacingRight == false)
             {
                 if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
-                    playerState != PlayerState.FALLING)
+                    playerState != PlayerState.FALLING && playerState != PlayerState.MOVING_OBJECT_STOPPED_RIGHT)
                 {
+                    if (playerState == PlayerState.MOVING_OBJECT_STOPPED_LEFT)
+                    {
+                        playerState = PlayerState.MOVING_OBJECT_RIGHT;
+                    }
                     isFacingRight = true;
                     transform.Rotate(0f, 180f, 0f);
                     lastShootingLine.x = 1;
@@ -386,15 +403,14 @@ public class Player : MonoBehaviour
             }
             rb.isKinematic = false;
             if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
-                playerState != PlayerState.FALLING)
+                playerState != PlayerState.FALLING && playerState != PlayerState.MOVING_OBJECT_STOPPED_RIGHT)
             {
                 moveVelocity = moveSpeed;
             }
 
             falling = false;
             //rb.constraints = RigidbodyConstraints2D.None;
-            if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
-                playerState != PlayerState.FALLING && playerState != PlayerState.MOVING_OBJECT)
+            if (playerState == PlayerState.IDLE || playerState == PlayerState.WALKING)
             {
                 if (aimLineState == AimLineState.NOT_AIMED)
                 {
@@ -408,11 +424,11 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if (playerState != PlayerState.MOVING_OBJECT && playerState != PlayerState.JUMP && 
-                playerState != PlayerState.JUMPING && playerState != PlayerState.FALLING)
+            if (playerState == PlayerState.WALKING)
             {
                 playerState = PlayerState.IDLE;
             }
+
             falling = false;
             moveVelocity = 0;
         }
@@ -987,6 +1003,28 @@ public class Player : MonoBehaviour
                 rb.gravityScale = jumpGravity;
             }
             capsuleCollider2D.sharedMaterial.friction = inAirFriction;
+        }
+    }
+
+    public void SetMoveObjectStopped()
+    {
+        if (isFacingRight)
+        {
+            playerState = PlayerState.MOVING_OBJECT_STOPPED_RIGHT;
+        }
+        else
+        {
+            playerState = PlayerState.MOVING_OBJECT_STOPPED_LEFT;
+        }
+    }
+
+    public void SetMoveObject()
+    {
+        if (playerState == PlayerState.MOVING_OBJECT_STOPPED_LEFT ||
+            playerState == PlayerState.MOVING_OBJECT_STOPPED_RIGHT ||
+            playerState == PlayerState.MOVING_OBJECT_LEFT || playerState == PlayerState.MOVING_OBJECT_RIGHT)
+        {
+            playerState = PlayerState.MOVING_OBJECT;
         }
     }
 }

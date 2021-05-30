@@ -10,8 +10,12 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
 
     [SerializeField] private bool temporaryElectrified = false;
     [SerializeField] private List<GameObject> connectedGameObjects = new List<GameObject>();
+    [SerializeField] private List<GameObject> connectedDoors = new List<GameObject>();
+
+
     [Header("General")] [SerializeField] private Collider2D metalCollider;
     private Animator metalAnimator;
+    //[SerializeField] private GameObject player;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject highlight;
     [Header("Movement")] private float distToPlayerXOffset;
@@ -34,6 +38,10 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         //metal will start following player
         else
         {
+            if (connectedDoors.Count > 0)
+            {
+                player.GetComponent<Player>().SetMoveObjectStopped();
+            }
             beingMoved = true;
             distToPlayerXOffset = transform.position.x - player.transform.position.x;
         }
@@ -171,7 +179,13 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
                 gameObject, metalCollider, electrified, groupNum,
                 collision.gameObject, collision, object2Electrified, object2GroupNum);
         }
+        else if (collision.CompareTag("Door") && beingMoved)
+        {
+            connectedDoors.Add(collision.gameObject);
+            player.GetComponent<Player>().SetMoveObjectStopped();
+        }
     }
+
     public void OnTriggerExit2D(Collider2D collision)
     {
         //disconnect objects
@@ -207,6 +221,23 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
                 }
             }
         }
+        else if (collision.CompareTag("Door"))
+        {
+            GameObject tempGameObject = collision.gameObject;
+            for (int i = 0; i < connectedDoors.Count; i++)
+            {
+                if (connectedDoors[i] == collision.gameObject)
+                {
+                    connectedDoors.RemoveAt(i);
+                }
+            }
+            if (connectedDoors.Count <= 0)
+            {
+                player.GetComponent<Player>().SetMoveObject();
+            }
+        }
+
+
 
         if (connectedGameObjects.Count <= 0)
         {
