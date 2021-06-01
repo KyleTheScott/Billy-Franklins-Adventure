@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Transactions;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -39,7 +40,7 @@ public class ElectricityController : MonoBehaviour
         //neither object in a group so create a new one
         if (groupNum1 == 0 && groupNum2 == 0)
         {
-            Debug.LogWarning("NEITHER OBJECT GROUPED");
+            //Debug.LogWarning("NEITHER OBJECT GROUPED");
             if (electricState1)
             {
                 object2.GetComponent<IElectrifiable>().SetElectrified(true);
@@ -62,7 +63,7 @@ public class ElectricityController : MonoBehaviour
         //both in separate groups
         else if (groupNum1 > 0 && groupNum2 > 0)
         {
-            Debug.LogWarning("BOTH OBJECTS GROUPED SEPARATELY");
+            //Debug.LogWarning("BOTH OBJECTS GROUPED SEPARATELY");
             for (int i = 0; i < connectedGameObjects.Count; i++)
             {
                 //going through to find each group 2 object to set it to group 1 and setting electricity
@@ -87,7 +88,7 @@ public class ElectricityController : MonoBehaviour
         //the first object is in a group but the second one is not
         else if (groupNum1 > 0)
         {
-            Debug.LogWarning("FIRST OBJECT GROUPED AND SECOND OBJECT NOT");
+            //Debug.LogWarning("FIRST OBJECT GROUPED AND SECOND OBJECT NOT");
             // electrifies object 2 because object 1 is electrified
             if (electricState1 && !electricState2)
             {
@@ -111,7 +112,7 @@ public class ElectricityController : MonoBehaviour
         //second object is in a group but first is not
         else if (groupNum2 > 0)
         {
-            Debug.LogWarning("SECOND OBJECT GROUPED AND FIRST OBJECT NOT");
+            //Debug.LogWarning("SECOND OBJECT GROUPED AND FIRST OBJECT NOT");
             if (!electricState1 && electricState2)
             {
                 object1.GetComponent<IElectrifiable>().SetElectrified(true);
@@ -131,7 +132,7 @@ public class ElectricityController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Shouldn't reach here when connecting");
+            //Debug.LogError("Shouldn't reach here when connecting");
         }
 
         List<GameObject> tempList = new List<GameObject>(connectedGameObjects);
@@ -177,7 +178,7 @@ public class ElectricityController : MonoBehaviour
         if (groupNum1 == groupNum2)
         {
 
-            Debug.LogWarning("FIRST TIME DISCONNECTING");
+            //Debug.LogWarning("FIRST TIME DISCONNECTING");
             //lists for the directly connected objects to each object
             List<GameObject> tempConnectedGameObjects1 = new List<GameObject>();
             List<GameObject> tempConnectedGameObjects2 = new List<GameObject>();
@@ -293,7 +294,7 @@ public class ElectricityController : MonoBehaviour
                         }
                         else
                         {
-                            Debug.LogError("The pos was out of range");
+                            //Debug.LogError("The pos was out of range");
                         }
                     }
                     else
@@ -317,7 +318,7 @@ public class ElectricityController : MonoBehaviour
                         }
                         else
                         {
-                            Debug.LogError("The pos was out of range");
+                            //Debug.LogError("The pos was out of range");
                         }
                     }
                     else
@@ -361,7 +362,7 @@ public class ElectricityController : MonoBehaviour
                         }
                         else
                         {
-                            Debug.LogError("The pos was out of range");
+                            //Debug.LogError("The pos was out of range");
                         }
                         //should maybe remove from list here
                     }
@@ -386,7 +387,7 @@ public class ElectricityController : MonoBehaviour
                         }
                         else
                         {
-                            Debug.LogError("The pos was out of range");
+                            //Debug.LogError("The pos was out of range");
                         }
                         //should maybe remove from list here
                     }
@@ -396,15 +397,76 @@ public class ElectricityController : MonoBehaviour
                     }
                     if (objectGrouped1 && objectGrouped2)
                     {
-                        for (int i = 0; i < tempConnectedGameObjects2.Count; i++)
+                        bool atEnd = false;
+                        bool exitEarly = false;
+                        GameObject currentGameObject = object2;
+                        while (!atEnd)
                         {
-                            if (tempConnectedGameObjects2[i] != object1)
+                            List<GameObject> tempConnectedTo2GameObjects = new List<GameObject>();
+                            tempConnectedTo2GameObjects = currentGameObject.GetComponent<IElectrifiable>().GetConnectedObjects();
+
+                            if (tempConnectedTo2GameObjects.Count > 0)
                             {
-                                tempConnectedGameObjects2[i].GetComponent<IElectrifiable>().SetGroupNum(availableNum);
+                                for (int k = 0; k < tempConnectedTo2GameObjects.Count; k++)
+                                {
+                                    if (tempConnectedTo2GameObjects[k] != object1 &&
+                                        tempConnectedTo2GameObjects[k] != object2)
+                                    {
+                                        if (tempConnectedTo2GameObjects[k].GetComponent<IElectrifiable>().GetGroupNum() != availableNum)
+                                        {
+                                            tempConnectedTo2GameObjects[k].GetComponent<IElectrifiable>().SetGroupNum(availableNum);
+                                            currentGameObject = tempConnectedTo2GameObjects[k];
+                                            exitEarly = true;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            if (exitEarly)
+                            {
+                                exitEarly = false;
+                            }
+                            else
+                            {
+                                atEnd = true;
+                                currentGameObject.GetComponent<IElectrifiable>().SetGroupNum(availableNum);
                             }
                         }
+
+                        //for (int i = 0; i < tempConnectedGameObjects2.Count; i++)
+                        //{
+                        //    if (tempConnectedGameObjects2[i] != object1)
+                        //    {
+                        //        List<GameObject> tempConnectedTo2GameObjects = new List<GameObject>();
+                        //        tempConnectedTo2GameObjects = tempConnectedGameObjects2[i].GetComponent<IElectrifiable>().GetConnectedObjects();
+                                
+                              
+                        //    }
+                        //}
+
                         object2.GetComponent<IElectrifiable>().SetGroupNum(availableNum);
                         availableNum++;
+                        //for (int i = 0; i < tempConnectedGameObjects2.Count; i++)
+                        //{
+                        //    if (tempConnectedGameObjects2[i] != object1)
+                        //    {
+                        //        List<GameObject> tempConnectedTo2GameObjects = new List<GameObject>();
+                        //        tempConnectedTo2GameObjects = tempConnectedGameObjects2[i].GetComponent<IElectrifiable>().GetConnectedObjects();
+                        //        if (tempConnectedTo2GameObjects.Count > 0)
+                        //        {
+                        //            for (int k = 0; k < tempConnectedTo2GameObjects.Count; k++)
+                        //            {
+                        //                if (tempConnectedTo2GameObjects[k] != object1 &&
+                        //                    tempConnectedTo2GameObjects[k] != object2)
+                        //                {
+                        //                    tempConnectedTo2GameObjects[k].GetComponent<IElectrifiable>().SetGroupNum(availableNum);
+                        //                }
+                        //            }
+                        //        }
+                        //        tempConnectedGameObjects2[i].GetComponent<IElectrifiable>().SetGroupNum(availableNum);
+                        //    }
+                        //}
+
                     }
                 }
             }
@@ -428,11 +490,11 @@ public class ElectricityController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("These objects should have been connected");
-            Debug.LogError("Object 1: " + object1);
-            Debug.LogError("Object 1 Group: " + object1.GetComponent<IElectrifiable>().GetGroupNum());
-            Debug.LogError("Object 2: " + object2);
-            Debug.LogError("Object 2 Group: " + object2.GetComponent<IElectrifiable>().GetGroupNum());
+            //Debug.LogError("These objects should have been connected");
+            //Debug.LogError("Object 1: " + object1);
+            //Debug.LogError("Object 1 Group: " + object1.GetComponent<IElectrifiable>().GetGroupNum());
+            //Debug.LogError("Object 2: " + object2);
+            //Debug.LogError("Object 2 Group: " + object2.GetComponent<IElectrifiable>().GetGroupNum());
         }
         int listLength = connectedGameObjects.Count;
         int counter = 0;

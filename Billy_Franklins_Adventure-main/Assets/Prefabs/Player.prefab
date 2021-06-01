@@ -45,9 +45,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00000023841858, y: -0.61289775}
+  m_Offset: {x: 0.00000023841858, y: -0.5752355}
   serializedVersion: 2
-  m_Radius: 0.2768463
+  m_Radius: 0.23918402
 --- !u!114 &407068640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +61,67 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundObjectsTouching: []
+--- !u!1 &1651558282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1651558283}
+  - component: {fileID: 1651558285}
+  - component: {fileID: 1651558284}
+  m_Layer: 12
+  m_Name: PlayerCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1651558283
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651558282}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1596798624625240182}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &1651558285
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651558282}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.020363092, y: -0.23102391}
+  m_Size: {x: 0.4901662, y: 0.82332015}
+  m_Direction: 0
+--- !u!114 &1651558284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651558282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e4c9b2d7e8160498725489b97723d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScript: {fileID: 1596798624625240181}
 --- !u!1 &1596798624511780769
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,9 +167,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.1883111, y: 0.26363575}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.8116888
 --- !u!114 &1596798624511780775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +219,7 @@ Transform:
   - {fileID: 1596798626102824991}
   - {fileID: 1596798624511780768}
   - {fileID: 407068639}
+  - {fileID: 1651558283}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -174,9 +236,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.5
-  m_LinearDrag: 40
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
-  m_GravityScale: 20
+  m_GravityScale: 10
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -195,7 +257,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.020363092, y: -0.23102391}
+  m_Offset: {x: 0.020363092, y: -0.2}
   m_Size: {x: 0.4901662, y: 0.82332015}
   m_Direction: 0
 --- !u!114 &1596798624625240181
@@ -211,8 +273,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugMode: 1
-  moveSpeed: 10
-  jumpForce: 60
+  moveSpeed: 5
+  jumpForce: 15
+  forwardJumpForce: 40
   moveVelocity: 0
   shootCoolTime: 1
   hp: 10
@@ -220,10 +283,16 @@ MonoBehaviour:
   maxLightCharges: 20
   canShoot: 1
   onGround: 0
+  falling: 0
   playerSprite: {fileID: 1596798626382368132}
   playerState: 1
   inAirFriction: 0
-  onGroundFriction: 0.5
+  onGroundFriction: 0
+  jumpGravity: 1
+  fallGravity: 5
+  groundGravity: 10
+  lowJumpMultiplier: 2
+  fallMultiplier: 6
   maxNumOfProjectile: 10
   projectilePrefab: {fileID: 7641674986506221482, guid: 02094ac19ba79724681d7b03d1031ad6, type: 3}
   listOfProjectile: []
@@ -580,4 +649,4 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1780
+  m_InstanceId: -1988
