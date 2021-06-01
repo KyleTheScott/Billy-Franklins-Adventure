@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+//using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering.UI;
@@ -17,7 +17,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] bool debugMode = false;
 
-    [Header("Attribute")] [SerializeField] private float moveSpeed = 3.0f;
+    [Header("Attribute")] 
+    [SerializeField] private float moveSpeed = 4.0f;
+
+    [SerializeField] private float moveObjectSpeed = 3.0f;
     [SerializeField] private float jumpForce = 10f; //How strong does player jump
     [SerializeField] private float forwardJumpForce = 10f;
     [SerializeField] private float moveVelocity;
@@ -31,7 +34,6 @@ public class Player : MonoBehaviour
     bool shouldJump = false; //Check if player should jump
     [SerializeField] private bool canShoot = true; //Check if player can shoot projectile
 
-    private bool moving;
 
     [SerializeField] private bool onGround;
     [SerializeField] private bool falling;
@@ -40,6 +42,7 @@ public class Player : MonoBehaviour
     [SerializeField] private SpriteRenderer playerSprite;
 
     private bool movingObject;
+
 
     private enum PlayerState
     {
@@ -98,6 +101,13 @@ public class Player : MonoBehaviour
 
     private Animator animator;
 
+    [SerializeField] private float angleBetween;
+    [SerializeField] private Lightning lightning;
+    private Vector2 lightningStartPos;
+    private Vector2 lightningTargetPos;
+    
+
+
     [Header("Interact")] [SerializeField] float interactRadius = 5f;
     [SerializeField] LayerMask interactLayer;
 
@@ -135,7 +145,7 @@ public class Player : MonoBehaviour
 
 
     [SerializeField] private MovingObjectsCollision movingObjectsCollision;
-
+    [SerializeField] private GameObject currentMovingObject;
 
 
 
@@ -206,43 +216,18 @@ public class Player : MonoBehaviour
                 playerState = PlayerState.JUMPING;
                 break;
             case PlayerState.JUMPING:
-               
-
                 if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
                 {
-                    //rb.velocity = Vector2.up * jumpVelocity;
                     rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier * 1) * Time.deltaTime;
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
-                    //if (isFacingRight)
-                    //{
-                    //    rb.velocity = Vector2.right * moveVelocity;
-                    //}
-                    //else
-                    //{
-                    //    rb.velocity = Vector2.left * moveVelocity;
-                    //}
-
                 }
                 else
                 {
                     falling = true;
-                    //rb.velocity = new Vector2(moveVelocity, transform.position.y);
                     rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier * 1) * Time.deltaTime;
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
-                    //if (isFacingRight)
-                    //{
-                    //    rb.velocity = Vector2.right * moveVelocity;
-                    //}
-                    //else
-                    //{
-                    //    rb.velocity = Vector2.left * moveVelocity;
-                    //}
+                    
                 }
-                
-                //if (onGround)
-                //{
-                //    playerState = PlayerState.WALKING;
-                //}
                 break;
             case PlayerState.FALLING:
                 falling = true;
@@ -361,7 +346,14 @@ public class Player : MonoBehaviour
             if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                 playerState != PlayerState.FALLING && playerState != PlayerState.MOVING_OBJECT_STOPPED_LEFT)
             {
-                moveVelocity = 0f - moveSpeed;
+                if (playerState == PlayerState.MOVING_OBJECT)
+                {
+                    moveVelocity = 0f - moveObjectSpeed;
+                }
+                else
+                {
+                    moveVelocity = 0f - moveSpeed;
+                }
             }
 
             falling = false;
@@ -405,7 +397,15 @@ public class Player : MonoBehaviour
             if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                 playerState != PlayerState.FALLING && playerState != PlayerState.MOVING_OBJECT_STOPPED_RIGHT)
             {
-                moveVelocity = moveSpeed;
+                if (playerState == PlayerState.MOVING_OBJECT)
+                {
+                    moveVelocity = moveObjectSpeed;
+                }
+                else
+                {
+                    moveVelocity = moveSpeed;
+                }
+                
             }
 
             falling = false;
@@ -469,7 +469,7 @@ public class Player : MonoBehaviour
                 GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject();
                 if (comp != null)
                 {
-                    comp.GetComponent<IInteractable>().Interact();
+                    comp.GetComponent<IInteractable>().Interact();// call interact function
                     if (comp.GetComponent<Collider2D>().CompareTag("Lantern"))
                     {
                         UseLightCharges();
@@ -480,10 +480,14 @@ public class Player : MonoBehaviour
                         if (comp.GetComponent<Metal>().IsMoving())
                         {
                             playerState = PlayerState.MOVING_OBJECT;
+                            currentMovingObject = comp;
+                            //rb.gravityScale = jumpGravity;
                         }
                         else
                         {
                             playerState = PlayerState.WALKING;
+                            currentMovingObject = null;
+                            //rb.gravityScale = groundGravity;
                         }
                     }
                 }
@@ -637,6 +641,10 @@ public class Player : MonoBehaviour
                             //Can't shoot projectile continousely
                             canShoot = false;
                             UseLightCharges();
+
+                            lightning.SetStartPosition(lightningStartPos);
+                            lightning.SetStartPosition(lightningTargetPos);
+                            lightning.SetShootLightning(true);
                             //Set projectile's parent to player
                             //loadedProjectile.transform.SetParent(null);
                             //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
@@ -836,7 +844,7 @@ public class Player : MonoBehaviour
             shootingLine.Normalize();
 
             //Get angle between forward vector and shooting line
-            float angleBetween = Vector2.Angle(forwardVector, shootingLine);
+            angleBetween = Vector2.Angle(forwardVector, shootingLine);
 
             //Set projectile based on shooting line
             if (angleBetween <= 45)
@@ -845,7 +853,8 @@ public class Player : MonoBehaviour
                 lastShootingLine = shootingLine;
 
                 //SEt aim line
-                aimLine.SetStartPoint(loadedProjectile.transform.position);
+                lightningStartPos = loadedProjectile.transform.position;
+                aimLine.SetStartPoint(lightningStartPos);
 
                 if (debugMode)
                 {
@@ -862,13 +871,15 @@ public class Player : MonoBehaviour
                     //Debug.Log(hit.collider.name);
 
                     //SEt aim line
-                    aimLine.SetEndPoint(hit.point);
+                    lightningTargetPos = hit.point;
+                    aimLine.SetEndPoint(lightningTargetPos);
                 }
                 else
                 {
 
                     //SEt aim line
-                    aimLine.SetEndPoint(loadedProjectile.transform.position + (shootingLine * rayDist));
+                    lightningTargetPos = loadedProjectile.transform.position + (shootingLine * rayDist);
+                    aimLine.SetEndPoint(lightningTargetPos);
                 }
             }
             else
@@ -876,7 +887,8 @@ public class Player : MonoBehaviour
                 loadedProjectile.transform.position = transform.position + (lastShootingLine * projectileSpawnDistance);
 
                 //SEt aim line
-                aimLine.SetStartPoint(loadedProjectile.transform.position);
+                lightningStartPos = loadedProjectile.transform.position;
+                aimLine.SetStartPoint(lightningStartPos);
 
 
                 float rayDist = 50.0f;
@@ -885,14 +897,15 @@ public class Player : MonoBehaviour
                 if (hit.collider != null)
                 {
                     //Debug.Log(hit.collider.name);
-
+                    lightningTargetPos = hit.point;
                     //SEt aim line
-                    aimLine.SetEndPoint(hit.point);
+                    aimLine.SetEndPoint(lightningTargetPos);
                 }
                 else
                 {
                     //Set aim line
-                    aimLine.SetEndPoint(loadedProjectile.transform.position + (lastShootingLine * rayDist));
+                    lightningTargetPos = loadedProjectile.transform.position + (lastShootingLine * rayDist);
+                    aimLine.SetEndPoint(lightningTargetPos);
                 }
             }
         }
@@ -1026,5 +1039,19 @@ public class Player : MonoBehaviour
         {
             playerState = PlayerState.MOVING_OBJECT;
         }
+    }
+
+    public void SetObjectDisconnected()
+    {
+        Debug.Log("Metal Exiting");
+        if (currentMovingObject != null)
+        {
+            currentMovingObject = null;
+            playerState = PlayerState.WALKING;
+        }
+    }
+    public GameObject GetCurrentMovingObject()
+    {
+        return currentMovingObject;
     }
 }
