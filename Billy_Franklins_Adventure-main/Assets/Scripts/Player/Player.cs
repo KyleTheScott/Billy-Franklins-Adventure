@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private CheckPointDeathSystem checkPointDeathSystem = null;
 
     Rigidbody2D rb = null; //player's rigid body
-    CapsuleCollider2D capsuleCollider2D = null; //Player's capsule collider
+    //CapsuleCollider2D capsuleCollider2D = null; //Player's capsule collider
     AimLine aimLine = null; //player's aiming line
 
     [SerializeField] bool debugMode = false;
@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
         IDLE,
         JUMP,
         JUMPING,
+        JUMP_FALLING,
         FALLING,
         WALKING,
         MOVING_OBJECT,
@@ -160,7 +161,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        capsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        //capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         //animator = GetComponentInChildren<Animator>();
 
         //Create queue for projectile pool
@@ -223,14 +224,14 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-                    falling = true;
-                    rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier * 1) * Time.deltaTime;
-                    rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
-                    
+                    playerState = PlayerState.JUMP_FALLING;
                 }
                 break;
+            case PlayerState.JUMP_FALLING:
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier * 1) * Time.deltaTime;
+                rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+                break;
             case PlayerState.FALLING:
-                falling = true;
                 rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                 break;
             case PlayerState.WALKING:
@@ -331,7 +332,8 @@ public class Player : MonoBehaviour
             if (isFacingRight)
             {
                 if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
-                    playerState != PlayerState.FALLING && playerState != PlayerState.MOVING_OBJECT_STOPPED_LEFT)
+                    playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
+                    playerState != PlayerState.MOVING_OBJECT_STOPPED_LEFT)
                 {
                     if (playerState == PlayerState.MOVING_OBJECT_STOPPED_RIGHT)
                     {
@@ -344,7 +346,8 @@ public class Player : MonoBehaviour
             }
             rb.isKinematic = false;
             if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
-                playerState != PlayerState.FALLING && playerState != PlayerState.MOVING_OBJECT_STOPPED_LEFT)
+                playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING && 
+                playerState != PlayerState.MOVING_OBJECT_STOPPED_LEFT)
             {
                 if (playerState == PlayerState.MOVING_OBJECT)
                 {
@@ -356,7 +359,7 @@ public class Player : MonoBehaviour
                 }
             }
 
-            falling = false;
+            //falling = false;
             //rb.constraints = RigidbodyConstraints2D.None;
 
             //shouldJump = false;
@@ -382,7 +385,8 @@ public class Player : MonoBehaviour
             if (isFacingRight == false)
             {
                 if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
-                    playerState != PlayerState.FALLING && playerState != PlayerState.MOVING_OBJECT_STOPPED_RIGHT)
+                    playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING && 
+                    playerState != PlayerState.MOVING_OBJECT_STOPPED_RIGHT)
                 {
                     if (playerState == PlayerState.MOVING_OBJECT_STOPPED_LEFT)
                     {
@@ -395,7 +399,8 @@ public class Player : MonoBehaviour
             }
             rb.isKinematic = false;
             if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
-                playerState != PlayerState.FALLING && playerState != PlayerState.MOVING_OBJECT_STOPPED_RIGHT)
+                playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING && 
+                playerState != PlayerState.MOVING_OBJECT_STOPPED_RIGHT)
             {
                 if (playerState == PlayerState.MOVING_OBJECT)
                 {
@@ -407,8 +412,6 @@ public class Player : MonoBehaviour
                 }
                 
             }
-
-            falling = false;
             //rb.constraints = RigidbodyConstraints2D.None;
             if (playerState == PlayerState.IDLE || playerState == PlayerState.WALKING)
             {
@@ -426,15 +429,15 @@ public class Player : MonoBehaviour
         {
             if (playerState == PlayerState.WALKING)
             {
+                Debug.Log("Idle");
                 playerState = PlayerState.IDLE;
             }
-
-            falling = false;
             moveVelocity = 0;
         }
 
         if (playerState != PlayerState.MOVING_OBJECT && playerState != PlayerState.JUMP && 
-            playerState != PlayerState.JUMPING && playerState != PlayerState.FALLING)
+            playerState != PlayerState.JUMPING && playerState != PlayerState.FALLING &&
+            playerState != PlayerState.JUMP_FALLING)
         {
             MouseInputHandle();
         }
@@ -451,7 +454,7 @@ public class Player : MonoBehaviour
                 playerState = PlayerState.JUMP;
                 rb.gravityScale = jumpGravity;
                 onGround = false;
-                falling = false;
+                //falling = false;
             }
         }
 
@@ -939,12 +942,20 @@ public class Player : MonoBehaviour
         onGround = state;
         playerState = PlayerState.WALKING;
         rb.gravityScale = groundGravity;
-        capsuleCollider2D.sharedMaterial.friction = onGroundFriction;
+        //capsuleCollider2D.sharedMaterial.friction = onGroundFriction;
     }
 
     public bool GetFalling()
     {
-        return falling;
+        
+        if (playerState == PlayerState.FALLING || playerState == PlayerState.JUMP_FALLING)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     //public void OnCollisionExit2D(Collision2D collision)
@@ -993,11 +1004,13 @@ public class Player : MonoBehaviour
                 {
                     if (comp.GetComponent<Metal>().IsMoving())
                     {
+                        Debug.Log("Falling off touching an object");
                         comp.GetComponent<IInteractable>().Interact();
                         onGround = false;
                         playerState = PlayerState.FALLING;
+                        rb.isKinematic = false;
                         rb.gravityScale = fallGravity;
-                        capsuleCollider2D.sharedMaterial.friction = inAirFriction;
+                        //capsuleCollider2D.sharedMaterial.friction = inAirFriction;
                     }
                 }
             }
@@ -1008,6 +1021,9 @@ public class Player : MonoBehaviour
             
             if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING)
             {
+                Debug.Log("Falling off");
+                rb.isKinematic = false;
+                rb.gravityScale = fallGravity;
                 playerState = PlayerState.FALLING;
                 //make a 3rd gravity
             }
@@ -1015,7 +1031,7 @@ public class Player : MonoBehaviour
             {
                 rb.gravityScale = jumpGravity;
             }
-            capsuleCollider2D.sharedMaterial.friction = inAirFriction;
+            //capsuleCollider2D.sharedMaterial.friction = inAirFriction;
         }
     }
 
@@ -1047,7 +1063,10 @@ public class Player : MonoBehaviour
         if (currentMovingObject != null)
         {
             currentMovingObject = null;
-            playerState = PlayerState.WALKING;
+            if (playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING)
+            {
+                playerState = PlayerState.WALKING;
+            }
         }
     }
     public GameObject GetCurrentMovingObject()

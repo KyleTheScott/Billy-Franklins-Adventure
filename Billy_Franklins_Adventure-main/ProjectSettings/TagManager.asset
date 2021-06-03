@@ -73,6 +73,9 @@ TagManager:
   - name: Player
     uniqueID: 1816281827
     locked: 0
+  - name: Rope
+    uniqueID: 3385089411
+    locked: 0
   - name: Aiming
     uniqueID: 2533448657
     locked: 0
