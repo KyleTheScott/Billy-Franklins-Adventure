@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,6 +9,7 @@ public class LevelLoadController : MonoBehaviour
     [SerializeField] private string next_scene_to_load_ = "";
     [SerializeField] private string prev_scene_to_destroy_ = "";
     [SerializeField] private GameObject next_scene_position_ = null;
+    [SerializeField] private int players_new_max_charge = 2;
     [Tooltip("Gizmo helper color, has no effect on code logic")]
     [SerializeField] private Vector4 gizmo_color_ = new Vector4(0, 1, 1, 0.75f);
     [Tooltip("Gizmo helper radius, has no effect on code logic")]
@@ -42,6 +44,22 @@ public class LevelLoadController : MonoBehaviour
         }
 
         has_level_loaded_ = true;
+        LoadPlayersLightCharged();
+    }
+
+    private void LoadPlayersLightCharged()
+    {
+        Player player = FindObjectOfType<Player>();
+        if (player != null)
+        {
+            player.maxLightCharges = players_new_max_charge;
+            player.lightCharges = players_new_max_charge;
+            player.onLightChargesChanged.Invoke(player.lightCharges, player.maxLightCharges);
+        }
+        else
+        {
+            Debug.Log("Player was not found");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
