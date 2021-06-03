@@ -23,7 +23,7 @@ public class SuspendedPlatform : MonoBehaviour
 
 
 
-    Rigidbody2D  platformRigidbody;
+    Rigidbody2D platformRigidbody;
     private bool moving = false;
     private bool grounded = false;
 
@@ -48,6 +48,13 @@ public class SuspendedPlatform : MonoBehaviour
     public void SetGrounded()
     {
         grounded = true;
+
+    }
+
+    public void SetKinematic()
+    {
+        platformRigidbody.isKinematic = true;
+        platformRigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     void MovePlatform()
@@ -60,9 +67,9 @@ public class SuspendedPlatform : MonoBehaviour
                 platformTimer = Random.Range(minTime, maxTime);
                 moving = false;
             }
-            
+
             platformRigidbody.AddForce(transform.up * movementSpeed);
-            
+
             moveTimer -= Time.deltaTime;
         }
         //timer until next time the platform moves
@@ -78,4 +85,6 @@ public class SuspendedPlatform : MonoBehaviour
             platformTimer -= Time.deltaTime;
         }
     }
+
+  
 }

@@ -14,6 +14,7 @@ TagManager:
   - Switch
   - Ground
   - PlayerClose
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -31,7 +32,7 @@ TagManager:
   - NonPlayer
   - Platforms
   - Bucket
-  - 
+  - ObjectNonPlayer
   - 
   - 
   - 
