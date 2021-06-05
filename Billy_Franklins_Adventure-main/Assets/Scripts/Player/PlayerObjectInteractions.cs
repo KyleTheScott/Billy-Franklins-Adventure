@@ -7,8 +7,6 @@ public class PlayerObjectInteractions : MonoBehaviour
     #region Singleton
     public static PlayerObjectInteractions playerObjectIInstance;
 
-    private CheckPointDeathSystem checkPointDeathSystem = null;
-
     private void Awake()
     {
         //Make sure there is only one instance
@@ -21,9 +19,6 @@ public class PlayerObjectInteractions : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        //reference checkpoint + death system script 
-        checkPointDeathSystem = GameObject.Find("GlobalGameController").GetComponent<CheckPointDeathSystem>();
     }
     #endregion
 
