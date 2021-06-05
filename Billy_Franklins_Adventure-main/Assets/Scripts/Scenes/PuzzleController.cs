@@ -6,13 +6,11 @@ public class PuzzleController : MonoBehaviour
 {
     [SerializeField]
     private int players_new_max_charge = 1;
-    private List<LevelLoadController> levelLoads = new List<LevelLoadController>();
 
     // Start is called before the first frame update
     void Start()
     {
-        LoadPlayersLightCharged();
-        levelLoads.AddRange(FindObjectsOfType<LevelLoadController>());
+        LoadPlayersLightCharged();  
     }
 
 
