@@ -20,13 +20,14 @@ public class SuspendedPlatform : MonoBehaviour
 
     [SerializeField] private float movementSpeed = 20.0f;
 
-
+    
 
 
     Rigidbody2D platformRigidbody;
     private bool moving = false;
     private bool grounded = false;
 
+    
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,7 @@ public class SuspendedPlatform : MonoBehaviour
         if (!grounded)
         {
             MovePlatform();
+           
         }
     }
 
@@ -55,6 +57,11 @@ public class SuspendedPlatform : MonoBehaviour
     {
         platformRigidbody.isKinematic = true;
         platformRigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+    }
+
+    public void TurnOffConstraints()
+    {
+        platformRigidbody.constraints = RigidbodyConstraints2D.None;
     }
 
     void MovePlatform()

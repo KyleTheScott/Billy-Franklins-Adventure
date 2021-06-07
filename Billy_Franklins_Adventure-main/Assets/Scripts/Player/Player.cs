@@ -44,15 +44,17 @@ public class Player : MonoBehaviour
     private bool movingObject;
 
 
-    private enum PlayerState
+    public enum PlayerState
     {
         IDLE,
         JUMP,
         JUMPING,
         JUMP_FALLING,
         FALLING,
+        FALL_FIX,
         WALKING,
         MOVING_OBJECT,
+        MOVING_OBJECT_IDLE,
         MOVING_OBJECT_STOPPED_LEFT,
         MOVING_OBJECT_LEFT,
         MOVING_OBJECT_STOPPED_RIGHT,
@@ -123,7 +125,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private bool firstAiming = true;
 
-    private enum AimLineState
+    public enum AimLineState
     {
         NOT_AIMED,
         AIMING
@@ -147,6 +149,13 @@ public class Player : MonoBehaviour
 
     [SerializeField] private MovingObjectsCollision movingObjectsCollision;
     [SerializeField] private GameObject currentMovingObject;
+
+
+    [SerializeField] private PlayerState currentPlayerState;
+    [SerializeField] private float fallFixTimer = 0;
+    [SerializeField] private float fallFixMax = .1f;
+    [SerializeField] private float fallFixStayMax = .5f;
+
 
 
 
@@ -205,15 +214,28 @@ public class Player : MonoBehaviour
             case PlayerState.IDLE:
                 if (lastPosition != transform.position)
                 {
-                    //rb.constraints = RigidbodyConstraints2D.FreezePositionX;
                     rb.velocity = Vector2.zero;
                     rb.isKinematic = true;
                 }
+
+                if (aimLineState == AimLineState.NOT_AIMED)
+                {
+                    if (fallFixTimer >= fallFixMax)
+                    {
+                        currentPlayerState = playerState;
+                        playerState = PlayerState.FALL_FIX;
+                        rb.isKinematic = true;
+                        fallFixTimer = 0;
+                        onGround = false;
+                    }
+                    else
+                    {
+                        fallFixTimer += Time.deltaTime;
+                    }
+                }
                 break;
             case PlayerState.JUMP:
-                
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                
                 playerState = PlayerState.JUMPING;
                 break;
             case PlayerState.JUMPING:
@@ -234,22 +256,45 @@ public class Player : MonoBehaviour
             case PlayerState.FALLING:
                 rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                 break;
-            case PlayerState.WALKING:
-                //moveVelocity = 0;
-                ////Change player's velocity
-                ////only can move when not aiming
-                //if (isFacingRight)
-                //{
-                //    moveVelocity = moveSpeed;
-                //}
-                //else
-                //{
-                //    moveVelocity = 0f - moveSpeed;
-                //}
+            case PlayerState.FALL_FIX:
+                if (fallFixTimer >= fallFixStayMax)
+                {
+                    rb.isKinematic = false;
+                    playerState = PlayerState.WALKING;
+                    fallFixTimer = 0;
+                    onGround = true;
+                }
+                else
+                {
+                    fallFixTimer += Time.deltaTime;
+                }
                 rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+                break;
+            
+            case PlayerState.WALKING:
+                rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+                if (aimLineState == AimLineState.NOT_AIMED)
+                {
+                    if (fallFixTimer >= fallFixMax)
+                    {
+                        currentPlayerState = playerState;
+                        playerState = PlayerState.FALL_FIX;
+                        rb.isKinematic = true;
+                        fallFixTimer = 0;
+                        onGround = false;
+                    }
+                    else
+                    {
+                        fallFixTimer += Time.deltaTime;
+                    }
+                }
                 break;
             case PlayerState.MOVING_OBJECT:
                 rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+                break;
+            case PlayerState.MOVING_OBJECT_IDLE:
+                rb.velocity = Vector2.zero;
+                rb.isKinematic = true;
                 break;
             case PlayerState.MOVING_OBJECT_LEFT:
                 rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
@@ -259,8 +304,6 @@ public class Player : MonoBehaviour
                 break;
         }
         lastPosition = transform.position;
-
-        //animator.SetInteger("Direction", (int)moveDir.x);
     }
 
 
@@ -339,23 +382,31 @@ public class Player : MonoBehaviour
                     {
                         playerState = PlayerState.MOVING_OBJECT_LEFT;
                     }
+                   
                     isFacingRight = false;
                     transform.Rotate(0f, 180f, 0f);
                     lastShootingLine.x = -1;
                 }
+            }
+            if (playerState == PlayerState.MOVING_OBJECT_IDLE)
+            {
+                playerState = PlayerState.MOVING_OBJECT;
             }
             rb.isKinematic = false;
             if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                 playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING && 
                 playerState != PlayerState.MOVING_OBJECT_STOPPED_LEFT)
             {
-                if (playerState == PlayerState.MOVING_OBJECT)
+                if (aimLineState == AimLineState.NOT_AIMED)
                 {
-                    moveVelocity = 0f - moveObjectSpeed;
-                }
-                else
-                {
-                    moveVelocity = 0f - moveSpeed;
+                    if (playerState == PlayerState.MOVING_OBJECT)
+                    {
+                        moveVelocity = 0f - moveObjectSpeed;
+                    }
+                    else
+                    {
+                        moveVelocity = 0f - moveSpeed;
+                    }
                 }
             }
 
@@ -392,25 +443,33 @@ public class Player : MonoBehaviour
                     {
                         playerState = PlayerState.MOVING_OBJECT_RIGHT;
                     }
+                    
                     isFacingRight = true;
                     transform.Rotate(0f, 180f, 0f);
                     lastShootingLine.x = 1;
                 }
+            }
+            if (playerState == PlayerState.MOVING_OBJECT_IDLE)
+            {
+                playerState = PlayerState.MOVING_OBJECT;
             }
             rb.isKinematic = false;
             if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                 playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING && 
                 playerState != PlayerState.MOVING_OBJECT_STOPPED_RIGHT)
             {
-                if (playerState == PlayerState.MOVING_OBJECT)
+                if (aimLineState == AimLineState.NOT_AIMED)
                 {
-                    moveVelocity = moveObjectSpeed;
+                    if (playerState == PlayerState.MOVING_OBJECT)
+                    {
+                        moveVelocity = moveObjectSpeed;
+                    }
+                    else
+                    {
+                        moveVelocity = moveSpeed;
+                    }
                 }
-                else
-                {
-                    moveVelocity = moveSpeed;
-                }
-                
+
             }
             //rb.constraints = RigidbodyConstraints2D.None;
             if (playerState == PlayerState.IDLE || playerState == PlayerState.WALKING)
@@ -429,15 +488,18 @@ public class Player : MonoBehaviour
         {
             if (playerState == PlayerState.WALKING)
             {
-                Debug.Log("Idle");
                 playerState = PlayerState.IDLE;
+            }
+            else if (playerState == PlayerState.MOVING_OBJECT)
+            {
+                playerState = PlayerState.MOVING_OBJECT_IDLE;
             }
             moveVelocity = 0;
         }
 
-        if (playerState != PlayerState.MOVING_OBJECT && playerState != PlayerState.JUMP && 
-            playerState != PlayerState.JUMPING && playerState != PlayerState.FALLING &&
-            playerState != PlayerState.JUMP_FALLING)
+        if (playerState != PlayerState.MOVING_OBJECT && playerState != PlayerState.MOVING_OBJECT_IDLE && 
+            playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING && 
+             playerState != PlayerState.JUMP_FALLING)
         {
             MouseInputHandle();
         }
@@ -446,56 +508,70 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             //Only can jump if player is on ground and not loaded projectile
-            if (onGround && loadedProjectile == null && (playerState == PlayerState.WALKING || playerState == PlayerState.IDLE))
+            if (loadedProjectile == null && (
+                playerState == PlayerState.WALKING || playerState == PlayerState.IDLE || playerState == PlayerState.FALL_FIX))
             {
-                rb.isKinematic = false;
-                //SoundManager.instance.PLaySE(JumpSound);
-                //shouldJump = true;
-                playerState = PlayerState.JUMP;
-                rb.gravityScale = jumpGravity;
-                onGround = false;
-                //falling = false;
+                if (playerState == PlayerState.FALL_FIX)
+                {
+                    onGround = true;
+                }
+
+                if (onGround)
+                {
+                    rb.isKinematic = false;
+                    //SoundManager.instance.PLaySE(JumpSound);
+                    //shouldJump = true;
+                    playerState = PlayerState.JUMP;
+                    rb.gravityScale = jumpGravity;
+                    onGround = false;
+                    //falling = false;
+                }
             }
         }
 
         //Interact
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (lightCharges != 0 && onGround)
+            if (lightCharges != 0)
             {
-                ////Find any interactable object within circle
-                //Collider2D result = Physics2D.OverlapCircle(transform.position, interactRadius, interactLayer);
-                //if (result != null)
-                //{
-                //    //Call interact interface function
-                //    IInteractable comp = result.gameObject.GetComponent<IInteractable>();
-                GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject();
-                if (comp != null)
+                if (playerState == PlayerState.FALL_FIX)
                 {
-                    comp.GetComponent<IInteractable>().Interact();// call interact function
-                    if (comp.GetComponent<Collider2D>().CompareTag("Lantern"))
+                    onGround = true;
+                }
+                if (onGround)
+                {
+                    ////Find any interactable object within circle
+                    //Collider2D result = Physics2D.OverlapCircle(transform.position, interactRadius, interactLayer);
+                    //if (result != null)
+                    //{
+                    //    //Call interact interface function
+                    //    IInteractable comp = result.gameObject.GetComponent<IInteractable>();
+                    GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject();
+                    if (comp != null)
                     {
-                        UseLightCharges();
-                    }
-
-                    if (comp.GetComponent<Collider2D>().CompareTag("Metal"))
-                    {
-                        if (comp.GetComponent<Metal>().IsMoving())
+                        comp.GetComponent<IInteractable>().Interact(); // call interact function
+                        if (comp.GetComponent<Collider2D>().CompareTag("Lantern"))
                         {
-                            playerState = PlayerState.MOVING_OBJECT;
-                            currentMovingObject = comp;
-                            //rb.gravityScale = jumpGravity;
+                            UseLightCharges();
                         }
-                        else
+
+                        if (comp.GetComponent<Collider2D>().CompareTag("Metal"))
                         {
-                            playerState = PlayerState.WALKING;
-                            currentMovingObject = null;
-                            //rb.gravityScale = groundGravity;
+                            if (comp.GetComponent<Metal>().IsMoving())
+                            {
+                                playerState = PlayerState.MOVING_OBJECT;
+                                currentMovingObject = comp;
+                                //rb.gravityScale = jumpGravity;
+                            }
+                            else
+                            {
+                                playerState = PlayerState.WALKING;
+                                currentMovingObject = null;
+                                //rb.gravityScale = groundGravity;
+                            }
                         }
                     }
                 }
-
-                //}
             }
         }
         else if (Input.GetKeyDown(KeyCode.Q))
@@ -582,38 +658,44 @@ public class Player : MonoBehaviour
 
 
                 //onGround = IsPlayerOnGround();
-                if (canShoot == true && onGround && lightCharges != 0 && !firstAiming)
+                if (canShoot == true && lightCharges != 0 && !firstAiming)
                 {
-
-                    aimLineState = AimLineState.AIMING;
-                    //Get projectile from list
-                    if (listOfProjectile.Count != 0)
+                    if (playerState == PlayerState.FALL_FIX)
                     {
-
-                        loadedProjectile = listOfProjectile[listOfProjectile.Count - 1];
-                        if (listOfProjectile.Count > 10)
+                        onGround = true;
+                    }
+                    if (onGround)
+                    {
+                        aimLineState = AimLineState.AIMING;
+                        //Get projectile from list
+                        if (listOfProjectile.Count != 0)
                         {
-                            listOfProjectile.RemoveAt(0);
+
+                            loadedProjectile = listOfProjectile[listOfProjectile.Count - 1];
+                            if (listOfProjectile.Count > 10)
+                            {
+                                listOfProjectile.RemoveAt(0);
+                            }
+
+                            //Activate projectile
+                            loadedProjectile.gameObject.SetActive(true);
+
+                            loadedProjectile.transform.position =
+                                transform.position + (-transform.right * projectileSpawnDistance);
+
+                            loadedProjectile.GetComponent<Collider2D>().enabled = false;
+
+                            //Set projectile's parent to player
+                            //loadedProjectile.transform.SetParent(transform);
+                            //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+
+                            //Turn on aimcone
+                            aimCone.gameObject.SetActive(true);
+
+                            //SEt aim line
+                            aimLine.SetStartPoint(loadedProjectile.transform.position);
+                            aimLine.gameObject.SetActive(true);
                         }
-
-                        //Activate projectile
-                        loadedProjectile.gameObject.SetActive(true);
-
-                        loadedProjectile.transform.position =
-                            transform.position + (-transform.right * projectileSpawnDistance);
-
-                        loadedProjectile.GetComponent<Collider2D>().enabled = false;
-
-                        //Set projectile's parent to player
-                        //loadedProjectile.transform.SetParent(transform);
-                        //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-
-                        //Turn on aimcone
-                        aimCone.gameObject.SetActive(true);
-
-                        //SEt aim line
-                        aimLine.SetStartPoint(loadedProjectile.transform.position);
-                        aimLine.gameObject.SetActive(true);
                     }
                 }
 
@@ -1021,7 +1103,6 @@ public class Player : MonoBehaviour
             
             if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING)
             {
-                Debug.Log("Falling off");
                 rb.isKinematic = false;
                 rb.gravityScale = fallGravity;
                 playerState = PlayerState.FALLING;
@@ -1073,4 +1154,24 @@ public class Player : MonoBehaviour
     {
         return currentMovingObject;
     }
+    //public PlayerState GetPlayerState()
+    //{
+    //    return playerState;
+    //}
+    //public void SetPlayerState(PlayerState state)
+    //{
+    //    playerState = state;
+    //}
+
+    //public AimLineState GetAimLineState()
+    //{
+    //    return aimLineState;
+    //}
+
+    //public void SetKinematic(bool state)
+    //{
+    //    rb.isKinematic = false;
+    //    rb.gravityScale = groundGravity;
+    //}
+
 }

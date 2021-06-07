@@ -14,12 +14,6 @@ public class MovingObjectsCollision : MonoBehaviour
         player = GameObject.Find("Player");
         checkPointDeathSystem = GameObject.Find("GlobalGameController").GetComponent<CheckPointDeathSystem>();
     }
-    
-    public bool IsGrounded()
-    {
-        return onGround;
-    }
-
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
