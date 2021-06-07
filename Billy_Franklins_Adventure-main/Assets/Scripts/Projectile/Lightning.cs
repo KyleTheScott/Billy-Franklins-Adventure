@@ -40,27 +40,27 @@ public class Lightning : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (shootingLightning)
-        {
-            ShootLightning();
-        }
-    }
+    //void Update()
+    //{
+    //    if (shootingLightning)
+    //    {
+    //        ShootLightning();
+    //    }
+    //}
 
-    private void ShootLightning()
-    {
-        fpsCounter += Time.deltaTime;
-        if (fpsCounter >= 1f / fps)
-        {
-            animationStep++;
-            if (animationStep == textures.Length)
-            {
-                SetShootLightning(false);
-            }
-            lineRenderer.material.SetTexture("_MainTex", textures[animationStep]);
-            fpsCounter = 0;
-        }
-    }
+    //private void ShootLightning()
+    //{
+    //    fpsCounter += Time.deltaTime;
+    //    if (fpsCounter >= 1f / fps)
+    //    {
+    //        animationStep++;
+    //        if (animationStep == textures.Length)
+    //        {
+    //            SetShootLightning(false);
+    //        }
+    //        lineRenderer.material.SetTexture("_MainTex", textures[animationStep]);
+    //        fpsCounter = 0;
+    //    }
+    //}
 
 }
