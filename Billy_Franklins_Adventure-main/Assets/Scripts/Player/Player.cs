@@ -612,7 +612,9 @@ public class Player : MonoBehaviour
                             loadedProjectile.SetProjectileDirection(lastShootingLine);
                             loadedProjectile.GetComponent<Collider2D>().enabled = true;
                             StopAiming();
-
+                            lightning.SetStartPosition(lightningStartPos);
+                            lightning.SetTargetPosition(lightningTargetPos);
+                            lightning.SetShootLightning(true);
                             //Can't shoot projectile continously
                             canShoot = false;
                             UseLightCharges();
@@ -718,7 +720,7 @@ public class Player : MonoBehaviour
                             UseLightCharges();
 
                             lightning.SetStartPosition(lightningStartPos);
-                            lightning.SetStartPosition(lightningTargetPos);
+                            lightning.SetTargetPosition(lightningTargetPos);
                             lightning.SetShootLightning(true);
                             //Set projectile's parent to player
                             //loadedProjectile.transform.SetParent(null);
