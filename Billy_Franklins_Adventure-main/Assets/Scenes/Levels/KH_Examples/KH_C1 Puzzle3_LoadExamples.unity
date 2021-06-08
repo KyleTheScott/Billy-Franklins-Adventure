@@ -1297,10 +1297,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fe4eb57506ff13448b0f2aa704b3e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSprite: {fileID: 0}
+  playerState: 6
   debugMode: 1
+  onGround: 0
   moveSpeed: 3
-  jumpForce: 5
+  moveObjectSpeed: 3
   moveVelocity: 0
+  jumpGravity: 1
+  fallGravity: 5
+  groundGravity: 10
+  jumpForce: 5
+  lowJumpMultiplier: 2
+  fallMultiplier: 4
+  currentPlayerState: 0
+  fallFixTimer: 0
+  fallFixMax: 0.1
+  fallFixStayMax: 2
   shootCoolTime: 1
   hp: 10
   lightCharges: 2
@@ -1310,25 +1323,21 @@ MonoBehaviour:
   projectilePrefab: {fileID: 7641674986506221482, guid: 02094ac19ba79724681d7b03d1031ad6, type: 3}
   listOfProjectile: []
   projectileSpawnDistance: 1
-  aimLineCollisionMask:
-    serializedVersion: 2
-    m_Bits: 768
-  tileLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
-  ShootSound: 
-  JumpSound: 
-  interactRadius: 1
-  interactLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  aimCone: {fileID: 2061197031}
   onLightChargesChanged:
     m_PersistentCalls:
       m_Calls: []
-  onGround: 0
+  ShootSound: 
+  JumpSound: 
+  angleBetween: 0
+  lightning: {fileID: 0}
+  aimLineCollisionMask:
+    serializedVersion: 2
+    m_Bits: 768
+  aimCone: {fileID: 2061197031}
+  firstAiming: 1
   aimLineState: 0
   shootFixTimer: 0.5
+  currentMovingObject: {fileID: 0}
 --- !u!95 &1382287271
 Animator:
   serializedVersion: 3
@@ -1796,7 +1805,7 @@ GameObject:
   - component: {fileID: 1558598834}
   m_Layer: 8
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1979,6 +1988,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 553e30bf72b82f249aff0aa8cfc9fc79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  connectedGameObjects: []
+  availableNum: 1
   debugging: 1
 --- !u!4 &1568574158
 Transform:
