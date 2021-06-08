@@ -13,6 +13,7 @@ public class Lamp : MonoBehaviour, IInteractable
     [SerializeField] Sprite lanternOnSprite = null;
     [SerializeField] Sprite lanternOffSprite = null;
     [SerializeField] private GameObject highlight;
+    [SerializeField] GhostWallController ghostWall;
 
     [HideInInspector]
     public UnityEvent onLampOn; //Invoke when lamp is on, darkborder will subscribe this
@@ -71,6 +72,7 @@ public class Lamp : MonoBehaviour, IInteractable
             {
                 Debug.Log("Lamp on");
                 onLampOn.Invoke();
+                ghostWall.LowerGhostWall();
             }
         }
     }

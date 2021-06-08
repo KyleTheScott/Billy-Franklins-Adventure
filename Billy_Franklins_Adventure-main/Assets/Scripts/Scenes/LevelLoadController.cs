@@ -14,6 +14,8 @@ public class LevelLoadController : MonoBehaviour
     [SerializeField] private Vector4 gizmo_color_ = new Vector4(0, 1, 1, 0.75f);
     [Tooltip("Gizmo helper radius, has no effect on code logic")]
     [SerializeField] private float gizmo_radius_ = 0.4f;
+    [SerializeField] private GhostWallController ghostWall;
+                                
 
     private bool has_level_loaded_ = false;
     IEnumerator LoadNextLevel()
@@ -44,24 +46,9 @@ public class LevelLoadController : MonoBehaviour
         }
 
         has_level_loaded_ = true;
-        LoadPlayersLightCharged();
     }
 
-    private void LoadPlayersLightCharged()
-    {
-        Player player = FindObjectOfType<Player>();
-        if (player != null)
-        {
-            player.maxLightCharges = players_new_max_charge;
-            player.lightCharges = players_new_max_charge;
-            player.onLightChargesChanged.Invoke(player.lightCharges, player.maxLightCharges);
-        }
-        else
-        {
-            Debug.Log("Player was not found");
-        }
-    }
-
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -78,6 +65,11 @@ public class LevelLoadController : MonoBehaviour
             if (prev_scene_to_destroy_ != "")
             {
                 SceneManager.UnloadSceneAsync(prev_scene_to_destroy_);
+                if (ghostWall != null)
+                {
+                    ghostWall.RaiseGhostWall();
+                }
+
             }
         }
         else
