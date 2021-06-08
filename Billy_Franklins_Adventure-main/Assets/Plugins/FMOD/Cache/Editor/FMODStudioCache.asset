@@ -297,7 +297,7 @@ MonoBehaviour:
   - {fileID: 2638976318530003788}
   StringsBanks:
   - {fileID: 1396586631321502803}
-  stringsBankWriteTime: 637582668643509574
+  stringsBankWriteTime: 637582675353169937
   cacheVersion: 6
 --- !u!114 &721201738997086347
 MonoBehaviour:
@@ -360,7 +360,7 @@ MonoBehaviour:
   Path: FMOD_BFA/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637582668643509574
+  lastModified: 637582675353169937
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -450,7 +450,7 @@ MonoBehaviour:
   Path: FMOD_BFA/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637582668643489603
+  lastModified: 637582675353249957
   LoadResult: 0
   FileSizes: []
   Exists: 1
