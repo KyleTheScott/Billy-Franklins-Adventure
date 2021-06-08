@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.Events;
 
-public class Lamp : MonoBehaviour
+public class Lamp : MonoBehaviour, IInteractable
 {
     SpriteRenderer spriteRenderer = null; //spriteRenderer of this lantern
     Light2D light2D = null;
@@ -12,6 +12,7 @@ public class Lamp : MonoBehaviour
 
     [SerializeField] Sprite lanternOnSprite = null;
     [SerializeField] Sprite lanternOffSprite = null;
+    [SerializeField] private GameObject highlight;
 
     [HideInInspector]
     public UnityEvent onLampOn; //Invoke when lamp is on, darkborder will subscribe this
@@ -35,6 +36,23 @@ public class Lamp : MonoBehaviour
     //{
 
     //}
+    public void Interact()
+    {
+        LanternToggle();
+
+        //Turn off collider
+        if (boxCollider != null)
+        {
+            boxCollider.enabled = false;
+        }
+    }
+
+    public void SetHighlighted(bool state)
+    {
+        highlight.SetActive(state);
+    }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -59,7 +77,7 @@ public class Lamp : MonoBehaviour
 
     private void LanternToggle()
     {
-        //Chnage lanter's sprite
+        //Change lantern's sprite
         if (spriteRenderer != null && lanternOnSprite != null && lanternOffSprite != null)
         {
             if (spriteRenderer.sprite == lanternOnSprite)
