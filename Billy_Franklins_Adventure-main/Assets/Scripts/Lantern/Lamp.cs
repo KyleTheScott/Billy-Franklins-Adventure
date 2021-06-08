@@ -72,7 +72,7 @@ public class Lamp : MonoBehaviour, IInteractable
             {
                 Debug.Log("Lamp on");
                 onLampOn.Invoke();
-                ghostWall.LowerGhostWall();
+                
             }
         }
     }
@@ -82,6 +82,7 @@ public class Lamp : MonoBehaviour, IInteractable
         //Change lantern's sprite
         if (spriteRenderer != null && lanternOnSprite != null && lanternOffSprite != null)
         {
+            ghostWall.LowerGhostWall();
             if (spriteRenderer.sprite == lanternOnSprite)
             {
                 spriteRenderer.sprite = lanternOffSprite;

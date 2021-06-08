@@ -158,6 +158,7 @@ MonoBehaviour:
   lanternOnSprite: {fileID: 5860325458425312261, guid: 7edc62699895956478371e8c882314b1, type: 3}
   lanternOffSprite: {fileID: -4812822056404770797, guid: 7edc62699895956478371e8c882314b1, type: 3}
   highlight: {fileID: 3692662190727412115}
+  ghostWall: {fileID: 0}
   onLampOn:
     m_PersistentCalls:
       m_Calls:
