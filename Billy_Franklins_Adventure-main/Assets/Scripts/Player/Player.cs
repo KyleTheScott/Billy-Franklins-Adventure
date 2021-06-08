@@ -201,21 +201,17 @@ public class Player : MonoBehaviour
                     rb.isKinematic = true;
                 }
 
-                if (aimLineState == AimLineState.NOT_AIMED)
-                {
-                    if (fallFixTimer >= fallFixMax)
-                    {
-                        currentPlayerState = playerState;
-                        playerState = PlayerState.FALL_FIX;
-                        rb.isKinematic = false;
-                        fallFixTimer = 0;
-                        onGround = false;
-                    }
-                    else
-                    {
-                        fallFixTimer += Time.deltaTime;
-                    }
-                }
+                //if (aimLineState == AimLineState.NOT_AIMED)
+                //{
+                //    if (fallFixTimer >= fallFixMax)
+                //    {
+                       
+                //    }
+                //    else
+                //    {
+                //        fallFixTimer += Time.deltaTime;
+                //    }
+                //}
                 break;
             case PlayerState.JUMP:
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -249,46 +245,44 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-
                     fallFixTimer += Time.deltaTime;
                 }
 
                 if (currentPlayerState != PlayerState.IDLE)
                 {
-                   
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                 }
                 else
                 {
-                    if (Mathf.Abs(lastPosition.x - transform.position.x) > Mathf.Epsilon)
-                    {
-                        //transform.position = lastPosition;
-                        playerState = PlayerState.IDLE;
-                        rb.isKinematic = true;
-                        currentPlayerState = playerState;
-                        fallFixTimer = 0;
-                        onGround = true;
-                    }
+                    //if (Mathf.Abs(lastPosition.x - transform.position.x) > Mathf.Epsilon)
+                    //{
+                    //    //transform.position = lastPosition;
+                    //    playerState = PlayerState.IDLE;
+                    //    rb.isKinematic = true;
+                    //    currentPlayerState = playerState;
+                    //    fallFixTimer = 0;
+                    //    onGround = true;
+                    //}
                 }
                 break;
             
             case PlayerState.WALKING:
                 rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
-                if (aimLineState == AimLineState.NOT_AIMED)
-                {
-                    if (fallFixTimer >= fallFixMax)
-                    {
-                        currentPlayerState = playerState;
-                        playerState = PlayerState.FALL_FIX;
-                        rb.isKinematic = false;
-                        fallFixTimer = 0;
-                        onGround = false;
-                    }
-                    else
-                    {
-                        fallFixTimer += Time.deltaTime;
-                    }
-                }
+                //if (aimLineState == AimLineState.NOT_AIMED)
+                //{
+                //    if (fallFixTimer >= fallFixMax)
+                //    {
+                //        currentPlayerState = playerState;
+                //        playerState = PlayerState.FALL_FIX;
+                //        rb.isKinematic = false;
+                //        fallFixTimer = 0;
+                //        onGround = false;
+                //    }
+                //    else
+                //    {
+                //        fallFixTimer += Time.deltaTime;
+                //    }
+                //}
                 break;
             case PlayerState.MOVING_OBJECT:
                 rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
@@ -1174,6 +1168,16 @@ public class Player : MonoBehaviour
     {
         return currentMovingObject;
     }
+
+    public void SetFallFix()
+    {
+        currentPlayerState = playerState;
+        playerState = PlayerState.FALL_FIX;
+        rb.isKinematic = false;
+        fallFixTimer = 0;
+        onGround = false;
+    }
+
     //public PlayerState GetPlayerState()
     //{
     //    return playerState;
