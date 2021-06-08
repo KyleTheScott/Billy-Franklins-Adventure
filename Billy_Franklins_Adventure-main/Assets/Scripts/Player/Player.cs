@@ -9,41 +9,17 @@ using UnityEngine.Rendering.UI;
 [DefaultExecutionOrder(-100)] //ensure this script runs before all other player scripts to prevent laggy input
 public class Player : MonoBehaviour
 {
-    private CheckPointDeathSystem checkPointDeathSystem = null;
+    private CheckPointSystem checkPointDeathSystem = null;
 
-    Rigidbody2D rb = null; //player's rigid body
+
     //CapsuleCollider2D capsuleCollider2D = null; //Player's capsule collider
-    AimLine aimLine = null; //player's aiming line
 
-    [SerializeField] bool debugMode = false;
-
-    [Header("Attribute")] 
-    [SerializeField] private float moveSpeed = 4.0f;
-
-    [SerializeField] private float moveObjectSpeed = 3.0f;
-    [SerializeField] private float jumpForce = 10f; //How strong does player jump
-    [SerializeField] private float forwardJumpForce = 10f;
-    [SerializeField] private float moveVelocity;
-    public float shootCoolTime = 0.5f; //Projectile shoot cool time
-    public int hp = 10;
-    public int lightCharges = 3; //how many lighting can character use?
-    public int maxLightCharges = 3; //how many lighting can character use?
-
-    Vector2 moveDir = Vector2.zero; //player's movement direction
-
-    bool shouldJump = false; //Check if player should jump
-    [SerializeField] private bool canShoot = true; //Check if player can shoot projectile
-
-
-    [SerializeField] private bool onGround;
-    [SerializeField] private bool falling;
+    [Header("General")]
     //[SerializeField] private bool 
-
+    Rigidbody2D rb = null; //player's rigid body
     [SerializeField] private SpriteRenderer playerSprite;
-
-    private bool movingObject;
-
-
+    private Animator animator;
+    bool isFacingRight = false; //Is character facing right side? for Characte flip
     public enum PlayerState
     {
         IDLE,
@@ -64,10 +40,17 @@ public class Player : MonoBehaviour
 
     [SerializeField] private PlayerState playerState = PlayerState.WALKING;
 
-    private Vector3 lastPosition;
 
-    [SerializeField] private float inAirFriction = 0f;
-    [SerializeField] private float onGroundFriction = 0f;
+
+    [SerializeField] bool debugMode = false;
+
+    [Header("Movement")]
+    [SerializeField] private bool onGround = false;
+    private Vector3 lastPosition;
+    [SerializeField] private float moveSpeed = 4.0f;
+    [SerializeField] private float moveObjectSpeed = 3.0f;
+    [SerializeField] private float moveVelocity = 0;
+    
 
     //changes in gravity
     [SerializeField] private float jumpGravity = 1f;
@@ -75,53 +58,53 @@ public class Player : MonoBehaviour
     [SerializeField] private float groundGravity = 10f;
 
     //[Range(1, 10)] [SerializeField] private float jumpVelocity = 2;
-
+    [SerializeField] private float jumpForce = 10f; //How strong does player jump
     [SerializeField] private float lowJumpMultiplier = 2f;
     [SerializeField] private float fallMultiplier = 4f;
 
+    [SerializeField] private PlayerState currentPlayerState;
+    [SerializeField] private float fallFixTimer = 0;
+    [SerializeField] private float fallFixMax = .1f;
+    [SerializeField] private float fallFixStayMax = 2f;
+    private bool fallFixSwitch = false;
 
-    [Header("Projectile")] public int maxNumOfProjectile = 10; //Max number of projectile
-
+    [Header("Shooting")]
+    public float shootCoolTime = 0.5f; //Projectile shoot cool time
+    public int hp = 10;
+    public int lightCharges = 3; //how many lighting can character use?
+    public int maxLightCharges = 3; //how many lighting can character use?
+    [SerializeField] private bool canShoot = true; //Check if player can shoot projectile
+   
+    public int maxNumOfProjectile = 10; //Max number of projectile
     public GameObject projectilePrefab = null; //Prefab for projectile
-
-    //Queue<Projectile> listOfProjectile = null; //Queue for projectile pool
     [SerializeField] private List<Projectile> listOfProjectile = null;
-
+    
     [SerializeField] float projectileSpawnDistance = 1f; //How far is projectile spanwed from player?
     Projectile loadedProjectile = null; //projectile that is wating for shooting
-    Vector3 shootingLine = new Vector3(1, 0, 0); //Direction for loaded projectile
-    Vector3 lastShootingLine = new Vector3(1, 0, 0);
-    bool IsShootingLineInAngle = false;
-    [SerializeField] LayerMask aimLineCollisionMask; //should be tile or obstacle
+    //current charges, max charges
+    public UnityEvent<int, int> onLightChargesChanged; //DarkBOrder will subscribe, charges text ui will subscribe this
 
-    bool isFacingRight = false; //Is character facing right side? for Characte flip
-
-    [SerializeField] LayerMask tileLayerMask; //Used to check if player is on ground
+    //[SerializeField] LayerMask tileLayerMask; //Used to check if player is on ground
 
     // to Get SFX sound name 
     [SerializeField] private string ShootSound;
     [SerializeField] private string JumpSound;
 
-    private Animator animator;
+
 
     [SerializeField] private float angleBetween;
     [SerializeField] private Lightning lightning;
     private Vector2 lightningStartPos;
     private Vector2 lightningTargetPos;
-    
 
-
-    [Header("Interact")] [SerializeField] float interactRadius = 5f;
-    [SerializeField] LayerMask interactLayer;
-
-    Camera mainCam = null;
-
-    [SerializeField] Transform aimCone = null;
-
-    //current charges, max charges
-    public UnityEvent<int, int> onLightChargesChanged; //DarkBOrder will subscribe, charges text ui will subscribe this
-
-
+    [Header("Aiming")]
+   AimLine aimLine = null; //player's aiming line
+   Camera mainCam = null;
+   Vector3 shootingLine = new Vector3(1, 0, 0); //Direction for loaded projectile
+   Vector3 lastShootingLine = new Vector3(1, 0, 0);
+   bool IsShootingLineInAngle = false;
+   [SerializeField] LayerMask aimLineCollisionMask; //should be tile or obstacle
+   [SerializeField] Transform aimCone = null;
 
     [SerializeField] private bool firstAiming = true;
 
@@ -138,23 +121,21 @@ public class Player : MonoBehaviour
     //public static bool visibleCursor;
     float timeLeft = 1;
     float visibleCursorTimer = .5f;
-
     float cursorPosition;
-
-    //Vector2 cursorSensitivity;
     bool catchCursor = true;
 
     [SerializeField] private float shootFixTimer = .5f;
 
+   
 
-    [SerializeField] private MovingObjectsCollision movingObjectsCollision;
+
+
+    [Header("Interact")]
     [SerializeField] private GameObject currentMovingObject;
+    //[SerializeField] float interactRadius = 5f;
+    //[SerializeField] LayerMask interactLayer;
 
 
-    [SerializeField] private PlayerState currentPlayerState;
-    [SerializeField] private float fallFixTimer = 0;
-    [SerializeField] private float fallFixMax = .1f;
-    [SerializeField] private float fallFixStayMax = .5f;
 
 
 
@@ -162,7 +143,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         //reference checkpoint + death system script 
-        checkPointDeathSystem = GameObject.Find("GlobalGameController").GetComponent<CheckPointDeathSystem>();
+        checkPointDeathSystem = GameObject.Find("GlobalGameController").GetComponent<CheckPointSystem>();
     }
 
 
@@ -224,7 +205,7 @@ public class Player : MonoBehaviour
                     {
                         currentPlayerState = playerState;
                         playerState = PlayerState.FALL_FIX;
-                        rb.isKinematic = true;
+                        rb.isKinematic = false;
                         fallFixTimer = 0;
                         onGround = false;
                     }
@@ -266,9 +247,27 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
+
                     fallFixTimer += Time.deltaTime;
                 }
-                rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+
+                if (currentPlayerState != PlayerState.IDLE)
+                {
+                   
+                    rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+                }
+                else
+                {
+                    if (Mathf.Abs(lastPosition.x - transform.position.x) > Mathf.Epsilon)
+                    {
+                        //transform.position = lastPosition;
+                        playerState = PlayerState.IDLE;
+                        rb.isKinematic = true;
+                        currentPlayerState = playerState;
+                        fallFixTimer = 0;
+                        onGround = true;
+                    }
+                }
                 break;
             
             case PlayerState.WALKING:
@@ -279,7 +278,7 @@ public class Player : MonoBehaviour
                     {
                         currentPlayerState = playerState;
                         playerState = PlayerState.FALL_FIX;
-                        rb.isKinematic = true;
+                        rb.isKinematic = false;
                         fallFixTimer = 0;
                         onGround = false;
                     }
@@ -367,10 +366,10 @@ public class Player : MonoBehaviour
 
     void HandleInput()
     {
-
         //Horizontal move
         if (Input.GetKey(KeyCode.A))
         {
+            fallFixSwitch = true;
             //Character flip
             if (isFacingRight)
             {
@@ -417,11 +416,14 @@ public class Player : MonoBehaviour
 
             //Change player's velocity
             //only can move when not aiming
-            if (playerState == PlayerState.IDLE || playerState == PlayerState.WALKING)
+            if (playerState == PlayerState.IDLE || playerState == PlayerState.WALKING || playerState == PlayerState.FALL_FIX)
             {
                 if (aimLineState == AimLineState.NOT_AIMED)
                 {
-
+                    if (playerState == PlayerState.FALL_FIX)
+                    {
+                        onGround = true;
+                    }
                     playerState = PlayerState.WALKING;
                 }
                 else
@@ -432,6 +434,7 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.D))
         {
+            fallFixSwitch = true;
             //Character flip
             if (isFacingRight == false)
             {
@@ -472,10 +475,14 @@ public class Player : MonoBehaviour
 
             }
             //rb.constraints = RigidbodyConstraints2D.None;
-            if (playerState == PlayerState.IDLE || playerState == PlayerState.WALKING)
+            if (playerState == PlayerState.IDLE || playerState == PlayerState.WALKING || playerState == PlayerState.FALL_FIX)
             {
                 if (aimLineState == AimLineState.NOT_AIMED)
                 {
+                    if (playerState == PlayerState.FALL_FIX)
+                    {
+                        onGround = true;
+                    }
                     playerState = PlayerState.WALKING;
                 }
                 else
@@ -486,9 +493,19 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if (playerState == PlayerState.WALKING)
+            if (playerState == PlayerState.WALKING )
             {
                 playerState = PlayerState.IDLE;
+            }
+            else if (playerState == PlayerState.FALL_FIX)
+            {
+                if (fallFixSwitch)
+                {
+                    playerState = PlayerState.IDLE;
+                    onGround = true;
+                    rb.isKinematic = true;
+                    fallFixSwitch = false;
+                }
             }
             else if (playerState == PlayerState.MOVING_OBJECT)
             {
@@ -518,6 +535,7 @@ public class Player : MonoBehaviour
 
                 if (onGround)
                 {
+                    Debug.Log("Jumping");
                     rb.isKinematic = false;
                     //SoundManager.instance.PLaySE(JumpSound);
                     //shouldJump = true;

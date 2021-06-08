@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingObjectsCollision : MonoBehaviour
@@ -7,13 +6,34 @@ public class MovingObjectsCollision : MonoBehaviour
     private GameObject player = null;
     private bool onGround = true;
     [SerializeField] private List<GameObject> groundObjectsTouching = new List<GameObject>();
-    private CheckPointDeathSystem checkPointDeathSystem = null;
+    private CheckPointSystem checkPointSystem = null;
+    public List<GameObject> checkForElectric = new List<GameObject>();
 
     private void Awake()
     {
         player = GameObject.Find("Player");
-        checkPointDeathSystem = GameObject.Find("GlobalGameController").GetComponent<CheckPointDeathSystem>();
+        checkPointSystem = GameObject.Find("GlobalGameController").GetComponent<CheckPointSystem>();
     }
+    private void Update()
+    {
+        if(checkForElectric.Count > 0)
+        {
+            foreach (GameObject item in checkForElectric)
+            {
+                //water
+                if (item.CompareTag("Water") && item.GetComponent<Water>().GetElectrified()) 
+                {
+                    checkPointSystem.PlayerDeath();
+                }
+                //metal
+                else if (item.CompareTag("Metal") && item.GetComponent<Metal>().GetElectrified())
+                {
+                    checkPointSystem.PlayerDeath();
+                }
+            }
+        }
+    }
+
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,22 +42,10 @@ public class MovingObjectsCollision : MonoBehaviour
             groundObjectsTouching.Add(collision.gameObject);
             onGround = true;
         }
-        //if player touches electrified water then indicate player death
-        if (collision.CompareTag("Water") && collision.GetComponent<Water>().GetElectrified())
+        else if (collision.CompareTag("Water") || collision.CompareTag("Metal"))
         {
-            checkPointDeathSystem.PlayerDeath();
+            checkForElectric.Add(collision.gameObject);
         }
-        //if player touches electrified metal then indicate player death
-        if (collision.CompareTag("Metal") && collision.GetComponent<Metal>().GetElectrified())
-        {
-            checkPointDeathSystem.PlayerDeath();
-        }
-        //if player hits a checkpoint then set checkpoint
-        if (collision.CompareTag("Checkpoint"))
-        {
-            checkPointDeathSystem.SetCheckpoint();
-        }
-        
     }
     public void OnTriggerExit2D(Collider2D collision)
     {
@@ -56,6 +64,10 @@ public class MovingObjectsCollision : MonoBehaviour
             {
                 player.GetComponent<Player>().LeavingTheGround();
             }
+        }
+        else if(collision.CompareTag("Water") || collision.CompareTag("Metal"))
+        {
+            checkForElectric.Remove(collision.gameObject);
         }
     }
 }
