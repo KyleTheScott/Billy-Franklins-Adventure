@@ -11,6 +11,8 @@ public class GhostWallController : MonoBehaviour
     private float lowerWallSpirteAlpha = 100;
     [SerializeField]
     private float raiseWallSpirteAlpha = 255;
+    [SerializeField]
+    private bool LowerOnStart = false;
     public bool IsLowered => isLowered;
 
     // Start is called before the first frame update
@@ -18,6 +20,10 @@ public class GhostWallController : MonoBehaviour
     {
         boxCollider = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        if (LowerOnStart)
+        {
+            LowerGhostWall();
+        }
     }
 
     

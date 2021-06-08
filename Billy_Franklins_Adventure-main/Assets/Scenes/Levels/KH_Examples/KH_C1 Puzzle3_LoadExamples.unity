@@ -1007,6 +1007,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghost Wall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5741954430375760917, guid: d96327a73afc3714e8142ec5a2dcaf24, type: 3}
+      propertyPath: LowerOnStart
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5741954430375760918, guid: d96327a73afc3714e8142ec5a2dcaf24, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.025993347
@@ -1390,54 +1394,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fe4eb57506ff13448b0f2aa704b3e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSprite: {fileID: 0}
+  playerState: 5
   debugMode: 1
+  onGround: 0
   moveSpeed: 3
   moveObjectSpeed: 3
-  jumpForce: 5
-  forwardJumpForce: 10
   moveVelocity: 0
+  jumpGravity: 1
+  fallGravity: 5
+  groundGravity: 10
+  jumpForce: 5
+  lowJumpMultiplier: 2
+  fallMultiplier: 4
+  currentPlayerState: 0
+  fallFixTimer: 0
+  fallFixMax: 0.1
+  fallFixStayMax: 2
   shootCoolTime: 1
   hp: 10
   lightCharges: 2
   maxLightCharges: 2
   canShoot: 1
-  onGround: 0
-  falling: 0
-  playerSprite: {fileID: 0}
-  playerState: 5
-  inAirFriction: 0
-  onGroundFriction: 0
-  jumpGravity: 1
-  fallGravity: 5
-  groundGravity: 10
-  lowJumpMultiplier: 2
-  fallMultiplier: 4
   maxNumOfProjectile: 10
   projectilePrefab: {fileID: 7641674986506221482, guid: 02094ac19ba79724681d7b03d1031ad6, type: 3}
   listOfProjectile: []
   projectileSpawnDistance: 1
-  aimLineCollisionMask:
-    serializedVersion: 2
-    m_Bits: 768
-  tileLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
+  onLightChargesChanged:
+    m_PersistentCalls:
+      m_Calls: []
   ShootSound: 
   JumpSound: 
   angleBetween: 0
   lightning: {fileID: 0}
-  interactRadius: 1
-  interactLayer:
+  aimLineCollisionMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 768
   aimCone: {fileID: 2061197031}
-  onLightChargesChanged:
-    m_PersistentCalls:
-      m_Calls: []
   firstAiming: 1
   aimLineState: 0
   shootFixTimer: 0.5
-  movingObjectsCollision: {fileID: 0}
   currentMovingObject: {fileID: 0}
 --- !u!95 &1382287271
 Animator:
