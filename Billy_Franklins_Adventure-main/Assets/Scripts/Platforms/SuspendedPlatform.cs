@@ -27,13 +27,23 @@ public class SuspendedPlatform : MonoBehaviour
     private bool moving = false;
     private bool grounded = false;
 
+    private Player player;
+
+    [SerializeField] private bool playerTouching;
+
+    [SerializeField] private float fallFixTimer = 0;
+    [SerializeField] private float fallFixMax = .1f;
     
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         platformTimer = Random.Range(minTime, maxTime);
         platformRigidbody = gameObject.GetComponent<Rigidbody2D>();
+        player = GameObject.Find("Player").GetComponent<Player>();
+
     }
 
     // Update is called once per frame
@@ -42,6 +52,14 @@ public class SuspendedPlatform : MonoBehaviour
         if (!grounded)
         {
             MovePlatform();
+            if (playerTouching && moving)
+            {
+                if (fallFixTimer >= fallFixMax)
+                {
+                    player.SetFallFix();
+                }
+                fallFixTimer += Time.deltaTime;
+            }
         }
     }
 
@@ -49,7 +67,6 @@ public class SuspendedPlatform : MonoBehaviour
     public void SetGrounded()
     {
         grounded = true;
-
     }
 
     public void SetKinematic()
@@ -83,6 +100,7 @@ public class SuspendedPlatform : MonoBehaviour
         {
             if (platformTimer <= 0)
             {
+               
                 moveTimer = Random.Range(minMoveTime, maxMoveTime);
                 movementSpeed = Random.Range(minMoveSpeed, maxMoveSpeed);
                 moving = true;
@@ -92,5 +110,21 @@ public class SuspendedPlatform : MonoBehaviour
         }
     }
 
-  
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //If lantern collided with lightning...
+        if (collision.CompareTag("Player"))
+        {
+            playerTouching = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        //If lantern collided with lightning...
+        if (collision.CompareTag("Player"))
+        {
+            playerTouching = false;
+        }
+    }
 }

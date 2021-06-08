@@ -24,7 +24,7 @@ public class GlobalGameController : MonoBehaviour
     #endregion
 
     [SerializeField] int currentLitLanternNum = 0;
-    [SerializeField] private int maxLitLanternNum = 0;
+    [SerializeField] private int maxLitLanternNum = 3;
 
 
     [HideInInspector]
