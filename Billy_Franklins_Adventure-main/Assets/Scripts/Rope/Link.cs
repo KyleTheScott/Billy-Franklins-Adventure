@@ -2,6 +2,24 @@
 
 public class Link : MonoBehaviour
 {
+    [SerializeField] private SuspendedPlatform platform;
+
+    private void Awake()
+    {
+        Transform platformTransform = null;
+        platformTransform = transform.parent.Find("SuspendedPlatform");
+
+        if (platformTransform == null)
+        {
+            platformTransform = transform.parent.parent.Find("SuspendedPlatform");
+        }
+
+        if (platformTransform != null)
+        {
+            platform = platformTransform.gameObject.GetComponent<SuspendedPlatform>();
+        }
+    }
+
     public void OnTriggerEnter2D(Collider2D collision)
     { 
         //If rope is hit by lightning...
@@ -9,10 +27,10 @@ public class Link : MonoBehaviour
         {
             // I might cache this later but it is only happening the one time when it is hit
             // If I cache it then every link will have the platform // might be better
-            if (gameObject.transform.parent.name == "PlatformAndRope")
+            if (platform != null)
             {
-                Transform platform = transform.parent.Find("SuspendedPlatform");
-                platform.gameObject.GetComponent<SuspendedPlatform>().SetGrounded();
+                platform.SetGrounded();
+                platform.TurnOffConstraints();
             }
 
             //destroy rope link

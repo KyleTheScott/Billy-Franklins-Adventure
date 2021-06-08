@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,10 +9,13 @@ public class LevelLoadController : MonoBehaviour
     [SerializeField] private string next_scene_to_load_ = "";
     [SerializeField] private string prev_scene_to_destroy_ = "";
     [SerializeField] private GameObject next_scene_position_ = null;
+    [SerializeField] private int players_new_max_charge = 2;
     [Tooltip("Gizmo helper color, has no effect on code logic")]
     [SerializeField] private Vector4 gizmo_color_ = new Vector4(0, 1, 1, 0.75f);
     [Tooltip("Gizmo helper radius, has no effect on code logic")]
     [SerializeField] private float gizmo_radius_ = 0.4f;
+    [SerializeField] private GhostWallController ghostWall;
+                                
 
     private bool has_level_loaded_ = false;
     IEnumerator LoadNextLevel()
@@ -44,6 +48,7 @@ public class LevelLoadController : MonoBehaviour
         has_level_loaded_ = true;
     }
 
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -60,6 +65,11 @@ public class LevelLoadController : MonoBehaviour
             if (prev_scene_to_destroy_ != "")
             {
                 SceneManager.UnloadSceneAsync(prev_scene_to_destroy_);
+                if (ghostWall != null)
+                {
+                    ghostWall.RaiseGhostWall();
+                }
+
             }
         }
         else
