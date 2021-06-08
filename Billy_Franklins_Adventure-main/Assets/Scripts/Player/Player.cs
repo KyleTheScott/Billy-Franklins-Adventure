@@ -41,29 +41,27 @@ public class Player : MonoBehaviour
     }
 
     [SerializeField] private PlayerState playerState = PlayerState.WALKING;
-
-
-
     [SerializeField] bool debugMode = false;
 
     [Header("Movement")]
-    [SerializeField] private bool onGround = false;
-    private Vector3 lastPosition;
-    [SerializeField] private float moveSpeed = 4.0f;
-    [SerializeField] private float moveObjectSpeed = 3.0f;
-    [SerializeField] private float moveVelocity = 0;
+    [SerializeField] private bool onGround = false; // keeps track if player is  on ground
+    private Vector3 lastPosition; // used to store the players position each frame
+    [SerializeField] private float moveSpeed = 4.0f; // regular speed of the player
+    [SerializeField] private float moveObjectSpeed = 3.0f; // speed of the player moving while moving an object
+    [SerializeField] private float moveVelocity = 0; //
     
 
     //changes in gravity
-    [SerializeField] private float jumpGravity = 1f;
-    [SerializeField] private float fallGravity = 5f;
-    [SerializeField] private float groundGravity = 10f;
+    [SerializeField] private float jumpGravity = 1f; // gravity while jumping
+    [SerializeField] private float fallGravity = 5f; // gravity while falling
+    [SerializeField] private float groundGravity = 10f; // gravity while the player is walking on a surface tagged ground 
 
-    //[Range(1, 10)] [SerializeField] private float jumpVelocity = 2;
+    //variable for jump and fall from jump
     [SerializeField] private float jumpForce = 10f; //How strong does player jump
     [SerializeField] private float lowJumpMultiplier = 2f;
     [SerializeField] private float fallMultiplier = 4f;
 
+    //variables used for when player is on moving platforms to make the player fall and move with the platform
     [SerializeField] private PlayerState currentPlayerState;
     [SerializeField] private float fallFixTimer = 0;
     [SerializeField] private float fallFixMax = .1f;
@@ -93,7 +91,7 @@ public class Player : MonoBehaviour
     [SerializeField] private string JumpSound;
 
 
-
+    //variables to show lightning
     [SerializeField] private float angleBetween;
     [SerializeField] private Lightning lightning;
     private Vector2 lightningStartPos;
@@ -101,7 +99,7 @@ public class Player : MonoBehaviour
 
     [Header("Aiming")]
    AimLine aimLine = null; //player's aiming line
-   Camera mainCam = null;
+   Camera mainCam = null; // used for aiming
    Vector3 shootingLine = new Vector3(1, 0, 0); //Direction for loaded projectile
    Vector3 lastShootingLine = new Vector3(1, 0, 0);
    bool IsShootingLineInAngle = false;
@@ -118,9 +116,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] private AimLineState aimLineState = AimLineState.NOT_AIMED;
 
-    private bool mouseClick;
 
-    //public static bool visibleCursor;
+
+    //variable for aim line disappearing and appearing with mouse movement
+    private bool mouseClick;
     float timeLeft = 1;
     float visibleCursorTimer = .5f;
     float cursorPosition;
@@ -133,6 +132,7 @@ public class Player : MonoBehaviour
 
 
     [Header("Interact")]
+    //stores object the player is currently moving 
     [SerializeField] private GameObject currentMovingObject;
     //[SerializeField] float interactRadius = 5f;
     //[SerializeField] LayerMask interactLayer;
@@ -152,11 +152,12 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+
+        rb = GetComponent<Rigidbody2D>(); // player rigidbody
         //capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         //animator = GetComponentInChildren<Animator>();
 
-        //Create queue for projectile pool
+        //Create list for projectile pool
         listOfProjectile = new List<Projectile>();
         for (int i = 0; i < maxNumOfProjectile; ++i)
         {
@@ -168,19 +169,22 @@ public class Player : MonoBehaviour
             //Add to pool
             listOfProjectile.Add(projectile.GetComponent<Projectile>());
         }
-
+        //aiming
         mainCam = Camera.main;
+        aimLine = GetComponentInChildren<AimLine>();
+        aimLineState = AimLineState.NOT_AIMED;
+
+        // setting some generally player movement variables
         isFacingRight = true;
         playerState = PlayerState.JUMPING;
         transform.Rotate(0f, 180f, 0f);
 
-        aimLine = GetComponentInChildren<AimLine>();
-        aimLineState = AimLineState.NOT_AIMED;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //player input
         HandleInput();
 
         //if there are no charges left then player has died
@@ -200,23 +204,13 @@ public class Player : MonoBehaviour
                     rb.velocity = Vector2.zero;
                     rb.isKinematic = true;
                 }
-
-                //if (aimLineState == AimLineState.NOT_AIMED)
-                //{
-                //    if (fallFixTimer >= fallFixMax)
-                //    {
-                       
-                //    }
-                //    else
-                //    {
-                //        fallFixTimer += Time.deltaTime;
-                //    }
-                //}
                 break;
+            //the start of the jump
             case PlayerState.JUMP:
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 playerState = PlayerState.JUMPING;
                 break;
+            //in the air of the jump
             case PlayerState.JUMPING:
                 if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
                 {
@@ -228,13 +222,16 @@ public class Player : MonoBehaviour
                     playerState = PlayerState.JUMP_FALLING;
                 }
                 break;
+            //falling from a jump
             case PlayerState.JUMP_FALLING:
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier * 1) * Time.deltaTime;
                 rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                 break;
+            //falling but not from a jump
             case PlayerState.FALLING:
                 rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                 break;
+            //state for when player is on a moving platform
             case PlayerState.FALL_FIX:
                 if (fallFixTimer >= fallFixStayMax)
                 {
@@ -252,45 +249,20 @@ public class Player : MonoBehaviour
                 {
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                 }
-                else
-                {
-                    //if (Mathf.Abs(lastPosition.x - transform.position.x) > Mathf.Epsilon)
-                    //{
-                    //    //transform.position = lastPosition;
-                    //    playerState = PlayerState.IDLE;
-                    //    rb.isKinematic = true;
-                    //    currentPlayerState = playerState;
-                    //    fallFixTimer = 0;
-                    //    onGround = true;
-                    //}
-                }
                 break;
-            
             case PlayerState.WALKING:
                 rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
-                //if (aimLineState == AimLineState.NOT_AIMED)
-                //{
-                //    if (fallFixTimer >= fallFixMax)
-                //    {
-                //        currentPlayerState = playerState;
-                //        playerState = PlayerState.FALL_FIX;
-                //        rb.isKinematic = false;
-                //        fallFixTimer = 0;
-                //        onGround = false;
-                //    }
-                //    else
-                //    {
-                //        fallFixTimer += Time.deltaTime;
-                //    }
-                //}
                 break;
+            //walking moving object
             case PlayerState.MOVING_OBJECT:
                 rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                 break;
+            //stopped while moving an object
             case PlayerState.MOVING_OBJECT_IDLE:
                 rb.velocity = Vector2.zero;
                 rb.isKinematic = true;
                 break;
+            //these are used for when the object you are moving hits a wall
             case PlayerState.MOVING_OBJECT_LEFT:
                 rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                 break;
@@ -373,13 +345,16 @@ public class Player : MonoBehaviour
                     playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
                     playerState != PlayerState.MOVING_OBJECT_STOPPED_LEFT)
                 {
+                    /*hit an object to the right of the object that the player is moving.
+                     In this case it is ok to move left
+                     */
                     if (playerState == PlayerState.MOVING_OBJECT_STOPPED_RIGHT)
                     {
                         playerState = PlayerState.MOVING_OBJECT_LEFT;
                     }
-                   
-                    isFacingRight = false;
-                    transform.Rotate(0f, 180f, 0f);
+                    
+                    isFacingRight = false; // facing left
+                    transform.Rotate(0f, 180f, 0f); //rotate player and aiming to the left 
                     lastShootingLine.x = -1;
                 }
             }
@@ -394,6 +369,7 @@ public class Player : MonoBehaviour
             {
                 if (aimLineState == AimLineState.NOT_AIMED)
                 {
+                    //changes player speed depending if the player is walking or moving an object
                     if (playerState == PlayerState.MOVING_OBJECT)
                     {
                         moveVelocity = 0f - moveObjectSpeed;
@@ -404,16 +380,11 @@ public class Player : MonoBehaviour
                     }
                 }
             }
-
-            //falling = false;
-            //rb.constraints = RigidbodyConstraints2D.None;
-
-            //shouldJump = false;
-
-            //Change player's velocity
-            //only can move when not aiming
+            
+            
             if (playerState == PlayerState.IDLE || playerState == PlayerState.WALKING || playerState == PlayerState.FALL_FIX)
             {
+                //only can move when not aiming
                 if (aimLineState == AimLineState.NOT_AIMED)
                 {
                     if (playerState == PlayerState.FALL_FIX)
@@ -438,13 +409,16 @@ public class Player : MonoBehaviour
                     playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING && 
                     playerState != PlayerState.MOVING_OBJECT_STOPPED_RIGHT)
                 {
+                    /*hit an object to the left of the object that the player is moving.
+                     In this case it is ok to move right
+                     */
                     if (playerState == PlayerState.MOVING_OBJECT_STOPPED_LEFT)
                     {
                         playerState = PlayerState.MOVING_OBJECT_RIGHT;
                     }
                     
                     isFacingRight = true;
-                    transform.Rotate(0f, 180f, 0f);
+                    transform.Rotate(0f, 180f, 0f); //rotate player and aiming to the left
                     lastShootingLine.x = 1;
                 }
             }
@@ -459,6 +433,7 @@ public class Player : MonoBehaviour
             {
                 if (aimLineState == AimLineState.NOT_AIMED)
                 {
+                    //changes player speed depending if the player is walking or moving an object
                     if (playerState == PlayerState.MOVING_OBJECT)
                     {
                         moveVelocity = moveObjectSpeed;
@@ -473,6 +448,7 @@ public class Player : MonoBehaviour
             //rb.constraints = RigidbodyConstraints2D.None;
             if (playerState == PlayerState.IDLE || playerState == PlayerState.WALKING || playerState == PlayerState.FALL_FIX)
             {
+                //only can move when not aiming
                 if (aimLineState == AimLineState.NOT_AIMED)
                 {
                     if (playerState == PlayerState.FALL_FIX)
