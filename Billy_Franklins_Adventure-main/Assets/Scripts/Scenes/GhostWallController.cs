@@ -31,7 +31,7 @@ public class GhostWallController : MonoBehaviour
     {
         boxCollider.isTrigger = true;
         Color newColor = spriteRenderer.color;
-        newColor.a = lowerWallSpirteAlpha;
+        newColor.a = lowerWallSpirteAlpha / 255;
         spriteRenderer.color = newColor;
     }
 
@@ -39,7 +39,7 @@ public class GhostWallController : MonoBehaviour
     {
         boxCollider.isTrigger = false;
         Color newColor = spriteRenderer.color;
-        newColor.a = raiseWallSpirteAlpha;
+        newColor.a = raiseWallSpirteAlpha / 255;
         spriteRenderer.color = newColor;
     }
 }
