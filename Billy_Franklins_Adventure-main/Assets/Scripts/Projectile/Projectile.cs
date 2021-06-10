@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     Rigidbody2D rb; //Projectile's rigid body
     Camera mainCam = null;
 
-    public float speed = 5f; //projectile speed
+    public float speed = 20f; //projectile speed
 
     public Player owner = null; //Who owns this projectile?
 
