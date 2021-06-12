@@ -15,8 +15,8 @@ public class MovePlayerWithPlatform : MonoBehaviour
 
 
     private void Start()
-    { 
-        player = GameObject.Find("Player").GetComponent<Player>();
+    {
+        player = FindObjectOfType<Player>();
     }
 
     private void Update()

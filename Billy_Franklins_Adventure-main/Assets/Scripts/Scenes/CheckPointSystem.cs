@@ -16,4 +16,9 @@ public class CheckPointSystem : MonoBehaviour
         //if player dies then reload scene
         SceneManager.LoadScene(checkPoint, LoadSceneMode.Single);
     }
+
+    public void SetCheckPoint(string sceneName)
+    {
+        checkPoint = sceneName;
+    }
 }
