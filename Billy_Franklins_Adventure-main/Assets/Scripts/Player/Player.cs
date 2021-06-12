@@ -142,16 +142,12 @@ public class Player : MonoBehaviour
 
 
 
-    private void Awake()
-    {
-        //reference checkpoint + death system script 
-        checkPointDeathSystem = GameObject.Find("GlobalGameController").GetComponent<CheckPointSystem>();
-    }
-
 
     // Start is called before the first frame update
     void Start()
     {
+        //reference checkpoint + death system script 
+        checkPointDeathSystem = GameObject.Find("GlobalGameController").GetComponent<CheckPointSystem>();
 
         rb = GetComponent<Rigidbody2D>(); // player rigidbody
         //capsuleCollider2D = GetComponent<CapsuleCollider2D>();

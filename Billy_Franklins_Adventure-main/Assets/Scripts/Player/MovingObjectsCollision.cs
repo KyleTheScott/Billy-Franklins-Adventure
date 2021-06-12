@@ -9,11 +9,13 @@ public class MovingObjectsCollision : MonoBehaviour
     private CheckPointSystem checkPointSystem = null;
     public List<GameObject> checkForElectric = new List<GameObject>();
 
-    private void Awake()
+
+    private void Start()
     {
-        player = GameObject.Find("Player");
+        player = player = FindObjectOfType<Player>().gameObject;
         checkPointSystem = GameObject.Find("GlobalGameController").GetComponent<CheckPointSystem>();
     }
+
     private void Update()
     {
         if(checkForElectric.Count > 0)

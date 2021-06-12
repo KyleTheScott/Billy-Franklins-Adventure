@@ -149,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897674606}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.2, y: -0.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1596798624625240182}
@@ -270,7 +270,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 2c0e4e59d144d8e4e8c75dc0f2aa04c0, type: 3}
   - {fileID: 2800000, guid: 84ba4d84373b13a4380610dc92187909, type: 3}
   - {fileID: 2800000, guid: 179d5f64eb74acf41bd144304ac2871e, type: 3}
-  fps: 30
+  fps: 2
 --- !u!1 &1596798624511780769
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,7 +361,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596798624625240177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.5989227, y: -3.2513409, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1596798626382368133}
@@ -458,7 +458,7 @@ MonoBehaviour:
   lightning: {fileID: 1897674608}
   aimLineCollisionMask:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 17152
   aimCone: {fileID: 1596798625019719988}
   firstAiming: 1
   aimLineState: 0
@@ -809,4 +809,4 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -3596
+  m_InstanceId: -31012

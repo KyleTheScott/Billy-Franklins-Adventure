@@ -15,6 +15,7 @@ public class LevelLoadController : MonoBehaviour
     [Tooltip("Gizmo helper radius, has no effect on code logic")]
     [SerializeField] private float gizmo_radius_ = 0.4f;
     [SerializeField] private GhostWallController ghostWall;
+    [SerializeField] private bool RaiseWallOnTriggerEnter = true;
                                 
 
     private bool has_level_loaded_ = false;
@@ -45,6 +46,8 @@ public class LevelLoadController : MonoBehaviour
                 
         }
 
+        GlobalGameController.instance.GetComponent<CheckPointSystem>().SetCheckPoint(next_scene_to_load_);
+
         has_level_loaded_ = true;
     }
 
@@ -65,6 +68,11 @@ public class LevelLoadController : MonoBehaviour
             if (prev_scene_to_destroy_ != "")
             {
                 SceneManager.UnloadSceneAsync(prev_scene_to_destroy_);
+               
+            }
+
+            if (RaiseWallOnTriggerEnter)
+            {
                 if (ghostWall != null)
                 {
                     ghostWall.RaiseGhostWall();

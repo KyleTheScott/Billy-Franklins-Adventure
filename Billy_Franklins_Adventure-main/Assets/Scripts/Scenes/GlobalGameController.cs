@@ -30,16 +30,10 @@ public class GlobalGameController : MonoBehaviour
     [HideInInspector]
     public UnityEvent onAllLanternOn; //Invoke when all lantern is on, Lamp will subscribe this
 
-    // Start is called before the first frame update
-    void Start()
+    public void SetLanternAmount(int LanternNum, int CurrentLitLanternNum = 0)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        currentLitLanternNum = CurrentLitLanternNum;
+        maxLitLanternNum = LanternNum;
     }
 
     public void IncreaseCurrentLitLanternNum()
