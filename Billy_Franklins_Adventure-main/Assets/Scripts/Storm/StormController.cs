@@ -6,6 +6,24 @@ using Random = UnityEngine.Random;
 
 public class StormController : MonoBehaviour
 {
+    #region Singleton
+    public static StormController instance;
+
+    private void Awake()
+    {
+        //Make sure there is only one instance
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+    #endregion
+
     [SerializeField] private float stormTimerMin = 2;
     [SerializeField] private float stormTimerMax = 10;
     [SerializeField] private float currentStormTimerMax = 10;
@@ -14,15 +32,12 @@ public class StormController : MonoBehaviour
 
     [SerializeField] private float rainCounter = 10;
 
-    [SerializeField] private UnityEvent BlowWind;
-    [SerializeField] private UnityEvent CalmWind;
-    [SerializeField] private UnityEvent Rain;
-    [SerializeField] private UnityEvent CalmRain;
-    [SerializeField] private UnityEvent StrikeLightning;
-    [SerializeField] private UnityEvent CalmLightning;
+    
+    
+    
     
 
-    private enum StormState
+    public enum StormState
     {
         CALM,
         WIND,
@@ -31,7 +46,7 @@ public class StormController : MonoBehaviour
 
     [SerializeField] private StormState stormState = StormState.CALM;
 
-    private enum CalmState
+    public enum CalmState
     {
         NOT_CALM,
         CALM,
@@ -41,7 +56,7 @@ public class StormController : MonoBehaviour
     [SerializeField] private CalmState calmState = CalmState.NOT_CALM;
     [SerializeField] private CalmState lastCalmState = CalmState.NOT_CALM;
 
-    private enum WindState
+    public enum WindState
     {
         NO_WIND,
         WIND,
@@ -53,7 +68,7 @@ public class StormController : MonoBehaviour
     [SerializeField] private WindState windState = WindState.NO_WIND;
     [SerializeField] private WindState lastWindState = WindState.NO_WIND;
 
-    private enum RainState
+    public enum RainState
     {
         NO_RAIN,
         RAIN,
@@ -94,20 +109,20 @@ public class StormController : MonoBehaviour
         switch (stormState)
         {
             case StormState.CALM:
-                ChooseStormCalm();
+                DecideStormCalm();
             break;
             case StormState.WIND:
-                ChooseStormWind();
+                DecideStormWind();
             break;
             case StormState.RAIN:
-                ChooseStormRain();
+                DecideStormRain();
             break;
         }
     }
     //Deciding what storm state to switch to
     private void DecideStormCalm()
     {
-        switch (Random.Range(0, 4))
+        switch (Random.Range(0, 3))
         {
             case 0:
                 ChooseStormWind();
@@ -124,7 +139,7 @@ public class StormController : MonoBehaviour
     }
     private void DecideStormWind()
     {
-        switch (Random.Range(0, 4))
+        switch (Random.Range(0, 3))
         {
             case 0:
                 ChooseStormCalm();
@@ -141,7 +156,7 @@ public class StormController : MonoBehaviour
     }
     private void DecideStormRain()
     {
-        switch (Random.Range(0, 4))
+        switch (Random.Range(0, 3))
         {
             case 0:
                 ChooseStormCalm();
@@ -156,12 +171,6 @@ public class StormController : MonoBehaviour
                 break;
         }
     }
-    //BlowWind;
-    //CalmWind;
-    //Rain;
-    //CalmRain;
-    //StrikeLightning;
-    //CalmLightning;
 
     //choosing the subcategories
     private void ChooseStormCalm()
@@ -177,36 +186,36 @@ public class StormController : MonoBehaviour
                 {
                     if (calmState == CalmState.CALM_LIGHTNING)
                     {
-                        CalmLightning.Invoke();
+                        LightningController.instance.CalmLightning();
                     }
                     calmState = CalmState.CALM;
                 }
                 if (windState != WindState.NO_WIND)
                 {
                     windState = WindState.NO_WIND;
-                    CalmWind.Invoke();
+                    WindController.instance.CalmWind();
                 }
                 if (rainState != RainState.NO_RAIN)
                 {
                     rainState = RainState.NO_RAIN;
-                    CalmRain.Invoke();
+                    RainController.instance.CalmRain();
                 }
                 break;
             case 2:
                 if (calmState != CalmState.CALM_LIGHTNING)
                 {
                     calmState = CalmState.CALM_LIGHTNING;
-                    StrikeLightning.Invoke();
+                    LightningController.instance.CalmLightning();
                 }
                 if (windState != WindState.NO_WIND)
                 {
                     windState = WindState.NO_WIND;
-                    CalmWind.Invoke();
+                    WindController.instance.CalmWind();
                 }
                 if (rainState != RainState.NO_RAIN)
                 {
                     rainState = RainState.NO_RAIN;
-                    CalmRain.Invoke();
+                    RainController.instance.CalmRain();
                 }
                 break;
         }
@@ -221,18 +230,30 @@ public class StormController : MonoBehaviour
             case 1:
                 rainState = RainState.NO_RAIN;
                 windState = WindState.WIND;
+                WindController.instance.BlowWind();
+                RainController.instance.CalmRain();
+                LightningController.instance.CalmLightning();
                 break;
             case 2:
                 rainState = RainState.NO_RAIN;
                 windState = WindState.WIND_LIGHTNING;
+                WindController.instance.BlowWind();
+                RainController.instance.CalmRain();
+                LightningController.instance.StrikeLightning();
                 break;
             case 3:
                 rainState = RainState.RAIN;
                 windState = WindState.WIND_RAIN;
+                WindController.instance.BlowWind();
+                RainController.instance.Rain();
+                LightningController.instance.CalmLightning();
                 break;
             case 4:
                 rainState = RainState.RAIN_LIGHTNING;
                 windState = WindState.WIND_RAIN_LIGHTNING;
+                WindController.instance.BlowWind();
+                RainController.instance.Rain();
+                LightningController.instance.StrikeLightning();
                 break;
         }
     }
@@ -244,10 +265,19 @@ public class StormController : MonoBehaviour
         switch (rainState)
         {
             case RainState.NO_RAIN:
+                WindController.instance.CalmWind();
+                RainController.instance.CalmRain();
+                LightningController.instance.CalmLightning();
                 break;
             case RainState.RAIN:
+                WindController.instance.CalmWind();
+                RainController.instance.Rain();
+                LightningController.instance.CalmLightning();
                 break;
             case RainState.RAIN_LIGHTNING:
+                WindController.instance.CalmWind();
+                RainController.instance.Rain();
+                LightningController.instance.StrikeLightning();
                 break;
         }
     }
