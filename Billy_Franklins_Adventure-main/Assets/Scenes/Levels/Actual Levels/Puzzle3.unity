@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6271b323987ba4cb585b777c600fab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playersNewMaxCharge: 1
+  playersNewMaxCharge: 2
   lanternNum: 1
   lanternLitNum: 0
   playerSpawnPoint: {fileID: 25502439}
@@ -452,8 +452,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318193710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.17, y: 1.8, z: 0}
-  m_LocalScale: {x: 0.7614147, y: 0.7848797, z: 1}
+  m_LocalPosition: {x: 17.124, y: 2.712, z: 0}
+  m_LocalScale: {x: 1.2639683, y: 1.2688925, z: 1}
   m_Children: []
   m_Father: {fileID: 248013635}
   m_RootOrder: 1
@@ -1013,11 +1013,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6188749757494484353, guid: be730290d04e27f4a839b2040601189c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -68.34
+      value: -67.96
       objectReference: {fileID: 0}
     - target: {fileID: 6188749757494484353, guid: be730290d04e27f4a839b2040601189c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.52
+      value: 16.82
       objectReference: {fileID: 0}
     - target: {fileID: 6188749757494484353, guid: be730290d04e27f4a839b2040601189c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1041,7 +1041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6188749757494484353, guid: be730290d04e27f4a839b2040601189c, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6188749757494484353, guid: be730290d04e27f4a839b2040601189c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1065,6 +1065,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be730290d04e27f4a839b2040601189c, type: 3}
+--- !u!1 &1935389207 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2913337833860778920, guid: be730290d04e27f4a839b2040601189c, type: 3}
+  m_PrefabInstance: {fileID: 1935389206}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &5054981394054703724
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1251,7 +1256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lanternOnSprite: {fileID: 5860325458425312261, guid: 7edc62699895956478371e8c882314b1, type: 3}
   lanternOffSprite: {fileID: -4812822056404770797, guid: 7edc62699895956478371e8c882314b1, type: 3}
-  highlight: {fileID: 0}
+  highlight: {fileID: 1935389207}
   ghostWall: {fileID: 1693967864}
   onLampOn:
     m_PersistentCalls:

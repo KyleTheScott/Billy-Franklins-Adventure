@@ -705,6 +705,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be730290d04e27f4a839b2040601189c, type: 3}
+--- !u!1 &1624709097 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2913337833860778920, guid: be730290d04e27f4a839b2040601189c, type: 3}
+  m_PrefabInstance: {fileID: 1624709096}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2081275690
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,7 +1134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lanternOnSprite: {fileID: 5860325458425312261, guid: 7edc62699895956478371e8c882314b1, type: 3}
   lanternOffSprite: {fileID: -4812822056404770797, guid: 7edc62699895956478371e8c882314b1, type: 3}
-  highlight: {fileID: 0}
+  highlight: {fileID: 1624709097}
   ghostWall: {fileID: 5741954430888643258}
   onLampOn:
     m_PersistentCalls:
