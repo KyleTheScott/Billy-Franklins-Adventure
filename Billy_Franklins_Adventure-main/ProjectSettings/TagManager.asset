@@ -33,7 +33,7 @@ TagManager:
   - Platforms
   - Bucket
   - ObjectNonPlayer
-  - 
+  - Rain
   - 
   - 
   - 
@@ -78,6 +78,9 @@ TagManager:
     locked: 0
   - name: Aiming
     uniqueID: 2533448657
+    locked: 0
+  - name: Rain
+    uniqueID: 1008337049
     locked: 0
   - name: UI
     uniqueID: 1789967905
