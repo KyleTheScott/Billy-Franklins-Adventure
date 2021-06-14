@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-//using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering.UI;
@@ -187,6 +186,11 @@ public class Player : MonoBehaviour
         if (lightCharges == 0 && loadedProjectile == null)
         {
             checkPointDeathSystem.PlayerDeath();
+        }
+
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
         }
     }
 
