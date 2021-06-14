@@ -475,6 +475,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7584460514096828381}
     m_Modifications:
+    - target: {fileID: 1756185053, guid: 8ee0475aa74e6fb4484c462ff0612c2a, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 1994736630, guid: 8ee0475aa74e6fb4484c462ff0612c2a, type: 3}
       propertyPath: highlight
       value: 

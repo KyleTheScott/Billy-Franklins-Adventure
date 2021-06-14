@@ -120,7 +120,7 @@ MonoBehaviour:
   hook: {fileID: 5543400076774557429}
   linkPrefab: {fileID: 9188106869702952151, guid: dfd90ca272bd85b46b33f8f5a135d578, type: 3}
   weight: {fileID: 5991233504162916872}
-  links: 40
+  links: 20
   currentStartPosYOffset: 0.1
 --- !u!1 &1030071663
 GameObject:
@@ -299,7 +299,7 @@ MonoBehaviour:
   hook: {fileID: 7584460513993268172}
   linkPrefab: {fileID: 9188106869702952151, guid: dfd90ca272bd85b46b33f8f5a135d578, type: 3}
   weight: {fileID: 7584460514335225775}
-  links: 40
+  links: 20
   currentStartPosYOffset: 0.1
 --- !u!1 &3192714408797130822
 GameObject:
@@ -436,7 +436,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: -0.07999992}
-  m_ConnectedAnchor: {x: 0.067850016, y: 0.022967871}
+  m_ConnectedAnchor: {x: 0.06785005, y: 0.022967871}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -587,6 +587,7 @@ GameObject:
   - component: {fileID: 7584460513719926768}
   - component: {fileID: 7584460513719926769}
   - component: {fileID: 1472183501}
+  - component: {fileID: 896550236}
   m_Layer: 14
   m_Name: SuspendedPlatform
   m_TagString: Ground
@@ -726,6 +727,22 @@ MonoBehaviour:
   minMoveSpeed: 20
   maxMoveSpeed: 50
   movementSpeed: 20
+  playerTouching: 0
+  fallFixTimer: 0
+  fallFixMax: 0.1
+--- !u!114 &896550236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7584460513719926783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f97085130f60a41bcb51c68bfa1200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platform: {fileID: 1472183501}
 --- !u!1 &7584460513993268171
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,7 +1044,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.066003844, y: 0.017225835}
+  m_ConnectedAnchor: {x: -0.0660038, y: 0.017225835}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
