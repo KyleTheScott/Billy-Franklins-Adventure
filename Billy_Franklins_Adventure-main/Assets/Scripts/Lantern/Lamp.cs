@@ -86,7 +86,6 @@ public class Lamp : MonoBehaviour, IInteractable
             if (spriteRenderer.sprite == lanternOnSprite)
             {
                 spriteRenderer.sprite = lanternOffSprite;
-
                 if (light2D != null)
                 {
                     light2D.intensity = 0.0f;
