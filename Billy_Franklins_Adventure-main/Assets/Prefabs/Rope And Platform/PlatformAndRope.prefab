@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7584460513719926770}
   - component: {fileID: 7584460513719926768}
   - component: {fileID: 7584460513719926769}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,7 +364,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 434f875b76e7e0d42a756a0f0c373098, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -521,7 +521,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.074012786, y: 0.02937823}
+  m_ConnectedAnchor: {x: -0.05113612, y: 0.0029376228}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -541,12 +541,12 @@ GameObject:
   - component: {fileID: 7584460514356402069}
   - component: {fileID: 7584460514356402068}
   - component: {fileID: 7584460514356402064}
-  - component: {fileID: 7584460514356402067}
   - component: {fileID: 7584460514356402066}
   - component: {fileID: 7584460514356402065}
+  - component: {fileID: 1671949080}
   m_Layer: 14
   m_Name: SuspendedPlatform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -559,7 +559,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7584460514356402079}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.33, y: -4.42, z: 0}
+  m_LocalPosition: {x: 1.65, y: -4.357, z: 0}
   m_LocalScale: {x: 29.724604, y: 2.3827064, z: 1}
   m_Children:
   - {fileID: 7584460514627691395}
@@ -632,36 +632,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.05
-  m_Material: {fileID: 0}
+  m_GravityScale: 0.75
+  m_Material: {fileID: 6200000, guid: 97bcd318af5ec66429dfdfe588ccf5fc, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
---- !u!233 &7584460514356402067
-HingeJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7584460514356402079}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 7584460513719926768}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0.05, y: 0}
-  m_ConnectedAnchor: {x: -0.08602509, y: -0.063160755}
-  m_UseMotor: 0
-  m_Motor:
-    m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
-  m_UseLimits: 0
-  m_AngleLimits:
-    m_LowerAngle: 0
-    m_UpperAngle: 359
 --- !u!61 &7584460514356402066
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -707,6 +683,33 @@ MonoBehaviour:
   minMoveSpeed: 20
   maxMoveSpeed: 50
   movementSpeed: 20
+  playerTouching: 0
+  fallFixTimer: 0
+  fallFixMax: 0.1
+--- !u!233 &1671949080
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7584460514356402079}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 7584460513719926768}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0.075022005, y: 0.03181495}
+  m_ConnectedAnchor: {x: -0.08308174, y: 0.016540252}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 0
+  m_AngleLimits:
+    m_LowerAngle: 0
+    m_UpperAngle: 359
 --- !u!1 &7584460514627691394
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,6 +720,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7584460514627691395}
   - component: {fileID: 7584460514627691396}
+  - component: {fileID: 1906244646}
   m_Layer: 13
   m_Name: NonPlayerCollider
   m_TagString: Untagged
@@ -767,3 +771,16 @@ PolygonCollider2D:
       - {x: -0.07976631, y: 0.053417675}
       - {x: 0.021871332, y: 0.024933487}
       - {x: 0.07970837, y: -0.055703133}
+--- !u!114 &1906244646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7584460514627691394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 257db88c7f1b07b4885639198aafa810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  suspendedPlatform: {fileID: 7584460514356402065}
