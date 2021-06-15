@@ -141,8 +141,8 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: FMOD_BFA/BFA.fspro
-  sourceBankPath: FMOD_BFA\Build
+  sourceProjectPath: BFA_FMOD/BFA.fspro
+  sourceBankPath: BFA_FMOD\Build
   SourceBankPathUnformatted: 
   AutomaticEventLoading: 1
   BankLoadType: 0
@@ -161,8 +161,7 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks:
-  - Master
+  MasterBanks: []
   Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264
