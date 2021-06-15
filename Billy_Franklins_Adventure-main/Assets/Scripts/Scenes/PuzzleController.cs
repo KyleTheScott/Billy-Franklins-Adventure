@@ -49,7 +49,7 @@ public class PuzzleController : MonoBehaviour
         }
 
         GlobalGameController.instance.SetLanternAmount(lanternNum, lanternLitNum);
-        GlobalGameController.instance.GetComponent<CheckPointSystem>().SetCheckPoint(SceneManager.GetActiveScene().name);
+        //GlobalGameController.instance.GetComponent<CheckPointSystem>().SetCheckPoint(SceneManager.GetActiveScene().name);
     }
 
     private void LoadInPrefabs()

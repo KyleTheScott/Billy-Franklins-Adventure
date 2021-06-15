@@ -14,6 +14,7 @@ public class Lamp : MonoBehaviour, IInteractable
     [SerializeField] Sprite lanternOffSprite = null;
     [SerializeField] private GameObject highlight;
     [SerializeField] GhostWallController ghostWall;
+    [SerializeField] private Player player;
 
     [HideInInspector]
     public UnityEvent onLampOn; //Invoke when lamp is on, darkborder will subscribe this
@@ -28,8 +29,11 @@ public class Lamp : MonoBehaviour, IInteractable
         //Turn off cllider first, it will be available once all lantern on
         boxCollider.enabled = false;
 
+        player = GameObject.Find("Player(Clone)").GetComponent<Player>();
+
         //Subscribe this event
         GlobalGameController.instance.onAllLanternOn.AddListener(OnAllLanternOnCallback);
+        
     }
 
     //// Update is called once per frame
@@ -53,14 +57,12 @@ public class Lamp : MonoBehaviour, IInteractable
         highlight.SetActive(state);
     }
 
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //If lantern collided with lightning...
         if (collision.CompareTag("Lightning"))
         {
-            LanternToggle();
+            
 
             //Turn off collider
             if (boxCollider != null)
@@ -70,10 +72,13 @@ public class Lamp : MonoBehaviour, IInteractable
 
             if(onLampOn != null)
             {
+                
                 Debug.Log("Lamp on");
                 onLampOn.Invoke();
-                
+               
+                player.SetLampOn(true);
             }
+            LanternToggle();
         }
     }
 

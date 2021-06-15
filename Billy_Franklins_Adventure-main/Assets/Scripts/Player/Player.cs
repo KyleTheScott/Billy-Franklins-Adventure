@@ -96,6 +96,9 @@ public class Player : MonoBehaviour
     private Vector2 lightningStartPos;
     private Vector2 lightningTargetPos;
 
+    [SerializeField] private bool lampOn = false; 
+
+
     [Header("Aiming")]
    AimLine aimLine = null; //player's aiming line
    Camera mainCam = null; // used for aiming
@@ -137,7 +140,10 @@ public class Player : MonoBehaviour
     //[SerializeField] LayerMask interactLayer;
 
 
-
+    public void SetLampOn(bool state)
+    {
+        lampOn = state;
+    }
 
 
 
@@ -183,8 +189,9 @@ public class Player : MonoBehaviour
         HandleInput();
 
         //if there are no charges left then player has died
-        if (lightCharges == 0 && loadedProjectile == null)
+        if (lightCharges == 0 && loadedProjectile == null && !lampOn && canShoot)
         {
+            
             checkPointDeathSystem.PlayerDeath();
         }
 
