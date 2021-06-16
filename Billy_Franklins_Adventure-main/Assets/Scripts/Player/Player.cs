@@ -144,6 +144,21 @@ public class Player : MonoBehaviour
     //[SerializeField] LayerMask interactLayer;
 
 
+    private Canvas pauseMenuUI = null;
+
+    private void Awake()
+    {
+        try
+        {
+            pauseMenuUI = GameObject.FindObjectOfType<PauseMenu>().GetComponent<Canvas>();
+            pauseMenuUI.gameObject.SetActive(false);
+        }
+        catch
+        {
+            Debug.Log("Couldn't find pause menu UI...");
+        }
+    }
+
     public void SetLampOn(bool state)
     {
         lampOn = state;
@@ -199,11 +214,6 @@ public class Player : MonoBehaviour
         {
             
             checkPointDeathSystem.PlayerDeath();
-        }
-
-        if (Input.GetKey("escape"))
-        {
-            Application.Quit();
         }
     }
 
@@ -607,6 +617,16 @@ public class Player : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Q))
         {
             PlayerObjectInteractions.playerObjectIInstance.ToggleObjects();
+        }
+
+        //pause menu
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(pauseMenuUI != null)
+            {
+                pauseMenuUI.gameObject.SetActive(true);
+                //pauseMenuUI.GetComponent<PauseMenu>().PauseMenuCalled();
+            }
         }
     }
 
