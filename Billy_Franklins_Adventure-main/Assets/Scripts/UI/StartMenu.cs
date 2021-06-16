@@ -5,7 +5,7 @@ public class StartMenu : MonoBehaviour
 {
     private Canvas settingsUI = null;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         try
         {
