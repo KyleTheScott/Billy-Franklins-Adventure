@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartMenu : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
     private Canvas settingsUI = null;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -32,14 +33,13 @@ public class StartMenu : MonoBehaviour
         SceneManager.LoadScene("Puzzle1", LoadSceneMode.Single);
     }
 
-    //loads settings scene/UI (not sure yet)
     public void Settings()
     {
         //if there is settings UI then show it
         if (settingsUI != null)
         {
             settingsUI.gameObject.SetActive(true);
-            settingsUI.GetComponent<SettingsMenu>().StartMenuUICalled();
+            settingsUI.GetComponent<SettingsMenu>().SettingsUICalled();
         }
     }
 
@@ -49,7 +49,7 @@ public class StartMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void SettingsUICalled()
+    public void MainMenuUICalled()
     {
         settingsUI.gameObject.SetActive(false);
     }
