@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rb = null; //player's rigid body
     [SerializeField] private SpriteRenderer playerSprite;
     private Animator animator;
-    bool isFacingRight = false; //Is character facing right side? for Characte flip
+    [SerializeField] bool isFacingRight = true; //Is character facing right side? for Characte flip
     public enum PlayerState
     {
         IDLE,
@@ -44,8 +44,10 @@ public class Player : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private bool onGround = false; // keeps track if player is  on ground
+
     private Vector3 lastPosition; // used to store the players position each frame
     [SerializeField] private float moveSpeed = 4.0f; // regular speed of the player
+    [SerializeField] private float jumpMoveSpeed = 8.0f; // jump speed of the player
     [SerializeField] private float moveObjectSpeed = 3.0f; // speed of the player moving while moving an object
     [SerializeField] private float moveVelocity = 0; //
     
@@ -66,6 +68,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float fallFixMax = .1f;
     [SerializeField] private float fallFixStayMax = 2f;
     private bool fallFixSwitch = false;
+
+
 
     [Header("Shooting")]
     public float shootCoolTime = 0.5f; //Projectile shoot cool time
@@ -145,8 +149,10 @@ public class Player : MonoBehaviour
         lampOn = state;
     }
 
-
-
+    public PlayerState GetPlayerState()
+    {
+        return playerState;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -178,7 +184,7 @@ public class Player : MonoBehaviour
         // setting some generally player movement variables
         isFacingRight = true;
         playerState = PlayerState.JUMPING;
-        transform.Rotate(0f, 180f, 0f);
+        //transform.Rotate(0f, 180f, 0f);
 
     }
 
@@ -214,15 +220,32 @@ public class Player : MonoBehaviour
                 break;
             //the start of the jump
             case PlayerState.JUMP:
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                if (isFacingRight)
+                {
+                    rb.velocity = new Vector2(jumpMoveSpeed, jumpForce);
+                }
+                else
+                {
+                    rb.velocity = new Vector2(-jumpMoveSpeed, jumpForce);
+                }
+                //rb.velocity = jumpForce;
+                //rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier * 1) * Time.deltaTime;
+                //rb.velocity = new Vector2(jumpMoveSpeed, rb.velocity.y);
                 playerState = PlayerState.JUMPING;
                 break;
             //in the air of the jump
             case PlayerState.JUMPING:
-                if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+                if (rb.velocity.y > 0 /*&& !Input.GetButton("Jump")*/)
                 {
                     rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier * 1) * Time.deltaTime;
-                    rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+                    if (isFacingRight)
+                    {
+                        rb.velocity = new Vector2(jumpMoveSpeed, rb.velocity.y);
+                    }
+                    else
+                    {
+                        rb.velocity = new Vector2(-jumpMoveSpeed, rb.velocity.y);
+                    }
                 }
                 else
                 {
@@ -234,8 +257,9 @@ public class Player : MonoBehaviour
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier * 1) * Time.deltaTime;
                 rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                 break;
-            //falling but not from a jump
             case PlayerState.FALLING:
+                //falling but not from a jump
+
                 rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                 break;
             //state for when player is on a moving platform
@@ -381,6 +405,11 @@ public class Player : MonoBehaviour
                     {
                         moveVelocity = 0f - moveObjectSpeed;
                     }
+                    else if (playerState == PlayerState.JUMP || playerState == PlayerState.JUMPING ||
+                             playerState == PlayerState.JUMP_FALLING || playerState == PlayerState.FALLING)
+                    {
+                        moveVelocity = 0f - jumpMoveSpeed;
+                    }
                     else
                     {
                         moveVelocity = 0f - moveSpeed;
@@ -444,6 +473,11 @@ public class Player : MonoBehaviour
                     if (playerState == PlayerState.MOVING_OBJECT)
                     {
                         moveVelocity = moveObjectSpeed;
+                    }
+                    else if (playerState == PlayerState.JUMP || playerState == PlayerState.JUMPING ||
+                             playerState == PlayerState.JUMP_FALLING)
+                    {
+                        moveVelocity = jumpMoveSpeed;
                     }
                     else
                     {
@@ -514,7 +548,6 @@ public class Player : MonoBehaviour
 
                 if (onGround)
                 {
-                    Debug.Log("Jumping");
                     rb.isKinematic = false;
                     //SoundManager.instance.PLaySE(JumpSound);
                     //shouldJump = true;
