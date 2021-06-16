@@ -61,7 +61,6 @@ public class MovingObjectsCollision : MonoBehaviour
                     groundObjectsTouching.RemoveAt(i);
                 }
             }
-
             if (groundObjectsTouching.Count <= 0)
             {
                 player.GetComponent<Player>().LeavingTheGround();
