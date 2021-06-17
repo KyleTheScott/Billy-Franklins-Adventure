@@ -31,6 +31,7 @@ public class PuzzleController : MonoBehaviour
     private Player player;
     private Canvas settingsUI;
     private Canvas pauseMenuUI;
+    private CameraMovement camera;
 
     // Start is called before the first frame update
     void Start()
@@ -63,13 +64,17 @@ public class PuzzleController : MonoBehaviour
         if (player == null)
         {
             player = Instantiate(playerPrefab, playerSpawnPoint.position, playerPrefab.transform.rotation).GetComponent<Player>();
-            Instantiate(uiPrefab);
-            Instantiate(controllerPrefab);
-            Instantiate(globalLightPrefab);
-            Instantiate(cameraPrefab).GetComponent<CameraMovement>().playerTransform = player.transform;
+            DontDestroyOnLoad(player);
+            DontDestroyOnLoad(Instantiate(uiPrefab));
+            DontDestroyOnLoad(Instantiate(controllerPrefab));
+            DontDestroyOnLoad(Instantiate(globalLightPrefab));
+            camera = Instantiate(cameraPrefab).GetComponent<CameraMovement>();
+            camera.playerTransform = player.transform;
+            DontDestroyOnLoad(camera.gameObject);
             settingsUI = Instantiate(settingsUIPrefab).GetComponent<Canvas>();
             pauseMenuUI = Instantiate(pauseMenuUIPrefab).GetComponent<Canvas>();
-            
+            DontDestroyOnLoad(settingsUI);
+            DontDestroyOnLoad(pauseMenuUI);
             SetUIReferences();
         }
     }
