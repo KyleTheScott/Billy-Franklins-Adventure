@@ -65,7 +65,7 @@ public class LevelLoadController : MonoBehaviour
                 Debug.LogWarning(">>> Cannot load next scene!");
             }
 
-            if (prev_scene_to_destroy_ != "")
+            if (prev_scene_to_destroy_ != "" && SceneManager.GetSceneByName(prev_scene_to_destroy_).isLoaded)
             {
                 SceneManager.UnloadSceneAsync(prev_scene_to_destroy_);
                

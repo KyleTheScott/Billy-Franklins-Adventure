@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
+//comment to merge
 public class WindController : MonoBehaviour
 {
-    
     #region Singleton
     public static WindController instance;
 
