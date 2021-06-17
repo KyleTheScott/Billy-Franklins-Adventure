@@ -201,6 +201,16 @@ public class Player : MonoBehaviour
         playerState = PlayerState.JUMPING;
         transform.Rotate(0f, 180f, 0f);
 
+        try
+        {
+            pauseMenuUI = FindObjectOfType<PauseMenu>().GetComponent<Canvas>();
+            pauseMenuUI.gameObject.SetActive(false);
+        }
+        catch
+        {
+            Debug.Log("Couldn't find pause menu UI...");
+        }
+
     }
 
     // Update is called once per frame
