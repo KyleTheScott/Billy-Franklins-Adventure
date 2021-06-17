@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] private Player playerScript;
-
+    //[SerializeField] private bool hitHead = false; // keeps track if the player hit head
     //private bool offGround;
     //private float offGroundTimer = 0;
     //private float offGroundTimerMax = 0.5f;
@@ -29,11 +29,19 @@ public class PlayerCollision : MonoBehaviour
     //        offGroundTimer = 0;
     //    }
     //}
+
+    //public void SetHitHead(bool state)
+    //{
+    //    hitHead = state;
+    //}
+
     //collision for the player with ground
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        Player.PlayerState tempPlayerState = playerScript.GetPlayerState();
         if (collision.collider.CompareTag("Ground") && playerScript.GetFalling())
         {
+            //Debug.Log("On ground");
             playerScript.SetOnGround(true);
             //offGround = false;
         }

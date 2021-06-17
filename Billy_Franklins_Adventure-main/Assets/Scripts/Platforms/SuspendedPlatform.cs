@@ -109,7 +109,6 @@ public class SuspendedPlatform : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //If lantern collided with lightning...
         if (collision.CompareTag("Player"))
         {
             playerTouching = true;
@@ -118,7 +117,6 @@ public class SuspendedPlatform : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        //If lantern collided with lightning...
         if (collision.CompareTag("Player"))
         {
             playerTouching = false;
