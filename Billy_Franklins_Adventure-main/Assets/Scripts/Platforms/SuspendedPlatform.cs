@@ -52,7 +52,7 @@ public class SuspendedPlatform : MonoBehaviour
 
     [SerializeField] private PlatformWindState platformWindState = PlatformWindState.LIGHT;
 
-
+    //change
     // Start is called before the first frame update
     void Start()
     {
@@ -95,9 +95,9 @@ public class SuspendedPlatform : MonoBehaviour
         {
 
         }
-        //else if 
+        //else if
         //{
-            
+
         //}
     }
 
