@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     private Canvas settingsUI = null;
+    public string level = "Puzzle1";
 
     // Start is called before the first frame update
     private void Awake()
@@ -23,14 +24,14 @@ public class MainMenu : MonoBehaviour
     public void ContinueGame()
     {
         //temp until saving is implemented...
-        SceneManager.LoadScene("Puzzle1", LoadSceneMode.Single);
+        SceneManager.LoadScene(level, LoadSceneMode.Single);
     }
 
     //start/load puzzle1
     public void NewGame()
     {
         //might change later...
-        SceneManager.LoadScene("Puzzle1", LoadSceneMode.Single);
+        SceneManager.LoadScene(level, LoadSceneMode.Single);
     }
 
     public void Settings()
