@@ -23,4 +23,9 @@ public class CheckPointSystem : MonoBehaviour
     {
         checkPoint = sceneName;
     }
+
+    public string GetCheckPoint()
+    {
+        return checkPoint;
+    }
 }

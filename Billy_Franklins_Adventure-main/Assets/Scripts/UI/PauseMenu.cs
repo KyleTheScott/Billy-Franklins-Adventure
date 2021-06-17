@@ -3,20 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    private Canvas settingsUI = null;
-
-    // Start is called before the first frame update
-    private void Awake()
-    {
-        try
-        {
-            settingsUI = GameObject.Find("Settings UI").GetComponent<Canvas>();
-        }
-        catch
-        {
-            Debug.Log("Couldn't get settings UI...");
-        }
-    }
+    public Canvas settingsUI = null;
+    public CheckPointSystem checkPointSystem = null;
 
     public void ContinueGame()
     {
@@ -35,16 +23,22 @@ public class PauseMenu : MonoBehaviour
 
     public void ReloadCheckpoint()
     {
-        //where is checkpoint system located in scene (what object)?
+        SceneManager.LoadScene(checkPointSystem.GetCheckPoint(), LoadSceneMode.Single);
     }
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
     public void PauseMenuCalled()
     {
         Time.timeScale = 0;
+    }
+
+    public void SetSettingsUIReference(Canvas reference, CheckPointSystem check)
+    {
+        settingsUI = reference;
+        checkPointSystem = check;
     }
 }

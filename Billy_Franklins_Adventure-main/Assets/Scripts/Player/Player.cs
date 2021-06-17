@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rb = null; //player's rigid body
     [SerializeField] private SpriteRenderer playerSprite;
     private Animator animator;
-    [SerializeField] bool isFacingRight = true; //Is character facing right side? for Characte flip
+    [SerializeField] bool isFacingRight = false; //Is character facing right side? for Characte flip
     public enum PlayerState
     {
         IDLE,
@@ -144,6 +144,21 @@ public class Player : MonoBehaviour
     //[SerializeField] LayerMask interactLayer;
 
 
+    private Canvas pauseMenuUI = null;
+
+    private void Awake()
+    {
+        try
+        {
+            pauseMenuUI = GameObject.FindObjectOfType<PauseMenu>().GetComponent<Canvas>();
+            pauseMenuUI.gameObject.SetActive(false);
+        }
+        catch
+        {
+            Debug.Log("Couldn't find pause menu UI...");
+        }
+    }
+
     public void SetLampOn(bool state)
     {
         lampOn = state;
@@ -184,7 +199,7 @@ public class Player : MonoBehaviour
         // setting some generally player movement variables
         isFacingRight = true;
         playerState = PlayerState.JUMPING;
-        //transform.Rotate(0f, 180f, 0f);
+        transform.Rotate(0f, 180f, 0f);
 
     }
 
@@ -197,13 +212,7 @@ public class Player : MonoBehaviour
         //if there are no charges left then player has died
         if (lightCharges == 0 && loadedProjectile == null && !lampOn && canShoot)
         {
-            
             checkPointDeathSystem.PlayerDeath();
-        }
-
-        if (Input.GetKey("escape"))
-        {
-            Application.Quit();
         }
     }
 
@@ -240,11 +249,26 @@ public class Player : MonoBehaviour
                     rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier * 1) * Time.deltaTime;
                     if (isFacingRight)
                     {
-                        rb.velocity = new Vector2(jumpMoveSpeed, rb.velocity.y);
+                        if (moveVelocity != 0)
+                        {
+                            rb.velocity = new Vector2(jumpMoveSpeed, rb.velocity.y);
+                        }
+                        else
+                        {
+                            rb.velocity = new Vector2(0, rb.velocity.y);
+                        }
                     }
                     else
                     {
-                        rb.velocity = new Vector2(-jumpMoveSpeed, rb.velocity.y);
+                        if (moveVelocity != 0)
+                        {
+                            rb.velocity = new Vector2(-jumpMoveSpeed, rb.velocity.y);
+                        }
+                        else
+                        {
+                            rb.velocity = new Vector2(0, rb.velocity.y);
+                        }
+                        //rb.velocity = new Vector2(-jumpMoveSpeed, rb.velocity.y);
                     }
                 }
                 else
@@ -255,12 +279,26 @@ public class Player : MonoBehaviour
             //falling from a jump
             case PlayerState.JUMP_FALLING:
                 rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier * 1) * Time.deltaTime;
-                rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+                if (moveVelocity != 0)
+                {
+                    rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+                }
+                else
+                {
+                    rb.velocity = new Vector2(0, rb.velocity.y);
+                }
                 break;
             case PlayerState.FALLING:
                 //falling but not from a jump
 
-                rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+                if (moveVelocity != 0)
+                {
+                    rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+                }
+                else
+                {
+                    rb.velocity = new Vector2(0, rb.velocity.y);
+                }
                 break;
             //state for when player is on a moving platform
             case PlayerState.FALL_FIX:
@@ -278,6 +316,7 @@ public class Player : MonoBehaviour
 
                 if (currentPlayerState != PlayerState.IDLE)
                 {
+                    Debug.Log("FIX");
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                 }
                 break;
@@ -608,73 +647,83 @@ public class Player : MonoBehaviour
         {
             PlayerObjectInteractions.playerObjectIInstance.ToggleObjects();
         }
+
+        //pause menu
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(pauseMenuUI != null)
+            {
+                pauseMenuUI.gameObject.SetActive(true);
+                //pauseMenuUI.GetComponent<PauseMenu>().PauseMenuCalled();
+            }
+        }
     }
 
     private void MouseInputHandle()
     {
-        //checks mouse position
-        if (catchCursor)
-        {
-            catchCursor = false;
+        ////checks mouse position
+        //if (catchCursor)
+        //{
+        //    catchCursor = false;
 
-            cursorPosition = Input.GetAxis("Mouse X");
-        }
+        //    cursorPosition = Input.GetAxis("Mouse X");
+        //}
 
-        //checks if mouse is stopped
-        if (Input.GetAxis("Mouse X") == cursorPosition)
-        {
-            shootFixTimer = 0.5f;
-            //aiming but not touching mouse
-            if (aimLineState == AimLineState.AIMING)
-            {
-                timeLeft -= Time.deltaTime;
-                //if time runs out
-                if (timeLeft < 0)
-                {
-                    //not aiming anymore
-                    aimLineState = AimLineState.NOT_AIMED;
-                    UnloadProjectile();
-                    StopAiming();
-                    //mouseGlitchFix = false;
-                    timeLeft = visibleCursorTimer;
-                    //cursorSpriteRenderer.sprite = null;
-                    catchCursor = true;
-                    //visibleCursor = false;
-                }
-                else
-                {
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        //Debug.Log("Shoot");
-                        aimLineState = AimLineState.NOT_AIMED;
-                        if (loadedProjectile != null)
-                        {
-                            loadedProjectile.SetProjectileDirection(lastShootingLine);
-                            loadedProjectile.GetComponent<Collider2D>().enabled = true;
-                            StopAiming();
-                            lightning.SetStartPosition(lightningStartPos);
-                            lightning.SetTargetPosition(lightningTargetPos);
-                            lightning.SetShootLightning(true);
-                            //Can't shoot projectile continously
-                            canShoot = false;
-                            UseLightCharges();
-                            //Set projectile's parent to player
-                            //loadedProjectile.transform.SetParent(null);
-                            //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        ////checks if mouse is stopped
+        //if (Input.GetAxis("Mouse X") == cursorPosition)
+        //{
+        //    shootFixTimer = 0.5f;
+        //    //aiming but not touching mouse
+        //    if (aimLineState == AimLineState.AIMING)
+        //    {
+        //        timeLeft -= Time.deltaTime;
+        //        //if time runs out
+        //        if (timeLeft < 0)
+        //        {
+        //            //not aiming anymore
+        //            aimLineState = AimLineState.NOT_AIMED;
+        //            UnloadProjectile();
+        //            StopAiming();
+        //            //mouseGlitchFix = false;
+        //            timeLeft = visibleCursorTimer;
+        //            //cursorSpriteRenderer.sprite = null;
+        //            catchCursor = true;
+        //            //visibleCursor = false;
+        //        }
+        //        else
+        //        {
+        //            if (Input.GetMouseButtonDown(0))
+        //            {
+        //                //Debug.Log("Shoot");
+        //                aimLineState = AimLineState.NOT_AIMED;
+        //                if (loadedProjectile != null)
+        //                {
+        //                    loadedProjectile.SetProjectileDirection(lastShootingLine);
+        //                    loadedProjectile.GetComponent<Collider2D>().enabled = true;
+        //                    StopAiming();
+        //                    lightning.SetStartPosition(lightningStartPos);
+        //                    lightning.SetTargetPosition(lightningTargetPos);
+        //                    lightning.SetShootLightning(true);
+        //                    //Can't shoot projectile continously
+        //                    canShoot = false;
+        //                    UseLightCharges();
+        //                    //Set projectile's parent to player
+        //                    //loadedProjectile.transform.SetParent(null);
+        //                    //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
-                        }
-                    }
-                    else
-                    {
-                        Aiming();
-                    }
-                }
+        //                }
+        //            }
+        //            else
+        //            {
+        //                Aiming();
+        //            }
+        //        }
 
-            }
-        }
-        else
-        {
-            timeLeft = visibleCursorTimer;
+        //    }
+        //}
+        //else
+        //{
+            //timeLeft = visibleCursorTimer;
             if (aimLineState == AimLineState.NOT_AIMED)
             {
                 //if (!canShoot)
@@ -698,41 +747,44 @@ public class Player : MonoBehaviour
                     }
                     if (onGround)
                     {
-                        aimLineState = AimLineState.AIMING;
-                        //Get projectile from list
-                        if (listOfProjectile.Count != 0)
+                        if (Input.GetMouseButtonDown(0))
                         {
-
-                            loadedProjectile = listOfProjectile[listOfProjectile.Count - 1];
-                            if (listOfProjectile.Count > 10)
+                            aimLineState = AimLineState.AIMING;
+                            //Get projectile from list
+                            if (listOfProjectile.Count != 0)
                             {
-                                listOfProjectile.RemoveAt(0);
+
+                                loadedProjectile = listOfProjectile[listOfProjectile.Count - 1];
+                                if (listOfProjectile.Count > 10)
+                                {
+                                    listOfProjectile.RemoveAt(0);
+                                }
+
+                                //Activate projectile
+                                loadedProjectile.gameObject.SetActive(true);
+
+                                loadedProjectile.transform.position =
+                                    transform.position + (-transform.right * projectileSpawnDistance);
+
+                                loadedProjectile.GetComponent<Collider2D>().enabled = false;
+
+                                //Set projectile's parent to player
+                                //loadedProjectile.transform.SetParent(transform);
+                                //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+
+                                //Turn on aimcone
+                                aimCone.gameObject.SetActive(true);
+
+                                //SEt aim line
+                                aimLine.SetStartPoint(loadedProjectile.transform.position);
+                                aimLine.gameObject.SetActive(true);
                             }
-
-                            //Activate projectile
-                            loadedProjectile.gameObject.SetActive(true);
-
-                            loadedProjectile.transform.position =
-                                transform.position + (-transform.right * projectileSpawnDistance);
-
-                            loadedProjectile.GetComponent<Collider2D>().enabled = false;
-
-                            //Set projectile's parent to player
-                            //loadedProjectile.transform.SetParent(transform);
-                            //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-
-                            //Turn on aimcone
-                            aimCone.gameObject.SetActive(true);
-
-                            //SEt aim line
-                            aimLine.SetStartPoint(loadedProjectile.transform.position);
-                            aimLine.gameObject.SetActive(true);
                         }
                     }
                 }
 
                 //cursorSpriteRenderer.sprite = cursorSprite;
-                timeLeft = visibleCursorTimer;
+                //timeLeft = visibleCursorTimer;
                 //Cursor.visible = true;
                 //visibleCursor = true;
                 if (firstAiming)
@@ -769,10 +821,21 @@ public class Player : MonoBehaviour
                         }
                     }
                 }
+                else if (Input.GetMouseButtonDown(1))
+                {
+                    //not aiming anymore
+                    aimLineState = AimLineState.NOT_AIMED;
+                    UnloadProjectile();
+                    StopAiming();
+                    //mouseGlitchFix = false;
+                    //timeLeft = visibleCursorTimer;
+                    //cursorSpriteRenderer.sprite = null;
+                    //catchCursor = true;
+                    //visibleCursor = false;
+                }
                 else
                 {
                     Aiming();
-
                 }
             }
 
@@ -782,7 +845,7 @@ public class Player : MonoBehaviour
             //    loadedProjectile.SetProjectileDirection(lastShootingLine);
             //}
 
-        }
+        //}
 
         ////Left mouse down for spawn projectile
         //if (Input.GetMouseButtonDown(0))
@@ -1061,7 +1124,6 @@ public class Player : MonoBehaviour
 
     public bool GetFalling()
     {
-        
         if (playerState == PlayerState.FALLING || playerState == PlayerState.JUMP_FALLING)
         {
             return true;

@@ -2,20 +2,19 @@
 
 public class SettingsMenu : MonoBehaviour
 {
-    private Canvas mainMenuUI = null;
-    private Canvas pauseMenuUI = null;
+    public Canvas mainMenuUI = null;
+    public Canvas pauseMenuUI = null;
 
     // Start is called before the first frame update
     private void Awake()
     {
         try
         {
-            mainMenuUI = GameObject.Find("Main Menu UI").GetComponent<Canvas>();
-            pauseMenuUI = GameObject.Find("Pause Menu UI").GetComponent<Canvas>();
+            mainMenuUI = FindObjectOfType<MainMenu>().GetComponent<Canvas>();
         }
         catch
         {
-            Debug.Log("Couldn't get main menu/pause menu UI...");
+            Debug.Log("Couldn't get main menu UI...");
         }
     }
 
@@ -38,5 +37,11 @@ public class SettingsMenu : MonoBehaviour
         {
             pauseMenuUI.gameObject.SetActive(false);
         }
+    }
+
+    public void SetPauseMenuUIReference(Canvas reference)
+    {
+        pauseMenuUI = reference;
+
     }
 }

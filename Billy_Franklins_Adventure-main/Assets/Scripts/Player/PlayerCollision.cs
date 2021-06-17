@@ -36,9 +36,9 @@ public class PlayerCollision : MonoBehaviour
     //}
 
     //collision for the player with ground
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionStay2D(Collision2D collision)
     {
-        Player.PlayerState tempPlayerState = playerScript.GetPlayerState();
+        //Player.PlayerState tempPlayerState = playerScript.GetPlayerState();
         if (collision.collider.CompareTag("Ground") && playerScript.GetFalling())
         {
             //Debug.Log("On ground");

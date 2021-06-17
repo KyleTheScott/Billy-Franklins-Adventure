@@ -23,8 +23,14 @@ public class PuzzleController : MonoBehaviour
     [SerializeField]
     private GameObject uiPrefab;
     [SerializeField]
+    private GameObject settingsUIPrefab;
+    [SerializeField]
+    private GameObject pauseMenuUIPrefab;
+    [SerializeField]
     private GameObject cameraPrefab;
     private Player player;
+    private Canvas settingsUI;
+    private Canvas pauseMenuUI;
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +67,16 @@ public class PuzzleController : MonoBehaviour
             Instantiate(controllerPrefab);
             Instantiate(globalLightPrefab);
             Instantiate(cameraPrefab).GetComponent<CameraMovement>().playerTransform = player.transform;
+            settingsUI = Instantiate(settingsUIPrefab).GetComponent<Canvas>();
+            pauseMenuUI = Instantiate(pauseMenuUIPrefab).GetComponent<Canvas>();
+            
+            SetUIReferences();
         }
+    }
+
+    private void SetUIReferences()
+    {
+        settingsUI.GetComponent<SettingsMenu>().SetPauseMenuUIReference(pauseMenuUI);
+        pauseMenuUI.GetComponent<PauseMenu>().SetSettingsUIReference(settingsUI, FindObjectOfType<GlobalGameController>().GetComponent<CheckPointSystem>());
     }
 }
