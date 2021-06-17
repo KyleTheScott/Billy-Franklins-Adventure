@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO.MemoryMappedFiles;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,8 +16,15 @@ public class SuspendedPlatform : MonoBehaviour
     float moveTimer;
 
 
-    [SerializeField] private float minMoveSpeed = 20.0f;
-    [SerializeField] private float maxMoveSpeed = 50.0f;
+
+    [SerializeField] private float minUpMoveSpeedLight = 0.0f;
+    [SerializeField] private float maxUpMoveSpeedLight = 10.0f;
+    [SerializeField] private float minUpMoveSpeedMedium = 10.0f;
+    [SerializeField] private float maxUpMoveSpeedMedium = 30.0f;
+    [SerializeField] private float minUpMoveSpeedHeavy = 30.0f;
+    [SerializeField] private float maxUpMoveSpeedHeavy = 50.0f;
+
+
 
     [SerializeField] private float movementSpeed = 20.0f;
 
@@ -24,14 +32,25 @@ public class SuspendedPlatform : MonoBehaviour
     private bool moving = false;
     private bool grounded = false;
 
+    private bool upAndDownPlatform = true; 
+
     private Player player;
 
     [SerializeField] private bool playerTouching;
 
     [SerializeField] private float fallFixTimer = 0;
     [SerializeField] private float fallFixMax = .1f;
-    
 
+    [SerializeField] private bool windBlowingRight = false;
+
+    public enum PlatformWindState
+    {
+        LIGHT,
+        MEDIUM,
+        HEAVY
+    }
+
+    [SerializeField] private PlatformWindState platformWindState = PlatformWindState.LIGHT;
 
 
     // Start is called before the first frame update
@@ -40,7 +59,8 @@ public class SuspendedPlatform : MonoBehaviour
         platformTimer = Random.Range(minTime, maxTime);
         platformRigidbody = gameObject.GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player").GetComponent<Player>();
-
+        WindController.instance.BlowWindEvent.AddListener(BlowWindPlatform);
+        WindController.instance.CalmWindEvent.AddListener(CalmWindPlatform);
     }
 
     // Update is called once per frame
@@ -58,6 +78,32 @@ public class SuspendedPlatform : MonoBehaviour
                 fallFixTimer += Time.deltaTime;
             }
         }
+    }
+
+    public void BlowWindPlatform()
+    {
+        float blowSpeed = WindController.instance.GetWindSpeed();
+        if (blowSpeed > 0)
+        {
+            windBlowingRight = true;
+        }
+        else
+        {
+            windBlowingRight = false;
+        }
+        if (blowSpeed > -25 && blowSpeed < 27)
+        {
+
+        }
+        //else if 
+        //{
+            
+        //}
+    }
+
+    public void CalmWindPlatform()
+    {
+        float blowSpeed = WindController.instance.GetWindSpeed();
     }
 
     //set so object doesn't move once it is on the ground
@@ -99,7 +145,7 @@ public class SuspendedPlatform : MonoBehaviour
             {
                
                 moveTimer = Random.Range(minMoveTime, maxMoveTime);
-                movementSpeed = Random.Range(minMoveSpeed, maxMoveSpeed);
+                movementSpeed = Random.Range(minUpMoveSpeedHeavy, maxUpMoveSpeedHeavy);
                 moving = true;
             }
 

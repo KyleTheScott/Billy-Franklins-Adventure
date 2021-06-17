@@ -197,7 +197,6 @@ public class Player : MonoBehaviour
         //if there are no charges left then player has died
         if (lightCharges == 0 && loadedProjectile == null && !lampOn && canShoot)
         {
-            
             checkPointDeathSystem.PlayerDeath();
         }
 

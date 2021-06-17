@@ -105,9 +105,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00000023841858, y: -0.6485497}
+  m_Offset: {x: 0.00000023841858, y: -0.59084535}
   serializedVersion: 2
-  m_Radius: 0.3124982
+  m_Radius: 0.25479388
 --- !u!114 &407068640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,8 +167,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.020363092, y: -0.1333121}
-  m_Size: {x: 0.4901662, y: 1.0187438}
+  m_Offset: {x: 0.020363092, y: 0.1505757}
+  m_Size: {x: 0.4901662, y: 1.5865194}
   m_Direction: 0
 --- !u!114 &1651558284
 MonoBehaviour:
@@ -422,7 +422,7 @@ Transform:
   m_GameObject: {fileID: 1596798624625240177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.5989227, y: -3.2513409, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1596798626382368133}
   - {fileID: 1596798625019719988}
@@ -485,10 +485,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSprite: {fileID: 1596798626382368132}
+  isFacingRight: 1
   playerState: 3
   debugMode: 1
   onGround: 0
   moveSpeed: 4
+  jumpMoveSpeed: 8
   moveObjectSpeed: 2.5
   moveVelocity: 0
   jumpGravity: 1
@@ -835,7 +837,7 @@ SpriteRenderer:
   m_SortingLayerID: 1816281827
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e915e39517afaf34a803f8ba73b70229, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 929fc402d37df6d4697e4f552f86ad98, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -871,4 +873,4 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -53026
+  m_InstanceId: -204100

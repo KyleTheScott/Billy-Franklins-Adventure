@@ -32,11 +32,6 @@ public class StormController : MonoBehaviour
 
     [SerializeField] private float rainCounter = 10;
 
-    
-    
-    
-    
-
     public enum StormState
     {
         CALM,
