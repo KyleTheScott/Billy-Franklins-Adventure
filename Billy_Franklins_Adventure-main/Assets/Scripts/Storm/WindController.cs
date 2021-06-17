@@ -6,7 +6,6 @@ using Random = UnityEngine.Random;
 
 public class WindController : MonoBehaviour
 {
-    
     #region Singleton
     public static WindController instance;
 
