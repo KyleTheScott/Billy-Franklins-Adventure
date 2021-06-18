@@ -14,6 +14,7 @@ public class PuzzleController : MonoBehaviour
     private int lanternLitNum = 0;
     [SerializeField]
     private Transform playerSpawnPoint;
+    public Transform PlayerSpawnPoint => playerSpawnPoint;
     [SerializeField]
     private GameObject playerPrefab;
     [SerializeField]
