@@ -661,11 +661,12 @@ public class Player : MonoBehaviour
         //pause menu
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(pauseMenuUI != null)
-            {
-                pauseMenuUI.gameObject.SetActive(true);
-                //pauseMenuUI.GetComponent<PauseMenu>().PauseMenuCalled();
-            }
+            Application.Quit();
+            //if(pauseMenuUI != null)
+            //{
+            //    pauseMenuUI.gameObject.SetActive(true);
+            //    //pauseMenuUI.GetComponent<PauseMenu>().PauseMenuCalled();
+            //}
         }
     }
 
