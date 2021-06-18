@@ -15,7 +15,7 @@ public class CheckPointSystem : MonoBehaviour
     {
         Debug.Log("Died");
         //if player dies then reload scene
-        GameObject.Find("Player(Clone)").GetComponent<Player>().SetLampOn(false);
+        GameObject.FindObjectOfType<Player>().GetComponent<Player>().SetLampOn(false);
         SceneManager.LoadScene(checkPoint, LoadSceneMode.Single);
     }
 

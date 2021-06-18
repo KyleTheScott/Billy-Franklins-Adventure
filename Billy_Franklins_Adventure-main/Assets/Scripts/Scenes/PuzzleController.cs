@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[DefaultExecutionOrder(-100)]
+[DefaultExecutionOrder(-101)]
 public class PuzzleController : MonoBehaviour
 {
     [SerializeField]

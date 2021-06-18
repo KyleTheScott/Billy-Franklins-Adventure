@@ -47,7 +47,7 @@ public class LevelLoadController : MonoBehaviour
         }
 
         GlobalGameController.instance.GetComponent<CheckPointSystem>().SetCheckPoint(next_scene_to_load_);
-        GameObject.Find("Player(Clone)").GetComponent<Player>().SetLampOn(false);
+        GameObject.FindObjectOfType<Player>().GetComponent<Player>().SetLampOn(false);
         has_level_loaded_ = true;
     }
 
