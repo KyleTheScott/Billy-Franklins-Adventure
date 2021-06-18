@@ -28,7 +28,7 @@ public class StormController : MonoBehaviour
     [SerializeField] private float stormTimerMax = 10;
     [SerializeField] private float currentStormTimerMax = 10;
 
-    [SerializeField] private float stormTimer = 0;
+    [SerializeField] private float stormTimer = 2;
 
     [SerializeField] private float rainCounter = 10;
 
