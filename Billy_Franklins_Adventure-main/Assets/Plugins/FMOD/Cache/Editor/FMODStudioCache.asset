@@ -297,7 +297,7 @@ MonoBehaviour:
   - {fileID: 2638976318530003788}
   StringsBanks:
   - {fileID: 1396586631321502803}
-  stringsBankWriteTime: 637588654430000000
+  stringsBankWriteTime: 637595582877022006
   cacheVersion: 6
 --- !u!114 &721201738997086347
 MonoBehaviour:
@@ -360,7 +360,7 @@ MonoBehaviour:
   Path: FMOD_BFA/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637588654430000000
+  lastModified: 637595582877022006
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -450,7 +450,7 @@ MonoBehaviour:
   Path: FMOD_BFA/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637588660340000000
+  lastModified: 637595582877022006
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -539,13 +539,13 @@ MonoBehaviour:
   guid: 54b737a768b9fd40a9b50eb79af52da9
   Banks:
   - {fileID: 2638976318530003788}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 0
+  Length: 39285
 --- !u!114 &5476665263785542405
 MonoBehaviour:
   m_ObjectHideFlags: 0
