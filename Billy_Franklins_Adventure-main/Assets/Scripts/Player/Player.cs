@@ -8,7 +8,7 @@ using UnityEngine.Rendering.UI;
 [DefaultExecutionOrder(-100)] //ensure this script runs before all other player scripts to prevent laggy input
 public class Player : MonoBehaviour
 {
-
+    //to merge
     private CheckPointSystem checkPointDeathSystem = null;
 
 

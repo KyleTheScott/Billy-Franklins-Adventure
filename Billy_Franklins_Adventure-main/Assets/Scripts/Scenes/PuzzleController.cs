@@ -23,14 +23,14 @@ public class PuzzleController : MonoBehaviour
     [SerializeField]
     private GameObject uiPrefab;
     [SerializeField]
-    private GameObject settingsUIPrefab;
-    [SerializeField]
-    private GameObject pauseMenuUIPrefab;
-    [SerializeField]
+    //private GameObject settingsUIPrefab;
+    //[SerializeField]
+    //private GameObject pauseMenuUIPrefab;
+    //[SerializeField]
     private GameObject cameraPrefab;
     private Player player;
-    private Canvas settingsUI;
-    private Canvas pauseMenuUI;
+    //private Canvas settingsUI;
+    //private Canvas pauseMenuUI;
     private CameraMovement camera;
 
     // Start is called before the first frame update
@@ -71,17 +71,17 @@ public class PuzzleController : MonoBehaviour
             camera = Instantiate(cameraPrefab).GetComponent<CameraMovement>();
             camera.playerTransform = player.transform;
             DontDestroyOnLoad(camera.gameObject);
-            settingsUI = Instantiate(settingsUIPrefab).GetComponent<Canvas>();
-            pauseMenuUI = Instantiate(pauseMenuUIPrefab).GetComponent<Canvas>();
-            DontDestroyOnLoad(settingsUI);
-            DontDestroyOnLoad(pauseMenuUI);
-            SetUIReferences();
+            //settingsUI = Instantiate(settingsUIPrefab).GetComponent<Canvas>();
+            //pauseMenuUI = Instantiate(pauseMenuUIPrefab).GetComponent<Canvas>();
+            //DontDestroyOnLoad(settingsUI);
+            //DontDestroyOnLoad(pauseMenuUI);
+            //SetUIReferences();
         }
     }
 
-    private void SetUIReferences()
-    {
-        settingsUI.GetComponent<SettingsMenu>().SetPauseMenuUIReference(pauseMenuUI);
-        pauseMenuUI.GetComponent<PauseMenu>().SetSettingsUIReference(settingsUI, FindObjectOfType<GlobalGameController>().GetComponent<CheckPointSystem>());
-    }
+    //private void SetUIReferences()
+    //{
+    //    settingsUI.GetComponent<SettingsMenu>().SetPauseMenuUIReference(pauseMenuUI);
+    //    pauseMenuUI.GetComponent<PauseMenu>().SetSettingsUIReference(settingsUI, FindObjectOfType<GlobalGameController>().GetComponent<CheckPointSystem>());
+    //}
 }
