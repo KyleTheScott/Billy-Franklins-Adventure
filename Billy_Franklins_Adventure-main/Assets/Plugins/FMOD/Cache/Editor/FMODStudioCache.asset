@@ -23,6 +23,30 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 39664
+--- !u!114 &-8809370825516033626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player Sounds/Footsteps
+  m_EditorClassIdentifier: 
+  Path: event:/Player Sounds/Footsteps
+  guid: fd45b83b2838a241a274545b7a68aff4
+  Banks:
+  - {fileID: 2638976318530003788}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 8788391593164644274}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 560
 --- !u!114 &-7408973350077397846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,6 +68,29 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1132
   Exists: 1
+--- !u!114 &-6898449143701586598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player Sounds/Pushing-pulling objects
+  m_EditorClassIdentifier: 
+  Path: event:/Player Sounds/Pushing-pulling objects
+  guid: 11757f936e2f1c4aa5c3ccd1071bee81
+  Banks:
+  - {fileID: 2638976318530003788}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 700
 --- !u!114 &-6383259152747686789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +204,29 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1132
   Exists: 1
+--- !u!114 &-1264940631848142629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player Sounds/Being struck with lightning
+  m_EditorClassIdentifier: 
+  Path: event:/Player Sounds/Being struck with lightning
+  guid: 0769e76737874f4abb86010cc4e6cb83
+  Banks:
+  - {fileID: 2638976318530003788}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3700
 --- !u!114 &-1103636156428989809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,12 +362,16 @@ MonoBehaviour:
   - {fileID: 8266298011274923958}
   - {fileID: -9119610505624900135}
   - {fileID: -2828339791841463929}
+  - {fileID: -1264940631848142629}
+  - {fileID: -6898449143701586598}
+  - {fileID: 6941770205846224362}
+  - {fileID: -8809370825516033626}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2638976318530003788}
   StringsBanks:
   - {fileID: 1396586631321502803}
-  stringsBankWriteTime: 637595582877022006
+  stringsBankWriteTime: 637595643883826918
   cacheVersion: 6
 --- !u!114 &721201738997086347
 MonoBehaviour:
@@ -360,11 +434,11 @@ MonoBehaviour:
   Path: FMOD_BFA/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637595582877022006
+  lastModified: 637595643883826918
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1132
+    Value: 1410
   Exists: 1
 --- !u!114 &2046989270901168876
 MonoBehaviour:
@@ -450,7 +524,7 @@ MonoBehaviour:
   Path: FMOD_BFA/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637595582877022006
+  lastModified: 637595643883946944
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -545,7 +619,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 39285
+  Length: 6800
 --- !u!114 &5476665263785542405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,6 +708,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1250
+--- !u!114 &6941770205846224362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player Sounds/Kicking bucket over
+  m_EditorClassIdentifier: 
+  Path: event:/Player Sounds/Kicking bucket over
+  guid: 3c69b7a40f73534faea4c692d58a38f0
+  Banks:
+  - {fileID: 2638976318530003788}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2293
 --- !u!114 &7556040212682542607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,3 +800,23 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 5844
+--- !u!114 &8788391593164644274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps/Material
+  m_EditorClassIdentifier: 
+  Name: Material
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
