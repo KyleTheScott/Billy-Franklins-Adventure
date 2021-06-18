@@ -15,6 +15,7 @@ TagManager:
   - Ground
   - PlayerClose
   - Door
+  - LevelRoot
   layers:
   - Default
   - TransparentFX
@@ -52,6 +53,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Sky
+    uniqueID: 1775119093
+    locked: 0
+  - name: Buildings
+    uniqueID: 2431956425
+    locked: 0
   - name: Ground
     uniqueID: 2192783301
     locked: 0
@@ -70,9 +77,6 @@ TagManager:
   - name: Highlight
     uniqueID: 1492175765
     locked: 0
-  - name: Player
-    uniqueID: 1816281827
-    locked: 0
   - name: Rope
     uniqueID: 3385089411
     locked: 0
@@ -87,4 +91,16 @@ TagManager:
     locked: 0
   - name: Switch
     uniqueID: 3981006421
+    locked: 0
+  - name: Ghost wall
+    uniqueID: 3770920499
+    locked: 0
+  - name: Lamps
+    uniqueID: 679148413
+    locked: 0
+  - name: Lanterns
+    uniqueID: 2113548409
+    locked: 0
+  - name: Player
+    uniqueID: 1816281827
     locked: 0
