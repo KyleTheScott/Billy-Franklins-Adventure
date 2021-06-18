@@ -1,74 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9119610505624900135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambient Sounds/Wind
-  m_EditorClassIdentifier: 
-  Path: event:/Ambient Sounds/Wind
-  guid: cd4aa5ab84157242ac1e4a840dec327a
-  Banks:
-  - {fileID: 2638976318530003788}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 39664
---- !u!114 &-8809370825516033626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Player Sounds/Footsteps
-  m_EditorClassIdentifier: 
-  Path: event:/Player Sounds/Footsteps
-  guid: fd45b83b2838a241a274545b7a68aff4
-  Banks:
-  - {fileID: 2638976318530003788}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters:
-  - {fileID: 8788391593164644274}
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 560
---- !u!114 &-7408973350077397846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: FMOD_BFA/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 637582664754338246
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 1132
-  Exists: 1
---- !u!114 &-6898449143701586598
+--- !u!114 &-8502477056015462058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -83,7 +15,7 @@ MonoBehaviour:
   Path: event:/Player Sounds/Pushing-pulling objects
   guid: 11757f936e2f1c4aa5c3ccd1071bee81
   Banks:
-  - {fileID: 2638976318530003788}
+  - {fileID: -1303060756765515916}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -91,254 +23,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 700
---- !u!114 &-6383259152747686789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Game Sounds/Gate Opening_Lift Operating
-  m_EditorClassIdentifier: 
-  Path: event:/Game Sounds/Gate Opening_Lift Operating
-  guid: 952d92d06a8f604798e20c89d353d4dc
-  Banks:
-  - {fileID: 2638976318530003788}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 8426
---- !u!114 &-6276031076670908871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Game Sounds/Electric Lantern Hum
-  m_EditorClassIdentifier: 
-  Path: event:/Game Sounds/Electric Lantern Hum
-  guid: aa86447067dc3e4088b61650a6e7ee50
-  Banks:
-  - {fileID: -263672423465232823}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 5844
---- !u!114 &-4966470493805813669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambient Sounds/Wind
-  m_EditorClassIdentifier: 
-  Path: event:/Ambient Sounds/Wind
-  guid: cd4aa5ab84157242ac1e4a840dec327a
-  Banks:
-  - {fileID: -263672423465232823}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 39664
---- !u!114 &-2828339791841463929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambient Sounds/Ghostly Sounds
-  m_EditorClassIdentifier: 
-  Path: event:/Ambient Sounds/Ghostly Sounds
-  guid: d7efddefb20e8d4aa147b723beeb9cc2
-  Banks:
-  - {fileID: 2638976318530003788}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 46080
---- !u!114 &-2081706495809753270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../../../BFA/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 637580050030000000
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 1132
-  Exists: 1
---- !u!114 &-1264940631848142629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Player Sounds/Being struck with lightning
-  m_EditorClassIdentifier: 
-  Path: event:/Player Sounds/Being struck with lightning
-  guid: 0769e76737874f4abb86010cc4e6cb83
-  Banks:
-  - {fileID: 2638976318530003788}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 3700
---- !u!114 &-1103636156428989809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Game Sounds/Burning Rope
-  m_EditorClassIdentifier: 
-  Path: event:/Game Sounds/Burning Rope
-  guid: 7792d13ca955c84ca291b054abe9bb34
-  Banks:
-  - {fileID: -263672423465232823}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1250
---- !u!114 &-932674856335652291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambient Sounds/Rain
-  m_EditorClassIdentifier: 
-  Path: event:/Ambient Sounds/Rain
-  guid: 4d8fb94da5222e47ab07c0259c5612a0
-  Banks:
-  - {fileID: -263672423465232823}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 39664
---- !u!114 &-629355932888586041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Player Sounds/Pushing-pulling objects
-  m_EditorClassIdentifier: 
-  Path: event:/Player Sounds/Pushing-pulling objects
-  guid: 11757f936e2f1c4aa5c3ccd1071bee81
-  Banks:
-  - {fileID: 2638976318530003788}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 700
---- !u!114 &-391424069902574765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambient Sounds/Wind
-  m_EditorClassIdentifier: 
-  Path: event:/Ambient Sounds/Wind
-  guid: cd4aa5ab84157242ac1e4a840dec327a
-  Banks:
-  - {fileID: 5476665263785542405}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 39664
---- !u!114 &-263672423465232823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../../../BFA/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 637580050030000000
-  LoadResult: 0
-  FileSizes: []
-  Exists: 1
---- !u!114 &-14679266328151039
+--- !u!114 &-6254840801489658254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -353,7 +38,7 @@ MonoBehaviour:
   Path: event:/Ambient Sounds/Rustling Leaves
   guid: 248873a9ebe7144e9b428e4ef6ec3a53
   Banks:
-  - {fileID: 5476665263785542405}
+  - {fileID: -1303060756765515916}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -361,91 +46,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 39664
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: 1396586631321502803}
-  - {fileID: 2638976318530003788}
-  EditorEvents:
-  - {fileID: 3100913553507766209}
-  - {fileID: 2046989270901168876}
-  - {fileID: 5236278934208485145}
-  - {fileID: 3533066677428072374}
-  - {fileID: -6383259152747686789}
-  - {fileID: 8266298011274923958}
-  - {fileID: -9119610505624900135}
-  - {fileID: -2828339791841463929}
-
-  - {fileID: 7089823851224279163}
-  - {fileID: -629355932888586041}
-  - {fileID: 2356534354248574129}
-  - {fileID: 926379334729025346}
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: 2638976318530003788}
-  StringsBanks:
-  - {fileID: 1396586631321502803}
-
-  stringsBankWriteTime: 637595605378516247
-
-  cacheVersion: 6
---- !u!114 &721201738997086347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Game Sounds/Gate Opening_Lift Operating
-  m_EditorClassIdentifier: 
-  Path: event:/Game Sounds/Gate Opening_Lift Operating
-  guid: 952d92d06a8f604798e20c89d353d4dc
-  Banks:
-  - {fileID: -263672423465232823}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 8426
---- !u!114 &809814186459838583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambient Sounds/Ghostly Sounds
-  m_EditorClassIdentifier: 
-  Path: event:/Ambient Sounds/Ghostly Sounds
-  guid: d7efddefb20e8d4aa147b723beeb9cc2
-  Banks:
-  - {fileID: -263672423465232823}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 46080
---- !u!114 &926379334729025346
+--- !u!114 &-5534819485253609462
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -460,106 +61,16 @@ MonoBehaviour:
   Path: event:/Player Sounds/Footsteps
   guid: fd45b83b2838a241a274545b7a68aff4
   Banks:
-  - {fileID: 2638976318530003788}
+  - {fileID: -1303060756765515916}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 8321777348996769579}
+  - {fileID: 6835715765845425990}
   MinDistance: 0
   MaxDistance: 0
   Length: 560
---- !u!114 &1396586631321502803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: FMOD_BFA/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 637595605378516247
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 1410
-  Exists: 1
---- !u!114 &2046989270901168876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambient Sounds/Rain
-  m_EditorClassIdentifier: 
-  Path: event:/Ambient Sounds/Rain
-  guid: 4d8fb94da5222e47ab07c0259c5612a0
-  Banks:
-  - {fileID: 2638976318530003788}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 39664
---- !u!114 &2179494109407451167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambient Sounds/Rustling Leaves
-  m_EditorClassIdentifier: 
-  Path: event:/Ambient Sounds/Rustling Leaves
-  guid: 248873a9ebe7144e9b428e4ef6ec3a53
-  Banks:
-  - {fileID: -263672423465232823}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 39664
---- !u!114 &2207582157802512430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Game Sounds/Electric Lantern Hum
-  m_EditorClassIdentifier: 
-  Path: event:/Game Sounds/Electric Lantern Hum
-  guid: aa86447067dc3e4088b61650a6e7ee50
-  Banks:
-  - {fileID: 5476665263785542405}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 5844
---- !u!114 &2356534354248574129
+--- !u!114 &-3666464264890424566
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -574,7 +85,7 @@ MonoBehaviour:
   Path: event:/Player Sounds/Kicking bucket over
   guid: 3c69b7a40f73534faea4c692d58a38f0
   Banks:
-  - {fileID: 2638976318530003788}
+  - {fileID: -1303060756765515916}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -582,26 +93,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2293
---- !u!114 &2638976318530003788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: FMOD_BFA/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 637595605378496260
-  LoadResult: 0
-  FileSizes: []
-  Exists: 1
---- !u!114 &3100913553507766209
+--- !u!114 &-3327688465008016605
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -611,12 +103,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambient Sounds/Rustling Leaves
+  m_Name: event:/Ambient Sounds/Wind
   m_EditorClassIdentifier: 
-  Path: event:/Ambient Sounds/Rustling Leaves
-  guid: 248873a9ebe7144e9b428e4ef6ec3a53
+  Path: event:/Ambient Sounds/Wind
+  guid: cd4aa5ab84157242ac1e4a840dec327a
   Banks:
-  - {fileID: 2638976318530003788}
+  - {fileID: -1303060756765515916}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -624,7 +116,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 39664
---- !u!114 &3533066677428072374
+--- !u!114 &-2324509438181313720
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -633,44 +125,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Game Sounds/Burning Rope
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
   m_EditorClassIdentifier: 
-  Path: event:/Game Sounds/Burning Rope
-  guid: 7792d13ca955c84ca291b054abe9bb34
-  Banks:
-  - {fileID: 2638976318530003788}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1250
---- !u!114 &4179583979902079745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Game Sounds/Gate Opening_Lift Operating
-  m_EditorClassIdentifier: 
-  Path: event:/Game Sounds/Gate Opening_Lift Operating
-  guid: 952d92d06a8f604798e20c89d353d4dc
-  Banks:
-  - {fileID: 5476665263785542405}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 8426
---- !u!114 &5236278934208485145
+  Path: FMOD_BFA/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637596182169773578
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1410
+  Exists: 1
+--- !u!114 &-1768715393791583002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -685,7 +152,7 @@ MonoBehaviour:
   Path: event:/Ambient Sounds/Thunder
   guid: 54b737a768b9fd40a9b50eb79af52da9
   Banks:
-  - {fileID: 2638976318530003788}
+  - {fileID: -1303060756765515916}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -693,7 +160,27 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 6800
---- !u!114 &5476665263785542405
+--- !u!114 &-1583373113539552215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps/Material
+  m_EditorClassIdentifier: 
+  Name: Material
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
+--- !u!114 &-1303060756765515916
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -708,80 +195,11 @@ MonoBehaviour:
   Path: FMOD_BFA/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637582664754328488
+  lastModified: 637596182169652041
   LoadResult: 0
   FileSizes: []
   Exists: 1
---- !u!114 &5492465304401095691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambient Sounds/Thunder
-  m_EditorClassIdentifier: 
-  Path: event:/Ambient Sounds/Thunder
-  guid: 54b737a768b9fd40a9b50eb79af52da9
-  Banks:
-  - {fileID: 5476665263785542405}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 0
---- !u!114 &5561340264383543649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambient Sounds/Thunder
-  m_EditorClassIdentifier: 
-  Path: event:/Ambient Sounds/Thunder
-  guid: 54b737a768b9fd40a9b50eb79af52da9
-  Banks:
-  - {fileID: -263672423465232823}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 0
---- !u!114 &5887979171303283712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Game Sounds/Burning Rope
-  m_EditorClassIdentifier: 
-  Path: event:/Game Sounds/Burning Rope
-  guid: 7792d13ca955c84ca291b054abe9bb34
-  Banks:
-  - {fileID: 5476665263785542405}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1250
---- !u!114 &7089823851224279163
+--- !u!114 &-1203568926995389976
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -796,7 +214,7 @@ MonoBehaviour:
   Path: event:/Player Sounds/Being struck with lightning
   guid: 0769e76737874f4abb86010cc4e6cb83
   Banks:
-  - {fileID: 2638976318530003788}
+  - {fileID: -1303060756765515916}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -804,7 +222,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3700
---- !u!114 &7556040212682542607
+--- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -813,44 +231,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambient Sounds/Ghostly Sounds
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
-  Path: event:/Ambient Sounds/Ghostly Sounds
-  guid: d7efddefb20e8d4aa147b723beeb9cc2
-  Banks:
-  - {fileID: 5476665263785542405}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 46080
---- !u!114 &7725116525774888524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambient Sounds/Rain
-  m_EditorClassIdentifier: 
-  Path: event:/Ambient Sounds/Rain
-  guid: 4d8fb94da5222e47ab07c0259c5612a0
-  Banks:
-  - {fileID: 5476665263785542405}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 39664
---- !u!114 &8266298011274923958
+  EditorBanks:
+  - {fileID: -2324509438181313720}
+  - {fileID: -1303060756765515916}
+  EditorEvents:
+  - {fileID: -1203568926995389976}
+  - {fileID: -8502477056015462058}
+  - {fileID: -6254840801489658254}
+  - {fileID: -3666464264890424566}
+  - {fileID: 3782770812359482790}
+  - {fileID: -1768715393791583002}
+  - {fileID: 3576161972438783647}
+  - {fileID: 6760406208906560042}
+  - {fileID: 2808900780106768118}
+  - {fileID: -3327688465008016605}
+  - {fileID: 3303417818400924637}
+  - {fileID: -5534819485253609462}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: -1303060756765515916}
+  StringsBanks:
+  - {fileID: -2324509438181313720}
+  stringsBankWriteTime: 637596182169773578
+  cacheVersion: 6
+--- !u!114 &2808900780106768118
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -865,7 +272,7 @@ MonoBehaviour:
   Path: event:/Game Sounds/Electric Lantern Hum
   guid: aa86447067dc3e4088b61650a6e7ee50
   Banks:
-  - {fileID: 2638976318530003788}
+  - {fileID: -1303060756765515916}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -873,7 +280,99 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 5844
---- !u!114 &8321777348996769579
+--- !u!114 &3303417818400924637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambient Sounds/Ghostly Sounds
+  m_EditorClassIdentifier: 
+  Path: event:/Ambient Sounds/Ghostly Sounds
+  guid: d7efddefb20e8d4aa147b723beeb9cc2
+  Banks:
+  - {fileID: -1303060756765515916}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 46080
+--- !u!114 &3576161972438783647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Game Sounds/Burning Rope
+  m_EditorClassIdentifier: 
+  Path: event:/Game Sounds/Burning Rope
+  guid: 7792d13ca955c84ca291b054abe9bb34
+  Banks:
+  - {fileID: -1303060756765515916}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1250
+--- !u!114 &3782770812359482790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambient Sounds/Rain
+  m_EditorClassIdentifier: 
+  Path: event:/Ambient Sounds/Rain
+  guid: 4d8fb94da5222e47ab07c0259c5612a0
+  Banks:
+  - {fileID: -1303060756765515916}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 39664
+--- !u!114 &6760406208906560042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Game Sounds/Gate Opening_Lift Operating
+  m_EditorClassIdentifier: 
+  Path: event:/Game Sounds/Gate Opening_Lift Operating
+  guid: 952d92d06a8f604798e20c89d353d4dc
+  Banks:
+  - {fileID: -1303060756765515916}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 8426
+--- !u!114 &6835715765845425990
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

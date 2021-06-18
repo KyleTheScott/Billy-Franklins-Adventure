@@ -3,29 +3,48 @@ using UnityEngine.SceneManagement;
 
 public class CheckPointSystem : MonoBehaviour
 {
-    public string checkPoint = "";
+    public string checkPointScene = "";
+    private bool playerDied;
 
     private void Awake()
     {
         //set checkpoint once next level is loaded
-        checkPoint = SceneManager.GetActiveScene().name;
+        checkPointScene = SceneManager.GetActiveScene().name;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    public void Start()
+    {
     }
 
     public void PlayerDeath()
     {
         Debug.Log("Died");
         //if player dies then reload scene
-        GameObject.Find("Player(Clone)").GetComponent<Player>().SetLampOn(false);
-        SceneManager.LoadScene(checkPoint, LoadSceneMode.Single);
+        Player player = GameObject.Find("Player(Clone)").GetComponent<Player>();
+        player.SetLampOn(false);
+        playerDied = true;
+        SceneManager.LoadScene(checkPointScene, LoadSceneMode.Single);
     }
 
     public void SetCheckPoint(string sceneName)
     {
-        checkPoint = sceneName;
+        checkPointScene = sceneName;
     }
 
     public string GetCheckPoint()
     {
-        return checkPoint;
+        return checkPointScene;
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("SceneLoaded");
+        if (playerDied)
+        {
+            FindObjectOfType<Player>().transform.position = FindObjectOfType<PuzzleController>().PlayerSpawnPoint.position;
+            playerDied = false;
+
+        }
     }
 }

@@ -20,25 +20,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu/MainMenu.unity
     guid: 4b75c5183679d084abafbc81de317085
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levels/Actual Levels/Puzzle1.unity
     guid: 2cbb6a283f79878498c85f88db7b4388
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levels/Actual Levels/Puzzle2.unity
     guid: c6e14d889b97ed24ca60e2cb5fec2372
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levels/Actual Levels/Puzzle3.unity
     guid: 01a6d9b696644664ba92bf47f39676ac
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levels/Actual Levels/Puzzle4.unity
     guid: c4d816b573d795e48a3e154a2eb17355
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levels/Actual Levels/Puzzle5.unity
     guid: cb6541ab260c6424398ba54f30e245cb
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levels/Actual Levels/Puzzle6.unity
     guid: 84f4335dddff1794d8ede49a00bba002
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Levels/Actual Levels/Puzzle7.unity
     guid: 4cc1506aff0f5ef4b858c19e9c3e8b0f
   - enabled: 1
