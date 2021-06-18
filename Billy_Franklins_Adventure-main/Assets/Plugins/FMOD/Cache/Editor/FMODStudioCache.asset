@@ -189,8 +189,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Path: FMOD_BFA/Build/Desktop/Master.bank
   Name: Master
@@ -336,10 +336,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambient Sounds/Rain
+  m_Name: event:/Ambient Sounds/Wind
   m_EditorClassIdentifier: 
-  Path: event:/Ambient Sounds/Rain
-  guid: 4d8fb94da5222e47ab07c0259c5612a0
+  Path: event:/Ambient Sounds/Wind
+  guid: cd4aa5ab84157242ac1e4a840dec327a
   Banks:
   - {fileID: -1303060756765515916}
   IsStream: 1
@@ -392,3 +392,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 1
+--- !u!114 &8660948073826679097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambient Sounds/Rustling Leaves
+  m_EditorClassIdentifier: 
+  Path: event:/Ambient Sounds/Rustling Leaves
+  guid: 248873a9ebe7144e9b428e4ef6ec3a53
+  Banks:
+  - {fileID: -249337570086359203}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 39664

@@ -76,7 +76,7 @@ public class SuspendedPlatform : MonoBehaviour
     {
         platformTimer = Random.Range(minTime, maxTime);
         platformRigidbody = gameObject.GetComponent<Rigidbody2D>();
-        player = GameObject.Find("Player").GetComponent<Player>();
+        player = GameObject.FindObjectOfType<Player>().GetComponent<Player>();
         WindController.instance.BlowWindEvent.AddListener(SetWindPlatform);
         WindController.instance.CalmWindEvent.AddListener(SetWindPlatform);
     }
