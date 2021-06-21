@@ -8,7 +8,7 @@ using UnityEngine.Rendering.UI;
 [DefaultExecutionOrder(-100)] //ensure this script runs before all other player scripts to prevent laggy input
 public class Player : MonoBehaviour
 {
-
+    //to merge
     private CheckPointSystem checkPointDeathSystem = null;
 
 
@@ -661,11 +661,12 @@ public class Player : MonoBehaviour
         //pause menu
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(pauseMenuUI != null)
-            {
-                pauseMenuUI.gameObject.SetActive(true);
-                //pauseMenuUI.GetComponent<PauseMenu>().PauseMenuCalled();
-            }
+            Application.Quit();
+            //if(pauseMenuUI != null)
+            //{
+            //    pauseMenuUI.gameObject.SetActive(true);
+            //    //pauseMenuUI.GetComponent<PauseMenu>().PauseMenuCalled();
+            //}
         }
     }
 
