@@ -44,7 +44,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00007607043, y: -0.003833007}
+  m_Offset: {x: -0.08574176, y: 0.020681024}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -55,7 +55,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16093767, y: 0.14907011}
+  m_Size: {x: 6.2586684, y: 0.7373694}
   m_EdgeRadius: 0
 --- !u!1 &4246815802579865822
 GameObject:
@@ -86,7 +86,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.09, y: -1.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5616363917129457496}
   m_Father: {fileID: 6029988810039443625}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -337,8 +338,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6029988809319133323}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.15, y: -4.3100004, z: 0}
-  m_LocalScale: {x: 21.665424, y: 1.7415823, z: 1}
+  m_LocalPosition: {x: 0.15, y: -4.233, z: 0}
+  m_LocalScale: {x: 0.6086389, y: 0.5005109, z: 1}
   m_Children:
   - {fileID: 4246815801906637316}
   m_Father: {fileID: 6029988810039443625}
@@ -381,10 +382,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 150694545
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b23898e148efe3f44993d9327fef5a4c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 866cf764fb9917141bd60c5b7df07d68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -429,18 +430,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.09574175, y: 0.018385053}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 7.51, y: 1.74}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 6.2577095, y: 0.76055825}
   m_EdgeRadius: 0
 --- !u!114 &4246815802557412281
 MonoBehaviour:
@@ -458,12 +459,30 @@ MonoBehaviour:
   maxTime: 5
   minMoveTime: 0
   maxMoveTime: 1
-  minMoveSpeed: 20
-  maxMoveSpeed: 50
+  minSidewaysTime: 2
+  maxSidewaysTime: 5
+  minSidewaysMoveTime: 0
+  maxSidewaysMoveTime: 1
+  minUpMoveSpeedLight: 0
+  maxUpMoveSpeedLight: 10
+  minUpMoveSpeedMedium: 0
+  maxUpMoveSpeedMedium: 30
+  minUpMoveSpeedHeavy: 0
+  maxUpMoveSpeedHeavy: 50
+  minSidewaysMoveSpeedLight: 0
+  maxSidewaysMoveSpeedLight: 10
+  minSidewaysMoveSpeedMedium: 0
+  maxSidewaysMoveSpeedMedium: 30
+  minSidewaysMoveSpeedHeavy: 0
+  maxSidewaysMoveSpeedHeavy: 50
   movementSpeed: 20
+  sideWaysMoveSpeed: 20
+  upAndDownPlatform: 0
   playerTouching: 0
   fallFixTimer: 0
   fallFixMax: 0.1
+  windBlowingRight: 0
+  platformWindState: 0
 --- !u!114 &4246815802042141224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -612,7 +631,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.002769453, y: 0.01722611}
+  m_ConnectedAnchor: {x: -0.09858288, y: -0.09390582}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -653,5 +672,35 @@ Transform:
   - {fileID: 6029988809319133319}
   - {fileID: 4246815802579865823}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7384140320476492671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5616363917129457496}
+  m_Layer: 0
+  m_Name: RopeLinks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5616363917129457496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7384140320476492671}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.09, y: 1.56, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4246815802579865823}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

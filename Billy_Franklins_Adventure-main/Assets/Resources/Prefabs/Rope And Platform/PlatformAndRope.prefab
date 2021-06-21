@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1595970595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1595970596}
+  m_Layer: 0
+  m_Name: RopeLinks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1595970596
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595970595}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.38, y: -0.74, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7584460514096828381}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7584460513719926783
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,8 +57,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7584460513719926783}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.6800003, y: -4.3100004, z: 0}
-  m_LocalScale: {x: 21.665424, y: 1.7415823, z: 1}
+  m_LocalPosition: {x: 9.593, y: -4.35, z: 0}
+  m_LocalScale: {x: 1, y: 0.53448194, z: 1}
   m_Children: []
   m_Father: {fileID: 7584460514096828381}
   m_RootOrder: 3
@@ -73,7 +103,7 @@ SpriteRenderer:
   m_SortingLayerID: 150694545
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b23898e148efe3f44993d9327fef5a4c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 866cf764fb9917141bd60c5b7df07d68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -118,18 +148,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.10027003, y: 0.0048329234}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 7.51, y: 1.74}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 6.317638, y: 0.768952}
   m_EdgeRadius: 0
 --- !u!1 &7584460513993268171
 GameObject:
@@ -158,8 +188,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7584460513993268171}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.28, y: -0.25, z: 0}
+  m_LocalScale: {x: 1, y: 1.0422448, z: 1}
   m_Children: []
   m_Father: {fileID: 7584460514096828381}
   m_RootOrder: 0
@@ -250,8 +280,8 @@ HingeJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
+  m_Anchor: {x: 0, y: -0.00000011831399}
+  m_ConnectedAnchor: {x: 0.27999973, y: -0.25}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -274,7 +304,7 @@ GameObject:
   - component: {fileID: 7584460514096828378}
   m_Layer: 0
   m_Name: PlatformAndRope
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -294,6 +324,7 @@ Transform:
   - {fileID: 7584460514335225763}
   - {fileID: 7584460514356402069}
   - {fileID: 7584460513719926771}
+  - {fileID: 1595970596}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -414,7 +445,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7584460514335225774}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.12999916, y: -4.3500004, z: 0}
+  m_LocalPosition: {x: 0.24, y: -4.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7584460514096828381}
@@ -521,7 +552,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.051136117, y: 0.0029376228}
+  m_ConnectedAnchor: {x: -3.021, y: 0.110791296}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -559,8 +590,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7584460514356402079}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.65, y: -4.357, z: 0}
-  m_LocalScale: {x: 29.724604, y: 2.3827064, z: 1}
+  m_LocalPosition: {x: 3.261, y: -4.369, z: 0}
+  m_LocalScale: {x: 1, y: 0.53253293, z: 1}
   m_Children:
   - {fileID: 7584460514627691395}
   m_Father: {fileID: 7584460514096828381}
@@ -606,7 +637,7 @@ SpriteRenderer:
   m_SortingLayerID: 150694545
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b23898e148efe3f44993d9327fef5a4c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 866cf764fb9917141bd60c5b7df07d68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -651,18 +682,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.10311091, y: 0.005003512}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 7.51, y: 1.74}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 6.30355, y: 0.70124745}
   m_EdgeRadius: 0
 --- !u!114 &7584460514356402065
 MonoBehaviour:
@@ -680,13 +711,25 @@ MonoBehaviour:
   maxTime: 5
   minMoveTime: 0
   maxMoveTime: 1
+  minSidewaysTime: 2
+  maxSidewaysTime: 5
+  minSidewaysMoveTime: 0
+  maxSidewaysMoveTime: 1
   minUpMoveSpeedLight: 0
   maxUpMoveSpeedLight: 10
   minUpMoveSpeedMedium: 10
   maxUpMoveSpeedMedium: 30
   minUpMoveSpeedHeavy: 30
   maxUpMoveSpeedHeavy: 50
+  minSidewaysMoveSpeedLight: 0
+  maxSidewaysMoveSpeedLight: 10
+  minSidewaysMoveSpeedMedium: 0
+  maxSidewaysMoveSpeedMedium: 30
+  minSidewaysMoveSpeedHeavy: 0
+  maxSidewaysMoveSpeedHeavy: 50
   movementSpeed: 20
+  sideWaysMoveSpeed: 20
+  upAndDownPlatform: 1
   playerTouching: 0
   fallFixTimer: 0
   fallFixMax: 0.1
@@ -706,8 +749,8 @@ HingeJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0.075022005, y: 0.03181495}
-  m_ConnectedAnchor: {x: -0.08308174, y: 0.016540252}
+  m_Anchor: {x: 2.8969536, y: 0.025108252}
+  m_ConnectedAnchor: {x: -3.4350471, y: -0.010531811}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -773,10 +816,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.07648442, y: 0.080515966}
-      - {x: -0.07976631, y: 0.053417675}
-      - {x: 0.021871332, y: 0.024933487}
-      - {x: 0.07970837, y: -0.055703133}
+    - - {x: 3.0553503, y: 0.37110287}
+      - {x: -3.2773225, y: 0.35642007}
+      - {x: -0.12645344, y: 0.024933487}
+      - {x: 3.0214932, y: -0.3255342}
 --- !u!114 &1906244646
 MonoBehaviour:
   m_ObjectHideFlags: 0
