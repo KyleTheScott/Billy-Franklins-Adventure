@@ -40,7 +40,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1756185053}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 434f875b76e7e0d42a756a0f0c373098, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -148,7 +148,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1078591665
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 5945357789820212794, guid: 7edc62699895956478371e8c882314b1, type: 3}
   m_Color: {r: 0.44419718, g: 0.50021565, b: 0.5849056, a: 1}
@@ -177,9 +177,9 @@ Rigidbody2D:
   m_LinearDrag: 0.5
   m_AngularDrag: 0.5
   m_GravityScale: 0.9
-  m_Material: {fileID: 6200000, guid: 434f875b76e7e0d42a756a0f0c373098, type: 2}
-  m_Interpolate: 0
-  m_SleepingMode: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &1994736630

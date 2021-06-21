@@ -32,7 +32,7 @@ public class Rope : MonoBehaviour
         {
             //creates a link and connects it to the previous link
             GameObject link = Instantiate(linkPrefab, transform);
-
+            link.transform.parent = transform.Find("RopeLinks");
 
             link.transform.position = new Vector2(transform.position.x, transform.position.y - currentStartPosYOffset);
             currentStartPosYOffset += 0.1f;
