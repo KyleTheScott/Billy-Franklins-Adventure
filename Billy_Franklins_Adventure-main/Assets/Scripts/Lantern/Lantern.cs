@@ -11,7 +11,6 @@ public class Lantern : MonoBehaviour, IInteractable
     private Animator lanternAnimator;
     [SerializeField] private GameObject highlight;
 
-
     // Start is called before the first frame update
     void Start()
     {
