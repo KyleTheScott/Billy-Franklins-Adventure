@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-101)]
@@ -32,7 +33,7 @@ public class PuzzleController : MonoBehaviour
     private Player player;
     //private Canvas settingsUI;
     //private Canvas pauseMenuUI;
-    private CameraMovement camera;
+    private Camera camera;
 
     // Start is called before the first frame update
     void Start()
@@ -69,8 +70,8 @@ public class PuzzleController : MonoBehaviour
             DontDestroyOnLoad(Instantiate(uiPrefab));
             DontDestroyOnLoad(Instantiate(controllerPrefab));
             DontDestroyOnLoad(Instantiate(globalLightPrefab));
-            camera = Instantiate(cameraPrefab).GetComponent<CameraMovement>();
-            camera.playerTransform = player.transform;
+            camera = Instantiate(cameraPrefab).GetComponent<Camera>();
+            camera.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
             DontDestroyOnLoad(camera.gameObject);
             //settingsUI = Instantiate(settingsUIPrefab).GetComponent<Canvas>();
             //pauseMenuUI = Instantiate(pauseMenuUIPrefab).GetComponent<Canvas>();

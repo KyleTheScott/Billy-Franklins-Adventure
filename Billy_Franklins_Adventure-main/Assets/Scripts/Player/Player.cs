@@ -89,9 +89,11 @@ public class Player : MonoBehaviour
 
     //[SerializeField] LayerMask tileLayerMask; //Used to check if player is on ground
 
-    // to Get SFX sound name 
-    [SerializeField] private string ShootSound;
-    [SerializeField] private string JumpSound;
+    //FMOD Event Refs
+    [FMODUnity.EventRef]
+    public string shootSound;
+    [FMODUnity.EventRef]
+    public string jumpSound;
 
 
     //variables to show lightning
@@ -602,6 +604,7 @@ public class Player : MonoBehaviour
                     playerState = PlayerState.JUMP;
                     rb.gravityScale = jumpGravity;
                     onGround = false;
+                    FMODUnity.RuntimeManager.PlayOneShot(jumpSound);
                     //falling = false;
                 }
             }
@@ -1105,6 +1108,7 @@ public class Player : MonoBehaviour
     public void UseLightCharges()
     {
         lightCharges -= 1;
+        FMODUnity.RuntimeManager.PlayOneShot(shootSound);
 
         if (onLightChargesChanged != null)
         {
