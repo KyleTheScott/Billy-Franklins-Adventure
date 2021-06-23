@@ -56,6 +56,12 @@ TagManager:
   - name: Sky
     uniqueID: 1775119093
     locked: 0
+  - name: BackgroundLightning
+    uniqueID: 2784421731
+    locked: 0
+  - name: Clouds
+    uniqueID: 1265177903
+    locked: 0
   - name: Buildings
     uniqueID: 2431956425
     locked: 0
