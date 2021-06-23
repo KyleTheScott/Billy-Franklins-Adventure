@@ -326,7 +326,6 @@ public class Player : MonoBehaviour
 
                 if (currentPlayerState != PlayerState.IDLE)
                 {
-                    Debug.Log("FIX");
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                 }
                 break;

@@ -117,16 +117,16 @@ public class StormController : MonoBehaviour
     //Deciding what storm state to switch to
     private void DecideStormCalm()
     {
-        switch (Random.Range(0, 3))
+        switch (Random.Range(0, 5))
         {
             case 0:
-                ChooseStormWind();
-                break;
             case 1:
-                ChooseStormRain();
+                ChooseStormWind();
                 break;
             case 2:
             case 3:
+                ChooseStormRain();
+                break;
             case 4:
                 ChooseStormCalm();
                 break;
@@ -134,24 +134,26 @@ public class StormController : MonoBehaviour
     }
     private void DecideStormWind()
     {
-        switch (Random.Range(0, 3))
+        switch (Random.Range(0, 7))
         {
             case 0:
                 ChooseStormCalm();
                 break;
             case 1:
-                ChooseStormRain();
-                break;
             case 2:
             case 3:
             case 4:
+                ChooseStormRain();
+                break;
+            case 5:
+            case 6:
                 ChooseStormWind();
                 break;
         }
     }
     private void DecideStormRain()
     {
-        switch (Random.Range(0, 3))
+        switch (Random.Range(0, 5))
         {
             case 0:
                 ChooseStormCalm();
@@ -173,7 +175,7 @@ public class StormController : MonoBehaviour
         rainState = RainState.NO_RAIN;
         windState = WindState.NO_WIND;
         stormState = StormState.CALM;
-        switch (Random.Range(0, 3))
+        switch (Random.Range(0, 7))
         {
             case 0:
             case 1:
@@ -197,6 +199,10 @@ public class StormController : MonoBehaviour
                 }
                 break;
             case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
                 if (calmState != CalmState.CALM_LIGHTNING)
                 {
                     calmState = CalmState.CALM_LIGHTNING;
@@ -219,7 +225,7 @@ public class StormController : MonoBehaviour
     {
         calmState = CalmState.NOT_CALM;
         stormState = StormState.WIND;
-        switch (Random.Range(0, 5))
+        switch (Random.Range(0, 9))
         {
             case 0:
             case 1:
@@ -244,6 +250,10 @@ public class StormController : MonoBehaviour
                 LightningController.instance.CalmLightning();
                 break;
             case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
                 rainState = RainState.RAIN_LIGHTNING;
                 windState = WindState.WIND_RAIN_LIGHTNING;
                 WindController.instance.BlowWind();
@@ -257,22 +267,44 @@ public class StormController : MonoBehaviour
         calmState = CalmState.NOT_CALM;
         windState = WindState.NO_WIND;
         stormState = StormState.RAIN;
-        switch (rainState)
+        switch (Random.Range(0, 7))
         {
-            case RainState.NO_RAIN:
+            case 0:
+                rainState = RainState.NO_RAIN;
                 WindController.instance.CalmWind();
                 RainController.instance.CalmRain();
                 LightningController.instance.CalmLightning();
                 break;
-            case RainState.RAIN:
+            case 1:
+            case 2:
+            case 3:
+                rainState = RainState.RAIN;
                 WindController.instance.CalmWind();
                 RainController.instance.Rain();
                 LightningController.instance.CalmLightning();
                 break;
-            case RainState.RAIN_LIGHTNING:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+                rainState = RainState.RAIN_LIGHTNING;
                 WindController.instance.CalmWind();
                 RainController.instance.Rain();
                 LightningController.instance.StrikeLightning();
+                break;
+
+        }
+        
+        switch (rainState)
+        {
+            case RainState.NO_RAIN:
+                
+                break;
+            case RainState.RAIN:
+               
+                break;
+            case RainState.RAIN_LIGHTNING:
+               
                 break;
         }
     }
