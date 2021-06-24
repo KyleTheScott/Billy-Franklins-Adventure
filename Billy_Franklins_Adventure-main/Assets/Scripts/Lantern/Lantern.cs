@@ -10,6 +10,8 @@ public class Lantern : MonoBehaviour, IInteractable
     [SerializeField] private bool lanterOn = false;
     private Animator lanternAnimator;
     [SerializeField] private GameObject highlight;
+    [FMODUnity.EventRef]
+    public string inputSound;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +66,7 @@ public class Lantern : MonoBehaviour, IInteractable
         {
             lanterOn = true;
             lanternAnimator.SetBool("Lit", true);
+            FMODUnity.RuntimeManager.PlayOneShot(inputSound);
             if (light2D != null)
             {
                 light2D.intensity = 1.0f;
