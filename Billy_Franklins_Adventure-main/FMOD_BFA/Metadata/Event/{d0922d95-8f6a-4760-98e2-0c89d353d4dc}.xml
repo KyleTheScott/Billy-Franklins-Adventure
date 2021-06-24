@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{d0922d95-8f6a-4760-98e2-0c89d353d4dc}">
 		<property name="name">
-			<value>Gate Opening_Lift Operating</value>
+			<value>Pulley Noises</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -60,7 +60,7 @@
 	<object class="MarkerTrack" id="{eeec1af0-f4d5-4ab6-ad78-ce9d565d1058}" />
 	<object class="GroupTrack" id="{12049a8b-330c-4465-8995-46bddb1c65d2}">
 		<relationship name="modules">
-			<destination>{e81070f3-b207-4395-85c1-3ce897fedef6}</destination>
+			<destination>{cf2dd9be-a530-42fd-9d51-a06fde93ae01}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{8075443e-a07e-40dd-9dab-2dd7f3d0824d}</destination>
@@ -68,7 +68,7 @@
 	</object>
 	<object class="Timeline" id="{b17d6b98-6bc4-442a-a829-459556f4ebe6}">
 		<relationship name="modules">
-			<destination>{e81070f3-b207-4395-85c1-3ce897fedef6}</destination>
+			<destination>{cf2dd9be-a530-42fd-9d51-a06fde93ae01}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{9a813166-7301-436f-8f1e-addf6d15c09a}">
@@ -88,15 +88,18 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{bd94e1a4-8989-455c-9381-e359c49f6c0a}" />
-	<object class="SingleSound" id="{e81070f3-b207-4395-85c1-3ce897fedef6}">
+	<object class="SingleSound" id="{cf2dd9be-a530-42fd-9d51-a06fde93ae01}">
 		<property name="length">
 			<value>8.4266666666666659</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{f8642603-688d-4040-9483-bbb751640219}</destination>
+			<destination>{704e2be9-5e64-4785-909c-e3e8cf12ecb4}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{8075443e-a07e-40dd-9dab-2dd7f3d0824d}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
