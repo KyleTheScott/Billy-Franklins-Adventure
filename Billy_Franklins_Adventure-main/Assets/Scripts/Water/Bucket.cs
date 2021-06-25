@@ -14,7 +14,7 @@ public class Bucket : MonoBehaviour, IInteractable
     void Start()
     {
         bucketAnimator = gameObject.GetComponent<Animator>();
-        player = GameObject.Find("Player");
+        player = GameObject.FindObjectOfType<Player>().gameObject;
     }
 
     //called when you the bucket is within the interactable circle

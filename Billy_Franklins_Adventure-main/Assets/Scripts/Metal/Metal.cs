@@ -57,7 +57,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
 
     private void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.FindObjectOfType<Player>().gameObject;
         metalAnimator = gameObject.GetComponent<Animator>();
     }
 
