@@ -122,6 +122,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private AimLineState aimLineState = AimLineState.NOT_AIMED;
 
+  
+
 
 
     //variable for aim line disappearing and appearing with mouse movement
@@ -142,6 +144,14 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject currentMovingObject;
     //[SerializeField] float interactRadius = 5f;
     //[SerializeField] LayerMask interactLayer;
+
+    [Header("Kite")]
+    [SerializeField] private Kite kite;
+    public UnityEvent PlayerMovingHorizontallyEvent;
+    public UnityEvent PlayerMovingVerticallyEvent;
+    [SerializeField] private float playerDistMovedX;
+    [SerializeField] private float playerDistMovedY;
+
 
 
     private Canvas pauseMenuUI = null;
@@ -168,6 +178,17 @@ public class Player : MonoBehaviour
     {
         return playerState;
     }
+
+    public float GetDistPlayerMoveX()
+    {
+        return playerDistMovedX;
+    }
+
+    public float GetDistPlayerMoveY()
+    {
+        return playerDistMovedY;
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -211,6 +232,7 @@ public class Player : MonoBehaviour
             Debug.Log("Couldn't find pause menu UI...");
         }
 
+        kite.SetKiteStartPosition(transform.position);
     }
 
     // Update is called once per frame
@@ -349,7 +371,23 @@ public class Player : MonoBehaviour
                 rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                 break;
         }
+        playerDistMovedX = lastPosition.x - transform.position.x;
+        if ((Mathf.Abs(playerDistMovedX) > Mathf.Epsilon) && playerDistMovedX <= 1)
+        {
+
+            PlayerMovingHorizontallyEvent.Invoke();
+            //kite.MoveKiteWithPlayer(-distX);
+        }
+        playerDistMovedY = lastPosition.y - transform.position.y;
+        if ((Mathf.Abs(playerDistMovedY) > Mathf.Epsilon) && playerDistMovedY <= 1)
+        {
+            PlayerMovingVerticallyEvent.Invoke();
+            //kite.MoveKiteWithPlayer(-distX);
+        }
+
+
         lastPosition = transform.position;
+
     }
 
 
