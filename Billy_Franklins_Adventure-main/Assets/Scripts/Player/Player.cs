@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Rendering.UI;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
 [DefaultExecutionOrder(-100)] //ensure this script runs before all other player scripts to prevent laggy input
@@ -18,8 +17,6 @@ public class Player : MonoBehaviour
     [Header("General")]
     //[SerializeField] private bool 
     Rigidbody2D rb = null; //player's rigid body
-    [SerializeField] private SpriteRenderer playerSprite;
-    private Animator animator;
     [SerializeField] bool isFacingRight = false; //Is character facing right side? for Characte flip
     public enum PlayerState
     {

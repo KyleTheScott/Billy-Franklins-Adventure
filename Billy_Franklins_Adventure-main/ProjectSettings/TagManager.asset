@@ -16,6 +16,7 @@ TagManager:
   - PlayerClose
   - Door
   - LevelRoot
+  - Ghost
   layers:
   - Default
   - TransparentFX
@@ -106,6 +107,9 @@ TagManager:
     locked: 0
   - name: Lanterns
     uniqueID: 2113548409
+    locked: 0
+  - name: Ghosts
+    uniqueID: 1425253433
     locked: 0
   - name: Player
     uniqueID: 1816281827
