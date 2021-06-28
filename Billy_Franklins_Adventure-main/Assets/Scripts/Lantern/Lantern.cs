@@ -1,5 +1,7 @@
 ﻿//using System.Collections;
 //using System.Collections.Generic;
+
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 public class Lantern : MonoBehaviour, IInteractable
@@ -10,6 +12,10 @@ public class Lantern : MonoBehaviour, IInteractable
     [SerializeField] private bool lanterOn = false;
     private Animator lanternAnimator;
     [SerializeField] private GameObject highlight;
+    [SerializeField] private List<GameObject> ghosts = new List<GameObject>();
+    [SerializeField] private float ghostDissipateDistance = 5;
+
+
     [FMODUnity.EventRef]
     public string inputSound;
 
@@ -19,8 +25,17 @@ public class Lantern : MonoBehaviour, IInteractable
         light2D = GetComponentInChildren<Light2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         lanternAnimator = GetComponent<Animator>();
-    }
 
+        Transform GhostTransform = GameObject.Find("Ghosts").transform;
+
+        foreach (Transform g in GhostTransform)
+        {
+            if (Vector2.Distance(transform.position, g.transform.position) <= ghostDissipateDistance)
+            {
+                ghosts.Add(g.gameObject);
+            }
+        }
+}
     //// Update is called once per frame
     //void Update()
     //{
@@ -70,6 +85,7 @@ public class Lantern : MonoBehaviour, IInteractable
             if (light2D != null)
             {
                 light2D.intensity = 1.0f;
+                DissipateGhosts();
             }
             else
             {
@@ -78,6 +94,16 @@ public class Lantern : MonoBehaviour, IInteractable
 
             //Increase current lit lantern number
             GlobalGameController.instance.IncreaseCurrentLitLanternNum();
+        }
+    }
+
+    private void DissipateGhosts()
+    {
+        for (int i = 0; i < ghosts.Count; i++)
+        {
+            Ghost ghost = ghosts[i].GetComponent<Ghost>();
+            ghost.SetDissipatedByLantern(true);
+            ghost.SetGhostDissipation();
         }
     }
 }

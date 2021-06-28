@@ -14,7 +14,8 @@ public class Rope : MonoBehaviour
     //sets how many links in the rope
     [SerializeField] int links = 100;
 
-    [SerializeField] private float currentStartPosYOffset = 0.1f;
+    [SerializeField] private float currentStartPosYOffset = 0.05f;
+    [SerializeField] private float currentStartPosYCreationOffset = 0.05f;
 
 
     // Start is called before the first frame update
@@ -35,7 +36,7 @@ public class Rope : MonoBehaviour
             link.transform.parent = transform.Find("RopeLinks");
 
             link.transform.position = new Vector2(transform.position.x, transform.position.y - currentStartPosYOffset);
-            currentStartPosYOffset += 0.1f;
+            currentStartPosYOffset += currentStartPosYCreationOffset;
 
             HingeJoint2D joint = link.GetComponent<HingeJoint2D>();
             joint.connectedBody = previousRB;

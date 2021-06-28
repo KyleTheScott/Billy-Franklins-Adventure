@@ -3,22 +3,45 @@
 public class Link : MonoBehaviour
 {
     [SerializeField] private SuspendedPlatform platform;
-
+    [SerializeField] private bool kiteRope = false;
+    private Player player;
+    void Start()
+    {
+        
+    }
     private void Awake()
     {
-        Transform platformTransform = null;
-        platformTransform = transform.parent.Find("SuspendedPlatform");
-
-        if (platformTransform == null)
+        if (kiteRope)
         {
-            platformTransform = transform.parent.parent.Find("SuspendedPlatform");
+            player = FindObjectOfType<Player>();
+            player.PlayerMovingHorizontallyEvent.AddListener(MoveKiteWithPlayerHorizontal);
+            player.PlayerMovingVerticallyEvent.AddListener(MoveKiteWithPlayerVertical);
         }
-
-        if (platformTransform != null)
+        else
         {
-            platform = platformTransform.gameObject.GetComponent<SuspendedPlatform>();
+            Transform platformTransform = null;
+            platformTransform = transform.parent.Find("SuspendedPlatform");
+
+            if (platformTransform == null)
+            {
+                platformTransform = transform.parent.parent.Find("SuspendedPlatform");
+            }
+
+            if (platformTransform != null)
+            {
+                platform = platformTransform.gameObject.GetComponent<SuspendedPlatform>();
+            }
         }
     }
+    public void MoveKiteWithPlayerHorizontal()
+    {
+        transform.position = new Vector2(transform.position.x + -player.GetDistPlayerMoveX(), transform.position.y);
+    }
+    public void MoveKiteWithPlayerVertical()
+    {
+        transform.position = new Vector2(transform.position.x, transform.position.y + -player.GetDistPlayerMoveY());
+    }
+
 
     public void OnTriggerEnter2D(Collider2D collision)
     { 
