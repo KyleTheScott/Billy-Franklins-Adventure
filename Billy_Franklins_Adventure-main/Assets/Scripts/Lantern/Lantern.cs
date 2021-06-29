@@ -35,7 +35,7 @@ public class Lantern : MonoBehaviour, IInteractable
                 ghosts.Add(g.gameObject);
             }
         }
-}
+    }
     //// Update is called once per frame
     //void Update()
     //{
