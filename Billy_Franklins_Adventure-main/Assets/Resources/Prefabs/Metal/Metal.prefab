@@ -44,8 +44,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 1}
+  m_Offset: {x: 0.04959906, y: 0.016532924}
+  m_Size: {x: 2.0250742, y: 0.17333525}
   m_Direction: 1
 --- !u!1 &5594739182090962413
 GameObject:
@@ -77,7 +77,7 @@ Transform:
   m_GameObject: {fileID: 5594739182090962413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7774982, y: 0.19940853, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1756185054}
   - {fileID: 5932906010412231638}
@@ -97,18 +97,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0024122596, y: -0.016433284}
+  m_Offset: {x: 0.04539919, y: -0.026772022}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.2575216, y: 0.38250002}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.99076784, y: 0.9671334}
+  m_Size: {x: 2.0555162, y: 0.18098259}
   m_EdgeRadius: 0
 --- !u!212 &5594739182090962415
 SpriteRenderer:
@@ -150,7 +150,7 @@ SpriteRenderer:
   m_SortingLayerID: -1078591665
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5945357789820212794, guid: 7edc62699895956478371e8c882314b1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4a744e22f1ee368448929b1b72b836c9, type: 3}
   m_Color: {r: 0.44419718, g: 0.50021565, b: 0.5849056, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -234,6 +234,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Highlight
       objectReference: {fileID: 0}
+    - target: {fileID: 7023354469552292333, guid: f8623ec7761ed0e479dfd20ec67909a2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7875326688881385857, guid: f8623ec7761ed0e479dfd20ec67909a2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0066
@@ -280,11 +284,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7875326688881385857, guid: f8623ec7761ed0e479dfd20ec67909a2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2093635
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7875326688881385857, guid: f8623ec7761ed0e479dfd20ec67909a2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.0697484
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8623ec7761ed0e479dfd20ec67909a2, type: 3}
