@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8181144266666333440}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7774982, y: 0.19940853, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,9 +73,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1099965001
-  m_SortingLayer: 4
+  m_SortingLayer: 8
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4582401877760778594, guid: 7edc62699895956478371e8c882314b1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b4170eb53abd5f0448fed3cd91139eff, type: 3}
   m_Color: {r: 0.4247953, g: 0.70605195, b: 0.8113208, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,8 +102,8 @@ BoxCollider2D:
   m_Offset: {x: 0.49373025, y: 0.5124507}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.007829666, y: 0.007830143}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.6335294, y: 0.5143612}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -130,6 +130,7 @@ MonoBehaviour:
   colliderStayCheck: 0
   waterByItself: 1
   lanternInWater: {fileID: 0}
+  groupNum: 0
 --- !u!50 &-7863115331637910122
 Rigidbody2D:
   serializedVersion: 4
