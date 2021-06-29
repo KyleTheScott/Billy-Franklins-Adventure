@@ -940,7 +940,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -45242
+  m_InstanceId: 48880
 --- !u!95 &731963993
 Animator:
   serializedVersion: 3
@@ -1019,9 +1019,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.92875147, y: 0.15520334}
+  m_Offset: {x: -0.74167275, y: 0.15520334}
   serializedVersion: 2
-  m_Radius: 3.0395565
+  m_Radius: 2.26246
 --- !u!212 &923378098
 SpriteRenderer:
   m_ObjectHideFlags: 0

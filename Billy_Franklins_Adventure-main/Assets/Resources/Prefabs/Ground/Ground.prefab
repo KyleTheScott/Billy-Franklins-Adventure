@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3471273121197119993}
   - component: {fileID: 3471273121197119992}
   m_Layer: 0
-  m_Name: Ground_FInal
+  m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,7 +157,7 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -16.205227, y: 3.8656015}
+  - {x: -17.020178, y: 3.8841279}
   - {x: 17.013395, y: 3.8557978}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
