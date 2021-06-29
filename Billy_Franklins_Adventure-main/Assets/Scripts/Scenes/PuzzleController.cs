@@ -25,14 +25,14 @@ public class PuzzleController : MonoBehaviour
     [SerializeField]
     private GameObject uiPrefab;
     [SerializeField]
-    //private GameObject settingsUIPrefab;
-    //[SerializeField]
-    //private GameObject pauseMenuUIPrefab;
-    //[SerializeField]
+    private GameObject settingsUIPrefab;
+    [SerializeField]
+    private GameObject pauseMenuUIPrefab;
+    [SerializeField]
     private GameObject cameraPrefab;
     private Player player;
-    //private Canvas settingsUI;
-    //private Canvas pauseMenuUI;
+    private Canvas settingsUI;
+    private Canvas pauseMenuUI;
     private Camera camera;
 
     // Start is called before the first frame update
@@ -58,7 +58,7 @@ public class PuzzleController : MonoBehaviour
         }
 
         GlobalGameController.instance.SetLanternAmount(lanternNum, lanternLitNum);
-        //GlobalGameController.instance.GetComponent<CheckPointSystem>().SetCheckPoint(SceneManager.GetActiveScene().name);
+        GlobalGameController.instance.GetComponent<CheckPointSystem>().SetCheckPoint(SceneManager.GetActiveScene().name);
     }
 
     private void LoadInPrefabs()
@@ -71,19 +71,19 @@ public class PuzzleController : MonoBehaviour
             DontDestroyOnLoad(Instantiate(controllerPrefab));
             DontDestroyOnLoad(Instantiate(globalLightPrefab));
             camera = Instantiate(cameraPrefab).GetComponent<Camera>();
-            camera.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
+            //camera.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
             DontDestroyOnLoad(camera.gameObject);
-            //settingsUI = Instantiate(settingsUIPrefab).GetComponent<Canvas>();
-            //pauseMenuUI = Instantiate(pauseMenuUIPrefab).GetComponent<Canvas>();
-            //DontDestroyOnLoad(settingsUI);
-            //DontDestroyOnLoad(pauseMenuUI);
-            //SetUIReferences();
+            settingsUI = Instantiate(settingsUIPrefab).GetComponent<Canvas>();
+            pauseMenuUI = Instantiate(pauseMenuUIPrefab).GetComponent<Canvas>();
+            DontDestroyOnLoad(settingsUI);
+            DontDestroyOnLoad(pauseMenuUI);
+            SetUIReferences();
         }
     }
 
-    //private void SetUIReferences()
-    //{
-    //    settingsUI.GetComponent<SettingsMenu>().SetPauseMenuUIReference(pauseMenuUI);
-    //    pauseMenuUI.GetComponent<PauseMenu>().SetSettingsUIReference(settingsUI, FindObjectOfType<GlobalGameController>().GetComponent<CheckPointSystem>());
-    //}
+    private void SetUIReferences()
+    {
+        settingsUI.GetComponent<SettingsMenu>().SetPauseMenuUIReference(pauseMenuUI);
+        pauseMenuUI.GetComponent<PauseMenu>().SetSettingsUIReference(settingsUI, FindObjectOfType<GlobalGameController>().GetComponent<CheckPointSystem>());
+    }
 }
