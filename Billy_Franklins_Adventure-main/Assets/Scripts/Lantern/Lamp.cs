@@ -16,6 +16,8 @@ public class Lamp : MonoBehaviour, IInteractable
     [SerializeField] GhostWallController ghostWall;
     [SerializeField] private Player player;
 
+    [SerializeField] private List<GameObject> ghosts = new List<GameObject>();
+
     [HideInInspector]
     public UnityEvent onLampOn; //Invoke when lamp is on, darkborder will subscribe this
 
@@ -29,11 +31,18 @@ public class Lamp : MonoBehaviour, IInteractable
         //Turn off cllider first, it will be available once all lantern on
         boxCollider.enabled = false;
 
-        player = GameObject.Find("Player(Clone)").GetComponent<Player>();
+        player = GameObject.FindObjectOfType<Player>().GetComponent<Player>();
 
         //Subscribe this event
         GlobalGameController.instance.onAllLanternOn.AddListener(OnAllLanternOnCallback);
-        
+
+        Transform GhostTransform = GameObject.Find("Ghosts").transform;
+
+        foreach (Transform g in GhostTransform)
+        {
+            ghosts.Add(g.gameObject);
+        }
+
     }
 
     //// Update is called once per frame
@@ -75,7 +84,6 @@ public class Lamp : MonoBehaviour, IInteractable
                 
                 Debug.Log("Lamp on");
                 onLampOn.Invoke();
-               
                 player.SetLampOn(true);
             }
             LanternToggle();
@@ -88,6 +96,7 @@ public class Lamp : MonoBehaviour, IInteractable
         if (spriteRenderer != null && lanternOnSprite != null && lanternOffSprite != null)
         {
             ghostWall.LowerGhostWall();
+            DissipateAllGhosts();
             if (spriteRenderer.sprite == lanternOnSprite)
             {
                 spriteRenderer.sprite = lanternOffSprite;
@@ -127,4 +136,16 @@ public class Lamp : MonoBehaviour, IInteractable
             boxCollider.enabled = true;
         }
     }
+
+
+    private void DissipateAllGhosts()
+    {
+        for (int i = 0; i < ghosts.Count; i++)
+        {
+            Ghost ghost = ghosts[i].GetComponent<Ghost>();
+            ghost.SetDissipatedByLantern(true);
+            ghost.SetGhostDissipation();
+        }
+    }
+
 }

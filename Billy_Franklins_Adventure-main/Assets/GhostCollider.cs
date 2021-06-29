@@ -23,7 +23,6 @@ public class GhostCollider : MonoBehaviour
             {
                 ghost.SetGhostAppearing();
             }
-            Debug.Log("Ghost Appear start");
         }
     }
 }
