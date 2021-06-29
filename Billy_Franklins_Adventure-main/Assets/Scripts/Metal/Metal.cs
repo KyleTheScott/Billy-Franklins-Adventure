@@ -24,6 +24,8 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
 
     [SerializeField] private int groupNum = 0;
 
+    [SerializeField] private bool movable = true;
+
 
 
 
@@ -31,20 +33,24 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
     //when e is pressed and player is within range of the Interactable
     public void Interact()
     {
-        //metal will stop following player
-        if (beingMoved)
+        if (movable)
         {
-            beingMoved = false;
-        }
-        //metal will start following player
-        else
-        {
-            if (connectedDoors.Count > 0)
+            //metal will stop following player
+            if (beingMoved)
             {
-                player.GetComponent<Player>().SetMoveObjectStopped();
+                beingMoved = false;
             }
-            beingMoved = true;
-            distToPlayerXOffset = transform.position.x - player.transform.position.x;
+            //metal will start following player
+            else
+            {
+                if (connectedDoors.Count > 0)
+                {
+                    player.GetComponent<Player>().SetMoveObjectStopped();
+                }
+
+                beingMoved = true;
+                distToPlayerXOffset = transform.position.x - player.transform.position.x;
+            }
         }
     }
     //makes highlight appear and disappear
@@ -64,7 +70,10 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
 
     private void Update()
     {
-        Movement();
+        if (movable)
+        {
+            Movement();
+        }
     }
 
     //moving metal with player
