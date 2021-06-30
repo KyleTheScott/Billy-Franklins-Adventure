@@ -87,6 +87,12 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         }
     }
 
+    public bool GetMovable()
+    {
+        return movable;
+    }
+
+
     // for number of group the metal is in ElectricityController connectedObjects
     public int GetGroupNum()
     {
