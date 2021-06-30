@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     }
 
     [SerializeField] private PlayerState playerState = PlayerState.WALKING;
+    public PlayerState PlayersState => playerState;
     [SerializeField] bool debugMode = false;
 
     [Header("Movement")]

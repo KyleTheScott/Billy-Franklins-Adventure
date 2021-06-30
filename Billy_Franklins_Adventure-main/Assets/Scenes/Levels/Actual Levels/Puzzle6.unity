@@ -632,6 +632,7 @@ GameObject:
   - component: {fileID: 752342581}
   - component: {fileID: 752342583}
   - component: {fileID: 752342582}
+  - component: {fileID: 752342584}
   m_Layer: 0
   m_Name: Ground_FInal
   m_TagString: Ground
@@ -730,6 +731,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &752342584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752342580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52b846f802046249a99b28476d97ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaterialValue: 0
 --- !u!1 &820439205
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,6 +755,7 @@ GameObject:
   - component: {fileID: 820439206}
   - component: {fileID: 820439208}
   - component: {fileID: 820439207}
+  - component: {fileID: 820439209}
   m_Layer: 0
   m_Name: Ground_FInal (1)
   m_TagString: Ground
@@ -839,6 +854,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &820439209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820439205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52b846f802046249a99b28476d97ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaterialValue: 0
 --- !u!1 &970378749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,6 +1446,7 @@ GameObject:
   - component: {fileID: 1367114834}
   - component: {fileID: 1367114836}
   - component: {fileID: 1367114835}
+  - component: {fileID: 1367114837}
   m_Layer: 0
   m_Name: Wood platform 1 TEMP (1)
   m_TagString: Ground
@@ -1516,6 +1545,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1367114837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367114833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52b846f802046249a99b28476d97ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaterialValue: 1
 --- !u!1 &1424446189
 GameObject:
   m_ObjectHideFlags: 0
@@ -1909,6 +1951,7 @@ GameObject:
   - component: {fileID: 1835960412}
   - component: {fileID: 1835960414}
   - component: {fileID: 1835960413}
+  - component: {fileID: 1835960415}
   m_Layer: 0
   m_Name: Wood platform 1 TEMP (2)
   m_TagString: Ground
@@ -2007,6 +2050,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1835960415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835960411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52b846f802046249a99b28476d97ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaterialValue: 1
 --- !u!1 &1837079391
 GameObject:
   m_ObjectHideFlags: 0
