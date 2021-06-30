@@ -12,9 +12,8 @@ public class Water : MonoBehaviour, IElectrifiable
     [SerializeField] private BoxCollider2D waterCollider;
     [SerializeField] private bool colliderStayCheck = false;
     [SerializeField] private bool waterByItself;
-    [SerializeField] private GameObject lanternInWater = null;
+    [SerializeField] private List<GameObject> lanternInWater = new List<GameObject>();
     private Animator waterAnimator;
-
 
     [SerializeField] private int groupNum = 0;
 
@@ -76,10 +75,14 @@ public class Water : MonoBehaviour, IElectrifiable
     {
         electrified = state;
         waterAnimator.SetBool("Electrified", true);
-        if (lanternInWater != null)
+        if (lanternInWater.Count >= 1)
         {
-            lanternInWater.GetComponent<Lantern>().LanternToggle();
-            GlobalGameController.instance.IncreaseCurrentLitLanternNum();
+            foreach (GameObject l in lanternInWater)
+            {
+                l.GetComponent<Lantern>().LanternToggle();
+                GlobalGameController.instance.IncreaseCurrentLitLanternNum();
+            }
+            
         }
     }
 

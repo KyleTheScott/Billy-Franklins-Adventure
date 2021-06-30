@@ -30,12 +30,14 @@ public class MovingObjectsCollision : MonoBehaviour
                 //metal
                 else if (item.CompareTag("Metal") && item.GetComponent<Metal>().GetElectrified())
                 {
-                    checkPointSystem.PlayerDeath();
+                    if (item.GetComponent<Metal>().GetMovable())
+                    {
+                        checkPointSystem.PlayerDeath();
+                    }
                 }
             }
         }
     }
-
 
     public void OnTriggerEnter2D(Collider2D collision)
     {

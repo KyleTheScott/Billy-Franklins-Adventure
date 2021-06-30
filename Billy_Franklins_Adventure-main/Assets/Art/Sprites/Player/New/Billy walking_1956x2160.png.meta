@@ -1,0 +1,922 @@
+fileFormatVersion: 2
+guid: d2927e52cd625764293fb57934b14b1b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2752800835051973807
+    second: Billy walking_1956x2160_0
+  - first:
+      213: -5486639717584842439
+    second: Billy walking_1956x2160_1
+  - first:
+      213: -1183797820742308186
+    second: Billy walking_1956x2160_2
+  - first:
+      213: -9137271764193877346
+    second: Billy walking_1956x2160_3
+  - first:
+      213: -791579204117584497
+    second: Billy walking_1956x2160_4
+  - first:
+      213: -7823101327722528254
+    second: Billy walking_1956x2160_5
+  - first:
+      213: 768317996341648483
+    second: Billy walking_1956x2160_6
+  - first:
+      213: -182891599231860570
+    second: Billy walking_1956x2160_7
+  - first:
+      213: 1361339320575724926
+    second: Billy walking_1956x2160_8
+  - first:
+      213: 5027956230979033867
+    second: Billy walking_1956x2160_9
+  - first:
+      213: 3444936263704267401
+    second: Billy walking_1956x2160_10
+  - first:
+      213: 8147641720696304874
+    second: Billy walking_1956x2160_11
+  - first:
+      213: -550122275352289937
+    second: Billy walking_1956x2160_12
+  - first:
+      213: 8733289301886373958
+    second: Billy walking_1956x2160_13
+  - first:
+      213: -332850542992894054
+    second: Billy walking_1956x2160_14
+  - first:
+      213: -7289516015136742358
+    second: Billy walking_1956x2160_15
+  - first:
+      213: -6263919416372861583
+    second: Billy walking_1956x2160_16
+  - first:
+      213: 7039748735703615727
+    second: Billy walking_1956x2160_17
+  - first:
+      213: 6631790438336325905
+    second: Billy walking_1956x2160_18
+  - first:
+      213: -1268558346689330511
+    second: Billy walking_1956x2160_19
+  - first:
+      213: 4113952914583149013
+    second: Billy walking_1956x2160_20
+  - first:
+      213: -1585488072074219429
+    second: Billy walking_1956x2160_21
+  - first:
+      213: 3211135957207001557
+    second: Billy walking_1956x2160_22
+  - first:
+      213: -5493929150329074874
+    second: Billy walking_1956x2160_23
+  - first:
+      213: 1537558033892646526
+    second: Billy walking_1956x2160_24
+  - first:
+      213: -6244363106934420987
+    second: Billy walking_1956x2160_25
+  - first:
+      213: -7614701159915219038
+    second: Billy walking_1956x2160_26
+  - first:
+      213: -3786550323232055542
+    second: Billy walking_1956x2160_27
+  - first:
+      213: 1535754128186496731
+    second: Billy walking_1956x2160_28
+  - first:
+      213: -6729645587660330484
+    second: Billy walking_1956x2160_29
+  - first:
+      213: 327568510158853197
+    second: Billy walking_1956x2160_30
+  - first:
+      213: -4285306053779247280
+    second: Billy walking_1956x2160_31
+  - first:
+      213: -8114889570563734879
+    second: Billy walking_1956x2160_32
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1000
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faceba646c9e33620800000000000000
+      internalID: 2752800835051973807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_1
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9315ece0f3a8bd3b0800000000000000
+      internalID: -5486639717584842439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_2
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6aee5c0772e429fe0800000000000000
+      internalID: -1183797820742308186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_3
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e926407edb3e13180800000000000000
+      internalID: -9137271764193877346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_4
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f852cf668eeb305f0800000000000000
+      internalID: -791579204117584497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_5
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 202463f7ac2ce6390800000000000000
+      internalID: -7823101327722528254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_6
+      rect:
+        serializedVersion: 2
+        x: 11736
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36cdb7e952d99aa00800000000000000
+      internalID: 768317996341648483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a0c16b3f0d367df0800000000000000
+      internalID: -182891599231860570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_8
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7d00bd36e274e210800000000000000
+      internalID: 1361339320575724926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_9
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0b97b58d83e6c540800000000000000
+      internalID: 5027956230979033867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_10
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98a44ff974fdecf20800000000000000
+      internalID: 3444936263704267401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_11
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae471471afc321170800000000000000
+      internalID: 8147641720696304874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_12
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6dd89a84b29d58f0800000000000000
+      internalID: -550122275352289937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_13
+      rect:
+        serializedVersion: 2
+        x: 11736
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64018af5950e23970800000000000000
+      internalID: 8733289301886373958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a97dc95d13a716bf0800000000000000
+      internalID: -332850542992894054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_15
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a24e0454ecf66da90800000000000000
+      internalID: -7289516015136742358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_16
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1756c6d7a761219a0800000000000000
+      internalID: -6263919416372861583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_17
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe88e9b4d2632b160800000000000000
+      internalID: 7039748735703615727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_18
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1196ed5544ad80c50800000000000000
+      internalID: 6631790438336325905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_19
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b2c9b0a7ec256ee0800000000000000
+      internalID: -1268558346689330511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_20
+      rect:
+        serializedVersion: 2
+        x: 11736
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d959601162b71930800000000000000
+      internalID: 4113952914583149013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b50b56caff63ff9e0800000000000000
+      internalID: -1585488072074219429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_22
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d9aec6c32f309c20800000000000000
+      internalID: 3211135957207001557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_23
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64bc87dbb84a1c3b0800000000000000
+      internalID: -5493929150329074874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_24
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7e18bfa2e0865510800000000000000
+      internalID: 1537558033892646526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_25
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50a8e9a96d09759a0800000000000000
+      internalID: -6244363106934420987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_26
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a79f74b3a5235690800000000000000
+      internalID: -7614701159915219038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0fdc930b88737bc0800000000000000
+      internalID: -3786550323232055542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_28
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd655e82e38105510800000000000000
+      internalID: 1535754128186496731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_29
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0a2b334efe7b92a0800000000000000
+      internalID: -6729645587660330484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_30
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d445f9f03d1cb8400800000000000000
+      internalID: 327568510158853197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_31
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05f28ae39d88784c0800000000000000
+      internalID: -4285306053779247280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Billy walking_1956x2160_32
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a2c60b1eee126f80800000000000000
+      internalID: -8114889570563734879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

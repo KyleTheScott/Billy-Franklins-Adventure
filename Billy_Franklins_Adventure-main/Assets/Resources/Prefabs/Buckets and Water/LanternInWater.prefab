@@ -47,6 +47,10 @@ PrefabInstance:
       propertyPath: lanternInWater
       value: 
       objectReference: {fileID: 317304212818940676}
+    - target: {fileID: 8181144266666333444, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
+      propertyPath: lanternInWater.Array.data[0]
+      value: 
+      objectReference: {fileID: 317304212818940676}
     - target: {fileID: 8181144266666333447, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
