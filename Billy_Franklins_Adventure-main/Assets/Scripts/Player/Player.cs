@@ -444,9 +444,8 @@ public class Player : MonoBehaviour
     {
         if(movementEnabled)
         {
-            fallFixSwitch = true;
-            //Character flip
-            if (playerGFX.GetFacingRight())
+            //Horizontal move
+            if (Input.GetKey(KeyCode.A))
             {
                 fallFixSwitch = true;
                 //Character flip
@@ -495,10 +494,6 @@ public class Player : MonoBehaviour
                             moveVelocity = 0f - moveSpeed;
                         }
                     }
-
-                    playerGFX.SetFacingRight(false); // facing left
-                    transform.Rotate(0f, 180f, 0f); //rotate player and aiming to the left 
-                    lastShootingLine.x = -1;
                 }
 
 
@@ -523,7 +518,7 @@ public class Player : MonoBehaviour
             {
                 fallFixSwitch = true;
                 //Character flip
-                if (playerGFX.GetFacingRight() == false)
+                if (!playerGFX.GetFacingRight())
                 {
                     if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                         playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
@@ -546,14 +541,7 @@ public class Player : MonoBehaviour
                 {
                     playerState = PlayerState.MOVING_OBJECT;
                 }
-            }
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            fallFixSwitch = true;
-            //Character flip
-            if (!playerGFX.GetFacingRight())
-            {
+                rb.isKinematic = false;
                 if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                     playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
                     playerState != PlayerState.MOVING_OBJECT_STOPPED_RIGHT)
@@ -576,9 +564,6 @@ public class Player : MonoBehaviour
                         }
                     }
 
-                    playerGFX.SetFacingRight(true);
-                    transform.Rotate(0f, 180f, 0f); //rotate player and aiming to the left
-                    lastShootingLine.x = 1;
                 }
                 //rb.constraints = RigidbodyConstraints2D.None;
                 if (playerState == PlayerState.IDLE || playerState == PlayerState.WALKING || playerState == PlayerState.FALL_FIX)
