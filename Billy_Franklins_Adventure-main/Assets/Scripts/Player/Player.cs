@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Rendering.UI;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
 [DefaultExecutionOrder(-100)] //ensure this script runs before all other player scripts to prevent laggy input
@@ -18,9 +17,9 @@ public class Player : MonoBehaviour
     [Header("General")]
     //[SerializeField] private bool 
     Rigidbody2D rb = null; //player's rigid body
-    [SerializeField] private SpriteRenderer playerSprite;
-    private Animator animator;
-    [SerializeField] bool isFacingRight = false; //Is character facing right side? for Characte flip
+
+    [SerializeField] private PlayerGFX playerGFX;
+
     public enum PlayerState
     {
         IDLE,
@@ -125,6 +124,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private AimLineState aimLineState = AimLineState.NOT_AIMED;
 
+  
+
 
 
     //variable for aim line disappearing and appearing with mouse movement
@@ -145,6 +146,14 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject currentMovingObject;
     //[SerializeField] float interactRadius = 5f;
     //[SerializeField] LayerMask interactLayer;
+
+    [Header("Kite")]
+    [SerializeField] private Kite kite;
+    public UnityEvent PlayerMovingHorizontallyEvent;
+    public UnityEvent PlayerMovingVerticallyEvent;
+    [SerializeField] private float playerDistMovedX;
+    [SerializeField] private float playerDistMovedY;
+
 
 
     private Canvas pauseMenuUI = null;
@@ -172,6 +181,18 @@ public class Player : MonoBehaviour
         return playerState;
     }
 
+
+    public float GetDistPlayerMoveX()
+    {
+        return playerDistMovedX;
+    }
+
+    public float GetDistPlayerMoveY()
+    {
+        return playerDistMovedY;
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -198,11 +219,12 @@ public class Player : MonoBehaviour
         mainCam = Camera.main;
         aimLine = GetComponentInChildren<AimLine>();
         aimLineState = AimLineState.NOT_AIMED;
-
+        playerGFX = GameObject.FindObjectOfType<PlayerGFX>();
+        playerGFX.SetFacingRight(true);
         // setting some generally player movement variables
-        isFacingRight = true;
         playerState = PlayerState.JUMPING;
         transform.Rotate(0f, 180f, 0f);
+        
 
         try
         {
@@ -214,6 +236,7 @@ public class Player : MonoBehaviour
             Debug.Log("Couldn't find pause menu UI...");
         }
 
+        kite.SetKiteStartPosition(transform.position);
     }
 
     // Update is called once per frame
@@ -242,7 +265,7 @@ public class Player : MonoBehaviour
                 break;
             //the start of the jump
             case PlayerState.JUMP:
-                if (isFacingRight)
+                if (playerGFX.GetFacingRight())
                 {
                     rb.velocity = new Vector2(jumpMoveSpeed, jumpForce);
                 }
@@ -260,7 +283,7 @@ public class Player : MonoBehaviour
                 if (rb.velocity.y > 0 /*&& !Input.GetButton("Jump")*/)
                 {
                     rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier * 1) * Time.deltaTime;
-                    if (isFacingRight)
+                    if (playerGFX.GetFacingRight())
                     {
                         if (moveVelocity != 0)
                         {
@@ -352,7 +375,23 @@ public class Player : MonoBehaviour
                 rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                 break;
         }
+        playerDistMovedX = lastPosition.x - transform.position.x;
+        if ((Mathf.Abs(playerDistMovedX) > Mathf.Epsilon) && playerDistMovedX <= 1)
+        {
+
+            PlayerMovingHorizontallyEvent.Invoke();
+            //kite.MoveKiteWithPlayer(-distX);
+        }
+        playerDistMovedY = lastPosition.y - transform.position.y;
+        if ((Mathf.Abs(playerDistMovedY) > Mathf.Epsilon) && playerDistMovedY <= 1)
+        {
+            PlayerMovingVerticallyEvent.Invoke();
+            //kite.MoveKiteWithPlayer(-distX);
+        }
+
+
         lastPosition = transform.position;
+
     }
 
 
@@ -421,7 +460,7 @@ public class Player : MonoBehaviour
         {
             fallFixSwitch = true;
             //Character flip
-            if (isFacingRight)
+            if (playerGFX.GetFacingRight())
             {
                 if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                     playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
@@ -434,8 +473,8 @@ public class Player : MonoBehaviour
                     {
                         playerState = PlayerState.MOVING_OBJECT_LEFT;
                     }
-                    
-                    isFacingRight = false; // facing left
+
+                    playerGFX.SetFacingRight(false); // facing left
                     transform.Rotate(0f, 180f, 0f); //rotate player and aiming to the left 
                     lastShootingLine.x = -1;
                 }
@@ -490,7 +529,7 @@ public class Player : MonoBehaviour
         {
             fallFixSwitch = true;
             //Character flip
-            if (isFacingRight == false)
+            if (!playerGFX.GetFacingRight())
             {
                 if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                     playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING && 
@@ -503,8 +542,8 @@ public class Player : MonoBehaviour
                     {
                         playerState = PlayerState.MOVING_OBJECT_RIGHT;
                     }
-                    
-                    isFacingRight = true;
+
+                    playerGFX.SetFacingRight(true);
                     transform.Rotate(0f, 180f, 0f); //rotate player and aiming to the left
                     lastShootingLine.x = 1;
                 }
@@ -1013,7 +1052,13 @@ public class Player : MonoBehaviour
         Invoke("ResetShootCoolDown", shootCoolTime);
 
     }
-    
+
+    public AimLineState GetAimLineState()
+    {
+        return aimLineState;
+    }
+
+
     private void UnloadProjectile()
     {
         if (loadedProjectile != null)
@@ -1227,7 +1272,7 @@ public class Player : MonoBehaviour
 
     public void SetMoveObjectStopped()
     {
-        if (isFacingRight)
+        if (playerGFX.GetFacingRight())
         {
             playerState = PlayerState.MOVING_OBJECT_STOPPED_RIGHT;
         }

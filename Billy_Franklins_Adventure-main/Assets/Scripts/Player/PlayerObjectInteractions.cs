@@ -39,12 +39,9 @@ public class PlayerObjectInteractions : MonoBehaviour
             {
                 togglePos++;
             }
-            currentToggleObject.GetComponent<IInteractable>().SetHighlighted(false);
             currentToggleObject = toggleObjects[togglePos];
             currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
         }
-        
-        
     }
 
     //returns selected object when interacting with interactable objects
@@ -60,14 +57,29 @@ public class PlayerObjectInteractions : MonoBehaviour
         {
             //adds to the list of interactable objects in the interactable circle
             //sets the selected interactable object to the one collided with if the list is empty
-            if (toggleObjects.Count < 1)
+            if (collision.gameObject.CompareTag("Metal"))
             {
-                currentToggleObject = collision.gameObject;
-                currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
-                togglePos = 0;
+                if (collision.gameObject.GetComponent<Metal>().GetMovable())
+                {
+                    if (toggleObjects.Count < 1)
+                    {
+                        currentToggleObject = collision.gameObject;
+                        currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
+                        togglePos = 0;
+                    }
+                    toggleObjects.Add(collision.gameObject);
+                }
             }
-
-            toggleObjects.Add(collision.gameObject);
+            else
+            {
+                if (toggleObjects.Count < 1)
+                {
+                    currentToggleObject = collision.gameObject;
+                    currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
+                    togglePos = 0;
+                }
+                toggleObjects.Add(collision.gameObject);
+            }
         }
     }
 

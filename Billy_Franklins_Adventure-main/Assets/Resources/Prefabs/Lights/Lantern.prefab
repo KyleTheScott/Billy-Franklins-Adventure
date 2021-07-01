@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000f52ace69c9b5f490c537b382916afb084fffb5bfb7dd6fbe65f2969095cbf058835dc4c9d15b019799001a3c21beb06a555649ed33aec3e07dfb7a287930fa7de342426c
+  m_ApplyToSortingLayers: 00000000c9b5f490c537b382916afb084fffb5bfb7dd6fbe65f2969095cbf058835dc4c9d15b019799001a3c21beb06a555649ed33aec3e07dfb7a287930fa7de342426c
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -121,18 +121,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0010534823, y: -0.18541259}
+  m_Offset: {x: -0.0010534823, y: -0.087381214}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.37166667, y: 0.6706667}
+    oldSize: {x: 0.98846155, y: 1.1553847}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5048639, y: 0.50697076}
+  m_Size: {x: 0.5048639, y: 0.7852536}
   m_EdgeRadius: 0
 --- !u!114 &6188749757494484414
 MonoBehaviour:
@@ -149,6 +149,8 @@ MonoBehaviour:
   lanternInWater: 0
   lanterOn: 0
   highlight: {fileID: 2913337833860778920}
+  ghosts: []
+  ghostDissipateDistance: 5
   inputSound: event:/Game Sounds/Electric Lantern Hum
 --- !u!212 &8590728446891345725
 SpriteRenderer:
@@ -188,9 +190,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2113548409
-  m_SortingLayer: 18
+  m_SortingLayer: 19
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 611f3a6ddff976d4e9fb3a39f40c854a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d90943b14ca69a94f8c8ce0d2a463558, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

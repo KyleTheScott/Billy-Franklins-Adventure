@@ -1,0 +1,706 @@
+fileFormatVersion: 2
+guid: 574cf09baee6b3048b9b93b732db4afd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5977506653651964231
+    second: Jump_1956x2160_R2_0
+  - first:
+      213: 6999908786491353880
+    second: Jump_1956x2160_R2_1
+  - first:
+      213: 1555252450821833038
+    second: Jump_1956x2160_R2_2
+  - first:
+      213: -5717899006098348424
+    second: Jump_1956x2160_R2_3
+  - first:
+      213: 61917183368839663
+    second: Jump_1956x2160_R2_4
+  - first:
+      213: 247919368666048386
+    second: Jump_1956x2160_R2_5
+  - first:
+      213: 7309301201009520208
+    second: Jump_1956x2160_R2_6
+  - first:
+      213: 4879261942175508965
+    second: Jump_1956x2160_R2_7
+  - first:
+      213: -5310370716457901779
+    second: Jump_1956x2160_R2_8
+  - first:
+      213: -3369321336843636722
+    second: Jump_1956x2160_R2_9
+  - first:
+      213: 4027810435829517303
+    second: Jump_1956x2160_R2_10
+  - first:
+      213: -1468873823938972894
+    second: Jump_1956x2160_R2_11
+  - first:
+      213: -1518304183017705253
+    second: Jump_1956x2160_R2_12
+  - first:
+      213: 4866249721486391750
+    second: Jump_1956x2160_R2_13
+  - first:
+      213: -5124638371194251428
+    second: Jump_1956x2160_R2_14
+  - first:
+      213: -3876169260668741446
+    second: Jump_1956x2160_R2_15
+  - first:
+      213: 8731007780242415148
+    second: Jump_1956x2160_R2_16
+  - first:
+      213: 6209614723625309881
+    second: Jump_1956x2160_R2_17
+  - first:
+      213: -8388877313280867786
+    second: Jump_1956x2160_R2_18
+  - first:
+      213: 1758360909296083084
+    second: Jump_1956x2160_R2_19
+  - first:
+      213: -3991536547412311069
+    second: Jump_1956x2160_R2_20
+  - first:
+      213: 1977718271348965133
+    second: Jump_1956x2160_R2_21
+  - first:
+      213: 5538831924542808454
+    second: Jump_1956x2160_R2_22
+  - first:
+      213: 9166258994404088755
+    second: Jump_1956x2160_R2_23
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1000
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 741957d91ae54f250800000000000000
+      internalID: 5977506653651964231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_1
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81be3f644fba42160800000000000000
+      internalID: 6999908786491353880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_2
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e418a4b2ddd559510800000000000000
+      internalID: 1555252450821833038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_3
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 876e2ff0621f5a0b0800000000000000
+      internalID: -5717899006098348424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_4
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe14138a959fbd000800000000000000
+      internalID: 61917183368839663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 287674e2a59c07300800000000000000
+      internalID: 247919368666048386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_6
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05e228a47badf6560800000000000000
+      internalID: 7309301201009520208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_7
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e9247d82ee96b340800000000000000
+      internalID: 4879261942175508965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_8
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d21e3eb08f5cd46b0800000000000000
+      internalID: -5310370716457901779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_9
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e007a477814cd31d0800000000000000
+      internalID: -3369321336843636722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fbca3a4048a5e730800000000000000
+      internalID: 4027810435829517303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_11
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2237f302a038d9be0800000000000000
+      internalID: -1468873823938972894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_12
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd07d3ec366edeae0800000000000000
+      internalID: -1518304183017705253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_13
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c93a85d654688340800000000000000
+      internalID: 4866249721486391750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_14
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5751aa8d80a1e8b0800000000000000
+      internalID: -5124638371194251428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab81d802894153ac0800000000000000
+      internalID: -3876169260668741446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_16
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2e55883155ca2970800000000000000
+      internalID: 8731007780242415148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_17
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b6d8b1f0bbfc2650800000000000000
+      internalID: 6209614723625309881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_18
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6328f8d9788b49b80800000000000000
+      internalID: -8388877313280867786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_19
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c80a6894ee3f66810800000000000000
+      internalID: 1758360909296083084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e3008f78a63b98c0800000000000000
+      internalID: -3991536547412311069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_21
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0ffd851a44427b10800000000000000
+      internalID: 1977718271348965133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_22
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 681a7f41a42eddc40800000000000000
+      internalID: 5538831924542808454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_1956x2160_R2_23
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bb5fa09df7153f70800000000000000
+      internalID: 9166258994404088755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

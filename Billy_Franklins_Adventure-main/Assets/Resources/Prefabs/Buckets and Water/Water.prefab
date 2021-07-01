@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1099965001
-  m_SortingLayer: 4
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -4582401877760778594, guid: 7edc62699895956478371e8c882314b1, type: 3}
   m_Color: {r: 0.4247953, g: 0.70605195, b: 0.8113208, a: 1}
@@ -130,6 +130,7 @@ MonoBehaviour:
   colliderStayCheck: 0
   waterByItself: 0
   lanternInWater: {fileID: 0}
+  groupNum: 0
 --- !u!50 &-7863115331637910122
 Rigidbody2D:
   serializedVersion: 4
