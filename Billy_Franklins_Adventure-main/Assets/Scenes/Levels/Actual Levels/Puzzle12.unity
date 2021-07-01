@@ -4222,8 +4222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6271b323987ba4cb585b777c600fab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playersNewMaxCharge: 3
-  lanternNum: 3
+  playersNewMaxCharge: 5
+  lanternNum: 4
   lanternLitNum: 0
   playerSpawnPoint: {fileID: 233626037}
   playerPrefab: {fileID: 1596798624625240177, guid: 6a6b16f17162f084987c80e001fb2ead, type: 3}

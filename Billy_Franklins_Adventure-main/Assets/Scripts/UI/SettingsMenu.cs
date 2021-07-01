@@ -17,6 +17,10 @@ public class SettingsMenu : MonoBehaviour
             Debug.Log("Couldn't get main menu UI...");
         }
     }
+    private void Start()
+    {
+        FindObjectOfType<Player>().GetComponent<Player>().ReferenceSetingsMenuUI(GetComponent<Canvas>());
+    }
 
     public void Back()
     {
@@ -24,6 +28,11 @@ public class SettingsMenu : MonoBehaviour
         {
             mainMenuUI.gameObject.SetActive(true);
             mainMenuUI.GetComponent<MainMenu>().MainMenuUICalled();
+        }
+        else if (pauseMenuUI != null)
+        {
+            pauseMenuUI.gameObject.SetActive(true);
+            pauseMenuUI.GetComponent<PauseMenu>().PauseMenuCalled();
         }
     }
 
