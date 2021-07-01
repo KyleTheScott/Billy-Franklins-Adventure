@@ -224,7 +224,7 @@ public class Player : MonoBehaviour
             Debug.Log("Couldn't find pause menu UI...");
         }
 
-        kite.SetKiteStartPosition(transform.position);
+        //kite.SetKiteStartPosition(transform.position);
     }
 
     // Update is called once per frame

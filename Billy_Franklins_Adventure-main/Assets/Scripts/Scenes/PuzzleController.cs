@@ -71,7 +71,7 @@ public class PuzzleController : MonoBehaviour
             DontDestroyOnLoad(Instantiate(controllerPrefab));
             DontDestroyOnLoad(Instantiate(globalLightPrefab));
             camera = Instantiate(cameraPrefab).GetComponent<Camera>();
-            //camera.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
+            camera.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
             DontDestroyOnLoad(camera.gameObject);
             settingsUI = Instantiate(settingsUIPrefab).GetComponent<Canvas>();
             pauseMenuUI = Instantiate(pauseMenuUIPrefab).GetComponent<Canvas>();

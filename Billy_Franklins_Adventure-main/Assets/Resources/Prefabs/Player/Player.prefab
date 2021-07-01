@@ -283,7 +283,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1761518639
-  m_SortingLayer: 12
+  m_SortingLayer: 13
   m_SortingOrder: 1
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -437,6 +437,7 @@ GameObject:
   - component: {fileID: 1596798624625240181}
   - component: {fileID: 1168161267}
   - component: {fileID: 5695551840697702243}
+  - component: {fileID: 8852632073555520459}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -606,6 +607,26 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
+--- !u!114 &8852632073555520459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596798624625240177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c455c47e95f4a74e9ef879564d6599f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FootstepsEventPath: event:/Player Sounds/Footsteps
+  MaterialParameterName: Material
+  StepDistance: 2
+  RayDistance: 1.2
+  materialCheckLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  DefulatMaterialValue: 0
 --- !u!1 &1596798625019719989
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,7 +696,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1761518639
-  m_SortingLayer: 12
+  m_SortingLayer: 13
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 179d5f64eb74acf41bd144304ac2871e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -758,7 +779,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1761518639
-  m_SortingLayer: 12
+  m_SortingLayer: 13
   m_SortingOrder: 1
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -902,7 +923,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1816281827
-  m_SortingLayer: 20
+  m_SortingLayer: 21
   m_SortingOrder: 1
   m_Sprite: {fileID: -6137115286212852224, guid: dc6f95259d4bf9f4ab86a791e27fc67b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -940,7 +961,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -2502
+  m_InstanceId: 26980
 --- !u!95 &731963993
 Animator:
   serializedVersion: 3
@@ -1061,7 +1082,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1816281827
-  m_SortingLayer: 20
+  m_SortingLayer: 21
   m_SortingOrder: 3
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
