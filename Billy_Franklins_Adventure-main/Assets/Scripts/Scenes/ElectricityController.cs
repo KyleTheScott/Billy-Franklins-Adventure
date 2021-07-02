@@ -528,11 +528,14 @@ public class ElectricityController : MonoBehaviour
                 {
                     if (connectedGameObjects[i] != null)
                     {
-                        if (connectedGameObjects[i].GetComponent<IElectrifiable>().GetGroupNum() == groupNum1)
+                        if (connectedGameObjects[i] != null)
                         {
-                            if (connectedGameObjects[i].CompareTag("Water"))
+                            if (connectedGameObjects[i].GetComponent<IElectrifiable>().GetGroupNum() == groupNum1)
                             {
-                                isWater = true;
+                                if (connectedGameObjects[i].CompareTag("Water"))
+                                {
+                                    isWater = true;
+                                }
                             }
                         }
                     }
@@ -548,9 +551,12 @@ public class ElectricityController : MonoBehaviour
                 { 
                     for (int i = 0; i < connectedGameObjects.Count; i++)
                     {
-                        if (connectedGameObjects[i].GetComponent<IElectrifiable>().GetGroupNum() == groupNum1)
+                        if (connectedGameObjects[i] != null)
                         {
-                            connectedGameObjects[i].GetComponent<IElectrifiable>().SetElectrified(true);
+                            if (connectedGameObjects[i].GetComponent<IElectrifiable>().GetGroupNum() == groupNum1)
+                            {
+                                connectedGameObjects[i].GetComponent<IElectrifiable>().SetElectrified(true);
+                            }
                         }
                     }
                 }
