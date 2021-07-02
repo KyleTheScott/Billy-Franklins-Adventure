@@ -9,8 +9,6 @@ public class Player : MonoBehaviour
     //to merge
     private CheckPointSystem checkPointDeathSystem = null;
 
-
-
     //CapsuleCollider2D capsuleCollider2D = null; //Player's capsule collider
 
     [Header("General")]
@@ -155,7 +153,7 @@ public class Player : MonoBehaviour
 
 
 
-    private Canvas pauseMenuUI = null;
+    [SerializeField] private Canvas pauseMenuUI = null;
     private Canvas settingsMenuUI = null;
     private bool movementEnabled = true;
 
@@ -236,6 +234,7 @@ public class Player : MonoBehaviour
         //if there are no charges left then player has died
         if (lightCharges == 0 && loadedProjectile == null && !lampOn && canShoot)
         {
+            FindObjectOfType<MovingObjectsCollision>().EmptyObjects();
             checkPointDeathSystem.PlayerDeath();
         }
     }
@@ -443,8 +442,21 @@ public class Player : MonoBehaviour
 
     void HandleInput()
     {
-        if(movementEnabled)
+       
+
+        if (movementEnabled)
         {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Debug.Log("Pause");
+                if (pauseMenuUI != null)
+                {
+                    Debug.Log("Pause 2");
+                    pauseMenuUI.gameObject.SetActive(true);
+                    //pauseMenuUI.gameObject.GetComponent<PauseMenu>().PauseMenuCalled();
+                }
+                PlayerControlsStatus(false);
+            }
             //Horizontal move
             if (Input.GetKey(KeyCode.A))
             {
@@ -1331,7 +1343,7 @@ public class Player : MonoBehaviour
     public void ReferencePauseMenuUI(Canvas pauseMenu)
     {
         pauseMenuUI = pauseMenu;
-        pauseMenuUI.gameObject.SetActive(false);
+        //pauseMenuUI.gameObject.SetActive(true);
     }
     public void ReferenceSetingsMenuUI(Canvas settingsMenu)
     {
