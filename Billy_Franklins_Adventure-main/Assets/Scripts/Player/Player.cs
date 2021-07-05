@@ -9,8 +9,6 @@ public class Player : MonoBehaviour
     //to merge
     private CheckPointSystem checkPointDeathSystem = null;
 
-
-
     //CapsuleCollider2D capsuleCollider2D = null; //Player's capsule collider
 
     [Header("General")]
@@ -81,8 +79,8 @@ public class Player : MonoBehaviour
     public GameObject projectilePrefab = null; //Prefab for projectile
     [SerializeField] private List<Projectile> listOfProjectile = null;
 
-    [SerializeField] float projectileSpawnDistance = 1f; //How far is projectile spanwed from player?
-    Projectile loadedProjectile = null; //projectile that is wating for shooting
+    [SerializeField] float projectileSpawnDistance = 1f; //How far is projectile spawned from player?
+    Projectile loadedProjectile = null; //projectile that is waiting for shooting
     //current charges, max charges
     public UnityEvent<int, int> onLightChargesChanged; //DarkBOrder will subscribe, charges text ui will subscribe this
 
