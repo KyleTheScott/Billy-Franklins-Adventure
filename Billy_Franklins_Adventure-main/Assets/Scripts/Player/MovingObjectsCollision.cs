@@ -23,21 +23,34 @@ public class MovingObjectsCollision : MonoBehaviour
             foreach (GameObject item in checkForElectric)
             {
                 //water
-                if (item.CompareTag("Water") && item.GetComponent<Water>().GetElectrified()) 
+                if (item.CompareTag("Water") && item.GetComponent<Water>().GetElectrified())
                 {
+                    EmptyObjects();
                     checkPointSystem.PlayerDeath();
+                    break;
                 }
                 //metal
                 else if (item.CompareTag("Metal") && item.GetComponent<Metal>().GetElectrified())
                 {
                     if (item.GetComponent<Metal>().GetMovable())
                     {
+                        EmptyObjects();
                         checkPointSystem.PlayerDeath();
+                        break;
                     }
                 }
             }
         }
     }
+
+    public void EmptyObjects()
+    {
+        groundObjectsTouching.Clear();
+        checkForElectric.Clear();
+        FindObjectOfType<PlayerObjectInteractions>().EmptyObjects();
+        FindObjectOfType<ElectricityController>().EmptyObjects();
+    }
+
 
     public void OnTriggerEnter2D(Collider2D collision)
     {

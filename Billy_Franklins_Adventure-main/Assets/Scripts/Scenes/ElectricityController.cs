@@ -30,6 +30,13 @@ public class ElectricityController : MonoBehaviour
     [SerializeField] private List<GameObject> connectedGameObjects = new List<GameObject>(); // list of objects that have connections
     [SerializeField] private int availableNum = 1; // number given to the next brand new group
     [SerializeField] private bool debugging = false; //for debugging
+
+    public void EmptyObjects()
+    {
+        connectedGameObjects.Clear();
+    }
+
+
     public void ConnectObjects(GameObject object1, Collider2D gameObjectCollider1, bool electricState1, int groupNum1,
         GameObject object2, Collider2D gameObjectCollider2, bool electricState2, int groupNum2)
     {
@@ -519,11 +526,17 @@ public class ElectricityController : MonoBehaviour
             {
                 for (int i = 0; i < connectedGameObjects.Count; i++)
                 {
-                    if (connectedGameObjects[i].GetComponent<IElectrifiable>().GetGroupNum() == groupNum1)
+                    if (connectedGameObjects[i] != null)
                     {
-                        if (connectedGameObjects[i].CompareTag("Water"))
+                        if (connectedGameObjects[i] != null)
                         {
-                            isWater = true;
+                            if (connectedGameObjects[i].GetComponent<IElectrifiable>().GetGroupNum() == groupNum1)
+                            {
+                                if (connectedGameObjects[i].CompareTag("Water"))
+                                {
+                                    isWater = true;
+                                }
+                            }
                         }
                     }
                 }
@@ -538,9 +551,12 @@ public class ElectricityController : MonoBehaviour
                 { 
                     for (int i = 0; i < connectedGameObjects.Count; i++)
                     {
-                        if (connectedGameObjects[i].GetComponent<IElectrifiable>().GetGroupNum() == groupNum1)
+                        if (connectedGameObjects[i] != null)
                         {
-                            connectedGameObjects[i].GetComponent<IElectrifiable>().SetElectrified(true);
+                            if (connectedGameObjects[i].GetComponent<IElectrifiable>().GetGroupNum() == groupNum1)
+                            {
+                                connectedGameObjects[i].GetComponent<IElectrifiable>().SetElectrified(true);
+                            }
                         }
                     }
                 }

@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("StartPauseMenu");
         FindObjectOfType<Player>().GetComponent<Player>().ReferencePauseMenuUI(GetComponent<Canvas>());
     }
 

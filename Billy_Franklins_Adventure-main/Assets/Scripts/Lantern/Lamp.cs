@@ -35,14 +35,6 @@ public class Lamp : MonoBehaviour, IInteractable
 
         //Subscribe this event
         GlobalGameController.instance.onAllLanternOn.AddListener(OnAllLanternOnCallback);
-
-        Transform GhostTransform = GameObject.Find("Ghosts").transform;
-
-        foreach (Transform g in GhostTransform)
-        {
-            ghosts.Add(g.gameObject);
-        }
-
     }
 
     //// Update is called once per frame

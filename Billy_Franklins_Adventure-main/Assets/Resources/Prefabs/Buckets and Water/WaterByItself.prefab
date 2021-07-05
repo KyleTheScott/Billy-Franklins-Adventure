@@ -99,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.028263092, y: 0.21955246}
+  m_Offset: {x: 0.05693531, y: 0.006465435}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -110,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2456164, y: 0.416031}
+  m_Size: {x: 2.2921848, y: 0.08592224}
   m_EdgeRadius: 0
 --- !u!114 &8181144266666333444
 MonoBehaviour:
@@ -129,7 +129,7 @@ MonoBehaviour:
   waterCollider: {fileID: 0}
   colliderStayCheck: 0
   waterByItself: 1
-  lanternInWater: {fileID: 0}
+  lanternInWater: []
   groupNum: 0
 --- !u!50 &-7863115331637910122
 Rigidbody2D:

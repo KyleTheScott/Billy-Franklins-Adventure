@@ -25,7 +25,8 @@ public class PlayerObjectInteractions : MonoBehaviour
     [SerializeField] private List<GameObject> toggleObjects = new List<GameObject>(); // list of interactable objects in interactable circle 
     [SerializeField] private GameObject currentToggleObject; // current selected interactable object in interactable circle
     private int togglePos = 0; // position of selected interactable object in the list of interactable objects 
-    
+
+
     //toggles through objects in the list of interactable objects
     public void ToggleObjects()
     {
@@ -39,6 +40,7 @@ public class PlayerObjectInteractions : MonoBehaviour
             {
                 togglePos++;
             }
+            currentToggleObject.GetComponent<IInteractable>().SetHighlighted(false);
             currentToggleObject = toggleObjects[togglePos];
             currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
         }
@@ -48,6 +50,12 @@ public class PlayerObjectInteractions : MonoBehaviour
     public GameObject GetCurrentObject()
     {
         return currentToggleObject;
+    }
+
+    public void EmptyObjects()
+    {
+        toggleObjects.Clear();
+        currentToggleObject = null;
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
