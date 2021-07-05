@@ -157,22 +157,20 @@ public class ElectricityController : MonoBehaviour
         //    }
         //}
 
-
         //Debugging
-        if (debugging)
-        {
-            Debug.Log("Connected List");
-            Debug.Log("--------------------");
-            Debug.Log("--------------------");
-            for (int i = 0; i < connectedGameObjects.Count; i++)
-            {
-                Debug.Log("Object: " + connectedGameObjects[i]);
-                Debug.Log("Objects Group: " + connectedGameObjects[i].GetComponent<IElectrifiable>().GetGroupNum());
-                Debug.Log("--------------------");
-            }
-            Debug.Log("--------------------");
-        }
-
+        //if (debugging)
+        //{
+        //    Debug.Log("Connected List");
+        //    Debug.Log("--------------------");
+        //    Debug.Log("--------------------");
+        //    for (int i = 0; i < connectedGameObjects.Count; i++)
+        //    {
+        //        Debug.Log("Object: " + connectedGameObjects[i]);
+        //        Debug.Log("Objects Group: " + connectedGameObjects[i].GetComponent<IElectrifiable>().GetGroupNum());
+        //        Debug.Log("--------------------");
+        //    }
+        //    Debug.Log("--------------------");
+        //}
     }
 
     public void DisconnectObjects(GameObject object1, Collider2D gameObjectCollider1, bool electricState1, int groupNum1,
@@ -473,8 +471,6 @@ public class ElectricityController : MonoBehaviour
                     }
                 }
             }
-
-
             //for (int i = 0; i < connectedGameObjects.Count; i++)
             //{
             //    if (connectedGameObjects[i] != object1)
@@ -488,8 +484,6 @@ public class ElectricityController : MonoBehaviour
             //        }
             //    }
             //}
-
-            
         }
         else
         {
