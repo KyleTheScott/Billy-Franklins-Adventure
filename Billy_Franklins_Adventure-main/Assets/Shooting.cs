@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    Projectile loadedProjectile = null; //projectile that is wating for shooting
+    [SerializeField] Projectile loadedProjectile = null; //projectile that is wating for shooting
     
     private Player player; 
 
@@ -102,6 +102,11 @@ public class Shooting : MonoBehaviour
     public void SetAimLineState(AimLineState state)
     {
         aimLineState = state;
+    }
+
+    public Projectile GetProjectile()
+    {
+        return loadedProjectile;
     }
 
 
