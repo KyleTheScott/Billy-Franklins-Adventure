@@ -44,7 +44,7 @@ public class Projectile : MonoBehaviour
                 {
                     
                     gameObject.SetActive(false);
-                    owner.ReturnProjectile(this);
+                    //owner.ReturnProjectile(this);
                 }
             }
         }
@@ -88,7 +88,7 @@ public class Projectile : MonoBehaviour
             if (owner != null)
             {
                 gameObject.SetActive(false);
-                owner.ReturnProjectile(this);
+                //owner.ReturnProjectile(this);
             }
         }
     }
@@ -102,7 +102,7 @@ public class Projectile : MonoBehaviour
             if (owner != null)
             {
                 gameObject.SetActive(false);
-                owner.ReturnProjectile(this);
+                //owner.ReturnProjectile(this);
             }
         }
     }

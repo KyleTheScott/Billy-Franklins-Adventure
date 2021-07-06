@@ -31,6 +31,8 @@ public class PuzzleController : MonoBehaviour
     [SerializeField]
     private GameObject cameraPrefab;
     private Player player;
+    private Shooting shooting;
+    private Charges charges;
     private Canvas settingsUI;
     private Canvas pauseMenuUI;
     private Camera camera;
@@ -43,14 +45,13 @@ public class PuzzleController : MonoBehaviour
         LoadPuzzle();  
     }
 
-
     private void LoadPuzzle()
     {
         if (player != null)
         {
-            player.maxLightCharges = playersNewMaxCharge;
-            player.lightCharges = playersNewMaxCharge;
-            player.onLightChargesChanged.Invoke(player.lightCharges, player.maxLightCharges);
+            charges.SetMaxLightCharges(playersNewMaxCharge);
+            charges.SetLightCharges(playersNewMaxCharge);
+            charges.onLightChargesChanged.Invoke(charges.GetLightCharges(), charges.GetMaxLightCharges());
         }
         else
         {

@@ -11,11 +11,11 @@ public class DarkBorder : MonoBehaviour
     void Start()
     {
         //Get player
-        Player player = FindObjectOfType<Player>();
+        Charges charges = FindObjectOfType<Charges>();
 
-        if(player != null)
+        if(charges != null)
         {
-            player.onLightChargesChanged.AddListener(OnLightChargesCallback);
+            charges.onLightChargesChanged.AddListener(OnLightChargesCallback);
         }
         else
         {
