@@ -1958,7 +1958,7 @@ PrefabInstance:
       objectReference: {fileID: 122783401}
     - target: {fileID: 3926876559190693077, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
       propertyPath: next_scene_to_load_
-      value: Puzzle4
+      value: Puzzle5
       objectReference: {fileID: 0}
     - target: {fileID: 3926876559190693077, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
       propertyPath: players_new_max_charge
@@ -1966,7 +1966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3926876559190693079, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.55
+      value: 22.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
@@ -3246,8 +3246,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098276776}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.896, y: 10.928, z: 0}
-  m_LocalScale: {x: 96.591515, y: 10.906895, z: 1}
+  m_LocalPosition: {x: 17.896, y: 9.683, z: 0}
+  m_LocalScale: {x: 96.591515, y: 14.541712, z: 1}
   m_Children: []
   m_Father: {fileID: 1974452492}
   m_RootOrder: 3
