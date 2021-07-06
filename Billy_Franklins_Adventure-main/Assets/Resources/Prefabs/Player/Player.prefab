@@ -69,10 +69,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 407068639}
-  - component: {fileID: 407068641}
-  - component: {fileID: 407068640}
+  - component: {fileID: 648864825}
+  - component: {fileID: 648864826}
   m_Layer: 12
-  m_Name: MovingObjectsCollider
+  m_Name: ObjectsCollider
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,8 +92,8 @@ Transform:
   m_Father: {fileID: 1596798624625240182}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &407068641
-CircleCollider2D:
+--- !u!70 &648864825
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -105,10 +105,10 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08936286, y: -0.57424223}
-  serializedVersion: 2
-  m_Radius: 0.14641023
---- !u!114 &407068640
+  m_Offset: {x: -0.086185455, y: 0.36389494}
+  m_Size: {x: 0.5, y: 1.9576182}
+  m_Direction: 0
+--- !u!114 &648864826
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,11 +117,121 @@ MonoBehaviour:
   m_GameObject: {fileID: 407068638}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56b098c62c9aed04c94c950c7213276c, type: 3}
+  m_Script: {fileID: 11500000, guid: c126b71b27d998146a92f45cc0c2bcdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkForElectric: []
+--- !u!1 &508536453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 508536454}
+  - component: {fileID: 508536455}
+  m_Layer: 0
+  m_Name: Charges
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &508536454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508536453}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1596798624625240182}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &508536455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508536453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 166bb4f71910115408f325ba340204a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightCharges: 3
+  maxLightCharges: 3
+  lampOn: 0
+  onLightChargesChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  shootSound: 
+--- !u!1 &1039994935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1039994936}
+  - component: {fileID: 1039994937}
+  - component: {fileID: 1039994938}
+  m_Layer: 12
+  m_Name: HopFixCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1039994936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039994935}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1596798624625240182}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1039994937
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039994935}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.08936286, y: -0.98592925}
+  serializedVersion: 2
+  m_Radius: 0.16111326
+--- !u!114 &1039994938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039994935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b13411bc71de74395769abdb543e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   groundObjectsTouching: []
-  checkForElectric: []
 --- !u!1 &1651558282
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,8 +277,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07824445, y: 0.39905334}
-  m_Size: {x: 0.4338193, y: 1.9003468}
+  m_Offset: {x: -0.07824445, y: 0.24942303}
+  m_Size: {x: 0.4338193, y: 1.6010861}
   m_Direction: 0
 --- !u!114 &1651558284
 MonoBehaviour:
@@ -326,11 +436,74 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textures:
-  - {fileID: 2800000, guid: b23898e148efe3f44993d9327fef5a4c, type: 3}
-  - {fileID: 2800000, guid: 2c0e4e59d144d8e4e8c75dc0f2aa04c0, type: 3}
-  - {fileID: 2800000, guid: 84ba4d84373b13a4380610dc92187909, type: 3}
-  - {fileID: 2800000, guid: 179d5f64eb74acf41bd144304ac2871e, type: 3}
-  fps: 2
+  - {fileID: 2800000, guid: ea59eba7272ba2c4b94519a4366cc228, type: 3}
+  - {fileID: 2800000, guid: 48afa6cf7036538448daf1d3444906fc, type: 3}
+  - {fileID: 2800000, guid: 609c17608de400944b4f25f2175070ee, type: 3}
+  - {fileID: 2800000, guid: 21c884e02e3848847ad9a1f9adb4853c, type: 3}
+  - {fileID: 2800000, guid: db5bffa6395ce414691b3ff0f8b1db9f, type: 3}
+  - {fileID: 2800000, guid: 52d4c4d70cd56744ebc6c45352bd620b, type: 3}
+  - {fileID: 2800000, guid: 13ff75718d7fd8e4285dc6c017efb835, type: 3}
+  - {fileID: 2800000, guid: 2bc7d2e98e6ecae4f9f6fe26d0b1a6a3, type: 3}
+  fps: 20
+--- !u!1 &1916932471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1916932472}
+  - component: {fileID: 1916932473}
+  m_Layer: 12
+  m_Name: Shooting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1916932472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916932471}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1596798624625240182}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1916932473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916932471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6db941ba8c53e34fbc01080f781eb83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aimLine: {fileID: 1596798626102824989}
+  aimLineCollisionMask:
+    serializedVersion: 2
+    m_Bits: 20240
+  aimCone: {fileID: 1596798625019719988}
+  firstAiming: 1
+  shootFixTimer: 0.5
+  shootCoolTime: 0.5
+  canShoot: 1
+  maxNumOfProjectile: 10
+  projectilePrefab: {fileID: 7641674986506221482, guid: 02094ac19ba79724681d7b03d1031ad6, type: 3}
+  listOfProjectile: []
+  projectileSpawnDistance: 1
+  angleBetween: 0
+  lightning: {fileID: 1897674608}
+  aimLineState: 0
 --- !u!1 &1596798624511780769
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +608,9 @@ Transform:
   - {fileID: 1897674607}
   - {fileID: 157297042}
   - {fileID: 7849752163734623093}
+  - {fileID: 1039994936}
+  - {fileID: 508536454}
+  - {fileID: 1916932472}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -487,7 +663,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fe4eb57506ff13448b0f2aa704b3e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerGFX: {fileID: 0}
+  charges: {fileID: 508536455}
+  shooting: {fileID: 1916932473}
+  playerGFX: {fileID: 731963994}
   playerState: 3
   debugMode: 1
   onGround: 0
@@ -505,40 +683,9 @@ MonoBehaviour:
   fallFixTimer: 0
   fallFixMax: 0.1
   fallFixStayMax: 1
-  shootCoolTime: 1
-  hp: 10
-  lightCharges: 20
-  maxLightCharges: 20
-  canShoot: 1
-  maxNumOfProjectile: 10
-  projectilePrefab: {fileID: 7641674986506221482, guid: 02094ac19ba79724681d7b03d1031ad6, type: 3}
-  listOfProjectile: []
-  projectileSpawnDistance: 1
-  onLightChargesChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  shootSound: event:/Player Sounds/Being struck with lightning
   jumpSound: event:/Player Sounds/Footsteps
-  angleBetween: 0
-  lightning: {fileID: 1897674608}
-  lampOn: 0
-  aimLineCollisionMask:
-    serializedVersion: 2
-    m_Bits: 17152
-  aimCone: {fileID: 1596798625019719988}
-  firstAiming: 1
-  aimLineState: 0
-  shootFixTimer: 0.05
   currentMovingObject: {fileID: 0}
-  kite: {fileID: 0}
-  PlayerMovingHorizontallyEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  PlayerMovingVerticallyEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  playerDistMovedX: 0
-  playerDistMovedY: 0
+  pauseMenuUI: {fileID: 0}
 --- !u!114 &1168161267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -847,7 +994,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596798626382368134}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.006, y: -0.17, z: 0}
+  m_LocalPosition: {x: 0, y: -0.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1596798624625240182}
@@ -929,7 +1076,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 135298
+  m_InstanceId: -6132
 --- !u!95 &731963993
 Animator:
   serializedVersion: 3

@@ -6,6 +6,7 @@ using TMPro;
 public class ChargesText : MonoBehaviour
 {
     Player player = null;
+    private Charges charges = null;
     TextMeshProUGUI text = null;
 
     // Start is called before the first frame update
@@ -13,22 +14,21 @@ public class ChargesText : MonoBehaviour
     {
         //Get player
         player = FindObjectOfType<Player>();
-
+        charges = FindObjectOfType<Charges>();
         if (player != null)
         {
-            player.onLightChargesChanged.AddListener(OnLightChargesCallback);
+            charges.onLightChargesChanged.AddListener(OnLightChargesCallback);
         }
         else
         {
             Debug.LogWarning("Couldn't find player, Check DarkBorder");
         }
-
+        
 
 
         //Get text
         text = GetComponent<TextMeshProUGUI>();
-
-        OnLightChargesCallback(player.lightCharges, player.maxLightCharges);
+        OnLightChargesCallback(charges.GetLightCharges(), charges.GetMaxLightCharges());
     }
 
     //// Update is called once per frame

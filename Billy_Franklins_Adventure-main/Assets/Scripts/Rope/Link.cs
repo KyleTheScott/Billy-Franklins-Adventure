@@ -11,14 +11,14 @@ public class Link : MonoBehaviour
     }
     private void Awake()
     {
-        if (kiteRope)
-        {
-            player = FindObjectOfType<Player>();
-            player.PlayerMovingHorizontallyEvent.AddListener(MoveKiteWithPlayerHorizontal);
-            player.PlayerMovingVerticallyEvent.AddListener(MoveKiteWithPlayerVertical);
-        }
-        else
-        {
+        //if (kiteRope)
+        //{
+        //    player = FindObjectOfType<Player>();
+        //    player.PlayerMovingHorizontallyEvent.AddListener(MoveKiteWithPlayerHorizontal);
+        //    player.PlayerMovingVerticallyEvent.AddListener(MoveKiteWithPlayerVertical);
+        //}
+        //else
+        //{
             Transform platformTransform = null;
             platformTransform = transform.parent.Find("SuspendedPlatform");
 
@@ -31,16 +31,16 @@ public class Link : MonoBehaviour
             {
                 platform = platformTransform.gameObject.GetComponent<SuspendedPlatform>();
             }
-        }
+        //}
     }
-    public void MoveKiteWithPlayerHorizontal()
-    {
-        transform.position = new Vector2(transform.position.x + -player.GetDistPlayerMoveX(), transform.position.y);
-    }
-    public void MoveKiteWithPlayerVertical()
-    {
-        transform.position = new Vector2(transform.position.x, transform.position.y + -player.GetDistPlayerMoveY());
-    }
+    //public void MoveKiteWithPlayerHorizontal()
+    //{
+    //    transform.position = new Vector2(transform.position.x + -player.GetDistPlayerMoveX(), transform.position.y);
+    //}
+    //public void MoveKiteWithPlayerVertical()
+    //{
+    //    transform.position = new Vector2(transform.position.x, transform.position.y + -player.GetDistPlayerMoveY());
+    //}
 
 
     public void OnTriggerEnter2D(Collider2D collision)
