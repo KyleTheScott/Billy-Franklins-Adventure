@@ -3,12 +3,9 @@
 public class Link : MonoBehaviour
 {
     [SerializeField] private SuspendedPlatform platform;
-    [SerializeField] private bool kiteRope = false;
+    //[SerializeField] private bool kiteRope = false;
     private Player player;
-    void Start()
-    {
-        
-    }
+
     private void Awake()
     {
         //if (kiteRope)
@@ -19,18 +16,18 @@ public class Link : MonoBehaviour
         //}
         //else
         //{
-            Transform platformTransform = null;
-            platformTransform = transform.parent.Find("SuspendedPlatform");
+        Transform platformTransform = null;
+        platformTransform = transform.parent.Find("SuspendedPlatform");
 
-            if (platformTransform == null)
-            {
-                platformTransform = transform.parent.parent.Find("SuspendedPlatform");
-            }
+        if (platformTransform == null)
+        {
+            platformTransform = transform.parent.parent.Find("SuspendedPlatform");
+        }
 
-            if (platformTransform != null)
-            {
-                platform = platformTransform.gameObject.GetComponent<SuspendedPlatform>();
-            }
+        if (platformTransform != null)
+        {
+            platform = platformTransform.gameObject.GetComponent<SuspendedPlatform>();
+        }
         //}
     }
     //public void MoveKiteWithPlayerHorizontal()
@@ -55,7 +52,6 @@ public class Link : MonoBehaviour
                 platform.SetGrounded();
                 platform.TurnOffConstraints();
             }
-
             //destroy rope link
             Destroy(gameObject);
         }

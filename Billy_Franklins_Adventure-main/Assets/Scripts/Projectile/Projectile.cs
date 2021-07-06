@@ -10,17 +10,19 @@ public class Projectile : MonoBehaviour
 
     public float speed = 20f; //projectile speed
 
-    public Player owner = null; //Who owns this projectile?
+    public Shooting owner = null; //Who owns this projectile?
 
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Disabled 8");
         rb = GetComponent<Rigidbody2D>();
         //organize the projectiles into one parent gameObject
         GameObject projectiles = GameObject.Find("Projectiles");
         transform.parent = projectiles.transform; 
         gameObject.SetActive(false);
         mainCam = Camera.main;
+        owner = FindObjectOfType<Shooting>();
     }
 
     // Update is called once per frame
@@ -42,9 +44,8 @@ public class Projectile : MonoBehaviour
                 //go back to owner
                 if (owner != null)
                 {
-                    
                     gameObject.SetActive(false);
-                    //owner.ReturnProjectile(this);
+                    owner.ReturnProjectile(this);
                 }
             }
         }
@@ -88,7 +89,7 @@ public class Projectile : MonoBehaviour
             if (owner != null)
             {
                 gameObject.SetActive(false);
-                //owner.ReturnProjectile(this);
+                owner.ReturnProjectile(this);
             }
         }
     }
@@ -102,7 +103,7 @@ public class Projectile : MonoBehaviour
             if (owner != null)
             {
                 gameObject.SetActive(false);
-                //owner.ReturnProjectile(this);
+                owner.ReturnProjectile(this);
             }
         }
     }
