@@ -40,6 +40,7 @@ public class PuzzleController : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
+        
         LoadInPrefabs();
         LoadPuzzle();  
     }
@@ -48,6 +49,10 @@ public class PuzzleController : MonoBehaviour
     {
         if (player != null)
         {
+            if (charges == null)
+            {
+                charges = FindObjectOfType<Charges>();
+            }
             charges.SetMaxLightCharges(playersNewMaxCharge);
             charges.SetLightCharges(playersNewMaxCharge);
             charges.onLightChargesChanged.Invoke(charges.GetLightCharges(), charges.GetMaxLightCharges());
@@ -66,6 +71,7 @@ public class PuzzleController : MonoBehaviour
         if (player == null)
         {
             player = Instantiate(playerPrefab, playerSpawnPoint.position, playerPrefab.transform.rotation).GetComponent<Player>();
+            charges = FindObjectOfType<Charges>();
             DontDestroyOnLoad(player);
             DontDestroyOnLoad(Instantiate(uiPrefab));
             DontDestroyOnLoad(Instantiate(controllerPrefab));
