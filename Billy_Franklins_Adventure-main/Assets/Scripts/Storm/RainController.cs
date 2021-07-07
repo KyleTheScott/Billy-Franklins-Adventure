@@ -50,8 +50,8 @@ public class RainController : MonoBehaviour
     {
         rainSoundEvent = FMODUnity.RuntimeManager.CreateInstance(rainSound);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(rainSoundEvent, transform, GetComponent<Rigidbody>());
-        rainSoundEvent.start();
         rainSoundEvent.setVolume(rainVolume);
+        rainSoundEvent.start();
     }
 
 

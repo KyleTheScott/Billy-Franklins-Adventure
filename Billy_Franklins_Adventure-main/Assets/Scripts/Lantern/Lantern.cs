@@ -14,8 +14,10 @@ public class Lantern : MonoBehaviour, IInteractable
     [SerializeField] private GameObject highlight;
     [SerializeField] private List<GameObject> ghosts = new List<GameObject>();
     [SerializeField] private float ghostDissipateDistance = 5;
-
-
+    [Header("FMOD Settings")]
+    [FMODUnity.EventRef]
+    [SerializeField]
+    private string lanternHummingSound;
     [FMODUnity.EventRef]
     public string inputSound;
 
@@ -72,6 +74,8 @@ public class Lantern : MonoBehaviour, IInteractable
             lanterOn = true;
             lanternAnimator.SetBool("Lit", true);
             FMODUnity.RuntimeManager.PlayOneShot(inputSound);
+            Debug.Log("LanternToggle");
+            FMODUnity.RuntimeManager.PlayOneShot(lanternHummingSound);
             DissipateGhosts();
             if (light2D != null)
             {

@@ -74,7 +74,6 @@ public class Player : MonoBehaviour
     private bool fallFixSwitch = false;
 
     //FMOD Event Refs
-    
     [FMODUnity.EventRef]
     public string jumpSound;
 

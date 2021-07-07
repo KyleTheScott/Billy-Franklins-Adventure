@@ -170,7 +170,7 @@ MonoBehaviour:
   onLightChargesChanged:
     m_PersistentCalls:
       m_Calls: []
-  shootSound: 
+  shootSound: event:/Player Sounds/Shooting Lightning
 --- !u!1 &1039994935
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,6 +496,7 @@ MonoBehaviour:
   aimCone: {fileID: 1596798625019719988}
   firstAiming: 1
   shootFixTimer: 0.5
+  aimLineState: 0
   shootCoolTime: 0.5
   canShoot: 1
   maxNumOfProjectile: 10
@@ -504,7 +505,6 @@ MonoBehaviour:
   projectileSpawnDistance: 1
   angleBetween: 0
   lightning: {fileID: 1897674608}
-  aimLineState: 0
 --- !u!1 &1596798624511780769
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,7 +580,6 @@ GameObject:
   - component: {fileID: 1596798624625240176}
   - component: {fileID: 1596798624625240181}
   - component: {fileID: 1168161267}
-  - component: {fileID: 5695551840697702243}
   - component: {fileID: 8852632073555520459}
   m_Layer: 12
   m_Name: Player
@@ -700,29 +699,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 0}
---- !u!114 &5695551840697702243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1596798624625240177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  Event: event:/Ambient Sounds/Rain
-  PlayEvent: 1
-  StopEvent: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 0
-  OverrideMaxDistance: 0
 --- !u!114 &8852632073555520459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1077,7 +1053,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -2494
+  m_InstanceId: 45334
 --- !u!95 &731963993
 Animator:
   serializedVersion: 3
