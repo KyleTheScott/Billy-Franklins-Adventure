@@ -15,7 +15,6 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Disabled 8");
         rb = GetComponent<Rigidbody2D>();
         //organize the projectiles into one parent gameObject
         GameObject projectiles = GameObject.Find("Projectiles");
