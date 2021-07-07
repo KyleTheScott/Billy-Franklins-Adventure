@@ -39,6 +39,21 @@ public class RainController : MonoBehaviour
 
     [SerializeField] private float rainAmount = 100;
 
+    [Header("FMOD Settings")]
+    [SerializeField] [FMODUnity.EventRef] 
+    private string rainSound;
+    private FMOD.Studio.EventInstance rainSoundEvent;
+    [SerializeField]
+    private float rainVolume;
+
+    public void Start()
+    {
+        rainSoundEvent = FMODUnity.RuntimeManager.CreateInstance(rainSound);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(rainSoundEvent, transform, GetComponent<Rigidbody>());
+        rainSoundEvent.start();
+        rainSoundEvent.setVolume(rainVolume);
+    }
+
 
     public float GetRainAmount()
     {
@@ -102,6 +117,7 @@ public class RainController : MonoBehaviour
         {
             case RainAmountState.NO_RAIN:
                 rainAmount = 0;
+                rainSoundEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 break;
             case RainAmountState.LIGHT_RAIN:
                 rainAmount = Random.Range(0, 50);
