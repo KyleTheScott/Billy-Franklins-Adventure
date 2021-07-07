@@ -32,13 +32,13 @@ public class Shooting : MonoBehaviour
 
 
 
-    //public enum AimLineState
-    //{
-    //    NOT_AIMED,
-    //    AIMING
-    //};
+    public enum AimLineState
+    {
+        NOT_AIMED,
+        AIMING
+    };
 
-    //[SerializeField] private AimLineState aimLineState = AimLineState.NOT_AIMED;
+    [SerializeField] private AimLineState aimLineState = AimLineState.NOT_AIMED;
 
     [Header("Shooting")]
     public float shootCoolTime = 0.5f; //Projectile shoot cool time
@@ -60,9 +60,6 @@ public class Shooting : MonoBehaviour
     private Charges charges;
 
 
-
-
-
     void Start()
     {
         player = GameObject.FindObjectOfType<Player>();
@@ -82,17 +79,9 @@ public class Shooting : MonoBehaviour
         //aiming
         mainCam = Camera.main;
         //aimLine = GetComponentInChildren<AimLine>();
-
     }
 
-
-    public enum AimLineState
-    {
-        NOT_AIMED,
-        AIMING
-    };
-
-    [SerializeField] private AimLineState aimLineState = AimLineState.NOT_AIMED;
+   
 
 
     public AimLineState GetAimLineState()
@@ -336,38 +325,12 @@ public class Shooting : MonoBehaviour
 
     }
 
-
-
     private void UnloadProjectile()
     {
         if (loadedProjectile != null)
         {
             loadedProjectile.gameObject.SetActive(false);
         }
-    }
-
-    void ShootProjectile()
-    {
-        ////Get projectile from list
-        //if (listOfProjectile.Count != 0)
-        //{
-        //    Projectile projectile = listOfProjectile.Dequeue();
-
-        //    //Activate projectile
-        //    projectile.gameObject.SetActive(true);
-
-        //    //Set projectile in front of player
-        //    Vector3 forwardVec = -transform.right;
-        //    Vector3 upwardVec = transform.up;
-        //    projectile.transform.position = transform.position + (forwardVec * projectileSpawnXOffset) + (upwardVec * projectileSpawnYOffset);
-
-        //    //Set projectile move direction
-        //    projectile.SetProjectileDirection(forwardVec);
-
-        //    //Can't shoot projectile continousely
-        //    canShoot = false;
-        //    Invoke("ResetShootCoolDown", shootCoolTime);
-        //}
     }
 
     void ResetShootCoolDown()
@@ -380,6 +343,4 @@ public class Shooting : MonoBehaviour
     {
         listOfProjectile.Add(projectile);
     }
-
-
 }

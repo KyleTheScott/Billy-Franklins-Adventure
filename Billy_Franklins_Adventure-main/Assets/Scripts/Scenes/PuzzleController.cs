@@ -31,7 +31,6 @@ public class PuzzleController : MonoBehaviour
     [SerializeField]
     private GameObject cameraPrefab;
     private Player player;
-    private Shooting shooting;
     private Charges charges;
     private Canvas settingsUI;
     private Canvas pauseMenuUI;

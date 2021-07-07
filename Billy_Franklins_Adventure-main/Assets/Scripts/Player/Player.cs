@@ -73,78 +73,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float fallFixStayMax = 2f;
     private bool fallFixSwitch = false;
 
-
-
-    //[Header("Shooting")]
-    //public float shootCoolTime = 0.5f; //Projectile shoot cool time
-    //public int hp = 10;
-    //public int lightCharges = 3; //how many lighting can character use?
-    //public int maxLightCharges = 3; //how many lighting can character use?
-    //[SerializeField] private bool canShoot = true; //Check if player can shoot projectile
-
-    //public int maxNumOfProjectile = 10; //Max number of projectile
-    //public GameObject projectilePrefab = null; //Prefab for projectile
-    //[SerializeField] private List<Projectile> listOfProjectile = null;
-
-    //[SerializeField] float projectileSpawnDistance = 1f; //How far is projectile spanwed from player?
-    //Projectile loadedProjectile = null; //projectile that is wating for shooting
-    //current charges, max charges
-    //public UnityEvent<int, int> onLightChargesChanged; //DarkBOrder will subscribe, charges text ui will subscribe this
-
-    //[SerializeField] LayerMask tileLayerMask; //Used to check if player is on ground
-
     //FMOD Event Refs
     
     [FMODUnity.EventRef]
     public string jumpSound;
-
-
-    ////variables to show lightning
-    //[SerializeField] private float angleBetween;
-    //[SerializeField] private Lightning lightning;
-    //private Vector2 lightningStartPos;
-    //private Vector2 lightningTargetPos;
-
-    //[SerializeField] private bool lampOn = false;
-
-    //private Shooting shooting;
-    
-
-    //[Header("Aiming")]
-    //AimLine aimLine = null; //player's aiming line
-    //Camera mainCam = null; // used for aiming
-    //Vector3 shootingLine = new Vector3(1, 0, 0); //Direction for loaded projectile
-    //Vector3 lastShootingLine = new Vector3(1, 0, 0);
-    //bool IsShootingLineInAngle = false;
-    //[SerializeField] LayerMask aimLineCollisionMask; //should be tile or obstacle
-    //[SerializeField] Transform aimCone = null;
-
-    //[SerializeField] private bool firstAiming = true;
-
-    ////public enum AimLineState
-    ////{
-    ////    NOT_AIMED,
-    ////    AIMING
-    ////};
-
-    ////[SerializeField] private AimLineState aimLineState = AimLineState.NOT_AIMED;
-
-
-
-
-
-    ////variable for aim line disappearing and appearing with mouse movement
-    //private bool mouseClick;
-    //float timeLeft = 1;
-    //float visibleCursorTimer = .5f;
-    //float cursorPosition;
-    //bool catchCursor = true;
-
-    //[SerializeField] private float shootFixTimer = .5f;
-
-
-
-
 
     [Header("Interact")]
     //stores object the player is currently moving 
@@ -193,18 +125,11 @@ public class Player : MonoBehaviour
     {
         //reference checkpoint + death system script 
         checkPointDeathSystem = GameObject.Find("GlobalGameController").GetComponent<CheckPointSystem>();
-        //charges = GameObject.FindObjectOfType<Charges>();
 
         rb = GetComponent<Rigidbody2D>(); // player rigidbody
-        //capsuleCollider2D = GetComponent<CapsuleCollider2D>();
-        //animator = GetComponentInChildren<Animator>();
 
-       
         shooting.SetAimLineState(Shooting.AimLineState.NOT_AIMED);
-        //playerGFX = GameObject.FindObjectOfType<PlayerGFX>();
         playerGFX.SetFacingRight(true);
-        //shooting = FindObjectOfType<Shooting>().GetComponent<Shooting>();
-
 
         // setting some generally player movement variables
         playerState = PlayerState.JUMPING;
@@ -380,52 +305,9 @@ public class Player : MonoBehaviour
 
     }
 
-
-    //void ShootProjectile()
-    //{
-    //    ////Get projectile from list
-    //    //if (listOfProjectile.Count != 0)
-    //    //{
-    //    //    Projectile projectile = listOfProjectile.Dequeue();
-
-    //    //    //Activate projectile
-    //    //    projectile.gameObject.SetActive(true);
-
-    //    //    //Set projectile in front of player
-    //    //    Vector3 forwardVec = -transform.right;
-    //    //    Vector3 upwardVec = transform.up;
-    //    //    projectile.transform.position = transform.position + (forwardVec * projectileSpawnXOffset) + (upwardVec * projectileSpawnYOffset);
-
-    //    //    //Set projectile move direction
-    //    //    projectile.SetProjectileDirection(forwardVec);
-
-    //    //    //Can't shoot projectile continousely
-    //    //    canShoot = false;
-    //    //    Invoke("ResetShootCoolDown", shootCoolTime);
-    //    //}
-    //}
-
-    //void ResetShootCoolDown()
-    //{
-    //    canShoot = true;
-    //}
-
-    ////Return projectile to pool
-    //public void ReturnProjectile(Projectile projectile)
-    //{
-    //    listOfProjectile.Add(projectile);
-    //}
-
     public bool IsPlayerOnGround()
     {
         return onGround;
-        ////Do capsule cast to downward of player so that it checks if player is on ground
-        //RaycastHit2D result = Physics2D.CapsuleCast(capsuleCollider2D.bounds.center, capsuleCollider2D.bounds.size,
-        //    CapsuleDirection2D.Vertical, 0f, Vector2.down, 0.1f, tileLayerMask);
-
-        ////Debug.Log(result.collider);
-
-        //return (result.collider != null);
     }
 
     //private void OnDrawGizmosSelected()
@@ -701,248 +583,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    //private void MouseInputHandle()
-    //{
-    //    if (movementEnabled)
-    //    {
-    //        if (aimLineState == AimLineState.NOT_AIMED)
-    //        {
-    //            //Can only shoot when player is on ground and if there is any lightCharges left
-    //            if (canShoot == true && lightCharges != 0 && !firstAiming)
-    //            {
-    //                if (playerState == PlayerState.FALL_FIX)
-    //                {
-    //                    onGround = true;
-    //                }
-    //                if (onGround)
-    //                {
-    //                    if (Input.GetMouseButtonDown(0))
-    //                    {
-    //                        aimLineState = AimLineState.AIMING;
-    //                        //Get projectile from list
-    //                        if (listOfProjectile.Count != 0)
-    //                        {
-
-    //                            loadedProjectile = listOfProjectile[listOfProjectile.Count - 1];
-    //                            if (listOfProjectile.Count > 10)
-    //                            {
-    //                                listOfProjectile.RemoveAt(0);
-    //                            }
-
-    //                            //Activate projectile
-    //                            loadedProjectile.gameObject.SetActive(true);
-
-    //                            loadedProjectile.transform.position =
-    //                                transform.position + (-transform.right * projectileSpawnDistance);
-
-    //                            loadedProjectile.GetComponent<Collider2D>().enabled = false;
-
-    //                            //Set projectile's parent to player
-    //                            //loadedProjectile.transform.SetParent(transform);
-    //                            //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-
-    //                            //Turn on aimcone
-    //                            aimCone.gameObject.SetActive(true);
-
-    //                            //SEt aim line
-    //                            aimLine.SetStartPoint(loadedProjectile.transform.position);
-    //                            aimLine.gameObject.SetActive(true);
-    //                        }
-    //                    }
-    //                }
-    //            }
-    //            if (firstAiming)
-    //            {
-    //                firstAiming = false;
-    //            }
-    //        }
-    //        else if (aimLineState == AimLineState.AIMING)
-    //        {
-    //            //Debug.Log("Aiming");
-    //            if (Input.GetMouseButtonDown(0))
-    //            {
-    //                if (loadedProjectile != null)
-    //                {
-    //                    //Debug.Log("Shoot");
-    //                    aimLineState = AimLineState.NOT_AIMED;
-    //                    if (loadedProjectile != null)
-    //                    {
-    //                        loadedProjectile.SetProjectileDirection(lastShootingLine);
-    //                        loadedProjectile.GetComponent<Collider2D>().enabled = true;
-    //                        StopAiming();
-
-    //                        //Can't shoot projectile continousely
-    //                        canShoot = false;
-    //                        UseLightCharges();
-
-    //                        lightning.SetStartPosition(lightningStartPos);
-    //                        lightning.SetTargetPosition(lightningTargetPos);
-    //                        lightning.SetShootLightning(true);
-    //                        //Set projectile's parent to player
-    //                        //loadedProjectile.transform.SetParent(null);
-    //                        //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-
-    //                    }
-    //                }
-    //            }
-    //            else if (Input.GetMouseButtonDown(1))
-    //            {
-    //                //not aiming anymore
-    //                aimLineState = AimLineState.NOT_AIMED;
-    //                UnloadProjectile();
-    //                StopAiming();
-    //                //mouseGlitchFix = false;
-    //                //timeLeft = visibleCursorTimer;
-    //                //cursorSpriteRenderer.sprite = null;
-    //                //catchCursor = true;
-    //                //visibleCursor = false;
-    //            }
-    //            else
-    //            {
-    //                Aiming();
-    //            }
-    //        }
-    //        catchCursor = true;
-    //    }
-    //}
-
-    //private void StopAiming()
-    //{
-    //    loadedProjectile = null;
-    //    canShoot = false;
-    //    //Turn off aimcone
-    //    aimCone.gameObject.SetActive(false);
-    //    //Turn off aimline
-    //    aimLine.gameObject.SetActive(false);
-    //    Invoke("ResetShootCoolDown", shootCoolTime);
-
-    //}
-
-   
-
-    //private void UnloadProjectile()
-    //{
-    //    if (loadedProjectile != null)
-    //    {
-    //        loadedProjectile.gameObject.SetActive(false);
-    //    }
-    //}
-
-    //public AimLineState GetAimLineState()
-    //{
-    //    return aimLineState;
-    //}
-
-
-
-    //private void Aiming()
-    //{
-    //    if (loadedProjectile != null)
-    //    {
-    //        //GEt mouse position of world
-    //        Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-    //        mousePos.z = 0f;
-
-    //        //Get forward vector of player
-    //        Vector3 forwardVector = -transform.right;
-
-    //        //Calculate shooting line
-    //        shootingLine = mousePos - transform.position;
-    //        shootingLine.Normalize();
-
-    //        //Get angle between forward vector and shooting line
-    //        angleBetween = Vector2.Angle(forwardVector, shootingLine);
-
-    //        //Set projectile based on shooting line
-    //        if (angleBetween <= 45)
-    //        {
-    //            loadedProjectile.transform.position = transform.position + (shootingLine * projectileSpawnDistance);
-    //            lastShootingLine = shootingLine;
-
-    //            //SEt aim line
-    //            lightningStartPos = loadedProjectile.transform.position;
-    //            aimLine.SetStartPoint(lightningStartPos);
-
-    //            if (debugMode)
-    //            {
-    //                //Draw shooting line
-    //                Debug.DrawLine(loadedProjectile.transform.position, mousePos, Color.red);
-    //            }
-
-    //            //float rayDist = (mousePos - loadedProjectile.transform.position).magnitude;
-    //            float rayDist = 50.0f;
-    //            RaycastHit2D hit = Physics2D.Raycast(loadedProjectile.transform.position, shootingLine, rayDist,
-    //                aimLineCollisionMask);
-    //            if (hit.collider != null)
-    //            {
-    //                //Debug.Log(hit.collider.name);
-
-    //                //SEt aim line
-    //                lightningTargetPos = hit.point;
-    //                aimLine.SetEndPoint(lightningTargetPos);
-    //            }
-    //            else
-    //            {
-
-    //                //SEt aim line
-    //                lightningTargetPos = loadedProjectile.transform.position + (shootingLine * rayDist);
-    //                aimLine.SetEndPoint(lightningTargetPos);
-    //            }
-    //        }
-    //        else
-    //        {
-    //            loadedProjectile.transform.position = transform.position + (lastShootingLine * projectileSpawnDistance);
-
-    //            //SEt aim line
-    //            lightningStartPos = loadedProjectile.transform.position;
-    //            aimLine.SetStartPoint(lightningStartPos);
-
-
-    //            float rayDist = 50.0f;
-    //            RaycastHit2D hit = Physics2D.Raycast(loadedProjectile.transform.position, lastShootingLine, rayDist,
-    //                aimLineCollisionMask);
-    //            if (hit.collider != null)
-    //            {
-    //                //Debug.Log(hit.collider.name);
-    //                lightningTargetPos = hit.point;
-    //                //SEt aim line
-    //                aimLine.SetEndPoint(lightningTargetPos);
-    //            }
-    //            else
-    //            {
-    //                //Set aim line
-    //                lightningTargetPos = loadedProjectile.transform.position + (lastShootingLine * rayDist);
-    //                aimLine.SetEndPoint(lightningTargetPos);
-    //            }
-    //        }
-    //    }
-    //}
-
-
-    //public void UseLightCharges()
-    //{
-    //    lightCharges -= 1;
-    //    FMODUnity.RuntimeManager.PlayOneShot(shootSound);
-
-    //    if (onLightChargesChanged != null)
-    //    {
-    //        onLightChargesChanged.Invoke(lightCharges, maxLightCharges);
-    //    }
-    //}
-
-    //public void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.collider.CompareTag("Ground"))
-    //    {
-    //        Debug.Log("Ground");
-
-
-    //        //onGround = true;
-
-    //    }
-    //}
     //Set from PlayerCollision collider to set when the player is on the ground 
-
     public bool GetOnGround()
     {
         return onGround;
@@ -967,39 +608,6 @@ public class Player : MonoBehaviour
             return false;
         }
     }
-
-    //public void OnCollisionExit2D(Collision2D collision)
-    //{
-    //    if (collision.collider.CompareTag("Ground"))
-    //    {
-    //        if (!movingObjectsCollision.GetComponent<MovingObjectsCollision>().IsGrounded())
-    //        {
-    //            GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject();
-    //            if (comp != null)
-    //            {
-    //                comp.GetComponent<IInteractable>().Interact();
-    //                if (comp.GetComponent<Collider2D>().CompareTag("Lantern"))
-    //                {
-    //                    UseLightCharges();
-    //                }
-
-    //                if (comp.GetComponent<Collider2D>().CompareTag("Metal"))
-    //                {
-    //                    if (comp.GetComponent<Metal>().IsMoving())
-    //                    {
-    //                        playerState = PlayerState.MOVING_OBJECT;
-    //                    }
-    //                    else
-    //                    {
-    //                        playerState = PlayerState.WALKING;
-    //                    }
-    //                }
-    //            }
-
-    //            onGround = false;
-    //        }
-    //    }
-    //}
 
     //called from MovingObjectsCollision to handle the player hopping when moving metal objects
     public void LeavingTheGround()
