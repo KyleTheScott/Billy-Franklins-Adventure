@@ -31,6 +31,7 @@ public class PuzzleController : MonoBehaviour
     [SerializeField]
     private GameObject cameraPrefab;
     private Player player;
+    private Charges charges;
     private Canvas settingsUI;
     private Canvas pauseMenuUI;
     private Camera camera;
@@ -39,18 +40,22 @@ public class PuzzleController : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
+        
         LoadInPrefabs();
         LoadPuzzle();  
     }
-
 
     private void LoadPuzzle()
     {
         if (player != null)
         {
-            player.maxLightCharges = playersNewMaxCharge;
-            player.lightCharges = playersNewMaxCharge;
-            player.onLightChargesChanged.Invoke(player.lightCharges, player.maxLightCharges);
+            if (charges == null)
+            {
+                charges = FindObjectOfType<Charges>();
+            }
+            charges.SetMaxLightCharges(playersNewMaxCharge);
+            charges.SetLightCharges(playersNewMaxCharge);
+            charges.onLightChargesChanged.Invoke(charges.GetLightCharges(), charges.GetMaxLightCharges());
         }
         else
         {
@@ -66,6 +71,7 @@ public class PuzzleController : MonoBehaviour
         if (player == null)
         {
             player = Instantiate(playerPrefab, playerSpawnPoint.position, playerPrefab.transform.rotation).GetComponent<Player>();
+            charges = FindObjectOfType<Charges>();
             DontDestroyOnLoad(player);
             DontDestroyOnLoad(Instantiate(uiPrefab));
             DontDestroyOnLoad(Instantiate(controllerPrefab));

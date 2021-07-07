@@ -1,0 +1,1345 @@
+fileFormatVersion: 2
+guid: 7c1b0c9be745372418c7bf428256bcf8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4363583166016155604
+    second: Aiming_1956x2160_R2_0
+  - first:
+      213: 827866875605673888
+    second: Aiming_1956x2160_R2_1
+  - first:
+      213: -3274445164705155042
+    second: Aiming_1956x2160_R2_2
+  - first:
+      213: -6612074052740292817
+    second: Aiming_1956x2160_R2_3
+  - first:
+      213: 1458519047672078117
+    second: Aiming_1956x2160_R2_4
+  - first:
+      213: 6063555733151890311
+    second: Aiming_1956x2160_R2_5
+  - first:
+      213: 8259346398622811751
+    second: Aiming_1956x2160_R2_6
+  - first:
+      213: -7489925431091037856
+    second: Aiming_1956x2160_R2_7
+  - first:
+      213: -8474956174759321073
+    second: Aiming_1956x2160_R2_8
+  - first:
+      213: 210670849195155431
+    second: Aiming_1956x2160_R2_9
+  - first:
+      213: 5973831339343807642
+    second: Aiming_1956x2160_R2_10
+  - first:
+      213: -7748261939034097069
+    second: Aiming_1956x2160_R2_11
+  - first:
+      213: -5189907137337740771
+    second: Aiming_1956x2160_R2_12
+  - first:
+      213: -3432286929823758754
+    second: Aiming_1956x2160_R2_13
+  - first:
+      213: -5573607008629628168
+    second: Aiming_1956x2160_R2_14
+  - first:
+      213: -8043798489614461097
+    second: Aiming_1956x2160_R2_15
+  - first:
+      213: 6230261644621127027
+    second: Aiming_1956x2160_R2_16
+  - first:
+      213: 2734337465156921805
+    second: Aiming_1956x2160_R2_17
+  - first:
+      213: 2426267523896150002
+    second: Aiming_1956x2160_R2_18
+  - first:
+      213: -6442176344586839348
+    second: Aiming_1956x2160_R2_19
+  - first:
+      213: 2122844235827233920
+    second: Aiming_1956x2160_R2_20
+  - first:
+      213: 809530402559687622
+    second: Aiming_1956x2160_R2_21
+  - first:
+      213: 2465687631501567584
+    second: Aiming_1956x2160_R2_22
+  - first:
+      213: 5626005974257087805
+    second: Aiming_1956x2160_R2_23
+  - first:
+      213: -843382796567523855
+    second: Aiming_1956x2160_R2_24
+  - first:
+      213: 2437016525948638506
+    second: Aiming_1956x2160_R2_25
+  - first:
+      213: 3512018624973132112
+    second: Aiming_1956x2160_R2_26
+  - first:
+      213: -3765069377555776171
+    second: Aiming_1956x2160_R2_27
+  - first:
+      213: -3109973270987785315
+    second: Aiming_1956x2160_R2_28
+  - first:
+      213: 3386818923378454995
+    second: Aiming_1956x2160_R2_29
+  - first:
+      213: -2788917005566850076
+    second: Aiming_1956x2160_R2_30
+  - first:
+      213: -8746655921702895607
+    second: Aiming_1956x2160_R2_31
+  - first:
+      213: -7907562514459470447
+    second: Aiming_1956x2160_R2_32
+  - first:
+      213: -7913103384845039237
+    second: Aiming_1956x2160_R2_33
+  - first:
+      213: 6920957655479683924
+    second: Aiming_1956x2160_R2_34
+  - first:
+      213: 2821818396619035746
+    second: Aiming_1956x2160_R2_35
+  - first:
+      213: -2140671990946506816
+    second: Aiming_1956x2160_R2_36
+  - first:
+      213: -18293708237566084
+    second: Aiming_1956x2160_R2_37
+  - first:
+      213: 4015702064403673080
+    second: Aiming_1956x2160_R2_38
+  - first:
+      213: 1098513367561892175
+    second: Aiming_1956x2160_R2_39
+  - first:
+      213: -1607003513285906811
+    second: Aiming_1956x2160_R2_40
+  - first:
+      213: 1015702766547133418
+    second: Aiming_1956x2160_R2_41
+  - first:
+      213: 6859205574639075362
+    second: Aiming_1956x2160_R2_42
+  - first:
+      213: 3082283153442353732
+    second: Aiming_1956x2160_R2_43
+  - first:
+      213: 5892586159654222482
+    second: Aiming_1956x2160_R2_44
+  - first:
+      213: 5590886991017827263
+    second: Aiming_1956x2160_R2_0
+  - first:
+      213: 758087005216268517
+    second: Aiming_1956x2160_R2_1
+  - first:
+      213: -1554918557429029338
+    second: Aiming_1956x2160_R2_2
+  - first:
+      213: -924496399736990620
+    second: Aiming_1956x2160_R2_3
+  - first:
+      213: -6125214176664580523
+    second: Aiming_1956x2160_R2_4
+  - first:
+      213: 8260706368968165334
+    second: Aiming_1956x2160_R2_5
+  - first:
+      213: -757976789645527800
+    second: Aiming_1956x2160_R2_6
+  - first:
+      213: -8451255410836093845
+    second: Aiming_1956x2160_R2_7
+  - first:
+      213: 5326002807079919529
+    second: Aiming_1956x2160_R2_8
+  - first:
+      213: 3943818680644560653
+    second: Aiming_1956x2160_R2_9
+  - first:
+      213: 6584192579694823948
+    second: Aiming_1956x2160_R2_10
+  - first:
+      213: 7416045108780525522
+    second: Aiming_1956x2160_R2_11
+  - first:
+      213: 5356516583015426546
+    second: Aiming_1956x2160_R2_12
+  - first:
+      213: -8766920447548756573
+    second: Aiming_1956x2160_R2_13
+  - first:
+      213: -6498571464499781631
+    second: Aiming_1956x2160_R2_14
+  - first:
+      213: -4054181297008596415
+    second: Aiming_1956x2160_R2_15
+  - first:
+      213: 4486802183381314584
+    second: Aiming_1956x2160_R2_16
+  - first:
+      213: -4036729213219001865
+    second: Aiming_1956x2160_R2_17
+  - first:
+      213: -7372462722800056862
+    second: Aiming_1956x2160_R2_18
+  - first:
+      213: -7047787137941692183
+    second: Aiming_1956x2160_R2_19
+  - first:
+      213: -1378025684807312329
+    second: Aiming_1956x2160_R2_20
+  - first:
+      213: -31605578476058980
+    second: Aiming_1956x2160_R2_21
+  - first:
+      213: 3397158829467169999
+    second: Aiming_1956x2160_R2_22
+  - first:
+      213: 5682898760421705934
+    second: Aiming_1956x2160_R2_23
+  - first:
+      213: 716184554849085355
+    second: Aiming_1956x2160_R2_24
+  - first:
+      213: 9207863171003336315
+    second: Aiming_1956x2160_R2_25
+  - first:
+      213: -2115182832591364722
+    second: Aiming_1956x2160_R2_26
+  - first:
+      213: 2828062145251541061
+    second: Aiming_1956x2160_R2_27
+  - first:
+      213: 9128599030417242891
+    second: Aiming_1956x2160_R2_28
+  - first:
+      213: -3937932748578010131
+    second: Aiming_1956x2160_R2_29
+  - first:
+      213: -6590520018546380419
+    second: Aiming_1956x2160_R2_30
+  - first:
+      213: -6697531206278054596
+    second: Aiming_1956x2160_R2_31
+  - first:
+      213: 58364510046245828
+    second: Aiming_1956x2160_R2_32
+  - first:
+      213: 9056952930398752687
+    second: Aiming_1956x2160_R2_33
+  - first:
+      213: 206935924290002277
+    second: Aiming_1956x2160_R2_34
+  - first:
+      213: 8381855564374967102
+    second: Aiming_1956x2160_R2_35
+  - first:
+      213: 7122262570293960131
+    second: Aiming_1956x2160_R2_36
+  - first:
+      213: 3449966330537778222
+    second: Aiming_1956x2160_R2_37
+  - first:
+      213: -2972061923671809564
+    second: Aiming_1956x2160_R2_38
+  - first:
+      213: 9212431876308948256
+    second: Aiming_1956x2160_R2_39
+  - first:
+      213: -2066419056503549626
+    second: Aiming_1956x2160_R2_40
+  - first:
+      213: -3719628821527595517
+    second: Aiming_1956x2160_R2_41
+  - first:
+      213: 2176664864899745892
+    second: Aiming_1956x2160_R2_42
+  - first:
+      213: 7495305625622659345
+    second: Aiming_1956x2160_R2_43
+  - first:
+      213: -6110927364858166615
+    second: Aiming_1956x2160_R2_44
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 900
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 12960
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbb58f6b812d69d40800000000000000
+      internalID: 5590886991017827263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_1
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 12960
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e061ce5d14458a00800000000000000
+      internalID: 758087005216268517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_2
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 12960
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 626a7c17fc1db6ae0800000000000000
+      internalID: -1554918557429029338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_3
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 12960
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4649c813c678b23f0800000000000000
+      internalID: -924496399736990620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_4
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 12960
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55e88bab82edefaa0800000000000000
+      internalID: -6125214176664580523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_5
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 12960
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d7872cecace3a270800000000000000
+      internalID: 8260706368968165334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_6
+      rect:
+        serializedVersion: 2
+        x: 11736
+        y: 12960
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 805ff2130202b75f0800000000000000
+      internalID: -757976789645527800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6444030bfb17ba80800000000000000
+      internalID: -8451255410836093845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_8
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9af5bbca553c9e940800000000000000
+      internalID: 5326002807079919529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_9
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d076e5ed1324bb630800000000000000
+      internalID: 3943818680644560653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_10
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0a09754440cf5b50800000000000000
+      internalID: 6584192579694823948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_11
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d7e22b0cb51be660800000000000000
+      internalID: 7416045108780525522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_12
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f9af14c37b265a40800000000000000
+      internalID: 5356516583015426546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_13
+      rect:
+        serializedVersion: 2
+        x: 11736
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ad6fb55d44a55680800000000000000
+      internalID: -8766920447548756573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10020071faf60d5a0800000000000000
+      internalID: -6498571464499781631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_15
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14a25c02797acb7c0800000000000000
+      internalID: -4054181297008596415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_16
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81ce3ed40d2544e30800000000000000
+      internalID: 4486802183381314584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_17
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f9a3a70b28aaf7c0800000000000000
+      internalID: -4036729213219001865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_18
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e581bfe630cfa990800000000000000
+      internalID: -7372462722800056862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_19
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e02b6650fa313e90800000000000000
+      internalID: -7047787137941692183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_20
+      rect:
+        serializedVersion: 2
+        x: 11736
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73c12b5d0f440ece0800000000000000
+      internalID: -1378025684807312329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c968302d4e6bf8ff0800000000000000
+      internalID: -31605578476058980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_22
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc4f8fbd4f1252f20800000000000000
+      internalID: 3397158829467169999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_23
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec881753056bdde40800000000000000
+      internalID: 5682898760421705934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_24
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba7a661ee0660f900800000000000000
+      internalID: 716184554849085355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_25
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b764e08c4c6e8cf70800000000000000
+      internalID: 9207863171003336315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_26
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8d1364ab6c55a2e0800000000000000
+      internalID: -2115182832591364722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_27
+      rect:
+        serializedVersion: 2
+        x: 11736
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5408272998b4f3720800000000000000
+      internalID: 2828062145251541061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0bbef8e37c4fae70800000000000000
+      internalID: 9128599030417242891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_29
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: deb41ab7707a959c0800000000000000
+      internalID: -3937932748578010131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_30
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d71317116f4c984a0800000000000000
+      internalID: -6590520018546380419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_31
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3df3b95ad69d03a0800000000000000
+      internalID: -6697531206278054596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_32
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c3dbc0763a5fc000800000000000000
+      internalID: 58364510046245828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_33
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fafc9d354b2c0bd70800000000000000
+      internalID: 9056952930398752687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_34
+      rect:
+        serializedVersion: 2
+        x: 11736
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56d9292702f2fd200800000000000000
+      internalID: 206935924290002277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3383311a35525470800000000000000
+      internalID: 8381855564374967102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_36
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cd9e63821c57d260800000000000000
+      internalID: 7122262570293960131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_37
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2c13c2591eb0ef20800000000000000
+      internalID: 3449966330537778222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_38
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e1e3155d6d11c6d0800000000000000
+      internalID: -2972061923671809564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_39
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02551e06bf129df70800000000000000
+      internalID: 9212431876308948256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_40
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 641120401da9253e0800000000000000
+      internalID: -2066419056503549626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_41
+      rect:
+        serializedVersion: 2
+        x: 11736
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 306fa845b49316cc0800000000000000
+      internalID: -3719628821527595517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4684c638921153e10800000000000000
+      internalID: 2176664864899745892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_43
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 111c93231cca40860800000000000000
+      internalID: 7495305625622659345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aiming_1956x2160_R2_44
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a24a6150ff913ba0800000000000000
+      internalID: -6110927364858166615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -17,7 +17,7 @@ public class Lamp : MonoBehaviour, IInteractable
     [SerializeField] private Player player;
 
     [SerializeField] private List<GameObject> ghosts = new List<GameObject>();
-
+    Charges charges ;
     [HideInInspector]
     public UnityEvent onLampOn; //Invoke when lamp is on, darkborder will subscribe this
 
@@ -32,7 +32,7 @@ public class Lamp : MonoBehaviour, IInteractable
         boxCollider.enabled = false;
 
         player = GameObject.FindObjectOfType<Player>().GetComponent<Player>();
-
+        charges = FindObjectOfType<Charges>();
         //Subscribe this event
         GlobalGameController.instance.onAllLanternOn.AddListener(OnAllLanternOnCallback);
     }
@@ -76,7 +76,7 @@ public class Lamp : MonoBehaviour, IInteractable
                 
                 Debug.Log("Lamp on");
                 onLampOn.Invoke();
-                player.SetLampOn(true);
+                charges.SetLampOn(true);
             }
             LanternToggle();
         }

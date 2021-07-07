@@ -3,44 +3,41 @@
 public class Link : MonoBehaviour
 {
     [SerializeField] private SuspendedPlatform platform;
-    [SerializeField] private bool kiteRope = false;
+    //[SerializeField] private bool kiteRope = false;
     private Player player;
-    void Start()
-    {
-        
-    }
+
     private void Awake()
     {
-        if (kiteRope)
-        {
-            player = FindObjectOfType<Player>();
-            player.PlayerMovingHorizontallyEvent.AddListener(MoveKiteWithPlayerHorizontal);
-            player.PlayerMovingVerticallyEvent.AddListener(MoveKiteWithPlayerVertical);
-        }
-        else
-        {
-            Transform platformTransform = null;
-            platformTransform = transform.parent.Find("SuspendedPlatform");
+        //if (kiteRope)
+        //{
+        //    player = FindObjectOfType<Player>();
+        //    player.PlayerMovingHorizontallyEvent.AddListener(MoveKiteWithPlayerHorizontal);
+        //    player.PlayerMovingVerticallyEvent.AddListener(MoveKiteWithPlayerVertical);
+        //}
+        //else
+        //{
+        Transform platformTransform = null;
+        platformTransform = transform.parent.Find("SuspendedPlatform");
 
-            if (platformTransform == null)
-            {
-                platformTransform = transform.parent.parent.Find("SuspendedPlatform");
-            }
-
-            if (platformTransform != null)
-            {
-                platform = platformTransform.gameObject.GetComponent<SuspendedPlatform>();
-            }
+        if (platformTransform == null)
+        {
+            platformTransform = transform.parent.parent.Find("SuspendedPlatform");
         }
+
+        if (platformTransform != null)
+        {
+            platform = platformTransform.gameObject.GetComponent<SuspendedPlatform>();
+        }
+        //}
     }
-    public void MoveKiteWithPlayerHorizontal()
-    {
-        transform.position = new Vector2(transform.position.x + -player.GetDistPlayerMoveX(), transform.position.y);
-    }
-    public void MoveKiteWithPlayerVertical()
-    {
-        transform.position = new Vector2(transform.position.x, transform.position.y + -player.GetDistPlayerMoveY());
-    }
+    //public void MoveKiteWithPlayerHorizontal()
+    //{
+    //    transform.position = new Vector2(transform.position.x + -player.GetDistPlayerMoveX(), transform.position.y);
+    //}
+    //public void MoveKiteWithPlayerVertical()
+    //{
+    //    transform.position = new Vector2(transform.position.x, transform.position.y + -player.GetDistPlayerMoveY());
+    //}
 
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -55,7 +52,6 @@ public class Link : MonoBehaviour
                 platform.SetGrounded();
                 platform.TurnOffConstraints();
             }
-
             //destroy rope link
             Destroy(gameObject);
         }

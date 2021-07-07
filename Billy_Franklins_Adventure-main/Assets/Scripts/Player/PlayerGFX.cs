@@ -8,7 +8,8 @@ public class PlayerGFX : MonoBehaviour
     private Animator playerAnimator;
     private Player player;
     private Player.PlayerState currentPlayerState;
-    private Player.AimLineState currentAimLineState;
+    private Shooting shooting;
+    private Shooting.AimLineState currentAimLineState;
     [SerializeField] private bool isFacingRight = false; //Is character facing right side? for Character flip
     private bool settingFacingRight;
 
@@ -18,6 +19,7 @@ public class PlayerGFX : MonoBehaviour
         playerSprite = gameObject.GetComponent<SpriteRenderer>();
         playerAnimator = gameObject.GetComponent<Animator>();
         player = GameObject.FindObjectOfType<Player>();
+        shooting = GameObject.FindObjectOfType<Shooting>();
 
         isFacingRight = true;
 
@@ -97,12 +99,22 @@ public class PlayerGFX : MonoBehaviour
                 case Player.PlayerState.MOVING_OBJECT_STOPPED_RIGHT:
 
                     break;
+                case Player.PlayerState.DEATH:
+
+                    break;
+                case Player.PlayerState.KICK_BUCKET:
+
+                    break;
+                case Player.PlayerState.INTERACT:
+
+                    break;
+                    
             }
         }
 
-        if (currentAimLineState != player.GetAimLineState())
+        if (currentAimLineState != shooting.GetAimLineState())
         {
-            if (player.GetAimLineState() == Player.AimLineState.AIMING)
+            if (shooting.GetAimLineState() == Shooting.AimLineState.AIMING)
             {
                 playerAnimator.SetInteger("PlayerAnimState", 3);
             }
@@ -112,7 +124,7 @@ public class PlayerGFX : MonoBehaviour
             }
         }
 
-        currentAimLineState = player.GetAimLineState();
+        currentAimLineState = shooting.GetAimLineState();
         currentPlayerState = player.GetPlayerState();
     }
 }

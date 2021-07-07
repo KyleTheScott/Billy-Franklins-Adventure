@@ -21,8 +21,9 @@ public class CheckPointSystem : MonoBehaviour
     {
         Debug.Log("Died");
         //if player dies then reload scene
-        Player player = GameObject.FindObjectOfType<Player>().GetComponent<Player>();
-        player.SetLampOn(false);
+        //Player player = GameObject.FindObjectOfType<Player>().GetComponent<Player>();
+        Charges charges = FindObjectOfType<Charges>();
+        charges.SetLampOn(false);
         playerDied = true;
         SceneManager.LoadScene(checkPointScene, LoadSceneMode.Single);
     }
@@ -42,6 +43,7 @@ public class CheckPointSystem : MonoBehaviour
         Debug.Log("SceneLoaded");
         if (playerDied)
         {
+            Debug.Log("DEATH");
             FindObjectOfType<Player>().transform.position = FindObjectOfType<PuzzleController>().PlayerSpawnPoint.position;
             playerDied = false;
 
