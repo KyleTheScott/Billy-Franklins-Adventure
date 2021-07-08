@@ -16,7 +16,6 @@ public class Door : MonoBehaviour
 
     [SerializeField] private DoorState doorState; // state of door
 
-
     [SerializeField] private List<Door> connectedDoors = new List<Door>(); // doors connected to switch 
 
 
@@ -56,7 +55,7 @@ public class Door : MonoBehaviour
                 if (transform.position.y > moveMin)
                 {
                     transform.position += new Vector3(0, -moveSpeed * Time.deltaTime, 0);
-                    //Debug.Log("Y: " + transform.position.y + "Min: " + moveMin);
+                    Debug.Log("Y: " + transform.position.y + "Min: " + moveMin);
                 }
                 else
                 {
@@ -66,7 +65,6 @@ public class Door : MonoBehaviour
                 break;
         }
     }
-
 
     public DoorState GetDoorState ()
     {
