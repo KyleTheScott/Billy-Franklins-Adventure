@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{f8642603-688d-4040-9483-bbb751640219}">
+		<property name="assetPath">
+			<value>Gate Opening_Lift Operating.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>8.4266666666666659</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{4320858c-e977-47c6-9d1d-0874ad6680fe}</destination>
+		</relationship>
+	</object>
+</objects>
