@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282665556118096282}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448ef548ca570d643940148eabd64c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlight: {fileID: 7023354469552292333, guid: f8623ec7761ed0e479dfd20ec67909a2, type: 3}
+  highlight: {fileID: 6678160961828915760}
   doors:
+  - {fileID: 0}
   - {fileID: 0}
 --- !u!212 &282665556118096280
 SpriteRenderer:
@@ -87,7 +88,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -313960875
-  m_SortingLayer: 10
+  m_SortingLayer: 16
   m_SortingOrder: 0
   m_Sprite: {fileID: -2097155515530198684, guid: 7edc62699895956478371e8c882314b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -137,6 +138,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Highlight
       objectReference: {fileID: 0}
+    - target: {fileID: 7023354469552292333, guid: f8623ec7761ed0e479dfd20ec67909a2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7875326688881385857, guid: f8623ec7761ed0e479dfd20ec67909a2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -183,6 +188,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8623ec7761ed0e479dfd20ec67909a2, type: 3}
+--- !u!1 &6678160961828915760 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7023354469552292333, guid: f8623ec7761ed0e479dfd20ec67909a2, type: 3}
+  m_PrefabInstance: {fileID: 4456997578308881373}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5805324960277539420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7875326688881385857, guid: f8623ec7761ed0e479dfd20ec67909a2, type: 3}

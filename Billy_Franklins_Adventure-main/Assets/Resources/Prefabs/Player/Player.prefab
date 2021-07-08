@@ -492,10 +492,11 @@ MonoBehaviour:
   aimLine: {fileID: 1596798626102824989}
   aimLineCollisionMask:
     serializedVersion: 2
-    m_Bits: 20240
+    m_Bits: 282384
   aimCone: {fileID: 1596798625019719988}
   firstAiming: 1
   shootFixTimer: 0.5
+  aimLineState: 0
   shootCoolTime: 0.5
   canShoot: 1
   maxNumOfProjectile: 10
@@ -504,7 +505,6 @@ MonoBehaviour:
   projectileSpawnDistance: 1
   angleBetween: 0
   lightning: {fileID: 1897674608}
-  aimLineState: 0
 --- !u!1 &1596798624511780769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,7 +1077,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -2494
+  m_InstanceId: 32456
 --- !u!95 &731963993
 Animator:
   serializedVersion: 3
