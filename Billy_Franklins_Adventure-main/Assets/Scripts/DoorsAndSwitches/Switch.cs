@@ -8,9 +8,23 @@ public class Switch : MonoBehaviour, IInteractable
 
     [SerializeField] private List<Door> doors = new List<Door>(); // doors connected to the switch
 
+    [Header("FMOD Settings")]
+    [FMODUnity.EventRef]
+    [SerializeField]
+    private string gateLiftingEventPath;
+    private FMOD.Studio.EventInstance gateLiftingEvent;
+
+    public void Start()
+    {
+        gateLiftingEvent = FMODUnity.RuntimeManager.CreateInstance(gateLiftingEventPath);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(gateLiftingEvent, transform, GetComponent<Rigidbody>());
+    }
+
     // called to interact with switch and all connected doors
     public void Interact()
     {
+        gateLiftingEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        gateLiftingEvent.start();
         for (int i = 0; i < doors.Count; i++)
         {
             doors[i].GetComponent<Door>().SetDoorState();
@@ -24,9 +38,14 @@ public class Switch : MonoBehaviour, IInteractable
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        
+
         //switch is hit by lightning and sets door movement
         if (collision.CompareTag("Lightning"))
         {
+            gateLiftingEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            gateLiftingEvent.start();
+
             for (int i = 0; i < doors.Count; i++)
             {
                 doors[i].GetComponent<Door>().SetDoorState();

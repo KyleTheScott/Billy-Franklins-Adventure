@@ -50,6 +50,7 @@ MonoBehaviour:
   doors:
   - {fileID: 0}
   - {fileID: 0}
+  gateLiftingEventPath: event:/Game Sounds/Gate Opening-Lift Operating
 --- !u!212 &282665556118096280
 SpriteRenderer:
   m_ObjectHideFlags: 0
