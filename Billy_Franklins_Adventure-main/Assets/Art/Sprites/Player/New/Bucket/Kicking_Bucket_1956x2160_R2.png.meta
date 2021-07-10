@@ -1,7 +1,199 @@
 fileFormatVersion: 2
 guid: 9755cdf972f9e3b4d948b7b678d2134f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -4949593070755262226
+    second: Kicking_Bucket_1956x2160_R2_0
+  - first:
+      213: 4992295792039383940
+    second: Kicking_Bucket_1956x2160_R2_1
+  - first:
+      213: 6707484068481514521
+    second: Kicking_Bucket_1956x2160_R2_2
+  - first:
+      213: -103416815358259536
+    second: Kicking_Bucket_1956x2160_R2_3
+  - first:
+      213: 4910193819659880735
+    second: Kicking_Bucket_1956x2160_R2_4
+  - first:
+      213: -1593711395019783112
+    second: Kicking_Bucket_1956x2160_R2_5
+  - first:
+      213: 7284690022066519605
+    second: Kicking_Bucket_1956x2160_R2_6
+  - first:
+      213: -7193810839551689032
+    second: Kicking_Bucket_1956x2160_R2_7
+  - first:
+      213: -5714175298991187985
+    second: Kicking_Bucket_1956x2160_R2_8
+  - first:
+      213: 8575113920407027180
+    second: Kicking_Bucket_1956x2160_R2_9
+  - first:
+      213: -17223374272191582
+    second: Kicking_Bucket_1956x2160_R2_10
+  - first:
+      213: -9011698102829548040
+    second: Kicking_Bucket_1956x2160_R2_11
+  - first:
+      213: -7605351662484600220
+    second: Kicking_Bucket_1956x2160_R2_12
+  - first:
+      213: 1382297271651167014
+    second: Kicking_Bucket_1956x2160_R2_13
+  - first:
+      213: -5449888650521597994
+    second: Kicking_Bucket_1956x2160_R2_14
+  - first:
+      213: -8932686828698082986
+    second: Kicking_Bucket_1956x2160_R2_15
+  - first:
+      213: 5234739076477506345
+    second: Kicking_Bucket_1956x2160_R2_16
+  - first:
+      213: 1810190780141942969
+    second: Kicking_Bucket_1956x2160_R2_17
+  - first:
+      213: -7076491914572300767
+    second: Kicking_Bucket_1956x2160_R2_18
+  - first:
+      213: 6557533172371614776
+    second: Kicking_Bucket_1956x2160_R2_19
+  - first:
+      213: 7353726807859684922
+    second: Kicking_Bucket_1956x2160_R2_20
+  - first:
+      213: -1893901457907771932
+    second: Kicking_Bucket_1956x2160_R2_21
+  - first:
+      213: -6990615502860590663
+    second: Kicking_Bucket_1956x2160_R2_22
+  - first:
+      213: 4652456941653413168
+    second: Kicking_Bucket_1956x2160_R2_23
+  - first:
+      213: 7654856091416905010
+    second: Kicking_Bucket_1956x2160_R2_24
+  - first:
+      213: 8383493741688908523
+    second: Kicking_Bucket_1956x2160_R2_25
+  - first:
+      213: 8557816731949503721
+    second: Kicking_Bucket_1956x2160_R2_26
+  - first:
+      213: 3430744422531901691
+    second: Kicking_Bucket_1956x2160_R2_27
+  - first:
+      213: 2071681806384112861
+    second: Kicking_Bucket_1956x2160_R2_28
+  - first:
+      213: 5535879037524023379
+    second: Kicking_Bucket_1956x2160_R2_29
+  - first:
+      213: -6759269430331026198
+    second: Kicking_Bucket_1956x2160_R2_30
+  - first:
+      213: -6898228729920316782
+    second: Kicking_Bucket_1956x2160_R2_31
+  - first:
+      213: -3510362262925006850
+    second: Kicking_Bucket_1956x2160_R2_0
+  - first:
+      213: -4129808868191502401
+    second: Kicking_Bucket_1956x2160_R2_1
+  - first:
+      213: -8272738523448481414
+    second: Kicking_Bucket_1956x2160_R2_2
+  - first:
+      213: 4562929663618600656
+    second: Kicking_Bucket_1956x2160_R2_3
+  - first:
+      213: -2823366233460331319
+    second: Kicking_Bucket_1956x2160_R2_4
+  - first:
+      213: -7888446288585087369
+    second: Kicking_Bucket_1956x2160_R2_5
+  - first:
+      213: -928532565138202454
+    second: Kicking_Bucket_1956x2160_R2_6
+  - first:
+      213: 267623524939274312
+    second: Kicking_Bucket_1956x2160_R2_7
+  - first:
+      213: -7485107740782516151
+    second: Kicking_Bucket_1956x2160_R2_8
+  - first:
+      213: -756198054810595942
+    second: Kicking_Bucket_1956x2160_R2_9
+  - first:
+      213: 6278386786142906978
+    second: Kicking_Bucket_1956x2160_R2_10
+  - first:
+      213: 1463962091593579507
+    second: Kicking_Bucket_1956x2160_R2_11
+  - first:
+      213: 7847476961097643647
+    second: Kicking_Bucket_1956x2160_R2_12
+  - first:
+      213: 4763494637637338983
+    second: Kicking_Bucket_1956x2160_R2_13
+  - first:
+      213: -1815309335846659343
+    second: Kicking_Bucket_1956x2160_R2_14
+  - first:
+      213: -7265665025435317608
+    second: Kicking_Bucket_1956x2160_R2_15
+  - first:
+      213: 703073775596878027
+    second: Kicking_Bucket_1956x2160_R2_16
+  - first:
+      213: 4404318031032736770
+    second: Kicking_Bucket_1956x2160_R2_17
+  - first:
+      213: 6881474434710910658
+    second: Kicking_Bucket_1956x2160_R2_18
+  - first:
+      213: 2305113199002957991
+    second: Kicking_Bucket_1956x2160_R2_19
+  - first:
+      213: 8053073510450959017
+    second: Kicking_Bucket_1956x2160_R2_20
+  - first:
+      213: -7681919762820296889
+    second: Kicking_Bucket_1956x2160_R2_21
+  - first:
+      213: -5870038328360180755
+    second: Kicking_Bucket_1956x2160_R2_22
+  - first:
+      213: 8526840781267023605
+    second: Kicking_Bucket_1956x2160_R2_23
+  - first:
+      213: 8149029411142308677
+    second: Kicking_Bucket_1956x2160_R2_24
+  - first:
+      213: -1048427763618608420
+    second: Kicking_Bucket_1956x2160_R2_25
+  - first:
+      213: -8630806883900575012
+    second: Kicking_Bucket_1956x2160_R2_26
+  - first:
+      213: 7332570249402163567
+    second: Kicking_Bucket_1956x2160_R2_27
+  - first:
+      213: 8879955166307614344
+    second: Kicking_Bucket_1956x2160_R2_28
+  - first:
+      213: 9098263356032226921
+    second: Kicking_Bucket_1956x2160_R2_29
+  - first:
+      213: 7304481275637960688
+    second: Kicking_Bucket_1956x2160_R2_30
+  - first:
+      213: 4520347017502739414
+    second: Kicking_Bucket_1956x2160_R2_31
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,12 +233,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 900
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -111,7 +303,679 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef72b6dde10b84fc0800000000000000
+      internalID: -3510362262925006850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_1
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbfff2d07b8ffa6c0800000000000000
+      internalID: -4129808868191502401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_2
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a79e92ec424513d80800000000000000
+      internalID: -8272738523448481414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_3
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0de44178a58c25f30800000000000000
+      internalID: 4562929663618600656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_4
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cca3c79e5361d8d0800000000000000
+      internalID: -2823366233460331319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_5
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 776232335eb968290800000000000000
+      internalID: -7888446288585087369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa02e843d803d13f0800000000000000
+      internalID: -928532565138202454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_7
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8481b819d2ac6b300800000000000000
+      internalID: 267623524939274312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_8
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 948a125ea2e8f1890800000000000000
+      internalID: -7485107740782516151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_9
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9d4c2b20e17185f0800000000000000
+      internalID: -756198054810595942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_10
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26aed86848f412750800000000000000
+      internalID: 6278386786142906978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_11
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fbb21214c9015410800000000000000
+      internalID: 1463962091593579507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f767949e7b6d7ec60800000000000000
+      internalID: 7847476961097643647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_13
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7670ad582255b1240800000000000000
+      internalID: 4763494637637338983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_14
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fad867e6c9bec6e0800000000000000
+      internalID: -1815309335846659343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_15
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89ac2fd872c2b2b90800000000000000
+      internalID: -7265665025435317608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_16
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc83855bfd1d1c900800000000000000
+      internalID: 703073775596878027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_17
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20cdd850ae74f1d30800000000000000
+      internalID: 4404318031032736770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c630ebe988ef7f50800000000000000
+      internalID: 6881474434710910658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_19
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a8b2a1dd386dff10800000000000000
+      internalID: 2305113199002957991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_20
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a29984d0b342cf60800000000000000
+      internalID: 8053073510450959017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_21
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74f0b002da6546590800000000000000
+      internalID: -7681919762820296889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_22
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de3e92cbd3f698ea0800000000000000
+      internalID: -5870038328360180755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_23
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f63cbf638c655670800000000000000
+      internalID: 8526840781267023605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5431953f21b271170800000000000000
+      internalID: 8149029411142308677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_25
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cda0bd8f08c3371f0800000000000000
+      internalID: -1048427763618608420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_26
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd23c18fdd6393880800000000000000
+      internalID: -8630806883900575012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_27
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f61a63ecac582c560800000000000000
+      internalID: 7332570249402163567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_28
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88ef82dfc20fb3b70800000000000000
+      internalID: 8879955166307614344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_29
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96611415156834e70800000000000000
+      internalID: 9098263356032226921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ff84e6f40bbe5560800000000000000
+      internalID: 7304481275637960688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kicking_Bucket_1956x2160_R2_31
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6db4fbf99af7bbe30800000000000000
+      internalID: 4520347017502739414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

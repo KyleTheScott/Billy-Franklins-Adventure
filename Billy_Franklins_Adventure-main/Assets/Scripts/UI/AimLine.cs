@@ -14,6 +14,7 @@ public class AimLine : MonoBehaviour
 
     public void SetStartPoint(Vector3 startPos)
     {
+
         lineRenderer.SetPosition(0, startPos);
     }
 

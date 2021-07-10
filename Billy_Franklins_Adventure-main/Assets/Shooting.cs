@@ -7,7 +7,8 @@ public class Shooting : MonoBehaviour
 {
     [SerializeField] Projectile loadedProjectile = null; //projectile that is wating for shooting
     
-    private Player player; 
+    private Player player;
+    private PlayerGFX playerGFX;
 
 
     [Header("Aiming")]
@@ -49,7 +50,7 @@ public class Shooting : MonoBehaviour
     public GameObject projectilePrefab = null; //Prefab for projectile
     [SerializeField] private List<Projectile> listOfProjectile = null;
 
-    [SerializeField] float projectileSpawnDistance = 1f; //How far is projectile spanwed from player?
+    [SerializeField] float projectileSpawnDistance = 2f; //How far is projectile spanwed from player?
 
     //variables to show lightning
     [SerializeField] private float angleBetween;
@@ -57,12 +58,16 @@ public class Shooting : MonoBehaviour
     private Vector2 lightningStartPos;
     private Vector2 lightningTargetPos;
 
+    private Vector3 frontOfPlayer;
+    private Vector3 forwardVector;
+
     private Charges charges;
 
 
     void Start()
     {
         player = GameObject.FindObjectOfType<Player>();
+        playerGFX = GameObject.FindObjectOfType<PlayerGFX>();
         charges = GameObject.FindObjectOfType<Charges>();
         //Create list for projectile pool
         listOfProjectile = new List<Projectile>();
@@ -133,7 +138,14 @@ public class Shooting : MonoBehaviour
             mousePos.z = 0f;
 
             //Get forward vector of player
-            Vector3 forwardVector = -player.transform.right;
+            if (playerGFX.GetFacingRight())
+            {
+                forwardVector = new Vector3(1, 0, 0);
+            }
+            else
+            {
+                forwardVector = new Vector3(-1, 0, 0);
+            }
 
             //Calculate shooting line
             shootingLine = mousePos - player.transform.position;
@@ -145,7 +157,18 @@ public class Shooting : MonoBehaviour
             //Set projectile based on shooting line
             if (angleBetween <= 45)
             {
-                loadedProjectile.transform.position = player.transform.position + (shootingLine * projectileSpawnDistance);
+                if (playerGFX.GetFacingRight())
+                {
+                    frontOfPlayer = new Vector3(player.transform.position.x + 1.2f,
+                        player.transform.position.y + 0.2f, player.transform.position.z);
+                }
+                else
+                {
+                    frontOfPlayer = new Vector3(player.transform.position.x - 1.2f,
+                        player.transform.position.y + 0.2f, player.transform.position.z);
+                }
+
+                loadedProjectile.transform.position = frontOfPlayer + (shootingLine * projectileSpawnDistance);
                 lastShootingLine = shootingLine;
 
                 //SEt aim line
@@ -180,7 +203,18 @@ public class Shooting : MonoBehaviour
             }
             else
             {
-                loadedProjectile.transform.position = player.transform.position + (lastShootingLine * projectileSpawnDistance);
+                
+                if (playerGFX.GetFacingRight())
+                {
+                    frontOfPlayer = new Vector3(player.transform.position.x + 1.2f,
+                        player.transform.position.y + 0.2f, player.transform.position.z);
+                }
+                else
+                {
+                    frontOfPlayer = new Vector3(player.transform.position.x - 1.2f,
+                        player.transform.position.y + 0.2f, player.transform.position.z);
+                }
+                loadedProjectile.transform.position = frontOfPlayer + (lastShootingLine * projectileSpawnDistance);
 
                 //SEt aim line
                 lightningStartPos = loadedProjectile.transform.position;

@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
         MOVING_OBJECT_STOPPED_RIGHT,
         MOVING_OBJECT_RIGHT,
         DEATH,
+        KICK_BUCKET_START,
         KICK_BUCKET,
         INTERACT
 
@@ -105,6 +106,10 @@ public class Player : MonoBehaviour
     public PlayerState GetPlayerState()
     {
         return playerState;
+    }
+    public void SetPlayerState(PlayerState state)
+    {
+        playerState = state;
     }
 
 
@@ -541,25 +546,24 @@ public class Player : MonoBehaviour
                     }
                     if (onGround)
                     {
-                        ////Find any interactable object within circle
-                        //Collider2D result = Physics2D.OverlapCircle(transform.position, interactRadius, interactLayer);
-                        //if (result != null)
-                        //{
-                        //    //Call interact interface function
-                        //    IInteractable comp = result.gameObject.GetComponent<IInteractable>();
                         GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject();
                         if (comp != null)
                         {
-                            comp.GetComponent<IInteractable>().Interact(); // call interact function
-                            if (comp.GetComponent<Collider2D>().CompareTag("Lantern"))
+                            if (comp.GetComponent<Collider2D>().CompareTag("Bucket"))
                             {
+                                playerState = PlayerState.KICK_BUCKET_START;
+                            }
+                            
+                            if (comp.GetComponent<Collider2D>().CompareTag("Lantern") || comp.GetComponent<Collider2D>().CompareTag("Switch"))
+                            {
+                                InteractWithObject();
                                 charges.UseLightCharges();
                             }
 
                             if (comp.GetComponent<Collider2D>().CompareTag("Metal"))
                             {
                                 if (comp.GetComponent<Metal>().IsMoving())
-                                {
+                                { 
                                     playerState = PlayerState.MOVING_OBJECT;
                                     currentMovingObject = comp;
                                     //rb.gravityScale = jumpGravity;
@@ -570,6 +574,7 @@ public class Player : MonoBehaviour
                                     currentMovingObject = null;
                                     //rb.gravityScale = groundGravity;
                                 }
+                                InteractWithObject();
                             }
                         }
                     }
@@ -581,6 +586,13 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    public void InteractWithObject()
+    {
+        GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject(); 
+        comp.GetComponent<IInteractable>().Interact(); // call interact function
+    }
+
 
     //Set from PlayerCollision collider to set when the player is on the ground 
     public bool GetOnGround()

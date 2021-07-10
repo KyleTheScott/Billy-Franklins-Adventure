@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class PlayerGFX : MonoBehaviour
@@ -65,6 +66,7 @@ public class PlayerGFX : MonoBehaviour
             {
                 case Player.PlayerState.IDLE:
                     playerAnimator.SetInteger("PlayerAnimState", 0);
+                    
                     break;
                 case Player.PlayerState.WALKING:
                     playerAnimator.SetInteger("PlayerAnimState", 1);
@@ -104,8 +106,14 @@ public class PlayerGFX : MonoBehaviour
                 case Player.PlayerState.DEATH:
 
                     break;
+                case Player.PlayerState.KICK_BUCKET_START:
+                    playerAnimator.SetInteger("PlayerAnimState", 5);
+                   
+                    break;
                 case Player.PlayerState.KICK_BUCKET:
+                    playerAnimator.SetInteger("PlayerAnimState", 1);
 
+                    player.SetPlayerState(Player.PlayerState.WALKING);
                     break;
                 case Player.PlayerState.INTERACT:
 
@@ -128,6 +136,18 @@ public class PlayerGFX : MonoBehaviour
 
         currentAimLineState = shooting.GetAimLineState();
         currentPlayerState = player.GetPlayerState();
+        if (player.GetPlayerState() == Player.PlayerState.KICK_BUCKET_START)
+        {
+            player.SetPlayerState(Player.PlayerState.KICK_BUCKET);
+        }
+        else if (player.GetPlayerState() == Player.PlayerState.KICK_BUCKET)
+        {
+            player.SetPlayerState(Player.PlayerState.WALKING);
+        }
+    }
+    public void KickBucketOver()
+    {
+        player.InteractWithObject();
     }
 
     public void PlayFootStep()
