@@ -392,11 +392,11 @@ PrefabInstance:
       objectReference: {fileID: 1751630305}
     - target: {fileID: 2607798901181199850, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.63
+      value: 23.95
       objectReference: {fileID: 0}
     - target: {fileID: 2607798901181199850, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.64
+      value: 4.89
       objectReference: {fileID: 0}
     - target: {fileID: 2607798901181199850, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
       propertyPath: m_LocalPosition.z
@@ -874,9 +874,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 539233116}
     m_Modifications:
     - target: {fileID: 282665556118096281, guid: 64a969669041e7541b7703af54a907ec, type: 3}
+      propertyPath: doors.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 282665556118096281, guid: 64a969669041e7541b7703af54a907ec, type: 3}
       propertyPath: doors.Array.data[0]
       value: 
-      objectReference: {fileID: 1742945043}
+      objectReference: {fileID: 1751630305}
     - target: {fileID: 282665556118096281, guid: 64a969669041e7541b7703af54a907ec, type: 3}
       propertyPath: doors.Array.data[1]
       value: 
