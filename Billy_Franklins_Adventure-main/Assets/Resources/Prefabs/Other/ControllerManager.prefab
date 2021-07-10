@@ -76,7 +76,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3283143666902785204}
   m_Layer: 0
-  m_Name: Controllers
+  m_Name: ControllerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07d2bd2dd8176ae4e9a97365038e6da0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkPoint: 
+  checkPointScene: 
 --- !u!1 &3283143667901227629
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,6 +457,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3283143666902785204}
     m_Modifications:
+    - target: {fileID: 8251917603594569788, guid: dab18de920157474fa00aff4ee7eea66, type: 3}
+      propertyPath: lowWindVolume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251917603594569788, guid: dab18de920157474fa00aff4ee7eea66, type: 3}
+      propertyPath: highWindVolume
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8251917603594569790, guid: dab18de920157474fa00aff4ee7eea66, type: 3}
       propertyPath: m_Name
       value: WindController

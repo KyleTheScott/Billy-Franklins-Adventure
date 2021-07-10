@@ -160,11 +160,12 @@ public class Player : MonoBehaviour
         HandleInput();
 
         //if there are no charges left then player has died
-        if (charges.GetLightCharges() == 0 && !shooting.GetLoadedProjectile() && !charges.GetLampOn() && shooting.GetCanShoot())
-        {
-            FindObjectOfType<ObjectsCollision>().EmptyObjects();
-            checkPointDeathSystem.PlayerDeath();
-        }
+        //if (charges.GetLightCharges() == 0 && !shooting.GetLoadedProjectile() && !charges.GetLampOn() && shooting.GetCanShoot())
+        //{
+
+        //    FindObjectOfType<ObjectsCollision>().EmptyObjects();
+        //    checkPointDeathSystem.PlayerDeath();
+        //}
     }
 
     private void FixedUpdate()

@@ -52,5 +52,5 @@ MonoBehaviour:
       m_Calls: []
   windSoundEventPath: event:/Ambient Sounds/Wind
   lowWindVolume: 0.2
-  highWindVolume: 0.6
+  highWindVolume: 0.4
   volumeChangeRate: 1

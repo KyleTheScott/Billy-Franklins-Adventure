@@ -85,10 +85,7 @@ public class LevelLoadController : MonoBehaviour
 
             }
         }
-        else
-        {
-            Debug.LogWarning(">>> Not collided with Player!");
-        }
+        
     }
 
 

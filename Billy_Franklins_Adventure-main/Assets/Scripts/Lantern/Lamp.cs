@@ -31,7 +31,7 @@ public class Lamp : MonoBehaviour, IInteractable
         //Turn off cllider first, it will be available once all lantern on
         boxCollider.enabled = false;
 
-        player = GameObject.FindObjectOfType<Player>().GetComponent<Player>();
+        player = FindObjectOfType<Player>().GetComponent<Player>();
         charges = FindObjectOfType<Charges>();
         //Subscribe this event
         GlobalGameController.instance.onAllLanternOn.AddListener(OnAllLanternOnCallback);
@@ -44,6 +44,7 @@ public class Lamp : MonoBehaviour, IInteractable
     //}
     public void Interact()
     {
+        charges.SetLampOn(true);
         LanternToggle();
 
         //Turn off collider
@@ -76,8 +77,9 @@ public class Lamp : MonoBehaviour, IInteractable
                 
                 Debug.Log("Lamp on");
                 onLampOn.Invoke();
-                charges.SetLampOn(true);
+                
             }
+            charges.SetLampOn(true);
             LanternToggle();
         }
     }

@@ -15,6 +15,11 @@ public class PlayerGFX : MonoBehaviour
     [SerializeField] private bool isFacingRight = false; //Is character facing right side? for Character flip
     private bool settingFacingRight;
 
+    [Header("FMOD Settings")]
+    [FMODUnity.EventRef]
+    [SerializeField]
+    private string buckKickEventRef;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -153,5 +158,10 @@ public class PlayerGFX : MonoBehaviour
     public void PlayFootStep()
     {
         footstepScript.PlayerFootsteep();
+    }
+
+    public void PlayBucketKickSound()
+    {
+        FMODUnity.RuntimeManager.PlayOneShotAttached(buckKickEventRef, gameObject);
     }
 }

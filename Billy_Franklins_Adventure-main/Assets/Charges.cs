@@ -24,17 +24,6 @@ public class Charges : MonoBehaviour
     }
 
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public int GetLightCharges()
     {
         return lightCharges;
@@ -59,6 +48,10 @@ public class Charges : MonoBehaviour
 
     public void UseLightCharges()
     {
+        if (lightCharges <= 0)
+        {
+            return;
+        }
         lightCharges -= 1;
         FMODUnity.RuntimeManager.PlayOneShot(shootSound);
 
@@ -66,5 +59,23 @@ public class Charges : MonoBehaviour
         {
             onLightChargesChanged.Invoke(lightCharges, maxLightCharges);
         }
+
+        //if there are no charges left then player has died
+        if (lightCharges <= 0)
+        {
+            StartCoroutine(WaitForLatern());
+        }
+    }
+
+    private IEnumerator WaitForLatern()
+    {
+        yield return new WaitForSeconds(1.0f);
+        
+        if (!lampOn)
+        {
+            FindObjectOfType<ObjectsCollision>().EmptyObjects();
+            FindObjectOfType<CheckPointSystem>().PlayerDeath();
+        }
+
     }
 }

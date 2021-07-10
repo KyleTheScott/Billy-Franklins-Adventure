@@ -430,7 +430,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233626036}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.0299997, y: -3.23, z: 0}
+  m_LocalPosition: {x: 0.02, y: -3.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 647145178}
@@ -1313,14 +1313,18 @@ PrefabInstance:
     - target: {fileID: 2165601032990014240, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
       propertyPath: ghostWall
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1258894252}
     - target: {fileID: 2165601032990014240, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
       propertyPath: prev_scene_to_destroy_
       value: Puzzle4
       objectReference: {fileID: 0}
+    - target: {fileID: 2165601032990014240, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
+      propertyPath: puzzleController
+      value: 
+      objectReference: {fileID: 1200374025}
     - target: {fileID: 2688538072808380129, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.44
+      value: -5.23
       objectReference: {fileID: 0}
     - target: {fileID: 3926876557841378800, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
       propertyPath: m_IsActive
@@ -1524,6 +1528,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6592752125218216457, guid: c031b8c95f689b242bf7bce6c061334d, type: 3}
   m_PrefabInstance: {fileID: 1150058388}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1200374025 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 288686495153921894, guid: 4df786959ae486f4f9256924d39e862b, type: 3}
+  m_PrefabInstance: {fileID: 647145177}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb6271b323987ba4cb585b777c600fab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1227386882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1613,6 +1628,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
+--- !u!114 &1258894252 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1336841529337937597, guid: d96327a73afc3714e8142ec5a2dcaf24, type: 3}
+  m_PrefabInstance: {fileID: 253343468}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d51a621f54106b6429beb1870c980f56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1303806195 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5914287154078489739, guid: aaedb6110e99aec47adb37cb7e510b09, type: 3}
