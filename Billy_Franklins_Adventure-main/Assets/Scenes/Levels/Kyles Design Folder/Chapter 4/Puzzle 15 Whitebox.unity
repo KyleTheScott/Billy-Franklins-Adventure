@@ -188,6 +188,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1627675315}
     m_Modifications:
     - target: {fileID: 2607798901181199849, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
+      propertyPath: connectedDoors.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2607798901181199849, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
       propertyPath: moveMin
       value: 2.651
       objectReference: {fileID: 0}
@@ -260,6 +264,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1627675315}
     m_Modifications:
+    - target: {fileID: 2607798901181199849, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
+      propertyPath: connectedDoors.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2607798901181199849, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
       propertyPath: moveMin
       value: 2.651
@@ -487,6 +495,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1627675315}
     m_Modifications:
+    - target: {fileID: 2607798901181199849, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
+      propertyPath: connectedDoors.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2607798901181199849, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
       propertyPath: moveMin
       value: 2.651
@@ -793,6 +805,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1627675315}
     m_Modifications:
     - target: {fileID: 2607798901181199849, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
+      propertyPath: connectedDoors.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2607798901181199849, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
       propertyPath: moveMin
       value: 2.651
       objectReference: {fileID: 0}
@@ -1026,6 +1042,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1627675315}
     m_Modifications:
     - target: {fileID: 2607798901181199849, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
+      propertyPath: connectedDoors.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2607798901181199849, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
       propertyPath: moveMin
       value: 2.651
       objectReference: {fileID: 0}
@@ -1210,6 +1230,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1627675315}
     m_Modifications:
+    - target: {fileID: 2607798901181199849, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
+      propertyPath: connectedDoors.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2607798901181199849, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
       propertyPath: moveMin
       value: 2.651
@@ -1413,6 +1437,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1627675315}
     m_Modifications:
+    - target: {fileID: 2607798901181199849, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
+      propertyPath: connectedDoors.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2607798901181199849, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
       propertyPath: moveMin
       value: 2.651
