@@ -1,45 +1,120 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GhostWallController : MonoBehaviour
 {
+    [SerializeField]
     private Collider2D boxCollider;
-    private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private SpriteRenderer ghostWallspriteRenderer;
+    private List<Ghost> ghosts = new List<Ghost>();
     private bool isLowered;
     [SerializeField]
-    private float lowerWallSpirteAlpha = 100;
+    private float lowerWallSpirteAlpha = 0f;
+    private float currentWallSpirteAlpha;
     [SerializeField]
-    private float raiseWallSpirteAlpha = 255;
+    private float raiseWallSpirteAlpha = 1f;
     [SerializeField]
-    private bool LowerOnStart = false;
+    private float dissipationRate = 0.01f;
+    [SerializeField]
+    private bool RaiseOnStart = false;
     public bool IsLowered => isLowered;
+    [Header("FMOD Settings")]
+    [FMODUnity.EventRef][SerializeField]
+    private string ghostwallEventPath;
+    [SerializeField]
+    private float ghostWallSoundVolume;
+    private FMOD.Studio.EventInstance ghostWallSoundEvent;
+    private GhostWallState ghostWallState = GhostWallState.LOWERED;
+    public enum GhostWallState
+    {
+        LOWERED,
+        LOWERING,
+        RAISING,
+        RAISED
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        boxCollider = GetComponent<Collider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (LowerOnStart)
+        ghosts.AddRange(GetComponentsInChildren<Ghost>());
+        foreach (Ghost ghost in ghosts)
         {
-            LowerGhostWall();
+            ghost.SetDissipationRate(dissipationRate);
+        }
+
+        ghostWallSoundEvent = FMODUnity.RuntimeManager.CreateInstance(ghostwallEventPath);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(ghostWallSoundEvent, transform, GetComponent<Rigidbody>());
+        ghostWallSoundEvent.start();
+        ghostWallSoundEvent.setVolume(ghostWallSoundVolume);
+
+        ghostWallspriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, lowerWallSpirteAlpha);
+        currentWallSpirteAlpha = lowerWallSpirteAlpha;
+
+        if (RaiseOnStart)
+        {
+            RaiseGhostWall();
         }
     }
 
-    
+    // Update is called once per frame
+    void Update()
+    {
+        switch (ghostWallState)
+        {
+            case (GhostWallState.LOWERING):
+                LoweringGhostWall();
+                break;
+            case (GhostWallState.RAISING):
+                RaisingGhostWall();
+                break;
+        }
+    }
+
+    private void RaisingGhostWall()
+    {
+        currentWallSpirteAlpha -= dissipationRate;
+        ghostWallspriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, currentWallSpirteAlpha);
+        if (currentWallSpirteAlpha <= raiseWallSpirteAlpha)
+        {
+            ghostWallState = GhostWallState.RAISED;
+            boxCollider.isTrigger = true;
+        }
+    }
+
+    private void LoweringGhostWall()
+    {
+        currentWallSpirteAlpha += dissipationRate;
+        ghostWallspriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, currentWallSpirteAlpha);
+        if (currentWallSpirteAlpha >= lowerWallSpirteAlpha)
+        {
+            ghostWallState = GhostWallState.LOWERED;
+            boxCollider.isTrigger = false;
+        }
+    }
+
     public void LowerGhostWall()
     {
-        boxCollider.isTrigger = true;
-        Color newColor = spriteRenderer.color;
-        newColor.a = lowerWallSpirteAlpha / 255;
-        spriteRenderer.color = newColor;
+        ghostWallSoundEvent.start();
+        ghostWallSoundEvent.setVolume(ghostWallSoundVolume);
+        foreach (Ghost ghost in ghosts)
+        {
+            ghost.SetGhostAppearing();
+        }
+        ghostWallState = GhostWallState.LOWERING;
     }
 
     public void RaiseGhostWall()
     {
-        boxCollider.isTrigger = false;
-        Color newColor = spriteRenderer.color;
-        newColor.a = raiseWallSpirteAlpha / 255;
-        spriteRenderer.color = newColor;
+        ghostWallSoundEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        foreach (Ghost ghost in ghosts)
+        {
+            ghost.SetGhostDissipation();
+        }
+        ghostWallState = GhostWallState.RAISING;
     }
+
+    
 }

@@ -27,10 +27,13 @@ public class LightningController : MonoBehaviour
     public UnityEvent StrikeLightningEvent;
     public UnityEvent CalmLightningEvent;
 
+    [FMODUnity.EventRef]
+    public string lightingSoundEventRef;
+
     //[SerializeField] private int lightningAmount;
     //[SerializeField] private int lightningCount;
 
-    
+
 
     public enum LightningState
     {
@@ -188,5 +191,10 @@ public class LightningController : MonoBehaviour
                 lightningState = LightningState.NO_LIGHTNING;
                 break;
         }
+    }
+
+    public void PlayLightingSoundEffect()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(lightingSoundEventRef);
     }
 }

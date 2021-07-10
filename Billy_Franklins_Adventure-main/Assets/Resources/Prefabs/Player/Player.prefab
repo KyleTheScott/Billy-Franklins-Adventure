@@ -713,11 +713,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FootstepsEventPath: event:/Player Sounds/Footsteps
   MaterialParameterName: Material
-  StepDistance: 2
   RayDistance: 1.2
   materialCheckLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   DefulatMaterialValue: 0
 --- !u!1 &1596798625019719989
 GameObject:

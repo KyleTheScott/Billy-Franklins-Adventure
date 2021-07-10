@@ -7,6 +7,7 @@ public class PlayerGFX : MonoBehaviour
     private SpriteRenderer playerSprite;
     private Animator playerAnimator;
     private Player player;
+    private FMODStudioFootstepScript footstepScript;
     private Player.PlayerState currentPlayerState;
     private Shooting shooting;
     private Shooting.AimLineState currentAimLineState;
@@ -18,8 +19,9 @@ public class PlayerGFX : MonoBehaviour
     {
         playerSprite = gameObject.GetComponent<SpriteRenderer>();
         playerAnimator = gameObject.GetComponent<Animator>();
-        player = GameObject.FindObjectOfType<Player>();
-        shooting = GameObject.FindObjectOfType<Shooting>();
+        player = FindObjectOfType<Player>();
+        shooting = FindObjectOfType<Shooting>();
+        footstepScript = FindObjectOfType<FMODStudioFootstepScript>();
 
         isFacingRight = true;
 
@@ -126,5 +128,10 @@ public class PlayerGFX : MonoBehaviour
 
         currentAimLineState = shooting.GetAimLineState();
         currentPlayerState = player.GetPlayerState();
+    }
+
+    public void PlayFootStep()
+    {
+        footstepScript.PlayerFootsteep();
     }
 }

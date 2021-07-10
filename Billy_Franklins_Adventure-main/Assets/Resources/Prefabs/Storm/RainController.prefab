@@ -51,5 +51,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   rainAmount: 100
-  rainSound: event:/Ambient Sounds/Rain
-  rainVolume: 0.2
+  rainSoundEventPath: event:/Ambient Sounds/Rain
+  lightRainVolume: 0.2
+  mediumRainVolume: 0.6
+  heavyRainVolume: 1.2
+  volumeChangeRate: 1

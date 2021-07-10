@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9039086012570199009}
   - component: {fileID: 9039086012570199011}
   - component: {fileID: 9039086012570199010}
+  - component: {fileID: 7793866075169909986}
   m_Layer: 0
   m_Name: Scaffolding
   m_TagString: Ground
@@ -109,3 +110,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.831521, y: 0.4485643}
   m_EdgeRadius: 0
+--- !u!114 &7793866075169909986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9039086012570199008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52b846f802046249a99b28476d97ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialValue: 1

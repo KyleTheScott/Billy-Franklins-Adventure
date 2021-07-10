@@ -49,6 +49,5 @@ MonoBehaviour:
   CalmLightningEvent:
     m_PersistentCalls:
       m_Calls: []
-  lightningAmount: 0
-  lightningCount: 0
+  lightingSoundEventRef: event:/Ambient Sounds/Thunder
   lightningState: 1

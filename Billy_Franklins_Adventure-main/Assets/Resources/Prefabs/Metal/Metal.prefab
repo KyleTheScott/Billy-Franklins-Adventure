@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1756185054}
   - component: {fileID: 7268029807261055285}
+  - component: {fileID: 6122046577806567992}
   m_Layer: 16
   m_Name: NonPlayerCollider
   m_TagString: Untagged
@@ -47,6 +48,21 @@ CapsuleCollider2D:
   m_Offset: {x: 0.04959906, y: 0.016532924}
   m_Size: {x: 2.0250742, y: 0.17333525}
   m_Direction: 1
+--- !u!114 &6122046577806567992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756185053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9754939a8285e3a4da678bf360a723cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody: {fileID: 5594739182090962412}
+  metalCrashEventRef: event:/Game Sounds/Metal Impact
+  rigidbodyImpactrequirement: 4
 --- !u!1 &5594739182090962413
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +164,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1078591665
-  m_SortingLayer: 7
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4a744e22f1ee368448929b1b72b836c9, type: 3}
   m_Color: {r: 0.44419718, g: 0.50021565, b: 0.5849056, a: 1}

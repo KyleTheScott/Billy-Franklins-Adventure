@@ -180,6 +180,7 @@ MonoBehaviour:
   weight: {fileID: 6029988809798711515}
   links: 40
   currentStartPosYOffset: 0.1
+  currentStartPosYCreationOffset: 0.05
 --- !u!1 &6029988809062945983
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +324,7 @@ GameObject:
   - component: {fileID: 6029988809319133317}
   - component: {fileID: 4246815802557412281}
   - component: {fileID: 4246815802042141224}
+  - component: {fileID: 8281403718956286617}
   m_Layer: 14
   m_Name: SuspendedPlatform
   m_TagString: Ground
@@ -383,7 +385,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 150694545
-  m_SortingLayer: 4
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 866cf764fb9917141bd60c5b7df07d68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -481,7 +483,7 @@ MonoBehaviour:
   playerTouching: 0
   fallFixTimer: 0
   fallFixMax: 0.1
-  windBlowingRight: 0
+  windBlowingRight: 1
   platformWindState: 0
 --- !u!114 &4246815802042141224
 MonoBehaviour:
@@ -496,6 +498,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 4246815802557412281}
+--- !u!114 &8281403718956286617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6029988809319133323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 257db88c7f1b07b4885639198aafa810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  suspendedPlatform: {fileID: 4246815802557412281}
+  woodCrashEventRef: event:/Game Sounds/Wood Impact
+  rigidbodyImpactRequirement: 1.8
 --- !u!1 &6029988809798711514
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,7 +648,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.09858288, y: -0.09390582}
+  m_ConnectedAnchor: {x: -0.09858288, y: -0.09390487}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

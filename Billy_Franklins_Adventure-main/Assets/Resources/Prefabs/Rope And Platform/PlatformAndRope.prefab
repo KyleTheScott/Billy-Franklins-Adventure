@@ -751,7 +751,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 2.8969536, y: 0.025108252}
-  m_ConnectedAnchor: {x: -3.4350471, y: 0.006108284}
+  m_ConnectedAnchor: {x: -3.4350467, y: 0.006108284}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -835,3 +835,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   suspendedPlatform: {fileID: 7584460514356402065}
+  woodCrashEventRef: event:/Game Sounds/Wood Impact

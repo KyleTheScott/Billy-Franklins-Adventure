@@ -50,3 +50,7 @@ MonoBehaviour:
   CalmWindEvent:
     m_PersistentCalls:
       m_Calls: []
+  windSoundEventPath: event:/Ambient Sounds/Wind
+  lowWindVolume: 0.2
+  highWindVolume: 0.6
+  volumeChangeRate: 1

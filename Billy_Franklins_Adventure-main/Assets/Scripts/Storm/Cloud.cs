@@ -23,7 +23,6 @@ public class Cloud : MonoBehaviour
     [SerializeField] private List<LightningGroup> lightningGroups = new List<LightningGroup>();
 
 
-
     private void Start()
     {
         LightningController.instance.StrikeLightningEvent.AddListener(SetLightning);

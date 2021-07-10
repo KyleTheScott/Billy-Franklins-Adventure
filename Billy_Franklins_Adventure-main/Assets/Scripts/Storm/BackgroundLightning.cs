@@ -26,6 +26,7 @@ public class BackgroundLightning : MonoBehaviour
 
     IEnumerator StrikeLightning()
     {
+        LightningController.instance.PlayLightingSoundEffect();
         yield return new WaitForSeconds(1f);
         lightningSprite.enabled = false;
         light2D.intensity = 0;

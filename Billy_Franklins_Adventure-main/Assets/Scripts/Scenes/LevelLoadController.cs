@@ -15,7 +15,8 @@ public class LevelLoadController : MonoBehaviour
     [Tooltip("Gizmo helper radius, has no effect on code logic")]
     [SerializeField] private float gizmo_radius_ = 0.4f;
     [SerializeField] private GhostWallController ghostWall;
-    [SerializeField] private bool RaiseWallOnTriggerEnter = true;
+    [SerializeField] private bool LowerWallOnTriggerEnter = true;
+    [SerializeField] private PuzzleController puzzleController;
                                 
 
     private bool has_level_loaded_ = false;
@@ -71,11 +72,15 @@ public class LevelLoadController : MonoBehaviour
                
             }
 
-            if (RaiseWallOnTriggerEnter)
+            if (LowerWallOnTriggerEnter)
             {
+                if (puzzleController != null)
+                {
+                    puzzleController.LoadPuzzle();
+                }
                 if (ghostWall != null)
                 {
-                    ghostWall.RaiseGhostWall();
+                    ghostWall.LowerGhostWall();
                 }
 
             }

@@ -46,7 +46,7 @@ public class SuspendedPlatform : MonoBehaviour
     [SerializeField] private float movementSpeed = 20.0f;
     [SerializeField] private float sideWaysMoveSpeed = 20.0f;
 
-    Rigidbody2D platformRigidbody;
+    public Rigidbody2D platformRigidbody { get; private set; }
     private bool moving = false;
     private bool movingSideways = false;
     private bool grounded = false;

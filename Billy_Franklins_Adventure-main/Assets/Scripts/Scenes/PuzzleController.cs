@@ -42,52 +42,52 @@ public class PuzzleController : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
-        
-        LoadInPrefabs();
-        LoadPuzzle();  
+
+        if (player == null)
+        {
+            LoadInPrefabs();
+        }
+        //LoadPuzzle();  
     }
 
-    private void LoadPuzzle()
+    public void LoadPuzzle()
     {
-        if (player != null)
+        if (player == null)
         {
-            if (charges == null)
-            {
-                charges = FindObjectOfType<Charges>();
-            }
-            charges.SetMaxLightCharges(playersNewMaxCharge);
-            charges.SetLightCharges(playersNewMaxCharge);
-            charges.onLightChargesChanged.Invoke(charges.GetLightCharges(), charges.GetMaxLightCharges());
+            player = FindObjectOfType<Player>();
+            
         }
-        else
+        if (charges == null)
         {
-            Debug.Log("Player was not found");
+            charges = FindObjectOfType<Charges>();
         }
+        charges.SetMaxLightCharges(playersNewMaxCharge);
+        charges.SetLightCharges(playersNewMaxCharge);
+        charges.onLightChargesChanged.Invoke(charges.GetLightCharges(), charges.GetMaxLightCharges());
 
         GlobalGameController.instance.SetLanternAmount(lanternNum, lanternLitNum);
-        GlobalGameController.instance.GetComponent<CheckPointSystem>().SetCheckPoint(SceneManager.GetActiveScene().name);
         FindObjectOfType<CinemachineConfiner>().m_BoundingShape2D = cameraBoundingBox;
     }
 
     private void LoadInPrefabs()
     {
-        if (player == null)
-        {
-            player = Instantiate(playerPrefab, playerSpawnPoint.position, playerPrefab.transform.rotation).GetComponent<Player>();
-            charges = FindObjectOfType<Charges>();
-            DontDestroyOnLoad(player);
-            DontDestroyOnLoad(Instantiate(uiPrefab));
-            DontDestroyOnLoad(Instantiate(controllerPrefab));
-            DontDestroyOnLoad(Instantiate(globalLightPrefab));
-            camera = Instantiate(cameraPrefab).GetComponent<Camera>();
-            camera.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
-            DontDestroyOnLoad(camera.gameObject);
-            settingsUI = Instantiate(settingsUIPrefab).GetComponent<Canvas>();
-            pauseMenuUI = Instantiate(pauseMenuUIPrefab).GetComponent<Canvas>();
-            DontDestroyOnLoad(settingsUI);
-            DontDestroyOnLoad(pauseMenuUI);
-            SetUIReferences();
-        }
+        player = Instantiate(playerPrefab, playerSpawnPoint.position, playerPrefab.transform.rotation).GetComponent<Player>();
+        charges = FindObjectOfType<Charges>();
+        DontDestroyOnLoad(player);
+        DontDestroyOnLoad(Instantiate(uiPrefab));
+        DontDestroyOnLoad(Instantiate(controllerPrefab));
+        DontDestroyOnLoad(Instantiate(globalLightPrefab));
+        camera = Instantiate(cameraPrefab).GetComponent<Camera>();
+        camera.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
+        DontDestroyOnLoad(camera.gameObject);
+        settingsUI = Instantiate(settingsUIPrefab).GetComponent<Canvas>();
+        pauseMenuUI = Instantiate(pauseMenuUIPrefab).GetComponent<Canvas>();
+        DontDestroyOnLoad(settingsUI);
+        DontDestroyOnLoad(pauseMenuUI);
+        SetUIReferences();
+        GlobalGameController.instance.GetComponent<CheckPointSystem>().SetCheckPoint(SceneManager.GetActiveScene().name);
+
+
     }
 
     private void SetUIReferences()

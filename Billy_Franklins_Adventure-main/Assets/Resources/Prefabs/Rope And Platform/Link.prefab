@@ -160,4 +160,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 0}
-  kiteRope: 0
+  ropeBurnEvent: event:/Game Sounds/Burning Rope

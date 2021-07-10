@@ -6,7 +6,9 @@ public class Ghost : MonoBehaviour
 {
     private SpriteRenderer ghostSprite;
     [SerializeField] private float dissipationRate = 0.01f;
-    [SerializeField] private float currentTransparency = 1f;
+    private float currentTransparency;
+    [SerializeField] private float maxTransparency = 1f;
+    [SerializeField] private float minTransparency = 0f;
     [SerializeField] private bool dissipatedByLantern = false;
 
     public enum GhostState
@@ -22,6 +24,8 @@ public class Ghost : MonoBehaviour
     void Start()
     {
         ghostSprite = gameObject.GetComponent<SpriteRenderer>();
+        ghostSprite.color = new Color(1.0f, 1.0f, 1.0f, maxTransparency);
+        currentTransparency = maxTransparency;
     }
 
     // Update is called once per frame
@@ -47,6 +51,16 @@ public class Ghost : MonoBehaviour
         return dissipatedByLantern;
     }
 
+    public void SetDissipationRate(float rate)
+    {
+        dissipationRate = rate;
+    }
+
+    public float GetDissipationRate()
+    {
+        return dissipationRate;
+    }
+
     public void SetGhostDissipation()
     {
         ghostState = GhostState.DISSIPATING;
@@ -56,7 +70,7 @@ public class Ghost : MonoBehaviour
     {
         currentTransparency -= dissipationRate;
         ghostSprite.color = new Color(1.0f, 1.0f, 1.0f, currentTransparency);
-        if (currentTransparency <= 0)
+        if (currentTransparency <= minTransparency)
         {
             ghostState = GhostState.DISSIPATED;
         }
@@ -71,7 +85,7 @@ public class Ghost : MonoBehaviour
     {
         currentTransparency += dissipationRate;
         ghostSprite.color = new Color(1.0f, 1.0f, 1.0f, currentTransparency);
-        if (currentTransparency >= 1)
+        if (currentTransparency >= maxTransparency)
         {
             ghostState = GhostState.APPEARED;
         }

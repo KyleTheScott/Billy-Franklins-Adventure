@@ -87,7 +87,7 @@ public class Lamp : MonoBehaviour, IInteractable
         //Change lantern's sprite
         if (spriteRenderer != null && lanternOnSprite != null && lanternOffSprite != null)
         {
-            ghostWall.LowerGhostWall();
+            ghostWall.RaiseGhostWall();
             DissipateAllGhosts();
             if (spriteRenderer.sprite == lanternOnSprite)
             {

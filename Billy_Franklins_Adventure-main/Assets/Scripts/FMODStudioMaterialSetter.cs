@@ -4,5 +4,7 @@ using UnityEngine;
 
 public class FMODStudioMaterialSetter : MonoBehaviour
 {
-    public float MaterialValue;
+    [SerializeField]
+    private float materialValue;
+    public float MaterialValue => materialValue;
 }

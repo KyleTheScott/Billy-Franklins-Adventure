@@ -30,6 +30,25 @@ public class WindController : MonoBehaviour
     public UnityEvent BlowWindEvent;
     public UnityEvent CalmWindEvent;
 
+    [Header("FMOD Settings")]
+    [SerializeField] [FMODUnity.EventRef]
+    private string windSoundEventPath;
+    private FMOD.Studio.EventInstance windSoundEvent;
+    [SerializeField]
+    private float lowWindVolume = 0.2f;
+    [SerializeField]
+    private float highWindVolume = 1.2f;
+    private float windVolume = 0.001f;
+    [SerializeField]
+    private float volumeChangeRate = 1.0f;
+
+    public void Start()
+    {
+        windSoundEvent = FMODUnity.RuntimeManager.CreateInstance(windSoundEventPath);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(windSoundEvent, transform, GetComponent<Rigidbody>());
+        windSoundEvent.setVolume(windVolume);
+        windSoundEvent.start();
+    }
     public float GetWindSpeed()
     {
         return windSpeed;
@@ -66,6 +85,7 @@ public class WindController : MonoBehaviour
             }
         }
         BlowWindEvent.Invoke();
+        StartCoroutine(ChangeWindVolume(highWindVolume));
     }
 
     private void BlowWindRight()
@@ -166,13 +186,16 @@ public class WindController : MonoBehaviour
             }
         }
         CalmWindEvent.Invoke();
+        StartCoroutine(ChangeWindVolume(lowWindVolume));
     }
 
     private void CalmWindRight()
     {
+
         if (windSpeed >= 0 && windSpeed <= 25)
         {
             windSpeed = Random.Range(0, 10);
+            
         }
         else
         {
@@ -190,5 +213,24 @@ public class WindController : MonoBehaviour
         {
             windSpeed = Random.Range(-20, 0);
         }
+    }
+
+    private IEnumerator ChangeWindVolume(float newVolume)
+    {
+        if (newVolume == windVolume) // If the newVolume then stop the Coroutine
+        {
+            StopCoroutine(ChangeWindVolume(newVolume));
+        }
+        bool increasingVolume = windVolume < newVolume;
+
+        while (increasingVolume ? windVolume < newVolume : windVolume > newVolume)
+        {
+            windVolume = (increasingVolume ? windVolume + volumeChangeRate * Time.deltaTime : windVolume - volumeChangeRate * Time.deltaTime);
+            windSoundEvent.setVolume(windVolume);
+            yield return new WaitForEndOfFrame();
+        }
+
+        windVolume = newVolume;
+        windSoundEvent.setVolume(windVolume);
     }
 }

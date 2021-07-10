@@ -41,15 +41,41 @@ public class RainController : MonoBehaviour
 
     [Header("FMOD Settings")]
     [SerializeField] [FMODUnity.EventRef] 
-    private string rainSound;
+    private string rainSoundEventPath;
     private FMOD.Studio.EventInstance rainSoundEvent;
-    [SerializeField]
     private float rainVolume;
+    [SerializeField]
+    private float lightRainVolume = 0.2f;
+    [SerializeField]
+    private float mediumRainVolume = 0.6f;
+    [SerializeField]
+    private float heavyRainVolume = 1.2f;
+    [SerializeField]
+    private float volumeChangeRate = 1.0f;
 
     public void Start()
     {
-        rainSoundEvent = FMODUnity.RuntimeManager.CreateInstance(rainSound);
+        rainSoundEvent = FMODUnity.RuntimeManager.CreateInstance(rainSoundEventPath);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(rainSoundEvent, transform, GetComponent<Rigidbody>());
+        switch (rainAmountState)
+        {
+            case (RainAmountState.NO_RAIN):
+                rainVolume = 0;
+                break;
+
+            case (RainAmountState.LIGHT_RAIN):
+                rainVolume = lightRainVolume;
+                break;
+
+            case (RainAmountState.MEDIUM_RAIN):
+                rainVolume = mediumRainVolume;
+                break;
+
+            case (RainAmountState.HEAVY_RAIN):
+                rainVolume = heavyRainVolume;
+                break;
+        }
+
         rainSoundEvent.setVolume(rainVolume);
         rainSoundEvent.start();
     }
@@ -116,16 +142,18 @@ public class RainController : MonoBehaviour
         switch (rainAmountState)
         {
             case RainAmountState.NO_RAIN:
-                rainAmount = 0;
-                rainSoundEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                StartCoroutine(ChangeRainVolume(0.001f));
                 break;
             case RainAmountState.LIGHT_RAIN:
                 rainAmount = Random.Range(0, 50);
+                StartCoroutine(ChangeRainVolume(lightRainVolume));
                 break;
             case RainAmountState.MEDIUM_RAIN:
                 rainAmount = Random.Range(50, 100);
+                StartCoroutine(ChangeRainVolume(mediumRainVolume));
                 break;
             case RainAmountState.HEAVY_RAIN:
+                StartCoroutine(ChangeRainVolume(heavyRainVolume));
                 rainAmount = Random.Range(100, 200);
                 break;
         }
@@ -250,5 +278,24 @@ public class RainController : MonoBehaviour
         {
             rainAmountState = RainAmountState.HEAVY_RAIN;
         }
+    }
+
+    private IEnumerator ChangeRainVolume(float newVolume)
+    {
+        if (newVolume == rainVolume) // If the newVolume then stop the Coroutine
+        {
+            StopCoroutine(ChangeRainVolume(newVolume));
+        }
+        bool increasingVolume = rainVolume < newVolume;
+        
+        while (increasingVolume ? rainVolume < newVolume : rainVolume > newVolume)
+        {
+            rainVolume = (increasingVolume ? rainVolume + volumeChangeRate * Time.deltaTime : rainVolume - volumeChangeRate * Time.deltaTime);
+            rainSoundEvent.setVolume(rainVolume);
+            yield return new WaitForEndOfFrame();
+        }
+
+        rainVolume = newVolume;
+        rainSoundEvent.setVolume(rainVolume);
     }
 }
