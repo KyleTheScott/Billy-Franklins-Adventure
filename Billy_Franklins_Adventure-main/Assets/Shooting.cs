@@ -146,9 +146,18 @@ public class Shooting : MonoBehaviour
             {
                 forwardVector = new Vector3(-1, 0, 0);
             }
-
+            if (playerGFX.GetFacingRight())
+            {
+                frontOfPlayer = new Vector3(player.transform.position.x + 1.2f,
+                    player.transform.position.y + 0.3f, player.transform.position.z);
+            }
+            else
+            {
+                frontOfPlayer = new Vector3(player.transform.position.x - 1.2f,
+                    player.transform.position.y + 0.3f, player.transform.position.z);
+            }
             //Calculate shooting line
-            shootingLine = mousePos - player.transform.position;
+            shootingLine = mousePos - frontOfPlayer;
             shootingLine.Normalize();
 
             //Get angle between forward vector and shooting line
@@ -157,16 +166,16 @@ public class Shooting : MonoBehaviour
             //Set projectile based on shooting line
             if (angleBetween <= 45)
             {
-                if (playerGFX.GetFacingRight())
-                {
-                    frontOfPlayer = new Vector3(player.transform.position.x + 1.2f,
-                        player.transform.position.y + 0.2f, player.transform.position.z);
-                }
-                else
-                {
-                    frontOfPlayer = new Vector3(player.transform.position.x - 1.2f,
-                        player.transform.position.y + 0.2f, player.transform.position.z);
-                }
+                //if (playerGFX.GetFacingRight())
+                //{
+                //    frontOfPlayer = new Vector3(player.transform.position.x + 1.2f,
+                //        player.transform.position.y + 0.2f, player.transform.position.z);
+                //}
+                //else
+                //{
+                //    frontOfPlayer = new Vector3(player.transform.position.x - 1.2f,
+                //        player.transform.position.y + 0.2f, player.transform.position.z);
+                //}
 
                 loadedProjectile.transform.position = frontOfPlayer + (shootingLine * projectileSpawnDistance);
                 lastShootingLine = shootingLine;
@@ -204,16 +213,16 @@ public class Shooting : MonoBehaviour
             else
             {
                 
-                if (playerGFX.GetFacingRight())
-                {
-                    frontOfPlayer = new Vector3(player.transform.position.x + 1.2f,
-                        player.transform.position.y + 0.2f, player.transform.position.z);
-                }
-                else
-                {
-                    frontOfPlayer = new Vector3(player.transform.position.x - 1.2f,
-                        player.transform.position.y + 0.2f, player.transform.position.z);
-                }
+                //if (playerGFX.GetFacingRight())
+                //{
+                //    frontOfPlayer = new Vector3(player.transform.position.x + 1.2f,
+                //        player.transform.position.y + 0.2f, player.transform.position.z);
+                //}
+                //else
+                //{
+                //    frontOfPlayer = new Vector3(player.transform.position.x - 1.2f,
+                //        player.transform.position.y + 0.2f, player.transform.position.z);
+                //}
                 loadedProjectile.transform.position = frontOfPlayer + (lastShootingLine * projectileSpawnDistance);
 
                 //SEt aim line
