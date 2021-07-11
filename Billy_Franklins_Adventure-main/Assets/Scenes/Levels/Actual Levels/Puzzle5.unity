@@ -264,8 +264,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0}
-      - {x: 60, y: 0}
+    - - {x: 0, y: -5}
+      - {x: 60, y: -5}
       - {x: 60, y: 8}
       - {x: 0, y: 8}
 --- !u!4 &216398730
@@ -1316,7 +1316,7 @@ PrefabInstance:
       objectReference: {fileID: 1258894252}
     - target: {fileID: 2165601032990014240, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
       propertyPath: prev_scene_to_destroy_
-      value: Puzzle4
+      value: Puzzle3
       objectReference: {fileID: 0}
     - target: {fileID: 2165601032990014240, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
       propertyPath: puzzleController
