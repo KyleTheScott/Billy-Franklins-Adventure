@@ -734,6 +734,10 @@ PrefabInstance:
       propertyPath: ghostWall
       value: 
       objectReference: {fileID: 21892724}
+    - target: {fileID: 2165601032990014240, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
+      propertyPath: prev_scene_to_destroy_
+      value: Puzzle13
+      objectReference: {fileID: 0}
     - target: {fileID: 3926876557841378807, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.82
@@ -2394,7 +2398,7 @@ PrefabInstance:
       objectReference: {fileID: 1322482797}
     - target: {fileID: 288686495153921894, guid: 4df786959ae486f4f9256924d39e862b, type: 3}
       propertyPath: playersNewMaxCharge
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 288686495153921894, guid: 4df786959ae486f4f9256924d39e862b, type: 3}
       propertyPath: cameraBoundingBox
@@ -2655,6 +2659,14 @@ PrefabInstance:
     - target: {fileID: 8805516298577024165, guid: e68a5756a0a88d045872a43661baac42, type: 3}
       propertyPath: m_Name
       value: CameraBoundsBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805516298577024167, guid: e68a5756a0a88d045872a43661baac42, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805516298577024167, guid: e68a5756a0a88d045872a43661baac42, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
+      value: -5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e68a5756a0a88d045872a43661baac42, type: 3}

@@ -991,7 +991,7 @@ PrefabInstance:
       objectReference: {fileID: 253343469}
     - target: {fileID: 2165601032990014240, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
       propertyPath: prev_scene_to_destroy_
-      value: Puzzle7
+      value: Puzzle8
       objectReference: {fileID: 0}
     - target: {fileID: 2165601032990014240, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
       propertyPath: puzzleController
@@ -2303,7 +2303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!60 &1885614645
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2329,8 +2329,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0}
-      - {x: 60, y: 0}
+    - - {x: 0, y: -5}
+      - {x: 60, y: -5}
       - {x: 60, y: 10}
       - {x: 0, y: 10}
 --- !u!4 &1885614646
