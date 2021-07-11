@@ -181,7 +181,7 @@ public class Shooting : MonoBehaviour
                 lastShootingLine = shootingLine;
 
                 //SEt aim line
-                lightningStartPos = frontOfPlayer;/*loadedProjectile.transform.position*/;
+                lightningStartPos = frontOfPlayer + (shootingLine * projectileSpawnDistance);/*loadedProjectile.transform.position*/;
                 aimLine.SetStartPoint(lightningStartPos);
 
                 //if (debugMode)
@@ -192,7 +192,7 @@ public class Shooting : MonoBehaviour
 
                 //float rayDist = (mousePos - loadedProjectile.transform.position).magnitude;
                 float rayDist = 50.0f;
-                RaycastHit2D hit = Physics2D.Raycast(frontOfPlayer/*loadedProjectile.transform.position*/, shootingLine, rayDist,
+                RaycastHit2D hit = Physics2D.Raycast(frontOfPlayer /*loadedProjectile.transform.position*/, shootingLine, rayDist,
                     aimLineCollisionMask);
                 if (hit.collider != null)
                 {
@@ -227,7 +227,7 @@ public class Shooting : MonoBehaviour
                 loadedProjectile.transform.position = frontOfPlayer /*+ (lastShootingLine * projectileSpawnDistance)*/;
 
                 //SEt aim line
-                lightningStartPos = frontOfPlayer/*loadedProjectile.transform.position*/;
+                lightningStartPos = frontOfPlayer + (lastShootingLine * projectileSpawnDistance)/*loadedProjectile.transform.position*/;
                 aimLine.SetStartPoint(lightningStartPos);
 
 

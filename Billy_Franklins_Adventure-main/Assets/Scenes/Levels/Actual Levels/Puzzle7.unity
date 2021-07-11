@@ -1555,8 +1555,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0}
-      - {x: 60, y: 0}
+    - - {x: 0, y: -5}
+      - {x: 60, y: -5}
       - {x: 60, y: 10}
       - {x: 0, y: 10}
 --- !u!4 &1266875582
