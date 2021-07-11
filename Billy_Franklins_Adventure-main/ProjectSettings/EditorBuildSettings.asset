@@ -21,11 +21,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Actual Levels/Puzzle6.unity
     guid: 84f4335dddff1794d8ede49a00bba002
   - enabled: 1
+    path: Assets/Scenes/Levels/Actual Levels/Puzzle8.unity
+    guid: a4365c7c26a57294a9ee023b6ca30874
+  - enabled: 1
     path: Assets/Scenes/Levels/Actual Levels/Puzzle7.unity
     guid: 4cc1506aff0f5ef4b858c19e9c3e8b0f
-  - enabled: 1
-    path: Assets/Scenes/Levels/Actual Levels/Puzzle8.unity
-    guid: 1ea2c6d4ab60d3746884e5026edaa7f4
   - enabled: 1
     path: Assets/Scenes/Levels/Actual Levels/Puzzle9.unity
     guid: 823349b8e62853247b35775f1eaf3eb4
@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Actual Levels/Puzzle13.unity
     guid: f3119fcc2594c1a4a830335c285a39dd
+  - enabled: 1
+    path: Assets/Scenes/Levels/Actual Levels/Puzzle15.unity
+    guid: e1d648b94e5901c4ca213ecea7cf8467
   m_configObjects: {}
