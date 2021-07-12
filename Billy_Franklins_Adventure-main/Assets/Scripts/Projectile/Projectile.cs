@@ -1,5 +1,7 @@
 ﻿//using System.Collections;
 //using System.Collections.Generic;
+
+using FMOD;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -9,8 +11,11 @@ public class Projectile : MonoBehaviour
     Camera mainCam = null;
 
     public float speed = 20f; //projectile speed
+    [SerializeField] private float endSpeed = 5;
 
     public Shooting owner = null; //Who owns this projectile?
+    private Vector2 projectileTarget;
+
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +57,19 @@ public class Projectile : MonoBehaviour
 
     public void SetProjectileDirection(Vector2 moveDir)
     {
-        rb.velocity = moveDir * speed;
+        if (Vector2.Distance(transform.position, projectileTarget) > 1)
+        {
+            rb.velocity = moveDir * speed;
+        }
+        else
+        {
+            rb.velocity = moveDir * endSpeed;
+        }
+    }
+
+    public void SetProjectileTarget(Vector2 t)
+    {
+        projectileTarget = t;
     }
 
 
