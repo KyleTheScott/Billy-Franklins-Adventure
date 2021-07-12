@@ -330,6 +330,7 @@ public class Shooting : MonoBehaviour
                         {
                             loadedProjectile.SetProjectileDirection(lastShootingLine);
                             loadedProjectile.GetComponent<Collider2D>().enabled = true;
+                            loadedProjectile.SetProjectileTarget(lightningTargetPos);
                             StopAiming();
 
                             //Can't shoot projectile continousely
