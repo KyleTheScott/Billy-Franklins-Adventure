@@ -23,11 +23,11 @@ public class Shooting : MonoBehaviour
     [SerializeField] private bool firstAiming = true;
 
     //variable for aim line disappearing and appearing with mouse movement
-    private bool mouseClick;
-    float timeLeft = 1;
-    float visibleCursorTimer = .5f;
-    float cursorPosition;
-    bool catchCursor = true;
+    //private bool mouseClick;
+    //float timeLeft = 1;
+    //float visibleCursorTimer = .5f;
+    //float cursorPosition;
+    //bool catchCursor = true;
 
     [SerializeField] private float shootFixTimer = .5f;
 
@@ -177,11 +177,11 @@ public class Shooting : MonoBehaviour
                 //        player.transform.position.y + 0.2f, player.transform.position.z);
                 //}
 
-                loadedProjectile.transform.position = frontOfPlayer + (shootingLine * projectileSpawnDistance);
+                loadedProjectile.transform.position = frontOfPlayer /*+ (shootingLine * projectileSpawnDistance)*/;
                 lastShootingLine = shootingLine;
 
                 //SEt aim line
-                lightningStartPos = loadedProjectile.transform.position;
+                lightningStartPos = frontOfPlayer + (shootingLine * projectileSpawnDistance);/*loadedProjectile.transform.position*/;
                 aimLine.SetStartPoint(lightningStartPos);
 
                 //if (debugMode)
@@ -192,7 +192,7 @@ public class Shooting : MonoBehaviour
 
                 //float rayDist = (mousePos - loadedProjectile.transform.position).magnitude;
                 float rayDist = 50.0f;
-                RaycastHit2D hit = Physics2D.Raycast(loadedProjectile.transform.position, shootingLine, rayDist,
+                RaycastHit2D hit = Physics2D.Raycast(frontOfPlayer /*loadedProjectile.transform.position*/, shootingLine, rayDist,
                     aimLineCollisionMask);
                 if (hit.collider != null)
                 {
@@ -200,13 +200,14 @@ public class Shooting : MonoBehaviour
 
                     //SEt aim line
                     lightningTargetPos = hit.point;
+                    //lightningTargetPos = frontOfPlayer/*loadedProjectile.transform.position*/ + (shootingLine * rayDist);
                     aimLine.SetEndPoint(lightningTargetPos);
                 }
                 else
                 {
 
                     //SEt aim line
-                    lightningTargetPos = loadedProjectile.transform.position + (shootingLine * rayDist);
+                    lightningTargetPos = frontOfPlayer /*loadedProjectile.transform.position*/ + (shootingLine * rayDist);
                     aimLine.SetEndPoint(lightningTargetPos);
                 }
             }
@@ -223,15 +224,15 @@ public class Shooting : MonoBehaviour
                 //    frontOfPlayer = new Vector3(player.transform.position.x - 1.2f,
                 //        player.transform.position.y + 0.2f, player.transform.position.z);
                 //}
-                loadedProjectile.transform.position = frontOfPlayer + (lastShootingLine * projectileSpawnDistance);
+                loadedProjectile.transform.position = frontOfPlayer /*+ (lastShootingLine * projectileSpawnDistance)*/;
 
                 //SEt aim line
-                lightningStartPos = loadedProjectile.transform.position;
+                lightningStartPos = frontOfPlayer + (lastShootingLine * projectileSpawnDistance)/*loadedProjectile.transform.position*/;
                 aimLine.SetStartPoint(lightningStartPos);
 
 
                 float rayDist = 50.0f;
-                RaycastHit2D hit = Physics2D.Raycast(loadedProjectile.transform.position, lastShootingLine, rayDist,
+                RaycastHit2D hit = Physics2D.Raycast(frontOfPlayer/*loadedProjectile.transform.position*/, lastShootingLine, rayDist,
                     aimLineCollisionMask);
                 if (hit.collider != null)
                 {
@@ -243,7 +244,7 @@ public class Shooting : MonoBehaviour
                 else
                 {
                     //Set aim line
-                    lightningTargetPos = loadedProjectile.transform.position + (lastShootingLine * rayDist);
+                    lightningTargetPos = frontOfPlayer/*loadedProjectile.transform.position*/ + (lastShootingLine * rayDist);
                     aimLine.SetEndPoint(lightningTargetPos);
                 }
             }
@@ -282,8 +283,18 @@ public class Shooting : MonoBehaviour
                                 //Activate projectile
                                 loadedProjectile.gameObject.SetActive(true);
 
-                                loadedProjectile.transform.position =
-                                    player.transform.position + (-player.transform.right * projectileSpawnDistance);
+                                if (playerGFX.GetFacingRight())
+                                {
+                                    frontOfPlayer = new Vector3(player.transform.position.x + 1.2f,
+                                        player.transform.position.y + 0.3f, player.transform.position.z);
+                                }
+                                else
+                                {
+                                    frontOfPlayer = new Vector3(player.transform.position.x - 1.2f,
+                                        player.transform.position.y + 0.3f, player.transform.position.z);
+                                }
+
+                                loadedProjectile.transform.position = frontOfPlayer /*+ (-player.transform.right * projectileSpawnDistance)*/;
 
                                 loadedProjectile.GetComponent<Collider2D>().enabled = false;
 
@@ -295,7 +306,7 @@ public class Shooting : MonoBehaviour
                                 aimCone.gameObject.SetActive(true);
 
                                 //SEt aim line
-                                aimLine.SetStartPoint(loadedProjectile.transform.position);
+                                aimLine.SetStartPoint(frontOfPlayer/*loadedProjectile.transform.position*/);
                                 aimLine.gameObject.SetActive(true);
                             }
                         }
@@ -319,6 +330,7 @@ public class Shooting : MonoBehaviour
                         {
                             loadedProjectile.SetProjectileDirection(lastShootingLine);
                             loadedProjectile.GetComponent<Collider2D>().enabled = true;
+                            loadedProjectile.SetProjectileTarget(lightningTargetPos);
                             StopAiming();
 
                             //Can't shoot projectile continousely
@@ -352,7 +364,7 @@ public class Shooting : MonoBehaviour
                     Aiming();
                 }
             }
-            catchCursor = true;
+            //catchCursor = true;
         }
     }
 

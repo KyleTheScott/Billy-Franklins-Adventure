@@ -8,7 +8,9 @@ public class Charges : MonoBehaviour
     [SerializeField] private int lightCharges = 3; //how many lighting can character use?
     [SerializeField] private int maxLightCharges = 3; //how many lighting can character use?
     [SerializeField] private bool lampOn = false;
-    public UnityEvent<int, int> onLightChargesChanged; //DarkBOrder will subscribe, charges text ui will subscribe this
+    public UnityEvent<int, int> onLightChargesChanged; //DarkBorder will subscribe, charges text ui will subscribe this
+
+    public List<GameObject> keyChargesList = new List<GameObject>();
 
     [FMODUnity.EventRef]
     public string shootSound;
@@ -37,6 +39,27 @@ public class Charges : MonoBehaviour
     public void SetLightCharges(int chargeNum)
     {
         lightCharges = chargeNum;
+
+        //add keys to list
+        if(keyChargesList.Count == 0)
+        {
+            for(byte i=0; i < 12; i++)
+            {
+                keyChargesList.Add(GameObject.Find("KeyImage" + (i + 1)));
+                Debug.Log("keyChargesList[" + i + "] set. KeyImage" + (i + 1));
+            }
+        }
+        for(int i=0; i < 12; i++)
+        {
+            if (i < chargeNum)
+            {
+                keyChargesList[i].SetActive(true);
+            }
+            else
+            {
+                keyChargesList[i].SetActive(false);
+            }
+        }
     }
 
     public void SetMaxLightCharges(int chargeNum)
@@ -55,6 +78,18 @@ public class Charges : MonoBehaviour
         lightCharges -= 1;
         FMODUnity.RuntimeManager.PlayOneShot(shootSound);
 
+        for (int i = 0; i < 12; i++)
+        {
+            if (i < lightCharges)
+            {
+                keyChargesList[i].SetActive(true);
+            }
+            else
+            {
+                keyChargesList[i].SetActive(false);
+            }
+        }
+
         if (onLightChargesChanged != null)
         {
             onLightChargesChanged.Invoke(lightCharges, maxLightCharges);
@@ -65,6 +100,7 @@ public class Charges : MonoBehaviour
         {
             StartCoroutine(WaitForLatern());
         }
+
     }
 
     private IEnumerator WaitForLatern()
