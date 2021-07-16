@@ -66,6 +66,9 @@ TagManager:
   - name: Buildings
     uniqueID: 2431956425
     locked: 0
+  - name: Scaffolding
+    uniqueID: 557562933
+    locked: 0
   - name: Backround metal
     uniqueID: 1233121997
     locked: 0
