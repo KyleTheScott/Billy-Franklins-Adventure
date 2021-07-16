@@ -1704,6 +1704,10 @@ PrefabInstance:
       propertyPath: ghostWall
       value: 
       objectReference: {fileID: 562345257}
+    - target: {fileID: 7108738080389315902, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: highlight
+      value: 
+      objectReference: {fileID: 1793523098}
     - target: {fileID: 7108738080389315903, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
       propertyPath: m_Name
       value: Lamp
@@ -1713,6 +1717,11 @@ PrefabInstance:
 --- !u!4 &1793523097 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7108738080389315901, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+  m_PrefabInstance: {fileID: 1793523096}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1793523098 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2236076390400145513, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
   m_PrefabInstance: {fileID: 1793523096}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1910744674
