@@ -112,6 +112,12 @@ public class Player : MonoBehaviour
         playerState = state;
     }
 
+    public void DestroyUI()
+    {
+        Destroy(pauseMenuUI.gameObject);
+        Destroy(settingsMenuUI.gameObject);
+    }
+
 
     //public float GetDistPlayerMoveX()
     //{

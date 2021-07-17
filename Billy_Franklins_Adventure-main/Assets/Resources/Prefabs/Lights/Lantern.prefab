@@ -286,9 +286,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1918106776029604077, guid: f62cfb19033794646b157b639513c0fd, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1492175765
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918106776029604077, guid: f62cfb19033794646b157b639513c0fd, type: 3}
+      propertyPath: m_SortingLayer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 6028897257605780952, guid: f62cfb19033794646b157b639513c0fd, type: 3}
       propertyPath: m_Name
       value: LanternHighlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 6028897257605780952, guid: f62cfb19033794646b157b639513c0fd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f62cfb19033794646b157b639513c0fd, type: 3}

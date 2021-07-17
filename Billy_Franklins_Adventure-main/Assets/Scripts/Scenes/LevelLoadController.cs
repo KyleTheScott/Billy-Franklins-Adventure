@@ -17,7 +17,8 @@ public class LevelLoadController : MonoBehaviour
     [SerializeField] private GhostWallController ghostWall;
     [SerializeField] private bool LowerWallOnTriggerEnter = true;
     [SerializeField] private PuzzleController puzzleController;
-    private bool loadMainMenu = false;
+    [SerializeField]
+    bool InstantLoadLevel = false;
 
 
     private bool has_level_loaded_ = false;
@@ -60,22 +61,31 @@ public class LevelLoadController : MonoBehaviour
         {
             if (next_scene_to_load_ != "" && !has_level_loaded_)
             {
-                StartCoroutine("LoadNextLevel");
-            }
-            else
-            {
-                Debug.Log("loadMainMenu= " + loadMainMenu);
-                if (loadMainMenu == true)
+                if (InstantLoadLevel)
                 {
-                    Debug.Log("MainMenu Instant Load");
-                    SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+                    DestroyDDOLObjects();
+                    SceneManager.LoadScene(next_scene_to_load_, LoadSceneMode.Single);
+                    has_level_loaded_ = true;
                 }
                 else
                 {
-                    Debug.LogWarning(">>> Cannot load next scene!");
-                    loadMainMenu = true;
-                    Debug.Log("loadMainMenu = true automatically");
+                    StartCoroutine("LoadNextLevel");
                 }
+            }
+            else
+            {
+                //Debug.Log("loadMainMenu= " + loadMainMenu);
+                //if (loadMainMenu == true)
+                //{
+                //    Debug.Log("MainMenu Instant Load");
+                //    SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+                //}
+                //else
+                //{
+                //    Debug.LogWarning(">>> Cannot load next scene!");
+                //    loadMainMenu = true;
+                //    Debug.Log("loadMainMenu = true automatically");
+                //}
             }
                
             if (prev_scene_to_destroy_ != "" && SceneManager.GetSceneByName(prev_scene_to_destroy_).isLoaded)
@@ -99,6 +109,18 @@ public class LevelLoadController : MonoBehaviour
         
     }
 
+    private void DestroyDDOLObjects()
+    {
+        GameObject.Find("Player(Clone)").GetComponent<Player>().DestroyUI();
+        Destroy(GameObject.Find("Player(Clone)"));
+        Destroy(GameObject.Find("Main Camera(Clone)"));
+        Destroy(GameObject.Find("ControllerManager(Clone)"));
+        //Destroy(GameObject.Find("Settings UI(Clone)"));
+        //Destroy(GameObject.Find("Pause Menu UI(Clone)"));
+        Destroy(GameObject.Find("Global Light 2D(Clone)"));
+        Destroy(GameObject.Find("UI(Clone)"));
+
+    }
 
     void OnDrawGizmos()
     {

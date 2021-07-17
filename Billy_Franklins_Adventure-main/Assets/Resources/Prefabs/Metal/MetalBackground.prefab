@@ -238,9 +238,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 4662915385415008421, guid: 5e4d0aea1d2339d438fff954ace21f20, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1492175765
+      objectReference: {fileID: 0}
+    - target: {fileID: 4662915385415008421, guid: 5e4d0aea1d2339d438fff954ace21f20, type: 3}
+      propertyPath: m_SortingLayer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5516157387413095995, guid: 5e4d0aea1d2339d438fff954ace21f20, type: 3}
       propertyPath: m_Name
       value: MetalConnectionHighlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5516157387413095995, guid: 5e4d0aea1d2339d438fff954ace21f20, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e4d0aea1d2339d438fff954ace21f20, type: 3}

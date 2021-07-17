@@ -321,6 +321,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BucketHighlight
       objectReference: {fileID: 0}
+    - target: {fileID: 548468858373809566, guid: 043f022cb5d24784394a3778af2fceb9, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1492175765
+      objectReference: {fileID: 0}
+    - target: {fileID: 548468858373809566, guid: 043f022cb5d24784394a3778af2fceb9, type: 3}
+      propertyPath: m_SortingLayer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 043f022cb5d24784394a3778af2fceb9, type: 3}
 --- !u!1001 &8597880204526908818

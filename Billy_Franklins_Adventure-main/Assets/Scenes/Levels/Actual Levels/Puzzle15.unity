@@ -1040,6 +1040,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelLoadGroup
       objectReference: {fileID: 0}
+    - target: {fileID: 3926876559190693077, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
+      propertyPath: next_scene_to_load_
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3926876559190693077, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
+      propertyPath: InstantLoadLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3926876559190693077, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
+      propertyPath: LowerWallOnTriggerEnter
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3926876559190693079, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
       propertyPath: m_LocalPosition.x
       value: 33.48
