@@ -17,7 +17,8 @@ public class LevelLoadController : MonoBehaviour
     [SerializeField] private GhostWallController ghostWall;
     [SerializeField] private bool LowerWallOnTriggerEnter = true;
     [SerializeField] private PuzzleController puzzleController;
-                                
+    private bool loadMainMenu = false;
+
 
     private bool has_level_loaded_ = false;
     IEnumerator LoadNextLevel()
@@ -63,9 +64,20 @@ public class LevelLoadController : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning(">>> Cannot load next scene!");
+                Debug.Log("loadMainMenu= " + loadMainMenu);
+                if (loadMainMenu == true)
+                {
+                    Debug.Log("MainMenu Instant Load");
+                    SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+                }
+                else
+                {
+                    Debug.LogWarning(">>> Cannot load next scene!");
+                    loadMainMenu = true;
+                    Debug.Log("loadMainMenu = true automatically");
+                }
             }
-
+               
             if (prev_scene_to_destroy_ != "" && SceneManager.GetSceneByName(prev_scene_to_destroy_).isLoaded)
             {
                 SceneManager.UnloadSceneAsync(prev_scene_to_destroy_);
@@ -82,7 +94,6 @@ public class LevelLoadController : MonoBehaviour
                 {
                     ghostWall.LowerGhostWall();
                 }
-
             }
         }
         

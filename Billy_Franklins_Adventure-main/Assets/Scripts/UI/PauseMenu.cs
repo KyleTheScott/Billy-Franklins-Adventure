@@ -36,6 +36,10 @@ public class PauseMenu : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+
+        //removes menu's when returning to main menu
+        Destroy(settingsUI.gameObject);
+        Destroy(gameObject);
     }
 
     public void PauseMenuCalled()
