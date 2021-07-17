@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 679148413
-  m_SortingLayer: 18
+  m_SortingLayer: 19
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2853514ea07c8454ea44268b14ef4385, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -310,6 +310,10 @@ PrefabInstance:
     - target: {fileID: 2435282804743228482, guid: 141b7edd11db8a14a9ee4ec0fe041797, type: 3}
       propertyPath: m_Name
       value: LampHighlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435282804743228482, guid: 141b7edd11db8a14a9ee4ec0fe041797, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 141b7edd11db8a14a9ee4ec0fe041797, type: 3}
