@@ -1491,7 +1491,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2165601032990014240, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
       propertyPath: prev_scene_to_destroy_
-      value: Puzzle13
+      value: Puzzle12
       objectReference: {fileID: 0}
     - target: {fileID: 2165601032990014240, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
       propertyPath: ghostWall
@@ -2511,7 +2511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7108738080389315901, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.24
+      value: 5.35
       objectReference: {fileID: 0}
     - target: {fileID: 7108738080389315901, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
       propertyPath: m_LocalPosition.z

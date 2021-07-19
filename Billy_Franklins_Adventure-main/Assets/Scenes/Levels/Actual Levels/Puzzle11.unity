@@ -3661,7 +3661,7 @@ PrefabInstance:
       objectReference: {fileID: 253343470}
     - target: {fileID: 2165601032990014240, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
       propertyPath: prev_scene_to_destroy_
-      value: Puzzle10
+      value: Puzzle9
       objectReference: {fileID: 0}
     - target: {fileID: 2165601032990014240, guid: 6b55f0bdf78eaaf4fb3df0c25db9a225, type: 3}
       propertyPath: puzzleController
@@ -4502,7 +4502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7108738080389315901, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.60543054
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 7108738080389315901, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
       propertyPath: m_LocalPosition.z
