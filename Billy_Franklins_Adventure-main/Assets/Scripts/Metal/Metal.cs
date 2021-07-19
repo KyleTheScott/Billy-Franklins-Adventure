@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,7 +18,9 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
     [SerializeField] private Collider2D metalCollider;
     private Animator metalAnimator;
     //[SerializeField] private GameObject player;
-    [SerializeField] private GameObject player;
+    [SerializeField] private Player player;
+    private PlayerGFX playerGFX;
+    [SerializeField] private GameObject movingMetal;
     [SerializeField] private GameObject highlight;
     [Header("Movement")] private float distToPlayerXOffset;
     [SerializeField] private bool beingMoved = false;
@@ -26,9 +29,56 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
 
     [SerializeField] private bool movable = true;
 
+    [SerializeField] private GameObject pickUpPointLeft;
+    [SerializeField] private GameObject pickUpPointRight;
+
+    [SerializeField] private HingeJoint2D hingeJointPointLeft;
+    [SerializeField] private HingeJoint2D hingeJointPointRight;
+
+    private float lastPositionLeft;
+    private float lastPositionRight;
+
+    //[SerializeField] private float rotationSpeed = 1f ;
+
+    //private float rotation = 0;
+    //private bool metalIsRotating;
 
 
 
+    private void Start()
+    {
+        player = FindObjectOfType<Player>();
+        playerGFX = FindObjectOfType<PlayerGFX>();
+        //pickUpPointLeft = FindObjectOfType<PickUpPointLeft>().gameObject;
+        //pickUpPointRight = FindObjectOfType<GameObject>().gameObject;
+        movingMetal = FindObjectOfType<MovingMetal>().gameObject;
+        metalAnimator = gameObject.GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (movable)
+        {
+            Movement();
+        }
+
+        //if (metalIsRotating)
+        //{
+        //    if (playerGFX.GetFacingRight())
+        //    {
+
+        //    }
+        //}
+    }
+
+    public GameObject GetPickUpPointLeft()
+    {
+        return pickUpPointLeft;
+    }
+    public GameObject GetPickUpPointRight()
+    {
+        return pickUpPointRight;
+    }
 
     //when e is pressed and player is within range of the Interactable
     public void Interact()
@@ -39,17 +89,16 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
             if (beingMoved)
             {
                 beingMoved = false;
+                player.SetPlayerState(Player.PlayerState.MOVING_OBJECT_END);
             }
             //metal will start following player
             else
             {
+                beingMoved = true;
                 if (connectedDoors.Count > 0)
                 {
                     player.GetComponent<Player>().SetMoveObjectStopped();
                 }
-
-                beingMoved = true;
-                distToPlayerXOffset = transform.position.x - player.transform.position.x;
             }
         }
     }
@@ -59,32 +108,191 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         highlight.SetActive(state);
     }
 
-
-
-    private void Start()
+    public void SetPickUpMetalDirection()
     {
-        player = GameObject.FindObjectOfType<Player>().gameObject;
-        metalAnimator = gameObject.GetComponent<Animator>();
+        Debug.Log("Pick up metal");
+        if (playerGFX.GetFacingRight())
+        {
+            Debug.Log("Player Pos: " + player.transform.position.x);
+            Debug.Log("Pick Up Right Pos: " + pickUpPointRight.transform.position.x);
+
+            if (Mathf.Abs(player.transform.position.x - pickUpPointRight.transform.position.x) > .5f)
+            {
+                Debug.Log("Move to metal");
+                player.SetAnimationMovement(true);
+            }
+            if (player.GetAnimationMovement())
+            {
+                if (player.transform.position.x >= pickUpPointRight.transform.position.x)
+                { 
+                    Debug.Log("Move to metal left");
+                    player.SetAnimationMovingRight(false);
+                }
+                else
+                {
+                    Debug.Log("Move to metal right");
+                player.SetAnimationMovingRight(true);
+                }
+            }
+
+            
+        }
+        else
+        {
+            Debug.Log("Player Pos: " + player.transform.position.x);
+            Debug.Log("Pick Up Left Pos: " + pickUpPointLeft.transform.position.x);
+
+            if (Mathf.Abs(player.transform.position.x - pickUpPointLeft.transform.position.x) > .5f)
+            {
+                player.SetAnimationMovement(true);
+            }
+
+            if (player.GetAnimationMovement())
+            {
+                if (player.transform.position.x >= pickUpPointLeft.transform.position.x)
+                {
+                    player.SetAnimationMovingRight(false);
+                }
+                else
+                {
+                    player.SetAnimationMovingRight(true);
+                }
+            }
+        }
+       
+
+        ////Debug.Log("Dist B2: " + Mathf.Abs(player.transform.position.x - transform.position.x));
+        //if (player.GetAnimationMovement())
+        //{
+        //    if (player.transform.position.x >= transform.position.x)
+        //    {
+        //        player.SetAnimationMovingRight(false);
+        //    }
+        //    else
+        //    {
+        //        player.SetAnimationMovingRight(true);
+        //    }
+        //}
+    }
+    //IEnumerator RotateToMoveRight()
+    //{
+    //    //Debug.Log("Rotate");
+    //    //while (transform.rotation.z < 40f)
+    //    //{
+    //    //    transform.Rotate(0f, 0f, rotationSpeed * Time.deltaTime);
+    //    //    yield return null;
+    //    //}
+        
+    //}
+
+
+    public void ConnectMetalToPlayer()
+    {
+        if (playerGFX.GetFacingRight())
+        {
+            //Debug.Log("Right set parent");
+            //distToPlayerXOffset = PlayerObjectInteractions.playerObjectIInstance.GetMetalRightPos().transform.position.x - player.transform.position.x;
+            //distToPlayerXOffset = transform.position.x - player.transform.position.x; 
+            //gameObject.transform.SetParent(pickUpPointRight.transform);
+            //pickUpPointRight.transform.position = MovingMetal.movingMetalInstance.transform.position;
+            hingeJointPointRight.enabled = true; 
+            hingeJointPointRight.connectedBody = MovingMetal.movingMetalInstance.GetMovingMetalRigidbody();
+            transform.position = new Vector2(transform.position.x, transform.position.y + .4f);
+            transform.Rotate(0f, 0f, 40);
+            transform.Rotate(0f, 0f, 0);
+
+            //StartCoroutine("RotateToMoveRight");
+        }
+        else
+        {
+            //Debug.Log("Left set parent");
+            //distToPlayerXOffset = transform.position.x - player.transform.position.x;
+            //distToPlayerXOffset = PlayerObjectInteractions.playerObjectIInstance.GetMetalLeftPos().transform.position.x - player.transform.position.x;
+            //gameObject.transform.SetParent(pickUpPointLeft.transform);
+            //pickUpPointLeft.transform.position = MovingMetal.movingMetalInstance.transform.position;
+
+            //MovingMetal.movingMetalInstance.SetFixedJoint(pickUpPointLeft.GetComponent<Rigidbody2D>());
+            hingeJointPointLeft.enabled = true;
+            hingeJointPointLeft.connectedBody = MovingMetal.movingMetalInstance.GetMovingMetalRigidbody();
+            transform.position = new Vector2(transform.position.x, transform.position.y + .4f);
+            transform.Rotate(0f, 0f, -40);
+            transform.Rotate(0f, 0f, 0);
+        }
+        player.SetKinematic(true);
+        beingMoved = true;
     }
 
-
-    private void Update()
+    public void DisconnectMetalFromPlayer()
     {
-        if (movable)
+        
+        if (playerGFX.GetFacingRight())
         {
-            Movement();
+
+            //hingeJointPointRight.connectedBody = null;
+            hingeJointPointRight.enabled = false;
+            transform.Rotate(0f, 0f, 0);
+        }
+        else
+        {
+            //hingeJointPointLeft.connectedBody = null;
+            hingeJointPointLeft.enabled = false;
+            transform.Rotate(0f, 0f, 0);
         }
     }
+
+    public void DisconnectMetalFromPlayerSwitch()
+    {
+        Debug.Log("Disconnect");
+        if (playerGFX.GetFacingRight())
+        {
+
+            //hingeJointPointRight.connectedBody = null;
+            hingeJointPointRight.enabled = false;
+            hingeJointPointLeft.enabled = false;
+            transform.Rotate(0f, 0f, 0);
+        }
+        else
+        {
+            //hingeJointPointLeft.connectedBody = null;
+            hingeJointPointLeft.enabled = false;
+            hingeJointPointRight.enabled = false;
+            transform.Rotate(0f, 0f, 0);
+        }
+    }
+
 
     //moving metal with player
     private void Movement()
     {
         //if true metal will follow player
+        //if (beingMoved)
+        //{
+        //    switch (player.GetPlayerState())
+        //    {
+        //        case Player.PlayerState.MOVING_OBJECT_STOPPED_LEFT:
+        //        case Player.PlayerState.MOVING_OBJECT_LEFT:
+        //            pickUpPointLeft.transform.position = movingMetal.transform.position;
+        //            break;
+        //        case Player.PlayerState.MOVING_OBJECT_STOPPED_RIGHT:
+        //        case Player.PlayerState.MOVING_OBJECT_RIGHT:
+        //            pickUpPointRight.transform.position = movingMetal.gameObject.transform.position;
+        //            break;
+        //    }
         if (beingMoved)
         {
-            float moveWithPlayerX = player.transform.position.x + distToPlayerXOffset;
-            transform.position = new Vector2(moveWithPlayerX, transform.position.y);
+            //float moveWithPlayerX = player.transform.position.x + distToPlayerXOffset;
+            //transform.position = new Vector2(moveWithPlayerX, transform.position.y);
+            //if (playerGFX.GetFacingRight())
+            //{
+            //    pickUpPointRight.transform.position = MovingMetal.movingMetalInstance.transform.position;
+            //}
+            //else
+            //{
+            //    pickUpPointLeft.transform.position = MovingMetal.movingMetalInstance.transform.position;
+            //}
         }
+
+        //}
     }
 
     public bool GetMovable()
@@ -123,7 +331,18 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
 
     public void SetMoving(bool state)
     {
-        beingMoved = state;
+        if (player.GetAnimationSwitch())
+        {
+            DisconnectMetalFromPlayerSwitch();
+        }
+        else
+        {
+            beingMoved = state;
+            if (!state)
+            {
+                DisconnectMetalFromPlayer();
+            }
+        }
     }
 
 
@@ -207,11 +426,12 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         //disconnect objects
         if (collision.CompareTag("Metal"))
         {
+           
             bool object2Electrified = collision.gameObject.GetComponent<Metal>().GetElectrified();
             int object2GroupNum = collision.gameObject.GetComponent<Metal>().GetGroupNum();
             ElectricityController.instanceElectrical.DisconnectObjects(
-                gameObject, metalCollider, electrified, groupNum, 
-                collision.gameObject, collision, object2Electrified, object2GroupNum );
+                gameObject, metalCollider, electrified, groupNum,
+                collision.gameObject, collision, object2Electrified, object2GroupNum);
             GameObject tempGameObject = gameObject;
             for (int i = 0; i < connectedGameObjects.Count; i++)
             {
@@ -252,9 +472,6 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
                 player.GetComponent<Player>().SetMoveObject();
             }
         }
-
-
-
         if (connectedGameObjects.Count <= 0)
         {
             SetElectrified(false);
