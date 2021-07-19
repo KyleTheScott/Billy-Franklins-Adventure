@@ -1,0 +1,1102 @@
+fileFormatVersion: 2
+guid: 26fa49efa68a3444599e1a117506f3c9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4809241609137970608
+    second: DragWalk1956x2160_R2 (1)_0
+  - first:
+      213: 5634662983542066309
+    second: DragWalk1956x2160_R2 (1)_1
+  - first:
+      213: 5489877667848928473
+    second: DragWalk1956x2160_R2 (1)_2
+  - first:
+      213: -1845760662568809785
+    second: DragWalk1956x2160_R2 (1)_3
+  - first:
+      213: 6563519479454823765
+    second: DragWalk1956x2160_R2 (1)_4
+  - first:
+      213: -2013339107642360776
+    second: DragWalk1956x2160_R2 (1)_5
+  - first:
+      213: 501444139939537958
+    second: DragWalk1956x2160_R2 (1)_6
+  - first:
+      213: 325825279564123452
+    second: DragWalk1956x2160_R2 (1)_7
+  - first:
+      213: -1166818874002384451
+    second: DragWalk1956x2160_R2 (1)_8
+  - first:
+      213: 1092682719063789859
+    second: DragWalk1956x2160_R2 (1)_9
+  - first:
+      213: 2366625495174368019
+    second: DragWalk1956x2160_R2 (1)_10
+  - first:
+      213: -3254115952519145224
+    second: DragWalk1956x2160_R2 (1)_11
+  - first:
+      213: 3854106546429989411
+    second: DragWalk1956x2160_R2 (1)_12
+  - first:
+      213: -3888091711506614860
+    second: DragWalk1956x2160_R2 (1)_13
+  - first:
+      213: 2316138748074547427
+    second: DragWalk1956x2160_R2 (1)_14
+  - first:
+      213: 3525875776067323271
+    second: DragWalk1956x2160_R2 (1)_15
+  - first:
+      213: 3906847083522915528
+    second: DragWalk1956x2160_R2 (1)_16
+  - first:
+      213: -1538958019223071103
+    second: DragWalk1956x2160_R2 (1)_17
+  - first:
+      213: -826921549783363245
+    second: DragWalk1956x2160_R2 (1)_18
+  - first:
+      213: -7445335674738700412
+    second: DragWalk1956x2160_R2 (1)_19
+  - first:
+      213: -5704975169978274060
+    second: DragWalk1956x2160_R2 (1)_20
+  - first:
+      213: 3784059827593633748
+    second: DragWalk1956x2160_R2 (1)_21
+  - first:
+      213: 2742515993799195474
+    second: DragWalk1956x2160_R2 (1)_22
+  - first:
+      213: 5203013941125208742
+    second: DragWalk1956x2160_R2 (1)_23
+  - first:
+      213: -2661119740475764369
+    second: DragWalk1956x2160_R2 (1)_24
+  - first:
+      213: 1459306772922362271
+    second: DragWalk1956x2160_R2 (1)_25
+  - first:
+      213: -9161250342747610986
+    second: DragWalk1956x2160_R2 (1)_26
+  - first:
+      213: -3769409620943392041
+    second: DragWalk1956x2160_R2 (1)_27
+  - first:
+      213: 2411646501897570693
+    second: DragWalk1956x2160_R2 (1)_28
+  - first:
+      213: 6629171313055738318
+    second: DragWalk1956x2160_R2 (1)_29
+  - first:
+      213: 7444288016733705610
+    second: DragWalk1956x2160_R2 (1)_30
+  - first:
+      213: 5245716897317318373
+    second: DragWalk1956x2160_R2 (1)_31
+  - first:
+      213: -183892476457981021
+    second: DragWalk1956x2160_R2 (1)_32
+  - first:
+      213: 5479465114031441500
+    second: DragWalk1956x2160_R2 (1)_33
+  - first:
+      213: -8344951369463108841
+    second: DragWalk1956x2160_R2 (1)_34
+  - first:
+      213: -796761273828151280
+    second: DragWalk1956x2160_R2 (1)_35
+  - first:
+      213: 4068138952337004466
+    second: DragWalk1956x2160_R2 (1)_0
+  - first:
+      213: 7280031472877891585
+    second: DragWalk1956x2160_R2 (1)_1
+  - first:
+      213: 565173059418352924
+    second: DragWalk1956x2160_R2 (1)_2
+  - first:
+      213: 6859331771652663009
+    second: DragWalk1956x2160_R2 (1)_3
+  - first:
+      213: -8870359049872275203
+    second: DragWalk1956x2160_R2 (1)_4
+  - first:
+      213: 5386672526353427641
+    second: DragWalk1956x2160_R2 (1)_5
+  - first:
+      213: 8738358498356658945
+    second: DragWalk1956x2160_R2 (1)_6
+  - first:
+      213: -4920956699663282376
+    second: DragWalk1956x2160_R2 (1)_7
+  - first:
+      213: -6666379774915114516
+    second: DragWalk1956x2160_R2 (1)_8
+  - first:
+      213: -321277212221044021
+    second: DragWalk1956x2160_R2 (1)_9
+  - first:
+      213: 5457284714923611483
+    second: DragWalk1956x2160_R2 (1)_10
+  - first:
+      213: -8953735570638829036
+    second: DragWalk1956x2160_R2 (1)_11
+  - first:
+      213: 4325484105081432754
+    second: DragWalk1956x2160_R2 (1)_12
+  - first:
+      213: 6325582661787758389
+    second: DragWalk1956x2160_R2 (1)_13
+  - first:
+      213: -3736447679280415554
+    second: DragWalk1956x2160_R2 (1)_14
+  - first:
+      213: 197312203824361364
+    second: DragWalk1956x2160_R2 (1)_15
+  - first:
+      213: 5109845057679842021
+    second: DragWalk1956x2160_R2 (1)_16
+  - first:
+      213: 6173733741589150748
+    second: DragWalk1956x2160_R2 (1)_17
+  - first:
+      213: -1702216128849902259
+    second: DragWalk1956x2160_R2 (1)_18
+  - first:
+      213: -1467376369847060878
+    second: DragWalk1956x2160_R2 (1)_19
+  - first:
+      213: 7672869038595793646
+    second: DragWalk1956x2160_R2 (1)_20
+  - first:
+      213: 2420857770938997237
+    second: DragWalk1956x2160_R2 (1)_21
+  - first:
+      213: -2373358660604860914
+    second: DragWalk1956x2160_R2 (1)_22
+  - first:
+      213: 6144661280569092223
+    second: DragWalk1956x2160_R2 (1)_23
+  - first:
+      213: -5595158405322641041
+    second: DragWalk1956x2160_R2 (1)_24
+  - first:
+      213: -1564341668969437774
+    second: DragWalk1956x2160_R2 (1)_25
+  - first:
+      213: 7389454511023071056
+    second: DragWalk1956x2160_R2 (1)_26
+  - first:
+      213: 7965892560702118597
+    second: DragWalk1956x2160_R2 (1)_27
+  - first:
+      213: -1691254630801894830
+    second: DragWalk1956x2160_R2 (1)_28
+  - first:
+      213: -1341418451449487977
+    second: DragWalk1956x2160_R2 (1)_29
+  - first:
+      213: 6090325253510748032
+    second: DragWalk1956x2160_R2 (1)_30
+  - first:
+      213: 8950383782030224785
+    second: DragWalk1956x2160_R2 (1)_31
+  - first:
+      213: 2620661233643531995
+    second: DragWalk1956x2160_R2 (1)_32
+  - first:
+      213: 1038946772570922342
+    second: DragWalk1956x2160_R2 (1)_33
+  - first:
+      213: 6811495437241256821
+    second: DragWalk1956x2160_R2 (1)_34
+  - first:
+      213: 6690664425467021905
+    second: DragWalk1956x2160_R2 (1)_35
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 900
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b71afeb2dee47830800000000000000
+      internalID: 4068138952337004466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_1
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 100fc86ad0ed70560800000000000000
+      internalID: 7280031472877891585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_2
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1d604337e5e7d700800000000000000
+      internalID: 565173059418352924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_3
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e668ed67ed313f50800000000000000
+      internalID: 6859331771652663009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_4
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df8013af07726e480800000000000000
+      internalID: -8870359049872275203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_5
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bce6a67f1e41ca40800000000000000
+      internalID: 5386672526353427641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1038096a1c2e44970800000000000000
+      internalID: 8738358498356658945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_7
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83fcd7934ff35bbb0800000000000000
+      internalID: -4920956699663282376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_8
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce9065a2ae24c73a0800000000000000
+      internalID: -6666379774915114516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_9
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bca0323e3189a8bf0800000000000000
+      internalID: -321277212221044021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_10
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b55d037c88b2cbb40800000000000000
+      internalID: 5457284714923611483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_11
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41a0b4bffe0fdb380800000000000000
+      internalID: -8953735570638829036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ba2afc40e4370c30800000000000000
+      internalID: 4325484105081432754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_13
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53faa31aaebf8c750800000000000000
+      internalID: 6325582661787758389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_14
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebc78aad1a8752cc0800000000000000
+      internalID: -3736447679280415554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_15
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49fecca676efcb200800000000000000
+      internalID: 197312203824361364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_16
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eada40c101d9e640800000000000000
+      internalID: 5109845057679842021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_17
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1cb34dc0228da550800000000000000
+      internalID: 6173733741589150748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4506f413738068e0800000000000000
+      internalID: -1702216128849902259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_19
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 276b67357f4d2abe0800000000000000
+      internalID: -1467376369847060878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_20
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee2689decb18b7a60800000000000000
+      internalID: 7672869038595793646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_21
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f91090015d989120800000000000000
+      internalID: 2420857770938997237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_22
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e06ec0e6fd2201fd0800000000000000
+      internalID: -2373358660604860914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_23
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f78ea6df0e8364550800000000000000
+      internalID: 6144661280569092223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f61f3b423110a52b0800000000000000
+      internalID: -5595158405322641041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_25
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b52cb15a875a4ae0800000000000000
+      internalID: -1564341668969437774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_26
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05f107d0abd9c8660800000000000000
+      internalID: 7389454511023071056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_27
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ca939f24198c8e60800000000000000
+      internalID: 7965892560702118597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_28
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 252915abfd47788e0800000000000000
+      internalID: -1691254630801894830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_29
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79dd23a8603526de0800000000000000
+      internalID: -1341418451449487977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0875916dc8e258450800000000000000
+      internalID: 6090325253510748032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_31
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19d245be0a6263c70800000000000000
+      internalID: 8950383782030224785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_32
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdea5f3d1857e5420800000000000000
+      internalID: 2620661233643531995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_33
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66dd0a7c5941b6e00800000000000000
+      internalID: 1038946772570922342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_34
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57b85f5e20b478e50800000000000000
+      internalID: 6811495437241256821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DragWalk1956x2160_R2 (1)_35
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15a0e47a8d30adc50800000000000000
+      internalID: 6690664425467021905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
