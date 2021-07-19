@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5594739182090962409}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &7268029807261055285
 CapsuleCollider2D:
@@ -62,7 +62,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 5594739182090962412}
   metalCrashEventRef: event:/Game Sounds/Metal Impact
-  rigidbodyImpactrequirement: 4
+  rigidbodyImpactRequirement: 1
+--- !u!1 &1159786511850261480
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2096672244027454163}
+  m_Layer: 9
+  m_Name: PickUpPointRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2096672244027454163
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159786511850261480}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.037, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5594739182090962409}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4761451826884214460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8595146494162296594}
+  m_Layer: 9
+  m_Name: PickUpPointLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8595146494162296594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4761451826884214460}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.948, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5594739182090962409}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5594739182090962413
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,6 +137,8 @@ GameObject:
   - component: {fileID: 5594739182090962412}
   - component: {fileID: 1994736630}
   - component: {fileID: 8748672256712832840}
+  - component: {fileID: 5437452509568151114}
+  - component: {fileID: 8866803194504052652}
   m_Layer: 9
   m_Name: Metal
   m_TagString: Metal
@@ -95,6 +157,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 8595146494162296594}
+  - {fileID: 2096672244027454163}
   - {fileID: 1756185054}
   - {fileID: 5932906010412231638}
   m_Father: {fileID: 0}
@@ -164,7 +228,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1078591665
-  m_SortingLayer: 10
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4a744e22f1ee368448929b1b72b836c9, type: 3}
   m_Color: {r: 0.44419718, g: 0.50021565, b: 0.5849056, a: 1}
@@ -216,10 +280,15 @@ MonoBehaviour:
   connectedDoors: []
   metalCollider: {fileID: 5594739182090962414}
   player: {fileID: 0}
+  movingMetal: {fileID: 0}
   highlight: {fileID: 6802927880165264314}
   beingMoved: 0
   groupNum: 0
   movable: 1
+  pickUpPointLeft: {fileID: 4761451826884214460}
+  pickUpPointRight: {fileID: 1159786511850261480}
+  hingeJointPointLeft: {fileID: 5437452509568151114}
+  hingeJointPointRight: {fileID: 8866803194504052652}
 --- !u!95 &8748672256712832840
 Animator:
   serializedVersion: 3
@@ -239,6 +308,54 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!233 &5437452509568151114
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5594739182090962413}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: -0.87970257, y: -0.02665782}
+  m_ConnectedAnchor: {x: 9.336297, y: 3.5823421}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 0
+  m_AngleLimits:
+    m_LowerAngle: 0
+    m_UpperAngle: 359
+--- !u!233 &8866803194504052652
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5594739182090962413}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0.9523659, y: -0.02613759}
+  m_ConnectedAnchor: {x: 11.1683655, y: 3.5828624}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 0
+  m_AngleLimits:
+    m_LowerAngle: 0
+    m_UpperAngle: 359
 --- !u!1001 &4548404111225850455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -284,7 +401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7875326688881385857, guid: f8623ec7761ed0e479dfd20ec67909a2, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7875326688881385857, guid: f8623ec7761ed0e479dfd20ec67909a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

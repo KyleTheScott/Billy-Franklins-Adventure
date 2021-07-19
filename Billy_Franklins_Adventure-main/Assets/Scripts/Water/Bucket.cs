@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bucket : MonoBehaviour, IInteractable
 {
-    [SerializeField] private GameObject player;
+    [SerializeField] private Player player;
     [SerializeField] private GameObject waterObject;
     private Animator bucketAnimator;
     private bool tippedOver;
@@ -14,7 +14,7 @@ public class Bucket : MonoBehaviour, IInteractable
     void Start()
     {
         bucketAnimator = gameObject.GetComponent<Animator>();
-        player = GameObject.FindObjectOfType<Player>().gameObject;
+        player = FindObjectOfType<Player>();
     }
 
     //called when you the bucket is within the interactable circle
@@ -23,6 +23,7 @@ public class Bucket : MonoBehaviour, IInteractable
     {
         if (!tippedOver)
         {
+           
             tippedOver = true;
             bool facingRight = true;
             if (player.transform.position.x >= transform.position.x)
@@ -35,6 +36,9 @@ public class Bucket : MonoBehaviour, IInteractable
             {
                 bucketAnimator.SetBool("FacingRight", true);
             }
+
+            
+
             bucketAnimator.SetBool("BucketTipped", true);
 
            // Debug.LogError("Water collider state before: " + waterObject.GetComponent<Collider2D>().enabled);
@@ -42,9 +46,29 @@ public class Bucket : MonoBehaviour, IInteractable
             waterObject.GetComponent<Water>().SetWaterByItself(true);
            // Debug.LogError("Water collider state after: " + waterObject.GetComponent<Collider2D>().enabled);
             waterObject.GetComponent<Water>().SpillWater(facingRight);
-
         }
     }
+
+    public void SetInKickingRange()
+    {
+        if (Mathf.Abs(player.transform.position.x - transform.position.x) > .5f)
+        {
+            player.SetAnimationMovement(true);
+        }
+        //Debug.Log("Dist B2: " + Mathf.Abs(player.transform.position.x - transform.position.x));
+        if (player.GetAnimationMovement())
+        {
+            if (player.transform.position.x >= transform.position.x)
+            {
+                player.SetAnimationMovingRight(false);
+            }
+            else
+            {
+                player.SetAnimationMovingRight(true);
+            }
+        }
+    }
+
 
     public void SetHighlighted(bool state)
     {

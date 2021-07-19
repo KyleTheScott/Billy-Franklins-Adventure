@@ -24,7 +24,20 @@ public class PlayerObjectInteractions : MonoBehaviour
 
     [SerializeField] private List<GameObject> toggleObjects = new List<GameObject>(); // list of interactable objects in interactable circle 
     [SerializeField] private GameObject currentToggleObject; // current selected interactable object in interactable circle
+    [SerializeField] private GameObject metalLeftPos;
+    [SerializeField] private GameObject metalRightPos;
+    [SerializeField] private Player player;
+
+
+
     private int togglePos = 0; // position of selected interactable object in the list of interactable objects 
+
+    void Start()
+    {
+        player = FindObjectOfType<Player>();
+
+    }
+
 
 
     //toggles through objects in the list of interactable objects
@@ -40,10 +53,31 @@ public class PlayerObjectInteractions : MonoBehaviour
             {
                 togglePos++;
             }
-            currentToggleObject.GetComponent<IInteractable>().SetHighlighted(false);
+
             currentToggleObject = toggleObjects[togglePos];
+            if (currentToggleObject.GetComponent<Collider2D>().CompareTag("Metal"))
+            {
+                metalLeftPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointLeft();
+                metalRightPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointRight();
+            }
             currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
         }
+    }
+
+    public GameObject GetMetalLeftPos()
+    {
+        return metalLeftPos;
+    }
+
+    public GameObject GetMetalRightPos()
+    {
+        return metalRightPos;
+    }
+
+    public void ConnectMetalToPlayer()
+    {
+        //currentToggleObject.transform.parent = player.transform;
+        currentToggleObject.GetComponent<Metal>().ConnectMetalToPlayer();
     }
 
     //returns selected object when interacting with interactable objects
@@ -67,15 +101,25 @@ public class PlayerObjectInteractions : MonoBehaviour
             //sets the selected interactable object to the one collided with if the list is empty
             if (collision.gameObject.CompareTag("Metal"))
             {
-                if (collision.gameObject.GetComponent<Metal>().GetMovable())
+                if (!player.GetAnimationSwitch())
                 {
-                    if (toggleObjects.Count < 1)
+                    if (collision.gameObject.GetComponent<Metal>().GetMovable())
                     {
-                        currentToggleObject = collision.gameObject;
-                        currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
-                        togglePos = 0;
+                        if (toggleObjects.Count < 1)
+                        {
+                            currentToggleObject = collision.gameObject;
+                            if (currentToggleObject.GetComponent<Collider2D>().CompareTag("Metal"))
+                            {
+                                metalLeftPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointLeft();
+                                metalRightPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointRight();
+                            }
+
+                            currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
+                            togglePos = 0;
+                        }
+
+                        toggleObjects.Add(collision.gameObject);
                     }
-                    toggleObjects.Add(collision.gameObject);
                 }
             }
             else
@@ -83,6 +127,11 @@ public class PlayerObjectInteractions : MonoBehaviour
                 if (toggleObjects.Count < 1)
                 {
                     currentToggleObject = collision.gameObject;
+                    if (currentToggleObject.GetComponent<Collider2D>().CompareTag("Metal"))
+                    {
+                        metalLeftPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointLeft();
+                        metalRightPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointRight();
+                    }
                     currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
                     togglePos = 0;
                 }
@@ -107,14 +156,24 @@ public class PlayerObjectInteractions : MonoBehaviour
             {
                 if (collision.gameObject == toggleObjects[i])
                 {
-                    if (collision.gameObject.CompareTag("Metal"))
+                    if (!player.GetAnimationSwitch())
                     {
-                        if (collision.gameObject.GetComponent<Metal>().IsMoving())
+                        if (collision.gameObject.CompareTag("Metal"))
                         {
-                            collision.gameObject.GetComponent<Metal>().SetMoving(false);
+                            if (collision.CompareTag("Metal"))
+                            {
+                                metalLeftPos = null;
+                                metalRightPos = null;
+                            }
+
+                            if (collision.gameObject.GetComponent<Metal>().IsMoving())
+                            {
+                                collision.gameObject.GetComponent<Metal>().SetMoving(false);
+                            }
                         }
+
+                        toggleObjects.RemoveAt(i);
                     }
-                    toggleObjects.RemoveAt(i);
                 }
             }
             if (toggleObjects.Count >= 1 && currentToggleObject == null)
