@@ -250,8 +250,11 @@ public class Player : MonoBehaviour
         rb.isKinematic = state;
     }
 
-   
-
+    public void DestroyUI()
+    {
+        Destroy(pauseMenuUI.gameObject);
+        Destroy(settingsMenuUI.gameObject);
+    }
 
     //public float GetDistPlayerMoveX()
     //{

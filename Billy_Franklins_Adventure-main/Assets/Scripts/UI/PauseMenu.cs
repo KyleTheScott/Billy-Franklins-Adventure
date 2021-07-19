@@ -36,6 +36,11 @@ public class PauseMenu : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+
+        //removes menu's when returning to main menu
+        DestroyDDOLObjects();
+        Destroy(settingsUI.gameObject);
+        Destroy(gameObject);
     }
 
     public void PauseMenuCalled()
@@ -60,5 +65,15 @@ public class PauseMenu : MonoBehaviour
         {
             ContinueGame();
         }
+    }
+
+    private void DestroyDDOLObjects()
+    {
+        Destroy(GameObject.Find("Player(Clone)"));
+        Destroy(GameObject.Find("Main Camera(Clone)"));
+        Destroy(GameObject.Find("ControllerManager(Clone)"));
+        Destroy(GameObject.Find("Global Light 2D(Clone)"));
+        Destroy(GameObject.Find("UI(Clone)"));
+
     }
 }
