@@ -559,7 +559,6 @@ public class Player : MonoBehaviour
                         transform.Rotate(0f, 180f, 0f); //rotate player and aiming to the left 
                         shooting.SetLastShootingLine(-1);
                     }
-
                     if (playerState == PlayerState.MOVING_OBJECT || playerState == PlayerState.MOVING_OBJECT_IDLE)
                     {
                         playerState = PlayerState.MOVING_OBJECT_SWITCH_START;
