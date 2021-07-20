@@ -16,6 +16,8 @@ public class PlayerGFX : MonoBehaviour
     private bool settingFacingRight;
     private MovingMetal movingMetal;
 
+    private bool goingToRightMetal = false;
+
     [Header("FMOD Settings")] [FMODUnity.EventRef] [SerializeField]
     private string buckKickEventRef;
 
@@ -48,6 +50,16 @@ public class PlayerGFX : MonoBehaviour
     {
         isFacingRight = state;
         settingFacingRight = true;
+    }
+
+    public void SetGoingToRightMetalDirection(bool state)
+    {
+        goingToRightMetal = state;
+    }
+
+    public bool GetGoingToRightMetalDirection()
+    {
+        return goingToRightMetal;
     }
 
     //public void SetAnimator(int animState)
@@ -201,16 +213,15 @@ public class PlayerGFX : MonoBehaviour
                     player.SetKinematic(false);
                     
 
-                    if (player.GetAnimationMovingRight())
+                    if (goingToRightMetal)
                     {
                         if (Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
                             .GetMetalRightPos().transform.position.x)) < .5f)
                         {
 
                             player.SetPlayerState(Player.PlayerState.MOVING_OBJECT);
-                            player.MetalFacingFix(true);
+                            //player.MetalFacingFix(true);
                             playerAnimator.SetInteger("PlayerAnimState", 9);
-
                         }
                     }
                     else
@@ -218,7 +229,7 @@ public class PlayerGFX : MonoBehaviour
                         if (Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
                             .GetMetalLeftPos().transform.position.x)) < .5f)
                         {
-                            player.MetalFacingFix(true);
+                            //player.MetalFacingFix(true);
                             player.SetPlayerState(Player.PlayerState.MOVING_OBJECT);
                             playerAnimator.SetInteger("PlayerAnimState", 9);
                         }
