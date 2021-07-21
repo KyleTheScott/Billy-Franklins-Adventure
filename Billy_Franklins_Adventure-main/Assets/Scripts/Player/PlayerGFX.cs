@@ -124,34 +124,28 @@ public class PlayerGFX : MonoBehaviour
                     break;
                 case Player.PlayerState.MOVING_OBJECT:
                     //player.SetKinematic(true);
-                    if (!player.GetAnimationSwitch())
-                    {
-                        playerAnimator.SetInteger("PlayerAnimState", 9);
-                    }
+                    playerAnimator.SetInteger("PlayerAnimState", 9);
                     break;
                 case Player.PlayerState.MOVING_OBJECT_END:
                     playerAnimator.SetInteger("PlayerAnimState", 10);
                     //player.SetKinematic(true);
                     break;
-                case Player.PlayerState.MOVING_OBJECT_SWITCH_START:
-                    player.SetKinematic(true);
-                    Debug.Log("Switch start");
-                    playerAnimator.SetInteger("PlayerAnimState", 10);
-                    break;
-                case Player.PlayerState.MOVING_OBJECT_SWITCH:
-                    playerAnimator.SetInteger("PlayerAnimState", 8);
-                    break;
-                case Player.PlayerState.MOVING_OBJECT_SWITCH_END:
-                    Debug.Log("Switch End");
-                    player.SetAnimationSwitch(false);
-                    player.SetKinematic(true);
-                    playerAnimator.SetInteger("PlayerAnimState", 9);
-                    break;
+                //case Player.PlayerState.MOVING_OBJECT_SWITCH_START:
+                //    player.SetKinematic(true);
+                //    Debug.Log("Switch start");
+                //    playerAnimator.SetInteger("PlayerAnimState", 10);
+                //    break;
+                //case Player.PlayerState.MOVING_OBJECT_SWITCH:
+                //    playerAnimator.SetInteger("PlayerAnimState", 8);
+                //    break;
+                //case Player.PlayerState.MOVING_OBJECT_SWITCH_END:
+                //    Debug.Log("Switch End");
+                //    //player.SetAnimationSwitch(false);
+                //    player.SetKinematic(true);
+                //    playerAnimator.SetInteger("PlayerAnimState", 9);
+                //    break;
                 case Player.PlayerState.MOVING_OBJECT_IDLE:
-                    if (!player.GetAnimationSwitch())
-                    {
-                        playerAnimator.SetInteger("PlayerAnimState", 11);
-                    }
+                    playerAnimator.SetInteger("PlayerAnimState", 11);
                     break;
                 case Player.PlayerState.MOVING_OBJECT_LEFT:
                     player.SetKinematic(true);
@@ -216,19 +210,30 @@ public class PlayerGFX : MonoBehaviour
                     if (goingToRightMetal)
                     {
                         if (Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
-                            .GetMetalRightPos().transform.position.x)) < .5f)
+                            .GetMetalRightPos().transform.position.x)) < .1f)
                         {
-
+                            Debug.Log("Going to right");
                             player.SetPlayerState(Player.PlayerState.MOVING_OBJECT);
-                            //player.MetalFacingFix(true);
+                            if (isFacingRight)
+                            {
+                                player.MetalFacingFix(true);
+                                isFacingRight = false;
+                            }
+
                             playerAnimator.SetInteger("PlayerAnimState", 9);
                         }
                     }
                     else
                     {
                         if (Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
-                            .GetMetalLeftPos().transform.position.x)) < .5f)
+                            .GetMetalLeftPos().transform.position.x)) < .1f)
                         {
+                            if (!isFacingRight)
+                            {
+                                player.MetalFacingFix(true);
+                                isFacingRight = true;
+                            }
+                            Debug.Log("Going to left");
                             //player.MetalFacingFix(true);
                             player.SetPlayerState(Player.PlayerState.MOVING_OBJECT);
                             playerAnimator.SetInteger("PlayerAnimState", 9);
@@ -236,45 +241,45 @@ public class PlayerGFX : MonoBehaviour
                     }
 
                     break; 
-                case Player.PlayerState.MOVING_OBJECT_SWITCH:
-                    player.SetKinematic(false);
-                    Debug.Log("Switching");
-                    if (player.GetAnimationMovingRight())
-                    {
-                        Debug.Log("Going Right: " + Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
-                            .GetMetalRightPos().transform.position.x)));
-                        if (Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
-                            .GetMetalRightPos().transform.position.x)) < .5f)
-                        {
-                            Debug.Log("Switching End 1");
-                            player.SetKinematic(true);
-                            player.SetPlayerState(Player.PlayerState.MOVING_OBJECT);
-                            player.MetalFacingFix(false);
-                            //playerAnimator.SetInteger("PlayerAnimState", 9);
-                            player.SetAnimationSwitch(false);
-                            //player.SetKinematic(true);
-                            playerAnimator.SetInteger("PlayerAnimState", 9);
+                //case Player.PlayerState.MOVING_OBJECT_SWITCH:
+                //    player.SetKinematic(false);
+                //    Debug.Log("Switching");
+                //    if (player.GetAnimationMovingRight())
+                //    {
+                //        Debug.Log("Going Right: " + Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
+                //            .GetMetalRightPos().transform.position.x)));
+                //        if (Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
+                //            .GetMetalRightPos().transform.position.x)) < .5f)
+                //        {
+                //            Debug.Log("Switching End 1");
+                //            player.SetKinematic(true);
+                //            player.SetPlayerState(Player.PlayerState.MOVING_OBJECT);
+                //            player.MetalFacingFix(false);
+                //            //playerAnimator.SetInteger("PlayerAnimState", 9);
+                //            player.SetAnimationSwitch(false);
+                //            //player.SetKinematic(true);
+                //            playerAnimator.SetInteger("PlayerAnimState", 9);
 
-                        }
-                    }
-                    else
-                    {
-                        Debug.Log("Going Left: " + Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
-                            .GetMetalLeftPos().transform.position.x)));
-                        if (Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
-                            .GetMetalLeftPos().transform.position.x)) < .5f)
-                        {
-                            Debug.Log("Switching End 2");
-                            player.SetKinematic(true);
-                            player.MetalFacingFix(false);
-                            player.SetPlayerState(Player.PlayerState.MOVING_OBJECT);
-                            //playerAnimator.SetInteger("PlayerAnimState", 9);
-                            player.SetAnimationSwitch(false);
-                            //player.SetKinematic(true);
-                            playerAnimator.SetInteger("PlayerAnimState", 9);
-                        }
-                    }
-                    break;
+                //        }
+                //    }
+                //    else
+                //    {
+                //        Debug.Log("Going Left: " + Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
+                //            .GetMetalLeftPos().transform.position.x)));
+                //        if (Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
+                //            .GetMetalLeftPos().transform.position.x)) < .5f)
+                //        {
+                //            Debug.Log("Switching End 2");
+                //            player.SetKinematic(true);
+                //            player.MetalFacingFix(false);
+                //            player.SetPlayerState(Player.PlayerState.MOVING_OBJECT);
+                //            //playerAnimator.SetInteger("PlayerAnimState", 9);
+                //            player.SetAnimationSwitch(false);
+                //            //player.SetKinematic(true);
+                //            playerAnimator.SetInteger("PlayerAnimState", 9);
+                //        }
+                //    }
+                //    break;
 
             }
         }
@@ -308,7 +313,6 @@ public class PlayerGFX : MonoBehaviour
     {
         Debug.Log("KickBucketOver");
         player.InteractWithObject();
-
         PlayBucketKickSound();
         player.SetPlayerState(Player.PlayerState.IDLE);
     }
@@ -323,10 +327,9 @@ public class PlayerGFX : MonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShotAttached(buckKickEventRef, gameObject);
     }
 
-   
-
     public void StartDraggingMetal()
     {
+        
         Debug.Log("Dragging Metal");
         player.SetAnimationMovement(false);
     }
@@ -335,44 +338,48 @@ public class PlayerGFX : MonoBehaviour
     {
         player.SetKinematic(true);
         PlayerObjectInteractions.playerObjectIInstance.ConnectMetalToPlayer();
+        
     }
 
     public void EndPuttingMetalDown()
     {
-        if (player.GetAnimationSwitch())
-        {
+        //if (player.GetAnimationSwitch())
+        //{
 
-            player.SetPlayerState(Player.PlayerState.MOVING_OBJECT_SWITCH);
-            //PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject().GetComponent<Metal>().SetMoving(false);
-            PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject().GetComponent<Metal>().DisconnectMetalFromPlayerSwitch();
-            if (player.GetAnimationMovingRight())
-            {
-                isFacingRight = true;
-                player.SetAnimationMovingRight(false);
+        //    player.SetPlayerState(Player.PlayerState.MOVING_OBJECT_SWITCH);
+        //    //PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject().GetComponent<Metal>().SetMoving(false);
+        //    PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject().GetComponent<Metal>().DisconnectMetalFromPlayerSwitch();
+        //    if (player.GetAnimationMovingRight())
+        //    {
+        //        isFacingRight = true;
+        //        player.SetAnimationMovingRight(false);
                 
-            }
-            else
-            {
-                isFacingRight = false;
-                player.SetAnimationMovingRight(true);
+        //    }
+        //    else
+        //    {
+        //        isFacingRight = false;
+        //        player.SetAnimationMovingRight(true);
                 
-            }
+        //    }
+        //}
+        //else
+        //{
+        PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject().GetComponent<Metal>().SetMoving(false);
+        
+
+        if (isFacingRight)
+        {
+            isFacingRight = false;
         }
         else
         {
-            PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject().GetComponent<Metal>().SetMoving(false);
-            //player.MetalFacingFix(false);
-            if (isFacingRight)
-            {
-                isFacingRight = false;
-            }
-            else
-            {
-                isFacingRight = true;
-            }
-
-            player.SetPlayerState(Player.PlayerState.IDLE);
+            isFacingRight = true;
         }
+
+        player.OtherMetalFacingFix();
+
+        player.SetPlayerState(Player.PlayerState.IDLE);
+        //}
     }
 
     //public void PutMetalDownSwitch()

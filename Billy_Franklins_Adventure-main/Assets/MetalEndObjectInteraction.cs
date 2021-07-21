@@ -38,7 +38,7 @@ public class MetalEndObjectInteraction : MonoBehaviour
                 }
             }
 
-            if (groundObjects.Count <= 1)
+            if (groundObjects.Count < 1)
             {
                 touchingGround = false;
             }

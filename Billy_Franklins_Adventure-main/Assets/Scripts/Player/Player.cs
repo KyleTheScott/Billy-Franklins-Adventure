@@ -103,7 +103,10 @@ public class Player : MonoBehaviour
     private bool animationMovement = false;
     private bool animationMovingRight = false;
 
-    private bool animationSwitch = false;
+    [SerializeField] private bool movingMetal = false;
+
+    [SerializeField] private bool movingMetalDirectionFix = false;
+    //private bool animationSwitch = false;
 
 
     [SerializeField] private GameObject pickUpMetalPos;
@@ -131,15 +134,15 @@ public class Player : MonoBehaviour
         return animationMovingRight;
     }
 
-    public bool GetAnimationSwitch()
-    {
-        return animationSwitch;
-    }
+    //public bool GetAnimationSwitch()
+    //{
+    //    return animationSwitch;
+    //}
 
-    public void SetAnimationSwitch(bool state)
-    {
-        animationSwitch = state;
-    }
+    //public void SetAnimationSwitch(bool state)
+    //{
+    //    animationSwitch = state;
+    //}
 
 
     public void SetAnimationMovement(bool state)
@@ -161,13 +164,19 @@ public class Player : MonoBehaviour
         //}
     }
 
+
+    public bool GetMetalMoving()
+    {
+        return movingMetal;
+    }
+
     public void MetalFacingFix(bool state)
     {
         if (state)
         {
             if (playerGFX.GetFacingRight())
             {
-                transform.Rotate(0f, 180f, 0f); 
+                transform.Rotate(0f, 180f, 0f);
                 shooting.SetLastShootingLine(-1);
             }
             else
@@ -180,15 +189,61 @@ public class Player : MonoBehaviour
         {
             if (playerGFX.GetFacingRight())
             {
-                transform.Rotate(0f, 180f, 0f); 
+                transform.Rotate(0f, 180f, 0f);
                 shooting.SetLastShootingLine(1);
             }
             else
             {
-                transform.Rotate(0f, 180f, 0f); 
+                transform.Rotate(0f, 180f, 0f);
                 shooting.SetLastShootingLine(-1);
             }
         }
+    }
+
+    public void OtherMetalFacingFix()
+    {
+        Debug.Log("Y Angle: " + transform.eulerAngles.y);
+        if (transform.eulerAngles.y < 181 && transform.eulerAngles.y > 179)
+        {
+            shooting.SetLastShootingLine(1);
+        }
+        else
+        {
+            shooting.SetLastShootingLine(-1);
+        }
+        ////facing right
+        //if (playerGFX.GetFacingRight())
+        //{
+        //    Debug.Log("facing right");
+        //    if (transform.rotation.y == -180)
+        //    {
+        //        Debug.Log("switch to facing left");
+        //        //playerGFX.SetFacingRight(false);
+        //        shooting.SetLastShootingLine(-1);
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("shooting line right");
+        //        shooting.SetLastShootingLine(1);
+        //    }
+
+        //}
+        ////facing left
+        //else
+        //{
+        //    Debug.Log("facing left");
+        //    if (transform.rotation.y != 0)
+        //    {
+        //        Debug.Log("switch to facing right");
+        //        //playerGFX.SetFacingRight(true);
+        //        shooting.SetLastShootingLine(1);
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("shooting line left");
+        //        shooting.SetLastShootingLine(-1);
+        //    }
+        //}
     }
 
     public void SetAnimationMovingRight(bool state)
@@ -217,7 +272,6 @@ public class Player : MonoBehaviour
         {
             moveVelocity = 0f - moveSpeed;
         }
-        Debug.Log("Setting Movement");
     }
 
     public bool GetMovementEnabled()
@@ -292,7 +346,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Couldn't find pause menu UI...");
         }
-
+        Debug.Log("Y Angle: " + transform.eulerAngles.y);
         //kite.SetKiteStartPosition(transform.position);
     }
 
@@ -315,7 +369,7 @@ public class Player : MonoBehaviour
     {
         if (animationMovement)
         {
-            Debug.Log("Animation Movement");
+            //Debug.Log("Animation Movement");
             if (playerState != PlayerState.MOVING_OBJECT)
             {
                 rb.isKinematic = false;
@@ -324,7 +378,7 @@ public class Player : MonoBehaviour
             switch (playerState)
             {
                 case PlayerState.KICKING_BUCKET:
-                    Debug.Log("Animation: " + playerState);
+                    //Debug.Log("Animation: " + playerState);
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                     break;
                 case PlayerState.MOVING_OBJECT_START:
@@ -332,26 +386,26 @@ public class Player : MonoBehaviour
                     break;
             }
         }
-        else if (animationSwitch)
-        {
-            if ( playerState != PlayerState.MOVING_OBJECT_SWITCH_START &&
-                playerState != PlayerState.MOVING_OBJECT_SWITCH_END)
-            {
+        //else if (animationSwitch)
+        //{
+        //    if ( playerState != PlayerState.MOVING_OBJECT_SWITCH_START &&
+        //        playerState != PlayerState.MOVING_OBJECT_SWITCH_END)
+        //    {
 
-                if (playerGFX.GetFacingRight())
-                {
-                    moveVelocity = moveSpeed;
-                }
-                else
-                {
-                    moveVelocity = 0f - moveSpeed;
-                }
+        //        if (playerGFX.GetFacingRight())
+        //        {
+        //            moveVelocity = moveSpeed;
+        //        }
+        //        else
+        //        {
+        //            moveVelocity = 0f - moveSpeed;
+        //        }
 
-                //Debug.Log("switch move" + moveVelocity);
-                rb.isKinematic = false;
-                rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
-            }
-        }
+        //        //Debug.Log("switch move" + moveVelocity);
+        //        rb.isKinematic = false;
+        //        rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+        //    }
+        //}
 
         else
         { 
@@ -537,7 +591,7 @@ public class Player : MonoBehaviour
             {
                 fallFixSwitch = true;
                 //Character flip
-                if (playerGFX.GetFacingRight())
+                if (playerGFX.GetFacingRight() && !movingMetal)
                 {
                     if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                         playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
@@ -550,63 +604,81 @@ public class Player : MonoBehaviour
                         {
                             playerState = PlayerState.MOVING_OBJECT_LEFT;
                             //animationMovement = true;
-                            animationSwitch = true;
+                            //animationSwitch = true;
                             rb.isKinematic = true;
                             //playerGFX.PutMetalDownSwitch();
+                        }
+
+                        if (playerState == PlayerState.MOVING_OBJECT || playerState == PlayerState.MOVING_OBJECT_IDLE)
+                        {
+                            MetalFacingFix(true);
+                            movingMetal = true;
                         }
 
                         playerGFX.SetFacingRight(false); // facing left
                         transform.Rotate(0f, 180f, 0f); //rotate player and aiming to the left 
                         shooting.SetLastShootingLine(-1);
                     }
-                    if (playerState == PlayerState.MOVING_OBJECT || playerState == PlayerState.MOVING_OBJECT_IDLE)
-                    {
-                        playerState = PlayerState.MOVING_OBJECT_SWITCH_START;
-                        rb.velocity = Vector2.zero;
-                        rb.isKinematic = true;
-                        animationSwitch = true;
-                        //animationMovement = true;
-                        //rb.isKinematic = true;
-                        //playerGFX.PutMetalDownSwitch();
-                    }
+                    //if (playerState == PlayerState.MOVING_OBJECT || playerState == PlayerState.MOVING_OBJECT_IDLE)
+                    //{
+                    //    playerState = PlayerState.MOVING_OBJECT_SWITCH_START;
+                    //    rb.velocity = Vector2.zero;
+                    //    rb.isKinematic = true;
+                    //    animationSwitch = true;
+                    //    //animationMovement = true;
+                    //    //rb.isKinematic = true;
+                    //    //playerGFX.PutMetalDownSwitch();
+                    //}
                 }
                 else
                 {
                     if (playerState == PlayerState.MOVING_OBJECT_IDLE)
-                    { 
-                        playerState = PlayerState.MOVING_OBJECT;
+                    {
+                        if (!playerGFX.GetFacingRight() && movingMetal)
+                        {
+                            playerState = PlayerState.MOVING_OBJECT;
+                        }
                     }
+
                 }
 
-                if (!animationSwitch)
-                {
-                    if (playerState != PlayerState.MOVING_OBJECT_END)
-                    {
-                        rb.isKinematic = false;
-                    }
-                }
+                //if (!animationSwitch)
+                //{
+                    //if (playerState != PlayerState.MOVING_OBJECT_END)
+                    //{
+                    //    rb.isKinematic = false;
+                    //}
+                //}
 
                 if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                     playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
-                    playerState != PlayerState.MOVING_OBJECT_STOPPED_LEFT && playerState != PlayerState.MOVING_OBJECT_END &&
-                    playerState != PlayerState.MOVING_OBJECT_SWITCH_START && playerState != PlayerState.MOVING_OBJECT_SWITCH &&
-                    playerState != PlayerState.MOVING_OBJECT_SWITCH_END)
+                    playerState != PlayerState.MOVING_OBJECT_STOPPED_LEFT && playerState != PlayerState.MOVING_OBJECT_END)
                 {
                     if (shooting.GetAimLineState() == Shooting.AimLineState.NOT_AIMED)
                     {
-                        //changes player speed depending if the player is walking or moving an object
-                        if (playerState == PlayerState.MOVING_OBJECT)
+                        if ((movingMetal && !playerGFX.GetFacingRight()) || !movingMetal)
                         {
-                            moveVelocity = 0f - moveObjectSpeed;
-                        }
-                        else if (playerState == PlayerState.JUMP || playerState == PlayerState.JUMPING ||
-                                 playerState == PlayerState.JUMP_FALLING || playerState == PlayerState.FALLING)
-                        {
-                            moveVelocity = 0f - jumpMoveSpeed;
-                        }
-                        else
-                        {
-                            moveVelocity = 0f - moveSpeed;
+                            rb.isKinematic = false;
+                            //changes player speed depending if the player is walking or moving an object
+                            if (playerState == PlayerState.MOVING_OBJECT)
+                            {
+                                moveVelocity = 0f - moveObjectSpeed;
+                            }
+                            else if (playerState == PlayerState.JUMP || playerState == PlayerState.JUMPING ||
+                                     playerState == PlayerState.JUMP_FALLING || playerState == PlayerState.FALLING)
+                            {
+                                moveVelocity = 0f - jumpMoveSpeed;
+                            }
+                            else
+                            {
+                                if (movingMetalDirectionFix)
+                                {
+                                    MetalFacingFix(true);
+                                    movingMetalDirectionFix = false;
+                                }
+                                
+                                moveVelocity = 0f - moveSpeed;
+                            }
                         }
                     }
                 }
@@ -632,8 +704,9 @@ public class Player : MonoBehaviour
             else if (Input.GetKey(KeyCode.D))
             {
                 fallFixSwitch = true;
+
                 //Character flip
-                if (!playerGFX.GetFacingRight())
+                if (!playerGFX.GetFacingRight() && !movingMetal)
                 {
                     if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                         playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
@@ -648,60 +721,74 @@ public class Player : MonoBehaviour
                             rb.isKinematic = true;
                            // playerGFX.PutMetalDownSwitch();
                         }
-
+                        if (playerState == PlayerState.MOVING_OBJECT || playerState == PlayerState.MOVING_OBJECT_IDLE)
+                        {
+                            MetalFacingFix(true);
+                            movingMetal = true;
+                        }
                         playerGFX.SetFacingRight(true);
                         transform.Rotate(0f, 180f, 0f); //rotate player and aiming to the left
                         shooting.SetLastShootingLine(1);
                     }
-                    if (playerState == PlayerState.MOVING_OBJECT || playerState == PlayerState.MOVING_OBJECT_IDLE)
-                    {
-                        playerState = PlayerState.MOVING_OBJECT_SWITCH_START;
-                        rb.velocity = Vector2.zero;
-                        rb.isKinematic = true;
+                    //if (playerState == PlayerState.MOVING_OBJECT || playerState == PlayerState.MOVING_OBJECT_IDLE)
+                    //{
+                    //    playerState = PlayerState.MOVING_OBJECT_SWITCH_START;
+                    //    rb.velocity = Vector2.zero;
+                    //    rb.isKinematic = true;
 
-                        animationSwitch = true;
-                        //animationMovement = true;
-                       //rb.isKinematic = true;
-                        //playerGFX.PutMetalDownSwitch();
-                    }
+                    //    animationSwitch = true;
+                    //    //animationMovement = true;
+                    //   //rb.isKinematic = true;
+                    //    //playerGFX.PutMetalDownSwitch();
+                    //}
                 }
                 else
                 {
-                    if (playerState == PlayerState.MOVING_OBJECT_IDLE)
+                    if (playerGFX.GetFacingRight() && movingMetal)
                     {
-                        playerState = PlayerState.MOVING_OBJECT;
+                        if (playerState == PlayerState.MOVING_OBJECT_IDLE)
+                        {
+                            playerState = PlayerState.MOVING_OBJECT;
+                        }
                     }
                 }
 
-                if (!animationSwitch)
-                {
-                    if (playerState != PlayerState.MOVING_OBJECT_END)
-                    {
-                        rb.isKinematic = false;
-                    }
-                }
+                //if (!animationSwitch)
+                //{
+                //    if (playerState != PlayerState.MOVING_OBJECT_END)
+                //    {
+                //        rb.isKinematic = false;
+                //    }
+                //}
 
                 if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                     playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
-                    playerState != PlayerState.MOVING_OBJECT_STOPPED_RIGHT && playerState != PlayerState.MOVING_OBJECT_END &&
-                    playerState != PlayerState.MOVING_OBJECT_SWITCH_START && playerState != PlayerState.MOVING_OBJECT_SWITCH &&
-                    playerState != PlayerState.MOVING_OBJECT_SWITCH_END)
+                    playerState != PlayerState.MOVING_OBJECT_STOPPED_RIGHT && playerState != PlayerState.MOVING_OBJECT_END)
                 {
-                    if (shooting.GetAimLineState() == Shooting.AimLineState.NOT_AIMED)
+                    if (shooting.GetAimLineState() == Shooting.AimLineState.NOT_AIMED )
                     {
-                        //changes player speed depending if the player is walking or moving an object
-                        if (playerState == PlayerState.MOVING_OBJECT)
+                        if ((movingMetal && playerGFX.GetFacingRight()) || !movingMetal)
                         {
-                            moveVelocity = moveObjectSpeed;
-                        }
-                        else if (playerState == PlayerState.JUMP || playerState == PlayerState.JUMPING ||
-                                 playerState == PlayerState.JUMP_FALLING)
-                        {
-                            moveVelocity = jumpMoveSpeed;
-                        }
-                        else
-                        {
-                            moveVelocity = moveSpeed;
+                            rb.isKinematic = false;
+                            //changes player speed depending if the player is walking or moving an object
+                            if (playerState == PlayerState.MOVING_OBJECT)
+                            {
+                                moveVelocity = moveObjectSpeed;
+                            }
+                            else if (playerState == PlayerState.JUMP || playerState == PlayerState.JUMPING ||
+                                     playerState == PlayerState.JUMP_FALLING)
+                            {
+                                moveVelocity = jumpMoveSpeed;
+                            }
+                            else
+                            {
+                                if (movingMetalDirectionFix)
+                                {
+                                    MetalFacingFix(true);
+                                    movingMetalDirectionFix = false;
+                                }
+                                moveVelocity = moveSpeed;
+                            }
                         }
                     }
 
@@ -749,7 +836,7 @@ public class Player : MonoBehaviour
 
             if (playerState != PlayerState.MOVING_OBJECT && playerState != PlayerState.MOVING_OBJECT_IDLE &&
                 playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
-                 playerState != PlayerState.JUMP_FALLING && !animationMovement && !animationSwitch)
+                 playerState != PlayerState.JUMP_FALLING && !animationMovement)
             {
                 shooting.MouseInputHandle();
             }
@@ -780,78 +867,88 @@ public class Player : MonoBehaviour
                 }
             }
 
-            if (!animationSwitch)
+            //if (!animationSwitch)
+            //{
+            //Interact
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                //Interact
-                if (Input.GetKeyDown(KeyCode.E))
+                if (charges.GetLightCharges() != 0)
                 {
-                    Debug.Log("Metal Move4");
-                    if (charges.GetLightCharges() != 0)
+                    if (playerState == PlayerState.FALL_FIX)
                     {
-                        if (playerState == PlayerState.FALL_FIX)
-                        {
-                            onGround = true;
-                        }
+                        onGround = true;
+                    }
 
-                        if (onGround)
+                    if (onGround)
+                    {
+                        GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject();
+                        if (comp != null)
                         {
-                            Debug.Log("Metal Move3");
-                            GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject();
-                            if (comp != null)
+                            if (comp.GetComponent<Collider2D>().CompareTag("Bucket"))
                             {
-                                if (comp.GetComponent<Collider2D>().CompareTag("Bucket"))
-                                {
-                                    playerState = PlayerState.KICK_BUCKET_START;
-                                    comp.GetComponent<Bucket>().SetInKickingRange();
-                                }
+                                playerState = PlayerState.KICK_BUCKET_START;
+                                comp.GetComponent<Bucket>().SetInKickingRange();
+                            }
 
-                                if (comp.GetComponent<Collider2D>().CompareTag("Lantern") ||
-                                    comp.GetComponent<Collider2D>().CompareTag("Switch"))
+                            if (comp.GetComponent<Collider2D>().CompareTag("Lantern") ||
+                                comp.GetComponent<Collider2D>().CompareTag("Switch"))
+                            {
+                                InteractWithObject();
+                                charges.UseLightCharges();
+                            }
+                            
+                            if (comp.GetComponent<Collider2D>().CompareTag("Metal"))
+                            {
+                                if (comp.GetComponent<Metal>().GetMovable())
                                 {
-                                    InteractWithObject();
-                                    charges.UseLightCharges();
-                                }
-
-                                Debug.Log("Metal Move2");
-                                if (comp.GetComponent<Collider2D>().CompareTag("Metal"))
-                                {
-                                    if (comp.GetComponent<Metal>().GetMovable())
+                                    if (comp.GetComponent<Metal>().IsMoving())
                                     {
-                                        if (comp.GetComponent<Metal>().IsMoving())
+                                        if(!movingMetal)
                                         {
- 
-                                            playerState = PlayerState.MOVING_OBJECT_END;
-                                            rb.velocity = Vector2.zero;
-                                            rb.isKinematic = true;
-                                            currentMovingObject = null;
-                                            //rb.gravityScale = groundGravity;
+                                            movingMetalDirectionFix = true;
                                         }
-                                        else
-                                        {
-                                            StartMovingMetal(comp);
+                                        movingMetal = false;
+                                        playerState = PlayerState.MOVING_OBJECT_END;
+                                        rb.velocity = Vector2.zero;
+                                        rb.isKinematic = true;
+                                        currentMovingObject = null;
 
-                                            //rb.gravityScale = jumpGravity;
 
-                                        }
+
+                                        //if (pickUpMetalPos.transform.position.x > transform.position.x)
+                                        //{
+                                        //    playerGFX.SetFacingRight(true);
+                                        //}
+                                        //else 
+                                        //{
+                                        //    playerGFX.SetFacingRight(false);
+                                        //}
+                                        //rb.gravityScale = groundGravity;
                                     }
+                                    else
+                                    {
+                                        StartMovingMetal(comp);
 
-                                    InteractWithObject();
+                                        //rb.gravityScale = jumpGravity;
+
+                                    }
                                 }
+                                InteractWithObject();
                             }
                         }
                     }
                 }
-                else if (Input.GetKeyDown(KeyCode.Q))
-                {
-                    PlayerObjectInteractions.playerObjectIInstance.ToggleObjects();
-                }
             }
+            else if (Input.GetKeyDown(KeyCode.Q))
+            {
+                PlayerObjectInteractions.playerObjectIInstance.ToggleObjects();
+            }
+            //}
         }
     }
 
     public void StartMovingMetal(GameObject metal)
     {
-        Debug.Log("Metal Move1");
         playerState = PlayerState.MOVING_OBJECT_START;
         currentMovingObject = metal;
         currentMovingObject.GetComponent<Metal>().SetPickUpMetalDirection();
