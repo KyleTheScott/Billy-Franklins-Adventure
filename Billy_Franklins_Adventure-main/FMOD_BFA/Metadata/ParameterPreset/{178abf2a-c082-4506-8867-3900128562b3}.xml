@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{178abf2a-c082-4506-8867-3900128562b3}">
+		<property name="name">
+			<value>Kind of Death</value>
+		</property>
+		<relationship name="folder">
+			<destination>{ae686de1-83a7-4691-922e-9def854dde84}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{e0f1e71f-92bb-4e12-801d-b89ec3d87ac7}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{e0f1e71f-92bb-4e12-801d-b89ec3d87ac7}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

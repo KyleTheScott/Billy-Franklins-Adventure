@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{632c1229-56f4-4bea-bd73-efd3f67c0c98}">
+		<property name="assetPath">
+			<value>SOUNDTRACK - GAME XVI - PLAY.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>66.925714285714292</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{4320858c-e977-47c6-9d1d-0874ad6680fe}</destination>
+		</relationship>
+	</object>
+</objects>
