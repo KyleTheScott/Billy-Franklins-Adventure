@@ -364,7 +364,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1761518639
-  m_SortingLayer: 13
+  m_SortingLayer: 14
   m_SortingOrder: 1
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -503,7 +503,7 @@ MonoBehaviour:
   maxNumOfProjectile: 10
   projectilePrefab: {fileID: 7641674986506221482, guid: 02094ac19ba79724681d7b03d1031ad6, type: 3}
   listOfProjectile: []
-  projectileSpawnDistance: 0.5
+  projectileSpawnDistance: 0.75
   angleBetween: 0
   lightning: {fileID: 1897674608}
 --- !u!1 &1596798624511780769
@@ -689,6 +689,8 @@ MonoBehaviour:
   fallFixStayMax: 1
   jumpSound: event:/Player Sounds/Footsteps
   currentMovingObject: {fileID: 0}
+  movingMetal: 0
+  movingMetalDirectionFix: 0
   pickUpMetalPos: {fileID: 6370559049283957530}
   pauseMenuUI: {fileID: 0}
 --- !u!114 &1168161267
@@ -792,7 +794,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1761518639
-  m_SortingLayer: 13
+  m_SortingLayer: 14
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 850f7242bb42ebb4c8da4f63b9dd9ea1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -875,7 +877,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1761518639
-  m_SortingLayer: 13
+  m_SortingLayer: 14
   m_SortingOrder: 1
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -1020,7 +1022,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1816281827
-  m_SortingLayer: 21
+  m_SortingLayer: 22
   m_SortingOrder: 1
   m_Sprite: {fileID: 6644321394687140546, guid: dc6f95259d4bf9f4ab86a791e27fc67b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1058,7 +1060,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 52878
+  m_InstanceId: 55444
 --- !u!95 &731963993
 Animator:
   serializedVersion: 3
@@ -1180,7 +1182,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1816281827
-  m_SortingLayer: 21
+  m_SortingLayer: 22
   m_SortingOrder: 3
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

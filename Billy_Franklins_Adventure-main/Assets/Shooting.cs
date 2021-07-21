@@ -14,8 +14,8 @@ public class Shooting : MonoBehaviour
     [Header("Aiming")]
     [SerializeField] private AimLine aimLine = null; //player's aiming line
     Camera mainCam = null; // used for aiming
-    Vector3 shootingLine = new Vector3(1, 0, 0); //Direction for loaded projectile
-    Vector3 lastShootingLine = new Vector3(1, 0, 0);
+    [SerializeField] Vector3 shootingLine = new Vector3(1, 0, 0); //Direction for loaded projectile
+    [SerializeField] Vector3 lastShootingLine = new Vector3(1, 0, 0);
     bool IsShootingLineInAngle = false;
     [SerializeField] LayerMask aimLineCollisionMask; //should be tile or obstacle
     [SerializeField] Transform aimCone = null;
