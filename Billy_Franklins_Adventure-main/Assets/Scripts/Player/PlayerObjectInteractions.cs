@@ -101,38 +101,43 @@ public class PlayerObjectInteractions : MonoBehaviour
             //sets the selected interactable object to the one collided with if the list is empty
             if (collision.gameObject.CompareTag("Metal"))
             {
-                if (!player.GetAnimationSwitch())
+                //if (!player.GetAnimationSwitch())
+                //{
+                if (collision.gameObject.GetComponent<Metal>().GetMovable())
                 {
-                    if (collision.gameObject.GetComponent<Metal>().GetMovable())
+                    if (toggleObjects.Count < 1)
                     {
-                        if (toggleObjects.Count < 1)
-                        {
-                            currentToggleObject = collision.gameObject;
-                            if (currentToggleObject.GetComponent<Collider2D>().CompareTag("Metal"))
-                            {
-                                metalLeftPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointLeft();
-                                metalRightPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointRight();
-                            }
+                        currentToggleObject = collision.gameObject;
+                        //if (currentToggleObject.GetComponent<Collider2D>().CompareTag("Metal"))
+                        //{
+                        metalLeftPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointLeft();
+                        metalRightPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointRight();
+                        //}
 
-                            currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
-                            togglePos = 0;
-                        }
-
-                        toggleObjects.Add(collision.gameObject);
+                        currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
+                        togglePos = 0;
                     }
+
+                    toggleObjects.Add(collision.gameObject);
                 }
+                //}
             }
             else
             {
                 if (toggleObjects.Count < 1)
                 {
                     currentToggleObject = collision.gameObject;
-                    if (currentToggleObject.GetComponent<Collider2D>().CompareTag("Metal"))
+                    //if (currentToggleObject.GetComponent<Collider2D>().CompareTag("Metal"))
+                    //{
+                    //    metalLeftPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointLeft();
+                    //    metalRightPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointRight();
+                    //}
+
+                    if (currentToggleObject != null)
                     {
-                        metalLeftPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointLeft();
-                        metalRightPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointRight();
+                        currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
                     }
-                    currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
+
                     togglePos = 0;
                 }
                 toggleObjects.Add(collision.gameObject);
@@ -144,11 +149,7 @@ public class PlayerObjectInteractions : MonoBehaviour
     {
         //collider that is exiting is the selected objects collider 
         //deselects selected object
-        if (collision.gameObject == currentToggleObject)
-        {
-            currentToggleObject.GetComponent<IInteractable>().SetHighlighted(false);
-            currentToggleObject = null;
-        }
+      
         if (collision.gameObject.layer == 9 && !collision.CompareTag("Rope"))
         {
             
@@ -156,31 +157,41 @@ public class PlayerObjectInteractions : MonoBehaviour
             {
                 if (collision.gameObject == toggleObjects[i])
                 {
-                    if (!player.GetAnimationSwitch())
+                    if (collision.gameObject.CompareTag("Metal"))
                     {
-                        if (collision.gameObject.CompareTag("Metal"))
+                        if (toggleObjects[i] == currentToggleObject)
                         {
-                            if (collision.CompareTag("Metal"))
-                            {
-                                metalLeftPos = null;
-                                metalRightPos = null;
-                            }
-
-                            if (collision.gameObject.GetComponent<Metal>().IsMoving())
-                            {
-                                collision.gameObject.GetComponent<Metal>().SetMoving(false);
-                            }
+                            toggleObjects[i].GetComponent<IInteractable>().SetHighlighted(false);
+                            toggleObjects.RemoveAt(i);
+                            currentToggleObject = null;
                         }
-
+                        if (collision.gameObject.GetComponent<Metal>().IsMoving())
+                        {
+                            collision.gameObject.GetComponent<Metal>().SetMoving(false);
+                        }
+                    }
+                    else
+                    {
+                        if (toggleObjects[i] == currentToggleObject)
+                        {
+                            toggleObjects[i].GetComponent<IInteractable>().SetHighlighted(false);
+                            currentToggleObject = null;
+                        }
                         toggleObjects.RemoveAt(i);
                     }
+                    //}
                 }
             }
+
             if (toggleObjects.Count >= 1 && currentToggleObject == null)
             {
                 togglePos = 0;
+
                 currentToggleObject = toggleObjects[togglePos];
-                currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
+                if (currentToggleObject != null)
+                { 
+                    currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
+                }
             }
         }
     }

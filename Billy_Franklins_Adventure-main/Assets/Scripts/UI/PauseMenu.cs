@@ -30,7 +30,9 @@ public class PauseMenu : MonoBehaviour
 
     public void ReloadCheckpoint()
     {
+        //reload level and move player
         SceneManager.LoadScene(checkPointSystem.GetCheckPoint(), LoadSceneMode.Single);
+        FindObjectOfType<Player>().gameObject.transform.position = GameObject.Find("PlayerSpawnPoint").GetComponent<Transform>().transform.position;
     }
 
     public void MainMenu()
