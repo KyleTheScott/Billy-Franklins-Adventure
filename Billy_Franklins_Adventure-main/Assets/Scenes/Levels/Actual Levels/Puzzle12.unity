@@ -1031,6 +1031,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BucketOfWater
       objectReference: {fileID: 0}
+    - target: {fileID: 3945659188376893611, guid: df457950002931047b484e941fe27c1f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3945659188376893611, guid: df457950002931047b484e941fe27c1f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3945659188376893614, guid: df457950002931047b484e941fe27c1f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6136706047296135701, guid: df457950002931047b484e941fe27c1f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.1715736
@@ -2965,6 +2977,18 @@ PrefabInstance:
     - target: {fileID: 3672700163184857758, guid: df457950002931047b484e941fe27c1f, type: 3}
       propertyPath: m_Name
       value: BucketOfWater (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3945659188376893611, guid: df457950002931047b484e941fe27c1f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3945659188376893611, guid: df457950002931047b484e941fe27c1f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3945659188376893614, guid: df457950002931047b484e941fe27c1f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6136706047296135701, guid: df457950002931047b484e941fe27c1f, type: 3}
       propertyPath: m_LocalPosition.x
