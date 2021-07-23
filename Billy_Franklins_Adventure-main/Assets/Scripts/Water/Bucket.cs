@@ -60,11 +60,11 @@ public class Bucket : MonoBehaviour, IInteractable
         {
             if (player.transform.position.x >= transform.position.x)
             {
-                player.SetAnimationMovingRight(false);
+                player.SetMovingRight(false);
             }
             else
             {
-                player.SetAnimationMovingRight(true);
+                player.SetMovingRight(true);
             }
         }
     }
