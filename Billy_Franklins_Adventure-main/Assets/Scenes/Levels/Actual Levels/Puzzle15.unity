@@ -3644,6 +3644,10 @@ PrefabInstance:
       propertyPath: cameraBoundingBox
       value: 
       objectReference: {fileID: 45120026}
+    - target: {fileID: 288686495153921894, guid: 4df786959ae486f4f9256924d39e862b, type: 3}
+      propertyPath: cameraPrefab
+      value: 
+      objectReference: {fileID: 209514189109326048, guid: c6400067fe85dab4e866400616e936be, type: 3}
     - target: {fileID: 3093061155417387641, guid: 4df786959ae486f4f9256924d39e862b, type: 3}
       propertyPath: m_Name
       value: root_Puzzle15

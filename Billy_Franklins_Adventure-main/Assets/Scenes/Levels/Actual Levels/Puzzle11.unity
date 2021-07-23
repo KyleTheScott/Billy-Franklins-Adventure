@@ -2337,7 +2337,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: b4170eb53abd5f0448fed3cd91139eff, type: 3}
     - target: {fileID: 8181144266666333447, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.267627
+      value: 8.768
       objectReference: {fileID: 0}
     - target: {fileID: 8181144266666333447, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2617,7 +2617,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: b4170eb53abd5f0448fed3cd91139eff, type: 3}
     - target: {fileID: 8181144266666333447, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.254
+      value: 6.797
       objectReference: {fileID: 0}
     - target: {fileID: 8181144266666333447, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4496,6 +4496,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1328161768}
     m_Modifications:
+    - target: {fileID: 7108738080389315900, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.048835754
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108738080389315900, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_Size.x
+      value: 0.412735
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108738080389315900, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.02042818
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108738080389315900, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_Size.y
+      value: 2.9165444
+      objectReference: {fileID: 0}
     - target: {fileID: 7108738080389315901, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.900623
@@ -4555,6 +4571,14 @@ PrefabInstance:
     - target: {fileID: 7108738080389315903, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
       propertyPath: m_Name
       value: Lamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108738080895873197, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.179
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108738080895873197, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.035
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
@@ -5873,7 +5897,7 @@ MonoBehaviour:
   uiPrefab: {fileID: 7790407516598130482, guid: d9fd4820b047e414c9a0823788b2ee2c, type: 3}
   settingsUIPrefab: {fileID: 8135009988273000422, guid: fe33ab7928e38e7448e8803a105358b0, type: 3}
   pauseMenuUIPrefab: {fileID: 3554309663975176374, guid: e9b10df87d96d114f91ac60491d94975, type: 3}
-  cameraPrefab: {fileID: 209514189109326048, guid: 8ed3a5fd7dac60147bfbe39dd82747de, type: 3}
+  cameraPrefab: {fileID: 209514189109326048, guid: c6400067fe85dab4e866400616e936be, type: 3}
   cameraBoundingBox: {fileID: 1469928399}
 --- !u!1001 &2071442260
 PrefabInstance:

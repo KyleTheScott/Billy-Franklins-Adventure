@@ -981,6 +981,22 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7108738080389315900, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.016144753
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108738080389315900, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_Size.y
+      value: 2.9526787
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108738080389315900, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.044151306
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108738080389315900, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_Size.x
+      value: 0.39505386
+      objectReference: {fileID: 0}
     - target: {fileID: 7108738080389315901, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.070625
@@ -1035,11 +1051,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7108738080895873197, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.875
+      value: 1.207
       objectReference: {fileID: 0}
     - target: {fileID: 7108738080895873197, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.171
+      value: -0.051
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
@@ -2939,6 +2955,10 @@ PrefabInstance:
       propertyPath: cameraBoundingBox
       value: 
       objectReference: {fileID: 2010864873}
+    - target: {fileID: 288686495153921894, guid: 4df786959ae486f4f9256924d39e862b, type: 3}
+      propertyPath: cameraPrefab
+      value: 
+      objectReference: {fileID: 209514189109326048, guid: c6400067fe85dab4e866400616e936be, type: 3}
     - target: {fileID: 3093061155417387641, guid: 4df786959ae486f4f9256924d39e862b, type: 3}
       propertyPath: m_Name
       value: root_Puzzle3

@@ -482,6 +482,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterByItself
       objectReference: {fileID: 0}
+    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.6699581
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
+      propertyPath: m_Size.x
+      value: 2.231491
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.061103582
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
+      propertyPath: m_Size.y
+      value: 0.19519854
+      objectReference: {fileID: 0}
     - target: {fileID: 8181144266666333444, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: lanternInWater.Array.size
       value: 1
@@ -492,7 +508,7 @@ PrefabInstance:
       objectReference: {fileID: 75000488}
     - target: {fileID: 8181144266666333447, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.999887
+      value: 16.363
       objectReference: {fileID: 0}
     - target: {fileID: 8181144266666333447, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -803,6 +819,22 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 7108738080389315900, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.033548355
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108738080389315900, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_Size.x
+      value: 0.38058472
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108738080389315900, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.043491364
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108738080389315900, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_Size.y
+      value: 2.891438
+      objectReference: {fileID: 0}
     - target: {fileID: 7108738080389315901, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.452126
@@ -854,6 +886,14 @@ PrefabInstance:
     - target: {fileID: 7108738080389315903, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
       propertyPath: m_Name
       value: Lamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108738080895873197, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.026
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108738080895873197, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.194
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
@@ -2460,6 +2500,10 @@ PrefabInstance:
       propertyPath: cameraBoundingBox
       value: 
       objectReference: {fileID: 333163794}
+    - target: {fileID: 288686495153921894, guid: 4df786959ae486f4f9256924d39e862b, type: 3}
+      propertyPath: cameraPrefab
+      value: 
+      objectReference: {fileID: 209514189109326048, guid: c6400067fe85dab4e866400616e936be, type: 3}
     - target: {fileID: 3093061155417387641, guid: 4df786959ae486f4f9256924d39e862b, type: 3}
       propertyPath: m_Name
       value: root_Puzzle8

@@ -1183,6 +1183,22 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 7108738080389315900, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.028806925
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108738080389315900, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_Size.y
+      value: 2.9024973
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108738080389315900, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.04348278
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108738080389315900, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_Size.x
+      value: 0.44407082
+      objectReference: {fileID: 0}
     - target: {fileID: 7108738080389315901, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.38
@@ -1234,6 +1250,14 @@ PrefabInstance:
     - target: {fileID: 7108738080389315903, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
       propertyPath: m_Name
       value: Lamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108738080895873197, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.026
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108738080895873197, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.147
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
@@ -1596,6 +1620,10 @@ PrefabInstance:
       propertyPath: cameraBoundingBox
       value: 
       objectReference: {fileID: 149965554}
+    - target: {fileID: 288686495153921894, guid: 4df786959ae486f4f9256924d39e862b, type: 3}
+      propertyPath: cameraPrefab
+      value: 
+      objectReference: {fileID: 209514189109326048, guid: c6400067fe85dab4e866400616e936be, type: 3}
     - target: {fileID: 3093061155417387641, guid: 4df786959ae486f4f9256924d39e862b, type: 3}
       propertyPath: m_Name
       value: root_Puzzle2
