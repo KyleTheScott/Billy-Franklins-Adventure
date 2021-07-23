@@ -1,0 +1,922 @@
+fileFormatVersion: 2
+guid: 31fd588b507848f43b1536a57990ab38
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1633764712071033422
+    second: PutDown1956x2160_0
+  - first:
+      213: 574946057880112545
+    second: PutDown1956x2160_1
+  - first:
+      213: -6287957561319242953
+    second: PutDown1956x2160_2
+  - first:
+      213: 8655807966483172237
+    second: PutDown1956x2160_3
+  - first:
+      213: 6502413962223714171
+    second: PutDown1956x2160_4
+  - first:
+      213: 176063889819480724
+    second: PutDown1956x2160_5
+  - first:
+      213: -4491155654345552175
+    second: PutDown1956x2160_6
+  - first:
+      213: -7875280154726210125
+    second: PutDown1956x2160_7
+  - first:
+      213: -4364840969870847118
+    second: PutDown1956x2160_8
+  - first:
+      213: 345015693092461445
+    second: PutDown1956x2160_9
+  - first:
+      213: -7677353796735336295
+    second: PutDown1956x2160_10
+  - first:
+      213: 8644302165265816282
+    second: PutDown1956x2160_11
+  - first:
+      213: -974863963346039843
+    second: PutDown1956x2160_12
+  - first:
+      213: -8276656667568912774
+    second: PutDown1956x2160_13
+  - first:
+      213: -65035936113375967
+    second: PutDown1956x2160_14
+  - first:
+      213: 3890931184021851374
+    second: PutDown1956x2160_15
+  - first:
+      213: -8777807477095682313
+    second: PutDown1956x2160_16
+  - first:
+      213: 2622080198086693958
+    second: PutDown1956x2160_17
+  - first:
+      213: -5723770059889776636
+    second: PutDown1956x2160_18
+  - first:
+      213: -5688908090875656071
+    second: PutDown1956x2160_19
+  - first:
+      213: -8277681012305023777
+    second: PutDown1956x2160_20
+  - first:
+      213: 344101051647708934
+    second: PutDown1956x2160_21
+  - first:
+      213: -1920412646668851954
+    second: PutDown1956x2160_22
+  - first:
+      213: -7399736456623280495
+    second: PutDown1956x2160_23
+  - first:
+      213: 2948625756364041656
+    second: PutDown1956x2160_24
+  - first:
+      213: 1390744266712001914
+    second: PutDown1956x2160_25
+  - first:
+      213: 6818582497040123643
+    second: PutDown1956x2160_26
+  - first:
+      213: 8715536266103243672
+    second: PutDown1956x2160_27
+  - first:
+      213: 2884195177328198173
+    second: PutDown1956x2160_28
+  - first:
+      213: -538058915455870646
+    second: PutDown1956x2160_29
+  - first:
+      213: 4907252189680615522
+    second: PutDown1956x2160_30
+  - first:
+      213: -1600198826923018386
+    second: PutDown1956x2160_31
+  - first:
+      213: 5748121702616797393
+    second: PutDown1956x2160_32
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 900
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PutDown1956x2160_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e42ff8d795c4ca610800000000000000
+      internalID: 1633764712071033422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_1
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ad84f8b46e9af700800000000000000
+      internalID: 574946057880112545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_2
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 733c5dab9efacb8a0800000000000000
+      internalID: -6287957561319242953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_3
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8bc93e2c7b9f1870800000000000000
+      internalID: 8655807966483172237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_4
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7f72e02c073d3a50800000000000000
+      internalID: 6502413962223714171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_5
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 10800
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 492b67acc21817200800000000000000
+      internalID: 176063889819480724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1de0fbf3ab53ca1c0800000000000000
+      internalID: -4491155654345552175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_7
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b56cde9c6265b290800000000000000
+      internalID: -7875280154726210125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_8
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 273d6c98348fc63c0800000000000000
+      internalID: -4364840969870847118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_9
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58b16b4e1fdb9c400800000000000000
+      internalID: 345015693092461445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_10
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9900892f56f847590800000000000000
+      internalID: -7677353796735336295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_11
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 8640
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ada1fc3150bb6f770800000000000000
+      internalID: 8644302165265816282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddb0e60f3669872f0800000000000000
+      internalID: -974863963346039843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_13
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a76cfa9cc98632d80800000000000000
+      internalID: -8276656667568912774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_14
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 125c3522922f81ff0800000000000000
+      internalID: -65035936113375967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_15
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeccc1dfb4d5ff530800000000000000
+      internalID: 3890931184021851374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_16
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fea1fc3b96fe2680800000000000000
+      internalID: -8777807477095682313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_17
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 6480
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6441b8b3c00836420800000000000000
+      internalID: 2622080198086693958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 408e044d4751190b0800000000000000
+      internalID: -5723770059889776636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_19
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 978c2838b30fc01b0800000000000000
+      internalID: -5688908090875656071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_20
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdc2091f9f4cf1d80800000000000000
+      internalID: -8277681012305023777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_21
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60fcc46551e76c400800000000000000
+      internalID: 344101051647708934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_22
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e05a2256fd25955e0800000000000000
+      internalID: -1920412646668851954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_23
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 4320
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19e267fe5eade4990800000000000000
+      internalID: -7399736456623280495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bd65afb08f9be820800000000000000
+      internalID: 2948625756364041656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_25
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7da7c6ca8aec4310800000000000000
+      internalID: 1390744266712001914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_26
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf6c5c797a870ae50800000000000000
+      internalID: 6818582497040123643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_27
+      rect:
+        serializedVersion: 2
+        x: 5868
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8934e10ae0ec3f870800000000000000
+      internalID: 8715536266103243672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_28
+      rect:
+        serializedVersion: 2
+        x: 7824
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d12ca8f8b38b60820800000000000000
+      internalID: 2884195177328198173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_29
+      rect:
+        serializedVersion: 2
+        x: 9780
+        y: 2160
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a495504644e6888f0800000000000000
+      internalID: -538058915455870646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 260cb25eddf0a1440800000000000000
+      internalID: 4907252189680615522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_31
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e67b14725a3fac9e0800000000000000
+      internalID: -1600198826923018386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PutDown1956x2160_32
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 0
+        width: 1956
+        height: 2160
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d01032db3e65cf40800000000000000
+      internalID: 5748121702616797393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

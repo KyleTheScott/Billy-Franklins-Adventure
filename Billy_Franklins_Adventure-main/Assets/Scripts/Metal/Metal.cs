@@ -92,7 +92,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
             if (beingMoved)
             {
                 beingMoved = false;
-                player.SetPlayerState(Player.PlayerState.MOVING_OBJECT_END);
+                //player.SetPlayerState(Player.PlayerState.MOVING_OBJECT_END);
             }
             //metal will start following player
             else
@@ -122,7 +122,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         {
             float distToLeft = Mathf.Abs(player.transform.position.x - pickUpPointLeft.transform.position.x);
             float distToRight = Mathf.Abs(player.transform.position.x - pickUpPointRight.transform.position.x);
-            
+
             ////closer to left
             //if (distToLeft <= distToRight)
             //{
@@ -148,37 +148,37 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
                 if (distToLeft <= distToRight)
                 {
                     //set going to left side of the metal
-                    playerGFX.SetGoingToRightMetalDirection(false);
+                    playerGFX.SetGoingToRightSideOfMetal(false);
                     //player is to the right of the left side of the metal
                     if (player.transform.position.x - pickUpPointLeft.transform.position.x >= 0)
                     {
                         Debug.Log("Move to metal left");
-                        player.SetAnimationMovingRight(false);
+                        player.SetMovingRight(false);
                     }
                     //player is to the left of the left side of the metal
                     else
                     {
                         Debug.Log("Move to metal right");
-                        player.SetAnimationMovingRight(true);
+                        player.SetMovingRight(true);
                     }
                 }
                 //going to the right side of the metal
                 else
                 {
                     //set going to right side of the metal
-                    playerGFX.SetGoingToRightMetalDirection(true);
+                    playerGFX.SetGoingToRightSideOfMetal(true);
 
                     //player is to the right of the right side of the metal
                     if (player.transform.position.x - pickUpPointRight.transform.position.x >= 0)
                     {
                         Debug.Log("Move to metal left");
-                        player.SetAnimationMovingRight(false);
+                        player.SetMovingRight(false);
                     }
                     //player is to the left of the right side of the metal
                     else
                     {
                         Debug.Log("Move to metal right");
-                        player.SetAnimationMovingRight(true);
+                        player.SetMovingRight(true);
                     }
                 }
             }
@@ -186,7 +186,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         }
         else if (leftOnGround)
         {
-            playerGFX.SetGoingToRightMetalDirection(false);
+            playerGFX.SetGoingToRightSideOfMetal(false);
             float distToLeft = Mathf.Abs(player.transform.position.x - pickUpPointLeft.transform.position.x);
             //if (distToLeft > .1f)
             //{
@@ -199,19 +199,19 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
                 if (player.transform.position.x - pickUpPointLeft.transform.position.x >= 0)
                 {
                     Debug.Log("Move to metal left");
-                    player.SetAnimationMovingRight(false);
+                    player.SetMovingRight(false);
                 }
                 //player is to the left of the left side of the metal
                 else
                 {
                     Debug.Log("Move to metal right");
-                    player.SetAnimationMovingRight(true);
+                    player.SetMovingRight(true);
                 }
             }
         }
         else if (rightOnGround)
         {
-            playerGFX.SetGoingToRightMetalDirection(true);
+            playerGFX.SetGoingToRightSideOfMetal(true);
             float distToRight = Mathf.Abs(player.transform.position.x - pickUpPointRight.transform.position.x);
             //if (distToRight > .1f)
             //{
@@ -224,13 +224,13 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
                 if (player.transform.position.x - pickUpPointRight.transform.position.x >= 0)
                 {
                     Debug.Log("Move to metal left");
-                    player.SetAnimationMovingRight(false);
+                    player.SetMovingRight(false);
                 }
                 //player is to the left of the right side of the metal
                 else
                 {
                     Debug.Log("Move to metal right");
-                    player.SetAnimationMovingRight(true);
+                    player.SetMovingRight(true);
                 }
             }
         }
@@ -269,7 +269,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
 
     public void ConnectMetalToPlayer()
     {
-        if (playerGFX.GetGoingToRightMetalDirection())
+        if (playerGFX.GetGoingToRightSideOfMetal())
         {
             //Debug.Log("Right set parent");
             //distToPlayerXOffset = PlayerObjectInteractions.playerObjectIInstance.GetMetalRightPos().transform.position.x - player.transform.position.x;
@@ -305,6 +305,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
 
     public void DisconnectMetalFromPlayer()
     {
+        beingMoved = false;
         //hingeJointPointLeft.connectedBody = null;
         hingeJointPointLeft.enabled = false;
         hingeJointPointRight.enabled = false;

@@ -33,11 +33,6 @@ public class Player : MonoBehaviour
         MOVING_OBJECT_START,
         MOVING_OBJECT,
         MOVING_OBJECT_END,
-        MOVING_OBJECT_SWITCH_START,
-        MOVING_OBJECT_SWITCH,
-        MOVING_OBJECT_SWITCH_END,
-
-
         MOVING_OBJECT_IDLE,
         MOVING_OBJECT_STOPPED_LEFT,
         MOVING_OBJECT_LEFT,
@@ -129,10 +124,10 @@ public class Player : MonoBehaviour
         return animationMovement;
     }
 
-    public bool GetAnimationMovingRight()
-    {
-        return animationMovingRight;
-    }
+    //public bool GetAnimationMovingRight()
+    //{
+    //    return animationMovingRight;
+    //}
 
     //public bool GetAnimationSwitch()
     //{
@@ -170,97 +165,64 @@ public class Player : MonoBehaviour
         return movingMetal;
     }
 
-    public void MetalFacingFix(bool state)
-    {
-        if (state)
-        {
-            if (playerGFX.GetFacingRight())
-            {
-                transform.Rotate(0f, 180f, 0f);
-                shooting.SetLastShootingLine(-1);
-            }
-            else
-            {
-                transform.Rotate(0f, 180f, 0f);
-                shooting.SetLastShootingLine(1);
-            }
-        }
-        else
-        {
-            if (playerGFX.GetFacingRight())
-            {
-                transform.Rotate(0f, 180f, 0f);
-                shooting.SetLastShootingLine(1);
-            }
-            else
-            {
-                transform.Rotate(0f, 180f, 0f);
-                shooting.SetLastShootingLine(-1);
-            }
-        }
-    }
-
-    public void OtherMetalFacingFix()
-    {
-        Debug.Log("Y Angle: " + transform.eulerAngles.y);
-        if (transform.eulerAngles.y < 181 && transform.eulerAngles.y > 179)
-        {
-            shooting.SetLastShootingLine(1);
-        }
-        else
-        {
-            shooting.SetLastShootingLine(-1);
-        }
-        ////facing right
-        //if (playerGFX.GetFacingRight())
+    //public void MetalFacingFix(bool state)
+    //{
+        //if (state)
         //{
-        //    Debug.Log("facing right");
-        //    if (transform.rotation.y == -180)
+        //    if (playerGFX.GetFacingRight())
         //    {
-        //        Debug.Log("switch to facing left");
-        //        //playerGFX.SetFacingRight(false);
+        //        transform.Rotate(0f, 180f, 0f);
         //        shooting.SetLastShootingLine(-1);
         //    }
         //    else
         //    {
-        //        Debug.Log("shooting line right");
+        //        transform.Rotate(0f, 180f, 0f);
         //        shooting.SetLastShootingLine(1);
         //    }
-
         //}
-        ////facing left
         //else
         //{
-        //    Debug.Log("facing left");
-        //    if (transform.rotation.y != 0)
+        //    if (playerGFX.GetFacingRight())
         //    {
-        //        Debug.Log("switch to facing right");
-        //        //playerGFX.SetFacingRight(true);
+        //        transform.Rotate(0f, 180f, 0f);
         //        shooting.SetLastShootingLine(1);
         //    }
         //    else
         //    {
-        //        Debug.Log("shooting line left");
+        //        transform.Rotate(0f, 180f, 0f);
         //        shooting.SetLastShootingLine(-1);
         //    }
         //}
-    }
+    //}
 
-    public void SetAnimationMovingRight(bool state)
+    //public void OtherMetalFacingFix()
+    //{
+    //    Debug.Log("Y Angle: " + transform.eulerAngles.y);
+    //    if (transform.eulerAngles.y < 181 && transform.eulerAngles.y > 179)
+    //    {
+    //        shooting.SetLastShootingLine(1);
+    //    }
+    //    else
+    //    {
+    //        shooting.SetLastShootingLine(-1);
+    //    }
+    //}
+
+    public void SetMovingRight(bool state)
     {
         animationMovingRight = state;
         if (animationMovingRight && !playerGFX.GetFacingRight())
         {
             Debug.Log("Going Right");
             playerGFX.SetFacingRight(true);
-            transform.Rotate(0f, 180f, 0f); //rotate player and aiming to the left
+            transform.Rotate(0f, 180f, 0f);
             shooting.SetLastShootingLine(1);
         }
         else if (!animationMovingRight && playerGFX.GetFacingRight())
         {
             Debug.Log("Going Left");
-            playerGFX.SetFacingRight(false); // facing left
-            transform.Rotate(0f, 180f, 0f); //rotate player and aiming to the left 
+            playerGFX.SetFacingRight(false);
+            transform.Rotate(0f, 180f, 0f); 
             shooting.SetLastShootingLine(-1);
         }
 
@@ -273,6 +235,7 @@ public class Player : MonoBehaviour
             moveVelocity = 0f - moveSpeed;
         }
     }
+
 
     public bool GetMovementEnabled()
     {
@@ -605,13 +568,14 @@ public class Player : MonoBehaviour
                             playerState = PlayerState.MOVING_OBJECT_LEFT;
                             //animationMovement = true;
                             //animationSwitch = true;
+                            
                             rb.isKinematic = true;
                             //playerGFX.PutMetalDownSwitch();
                         }
 
                         if (playerState == PlayerState.MOVING_OBJECT || playerState == PlayerState.MOVING_OBJECT_IDLE)
                         {
-                            MetalFacingFix(true);
+                            //MetalFacingFix(true);
                             movingMetal = true;
                         }
 
@@ -671,11 +635,11 @@ public class Player : MonoBehaviour
                             }
                             else
                             {
-                                if (movingMetalDirectionFix)
-                                {
-                                    MetalFacingFix(true);
-                                    movingMetalDirectionFix = false;
-                                }
+                                //if (movingMetalDirectionFix)
+                                //{
+                                //    MetalFacingFix(true);
+                                //    movingMetalDirectionFix = false;
+                                //}
                                 
                                 moveVelocity = 0f - moveSpeed;
                             }
@@ -719,11 +683,11 @@ public class Player : MonoBehaviour
                         {
                             playerState = PlayerState.MOVING_OBJECT_RIGHT;
                             rb.isKinematic = true;
-                           // playerGFX.PutMetalDownSwitch();
+                            // playerGFX.PutMetalDownSwitch();
                         }
                         if (playerState == PlayerState.MOVING_OBJECT || playerState == PlayerState.MOVING_OBJECT_IDLE)
                         {
-                            MetalFacingFix(true);
+                            //MetalFacingFix(true);
                             movingMetal = true;
                         }
                         playerGFX.SetFacingRight(true);
@@ -782,11 +746,11 @@ public class Player : MonoBehaviour
                             }
                             else
                             {
-                                if (movingMetalDirectionFix)
-                                {
-                                    MetalFacingFix(true);
-                                    movingMetalDirectionFix = false;
-                                }
+                                //if (movingMetalDirectionFix)
+                                //{
+                                //    MetalFacingFix(true);
+                                //    movingMetalDirectionFix = false;
+                                //}
                                 moveVelocity = moveSpeed;
                             }
                         }
@@ -903,10 +867,10 @@ public class Player : MonoBehaviour
                                 {
                                     if (comp.GetComponent<Metal>().IsMoving())
                                     {
-                                        if(!movingMetal)
-                                        {
-                                            movingMetalDirectionFix = true;
-                                        }
+                                        //if(!movingMetal)
+                                        //{
+                                        //    movingMetalDirectionFix = true;
+                                        //}
                                         movingMetal = false;
                                         playerState = PlayerState.MOVING_OBJECT_END;
                                         rb.velocity = Vector2.zero;
@@ -928,12 +892,13 @@ public class Player : MonoBehaviour
                                     else
                                     {
                                         StartMovingMetal(comp);
-
+                                        
                                         //rb.gravityScale = jumpGravity;
 
                                     }
+                                    InteractWithObject();
                                 }
-                                InteractWithObject();
+                                
                             }
                         }
                     }
@@ -951,6 +916,7 @@ public class Player : MonoBehaviour
     {
         playerState = PlayerState.MOVING_OBJECT_START;
         currentMovingObject = metal;
+        movingMetal = true;
         currentMovingObject.GetComponent<Metal>().SetPickUpMetalDirection();
     }
     //public void PutDownMetal(GameObject metal)
@@ -1010,7 +976,11 @@ public class Player : MonoBehaviour
                     if (comp.GetComponent<Metal>().IsMoving())
                     {
                         Debug.Log("Falling off touching an object");
-                        comp.GetComponent<IInteractable>().Interact();
+                        //comp.GetComponent<IInteractable>().Interact();
+                        comp.GetComponent<Metal>().DisconnectMetalFromPlayer();
+                        animationMovement = false;
+                        movingMetal = false;
+                        //MetalFacingFix(true);
                         onGround = false;
                         playerState = PlayerState.FALLING;
                         rb.isKinematic = false;
@@ -1044,6 +1014,7 @@ public class Player : MonoBehaviour
         if (playerGFX.GetFacingRight())
         {
             playerState = PlayerState.MOVING_OBJECT_STOPPED_RIGHT;
+            
         }
         else
         {
