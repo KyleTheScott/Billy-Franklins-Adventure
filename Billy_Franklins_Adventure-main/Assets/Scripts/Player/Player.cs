@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rb = null; //player's rigid body
 
     [SerializeField] private PlayerGFX playerGFX;
+    [SerializeField] private PlayerCollision playerCollision;
 
     public enum PlayerState
     {
@@ -77,6 +79,15 @@ public class Player : MonoBehaviour
     [SerializeField] private float fallFixStayMax = 2f;
     private bool fallFixSwitch = false;
 
+    [SerializeField] private bool fallFromMetal = false;
+
+    //ConstraintSource constraintSource;
+    //ParentConstraint parentConstraint;
+
+    private bool onPlatform = false;
+    private bool onPlatformRotation = true;
+
+
     //FMOD Event Refs
     [FMODUnity.EventRef]
     public string jumpSound;
@@ -112,6 +123,35 @@ public class Player : MonoBehaviour
     private Canvas settingsMenuUI = null;
     private bool movementEnabled = true;
 
+    public void AddParentConstraint(GameObject gO)
+    {
+        //parentConstraint = gameObject.GetComponent<ParentConstraint>();
+       //constraintSource.sourceTransform = gO.transform;
+       //parentConstraint.AddSource(constraintSource);
+       
+        
+
+        //mySource.sourceTransform = m_RealObjOnPlane.transform;
+
+    }
+
+    public void SetOnPlatform(bool state)
+    {
+        onPlatform = state;
+    }
+
+    public void SetRotationPlatformFix()
+    {
+        onPlatformRotation = true;
+    }
+
+
+
+    public void RemoveParentConstraint(GameObject gO)
+    {
+        //constraintSource.sourceTransform = null;
+        //parentConstraint.RemoveSource(0);
+    }
 
     public Vector2 GetMetalPickUpPos()
     {
@@ -142,13 +182,13 @@ public class Player : MonoBehaviour
 
     public void SetAnimationMovement(bool state)
     {
-        Debug.Log("Set Movement Animation: " + state);
+        //Debug.Log("Set Movement Animation: " + state);
         animationMovement = state;
         if (!state)
         {
             rb.velocity = Vector2.zero;
             rb.isKinematic = true;
-            Debug.Log("Player State: " + rb.velocity);
+            //Debug.Log("Player State: " + rb.velocity);
         }
         //else
         //{
@@ -210,15 +250,15 @@ public class Player : MonoBehaviour
 
     public void SetMovingRight(bool state)
     {
-        animationMovingRight = state;
-        if (animationMovingRight && !playerGFX.GetFacingRight())
+        //animationMovingRight = state;
+        if (state && !playerGFX.GetFacingRight())
         {
             Debug.Log("Going Right");
             playerGFX.SetFacingRight(true);
             transform.Rotate(0f, 180f, 0f);
             shooting.SetLastShootingLine(1);
         }
-        else if (!animationMovingRight && playerGFX.GetFacingRight())
+        else if (!state && playerGFX.GetFacingRight())
         {
             Debug.Log("Going Left");
             playerGFX.SetFacingRight(false);
@@ -298,7 +338,9 @@ public class Player : MonoBehaviour
         // setting some generally player movement variables
         playerState = PlayerState.JUMPING;
         transform.Rotate(0f, 180f, 0f);
-        
+        playerCollision = GameObject.FindObjectOfType<PlayerCollision>();
+
+        //parentConstraint = gameObject.GetComponent<ParentConstraint>();
 
         try
         {
@@ -327,6 +369,9 @@ public class Player : MonoBehaviour
         //    checkPointDeathSystem.PlayerDeath();
         //}
     }
+
+
+
 
     private void FixedUpdate()
     {
@@ -465,6 +510,7 @@ public class Player : MonoBehaviour
                     {
                         rb.isKinematic = false;
                         playerState = PlayerState.WALKING;
+                        Debug.Log("Walk problem");
                         fallFixTimer = 0;
                         onGround = true;
                     }
@@ -536,6 +582,22 @@ public class Player : MonoBehaviour
 
     void HandleInput()
     {
+        if (onPlatformRotation)
+        {
+            Debug.Log("Rotation Problem");
+            Vector3 fixRotation = transform.eulerAngles;
+            fixRotation.z = 0;
+            transform.eulerAngles = fixRotation;
+            onPlatformRotation = false;
+        }
+        //player.transform.rotation = Quaternion.AngleAxis(0, fixRotation);
+
+        //if (fallFixTimer >= fallFixMax)
+        //{
+        //    player.SetFallFix();
+        //}
+        //fallFixTimer += Time.deltaTime;
+
         if (movementEnabled && !animationMovement)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -578,7 +640,7 @@ public class Player : MonoBehaviour
                             //MetalFacingFix(true);
                             movingMetal = true;
                         }
-
+                        //Debug.Log("Falling Left" + playerState);
                         playerGFX.SetFacingRight(false); // facing left
                         transform.Rotate(0f, 180f, 0f); //rotate player and aiming to the left 
                         shooting.SetLastShootingLine(-1);
@@ -600,6 +662,7 @@ public class Player : MonoBehaviour
                     {
                         if (!playerGFX.GetFacingRight() && movingMetal)
                         {
+                            //Debug.Log("Fall Problem");
                             playerState = PlayerState.MOVING_OBJECT;
                         }
                     }
@@ -646,8 +709,6 @@ public class Player : MonoBehaviour
                         }
                     }
                 }
-
-
                 if (playerState == PlayerState.IDLE || playerState == PlayerState.WALKING || playerState == PlayerState.FALL_FIX)
                 {
                     //only can move when not aiming
@@ -657,10 +718,12 @@ public class Player : MonoBehaviour
                         {
                             onGround = true;
                         }
+                        // Debug.Log("Walk problem");
                         playerState = PlayerState.WALKING;
                     }
                     else
                     {
+                        //Debug.Log("Fall Problem 3");
                         playerState = PlayerState.IDLE;
                     }
                 }
@@ -690,6 +753,7 @@ public class Player : MonoBehaviour
                             //MetalFacingFix(true);
                             movingMetal = true;
                         }
+                        //Debug.Log("Falling Right" + playerState);
                         playerGFX.SetFacingRight(true);
                         transform.Rotate(0f, 180f, 0f); //rotate player and aiming to the left
                         shooting.SetLastShootingLine(1);
@@ -712,6 +776,7 @@ public class Player : MonoBehaviour
                     {
                         if (playerState == PlayerState.MOVING_OBJECT_IDLE)
                         {
+                            //Debug.Log("Fall Problem");
                             playerState = PlayerState.MOVING_OBJECT;
                         }
                     }
@@ -767,10 +832,12 @@ public class Player : MonoBehaviour
                         {
                             onGround = true;
                         }
+                        //Debug.Log("Walk problem");
                         playerState = PlayerState.WALKING;
                     }
                     else
                     {
+                        //Debug.Log("Fall Problem");
                         playerState = PlayerState.IDLE;
                     }
                 }
@@ -779,12 +846,14 @@ public class Player : MonoBehaviour
             {
                 if (playerState == PlayerState.WALKING)
                 {
+                    //Debug.Log("Fall Problem 2");
                     playerState = PlayerState.IDLE;
                 }
                 else if (playerState == PlayerState.FALL_FIX)
                 {
                     if (fallFixSwitch)
                     {
+                        //Debug.Log("Fall Problem");
                         playerState = PlayerState.IDLE;
                         onGround = true;
                         rb.isKinematic = true;
@@ -793,6 +862,7 @@ public class Player : MonoBehaviour
                 }
                 else if (playerState == PlayerState.MOVING_OBJECT)
                 {
+                    //Debug.Log("Fall Problem");
                     playerState = PlayerState.MOVING_OBJECT_IDLE;
                 }
                 moveVelocity = 0;
@@ -843,7 +913,7 @@ public class Player : MonoBehaviour
                         onGround = true;
                     }
 
-                    if (onGround)
+                    if (onGround && shooting.GetAimLineState() == Shooting.AimLineState.NOT_AIMED)
                     {
                         GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject();
                         if (comp != null)
@@ -944,9 +1014,14 @@ public class Player : MonoBehaviour
     public void SetOnGround(bool state)
     {
         Debug.Log("ON GROUND");
-        onGround = state;
-        playerState = PlayerState.WALKING;
-        rb.gravityScale = groundGravity;
+        //if (!fallFromMetal)
+        //{
+            
+            onGround = state;
+
+            playerState = PlayerState.WALKING;
+            rb.gravityScale = groundGravity;
+        //}
         //capsuleCollider2D.sharedMaterial.friction = onGroundFriction;
     }
 
@@ -978,6 +1053,17 @@ public class Player : MonoBehaviour
                         Debug.Log("Falling off touching an object");
                         //comp.GetComponent<IInteractable>().Interact();
                         comp.GetComponent<Metal>().DisconnectMetalFromPlayer();
+                        if (playerGFX.GetFacingRight())
+                        {
+                            Debug.Log("right to left");
+                            SetMovingRight(false);
+                        }
+                        else
+                        {
+                            Debug.Log("left to right");
+                            SetMovingRight(true);
+                        }
+
                         animationMovement = false;
                         movingMetal = false;
                         //MetalFacingFix(true);
@@ -986,6 +1072,13 @@ public class Player : MonoBehaviour
                         rb.isKinematic = false;
                         rb.gravityScale = fallGravity;
                         //capsuleCollider2D.sharedMaterial.friction = inAirFriction;
+                        fallFromMetal = true;
+                        playerCollision.SetFallWait();
+                        Vector3 fixRotation = transform.eulerAngles;
+                        fixRotation.z = 0;
+                        transform.eulerAngles = fixRotation;
+
+
                     }
                 }
             }
@@ -998,6 +1091,7 @@ public class Player : MonoBehaviour
             {
                 rb.isKinematic = false;
                 rb.gravityScale = fallGravity;
+
                 playerState = PlayerState.FALLING;
                 //make a 3rd gravity
             }
@@ -1040,6 +1134,7 @@ public class Player : MonoBehaviour
             currentMovingObject = null;
             if (playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING)
             {
+                //Debug.Log("Walk problem");
                 playerState = PlayerState.WALKING;
             }
         }

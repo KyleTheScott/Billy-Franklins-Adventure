@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 1039994936}
   - component: {fileID: 1039994937}
   - component: {fileID: 1039994938}
+  - component: {fileID: 8821170855130903145}
   m_Layer: 12
   m_Name: HopFixCollider
   m_TagString: Untagged
@@ -217,9 +218,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08936286, y: -0.98592925}
+  m_Offset: {x: -0.11716843, y: -0.88861}
   serializedVersion: 2
-  m_Radius: 0.16111326
+  m_Radius: 0.31404388
 --- !u!114 &1039994938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +234,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundObjectsTouching: []
+--- !u!61 &8821170855130903145
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039994935}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.08341658, y: -0.9963641}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9258518, y: 0.36047268}
+  m_EdgeRadius: 0
 --- !u!1 &1651558282
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,8 +305,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07824445, y: 0.24942303}
-  m_Size: {x: 0.4338193, y: 1.6010861}
+  m_Offset: {x: -0.11995268, y: 0.24942303}
+  m_Size: {x: 0.14649582, y: 1.6010861}
   m_Direction: 0
 --- !u!114 &1651558284
 MonoBehaviour:
@@ -294,6 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScript: {fileID: 1596798624625240181}
+  fallingTimeDone: 1
 --- !u!1 &1897674606
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,6 +519,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadedProjectile: {fileID: 0}
   aimLine: {fileID: 1596798626102824989}
+  shootingLine: {x: 1, y: 0, z: 0}
+  lastShootingLine: {x: 1, y: 0, z: 0}
   aimLineCollisionMask:
     serializedVersion: 2
     m_Bits: 20240
@@ -583,7 +613,6 @@ GameObject:
   - component: {fileID: 1596798624625240183}
   - component: {fileID: 1596798624625240176}
   - component: {fileID: 1596798624625240181}
-  - component: {fileID: 1168161267}
   - component: {fileID: 8852632073555520459}
   m_Layer: 12
   m_Name: Player
@@ -600,7 +629,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596798624625240177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5989227, y: -3.2513409, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1596798626382368133}
@@ -670,6 +699,7 @@ MonoBehaviour:
   charges: {fileID: 508536455}
   shooting: {fileID: 1916932473}
   playerGFX: {fileID: 731963994}
+  playerCollision: {fileID: 0}
   playerState: 3
   debugMode: 1
   onGround: 0
@@ -687,25 +717,13 @@ MonoBehaviour:
   fallFixTimer: 0
   fallFixMax: 0.1
   fallFixStayMax: 1
+  fallFromMetal: 0
   jumpSound: event:/Player Sounds/Footsteps
   currentMovingObject: {fileID: 0}
   movingMetal: 0
   movingMetalDirectionFix: 0
   pickUpMetalPos: {fileID: 6370559049283957530}
   pauseMenuUI: {fileID: 0}
---- !u!114 &1168161267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1596798624625240177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1f97085130f60a41bcb51c68bfa1200, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  platform: {fileID: 0}
 --- !u!114 &8852632073555520459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1060,7 +1078,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 55444
+  m_InstanceId: 259616
 --- !u!95 &731963993
 Animator:
   serializedVersion: 3
@@ -1271,7 +1289,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!1 &7471335327452388289
 GameObject:

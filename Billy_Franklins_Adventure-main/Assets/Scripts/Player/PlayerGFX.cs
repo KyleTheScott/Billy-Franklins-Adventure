@@ -195,6 +195,7 @@ public class PlayerGFX : MonoBehaviour
 
                     if (goingToRightMetal)
                     {
+
                         if (Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
                             .GetMetalRightPos().transform.position.x)) < .1f)
                         {
@@ -373,12 +374,12 @@ public class PlayerGFX : MonoBehaviour
         Debug.Log("After");
 
         PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject().GetComponent<Metal>().SetMoving(false);
-        
 
-        
+
+
 
         //player.OtherMetalFacingFix();
-
+        Debug.Log("Walk problem");
         player.SetPlayerState(Player.PlayerState.IDLE);
         //}
     }
