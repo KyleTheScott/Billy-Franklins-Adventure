@@ -45,6 +45,13 @@ public class PlayerObjectInteractions : MonoBehaviour
     {
         if (toggleObjects.Count > 1)
         {
+            if (currentToggleObject.GetComponent<Collider2D>().CompareTag("Metal"))
+            {
+                if (currentToggleObject.GetComponent<Metal>().IsMoving())
+                {
+                    return;
+                }
+            }
             if (togglePos == toggleObjects.Count - 1)
             {
                 togglePos = 0;
@@ -53,24 +60,33 @@ public class PlayerObjectInteractions : MonoBehaviour
             {
                 togglePos++;
             }
-
+            currentToggleObject.GetComponent<IInteractable>().SetHighlighted(false);
             currentToggleObject = toggleObjects[togglePos];
             if (currentToggleObject.GetComponent<Collider2D>().CompareTag("Metal"))
             {
                 metalLeftPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointLeft();
                 metalRightPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointRight();
             }
+
             currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
         }
     }
 
     public GameObject GetMetalLeftPos()
     {
+        if (metalLeftPos == null)
+        {
+            metalLeftPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointLeft();
+        }
         return metalLeftPos;
     }
 
     public GameObject GetMetalRightPos()
     {
+        if (metalRightPos == null)
+        {
+            metalRightPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointRight();
+        }
         return metalRightPos;
     }
 

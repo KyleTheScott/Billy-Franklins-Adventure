@@ -113,7 +113,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
 
     public void SetPickUpMetalDirection()
     {
-        Debug.Log("Pick up metal");
+        //Debug.Log("Pick up metal");
         bool leftOnGround = pickUpPointLeft.GetComponent<MetalEndObjectInteraction>().GetTouchingGround();
         bool rightOnGround = pickUpPointLeft.GetComponent<MetalEndObjectInteraction>().GetTouchingGround();
 
@@ -152,13 +152,13 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
                     //player is to the right of the left side of the metal
                     if (player.transform.position.x - pickUpPointLeft.transform.position.x >= 0)
                     {
-                        Debug.Log("Move to metal left");
+                        //Debug.Log("Move to metal left");
                         player.SetMovingRight(false);
                     }
                     //player is to the left of the left side of the metal
                     else
                     {
-                        Debug.Log("Move to metal right");
+                        //Debug.Log("Move to metal right");
                         player.SetMovingRight(true);
                     }
                 }
@@ -171,13 +171,13 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
                     //player is to the right of the right side of the metal
                     if (player.transform.position.x - pickUpPointRight.transform.position.x >= 0)
                     {
-                        Debug.Log("Move to metal left");
+                        //Debug.Log("Move to metal left");
                         player.SetMovingRight(false);
                     }
                     //player is to the left of the right side of the metal
                     else
                     {
-                        Debug.Log("Move to metal right");
+                        //Debug.Log("Move to metal right");
                         player.SetMovingRight(true);
                     }
                 }

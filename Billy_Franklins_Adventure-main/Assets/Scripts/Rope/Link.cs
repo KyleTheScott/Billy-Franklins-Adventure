@@ -55,6 +55,7 @@ public class Link : MonoBehaviour
             if (platform != null)
             {
                 platform.SetGrounded();
+                platform.DisconnectPlatformFromPlayer();
                 platform.TurnOffConstraints();
             }
             //destroy rope link
