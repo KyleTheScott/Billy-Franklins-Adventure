@@ -137,13 +137,13 @@ public class SuspendedPlatform : MonoBehaviour
 
         if (playerTouching)
         {
-            if (Mathf.Abs(transform.eulerAngles.z - lastRotation) >= 0.5f)
-            {
-                Debug.Log("Platform");
-                player.SetRotationPlatformFix();
-            }
+            //if (Mathf.Abs(transform.eulerAngles.z - lastRotation) >= 0.05f)
+            //{
+            //    Debug.Log("Platform");
+            //    player.SetRotationPlatformFix();
+            //}
 
-            lastRotation = transform.eulerAngles.z;
+            //lastRotation = transform.eulerAngles.z;
         }
     }
 
@@ -158,7 +158,7 @@ public class SuspendedPlatform : MonoBehaviour
                 moving = false;
             }
 
-            platformRigidbody.AddForce(transform.up * movementSpeed);
+            platformRigidbody.AddForce(-transform.up * movementSpeed);
 
             moveTimer -= Time.deltaTime;
         }

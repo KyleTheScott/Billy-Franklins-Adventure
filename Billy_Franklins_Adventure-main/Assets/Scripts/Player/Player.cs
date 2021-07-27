@@ -87,6 +87,9 @@ public class Player : MonoBehaviour
     private bool onPlatform = false;
     private bool onPlatformRotation = true;
 
+    private float rotationTimer = 0;
+    private float rotationTime = .5f;
+
 
     //FMOD Event Refs
     [FMODUnity.EventRef]
@@ -582,14 +585,26 @@ public class Player : MonoBehaviour
 
     void HandleInput()
     {
-        if (onPlatformRotation)
+        //if (onPlatformRotation)
+        //{
+        //    Debug.Log("Rotation Problem");
+        //    Vector3 fixRotation = transform.eulerAngles;
+        //    fixRotation.z = 0;
+        //    transform.eulerAngles = fixRotation;
+        //    onPlatformRotation = false;
+        //}
+
+        if (rotationTimer >= rotationTime)
         {
             Debug.Log("Rotation Problem");
             Vector3 fixRotation = transform.eulerAngles;
             fixRotation.z = 0;
             transform.eulerAngles = fixRotation;
             onPlatformRotation = false;
+            rotationTimer = 0;
         }
+
+        rotationTimer += Time.deltaTime;
         //player.transform.rotation = Quaternion.AngleAxis(0, fixRotation);
 
         //if (fallFixTimer >= fallFixMax)
