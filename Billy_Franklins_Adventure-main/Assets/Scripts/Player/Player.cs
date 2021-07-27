@@ -594,15 +594,15 @@ public class Player : MonoBehaviour
         //    onPlatformRotation = false;
         //}
 
-        if (rotationTimer >= rotationTime)
-        {
-            Debug.Log("Rotation Problem");
-            Vector3 fixRotation = transform.eulerAngles;
-            fixRotation.z = 0;
-            transform.eulerAngles = fixRotation;
-            onPlatformRotation = false;
-            rotationTimer = 0;
-        }
+        //if (rotationTimer >= rotationTime)
+        //{
+        //    Debug.Log("Rotation Problem");
+        //    Vector3 fixRotation = transform.eulerAngles;
+        //    fixRotation.z = 0;
+        //    transform.eulerAngles = fixRotation;
+        //    onPlatformRotation = false;
+        //    rotationTimer = 0;
+        //}
 
         rotationTimer += Time.deltaTime;
         //player.transform.rotation = Quaternion.AngleAxis(0, fixRotation);
@@ -977,7 +977,6 @@ public class Player : MonoBehaviour
                                     else
                                     {
                                         StartMovingMetal(comp);
-                                        
                                         //rb.gravityScale = jumpGravity;
 
                                     }
@@ -1088,10 +1087,10 @@ public class Player : MonoBehaviour
                         rb.gravityScale = fallGravity;
                         //capsuleCollider2D.sharedMaterial.friction = inAirFriction;
                         fallFromMetal = true;
-                        playerCollision.SetFallWait();
-                        Vector3 fixRotation = transform.eulerAngles;
-                        fixRotation.z = 0;
-                        transform.eulerAngles = fixRotation;
+                        //playerCollision.SetFallWait();
+                        //Vector3 fixRotation = transform.eulerAngles;
+                        //fixRotation.z = 0;
+                        //transform.eulerAngles = fixRotation;
 
 
                     }

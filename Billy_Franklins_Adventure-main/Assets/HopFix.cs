@@ -6,11 +6,11 @@ public class HopFix : MonoBehaviour
 {
     [SerializeField] private List<GameObject> groundObjectsTouching = new List<GameObject>();
     private bool onGround = true;
-    private GameObject player = null;
+    private Player player = null;
 
     private void Start()
     {
-        player = player = FindObjectOfType<Player>().gameObject;
+        player = player = FindObjectOfType<Player>();
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -34,7 +34,7 @@ public class HopFix : MonoBehaviour
                     groundObjectsTouching.RemoveAt(i);
                 }
             }
-            if (groundObjectsTouching.Count <= 0)
+            if (groundObjectsTouching.Count <= 0 )
             {
                 player.GetComponent<Player>().LeavingTheGround();
             }
