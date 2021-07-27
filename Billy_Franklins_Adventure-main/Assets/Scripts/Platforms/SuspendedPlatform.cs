@@ -137,11 +137,12 @@ public class SuspendedPlatform : MonoBehaviour
 
         if (playerTouching)
         {
-            //if (Mathf.Abs(transform.eulerAngles.z - lastRotation) >= 0.05f)
-            //{
-            //    Debug.Log("Platform");
-            //    player.SetRotationPlatformFix();
-            //}
+            if (Mathf.Abs(transform.eulerAngles.z - lastRotation) >= 0.05f)
+            {
+                player.SetFallFix();
+                //Debug.Log("Platform");
+                //player.SetRotationPlatformFix();
+            }
 
             //lastRotation = transform.eulerAngles.z;
         }
@@ -158,7 +159,7 @@ public class SuspendedPlatform : MonoBehaviour
                 moving = false;
             }
 
-            platformRigidbody.AddForce(-transform.up * movementSpeed);
+            platformRigidbody.AddForce(transform.up * movementSpeed);
 
             moveTimer -= Time.deltaTime;
         }
@@ -238,19 +239,21 @@ public class SuspendedPlatform : MonoBehaviour
     {
         if (!grounded)
         {
-            player.transform.parent = transform;
+            //player.transform.parent = transform;
             playerTouching = true;
         }
     }
 
     public void DisconnectPlatformFromPlayer()
     {
-        if (player.transform.parent == transform)
-        {
-            player.transform.parent = null;
-            DontDestroyOnLoad(player.gameObject);
-            playerTouching = false;
-        }
+        
+        //if (player.transform.parent == transform)
+        //{
+            //player.transform.parent = null;
+            //DontDestroyOnLoad(player.gameObject);
+            Debug.Log("Disconnect");
+        playerTouching = false;
+        //}
     }
 
 

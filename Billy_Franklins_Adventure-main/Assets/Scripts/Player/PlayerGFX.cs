@@ -371,7 +371,7 @@ public class PlayerGFX : MonoBehaviour
         {
             player.SetMovingRight(true);
         }
-        Debug.Log("After");
+        //Debug.Log("After");
 
         PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject().GetComponent<Metal>().SetMoving(false);
 
