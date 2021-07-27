@@ -6,13 +6,13 @@ Physics2DSettings:
   serializedVersion: 5
   m_Gravity: {x: 0, y: -9.81}
   m_DefaultMaterial: {fileID: 0}
-  m_VelocityIterations: 50
-  m_PositionIterations: 50
-  m_VelocityThreshold: 50
+  m_VelocityIterations: 300
+  m_PositionIterations: 200
+  m_VelocityThreshold: 200
   m_MaxLinearCorrection: 0.2
   m_MaxAngularCorrection: 10
   m_MaxTranslationSpeed: 100
-  m_MaxRotationSpeed: 360
+  m_MaxRotationSpeed: 200
   m_BaumgarteScale: 0.2
   m_BaumgarteTimeOfImpactScale: 0.75
   m_TimeToSleep: 0.5
