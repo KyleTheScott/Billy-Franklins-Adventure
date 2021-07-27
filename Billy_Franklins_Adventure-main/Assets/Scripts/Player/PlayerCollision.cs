@@ -5,16 +5,45 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] private Player playerScript;
+    private float fallTimer = 0;
+    private float fallTime = 0;
+    [SerializeField] private bool fallingTimeDone = true;
+
+    public void SetFallWait()
+    {
+        fallTimer = 0;
+        fallingTimeDone = false;
+    }
+
+    void Update()
+    {
+        if (!fallingTimeDone)
+        {
+            if (fallTimer >= fallTime)
+            {
+                fallingTimeDone = true;
+            }
+            else
+            {
+                fallTimer += Time.deltaTime;
+            }
+        }
+    }
+
+
 
     //collision for the player with ground
     public void OnCollisionStay2D(Collision2D collision)
     {
-        //Player.PlayerState tempPlayerState = playerScript.GetPlayerState();
-        if (collision.collider.CompareTag("Ground") && playerScript.GetFalling())
+        if (fallingTimeDone)
         {
-            //Debug.Log("On ground");
-            playerScript.SetOnGround(true);
-            //offGround = false;
+            //Player.PlayerState tempPlayerState = playerScript.GetPlayerState();
+            if (collision.collider.CompareTag("Ground") && playerScript.GetFalling() && Vector2.Angle(Vector2.up, collision.GetContact(0).normal) <= 45f)
+            {
+                Debug.Log("On ground Test");
+                playerScript.SetOnGround(true);
+                //offGround = false;
+            }
         }
     }
 

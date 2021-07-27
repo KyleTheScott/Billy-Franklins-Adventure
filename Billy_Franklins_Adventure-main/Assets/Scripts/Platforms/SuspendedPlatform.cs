@@ -55,12 +55,14 @@ public class SuspendedPlatform : MonoBehaviour
 
     private Player player;
 
-    [SerializeField] private bool playerTouching;
+    [SerializeField] private bool playerTouching = false;
 
     [SerializeField] private float fallFixTimer = 0;
     [SerializeField] private float fallFixMax = .1f;
 
     [SerializeField] private bool windBlowingRight = false;
+    [SerializeField] private float lastRotation;
+
 
     public enum PlatformWindState
     {
@@ -89,11 +91,19 @@ public class SuspendedPlatform : MonoBehaviour
             MovePlatform();
             if (playerTouching && moving)
             {
-                if (fallFixTimer >= fallFixMax)
-                {
-                    player.SetFallFix();
-                }
-                fallFixTimer += Time.deltaTime;
+                //player.transform.rotation = Quaternion.Euler(0.0f, player.transform.rotation.y, this.transform.rotation.z * -1.0f);
+
+                //Vector3 fixRotation = player.transform.localEulerAngles;
+                //fixRotation.z = 0;
+
+                //player.transform.localEulerAngles = fixRotation;
+                //player.transform.rotation = Quaternion.AngleAxis(0, fixRotation);
+
+                //if (fallFixTimer >= fallFixMax)
+                //{
+                //    player.SetFallFix();
+                //}
+                //fallFixTimer += Time.deltaTime;
             }
         }
     }
@@ -123,6 +133,17 @@ public class SuspendedPlatform : MonoBehaviour
         if (!upAndDownPlatform)
         {
             MoveSideways();
+        }
+
+        if (playerTouching)
+        {
+            if (Mathf.Abs(transform.eulerAngles.z - lastRotation) >= 0.5f)
+            {
+                Debug.Log("Platform");
+                player.SetRotationPlatformFix();
+            }
+
+            lastRotation = transform.eulerAngles.z;
         }
     }
 
@@ -213,12 +234,35 @@ public class SuspendedPlatform : MonoBehaviour
         }
     }
 
+    private void ConnectPlatformToPlayer()
+    {
+        if (!grounded)
+        {
+            player.transform.parent = transform;
+            playerTouching = true;
+        }
+    }
+
+    public void DisconnectPlatformFromPlayer()
+    {
+        if (player.transform.parent == transform)
+        {
+            player.transform.parent = null;
+            DontDestroyOnLoad(player.gameObject);
+            playerTouching = false;
+        }
+    }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            playerTouching = true;
+            ConnectPlatformToPlayer();
+            
+            //player.AddParentConstraint(gameObject);
+
         }
     }
 
@@ -226,7 +270,9 @@ public class SuspendedPlatform : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            playerTouching = false;
+            //playerTouching = false;
+            DisconnectPlatformFromPlayer();
+            //player.RemoveParentConstraint(gameObject);
         }
     }
 

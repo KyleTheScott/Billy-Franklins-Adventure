@@ -27,7 +27,6 @@ public class MetalEndObjectInteraction : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-
         if (collision.CompareTag("Ground"))
         {
             for (int i = 0; i < groundObjects.Count; i++)
@@ -37,7 +36,6 @@ public class MetalEndObjectInteraction : MonoBehaviour
                     groundObjects.RemoveAt(i);
                 }
             }
-
             if (groundObjects.Count < 1)
             {
                 touchingGround = false;

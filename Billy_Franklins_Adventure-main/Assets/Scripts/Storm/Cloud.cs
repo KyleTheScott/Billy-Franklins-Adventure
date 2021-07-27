@@ -97,7 +97,7 @@ public class Cloud : MonoBehaviour
         }
 
         //put lightning code here
-        Debug.Log("LIGHTNING");
+        //Debug.Log("LIGHTNING");
     }
 
 }
