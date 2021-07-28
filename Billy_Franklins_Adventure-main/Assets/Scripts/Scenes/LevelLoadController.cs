@@ -105,6 +105,7 @@ public class LevelLoadController : MonoBehaviour
                 {
                     ghostWall.LowerGhostWall();
                 }
+                gameObject.SetActive(false);
             }
         }
         
