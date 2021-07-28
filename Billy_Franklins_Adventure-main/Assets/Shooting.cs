@@ -263,6 +263,7 @@ public class Shooting : MonoBehaviour
                 {
                     if (player.GetPlayerState() == Player.PlayerState.FALL_FIX)
                     {
+                        Debug.Log("Fall Problem");
                         player.SetOnGround(true);
                     }
                     if (player.GetOnGround())

@@ -49,18 +49,19 @@ public class PlayerCollision : MonoBehaviour
                  Vector2.Angle(Vector2.up, collision.GetContact(0).normal) <= 45f && Mathf.Abs(collision.GetContact(0).point.y - (playerScript.gameObject.transform.position.y - 1.23f)) <= .5f &&
                  !playerScript.GetJumpFix())
         {
-            Debug.Log("Player State: " + playerScript.GetPlayerState());
-            Debug.Log("Collider Object: " + collision.gameObject);
-            Debug.Log("Collider Object Name: " + collision.gameObject.name);
-            Debug.Log("Collider Object Tag: " + collision.gameObject.tag);
+            //Debug.Log("Player State: " + playerScript.GetPlayerState());
+            //Debug.Log("Collider Object: " + collision.gameObject);
+            //Debug.Log("Collider Object Name: " + collision.gameObject.name);
+            //Debug.Log("Collider Object Tag: " + collision.gameObject.tag);
 
-            float contactY = collision.GetContact(0).point.y;
-            float playerY = playerScript.gameObject.transform.position.y - 1.23f;
-            float diffBetweenY = Mathf.Abs(contactY - playerY);
-            Debug.Log("Contact Point: " + contactY);
-            Debug.Log("Player Y: " + playerY);
-            Debug.Log("Difference Of Y: " + diffBetweenY);
+            //float contactY = collision.GetContact(0).point.y;
+            //float playerY = playerScript.gameObject.transform.position.y - 1.23f;
+            //float diffBetweenY = Mathf.Abs(contactY - playerY);
+            //Debug.Log("Contact Point: " + contactY);
+            //Debug.Log("Player Y: " + playerY);
+            //Debug.Log("Difference Of Y: " + diffBetweenY);
             Debug.LogError("On ground Test2");
+            playerScript.SetOnGroundJumpFix(true);
             playerScript.SetPlayerState(Player.PlayerState.IDLE);
         }
     }

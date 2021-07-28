@@ -519,14 +519,14 @@ public class Player : MonoBehaviour
                 case PlayerState.FALLING:
                     //falling but not from a jump
 
-                    if (moveVelocity != 0)
-                    {
-                        rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
-                    }
-                    else
-                    {
+                    //if (moveVelocity != 0)
+                    //{
+                    //    rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+                    //}
+                    //else
+                    //{
                         rb.velocity = new Vector2(0, rb.velocity.y);
-                    }
+                    //}
 
                     break;
                 //state for when player is on a moving platform
@@ -553,6 +553,7 @@ public class Player : MonoBehaviour
                     break;
                 case PlayerState.WALKING:
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+                    Debug.Log(rb.velocity);
                     break;
                 //walking moving object
                 case PlayerState.MOVING_OBJECT:
@@ -682,6 +683,7 @@ public class Player : MonoBehaviour
                 //Character flip
                 if (playerGFX.GetFacingRight() && !movingMetal)
                 {
+                    //rb.velocity = new Vector2(0,0);
                     if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                         playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
                         playerState != PlayerState.MOVING_OBJECT_STOPPED_LEFT)
@@ -799,6 +801,7 @@ public class Player : MonoBehaviour
                 //Character flip
                 if (!playerGFX.GetFacingRight() && !movingMetal)
                 {
+                    //rb.velocity = new Vector2(0, 0);
                     if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                         playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
                         playerState != PlayerState.MOVING_OBJECT_STOPPED_RIGHT)
@@ -1085,13 +1088,28 @@ public class Player : MonoBehaviour
         //Debug.Log("ON GROUND");
         //if (!fallFromMetal)
         //{
-        onGround = state;
 
-        playerState = currentPlayerState;
+        onGround = state;
+        if (currentPlayerState == PlayerState.MOVING_OBJECT_IDLE || currentPlayerState == PlayerState.MOVING_OBJECT ||
+            currentPlayerState == PlayerState.MOVING_OBJECT_END)
+        {
+            playerState = PlayerState.IDLE;
+        }
+        else
+        {
+            playerState = currentPlayerState;
+        }
+        
         rb.gravityScale = groundGravity;
         //}
         //capsuleCollider2D.sharedMaterial.friction = onGroundFriction;
     }
+
+    public void SetOnGroundJumpFix(bool state)
+    {
+        onGround = state;
+    }
+
 
     public bool GetFalling()
     {
