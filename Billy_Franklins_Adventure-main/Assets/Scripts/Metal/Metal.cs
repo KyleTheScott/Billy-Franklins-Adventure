@@ -305,6 +305,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
 
     public void DisconnectMetalFromPlayer()
     {
+        Debug.Log("Disconnect Metal");
         beingMoved = false;
         //hingeJointPointLeft.connectedBody = null;
         hingeJointPointLeft.enabled = false;

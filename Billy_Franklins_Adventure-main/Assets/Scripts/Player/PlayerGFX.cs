@@ -82,7 +82,7 @@ public class PlayerGFX : MonoBehaviour
             }
         }
 
-        if (currentPlayerState != player.GetPlayerState())
+        if (currentPlayerState != player.GetPlayerState() /*&& currentPlayerState != Player.PlayerState.FALL_FIX*/)
         {
             switch (player.GetPlayerState())
             {

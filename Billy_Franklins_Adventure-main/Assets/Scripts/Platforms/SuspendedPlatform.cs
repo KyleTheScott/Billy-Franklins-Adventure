@@ -59,6 +59,8 @@ public class SuspendedPlatform : MonoBehaviour
 
     [SerializeField] private float fallFixTimer = 0;
     [SerializeField] private float fallFixMax = .1f;
+    private bool falling = false;
+
 
     [SerializeField] private bool windBlowingRight = false;
     [SerializeField] private float lastRotation;
@@ -106,6 +108,17 @@ public class SuspendedPlatform : MonoBehaviour
                 //fallFixTimer += Time.deltaTime;
             }
         }
+
+        if (falling)
+        {
+            fallFixTimer += Time.deltaTime;
+            if (fallFixTimer >= fallFixMax)
+            {
+                fallFixTimer = 0;
+                falling = false;
+            }
+        }
+
     }
 
    
@@ -139,7 +152,21 @@ public class SuspendedPlatform : MonoBehaviour
         {
             if (Mathf.Abs(transform.eulerAngles.z - lastRotation) >= 0.05f)
             {
-                player.SetFallFix();
+
+                if (player.GetPlayerCurrentMetal() == null || !player.GetPlayerCurrentMetal().IsMoving())
+                {
+                    if (player.PlayersState == Player.PlayerState.WALKING ||
+                        player.PlayersState == Player.PlayerState.IDLE)
+                    {
+                        if (!player.IsDroppingMetal() && !falling)
+                        {
+                            falling = true;
+                            //Debug.Log("Fall Fix");
+                            player.SetFallFix();
+                        }
+                    }
+                }
+
                 //Debug.Log("Platform");
                 //player.SetRotationPlatformFix();
             }
