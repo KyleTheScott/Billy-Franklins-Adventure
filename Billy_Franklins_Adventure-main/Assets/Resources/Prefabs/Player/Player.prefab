@@ -218,9 +218,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.11716843, y: -0.88861}
+  m_Offset: {x: -0.11716843, y: -0.90147436}
   serializedVersion: 2
-  m_Radius: 0.31404388
+  m_Radius: 0.3452977
 --- !u!114 &1039994938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,7 +247,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08341658, y: -0.9963641}
+  m_Offset: {x: -0.101299524, y: -0.96505135}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -258,7 +258,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9258518, y: 0.36047268}
+  m_Size: {x: 0.3846864, y: 0.51633346}
   m_EdgeRadius: 0
 --- !u!1 &1651558282
 GameObject:
@@ -601,6 +601,7 @@ MonoBehaviour:
   metalLeftPos: {fileID: 0}
   metalRightPos: {fileID: 0}
   player: {fileID: 0}
+  togglePos: 0
 --- !u!1 &1596798624625240177
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +722,7 @@ MonoBehaviour:
   fallFromMetal: 0
   jumpSound: event:/Player Sounds/Footsteps
   currentMovingObject: {fileID: 0}
+  currentPlayerMetal: {fileID: 0}
   movingMetal: 0
   movingMetalDirectionFix: 0
   pickUpMetalPos: {fileID: 6370559049283957530}
@@ -1079,7 +1081,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 108498
+  m_InstanceId: 53986
 --- !u!95 &731963993
 Animator:
   serializedVersion: 3

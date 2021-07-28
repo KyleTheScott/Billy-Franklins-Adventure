@@ -13,6 +13,8 @@ public class HopFix : MonoBehaviour
         player = player = FindObjectOfType<Player>();
     }
 
+
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Ground"))
@@ -36,6 +38,7 @@ public class HopFix : MonoBehaviour
             }
             if (groundObjectsTouching.Count <= 0 )
             {
+                Debug.Log("Faling will begin");
                 player.GetComponent<Player>().LeavingTheGround();
             }
         }
