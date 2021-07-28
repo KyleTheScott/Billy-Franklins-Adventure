@@ -69,6 +69,12 @@ public class Player : MonoBehaviour
     [SerializeField] private float lowJumpMultiplier = 2f;
     [SerializeField] private float fallMultiplier = 4f;
 
+    private bool jumpFix = false;
+    private float jumpFixTimer = 0;
+    private float jumpFixTime = .1f;
+
+
+
     //variables used for when player is on moving platforms to make the player fall and move with the platform
     [SerializeField] private PlayerState currentPlayerState;
     [SerializeField] private float fallFixTimer = 0;
@@ -90,6 +96,8 @@ public class Player : MonoBehaviour
     private bool droppingMetal = false;
     private float dropMetalTimer = 0;
     private float dropMetalTime = 2f;
+
+    
 
 
     //FMOD Event Refs
@@ -142,6 +150,12 @@ public class Player : MonoBehaviour
         //mySource.sourceTransform = m_RealObjOnPlane.transform;
 
     }
+
+    public bool GetJumpFix()
+    {
+        return jumpFix;
+    }
+
 
     public void SetOnPlatform(bool state)
     {
@@ -307,6 +321,7 @@ public class Player : MonoBehaviour
                 rb.velocity = Vector2.zero;
                 rb.isKinematic = true;
                 Debug.Log("Player State: " + rb.velocity);
+                currentPlayerState = playerState;
                 break;
         }
     }
@@ -504,14 +519,14 @@ public class Player : MonoBehaviour
                 case PlayerState.FALLING:
                     //falling but not from a jump
 
-                    if (moveVelocity != 0)
-                    {
-                        rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
-                    }
-                    else
-                    {
+                    //if (moveVelocity != 0)
+                    //{
+                    //    rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+                    //}
+                    //else
+                    //{
                         rb.velocity = new Vector2(0, rb.velocity.y);
-                    }
+                    //}
 
                     break;
                 //state for when player is on a moving platform
@@ -538,6 +553,7 @@ public class Player : MonoBehaviour
                     break;
                 case PlayerState.WALKING:
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+                    Debug.Log(rb.velocity);
                     break;
                 //walking moving object
                 case PlayerState.MOVING_OBJECT:
@@ -607,6 +623,17 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (jumpFix)
+        {
+            jumpFixTimer += Time.deltaTime;
+            if (jumpFixTimer >= jumpFixTime)
+            {
+                jumpFix = false;
+                jumpFixTimer = 0;
+            }
+        }
+
+        
 
         //if (onPlatformRotation)
         //{
@@ -656,6 +683,7 @@ public class Player : MonoBehaviour
                 //Character flip
                 if (playerGFX.GetFacingRight() && !movingMetal)
                 {
+                    //rb.velocity = new Vector2(0,0);
                     if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                         playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
                         playerState != PlayerState.MOVING_OBJECT_STOPPED_LEFT)
@@ -773,6 +801,7 @@ public class Player : MonoBehaviour
                 //Character flip
                 if (!playerGFX.GetFacingRight() && !movingMetal)
                 {
+                    //rb.velocity = new Vector2(0, 0);
                     if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                         playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
                         playerState != PlayerState.MOVING_OBJECT_STOPPED_RIGHT)
@@ -927,6 +956,7 @@ public class Player : MonoBehaviour
 
                     if (onGround)
                     {
+                        jumpFix = true;
                         rb.isKinematic = false;
                         //SoundManager.instance.PLaySE(JumpSound);
                         //shouldJump = true;
@@ -1058,13 +1088,28 @@ public class Player : MonoBehaviour
         //Debug.Log("ON GROUND");
         //if (!fallFromMetal)
         //{
-        onGround = state;
 
-        playerState = currentPlayerState;
+        onGround = state;
+        if (currentPlayerState == PlayerState.MOVING_OBJECT_IDLE || currentPlayerState == PlayerState.MOVING_OBJECT ||
+            currentPlayerState == PlayerState.MOVING_OBJECT_END)
+        {
+            playerState = PlayerState.IDLE;
+        }
+        else
+        {
+            playerState = currentPlayerState;
+        }
+        
         rb.gravityScale = groundGravity;
         //}
         //capsuleCollider2D.sharedMaterial.friction = onGroundFriction;
     }
+
+    public void SetOnGroundJumpFix(bool state)
+    {
+        onGround = state;
+    }
+
 
     public bool GetFalling()
     {
@@ -1126,6 +1171,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            Debug.Log("Jumping");
             onGround = false;
 
             if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING)
@@ -1138,6 +1184,7 @@ public class Player : MonoBehaviour
             }
             else
             {
+                Debug.Log("Jumping 2");
                 rb.gravityScale = jumpGravity;
             }
             //capsuleCollider2D.sharedMaterial.friction = inAirFriction;
