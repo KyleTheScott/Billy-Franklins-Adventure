@@ -139,6 +139,9 @@ public class Player : MonoBehaviour
     private Canvas settingsMenuUI = null;
     private bool movementEnabled = true;
 
+    [Header("Dialogue")]
+    public bool isReading = false;
+
     public void AddParentConstraint(GameObject gO)
     {
         //parentConstraint = gameObject.GetComponent<ParentConstraint>();
@@ -663,7 +666,21 @@ public class Player : MonoBehaviour
         //}
         //fallFixTimer += Time.deltaTime;
 
-        if (movementEnabled && !animationMovement)
+        if (isReading)
+        {
+            playerState = PlayerState.IDLE;
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                DialogueManager.instance.DisplayNextSentence();
+                if (!DialogueManager.instance.isOpen)
+                {
+                    isReading = false;
+                    PlayerControlsStatus(true);
+                }
+            }
+        }
+
+        else if (movementEnabled && !animationMovement)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
