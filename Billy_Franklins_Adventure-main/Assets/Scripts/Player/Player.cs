@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Animations;
-using UnityEngine.Events;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
 [DefaultExecutionOrder(-100)] //ensure this script runs before all other player scripts to prevent laggy input
@@ -90,6 +87,10 @@ public class Player : MonoBehaviour
     private float rotationTimer = 0;
     private float rotationTime = .5f;
 
+    private bool droppingMetal = false;
+    private float dropMetalTimer = 0;
+    private float dropMetalTime = 2f;
+
 
     //FMOD Event Refs
     [FMODUnity.EventRef]
@@ -98,6 +99,10 @@ public class Player : MonoBehaviour
     [Header("Interact")]
     //stores object the player is currently moving 
     [SerializeField] private GameObject currentMovingObject;
+
+    [SerializeField] private Metal currentPlayerMetal;
+
+
     //[SerializeField] float interactRadius = 5f;
     //[SerializeField] LayerMask interactLayer;
 
@@ -205,6 +210,7 @@ public class Player : MonoBehaviour
 
     public bool GetMetalMoving()
     {
+        //Debug.Log("Moving Metal: " + movingMetal);
         return movingMetal;
     }
 
@@ -420,6 +426,7 @@ public class Player : MonoBehaviour
 
         else
         { 
+            
             switch (playerState)
             {
                 case PlayerState.IDLE:
@@ -509,11 +516,12 @@ public class Player : MonoBehaviour
                     break;
                 //state for when player is on a moving platform
                 case PlayerState.FALL_FIX:
+                    //Debug.Log("Movement Fix");
                     if (fallFixTimer >= fallFixStayMax)
                     {
                         rb.isKinematic = false;
-                        playerState = PlayerState.WALKING;
-                        Debug.Log("Walk problem");
+                        playerState = currentPlayerState;
+                        //Debug.Log("Walk problem");
                         fallFixTimer = 0;
                         onGround = true;
                     }
@@ -582,9 +590,24 @@ public class Player : MonoBehaviour
     //    }
     //}
 
+    public bool IsDroppingMetal()
+    {
+        return droppingMetal;
+    }
 
     void HandleInput()
     {
+        if (droppingMetal)
+        {
+            dropMetalTimer += Time.deltaTime;
+            if (dropMetalTimer >= dropMetalTime)
+            {
+                droppingMetal = false;
+                dropMetalTimer = 0;
+            }
+        }
+
+
         //if (onPlatformRotation)
         //{
         //    Debug.Log("Rotation Problem");
@@ -907,6 +930,7 @@ public class Player : MonoBehaviour
                         rb.isKinematic = false;
                         //SoundManager.instance.PLaySE(JumpSound);
                         //shouldJump = true;
+                        currentPlayerState = PlayerState.IDLE;
                         playerState = PlayerState.JUMP;
                         rb.gravityScale = jumpGravity;
                         onGround = false;
@@ -956,12 +980,14 @@ public class Player : MonoBehaviour
                                         //{
                                         //    movingMetalDirectionFix = true;
                                         //}
+                                        Debug.Log("Was moving and now isn't moving");
                                         movingMetal = false;
                                         playerState = PlayerState.MOVING_OBJECT_END;
                                         rb.velocity = Vector2.zero;
                                         rb.isKinematic = true;
                                         currentMovingObject = null;
-
+                                        //currentPlayerMetal = null;
+                                        droppingMetal = true;
 
 
                                         //if (pickUpMetalPos.transform.position.x > transform.position.x)
@@ -976,6 +1002,7 @@ public class Player : MonoBehaviour
                                     }
                                     else
                                     {
+                                        Debug.Log("Wasn't moving and now is moving");
                                         StartMovingMetal(comp);
                                         //rb.gravityScale = jumpGravity;
 
@@ -1000,6 +1027,7 @@ public class Player : MonoBehaviour
     {
         playerState = PlayerState.MOVING_OBJECT_START;
         currentMovingObject = metal;
+        currentPlayerMetal = currentMovingObject.GetComponent<Metal>();
         movingMetal = true;
         currentMovingObject.GetComponent<Metal>().SetPickUpMetalDirection();
     }
@@ -1027,14 +1055,13 @@ public class Player : MonoBehaviour
 
     public void SetOnGround(bool state)
     {
-        Debug.Log("ON GROUND");
+        //Debug.Log("ON GROUND");
         //if (!fallFromMetal)
         //{
-            
-            onGround = state;
+        onGround = state;
 
-            playerState = PlayerState.WALKING;
-            rb.gravityScale = groundGravity;
+        playerState = currentPlayerState;
+        rb.gravityScale = groundGravity;
         //}
         //capsuleCollider2D.sharedMaterial.friction = onGroundFriction;
     }
@@ -1158,9 +1185,15 @@ public class Player : MonoBehaviour
         return currentMovingObject;
     }
 
+    public Metal GetPlayerCurrentMetal()
+    {
+        return currentPlayerMetal;
+    }
+
+
     public void SetFallFix()
     {
-        Debug.Log("FALL FIX");
+        //Debug.Log("FALL FIX 2" + playerState);
         currentPlayerState = playerState;
         playerState = PlayerState.FALL_FIX;
         rb.isKinematic = false;
