@@ -91,6 +91,7 @@ public class LevelLoadController : MonoBehaviour
             if (prev_scene_to_destroy_ != "" && SceneManager.GetSceneByName(prev_scene_to_destroy_).isLoaded)
             {
                 SceneManager.UnloadSceneAsync(prev_scene_to_destroy_);
+                gameObject.SetActive(false);
                
             }
 

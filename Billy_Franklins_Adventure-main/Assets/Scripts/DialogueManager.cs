@@ -27,15 +27,22 @@ public class DialogueManager : MonoBehaviour
 
     public TextMeshProUGUI dialogueText;
     public bool isOpen;
+    public bool isWriting;
     public Animator animator;
+    public GameObject keysUI;
+    public GameObject continueTextObject;
+    public float letterTimer = 0.2f;
 
     private Queue<string> sentences = new Queue<string>();
+    private string currentSentence;
     // Start is called before the first frame update
+
     
     public void StartDialogue (Dialogue dialogue)
     {
         animator.SetBool("IsOpen", true);
-        isOpen = true;  
+        isOpen = true;
+        keysUI.SetActive(false);
         sentences.Clear();
 
         foreach (string sentence in dialogue.sentences)
@@ -48,30 +55,47 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if (sentences.Count == 0)
+        StopAllCoroutines();
+        if (isWriting)
         {
-            EndDialogue();
-            return;
+            dialogueText.text = currentSentence;
+            isWriting = false;
+            continueTextObject.SetActive(true);
         }
 
-        string sentence = sentences.Dequeue();
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+        else
+        {
+            if (sentences.Count == 0)
+            {
+                EndDialogue();
+                return;
+            }
+            currentSentence = sentences.Dequeue();
+            continueTextObject.SetActive(false);
+            StartCoroutine(TypeSentence(currentSentence));
+        }
+        
     }
+
 
     IEnumerator TypeSentence (string sentence)
     {
+        isWriting = true;
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return null;
+            yield return new WaitForSeconds(letterTimer);
         }
+
+        continueTextObject.SetActive(true);
+        isWriting = false;
     }
 
     private void EndDialogue()
     {
         animator.SetBool("IsOpen", false);
         isOpen = false;
+        keysUI.SetActive(true);
     }
 }

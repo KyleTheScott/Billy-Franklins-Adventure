@@ -45,7 +45,7 @@ public class FogController : MonoBehaviour
         float worldScreenHeight = Camera.main.orthographicSize * 2.0f;
         float worldScreenWidth = worldScreenHeight / Screen.height * Screen.width;
 
-        transform.localScale = new Vector2(worldScreenWidth / spriteWidth, worldScreenHeight / spriteHeight) * 1.2f;
+        transform.localScale = new Vector2(worldScreenWidth / spriteWidth, worldScreenHeight / spriteHeight) * 1.1f;
 
     }
 

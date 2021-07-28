@@ -669,7 +669,7 @@ public class Player : MonoBehaviour
         if (isReading)
         {
             playerState = PlayerState.IDLE;
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyUp(KeyCode.Return))
             {
                 DialogueManager.instance.DisplayNextSentence();
                 if (!DialogueManager.instance.isOpen)

@@ -464,7 +464,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 7854410858041116636}
   isOpen: 0
+  isWriting: 0
   animator: {fileID: 1101292049794725974}
+  keysUI: {fileID: 6450722731194313176}
+  continueTextObject: {fileID: 8739612952160513014}
+  letterTimer: 0.2
 --- !u!1 &7790407516299791282
 GameObject:
   m_ObjectHideFlags: 0
