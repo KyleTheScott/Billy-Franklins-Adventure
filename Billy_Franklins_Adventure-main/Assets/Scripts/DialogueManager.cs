@@ -31,7 +31,7 @@ public class DialogueManager : MonoBehaviour
     public Animator animator;
     public GameObject keysUI;
     public GameObject continueTextObject;
-    public float letterTimer = 0.2f;
+    public float letterTimer = 1f;
 
     private Queue<string> sentences = new Queue<string>();
     private string currentSentence;

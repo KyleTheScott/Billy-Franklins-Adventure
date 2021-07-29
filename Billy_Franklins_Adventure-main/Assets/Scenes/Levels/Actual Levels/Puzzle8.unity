@@ -2847,6 +2847,96 @@ Transform:
   m_Father: {fileID: 254095863}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1625392576
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1571835915}
+    m_Modifications:
+    - target: {fileID: 8050688128019160805, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_Name
+      value: DialogueTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160808, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160808, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: 'Young Billy had to be my hands for that time. The boy continues to
+        impress me with his scientific mind. I dare say he may even surpass me some
+        day...
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160808, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: "Dad\u2019s Journal page 24\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160808, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: "Metal is of course a conductor of Electricity, I figured that one out
+        the hard way, my hand didn\u2019t stop stinging for a week!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160809, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.3526981
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160809, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_Size.y
+      value: 3.8082776
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160810, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.928077
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.0224519
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
 --- !u!1001 &1641293986
 PrefabInstance:
   m_ObjectHideFlags: 0
