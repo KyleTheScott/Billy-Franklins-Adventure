@@ -31,7 +31,7 @@ public class DialogueManager : MonoBehaviour
     public Animator animator;
     public GameObject keysUI;
     public GameObject continueTextObject;
-    public float letterTimer = 0.2f;
+    public float letterRate = 10.0f;
 
     private Queue<string> sentences = new Queue<string>();
     private string currentSentence;
@@ -85,7 +85,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(letterTimer);
+            yield return new WaitForSeconds(1.0f / letterRate);
         }
 
         continueTextObject.SetActive(true);
