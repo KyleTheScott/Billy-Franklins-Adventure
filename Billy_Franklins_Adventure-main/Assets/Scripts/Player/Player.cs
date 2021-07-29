@@ -665,6 +665,7 @@ public class Player : MonoBehaviour
         //    player.SetFallFix();
         //}
         //fallFixTimer += Time.deltaTime;
+<<<<<<< HEAD
 
         if (isReading)
         {
@@ -681,6 +682,9 @@ public class Player : MonoBehaviour
         }
 
         else if (movementEnabled && !animationMovement)
+=======
+        if (movementEnabled && !animationMovement)
+>>>>>>> Neil#2
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
