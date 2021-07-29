@@ -662,7 +662,6 @@ public class Player : MonoBehaviour
         //    player.SetFallFix();
         //}
         //fallFixTimer += Time.deltaTime;
-
         if (movementEnabled && !animationMovement)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
