@@ -719,27 +719,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7584460514356402065, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
       propertyPath: minUpMoveSpeedLight
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7584460514356402065, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
       propertyPath: maxUpMoveSpeedLight
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7584460514356402065, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
       propertyPath: minUpMoveSpeedMedium
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7584460514356402065, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
       propertyPath: maxUpMoveSpeedMedium
-      value: 200
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7584460514356402065, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
       propertyPath: minUpMoveSpeedHeavy
-      value: 200
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7584460514356402065, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
       propertyPath: maxUpMoveSpeedHeavy
-      value: 300
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7584460514356402069, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
       propertyPath: m_LocalPosition.y
