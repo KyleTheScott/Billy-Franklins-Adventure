@@ -1,0 +1,1378 @@
+fileFormatVersion: 2
+guid: a151210794ffad248ad99b17366319cc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6361049776011164719
+    second: ShootToIdle_2048x2048_0
+  - first:
+      213: -1042090557180384579
+    second: ShootToIdle_2048x2048_1
+  - first:
+      213: 2133801285800102216
+    second: ShootToIdle_2048x2048_2
+  - first:
+      213: -8927637696143334370
+    second: ShootToIdle_2048x2048_3
+  - first:
+      213: 2643452229845711152
+    second: ShootToIdle_2048x2048_4
+  - first:
+      213: -353283581568526875
+    second: ShootToIdle_2048x2048_5
+  - first:
+      213: -3300514153542511577
+    second: ShootToIdle_2048x2048_6
+  - first:
+      213: 5951420211700129274
+    second: ShootToIdle_2048x2048_7
+  - first:
+      213: -8962403712052030649
+    second: ShootToIdle_2048x2048_8
+  - first:
+      213: -331053547117620694
+    second: ShootToIdle_2048x2048_9
+  - first:
+      213: 27665672585107822
+    second: ShootToIdle_2048x2048_10
+  - first:
+      213: -8954114900860291338
+    second: ShootToIdle_2048x2048_11
+  - first:
+      213: 3297323065551915201
+    second: ShootToIdle_2048x2048_12
+  - first:
+      213: -3130227242643471364
+    second: ShootToIdle_2048x2048_13
+  - first:
+      213: 2080828857136131465
+    second: ShootToIdle_2048x2048_14
+  - first:
+      213: 2299964215569206267
+    second: ShootToIdle_2048x2048_15
+  - first:
+      213: -8558009118399505494
+    second: ShootToIdle_2048x2048_16
+  - first:
+      213: 6166957842887370842
+    second: ShootToIdle_2048x2048_17
+  - first:
+      213: 4274853921980351554
+    second: ShootToIdle_2048x2048_18
+  - first:
+      213: 304002989220287530
+    second: ShootToIdle_2048x2048_19
+  - first:
+      213: -5702183272617418764
+    second: ShootToIdle_2048x2048_20
+  - first:
+      213: -6672497146583707438
+    second: ShootToIdle_2048x2048_21
+  - first:
+      213: -3718208712694913471
+    second: ShootToIdle_2048x2048_22
+  - first:
+      213: -7527073686189203090
+    second: ShootToIdle_2048x2048_23
+  - first:
+      213: 4275386259773423298
+    second: ShootToIdle_2048x2048_24
+  - first:
+      213: 4107083440232649857
+    second: ShootToIdle_2048x2048_25
+  - first:
+      213: 7507938544090646043
+    second: ShootToIdle_2048x2048_26
+  - first:
+      213: 8016930345456196661
+    second: ShootToIdle_2048x2048_27
+  - first:
+      213: 5928534376461951589
+    second: ShootToIdle_2048x2048_28
+  - first:
+      213: -8304584398406602486
+    second: ShootToIdle_2048x2048_29
+  - first:
+      213: 4475455922599848822
+    second: ShootToIdle_2048x2048_30
+  - first:
+      213: 8249643402331496285
+    second: ShootToIdle_2048x2048_31
+  - first:
+      213: -8620778663373005825
+    second: ShootToIdle_2048x2048_32
+  - first:
+      213: 8183147887049950713
+    second: ShootToIdle_2048x2048_33
+  - first:
+      213: 220276867586502478
+    second: ShootToIdle_2048x2048_34
+  - first:
+      213: -7262253780329150484
+    second: ShootToIdle_2048x2048_35
+  - first:
+      213: 773464330572036803
+    second: ShootToIdle_2048x2048_36
+  - first:
+      213: -2039068232125349862
+    second: ShootToIdle_2048x2048_37
+  - first:
+      213: 92692095518096515
+    second: ShootToIdle_2048x2048_38
+  - first:
+      213: 1806677699143344486
+    second: ShootToIdle_2048x2048_39
+  - first:
+      213: -4828793584418558347
+    second: ShootToIdle_2048x2048_40
+  - first:
+      213: -4743945699050949914
+    second: ShootToIdle_2048x2048_41
+  - first:
+      213: -7426272208041426799
+    second: ShootToIdle_2048x2048_42
+  - first:
+      213: -8300693701574824975
+    second: ShootToIdle_2048x2048_43
+  - first:
+      213: -5252657762511568881
+    second: ShootToIdle_2048x2048_44
+  - first:
+      213: 3875437356023668146
+    second: ShootToIdle_2048x2048_45
+  - first:
+      213: 3642693592304614152
+    second: ShootToIdle_2048x2048_46
+  - first:
+      213: 6274644657744664931
+    second: ShootToIdle_2048x2048_47
+  - first:
+      213: -2432800429959365826
+    second: ShootToIdle_2048x2048_48
+  - first:
+      213: 4128869241852267749
+    second: ShootToIdle_2048x2048_49
+  - first:
+      213: 8419866754746516596
+    second: ShootToIdle_2048x2048_50
+  - first:
+      213: -3576373786829639924
+    second: ShootToIdle_2048x2048_51
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 400
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 16384
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 14336
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2c39b9a11df64850800000000000000
+      internalID: 6361049776011164719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_1
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 14336
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dba6973d820c981f0800000000000000
+      internalID: -1042090557180384579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_2
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 14336
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 849036dc6f8cc9d10800000000000000
+      internalID: 2133801285800102216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_3
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 14336
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e146df5e0d8aa1480800000000000000
+      internalID: -8927637696143334370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_4
+      rect:
+        serializedVersion: 2
+        x: 8192
+        y: 14336
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 039faa42ccd6fa420800000000000000
+      internalID: 2643452229845711152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_5
+      rect:
+        serializedVersion: 2
+        x: 10240
+        y: 14336
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e551af4472e81bf0800000000000000
+      internalID: -353283581568526875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_6
+      rect:
+        serializedVersion: 2
+        x: 12288
+        y: 14336
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72413fd3dd73232d0800000000000000
+      internalID: -3300514153542511577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 12288
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afd577b8621b79250800000000000000
+      internalID: 5951420211700129274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_8
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 12288
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7431f790f452f9380800000000000000
+      internalID: -8962403712052030649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_9
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 12288
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a22db6a8d8cd76bf0800000000000000
+      internalID: -331053547117620694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_10
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 12288
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6958ea58c9426000800000000000000
+      internalID: 27665672585107822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_11
+      rect:
+        serializedVersion: 2
+        x: 8192
+        y: 12288
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f6b03840f79cb380800000000000000
+      internalID: -8954114900860291338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_12
+      rect:
+        serializedVersion: 2
+        x: 10240
+        y: 12288
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c88cefabd172cd20800000000000000
+      internalID: 3297323065551915201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_13
+      rect:
+        serializedVersion: 2
+        x: 12288
+        y: 12288
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf34cff48e23f84d0800000000000000
+      internalID: -3130227242643471364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10240
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98d2bf322d690ec10800000000000000
+      internalID: 2080828857136131465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_15
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 10240
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfbcc11b44d1bef10800000000000000
+      internalID: 2299964215569206267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_16
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 10240
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aab5e319c08db3980800000000000000
+      internalID: -8558009118399505494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_17
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 10240
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a586c12fb7f659550800000000000000
+      internalID: 6166957842887370842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_18
+      rect:
+        serializedVersion: 2
+        x: 8192
+        y: 10240
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 244035e2ef4535b30800000000000000
+      internalID: 4274853921980351554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_19
+      rect:
+        serializedVersion: 2
+        x: 10240
+        y: 10240
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a24d127ab19083400800000000000000
+      internalID: 304002989220287530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_20
+      rect:
+        serializedVersion: 2
+        x: 12288
+        y: 10240
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ffd6776686cdd0b0800000000000000
+      internalID: -5702183272617418764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8192
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d0121592378663a0800000000000000
+      internalID: -6672497146583707438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_22
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 8192
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 146ae0f20e4466cc0800000000000000
+      internalID: -3718208712694913471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_23
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 8192
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e61a080dc567a8790800000000000000
+      internalID: -7527073686189203090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_24
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 8192
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ce716bb629355b30800000000000000
+      internalID: 4275386259773423298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_25
+      rect:
+        serializedVersion: 2
+        x: 8192
+        y: 8192
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 184d4fde0aa4ff830800000000000000
+      internalID: 4107083440232649857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_26
+      rect:
+        serializedVersion: 2
+        x: 10240
+        y: 8192
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b168cfbb35e813860800000000000000
+      internalID: 7507938544090646043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_27
+      rect:
+        serializedVersion: 2
+        x: 12288
+        y: 8192
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53c57f57cabd14f60800000000000000
+      internalID: 8016930345456196661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6144
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 562e4bbca92664250800000000000000
+      internalID: 5928534376461951589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_29
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 6144
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0139bd3d7030cc80800000000000000
+      internalID: -8304584398406602486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_30
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 6144
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67b6b7a13730c1e30800000000000000
+      internalID: 4475455922599848822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_31
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 6144
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5f1d9747fe9c7270800000000000000
+      internalID: 8249643402331496285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_32
+      rect:
+        serializedVersion: 2
+        x: 8192
+        y: 6144
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffb92620b77dc5880800000000000000
+      internalID: -8620778663373005825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_33
+      rect:
+        serializedVersion: 2
+        x: 10240
+        y: 6144
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f5c918a5a1609170800000000000000
+      internalID: 8183147887049950713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_34
+      rect:
+        serializedVersion: 2
+        x: 12288
+        y: 6144
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4faabcd4a49e0300800000000000000
+      internalID: 220276867586502478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4096
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce74eb2f9aa473b90800000000000000
+      internalID: -7262253780329150484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_36
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 4096
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ca7e2ee5b5ebba00800000000000000
+      internalID: 773464330572036803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_37
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 4096
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a10826f0f36c3b3e0800000000000000
+      internalID: -2039068232125349862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_38
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 4096
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38cb7d248fe494100800000000000000
+      internalID: 92692095518096515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_39
+      rect:
+        serializedVersion: 2
+        x: 8192
+        y: 4096
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6612f019bcb921910800000000000000
+      internalID: 1806677699143344486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_40
+      rect:
+        serializedVersion: 2
+        x: 10240
+        y: 4096
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57eeb0ba1ddacfcb0800000000000000
+      internalID: -4828793584418558347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_41
+      rect:
+        serializedVersion: 2
+        x: 12288
+        y: 4096
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e2735e658e1a2eb0800000000000000
+      internalID: -4743945699050949914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2048
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 190c55ad5c490f890800000000000000
+      internalID: -7426272208041426799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_43
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 2048
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fb6f40be030ecc80800000000000000
+      internalID: -8300693701574824975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_44
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 2048
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f00ccc2489fca17b0800000000000000
+      internalID: -5252657762511568881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_45
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 2048
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bdd11b0eb158c530800000000000000
+      internalID: 3875437356023668146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_46
+      rect:
+        serializedVersion: 2
+        x: 8192
+        y: 2048
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80b78eab5827d8230800000000000000
+      internalID: 3642693592304614152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_47
+      rect:
+        serializedVersion: 2
+        x: 10240
+        y: 2048
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3695cac5214041750800000000000000
+      internalID: 6274644657744664931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_48
+      rect:
+        serializedVersion: 2
+        x: 12288
+        y: 2048
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3bbad206e4fc3ed0800000000000000
+      internalID: -2432800429959365826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ec04a423b0bc4930800000000000000
+      internalID: 4128869241852267749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_50
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47489ccf33069d470800000000000000
+      internalID: 8419866754746516596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootToIdle_2048x2048_51
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 0
+        width: 2048
+        height: 2048
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0f20044dfa2e5ec0800000000000000
+      internalID: -3576373786829639924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
