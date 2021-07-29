@@ -823,6 +823,93 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &485299747
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1354312925}
+    m_Modifications:
+    - target: {fileID: 8050688128019160805, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_Name
+      value: DialogueTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160808, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160808, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: "Oh how exciting! I can\u2019t wait to test it! I\u2019m sure young
+        Billy will be most impressed\u2026\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160808, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: "Dad\u2019s Journal: Page 17"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160808, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: In theory, with my new modifications to this Leyden Jar, I should be
+        able to fire the contained lightning as a controlled burst of energy!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160809, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.00000023841858
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160809, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_Size.y
+      value: 4.0469747
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160810, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.515068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.0363212
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
 --- !u!1 &518707523
 GameObject:
   m_ObjectHideFlags: 0

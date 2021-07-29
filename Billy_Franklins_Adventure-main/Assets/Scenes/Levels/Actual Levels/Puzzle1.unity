@@ -660,6 +660,94 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3471273121197119990, guid: 9eab5506f6059a347b743daa14a584a9, type: 3}
   m_PrefabInstance: {fileID: 3471273121348048382}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1137778991
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5965716298653037518}
+    m_Modifications:
+    - target: {fileID: 8050688128019160805, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_Name
+      value: DialogueTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160808, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160808, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: 'Dads Journal: Page 15'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160808, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: Marvelous! My theory was correct! These Apparitions are repelled by
+        significant light! That explains why these ghosts were accompanied by this
+        fowl storm.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160808, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: "With the lanterns out the ghosts roam free. Hmm, we must find a new
+        source of light in order to drive these spirits back\u2026\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160809, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.49747992
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160809, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_Size.y
+      value: 4.0254393
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160810, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.243547
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.2266793
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160811, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
 --- !u!1 &1175178451
 GameObject:
   m_ObjectHideFlags: 0
@@ -2152,6 +2240,10 @@ PrefabInstance:
       propertyPath: cameraPrefab
       value: 
       objectReference: {fileID: 209514189109326048, guid: c6400067fe85dab4e866400616e936be, type: 3}
+    - target: {fileID: 288686495153921894, guid: 4df786959ae486f4f9256924d39e862b, type: 3}
+      propertyPath: playersNewMaxCharge
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3093061155417387641, guid: 4df786959ae486f4f9256924d39e862b, type: 3}
       propertyPath: m_Name
       value: root_Puzzle1
