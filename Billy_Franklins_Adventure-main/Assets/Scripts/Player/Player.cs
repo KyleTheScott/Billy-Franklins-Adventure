@@ -671,7 +671,7 @@ public class Player : MonoBehaviour
             playerState = PlayerState.IDLE;
             if (Input.GetKeyUp(KeyCode.Return))
             {
-                DialogueManager.instance.DisplayNextSentence();
+                DialogueManager.instance.AdvanceSentence();
                 if (!DialogueManager.instance.isOpen)
                 {
                     isReading = false;

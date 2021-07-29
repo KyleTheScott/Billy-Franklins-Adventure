@@ -50,10 +50,10 @@ public class DialogueManager : MonoBehaviour
             sentences.Enqueue(sentence);
         }
 
-        DisplayNextSentence();
+        AdvanceSentence();
     }
 
-    public void DisplayNextSentence()
+    public void AdvanceSentence()
     {
         StopAllCoroutines();
         if (isWriting)

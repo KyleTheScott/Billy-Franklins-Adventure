@@ -33,6 +33,7 @@ public class LevelLoadController : MonoBehaviour
 
         if (next_scene_position_ != null)
         {
+            Debug.Log("The next scene position is set");
             GameObject[] root_level_objs = GameObject.FindGameObjectsWithTag("LevelRoot");
 
             foreach (GameObject root_level in root_level_objs)
@@ -91,7 +92,6 @@ public class LevelLoadController : MonoBehaviour
             if (prev_scene_to_destroy_ != "" && SceneManager.GetSceneByName(prev_scene_to_destroy_).isLoaded)
             {
                 SceneManager.UnloadSceneAsync(prev_scene_to_destroy_);
-                gameObject.SetActive(false);
                
             }
 
@@ -104,8 +104,9 @@ public class LevelLoadController : MonoBehaviour
                 if (ghostWall != null)
                 {
                     ghostWall.LowerGhostWall();
+                    gameObject.SetActive(false);
                 }
-                gameObject.SetActive(false);
+                
             }
         }
         
