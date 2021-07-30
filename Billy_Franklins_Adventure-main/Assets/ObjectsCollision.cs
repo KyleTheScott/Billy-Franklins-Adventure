@@ -9,7 +9,6 @@ public class ObjectsCollision : MonoBehaviour
     private CheckPointSystem checkPointSystem = null;
     public List<GameObject> checkForElectric = new List<GameObject>();
 
-
     private void Start()
     {
         player = player = FindObjectOfType<Player>().gameObject;
@@ -18,8 +17,10 @@ public class ObjectsCollision : MonoBehaviour
 
     private void Update()
     {
+
         if (checkForElectric.Count > 0)
         {
+            //checks if player is being electricuted
             foreach (GameObject item in checkForElectric)
             {
                 //water
@@ -50,7 +51,7 @@ public class ObjectsCollision : MonoBehaviour
         FindObjectOfType<ElectricityController>().EmptyObjects();
     }
 
-
+    //add electrifiable object connected to the player
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Water") || collision.CompareTag("Metal"))
@@ -58,6 +59,7 @@ public class ObjectsCollision : MonoBehaviour
             checkForElectric.Add(collision.gameObject);
         }
     }
+    //remove electrifiable object connected to the player
     public void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Water") || collision.CompareTag("Metal"))

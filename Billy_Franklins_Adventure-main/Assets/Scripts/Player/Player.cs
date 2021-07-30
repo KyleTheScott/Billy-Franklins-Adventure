@@ -9,16 +9,12 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Charges charges;
     [SerializeField] private Shooting shooting;
-    
-
-    //CapsuleCollider2D capsuleCollider2D = null; //Player's capsule collider
 
     [Header("General")]
-    //[SerializeField] private bool 
     Rigidbody2D rb = null; //player's rigid body
 
-    [SerializeField] private PlayerGFX playerGFX;
-    [SerializeField] private PlayerCollision playerCollision;
+    [SerializeField] private PlayerGFX playerGFX; // players animations
+    [SerializeField] private PlayerCollision playerCollision; // player collision with ground
 
     public enum PlayerState
     {
@@ -41,8 +37,14 @@ public class Player : MonoBehaviour
         KICK_BUCKET_START,
         KICKING_BUCKET,
         KICK_BUCKET,
-        INTERACT
-
+        INTERACT,
+        LIGHTNING_CHARGES_START,
+        LIGHTNING_CHARGES,
+        LIGHTNING_CHARGES_END,
+        PLAYER_DEATH_ELECTRIFIED_START,
+        PLAYER_DEATH_ELECTRIFIED,
+        PLAYER_DEATH_CHARGES_START,
+        PLAYER_DEATH_CHARGES
     }
 
     [SerializeField] private PlayerState playerState = PlayerState.WALKING;
@@ -69,30 +71,22 @@ public class Player : MonoBehaviour
     [SerializeField] private float lowJumpMultiplier = 2f;
     [SerializeField] private float fallMultiplier = 4f;
 
+    //used to fix an issue with jumping by delaying when collision with ground is checked when jumping  
     private bool jumpFix = false;
     private float jumpFixTimer = 0;
     private float jumpFixTime = .1f;
 
 
-
+    [SerializeField] private PlayerState currentPlayerState;// player state used to set player state after a jump or fall when hitting ground
     //variables used for when player is on moving platforms to make the player fall and move with the platform
-    [SerializeField] private PlayerState currentPlayerState;
     [SerializeField] private float fallFixTimer = 0;
     [SerializeField] private float fallFixMax = .1f;
     [SerializeField] private float fallFixStayMax = 2f;
     private bool fallFixSwitch = false;
 
-    [SerializeField] private bool fallFromMetal = false;
+    //[SerializeField] private bool fallFromMetal = false; // might use this in the future
 
-    //ConstraintSource constraintSource;
-    //ParentConstraint parentConstraint;
-
-    private bool onPlatform = false;
-    private bool onPlatformRotation = true;
-
-    private float rotationTimer = 0;
-    private float rotationTime = .5f;
-
+    //delay used in metal movement
     private bool droppingMetal = false;
     private float dropMetalTimer = 0;
     private float dropMetalTime = 2f;
@@ -107,29 +101,12 @@ public class Player : MonoBehaviour
     [Header("Interact")]
     //stores object the player is currently moving 
     [SerializeField] private GameObject currentMovingObject;
-
     [SerializeField] private Metal currentPlayerMetal;
 
-
-    //[SerializeField] float interactRadius = 5f;
-    //[SerializeField] LayerMask interactLayer;
-
-    //[Header("Kite")]
-    //[SerializeField] private Kite kite;
-    //public UnityEvent PlayerMovingHorizontallyEvent;
-    //public UnityEvent PlayerMovingVerticallyEvent;
-    //[SerializeField] private float playerDistMovedX;
-    //[SerializeField] private float playerDistMovedY;
-
     [Header("Animation")] 
-    private bool animationMovement = false;
-    private bool animationMovingRight = false;
+    private bool animationMovement = false; // an automated animation is happening
 
-    [SerializeField] private bool movingMetal = false;
-
-    [SerializeField] private bool movingMetalDirectionFix = false;
-    //private bool animationSwitch = false;
-
+    [SerializeField] private bool movingMetal = false; // player is moving metal
 
     [SerializeField] private GameObject pickUpMetalPos;
 
@@ -141,215 +118,6 @@ public class Player : MonoBehaviour
 
     [Header("Dialogue")]
     public bool isReading = false;
-
-    public void AddParentConstraint(GameObject gO)
-    {
-        //parentConstraint = gameObject.GetComponent<ParentConstraint>();
-       //constraintSource.sourceTransform = gO.transform;
-       //parentConstraint.AddSource(constraintSource);
-       
-        
-
-        //mySource.sourceTransform = m_RealObjOnPlane.transform;
-
-    }
-
-    public bool GetJumpFix()
-    {
-        return jumpFix;
-    }
-
-
-    public void SetOnPlatform(bool state)
-    {
-        onPlatform = state;
-    }
-
-    public void SetRotationPlatformFix()
-    {
-        onPlatformRotation = true;
-    }
-
-
-
-    public void RemoveParentConstraint(GameObject gO)
-    {
-        //constraintSource.sourceTransform = null;
-        //parentConstraint.RemoveSource(0);
-    }
-
-    public Vector2 GetMetalPickUpPos()
-    {
-        return pickUpMetalPos.transform.position;
-    }
-
-
-    public bool GetAnimationMovement()
-    {
-        return animationMovement;
-    }
-
-    //public bool GetAnimationMovingRight()
-    //{
-    //    return animationMovingRight;
-    //}
-
-    //public bool GetAnimationSwitch()
-    //{
-    //    return animationSwitch;
-    //}
-
-    //public void SetAnimationSwitch(bool state)
-    //{
-    //    animationSwitch = state;
-    //}
-
-
-    public void SetAnimationMovement(bool state)
-    {
-        //Debug.Log("Set Movement Animation: " + state);
-        animationMovement = state;
-        if (!state)
-        {
-            rb.velocity = Vector2.zero;
-            rb.isKinematic = true;
-            //Debug.Log("Player State: " + rb.velocity);
-        }
-        //else
-        //{
-        //    if (playerState == PlayerState.MOVING_OBJECT_START)
-        //    {
-
-        //    }
-        //}
-    }
-
-
-    public bool GetMetalMoving()
-    {
-        //Debug.Log("Moving Metal: " + movingMetal);
-        return movingMetal;
-    }
-
-    //public void MetalFacingFix(bool state)
-    //{
-        //if (state)
-        //{
-        //    if (playerGFX.GetFacingRight())
-        //    {
-        //        transform.Rotate(0f, 180f, 0f);
-        //        shooting.SetLastShootingLine(-1);
-        //    }
-        //    else
-        //    {
-        //        transform.Rotate(0f, 180f, 0f);
-        //        shooting.SetLastShootingLine(1);
-        //    }
-        //}
-        //else
-        //{
-        //    if (playerGFX.GetFacingRight())
-        //    {
-        //        transform.Rotate(0f, 180f, 0f);
-        //        shooting.SetLastShootingLine(1);
-        //    }
-        //    else
-        //    {
-        //        transform.Rotate(0f, 180f, 0f);
-        //        shooting.SetLastShootingLine(-1);
-        //    }
-        //}
-    //}
-
-    //public void OtherMetalFacingFix()
-    //{
-    //    Debug.Log("Y Angle: " + transform.eulerAngles.y);
-    //    if (transform.eulerAngles.y < 181 && transform.eulerAngles.y > 179)
-    //    {
-    //        shooting.SetLastShootingLine(1);
-    //    }
-    //    else
-    //    {
-    //        shooting.SetLastShootingLine(-1);
-    //    }
-    //}
-
-    public void SetMovingRight(bool state)
-    {
-        //animationMovingRight = state;
-        if (state && !playerGFX.GetFacingRight())
-        {
-            Debug.Log("Going Right");
-            playerGFX.SetFacingRight(true);
-            transform.Rotate(0f, 180f, 0f);
-            shooting.SetLastShootingLine(1);
-        }
-        else if (!state && playerGFX.GetFacingRight())
-        {
-            Debug.Log("Going Left");
-            playerGFX.SetFacingRight(false);
-            transform.Rotate(0f, 180f, 0f); 
-            shooting.SetLastShootingLine(-1);
-        }
-
-        if (playerGFX.GetFacingRight())
-        {
-            moveVelocity = moveSpeed;
-        }
-        else
-        {
-            moveVelocity = 0f - moveSpeed;
-        }
-    }
-
-
-    public bool GetMovementEnabled()
-    {
-        return movementEnabled;
-    }
-
-    public PlayerState GetPlayerState()
-    {
-        return playerState;
-    }
-    public void SetPlayerState(PlayerState state)
-    {
-        playerState = state;
-
-        switch (playerState)
-        {
-            case PlayerState.IDLE:
-            case PlayerState.KICK_BUCKET:
-            case PlayerState.MOVING_OBJECT:
-                rb.velocity = Vector2.zero;
-                rb.isKinematic = true;
-                Debug.Log("Player State: " + rb.velocity);
-                currentPlayerState = playerState;
-                break;
-        }
-    }
-
-    public void SetKinematic(bool state)
-    {
-        rb.isKinematic = state;
-    }
-
-    public void DestroyUI()
-    {
-        Destroy(pauseMenuUI.gameObject);
-        Destroy(settingsMenuUI.gameObject);
-    }
-
-    //public float GetDistPlayerMoveX()
-    //{
-    //    return playerDistMovedX;
-    //}
-
-    //public float GetDistPlayerMoveY()
-    //{
-    //    return playerDistMovedY;
-    //}
-
 
     // Start is called before the first frame update
     void Start()
@@ -382,29 +150,13 @@ public class Player : MonoBehaviour
         //kite.SetKiteStartPosition(transform.position);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //player input
-        HandleInput();
 
-        //if there are no charges left then player has died
-        //if (charges.GetLightCharges() == 0 && !shooting.GetLoadedProjectile() && !charges.GetLampOn() && shooting.GetCanShoot())
-        //{
-
-        //    FindObjectOfType<ObjectsCollision>().EmptyObjects();
-        //    checkPointDeathSystem.PlayerDeath();
-        //}
-    }
-
-
-
-
+    //used for moving player depending on state
     private void FixedUpdate()
     {
+        //for if an automated animation is happening
         if (animationMovement)
         {
-            //Debug.Log("Animation Movement");
             if (playerState != PlayerState.MOVING_OBJECT)
             {
                 rb.isKinematic = false;
@@ -413,7 +165,6 @@ public class Player : MonoBehaviour
             switch (playerState)
             {
                 case PlayerState.KICKING_BUCKET:
-                    //Debug.Log("Animation: " + playerState);
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                     break;
                 case PlayerState.MOVING_OBJECT_START:
@@ -421,30 +172,9 @@ public class Player : MonoBehaviour
                     break;
             }
         }
-        //else if (animationSwitch)
-        //{
-        //    if ( playerState != PlayerState.MOVING_OBJECT_SWITCH_START &&
-        //        playerState != PlayerState.MOVING_OBJECT_SWITCH_END)
-        //    {
-
-        //        if (playerGFX.GetFacingRight())
-        //        {
-        //            moveVelocity = moveSpeed;
-        //        }
-        //        else
-        //        {
-        //            moveVelocity = 0f - moveSpeed;
-        //        }
-
-        //        //Debug.Log("switch move" + moveVelocity);
-        //        rb.isKinematic = false;
-        //        rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
-        //    }
-        //}
-
         else
-        { 
-            
+        {
+
             switch (playerState)
             {
                 case PlayerState.IDLE:
@@ -465,15 +195,11 @@ public class Player : MonoBehaviour
                     {
                         rb.velocity = new Vector2(-jumpMoveSpeed, jumpForce);
                     }
-
-                    //rb.velocity = jumpForce;
-                    //rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier * 1) * Time.deltaTime;
-                    //rb.velocity = new Vector2(jumpMoveSpeed, rb.velocity.y);
                     playerState = PlayerState.JUMPING;
                     break;
                 //in the air of the jump
                 case PlayerState.JUMPING:
-                    if (rb.velocity.y > 0 /*&& !Input.GetButton("Jump")*/)
+                    if (rb.velocity.y > 0)
                     {
                         rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier * 1) * Time.deltaTime;
                         if (playerGFX.GetFacingRight())
@@ -497,8 +223,6 @@ public class Player : MonoBehaviour
                             {
                                 rb.velocity = new Vector2(0, rb.velocity.y);
                             }
-
-                            //rb.velocity = new Vector2(-jumpMoveSpeed, rb.velocity.y);
                         }
                     }
                     else
@@ -517,29 +241,17 @@ public class Player : MonoBehaviour
                     {
                         rb.velocity = new Vector2(0, rb.velocity.y);
                     }
-
                     break;
+                //falling but not from a jump
                 case PlayerState.FALLING:
-                    //falling but not from a jump
-
-                    //if (moveVelocity != 0)
-                    //{
-                    //    rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
-                    //}
-                    //else
-                    //{
-                        rb.velocity = new Vector2(0, rb.velocity.y);
-                    //}
-
+                    rb.velocity = new Vector2(0, rb.velocity.y);
                     break;
                 //state for when player is on a moving platform
                 case PlayerState.FALL_FIX:
-                    //Debug.Log("Movement Fix");
                     if (fallFixTimer >= fallFixStayMax)
                     {
                         rb.isKinematic = false;
                         playerState = currentPlayerState;
-                        //Debug.Log("Walk problem");
                         fallFixTimer = 0;
                         onGround = true;
                     }
@@ -575,47 +287,15 @@ public class Player : MonoBehaviour
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                     break;
             }
-            //playerDistMovedX = lastPosition.x - transform.position.x;
-            //if ((Mathf.Abs(playerDistMovedX) > Mathf.Epsilon) && playerDistMovedX <= 1)
-            //{
-
-            //    PlayerMovingHorizontallyEvent.Invoke();
-            //    //kite.MoveKiteWithPlayer(-distX);
-            //}
-            //playerDistMovedY = lastPosition.y - transform.position.y;
-            //if ((Mathf.Abs(playerDistMovedY) > Mathf.Epsilon) && playerDistMovedY <= 1)
-            //{
-            //    PlayerMovingVerticallyEvent.Invoke();
-            //    //kite.MoveKiteWithPlayer(-distX);
-            //}
-
-
             lastPosition = transform.position;
         }
     }
 
-    public bool IsPlayerOnGround()
-    {
-        return onGround;
-    }
 
-    //private void OnDrawGizmosSelected()
-    //{
-    //    if (debugMode)
-    //    {
-    //        //Draw interactable circle
-    //        Gizmos.color = Color.yellow;
-    //        Gizmos.DrawWireSphere(transform.position, interactRadius);
-    //    }
-    //}
-
-    public bool IsDroppingMetal()
+    // Update is called once per frame
+    void Update()
     {
-        return droppingMetal;
-    }
-
-    void HandleInput()
-    {
+        //delay for when player is dropping metal on SuspendedPlatforms
         if (droppingMetal)
         {
             dropMetalTimer += Time.deltaTime;
@@ -625,7 +305,7 @@ public class Player : MonoBehaviour
                 dropMetalTimer = 0;
             }
         }
-
+        //delay for when player is jump to non-moving diagonal platforms
         if (jumpFix)
         {
             jumpFixTimer += Time.deltaTime;
@@ -635,38 +315,13 @@ public class Player : MonoBehaviour
                 jumpFixTimer = 0;
             }
         }
+        //player input
+        HandleInput();
+    }
 
-        
-
-        //if (onPlatformRotation)
-        //{
-        //    Debug.Log("Rotation Problem");
-        //    Vector3 fixRotation = transform.eulerAngles;
-        //    fixRotation.z = 0;
-        //    transform.eulerAngles = fixRotation;
-        //    onPlatformRotation = false;
-        //}
-
-        //if (rotationTimer >= rotationTime)
-        //{
-        //    Debug.Log("Rotation Problem");
-        //    Vector3 fixRotation = transform.eulerAngles;
-        //    fixRotation.z = 0;
-        //    transform.eulerAngles = fixRotation;
-        //    onPlatformRotation = false;
-        //    rotationTimer = 0;
-        //}
-
-        rotationTimer += Time.deltaTime;
-        //player.transform.rotation = Quaternion.AngleAxis(0, fixRotation);
-
-        //if (fallFixTimer >= fallFixMax)
-        //{
-        //    player.SetFallFix();
-        //}
-        //fallFixTimer += Time.deltaTime;
-
-
+    void HandleInput()
+    {
+        //for when player is reading tutorials
         if (isReading)
         {
             playerState = PlayerState.IDLE;
@@ -680,9 +335,10 @@ public class Player : MonoBehaviour
                 }
             }
         }
-
+        //movementEnabled is used when menu is open
         else if (movementEnabled && !animationMovement)
         {
+            //to open menu
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 Debug.Log("Pause");
@@ -690,7 +346,6 @@ public class Player : MonoBehaviour
                 {
                     Debug.Log("Pause 2");
                     pauseMenuUI.gameObject.SetActive(true);
-                    //pauseMenuUI.gameObject.GetComponent<PauseMenu>().PauseMenuCalled();
                 }
                 PlayerControlsStatus(false);
             }
@@ -701,7 +356,6 @@ public class Player : MonoBehaviour
                 //Character flip
                 if (playerGFX.GetFacingRight() && !movingMetal)
                 {
-                    //rb.velocity = new Vector2(0,0);
                     if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                         playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
                         playerState != PlayerState.MOVING_OBJECT_STOPPED_LEFT)
@@ -712,33 +366,18 @@ public class Player : MonoBehaviour
                         if (playerState == PlayerState.MOVING_OBJECT_STOPPED_RIGHT)
                         {
                             playerState = PlayerState.MOVING_OBJECT_LEFT;
-                            //animationMovement = true;
-                            //animationSwitch = true;
-                            
+
                             rb.isKinematic = true;
-                            //playerGFX.PutMetalDownSwitch();
                         }
 
                         if (playerState == PlayerState.MOVING_OBJECT || playerState == PlayerState.MOVING_OBJECT_IDLE)
                         {
-                            //MetalFacingFix(true);
                             movingMetal = true;
                         }
-                        //Debug.Log("Falling Left" + playerState);
                         playerGFX.SetFacingRight(false); // facing left
                         transform.Rotate(0f, 180f, 0f); //rotate player and aiming to the left 
                         shooting.SetLastShootingLine(-1);
                     }
-                    //if (playerState == PlayerState.MOVING_OBJECT || playerState == PlayerState.MOVING_OBJECT_IDLE)
-                    //{
-                    //    playerState = PlayerState.MOVING_OBJECT_SWITCH_START;
-                    //    rb.velocity = Vector2.zero;
-                    //    rb.isKinematic = true;
-                    //    animationSwitch = true;
-                    //    //animationMovement = true;
-                    //    //rb.isKinematic = true;
-                    //    //playerGFX.PutMetalDownSwitch();
-                    //}
                 }
                 else
                 {
@@ -746,21 +385,10 @@ public class Player : MonoBehaviour
                     {
                         if (!playerGFX.GetFacingRight() && movingMetal)
                         {
-                            //Debug.Log("Fall Problem");
                             playerState = PlayerState.MOVING_OBJECT;
                         }
                     }
-
                 }
-
-                //if (!animationSwitch)
-                //{
-                    //if (playerState != PlayerState.MOVING_OBJECT_END)
-                    //{
-                    //    rb.isKinematic = false;
-                    //}
-                //}
-
                 if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                     playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
                     playerState != PlayerState.MOVING_OBJECT_STOPPED_LEFT && playerState != PlayerState.MOVING_OBJECT_END)
@@ -782,12 +410,6 @@ public class Player : MonoBehaviour
                             }
                             else
                             {
-                                //if (movingMetalDirectionFix)
-                                //{
-                                //    MetalFacingFix(true);
-                                //    movingMetalDirectionFix = false;
-                                //}
-                                
                                 moveVelocity = 0f - moveSpeed;
                             }
                         }
@@ -802,12 +424,10 @@ public class Player : MonoBehaviour
                         {
                             onGround = true;
                         }
-                        // Debug.Log("Walk problem");
                         playerState = PlayerState.WALKING;
                     }
                     else
                     {
-                        //Debug.Log("Fall Problem 3");
                         playerState = PlayerState.IDLE;
                     }
                 }
@@ -819,7 +439,6 @@ public class Player : MonoBehaviour
                 //Character flip
                 if (!playerGFX.GetFacingRight() && !movingMetal)
                 {
-                    //rb.velocity = new Vector2(0, 0);
                     if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                         playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
                         playerState != PlayerState.MOVING_OBJECT_STOPPED_RIGHT)
@@ -831,29 +450,15 @@ public class Player : MonoBehaviour
                         {
                             playerState = PlayerState.MOVING_OBJECT_RIGHT;
                             rb.isKinematic = true;
-                            // playerGFX.PutMetalDownSwitch();
                         }
                         if (playerState == PlayerState.MOVING_OBJECT || playerState == PlayerState.MOVING_OBJECT_IDLE)
                         {
-                            //MetalFacingFix(true);
                             movingMetal = true;
                         }
-                        //Debug.Log("Falling Right" + playerState);
                         playerGFX.SetFacingRight(true);
                         transform.Rotate(0f, 180f, 0f); //rotate player and aiming to the left
                         shooting.SetLastShootingLine(1);
                     }
-                    //if (playerState == PlayerState.MOVING_OBJECT || playerState == PlayerState.MOVING_OBJECT_IDLE)
-                    //{
-                    //    playerState = PlayerState.MOVING_OBJECT_SWITCH_START;
-                    //    rb.velocity = Vector2.zero;
-                    //    rb.isKinematic = true;
-
-                    //    animationSwitch = true;
-                    //    //animationMovement = true;
-                    //   //rb.isKinematic = true;
-                    //    //playerGFX.PutMetalDownSwitch();
-                    //}
                 }
                 else
                 {
@@ -861,20 +466,10 @@ public class Player : MonoBehaviour
                     {
                         if (playerState == PlayerState.MOVING_OBJECT_IDLE)
                         {
-                            //Debug.Log("Fall Problem");
                             playerState = PlayerState.MOVING_OBJECT;
                         }
                     }
                 }
-
-                //if (!animationSwitch)
-                //{
-                //    if (playerState != PlayerState.MOVING_OBJECT_END)
-                //    {
-                //        rb.isKinematic = false;
-                //    }
-                //}
-
                 if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                     playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
                     playerState != PlayerState.MOVING_OBJECT_STOPPED_RIGHT && playerState != PlayerState.MOVING_OBJECT_END)
@@ -896,18 +491,12 @@ public class Player : MonoBehaviour
                             }
                             else
                             {
-                                //if (movingMetalDirectionFix)
-                                //{
-                                //    MetalFacingFix(true);
-                                //    movingMetalDirectionFix = false;
-                                //}
                                 moveVelocity = moveSpeed;
                             }
                         }
                     }
 
                 }
-                //rb.constraints = RigidbodyConstraints2D.None;
                 if (playerState == PlayerState.IDLE || playerState == PlayerState.WALKING || playerState == PlayerState.FALL_FIX)
                 {
                     //only can move when not aiming
@@ -917,12 +506,10 @@ public class Player : MonoBehaviour
                         {
                             onGround = true;
                         }
-                        //Debug.Log("Walk problem");
                         playerState = PlayerState.WALKING;
                     }
                     else
                     {
-                        //Debug.Log("Fall Problem");
                         playerState = PlayerState.IDLE;
                     }
                 }
@@ -931,14 +518,12 @@ public class Player : MonoBehaviour
             {
                 if (playerState == PlayerState.WALKING)
                 {
-                    //Debug.Log("Fall Problem 2");
                     playerState = PlayerState.IDLE;
                 }
                 else if (playerState == PlayerState.FALL_FIX)
                 {
                     if (fallFixSwitch)
                     {
-                        //Debug.Log("Fall Problem");
                         playerState = PlayerState.IDLE;
                         onGround = true;
                         rb.isKinematic = true;
@@ -947,7 +532,6 @@ public class Player : MonoBehaviour
                 }
                 else if (playerState == PlayerState.MOVING_OBJECT)
                 {
-                    //Debug.Log("Fall Problem");
                     playerState = PlayerState.MOVING_OBJECT_IDLE;
                 }
                 moveVelocity = 0;
@@ -976,20 +560,14 @@ public class Player : MonoBehaviour
                     {
                         jumpFix = true;
                         rb.isKinematic = false;
-                        //SoundManager.instance.PLaySE(JumpSound);
-                        //shouldJump = true;
                         currentPlayerState = PlayerState.IDLE;
                         playerState = PlayerState.JUMP;
                         rb.gravityScale = jumpGravity;
                         onGround = false;
                         FMODUnity.RuntimeManager.PlayOneShot(jumpSound);
-                        //falling = false;
                     }
                 }
             }
-
-            //if (!animationSwitch)
-            //{
             //Interact
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -1024,35 +602,18 @@ public class Player : MonoBehaviour
                                 {
                                     if (comp.GetComponent<Metal>().IsMoving())
                                     {
-                                        //if(!movingMetal)
-                                        //{
-                                        //    movingMetalDirectionFix = true;
-                                        //}
                                         Debug.Log("Was moving and now isn't moving");
                                         movingMetal = false;
                                         playerState = PlayerState.MOVING_OBJECT_END;
                                         rb.velocity = Vector2.zero;
                                         rb.isKinematic = true;
                                         currentMovingObject = null;
-                                        //currentPlayerMetal = null;
                                         droppingMetal = true;
-
-
-                                        //if (pickUpMetalPos.transform.position.x > transform.position.x)
-                                        //{
-                                        //    playerGFX.SetFacingRight(true);
-                                        //}
-                                        //else 
-                                        //{
-                                        //    playerGFX.SetFacingRight(false);
-                                        //}
-                                        //rb.gravityScale = groundGravity;
                                     }
                                     else
                                     {
                                         Debug.Log("Wasn't moving and now is moving");
                                         StartMovingMetal(comp);
-                                        //rb.gravityScale = jumpGravity;
 
                                     }
                                     InteractWithObject();
@@ -1071,6 +632,170 @@ public class Player : MonoBehaviour
         }
     }
 
+
+    //-------------------------
+    // General player functions
+    //-------------------------
+
+    public PlayerState GetPlayerState()
+    {
+        return playerState;
+    }
+    public void SetPlayerState(PlayerState state)
+    {
+        playerState = state;
+
+        switch (playerState)
+        {
+            case PlayerState.IDLE:
+            case PlayerState.KICK_BUCKET:
+            case PlayerState.MOVING_OBJECT:
+                rb.velocity = Vector2.zero;
+                rb.isKinematic = true;
+                Debug.Log("Player State: " + rb.velocity);
+                currentPlayerState = playerState;
+                break;
+        }
+    }
+    //used to make player stop when idle so they don't slide
+    public void SetKinematic(bool state)
+    {
+        rb.isKinematic = state;
+    }
+
+    //used to change direction
+    public void SetMovingRight(bool state)
+    {
+        if (state && !playerGFX.GetFacingRight())
+        {
+            Debug.Log("Going Right");
+            playerGFX.SetFacingRight(true);
+            transform.Rotate(0f, 180f, 0f);
+            shooting.SetLastShootingLine(1);
+        }
+        else if (!state && playerGFX.GetFacingRight())
+        {
+            Debug.Log("Going Left");
+            playerGFX.SetFacingRight(false);
+            transform.Rotate(0f, 180f, 0f);
+            shooting.SetLastShootingLine(-1);
+        }
+
+        if (playerGFX.GetFacingRight())
+        {
+            moveVelocity = moveSpeed;
+        }
+        else
+        {
+            moveVelocity = 0f - moveSpeed;
+        }
+    }
+
+    public bool IsPlayerOnGround()
+    {
+        return onGround;
+    }
+
+    //private void OnDrawGizmosSelected()
+    //{
+    //    if (debugMode)
+    //    {
+    //        //Draw interactable circle
+    //        Gizmos.color = Color.yellow;
+    //        Gizmos.DrawWireSphere(transform.position, interactRadius);
+    //    }
+    //}
+
+    //----------------------------------
+    //Interact with Interactable objects
+    //----------------------------------
+
+    public void InteractWithObject()
+    {
+        GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject(); 
+        comp.GetComponent<IInteractable>().Interact(); // call interact function
+    }
+
+    //----------------------------
+    // Animation related functions
+    //----------------------------
+
+    // returns if an automated animation is happening
+    public bool GetAnimationMovement()
+    {
+        return animationMovement;
+    }
+    //set if an automated animation is starting or finishing
+    public void SetAnimationMovement(bool state)
+    {
+        animationMovement = state;
+        if (!state)
+        {
+            rb.velocity = Vector2.zero;
+            rb.isKinematic = true;
+        }
+    }
+
+   
+
+    //----------------------
+    //Moving Metal Functions
+    //----------------------
+
+    //used for when metal hits a door // need to add functionality for any wall
+    public void SetMoveObjectStopped()
+    {
+        if (playerGFX.GetFacingRight())
+        {
+            playerState = PlayerState.MOVING_OBJECT_STOPPED_RIGHT;
+
+        }
+        else
+        {
+            playerState = PlayerState.MOVING_OBJECT_STOPPED_LEFT;
+        }
+    }
+
+    //for if metal was hitting a door but isn't anymore so now the player can move the metal // need to add functionality for any wall
+    public void SetMoveObject()
+    {
+        if (playerState == PlayerState.MOVING_OBJECT_STOPPED_LEFT ||
+            playerState == PlayerState.MOVING_OBJECT_STOPPED_RIGHT ||
+            playerState == PlayerState.MOVING_OBJECT_LEFT || playerState == PlayerState.MOVING_OBJECT_RIGHT)
+        {
+            playerState = PlayerState.MOVING_OBJECT;
+        }
+    }
+
+    //Disconnect from metal// might be the problem with falling with metal issue 
+    public void SetObjectDisconnected()
+    {
+        if (currentMovingObject != null)
+        {
+            currentMovingObject = null;
+            if (playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING)
+            {
+                playerState = PlayerState.WALKING;
+            }
+        }
+    }
+
+    //return the metal being dragged
+    public GameObject GetCurrentMovingObject()
+    {
+        return currentMovingObject;
+    }
+    // returns the script of current metal being dragged
+    public Metal GetPlayerCurrentMetal()
+    {
+        return currentPlayerMetal;
+    }
+    //returns if player is dragging metal
+    public bool GetMetalMoving()
+    {
+        return movingMetal;
+    }
+    //sets everything to begin dragging metal
     public void StartMovingMetal(GameObject metal)
     {
         playerState = PlayerState.MOVING_OBJECT_START;
@@ -1079,110 +804,48 @@ public class Player : MonoBehaviour
         movingMetal = true;
         currentMovingObject.GetComponent<Metal>().SetPickUpMetalDirection();
     }
-    //public void PutDownMetal(GameObject metal)
-    //{
-    //    Debug.Log("Metal Move1");
-    //    playerState = PlayerState.MOVING_OBJECT_START;
-    //    currentMovingObject = metal;
-    //    currentMovingObject.GetComponent<Metal>().SetPickUpMetalDirection();
-    //}
-
-
-    public void InteractWithObject()
+    //used while player is dropping metal to check for SuspendedPlatform
+    public bool IsDroppingMetal()
     {
-        GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject(); 
-        comp.GetComponent<IInteractable>().Interact(); // call interact function
+        return droppingMetal;
     }
 
+    //-----------------------------------------------------
+    // Functions that deal with falling, jumping and moving 
+    //-----------------------------------------------------
 
-    //Set from PlayerCollision collider to set when the player is on the ground 
-    public bool GetOnGround()
-    {
-        return onGround;
-    }
-
-    public void SetOnGround(bool state)
-    {
-        //Debug.Log("ON GROUND");
-        //if (!fallFromMetal)
-        //{
-
-        onGround = state;
-        if (currentPlayerState == PlayerState.MOVING_OBJECT_IDLE || currentPlayerState == PlayerState.MOVING_OBJECT ||
-            currentPlayerState == PlayerState.MOVING_OBJECT_END)
-        {
-            playerState = PlayerState.IDLE;
-        }
-        else
-        {
-            playerState = currentPlayerState;
-        }
-        
-        rb.gravityScale = groundGravity;
-        //}
-        //capsuleCollider2D.sharedMaterial.friction = onGroundFriction;
-    }
-
-    public void SetOnGroundJumpFix(bool state)
-    {
-        onGround = state;
-    }
-
-
-    public bool GetFalling()
-    {
-        if (playerState == PlayerState.FALLING || playerState == PlayerState.JUMP_FALLING)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    //called from MovingObjectsCollision to handle the player hopping when moving metal objects
+    //called from HopFix to handle the player hopping when moving metal objects
+    //only called when the player lifts off the ground greater than the hopping fix distance 
     public void LeavingTheGround()
     {
         if (playerState == PlayerState.MOVING_OBJECT)
         {
-            //playerState = PlayerState.WALKING;
             GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject();
             if (comp != null)
             {
+                
                 if (comp.GetComponent<Collider2D>().CompareTag("Metal"))
                 {
+                    //player was dragging metal and is now falling
                     if (comp.GetComponent<Metal>().IsMoving())
                     {
-                        Debug.Log("Falling off touching an object");
-                        //comp.GetComponent<IInteractable>().Interact();
-                        comp.GetComponent<Metal>().DisconnectMetalFromPlayer();
+                        comp.GetComponent<Metal>().DisconnectMetalFromPlayer(); // disconnect metal from a fall
                         if (playerGFX.GetFacingRight())
                         {
-                            Debug.Log("right to left");
                             SetMovingRight(false);
                         }
                         else
                         {
-                            Debug.Log("left to right");
                             SetMovingRight(true);
                         }
 
                         animationMovement = false;
                         movingMetal = false;
-                        //MetalFacingFix(true);
                         onGround = false;
                         playerState = PlayerState.FALLING;
                         rb.isKinematic = false;
                         rb.gravityScale = fallGravity;
-                        //capsuleCollider2D.sharedMaterial.friction = inAirFriction;
-                        fallFromMetal = true;
-                        //playerCollision.SetFallWait();
-                        //Vector3 fixRotation = transform.eulerAngles;
-                        //fixRotation.z = 0;
-                        //transform.eulerAngles = fixRotation;
-
-
+                        //fallFromMetal = true;
                     }
                 }
             }
@@ -1205,60 +868,64 @@ public class Player : MonoBehaviour
                 Debug.Log("Jumping 2");
                 rb.gravityScale = jumpGravity;
             }
-            //capsuleCollider2D.sharedMaterial.friction = inAirFriction;
         }
     }
 
-    public void SetMoveObjectStopped()
+
+    //Set from PlayerCollision collider to set when the player is on the ground 
+    public bool GetOnGround()
     {
-        if (playerGFX.GetFacingRight())
+        return onGround;
+    }
+
+    //called from PlayerCollision to set if player is on ground after a jump or fall
+    //also set from Shooting
+    public void SetOnGround(bool state)
+    {
+        //could be causing the falling with metal problem
+        //if (!fallFromMetal)
+        //{
+
+        onGround = state;
+        //player state when landing on ground is different depending on what the player state was before falling
+        if (currentPlayerState == PlayerState.MOVING_OBJECT_IDLE || currentPlayerState == PlayerState.MOVING_OBJECT ||
+            currentPlayerState == PlayerState.MOVING_OBJECT_END)
         {
-            playerState = PlayerState.MOVING_OBJECT_STOPPED_RIGHT;
-            
+            playerState = PlayerState.IDLE;
         }
         else
         {
-            playerState = PlayerState.MOVING_OBJECT_STOPPED_LEFT;
+            playerState = currentPlayerState;
         }
+        
+        rb.gravityScale = groundGravity;
+        //}
     }
-
-    public void SetMoveObject()
+    //for when the player is jumping to non-moving diagonal platforms
+    public void SetOnGroundJumpFix(bool state)
     {
-        if (playerState == PlayerState.MOVING_OBJECT_STOPPED_LEFT ||
-            playerState == PlayerState.MOVING_OBJECT_STOPPED_RIGHT ||
-            playerState == PlayerState.MOVING_OBJECT_LEFT || playerState == PlayerState.MOVING_OBJECT_RIGHT)
+        onGround = state;
+    }
+    
+    public bool GetFalling()
+    {
+        if (playerState == PlayerState.FALLING || playerState == PlayerState.JUMP_FALLING)
         {
-            playerState = PlayerState.MOVING_OBJECT;
+            return true;
         }
-    }
-
-    public void SetObjectDisconnected()
-    {
-        //Debug.Log("Metal Exiting");
-        if (currentMovingObject != null)
+        else
         {
-            currentMovingObject = null;
-            if (playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING)
-            {
-                //Debug.Log("Walk problem");
-                playerState = PlayerState.WALKING;
-            }
+            return false;
         }
     }
-    public GameObject GetCurrentMovingObject()
+    //is the jump delay over for jumping to diagonal non moving platforms
+    public bool GetJumpFix()
     {
-        return currentMovingObject;
+        return jumpFix;
     }
-
-    public Metal GetPlayerCurrentMetal()
-    {
-        return currentPlayerMetal;
-    }
-
-
+    //called from SuspendedPlatform when it moves so the player can fall from the platform
     public void SetFallFix()
     {
-        //Debug.Log("FALL FIX 2" + playerState);
         currentPlayerState = playerState;
         playerState = PlayerState.FALL_FIX;
         rb.isKinematic = false;
@@ -1266,25 +933,9 @@ public class Player : MonoBehaviour
         onGround = false;
     }
 
-    //public PlayerState GetPlayerState()
-    //{
-    //    return playerState;
-    //}
-    //public void SetPlayerState(PlayerState state)
-    //{
-    //    playerState = state;
-    //}
-
-    //public AimLineState GetAimLineState()
-    //{
-    //    return aimLineState;
-    //}
-
-    //public void SetKinematic(bool state)
-    //{
-    //    rb.isKinematic = false;
-    //    rb.gravityScale = groundGravity;
-    //}
+    //-------------
+    // UI functions
+    //-------------
 
     public void ClosePauseMenu() {
         if(pauseMenuUI != null)
@@ -1296,7 +947,6 @@ public class Player : MonoBehaviour
     public void ReferencePauseMenuUI(Canvas pauseMenu)
     {
         pauseMenuUI = pauseMenu;
-        //pauseMenuUI.gameObject.SetActive(true);
     }
     public void ReferenceSetingsMenuUI(Canvas settingsMenu)
     {
@@ -1307,5 +957,15 @@ public class Player : MonoBehaviour
     public void PlayerControlsStatus(bool status)
     {
         movementEnabled = status;
+    }
+    public void DestroyUI()
+    {
+        Destroy(pauseMenuUI.gameObject);
+        Destroy(settingsMenuUI.gameObject);
+    }
+
+    public bool GetMovementEnabled()
+    {
+        return movementEnabled;
     }
 }
