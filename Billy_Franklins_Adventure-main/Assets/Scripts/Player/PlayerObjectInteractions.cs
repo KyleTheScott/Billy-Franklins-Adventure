@@ -90,9 +90,9 @@ public class PlayerObjectInteractions : MonoBehaviour
         return metalRightPos;
     }
 
+    //sets the pickup points so the player can walk towards metal points during automated animations
     public void ConnectMetalToPlayer()
     {
-        //currentToggleObject.transform.parent = player.transform;
         metalLeftPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointLeft();
         metalRightPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointRight();
         currentToggleObject.GetComponent<Metal>().ConnectMetalToPlayer();
@@ -126,12 +126,8 @@ public class PlayerObjectInteractions : MonoBehaviour
                     if (toggleObjects.Count < 1)
                     {
                         currentToggleObject = collision.gameObject;
-                        //if (currentToggleObject.GetComponent<Collider2D>().CompareTag("Metal"))
-                        //{
                         metalLeftPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointLeft();
                         metalRightPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointRight();
-                        //}
-
                         currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
                         togglePos = 0;
                     }
@@ -141,11 +137,8 @@ public class PlayerObjectInteractions : MonoBehaviour
                         {
                             currentToggleObject.GetComponent<IInteractable>().SetHighlighted(false);
                             currentToggleObject = collision.gameObject;
-                            //if (currentToggleObject.GetComponent<Collider2D>().CompareTag("Metal"))
-                            //{
                             metalLeftPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointLeft();
                             metalRightPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointRight();
-                            //}
                             //togglePos++;
 
                             currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
@@ -217,7 +210,8 @@ public class PlayerObjectInteractions : MonoBehaviour
                         if (toggleObjects[i] == currentToggleObject)
                         {
                             toggleObjects[i].GetComponent<IInteractable>().SetHighlighted(false);
-                            //toggleObjects.RemoveAt(i);
+                            //this might be causing the metal falling bug sometimes
+                            //toggleObjects.RemoveAt(i)
                             currentToggleObject = null;
                         }
                         if (collision.gameObject.GetComponent<Metal>().IsMoving())
@@ -239,8 +233,6 @@ public class PlayerObjectInteractions : MonoBehaviour
                     {
                         toggleObjects.RemoveAt(i);
                     }
-
-                    //}
                 }
             }
 

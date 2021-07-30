@@ -51,6 +51,10 @@ public class Shooting : MonoBehaviour
     [SerializeField] private List<Projectile> listOfProjectile = null;
 
     [SerializeField] float projectileSpawnDistance = 2f; //How far is projectile spanwed from player?
+    [SerializeField] private float lineXOffset;
+    [SerializeField] private float lineYOffset;
+
+
 
     //variables to show lightning
     [SerializeField] private float angleBetween;
@@ -148,13 +152,13 @@ public class Shooting : MonoBehaviour
             }
             if (playerGFX.GetFacingRight())
             {
-                frontOfPlayer = new Vector3(player.transform.position.x + 1.2f,
-                    player.transform.position.y + 0.3f, player.transform.position.z);
+                frontOfPlayer = new Vector3(player.transform.position.x + lineXOffset,
+                    player.transform.position.y + lineYOffset, player.transform.position.z);
             }
             else
             {
-                frontOfPlayer = new Vector3(player.transform.position.x - 1.2f,
-                    player.transform.position.y + 0.3f, player.transform.position.z);
+                frontOfPlayer = new Vector3(player.transform.position.x - lineXOffset,
+                    player.transform.position.y + lineYOffset, player.transform.position.z);
             }
             //Calculate shooting line
             shootingLine = mousePos - frontOfPlayer;
@@ -286,13 +290,13 @@ public class Shooting : MonoBehaviour
 
                                 if (playerGFX.GetFacingRight())
                                 {
-                                    frontOfPlayer = new Vector3(player.transform.position.x + 1.2f,
-                                        player.transform.position.y + 0.3f, player.transform.position.z);
+                                    frontOfPlayer = new Vector3(player.transform.position.x + lineXOffset,
+                                        player.transform.position.y + lineYOffset, player.transform.position.z);
                                 }
                                 else
                                 {
-                                    frontOfPlayer = new Vector3(player.transform.position.x - 1.2f,
-                                        player.transform.position.y + 0.3f, player.transform.position.z);
+                                    frontOfPlayer = new Vector3(player.transform.position.x - lineXOffset,
+                                        player.transform.position.y + lineYOffset, player.transform.position.z);
                                 }
 
                                 loadedProjectile.transform.position = frontOfPlayer /*+ (-player.transform.right * projectileSpawnDistance)*/;
@@ -351,9 +355,9 @@ public class Shooting : MonoBehaviour
                 else if (Input.GetMouseButtonDown(1))
                 {
                     //not aiming anymore
-                    aimLineState = AimLineState.NOT_AIMED;
                     UnloadProjectile();
                     StopAiming();
+                    playerGFX.SetAnimation(0);
                     //mouseGlitchFix = false;
                     //timeLeft = visibleCursorTimer;
                     //cursorSpriteRenderer.sprite = null;
