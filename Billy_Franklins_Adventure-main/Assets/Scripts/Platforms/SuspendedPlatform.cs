@@ -152,7 +152,7 @@ public class SuspendedPlatform : MonoBehaviour
         {
             if (Mathf.Abs(transform.eulerAngles.z - lastRotation) >= 0.05f)
             {
-
+                //handles player on platform moving metal
                 if (player.GetPlayerCurrentMetal() == null || !player.GetPlayerCurrentMetal().IsMoving())
                 {
                     if (player.PlayersState == Player.PlayerState.WALKING ||

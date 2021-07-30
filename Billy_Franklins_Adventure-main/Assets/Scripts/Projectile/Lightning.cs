@@ -17,7 +17,7 @@ public class Lightning : MonoBehaviour
 
     private bool shootingLightning; 
 
-    //make setters for start and end pos
+    //setters for start and end pos
     public void SetStartPosition(Vector2 startPos)
     {
         lineRenderer.SetPosition(0, startPos);
@@ -49,7 +49,7 @@ public class Lightning : MonoBehaviour
             ShootLightning();
         }
     }
-
+    //custom animator for lightning
     private void ShootLightning()
     {
         fpsCounter += Time.deltaTime;

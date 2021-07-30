@@ -14,7 +14,7 @@ public class HopFix : MonoBehaviour
     }
 
 
-
+    //add ground object to trigger collider that hangs lower than the player to fix hopping when dragging metal so the metal isn't dropped
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Ground"))
@@ -23,7 +23,7 @@ public class HopFix : MonoBehaviour
             onGround = true;
         }
     }
-
+    //checks if player has left the hop fix collider so the player doesn't leave ground from every hop
     public void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Ground"))
@@ -38,7 +38,6 @@ public class HopFix : MonoBehaviour
             }
             if (groundObjectsTouching.Count <= 0 )
             {
-                Debug.Log("Faling will begin");
                 player.GetComponent<Player>().LeavingTheGround();
             }
         }
