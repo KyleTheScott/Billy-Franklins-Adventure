@@ -161,7 +161,6 @@ public class PlayerObjectInteractions : MonoBehaviour
 
                     if (currentToggleObject != null)
                     { 
-                        Debug.Log("Improper toggling");
                         currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
                     }
 
@@ -181,7 +180,6 @@ public class PlayerObjectInteractions : MonoBehaviour
 
                         if (currentToggleObject != null)
                         {
-                            Debug.Log("Improper toggling");
                             currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
                         }
 
