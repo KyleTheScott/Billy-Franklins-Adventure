@@ -24,12 +24,14 @@ public class Rain : MonoBehaviour
         var vel = rainParticles.forceOverLifetime;
         vel.enabled = true;
         vel.xMultiplier = WindController.instance.GetWindSpeed();
+        SetRainForce_Angle();
     }
     public void CalmWindRain()
     {
         var vel = rainParticles.forceOverLifetime;
         vel.enabled = true;
         vel.xMultiplier = WindController.instance.GetWindSpeed();
+        SetRainForce_Angle();
     }
 
     private void MakeItRain()
@@ -44,6 +46,18 @@ public class Rain : MonoBehaviour
         var vel = rainParticles.emission;
         vel.enabled = true;
         vel.rateOverTime = RainController.instance.GetRainAmount();
+    }
+
+    private void SetRainForce_Angle()
+    {
+        var forceOverLifetime = rainParticles.forceOverLifetime;
+        forceOverLifetime.enabled = true;
+        var rotationBySpeed = rainParticles.rotationBySpeed;
+        rotationBySpeed.enabled = true;
+        float windSpeed = WindController.instance.GetWindSpeed();
+
+        rotationBySpeed.z = windSpeed * 0.1f;
+        forceOverLifetime.x = windSpeed * 1.5f;
     }
 
 }
