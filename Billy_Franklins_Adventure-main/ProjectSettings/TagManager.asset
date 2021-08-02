@@ -17,6 +17,7 @@ TagManager:
   - Door
   - LevelRoot
   - Ghost
+  - ElectrifiableGroup
   layers:
   - Default
   - TransparentFX

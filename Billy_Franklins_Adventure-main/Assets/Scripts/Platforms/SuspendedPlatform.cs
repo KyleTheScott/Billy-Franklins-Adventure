@@ -278,7 +278,7 @@ public class SuspendedPlatform : MonoBehaviour
         //{
             //player.transform.parent = null;
             //DontDestroyOnLoad(player.gameObject);
-            Debug.Log("Disconnect");
+            //Debug.Log("Disconnect");
         playerTouching = false;
         //}
     }

@@ -123,23 +123,6 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
             float distToLeft = Mathf.Abs(player.transform.position.x - pickUpPointLeft.transform.position.x);
             float distToRight = Mathf.Abs(player.transform.position.x - pickUpPointRight.transform.position.x);
 
-            ////closer to left
-            //if (distToLeft <= distToRight)
-            //{
-            //    if (distToLeft > .1f)
-            //    {
-            //        player.SetAnimationMovement(true);
-            //    }
-            //}
-            ////closer to right
-            //else
-            //{
-            //    if (distToRight > .1f)
-            //    {
-            //        player.SetAnimationMovement(true);
-            //    }
-            //}
-
             player.SetAnimationMovement(true);
 
             if (player.GetAnimationMovement())
@@ -427,6 +410,19 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         }
     }
 
+    public void RemoveDisconnectedObject(GameObject disconnectObject)
+    {
+        for (int i = 0; i < connectedGameObjects.Count; i++)
+        {
+            if (connectedGameObjects[i] == disconnectObject)
+            {
+                connectedGameObjects.RemoveAt(i);
+            }
+        }
+    }
+
+
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Lightning"))
@@ -437,6 +433,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         //connects objects
         else if (collision.CompareTag("Metal"))
         {
+            Debug.Log("Test Metal 1");
             bool alreadyExists = false;
             for (int i = 0; i < connectedGameObjects.Count; i++)
             {
@@ -492,36 +489,29 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         //disconnect objects
         if (collision.CompareTag("Metal"))
         {
-           
+            RemoveDisconnectedObject(collision.gameObject);
+            collision.gameObject.GetComponent<Metal>().RemoveDisconnectedObject(gameObject);
+            Debug.Log("Test Metal 2");
             bool object2Electrified = collision.gameObject.GetComponent<Metal>().GetElectrified();
             int object2GroupNum = collision.gameObject.GetComponent<Metal>().GetGroupNum();
             ElectricityController.instanceElectrical.DisconnectObjects(
                 gameObject, metalCollider, electrified, groupNum,
                 collision.gameObject, collision, object2Electrified, object2GroupNum);
-            GameObject tempGameObject = gameObject;
-            for (int i = 0; i < connectedGameObjects.Count; i++)
-            {
-                if (connectedGameObjects[i] == collision.gameObject)
-                {
-                    connectedGameObjects.RemoveAt(i);
-                }
-            }
+            //GameObject tempGameObject = gameObject;
+          
+
         }
         else if (collision.CompareTag("Water") && collision.gameObject.GetComponent<Water>().GetWaterByItself())
         {
+            RemoveDisconnectedObject(collision.gameObject);
+            collision.gameObject.GetComponent<Water>().RemoveDisconnectedObject(gameObject);
             bool object2Electrified = collision.gameObject.GetComponent<Water>().GetElectrified();
             int object2GroupNum = collision.gameObject.GetComponent<Water>().GetGroupNum();
             ElectricityController.instanceElectrical.DisconnectObjects(
                 gameObject, metalCollider, electrified, groupNum,
                 collision.gameObject, collision, object2Electrified, object2GroupNum);
             GameObject tempGameObject = collision.gameObject;
-            for (int i = 0; i < connectedGameObjects.Count; i++)
-            {
-                if (connectedGameObjects[i] == collision.gameObject)
-                {
-                    connectedGameObjects.RemoveAt(i);
-                }
-            }
+           
         }
         else if (collision.CompareTag("Door"))
         {
