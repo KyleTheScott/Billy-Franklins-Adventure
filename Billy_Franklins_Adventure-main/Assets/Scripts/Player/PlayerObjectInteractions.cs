@@ -148,7 +148,10 @@ public class PlayerObjectInteractions : MonoBehaviour
                 }
                 //}
             }
-            else
+            else if ( player.GetPlayerState() != Player.PlayerState.MOVING_OBJECT &&
+                      player.GetPlayerState() != Player.PlayerState.MOVING_OBJECT_END &&
+                      player.GetPlayerState() != Player.PlayerState.MOVING_OBJECT_IDLE &&
+                      player.GetPlayerState() != Player.PlayerState.MOVING_OBJECT_START)
             {
                 if (toggleObjects.Count < 1)
                 {
@@ -261,10 +264,16 @@ public class PlayerObjectInteractions : MonoBehaviour
                     {
                         if (toggleObjects[i] == currentToggleObject)
                         {
-                            toggleObjects[i].GetComponent<IInteractable>().SetHighlighted(false);
-                            currentToggleObject = null;
+                            if (player.GetPlayerState() != Player.PlayerState.MOVING_OBJECT &&
+                                player.GetPlayerState() != Player.PlayerState.MOVING_OBJECT_END &&
+                                player.GetPlayerState() != Player.PlayerState.MOVING_OBJECT_IDLE &&
+                                player.GetPlayerState() != Player.PlayerState.MOVING_OBJECT_START)
+                            {
+                                toggleObjects[i].GetComponent<IInteractable>().SetHighlighted(false);
+                                currentToggleObject = null;
+                            }
                         }
-                        
+
                     }
 
                     if (toggleObjects[i] != null)
