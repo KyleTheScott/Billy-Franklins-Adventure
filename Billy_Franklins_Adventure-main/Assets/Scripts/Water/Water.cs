@@ -42,7 +42,7 @@ public class Water : MonoBehaviour, IElectrifiable
             transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
         }
         waterAnimator.SetBool("WaterSpilt", true);
-
+        waterByItself = true;
     }
 
     //for number of objects group
@@ -106,6 +106,18 @@ public class Water : MonoBehaviour, IElectrifiable
     {
         colliderStayCheck = true;
     }
+
+    public void RemoveDisconnectedObject(GameObject disconnectObject)
+    {
+        for (int i = 0; i < connectedGameObjects.Count; i++)
+        {
+            if (connectedGameObjects[i] == disconnectObject)
+            {
+                connectedGameObjects.RemoveAt(i);
+            }
+        }
+    }
+
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -213,35 +225,27 @@ public class Water : MonoBehaviour, IElectrifiable
         {
             if (collision.CompareTag("Metal"))
             {
+                RemoveDisconnectedObject(collision.gameObject);
+                collision.gameObject.GetComponent<Metal>().RemoveDisconnectedObject(gameObject);
                 bool object2Electrified = collision.gameObject.GetComponent<Metal>().GetElectrified();
                 int object2GroupNum = collision.gameObject.GetComponent<Metal>().GetGroupNum();
                 ElectricityController.instanceElectrical.DisconnectObjects(
                     gameObject, waterCollider, electrified, groupNum,
                     collision.gameObject, collision, object2Electrified, object2GroupNum);
                 GameObject tempGameObject = gameObject;
-                for (int i = 0; i < connectedGameObjects.Count; i++)
-                {
-                    if (connectedGameObjects[i] == collision.gameObject)
-                    {
-                        connectedGameObjects.RemoveAt(i);
-                    }
-                }
+               
             }
             else if (collision.CompareTag("Water") && collision.gameObject.GetComponent<Water>().GetWaterByItself())
             {
+                RemoveDisconnectedObject(collision.gameObject);
+                collision.gameObject.GetComponent<Water>().RemoveDisconnectedObject(gameObject);
                 bool object2Electrified = collision.gameObject.GetComponent<Water>().GetElectrified();
                 int object2GroupNum = collision.gameObject.GetComponent<Water>().GetGroupNum();
                 ElectricityController.instanceElectrical.DisconnectObjects(
                     gameObject, waterCollider, electrified, groupNum,
                     collision.gameObject, collision, object2Electrified, object2GroupNum);
                 GameObject tempGameObject = collision.gameObject;
-                for (int i = 0; i < connectedGameObjects.Count; i++)
-                {
-                    if (connectedGameObjects[i] == collision.gameObject)
-                    {
-                        connectedGameObjects.RemoveAt(i);
-                    }
-                }
+               
             }
         }
     }

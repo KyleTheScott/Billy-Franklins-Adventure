@@ -268,7 +268,7 @@ public class Player : MonoBehaviour
                     break;
                 case PlayerState.WALKING:
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
-                    Debug.Log(rb.velocity);
+                    //Debug.Log(rb.velocity);
                     break;
                 //walking moving object
                 case PlayerState.MOVING_OBJECT:
@@ -668,14 +668,12 @@ public class Player : MonoBehaviour
     {
         if (state && !playerGFX.GetFacingRight())
         {
-            Debug.Log("Going Right");
             playerGFX.SetFacingRight(true);
             transform.Rotate(0f, 180f, 0f);
             shooting.SetLastShootingLine(1);
         }
         else if (!state && playerGFX.GetFacingRight())
         {
-            Debug.Log("Going Left");
             playerGFX.SetFacingRight(false);
             transform.Rotate(0f, 180f, 0f);
             shooting.SetLastShootingLine(-1);
@@ -885,7 +883,7 @@ public class Player : MonoBehaviour
         //could be causing the falling with metal problem
         //if (!fallFromMetal)
         //{
-
+        Debug.Log("Test Player");
         onGround = state;
         //player state when landing on ground is different depending on what the player state was before falling
         if (currentPlayerState == PlayerState.MOVING_OBJECT_IDLE || currentPlayerState == PlayerState.MOVING_OBJECT ||
