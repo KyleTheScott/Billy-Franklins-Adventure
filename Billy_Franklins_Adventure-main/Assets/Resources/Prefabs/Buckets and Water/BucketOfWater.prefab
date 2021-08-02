@@ -250,7 +250,6 @@ GameObject:
   - component: {fileID: 6174799480970443161}
   - component: {fileID: 6174799480970443166}
   - component: {fileID: 6174799480970443163}
-  - component: {fileID: 3952069686200879369}
   - component: {fileID: 2364727190617079403}
   m_Layer: 4
   m_Name: BucketOfWater
@@ -372,27 +371,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   groupNum: 0
---- !u!50 &3952069686200879369
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6174799480970443167}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!95 &2364727190617079403
 Animator:
   serializedVersion: 3
