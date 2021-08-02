@@ -410,6 +410,19 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         }
     }
 
+    public void RemoveDisconnectedObject(GameObject disconnectObject)
+    {
+        for (int i = 0; i < connectedGameObjects.Count; i++)
+        {
+            if (connectedGameObjects[i] == disconnectObject)
+            {
+                connectedGameObjects.RemoveAt(i);
+            }
+        }
+    }
+
+
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Lightning"))
@@ -476,13 +489,8 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         //disconnect objects
         if (collision.CompareTag("Metal"))
         {
-            for (int i = 0; i < connectedGameObjects.Count; i++)
-            {
-                if (connectedGameObjects[i] == collision.gameObject)
-                {
-                    connectedGameObjects.RemoveAt(i);
-                }
-            }
+            RemoveDisconnectedObject(collision.gameObject);
+            collision.gameObject.GetComponent<Metal>().RemoveDisconnectedObject(gameObject);
             Debug.Log("Test Metal 2");
             bool object2Electrified = collision.gameObject.GetComponent<Metal>().GetElectrified();
             int object2GroupNum = collision.gameObject.GetComponent<Metal>().GetGroupNum();
@@ -495,13 +503,8 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         }
         else if (collision.CompareTag("Water") && collision.gameObject.GetComponent<Water>().GetWaterByItself())
         {
-            for (int i = 0; i < connectedGameObjects.Count; i++)
-            {
-                if (connectedGameObjects[i] == collision.gameObject)
-                {
-                    connectedGameObjects.RemoveAt(i);
-                }
-            }
+            RemoveDisconnectedObject(collision.gameObject);
+            collision.gameObject.GetComponent<Water>().RemoveDisconnectedObject(gameObject);
             bool object2Electrified = collision.gameObject.GetComponent<Water>().GetElectrified();
             int object2GroupNum = collision.gameObject.GetComponent<Water>().GetGroupNum();
             ElectricityController.instanceElectrical.DisconnectObjects(
