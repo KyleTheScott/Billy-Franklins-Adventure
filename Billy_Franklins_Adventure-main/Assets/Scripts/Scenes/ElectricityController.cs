@@ -246,7 +246,7 @@ public class ElectricityController : MonoBehaviour
                         }
                     }
                 }
-
+                //deleting empty sub groups
                 foreach (Transform obj in electrifiableSubGroups.transform)
                 {
                     if (obj.childCount < 1)
@@ -254,21 +254,24 @@ public class ElectricityController : MonoBehaviour
                         Destroy(obj.gameObject);
                     }
                 }
-
+                //checking if any connections were made
                 if (connectionNum == 0)
                 {
-                    if (groupPos == electrifiableSubGroups.transform.childCount)
+                    //checks if it has looped through all the groups and made connections
+                    if (groupPos >= electrifiableSubGroups.transform.childCount)
                     {       
                         reconnected = true;
                     }
+                    //if not the position is incremented to make more connections
                     else
                     {
+                        //changes the current sub object to the next position
                         currentSubObject = electrifiableSubGroups.transform.GetChild(groupPos).gameObject;
                         groupPos++;
                     }
                 }
             }
-
+            //loops through each sub group to create new electrifiable groups in electrifiables
             foreach (Transform subGroup in electrifiableSubGroups.transform)
             {
                 List<GameObject> currentObjectsToAdd = new List<GameObject>();
@@ -287,9 +290,11 @@ public class ElectricityController : MonoBehaviour
 
                 }
             }
+            //Destroy all the subgroups after moving all the game objects
             Destroy(electrifiableSubGroups);
+            /*loop through electrifiables and destroy any empty groups
+            groups wth only one object are set to be the child of electrifiables*/
             List<GameObject> destroyGroup = new List<GameObject>();
-            
             foreach (Transform group in electrifiables.transform)
             {
                 if (group.CompareTag("ElectrifiableGroup"))
@@ -316,6 +321,7 @@ public class ElectricityController : MonoBehaviour
     public void ElectrifyConnectedObjects(GameObject object1, Collider2D gameObjectCollider1, bool electricState1,
         int groupNum1)
     {
+        //checks if object1 is water and if so electrify all the objects in it's group
         if (gameObjectCollider1.CompareTag("Water"))
         {
             foreach (Transform obj in object1.transform.parent.transform)
@@ -325,6 +331,7 @@ public class ElectricityController : MonoBehaviour
         }
         else
         {
+            //checks if there is a water object in the group and if so it electrifies the whole group
             bool electrified = false;
             foreach (Transform obj in object1.transform.parent.transform)
             {
