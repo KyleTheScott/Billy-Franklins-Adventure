@@ -118,6 +118,7 @@ public class Player : MonoBehaviour
 
     [Header("Dialogue")]
     public bool isReading = false;
+    public Dialogue dialogue = new Dialogue();
 
     // Start is called before the first frame update
     void Start()
@@ -315,6 +316,16 @@ public class Player : MonoBehaviour
                 jumpFixTimer = 0;
             }
         }
+
+        if (!isReading && dialogue != null && dialogue.sentences.Length != 0 && IsPlayerOnGround())
+        {
+            isReading = true;
+            DialogueManager.instance.StartDialogue(dialogue);
+            PlayerControlsStatus(false);
+            dialogue = null;
+        }
+
+
         //player input
         HandleInput();
     }

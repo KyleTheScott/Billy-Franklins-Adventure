@@ -6,12 +6,6 @@ public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
 
-    public void TriggerDialogue()
-    {
-        Debug.Log("Dialogue");
-        DialogueManager.instance.StartDialogue(dialogue);
-    }
-
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -19,9 +13,7 @@ public class DialogueTrigger : MonoBehaviour
             Player player = FindObjectOfType<Player>();
             if (player != null)
             {
-                TriggerDialogue();
-                player.isReading = true;
-                player.PlayerControlsStatus(false);
+                player.dialogue = dialogue;
                 Destroy(gameObject);
             }
         }

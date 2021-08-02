@@ -80,7 +80,6 @@ public class GhostWallController : MonoBehaviour
         if (currentWallSpirteAlpha <= raiseWallSpirteAlpha)
         {
             ghostWallState = GhostWallState.RAISED;
-            boxCollider.isTrigger = true;
         }
     }
 
@@ -109,6 +108,7 @@ public class GhostWallController : MonoBehaviour
     public void RaiseGhostWall()
     {
         ghostWallSoundEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        boxCollider.isTrigger = true;
         foreach (Ghost ghost in ghosts)
         {
             ghost.SetGhostDissipation();
