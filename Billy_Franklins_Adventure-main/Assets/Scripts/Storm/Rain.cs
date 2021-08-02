@@ -56,7 +56,7 @@ public class Rain : MonoBehaviour
         rotationBySpeed.enabled = true;
         float windSpeed = WindController.instance.GetWindSpeed();
 
-        rotationBySpeed.z = windSpeed * 0.1f;
+        rotationBySpeed.z = windSpeed * -0.005f;
         forceOverLifetime.x = windSpeed * 1.5f;
     }
 
