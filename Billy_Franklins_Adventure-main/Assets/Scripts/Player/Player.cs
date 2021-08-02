@@ -585,8 +585,11 @@ public class Player : MonoBehaviour
                         {
                             if (comp.GetComponent<Collider2D>().CompareTag("Bucket"))
                             {
-                                playerState = PlayerState.KICK_BUCKET_START;
-                                comp.GetComponent<Bucket>().SetInKickingRange();
+                                if (!comp.GetComponent<Bucket>().GetTippedOver())
+                                {
+                                    playerState = PlayerState.KICK_BUCKET_START;
+                                    comp.GetComponent<Bucket>().SetInKickingRange();
+                                }
                             }
 
                             if (comp.GetComponent<Collider2D>().CompareTag("Lantern") ||
