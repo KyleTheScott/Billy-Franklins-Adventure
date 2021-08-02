@@ -17,6 +17,12 @@ public class Bucket : MonoBehaviour, IInteractable
         player = FindObjectOfType<Player>();
     }
 
+    public bool GetTippedOver()
+    {
+        return tippedOver;
+    }
+
+
     //called when you the bucket is within the interactable circle
     //tips over the bucket and spills the water if it isn't already spilt
     public void Interact()
@@ -25,6 +31,7 @@ public class Bucket : MonoBehaviour, IInteractable
         {
            
             tippedOver = true;
+            SetHighlighted(false);
             bool facingRight = true;
             if (player.transform.position.x >= transform.position.x)
             {

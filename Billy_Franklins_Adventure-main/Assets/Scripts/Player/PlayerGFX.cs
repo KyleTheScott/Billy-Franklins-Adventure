@@ -302,7 +302,7 @@ public class PlayerGFX : MonoBehaviour
     }
 
 
-    public void PlayBucketKickSound()
+    private void PlayBucketKickSound()
     {
         FMODUnity.RuntimeManager.PlayOneShotAttached(buckKickEventRef, gameObject);
     }
