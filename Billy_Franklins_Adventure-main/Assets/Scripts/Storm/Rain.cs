@@ -5,6 +5,10 @@ using Random = UnityEngine.Random;
 
 public class Rain : MonoBehaviour
 {
+    [SerializeField]
+    private float rainRotationSpeedZ = -0.004f;
+    [SerializeField]
+    private float rainForceOverLifeTimeX = 1.5f;
     private ParticleSystem rainParticles;
 
     // Start is called before the first frame update
@@ -56,8 +60,8 @@ public class Rain : MonoBehaviour
         rotationBySpeed.enabled = true;
         float windSpeed = WindController.instance.GetWindSpeed();
 
-        rotationBySpeed.z = windSpeed * -0.005f;
-        forceOverLifetime.x = windSpeed * 1.5f;
+        rotationBySpeed.z = windSpeed * rainRotationSpeedZ;
+        forceOverLifetime.x = windSpeed * rainForceOverLifeTimeX;
     }
 
 }
