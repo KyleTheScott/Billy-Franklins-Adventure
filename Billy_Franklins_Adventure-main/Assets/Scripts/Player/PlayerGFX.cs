@@ -246,6 +246,12 @@ public class PlayerGFX : MonoBehaviour
         footstepScript.PlayerFootsteep();
     }
 
+    public void ElectrifyInteractionEnd()
+    {
+        //end electrify interaction
+    }
+
+
     //------------------
     // Metal functions 
     //------------------
