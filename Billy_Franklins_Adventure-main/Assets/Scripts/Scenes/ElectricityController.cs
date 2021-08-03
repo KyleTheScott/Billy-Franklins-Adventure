@@ -14,8 +14,6 @@ public class ElectricityController : MonoBehaviour
 
     public static ElectricityController instanceElectrical;
 
-
-
     private void Awake()
     {
         //Make sure there is only one instance
@@ -45,7 +43,6 @@ public class ElectricityController : MonoBehaviour
     {
         connectedGameObjects.Clear();
     }
-
 
     void Start()
     {
@@ -324,29 +321,54 @@ public class ElectricityController : MonoBehaviour
         //checks if object1 is water and if so electrify all the objects in it's group
         if (gameObjectCollider1.CompareTag("Water"))
         {
-            foreach (Transform obj in object1.transform.parent.transform)
-            {
-                obj.gameObject.GetComponent<IElectrifiable>().SetElectrified(true);
-            }
-        }
-        else
-        {
-            //checks if there is a water object in the group and if so it electrifies the whole group
-            bool electrified = false;
-            foreach (Transform obj in object1.transform.parent.transform)
-            {
-                if (obj.gameObject.CompareTag("Water"))
-                {
-                    electrified = true;
-                    break;
-                }
-            }
-            if (electrified)
+            //electrify the whole group the water is part of
+            if (object1.transform.parent.CompareTag("ElectrifiableGroup"))
             {
                 foreach (Transform obj in object1.transform.parent.transform)
                 {
                     obj.gameObject.GetComponent<IElectrifiable>().SetElectrified(true);
                 }
+            }
+            // water is not in a group so only it is has to be electrified
+            else
+            {
+                object1.gameObject.GetComponent<IElectrifiable>().SetElectrified(true);
+            }
+        }
+        else
+        {
+            if (object1.transform.parent.CompareTag("ElectrifiableGroup"))
+            {
+                //checks if there is a water object in the group and if so it electrifies the whole group
+                bool electrified = false;
+                foreach (Transform obj in object1.transform.parent.transform)
+                {
+                    if (obj.gameObject.CompareTag("Water"))
+                    {
+                        electrified = true;
+                        break;
+                    }
+                }
+                //electrify everything in the group
+                if (electrified)
+                {
+                    foreach (Transform obj in object1.transform.parent.transform)
+                    {
+                        obj.gameObject.GetComponent<IElectrifiable>().SetElectrified(true);
+                    }
+                }
+                //electrify temporarily
+                else
+                {
+                    foreach (Transform obj in object1.transform.parent.transform)
+                    {
+                        obj.gameObject.GetComponent<Metal>().TemporarilyElectrifyObject();
+                    }
+                }
+            }
+            else
+            {
+                object1.gameObject.GetComponent<Metal>().TemporarilyElectrifyObject();
             }
         }
     }

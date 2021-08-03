@@ -221,33 +221,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         {
             Debug.Log("Metal not on ground");
         }
-
-       
-       
-
-        ////Debug.Log("Dist B2: " + Mathf.Abs(player.transform.position.x - transform.position.x));
-        //if (player.GetAnimationMovement())
-        //{
-        //    if (player.transform.position.x >= transform.position.x)
-        //    {
-        //        player.SetAnimationMovingRight(false);
-        //    }
-        //    else
-        //    {
-        //        player.SetAnimationMovingRight(true);
-        //    }
-        //}
     }
-    //IEnumerator RotateToMoveRight()
-    //{
-    //    //Debug.Log("Rotate");
-    //    //while (transform.rotation.z < 40f)
-    //    //{
-    //    //    transform.Rotate(0f, 0f, rotationSpeed * Time.deltaTime);
-    //    //    yield return null;
-    //    //}
-        
-    //}
 
 
     public void ConnectMetalToPlayer()
@@ -408,6 +382,12 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         {
             obj.GetComponent<IElectrifiable>().SetElectrified(true);
         }
+    }
+    public void TemporarilyElectrifyObject()
+    {
+        //add animation code here
+        //then set electrified false at the end of the animation with an animation event
+        electrified = true;
     }
 
     public void RemoveDisconnectedObject(GameObject disconnectObject)
