@@ -70,6 +70,9 @@ TagManager:
   - name: Scaffolding
     uniqueID: 557562933
     locked: 0
+  - name: Highlight
+    uniqueID: 1492175765
+    locked: 0
   - name: Backround metal
     uniqueID: 1233121997
     locked: 0
@@ -85,11 +88,14 @@ TagManager:
   - name: Bucket
     uniqueID: 2425811557
     locked: 0
+  - name: Lanterns
+    uniqueID: 2113548409
+    locked: 0
+  - name: Switch
+    uniqueID: 3981006421
+    locked: 0
   - name: Metal
     uniqueID: 3216375631
-    locked: 0
-  - name: Highlight
-    uniqueID: 1492175765
     locked: 0
   - name: Rope
     uniqueID: 3385089411
@@ -103,17 +109,11 @@ TagManager:
   - name: UI
     uniqueID: 1789967905
     locked: 0
-  - name: Switch
-    uniqueID: 3981006421
-    locked: 0
   - name: Ghost wall
     uniqueID: 3770920499
     locked: 0
   - name: Lamps
     uniqueID: 679148413
-    locked: 0
-  - name: Lanterns
-    uniqueID: 2113548409
     locked: 0
   - name: Ghosts
     uniqueID: 1425253433
