@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    private LoadingMenu loadingUI = null;
     private Canvas settingsUI = null;
     public string level = "Puzzle1";
 
@@ -13,6 +15,8 @@ public class MainMenu : MonoBehaviour
         {
             settingsUI = GameObject.Find("Settings UI").GetComponent<Canvas>();
             settingsUI.gameObject.SetActive(false);
+            loadingUI = GameObject.Find("Loading UI").GetComponent<LoadingMenu>();
+            loadingUI.gameObject.SetActive(false);
         }
         catch 
         {
@@ -24,14 +28,14 @@ public class MainMenu : MonoBehaviour
     public void ContinueGame()
     {
         //temp until saving is implemented...
-        SceneManager.LoadScene(level, LoadSceneMode.Single);
+        LoadLevel(level);
     }
 
     //start/load puzzle1
     public void NewGame()
     {
         //might change later...
-        SceneManager.LoadScene(level, LoadSceneMode.Single);
+        LoadLevel(level);
     }
 
     public void Settings()
@@ -53,5 +57,32 @@ public class MainMenu : MonoBehaviour
     public void MainMenuUICalled()
     {
         settingsUI.gameObject.SetActive(false);
+    }
+
+    public void LoadLevel (string sceneName)
+    {
+        if (loadingUI != null)
+        {
+            loadingUI.gameObject.SetActive(true);
+            StartCoroutine(LoadAsync(sceneName));
+        }
+        else
+        {
+            SceneManager.LoadScene(level, LoadSceneMode.Single);
+        }
+    }
+
+    IEnumerator LoadAsync(string sceneName)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+
+        while (!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / 0.9f);
+            loadingUI.slider.value = progress;
+            loadingUI.progressText.text = progress * 100.0f + "%";
+            yield return null;
+
+        }
     }
 }
