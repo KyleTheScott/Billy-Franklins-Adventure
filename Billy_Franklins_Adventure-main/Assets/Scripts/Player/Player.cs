@@ -365,7 +365,7 @@ public class Player : MonoBehaviour
             {
                 fallFixSwitch = true;
                 //Character flip
-                if (playerGFX.GetFacingRight() && !movingMetal)
+                if (playerGFX.GetFacingRight() && !movingMetal && shooting.GetAimLineState() == Shooting.AimLineState.NOT_AIMED)
                 {
                     if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                         playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
@@ -448,7 +448,7 @@ public class Player : MonoBehaviour
                 fallFixSwitch = true;
 
                 //Character flip
-                if (!playerGFX.GetFacingRight() && !movingMetal)
+                if (!playerGFX.GetFacingRight() && !movingMetal && shooting.GetAimLineState() == Shooting.AimLineState.NOT_AIMED)
                 {
                     if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                         playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&

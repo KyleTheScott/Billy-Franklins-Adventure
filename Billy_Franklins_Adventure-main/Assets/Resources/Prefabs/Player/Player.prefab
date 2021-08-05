@@ -538,6 +538,37 @@ MonoBehaviour:
   lineYOffset: 0.25
   angleBetween: 0
   lightning: {fileID: 1897674608}
+  lightningStartPosition: {fileID: 335141652824043605}
+--- !u!1 &335141652824043605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 804941298386810540}
+  m_Layer: 0
+  m_Name: ShootingStartPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &804941298386810540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335141652824043605}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3, y: 0.24, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1596798624625240182}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1596798624511780769
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,6 +679,7 @@ Transform:
   - {fileID: 508536454}
   - {fileID: 1916932472}
   - {fileID: 2761449375304916848}
+  - {fileID: 804941298386810540}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -728,6 +760,8 @@ MonoBehaviour:
   pickUpMetalPos: {fileID: 6370559049283957530}
   pauseMenuUI: {fileID: 0}
   isReading: 0
+  dialogue:
+    sentences: []
 --- !u!114 &8852632073555520459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1082,7 +1116,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 61720
+  m_InstanceId: 56720
 --- !u!95 &731963993
 Animator:
   serializedVersion: 3
