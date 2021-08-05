@@ -287,7 +287,7 @@ public class PlayerObjectInteractions : MonoBehaviour
             {
                 if (toggleObjects[0].CompareTag("Bucket"))
                 {
-                    if (!collision.gameObject.GetComponent<Bucket>().GetTippedOver())
+                    if (!toggleObjects[0].GetComponent<Bucket>().GetTippedOver())
                     {
                         togglePos = 0;
                         currentToggleObject = toggleObjects[togglePos];
