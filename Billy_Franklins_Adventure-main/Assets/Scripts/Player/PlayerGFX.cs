@@ -23,10 +23,6 @@ public class PlayerGFX : MonoBehaviour
 
     [Header("Sound")]
     private FMODStudioFootstepScript footstepScript;
-    [Header("FMOD Settings")] [FMODUnity.EventRef] [SerializeField]
-    private string buckKickEventRef;
-    [SerializeField]
-    private float buckKickVolume = 0.8f;
 
     // Start is called before the first frame update
     void Start()
@@ -305,15 +301,8 @@ public class PlayerGFX : MonoBehaviour
     {
         Debug.Log("KickBucketOver");
         player.InteractWithObject();
-        PlayBucketKickSound();
         player.SetPlayerState(Player.PlayerState.IDLE);
         PlayerObjectInteractions.playerObjectIInstance.SetInteracting(false);
-    }
-
-
-    private void PlayBucketKickSound()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot(buckKickEventRef, buckKickVolume);
     }
 
     //--------

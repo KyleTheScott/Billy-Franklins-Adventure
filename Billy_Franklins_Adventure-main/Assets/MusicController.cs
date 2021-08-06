@@ -29,6 +29,8 @@ public class MusicController : MonoBehaviour
         gameMusicSoundEvent = FMODUnity.RuntimeManager.CreateInstance(gameEventRef);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(gameMusicSoundEvent, transform, GetComponent<Rigidbody>());
         gameMusicSoundEvent.setVolume(musicVolume);
+        gameMusicSoundEvent.setParameterByName("Menu Music", menuMusic);
+        gameMusicSoundEvent.setParameterByName("Play Music", playMusic);
         gameMusicSoundEvent.start();
     }
 

@@ -55,7 +55,7 @@ public class SettingsMenu : MonoBehaviour
     public void SetPauseMenuUIReference(Canvas reference)
     {
         pauseMenuUI = reference;
-        FindObjectOfType<MusicController>().PlayMenuSelect();
+        //FindObjectOfType<MusicController>().PlayMenuSelect();
 
     }
 }
