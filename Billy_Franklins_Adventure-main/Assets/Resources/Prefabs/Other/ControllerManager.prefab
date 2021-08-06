@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3283143666902785204}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3283143666372392147
 MonoBehaviour:
@@ -94,7 +94,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3283143667714501974}
-  - {fileID: 3283143668286042900}
   - {fileID: 3283143666372392144}
   - {fileID: 3283143667901227616}
   - {fileID: 3283143668162431963}
@@ -102,6 +101,8 @@ Transform:
   - {fileID: 3127969265025498657}
   - {fileID: 4657300512089705319}
   - {fileID: 2413959312541873536}
+  - {fileID: 3114665110367130256}
+  - {fileID: 2005546625120322644}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -197,7 +198,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3283143666902785204}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &3283143667901227619
 LineRenderer:
@@ -340,9 +341,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3283143666902785204}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3283143668286042902
+--- !u!1 &5598286149502421022
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -350,44 +351,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3283143668286042900}
-  - component: {fileID: 3283143668286042903}
+  - component: {fileID: 2005546625120322644}
+  - component: {fileID: 53475709023583141}
   m_Layer: 0
-  m_Name: ElectricityController
+  m_Name: MusicController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3283143668286042900
+--- !u!4 &2005546625120322644
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3283143668286042902}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6981506, y: 1.1970823, z: 205.53543}
+  m_GameObject: {fileID: 5598286149502421022}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3283143666902785204}
-  m_RootOrder: 1
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3283143668286042903
+--- !u!114 &53475709023583141
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3283143668286042902}
+  m_GameObject: {fileID: 5598286149502421022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 553e30bf72b82f249aff0aa8cfc9fc79, type: 3}
+  m_Script: {fileID: 11500000, guid: 14f473747efa3b24cbc9924f79099ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectedGameObjects: []
-  availableNum: 1
-  debugging: 1
+  gameEventRef: event:/Music/Music
+  menuSelectEventRef: event:/Menu Sounds/Menu - Start_Select
+  menuTapEventRef: event:/Menu Sounds/Menu - Tapping
+  playMusic: 1
+  menuMusic: 0
+  musicVolume: 0.8
+  menuSelectVolume: 0.8
+  menuTapVolume: 0.8
 --- !u!1001 &1600200101231305374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -425,7 +431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4014139622218159902, guid: bcd195b0af3d05c4a8bf9c4b0d4b679d, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4014139622218159902, guid: bcd195b0af3d05c4a8bf9c4b0d4b679d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -499,7 +505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8251917603594569791, guid: dab18de920157474fa00aff4ee7eea66, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8251917603594569791, guid: dab18de920157474fa00aff4ee7eea66, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -561,7 +567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5222870466759358990, guid: dcdd9040985798444b505147488afa4d, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5222870466759358990, guid: dcdd9040985798444b505147488afa4d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -581,6 +587,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5222870466759358990, guid: dcdd9040985798444b505147488afa4d, type: 3}
   m_PrefabInstance: {fileID: 3745591537825823999}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5964749143043585630
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3283143666902785204}
+    m_Modifications:
+    - target: {fileID: 8790613968345490636, guid: d3647cb032f03c54d985b1c968c9444b, type: 3}
+      propertyPath: m_Name
+      value: ElectricityController
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790613968345490638, guid: d3647cb032f03c54d985b1c968c9444b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.6981506
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790613968345490638, guid: d3647cb032f03c54d985b1c968c9444b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1970823
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790613968345490638, guid: d3647cb032f03c54d985b1c968c9444b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 205.53543
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790613968345490638, guid: d3647cb032f03c54d985b1c968c9444b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790613968345490638, guid: d3647cb032f03c54d985b1c968c9444b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790613968345490638, guid: d3647cb032f03c54d985b1c968c9444b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790613968345490638, guid: d3647cb032f03c54d985b1c968c9444b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790613968345490638, guid: d3647cb032f03c54d985b1c968c9444b, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790613968345490638, guid: d3647cb032f03c54d985b1c968c9444b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790613968345490638, guid: d3647cb032f03c54d985b1c968c9444b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790613968345490638, guid: d3647cb032f03c54d985b1c968c9444b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d3647cb032f03c54d985b1c968c9444b, type: 3}
+--- !u!4 &3114665110367130256 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8790613968345490638, guid: d3647cb032f03c54d985b1c968c9444b, type: 3}
+  m_PrefabInstance: {fileID: 5964749143043585630}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6551273857511687197
 PrefabInstance:
@@ -619,7 +687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8179112679532051004, guid: 6298fdf12811e6a41b0b0b4d89e1cd6f, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8179112679532051004, guid: 6298fdf12811e6a41b0b0b4d89e1cd6f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

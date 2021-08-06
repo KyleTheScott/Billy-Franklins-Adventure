@@ -13,11 +13,14 @@ public class Switch : MonoBehaviour, IInteractable
     [SerializeField]
     private string gateLiftingEventPath;
     private FMOD.Studio.EventInstance gateLiftingEvent;
+    [SerializeField]
+    private float gateLiftingVolume = 0.8f;
 
     public void Start()
     {
         gateLiftingEvent = FMODUnity.RuntimeManager.CreateInstance(gateLiftingEventPath);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(gateLiftingEvent, transform, GetComponent<Rigidbody>());
+        gateLiftingEvent.setVolume(gateLiftingVolume);
     }
 
     // called to interact with switch and all connected doors

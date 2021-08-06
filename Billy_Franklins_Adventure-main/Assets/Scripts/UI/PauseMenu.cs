@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ContinueGame()
     {
+        FindObjectOfType<MusicController>().PlayMenuSelect();
         Time.timeScale = 1;
         FindObjectOfType<Player>().GetComponent<Player>().ClosePauseMenu();
     }
@@ -23,6 +24,7 @@ public class PauseMenu : MonoBehaviour
         //if there is settings UI then show it
         if (settingsUI != null)
         {
+            FindObjectOfType<MusicController>().PlayMenuSelect();
             settingsUI.gameObject.SetActive(true);
             settingsUI.GetComponent<SettingsMenu>().SettingsUICalled();
         }
@@ -33,11 +35,13 @@ public class PauseMenu : MonoBehaviour
         //reload level and move player
         //SceneManager.LoadScene(checkPointSystem.GetCheckPoint(), LoadSceneMode.Single);
         //FindObjectOfType<Player>().gameObject.transform.position = GameObject.Find("PlayerSpawnPoint").GetComponent<Transform>().transform.position;
+        FindObjectOfType<MusicController>().PlayMenuSelect();
         checkPointSystem.PlayerDeath();
     }
 
     public void MainMenu()
     {
+        FindObjectOfType<MusicController>().PlayMenuSelect();
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
 
         //removes menu's when returning to main menu

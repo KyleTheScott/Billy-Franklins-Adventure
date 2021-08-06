@@ -93,10 +93,18 @@ public class Player : MonoBehaviour
 
     
 
-
+    [Header("FMOD Setting")]
     //FMOD Event Refs
     [FMODUnity.EventRef]
     public string jumpSound;
+    [SerializeField]
+    private float jumpSoundVolume = 0.8f;
+    [FMODUnity.EventRef]
+    [SerializeField]
+    private string metalMovingEventRef;
+    private FMOD.Studio.EventInstance metalMovingEvent;
+    [SerializeField]
+    private float metalMovingVolume = 0.8f;
 
     [Header("Interact")]
     //stores object the player is currently moving 
@@ -123,6 +131,9 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        metalMovingEvent = FMODUnity.RuntimeManager.CreateInstance(metalMovingEventRef);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(metalMovingEvent, transform, GetComponent<Rigidbody>());
+
         //reference checkpoint + death system script 
         checkPointDeathSystem = GameObject.Find("GlobalGameController").GetComponent<CheckPointSystem>();
 
@@ -397,6 +408,7 @@ public class Player : MonoBehaviour
                         if (!playerGFX.GetFacingRight() && movingMetal)
                         {
                             playerState = PlayerState.MOVING_OBJECT;
+                            metalMovingEvent.setPaused(false);
                         }
                     }
                 }
@@ -478,6 +490,7 @@ public class Player : MonoBehaviour
                         if (playerState == PlayerState.MOVING_OBJECT_IDLE)
                         {
                             playerState = PlayerState.MOVING_OBJECT;
+                            metalMovingEvent.setPaused(false);
                         }
                     }
                 }
@@ -544,6 +557,7 @@ public class Player : MonoBehaviour
                 else if (playerState == PlayerState.MOVING_OBJECT)
                 {
                     playerState = PlayerState.MOVING_OBJECT_IDLE;
+                    metalMovingEvent.setPaused(true);
                 }
                 moveVelocity = 0;
             }
@@ -575,7 +589,7 @@ public class Player : MonoBehaviour
                         playerState = PlayerState.JUMP;
                         rb.gravityScale = jumpGravity;
                         onGround = false;
-                        FMODUnity.RuntimeManager.PlayOneShot(jumpSound);
+                        FMODUnity.RuntimeManager.PlayOneShot(jumpSound, jumpSoundVolume);
                     }
                 }
             }
@@ -619,6 +633,7 @@ public class Player : MonoBehaviour
                                         Debug.Log("Was moving and now isn't moving");
                                         movingMetal = false;
                                         playerState = PlayerState.MOVING_OBJECT_END;
+                                        metalMovingEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                                         rb.velocity = Vector2.zero;
                                         rb.isKinematic = true;
                                         currentMovingObject = null;
@@ -811,6 +826,7 @@ public class Player : MonoBehaviour
     public void StartMovingMetal(GameObject metal)
     {
         playerState = PlayerState.MOVING_OBJECT_START;
+        metalMovingEvent.start();
         currentMovingObject = metal;
         currentPlayerMetal = currentMovingObject.GetComponent<Metal>();
         movingMetal = true;

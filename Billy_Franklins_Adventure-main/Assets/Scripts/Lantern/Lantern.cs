@@ -20,6 +20,10 @@ public class Lantern : MonoBehaviour, IInteractable
     private string lanternHummingSound;
     [FMODUnity.EventRef]
     public string inputSound;
+    [SerializeField]
+    private float lanternHumingVolume = 0.8f;
+    [SerializeField]
+    private float inputVolume = 0.8f;
 
     // Start is called before the first frame update
     void Start()
@@ -73,9 +77,9 @@ public class Lantern : MonoBehaviour, IInteractable
         {
             lanterOn = true;
             lanternAnimator.SetBool("Lit", true);
-            FMODUnity.RuntimeManager.PlayOneShot(inputSound);
+            FMODUnity.RuntimeManager.PlayOneShot(inputSound, inputVolume);
             Debug.Log("LanternToggle");
-            FMODUnity.RuntimeManager.PlayOneShot(lanternHummingSound);
+            FMODUnity.RuntimeManager.PlayOneShot(lanternHummingSound, lanternHumingVolume);
             DissipateGhosts();
             if (light2D != null)
             {

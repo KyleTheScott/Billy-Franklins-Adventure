@@ -7,6 +7,7 @@ public class FMODStudioFootstepScript : MonoBehaviour
     [Header("FMOD Settings")]
     [SerializeField] [FMODUnity.EventRef] private string FootstepsEventPath;
     [SerializeField] private string MaterialParameterName;
+    [SerializeField] private float footstepVolume = 0.8f;
 
     [Header("Playback Settings")]
     [SerializeField] private float RayDistance = 1.2f;
@@ -26,6 +27,7 @@ public class FMODStudioFootstepScript : MonoBehaviour
         FMOD.Studio.EventInstance Footstep = FMODUnity.RuntimeManager.CreateInstance(FootstepsEventPath);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(Footstep, transform, GetComponent<Rigidbody>());
         Footstep.setParameterByName(MaterialParameterName, FMOD_MaterialValue);
+        Footstep.setVolume(footstepVolume);
         Footstep.start();
         Footstep.release();
         

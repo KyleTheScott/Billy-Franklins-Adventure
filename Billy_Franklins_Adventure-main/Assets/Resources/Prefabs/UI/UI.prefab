@@ -469,6 +469,10 @@ MonoBehaviour:
   keysUI: {fileID: 6450722731194313176}
   continueTextObject: {fileID: 8739612952160513014}
   letterRate: 100
+  pageFlipEventRef: event:/Menu Sounds/Page Turn
+  writingEventRef: event:/Menu Sounds/Writing
+  pageFlipVolume: 0.8
+  writingVolume: 0.8
 --- !u!1 &7790407516299791282
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,11 +33,31 @@ public class DialogueManager : MonoBehaviour
     public GameObject continueTextObject;
     public float letterRate = 10.0f;
 
+    [Header("FMOD Settings")]
+    [SerializeField]
+    [FMODUnity.EventRef]
+    private string pageFlipEventRef;
+    [SerializeField]
+    [FMODUnity.EventRef]
+    private string writingEventRef;
+    private FMOD.Studio.EventInstance writingSoundEvent;
+    [SerializeField]
+    private float pageFlipVolume = 0.8f;
+    [SerializeField]
+    private float writingVolume = 0.8f;
+
+
     private Queue<string> sentences = new Queue<string>();
     private string currentSentence;
     // Start is called before the first frame update
 
-    
+    public void Start()
+    {
+        writingSoundEvent = FMODUnity.RuntimeManager.CreateInstance(writingEventRef);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(writingSoundEvent, transform, GetComponent<Rigidbody>());
+        writingSoundEvent.setVolume(writingVolume);
+    }
+
     public void StartDialogue (Dialogue dialogue)
     {
         animator.SetBool("IsOpen", true);
@@ -56,6 +76,7 @@ public class DialogueManager : MonoBehaviour
     public void AdvanceSentence()
     {
         StopAllCoroutines();
+        FMODUnity.RuntimeManager.PlayOneShot(pageFlipEventRef, pageFlipVolume);
         if (isWriting)
         {
             dialogueText.text = currentSentence;
@@ -82,12 +103,13 @@ public class DialogueManager : MonoBehaviour
     {
         isWriting = true;
         dialogueText.text = "";
+        writingSoundEvent.start();
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(1.0f / letterRate);
         }
-
+        writingSoundEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         continueTextObject.SetActive(true);
         isWriting = false;
     }

@@ -19,7 +19,11 @@ public class SettingsMenu : MonoBehaviour
     }
     private void Start()
     {
-        FindObjectOfType<Player>().GetComponent<Player>().ReferenceSetingsMenuUI(GetComponent<Canvas>());
+        Player player = FindObjectOfType<Player>()?.GetComponent<Player>();
+        if (player != null)
+        {
+            player.ReferenceSetingsMenuUI(GetComponent<Canvas>());
+        }
     }
 
     public void Back()
@@ -51,6 +55,7 @@ public class SettingsMenu : MonoBehaviour
     public void SetPauseMenuUIReference(Canvas reference)
     {
         pauseMenuUI = reference;
+        FindObjectOfType<MusicController>().PlayMenuSelect();
 
     }
 }

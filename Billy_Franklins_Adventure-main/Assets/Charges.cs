@@ -14,6 +14,8 @@ public class Charges : MonoBehaviour
 
     [FMODUnity.EventRef]
     public string shootSound;
+    [SerializeField]
+    private float shootVolume = 0.8f;
 
     public void SetLampOn(bool state)
     {
@@ -76,7 +78,7 @@ public class Charges : MonoBehaviour
             return;
         }
         lightCharges -= 1;
-        FMODUnity.RuntimeManager.PlayOneShot(shootSound);
+        FMODUnity.RuntimeManager.PlayOneShot(shootSound, shootVolume);
 
         for (int i = 0; i < 12; i++)
         {

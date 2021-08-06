@@ -25,6 +25,8 @@ public class PlayerGFX : MonoBehaviour
     private FMODStudioFootstepScript footstepScript;
     [Header("FMOD Settings")] [FMODUnity.EventRef] [SerializeField]
     private string buckKickEventRef;
+    [SerializeField]
+    private float buckKickVolume = 0.8f;
 
     // Start is called before the first frame update
     void Start()
@@ -310,7 +312,7 @@ public class PlayerGFX : MonoBehaviour
 
     private void PlayBucketKickSound()
     {
-        FMODUnity.RuntimeManager.PlayOneShotAttached(buckKickEventRef, gameObject);
+        FMODUnity.RuntimeManager.PlayOneShot(buckKickEventRef, buckKickVolume);
     }
 
     //--------
