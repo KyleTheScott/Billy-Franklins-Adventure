@@ -305,6 +305,7 @@ public class PlayerGFX : MonoBehaviour
         player.InteractWithObject();
         PlayBucketKickSound();
         player.SetPlayerState(Player.PlayerState.IDLE);
+        PlayerObjectInteractions.playerObjectIInstance.SetInteracting(false);
     }
 
 
