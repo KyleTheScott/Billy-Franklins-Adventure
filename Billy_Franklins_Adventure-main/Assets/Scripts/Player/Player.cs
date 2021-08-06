@@ -642,7 +642,6 @@ public class Player : MonoBehaviour
             {
                 PlayerObjectInteractions.playerObjectIInstance.ToggleObjects();
             }
-            //}
         }
     }
 
@@ -948,7 +947,6 @@ public class Player : MonoBehaviour
     //-------------
     // UI functions
     //-------------
-
     public void ClosePauseMenu() {
         if(pauseMenuUI != null)
         {

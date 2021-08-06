@@ -71,6 +71,8 @@ public class Lantern : MonoBehaviour, IInteractable
     {
         if (!lanterOn)
         {
+            SetHighlighted(false);
+            PlayerObjectInteractions.playerObjectIInstance.DisconnectObject(gameObject);
             lanterOn = true;
             lanternAnimator.SetBool("Lit", true);
             FMODUnity.RuntimeManager.PlayOneShot(inputSound);

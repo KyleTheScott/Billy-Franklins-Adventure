@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590051018120151486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.002, y: 0.015, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.1}
+  m_LocalPosition: {x: 0.002, y: 0, z: 0}
+  m_LocalScale: {x: 0.064, y: 0.064, z: 0.1}
   m_Children: []
   m_Father: {fileID: 4192272229556369646}
   m_RootOrder: 0
@@ -69,9 +69,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1492175765
-  m_SortingLayer: 12
-  m_SortingOrder: 0
+  m_SortingLayerID: -1869155739
+  m_SortingLayer: 10
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e73a8a6a1712c744e936a25d2a895004, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -265,8 +265,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6174799480970443167}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.4196296, y: -2.1065693, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4192272229556369646}
@@ -368,7 +368,6 @@ MonoBehaviour:
   colliderStayCheck: 0
   waterByItself: 0
   lanternInWater:
-  - {fileID: 0}
   - {fileID: 0}
   groupNum: 0
 --- !u!95 &2364727190617079403
