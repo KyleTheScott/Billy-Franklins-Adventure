@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-99)]
 
@@ -39,6 +37,8 @@ public class ElectricityController : MonoBehaviour
     [SerializeField] private bool debugging = false; //for debugging
     private Player player;
 
+    [SerializeField] private string sceneName = "root_Puzzle10";
+
     public void EmptyObjects()
     {
         connectedGameObjects.Clear();
@@ -46,9 +46,78 @@ public class ElectricityController : MonoBehaviour
 
     void Start()
     {
-        electrifiables = GameObject.Find("Electrifiables");
         player = GameObject.FindObjectOfType<Player>();
     }
+
+    public void SetNewScene()
+    {
+        //GameObject sceneObject = GameObject.Find(sceneName);
+        //foreach (Transform obj in sceneObject.transform)
+        //{
+
+        //}
+
+
+        foreach (Transform obj in electrifiables.transform)
+        {
+            Destroy(obj.gameObject);
+        }
+        electrifiables = null;
+        //int currentSceneNum = SceneManager.sceneCount - 1;
+        //sceneName = "root_" + SceneManager.GetSceneAt(SceneManager.sceneCount - 1).name;
+
+        //Debug.LogError("String" + sceneName);
+        //GameObject sceneObject = GameObject.Find(sceneName);
+        //foreach (Transform obj in sceneObject.transform)
+        //{
+        //    if (obj.gameObject.name == "Electrifiables")
+        //    {
+        //        electrifiables = obj.gameObject;
+        //        break;
+        //    }
+        //}
+
+        //string tempSceneName = "root_" + SceneManager.GetSceneAt(0).name;
+        //GameObject tempSceneObject = GameObject.Find(tempSceneName);
+        //foreach (Transform obj in tempSceneObject.transform)
+        //{
+        //    if (obj.gameObject.name == "Electrifiables")
+        //    {
+        //        foreach (Transform tempObj in obj)
+        //        {
+        //            tempObj.gameObject.name = "OldElectrifiables";
+        //            tempObj.parent = tempSceneObject.transform;
+        //        }
+        //        break;
+        //    }
+        //}
+
+        //sceneName = "root_" + name;
+
+        //Debug.LogError("String3" + sceneName);
+        //GameObject sceneObject = GameObject.Find(sceneName);
+        //foreach (Transform obj in sceneObject.transform)
+        //{
+        //    if (obj.gameObject.name == "Electrifiables")
+        //    {
+        //        electrifiables = obj.gameObject;
+        //        break;
+        //    }
+        //}
+    }
+
+    //List<GameObject> FindSceneObjects(string sceneName)
+    //{
+    //    List<GameObject> objs = new List<GameObject>();
+    //    foreach (GameObject obj in Object.FindObjectsOfType(typeof(GameObject)))
+    //    {
+    //        if (objs.scene.name.CompareTo(sceneName) == 0)
+    //        {
+    //            objs.Add(objs);
+    //        }
+    //    }
+    //    return objs;
+    //}
 
     public void ConnectObjects(GameObject object1, Collider2D gameObjectCollider1, bool electricState1, int groupNum1,
         GameObject object2, Collider2D gameObjectCollider2, bool electricState2, int groupNum2)
@@ -56,9 +125,20 @@ public class ElectricityController : MonoBehaviour
 
         if (electrifiables == null)
         {
-            electrifiables = GameObject.Find("Electrifiables");
-        }
+            int currentSceneNum = SceneManager.sceneCount - 1;
+            sceneName = "root_" + SceneManager.GetSceneAt(SceneManager.sceneCount - 1).name;
 
+            Debug.LogError("String" + sceneName);
+            GameObject sceneObject = GameObject.Find(sceneName);
+            foreach (Transform obj in sceneObject.transform)
+            {
+                if (obj.gameObject.name == "Electrifiables")
+                {
+                    electrifiables = obj.gameObject;
+                    break;
+                }
+            }
+        }
         //object1 is not in a group
         if (object1.transform.parent == electrifiables.transform)
         {
@@ -110,7 +190,6 @@ public class ElectricityController : MonoBehaviour
                     {
                         for (int i = 0; i < parentObject2.childCount; i++)
                         {
-                            Debug.Log("Stuck In Connect");
                             parentObject2.GetChild(i).parent = object1.transform.parent;
                         }
                     }

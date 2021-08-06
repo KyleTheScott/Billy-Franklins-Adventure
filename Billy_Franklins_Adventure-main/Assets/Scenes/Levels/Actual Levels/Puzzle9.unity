@@ -246,13 +246,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6174799480970443163, guid: 23310605dced4cf4f906488abe1ef7fc, type: 3}
+      propertyPath: lanternInWater.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174799480970443163, guid: 23310605dced4cf4f906488abe1ef7fc, type: 3}
       propertyPath: lanternInWater.Array.data[0]
       value: 
-      objectReference: {fileID: 537031405}
+      objectReference: {fileID: 48032128}
     - target: {fileID: 6174799480970443163, guid: 23310605dced4cf4f906488abe1ef7fc, type: 3}
       propertyPath: lanternInWater.Array.data[1]
       value: 
-      objectReference: {fileID: 48032128}
+      objectReference: {fileID: 537031405}
     - target: {fileID: 6174799480970443167, guid: 23310605dced4cf4f906488abe1ef7fc, type: 3}
       propertyPath: m_Name
       value: BucketOfWater

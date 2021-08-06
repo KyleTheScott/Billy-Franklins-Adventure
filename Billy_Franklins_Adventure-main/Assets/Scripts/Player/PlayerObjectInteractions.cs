@@ -47,6 +47,10 @@ public class PlayerObjectInteractions : MonoBehaviour
     public void SetInteracting(bool state)
     {
         interacting = state;
+        if (currentToggleObject != null)
+        {
+            currentToggleObject.GetComponent<IInteractable>().SetHighlighted(false);
+        }
     }
 
 
@@ -152,8 +156,6 @@ public class PlayerObjectInteractions : MonoBehaviour
         }
         currentToggleObject = currentObject;
         currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
-        //add the object to the list of toggle objects
-        toggleObjects.Add(currentObject);
     }
 
     //change which current toggle object is the current object at exit
@@ -226,6 +228,8 @@ public class PlayerObjectInteractions : MonoBehaviour
                             SetMetalPos();
                         }
                     }
+                    //add the object to the list of toggle objects
+                    toggleObjects.Add(collision.gameObject);
                 }
             }
             //colliding with a bucket
@@ -254,6 +258,8 @@ public class PlayerObjectInteractions : MonoBehaviour
                         }
                     }
                 }
+                //add the object to the list of toggle objects
+                toggleObjects.Add(collision.gameObject);
             }
             //colliding with other objects
             else
@@ -269,8 +275,9 @@ public class PlayerObjectInteractions : MonoBehaviour
                         SetNewToggleObjectToCurrent(collision.gameObject); 
                     }
                 }
+                //add the object to the list of toggle objects
+                toggleObjects.Add(collision.gameObject);
             }
-           
         }
     }
 
@@ -300,6 +307,7 @@ public class PlayerObjectInteractions : MonoBehaviour
                         }
                         else
                         {
+                            toggleObjects[i].GetComponent<IInteractable>().SetHighlighted(false);
                             toggleObjects.RemoveAt(i);
                             if (toggleObjects.Count < 1)
                             {
@@ -321,6 +329,7 @@ public class PlayerObjectInteractions : MonoBehaviour
                         }
                         else
                         {
+                            toggleObjects[i].GetComponent<IInteractable>().SetHighlighted(false);
                             toggleObjects.RemoveAt(i);
                             if (toggleObjects.Count < 1)
                             {
