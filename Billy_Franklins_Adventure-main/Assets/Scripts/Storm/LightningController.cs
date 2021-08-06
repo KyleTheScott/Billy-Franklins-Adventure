@@ -29,6 +29,8 @@ public class LightningController : MonoBehaviour
 
     [FMODUnity.EventRef]
     public string lightingSoundEventRef;
+    [SerializeField]
+    private float lightingVolume = 0.8f;
 
     //[SerializeField] private int lightningAmount;
     //[SerializeField] private int lightningCount;
@@ -195,6 +197,6 @@ public class LightningController : MonoBehaviour
 
     public void PlayLightingSoundEffect()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(lightingSoundEventRef);
+        FMODUnity.RuntimeManager.PlayOneShot(lightingSoundEventRef, lightingVolume);
     }
 }
