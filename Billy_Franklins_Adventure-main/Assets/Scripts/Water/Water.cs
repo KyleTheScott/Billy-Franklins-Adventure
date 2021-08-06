@@ -15,6 +15,13 @@ public class Water : MonoBehaviour, IElectrifiable
     [SerializeField] private List<GameObject> lanternInWater = new List<GameObject>();
     private Animator waterAnimator;
 
+    [Header("FMOD Settings")]
+    [SerializeField]
+    [FMODUnity.EventRef]
+    private string bucketKickEventRef;
+    [SerializeField]
+    private float bucketKickVolume = 0.8f;
+
     [SerializeField] private int groupNum = 0;
 
 
@@ -43,6 +50,7 @@ public class Water : MonoBehaviour, IElectrifiable
         }
         waterAnimator.SetBool("WaterSpilt", true);
         waterByItself = true;
+        FMODUnity.RuntimeManager.PlayOneShot(bucketKickEventRef, bucketKickVolume);
     }
 
     //for number of objects group

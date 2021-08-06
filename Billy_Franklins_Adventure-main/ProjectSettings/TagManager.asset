@@ -118,6 +118,9 @@ TagManager:
   - name: Ghosts
     uniqueID: 1425253433
     locked: 0
+  - name: Highlight
+    uniqueID: 1492175765
+    locked: 0
   - name: Player
     uniqueID: 1816281827
     locked: 0
