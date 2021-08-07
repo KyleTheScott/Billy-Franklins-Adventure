@@ -57,12 +57,16 @@ public class ElectricityController : MonoBehaviour
 
         //}
 
-
-        foreach (Transform obj in electrifiables.transform)
+        if (electrifiables != null)
         {
-            Destroy(obj.gameObject);
+            foreach (Transform obj in electrifiables.transform)
+            {
+                Destroy(obj.gameObject);
+            }
+            electrifiables = null;
         }
-        electrifiables = null;
+
+     
         //int currentSceneNum = SceneManager.sceneCount - 1;
         //sceneName = "root_" + SceneManager.GetSceneAt(SceneManager.sceneCount - 1).name;
 
@@ -128,7 +132,7 @@ public class ElectricityController : MonoBehaviour
             int currentSceneNum = SceneManager.sceneCount - 1;
             sceneName = "root_" + SceneManager.GetSceneAt(SceneManager.sceneCount - 1).name;
 
-            Debug.LogError("String" + sceneName);
+            Debug.Log("String" + sceneName);
             GameObject sceneObject = GameObject.Find(sceneName);
             foreach (Transform obj in sceneObject.transform)
             {

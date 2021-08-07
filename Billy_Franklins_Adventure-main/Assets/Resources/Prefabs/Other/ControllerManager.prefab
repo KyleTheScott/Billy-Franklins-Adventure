@@ -599,6 +599,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ElectricityController
       objectReference: {fileID: 0}
+    - target: {fileID: 8790613968345490637, guid: d3647cb032f03c54d985b1c968c9444b, type: 3}
+      propertyPath: electrifiables
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8790613968345490638, guid: d3647cb032f03c54d985b1c968c9444b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.6981506
