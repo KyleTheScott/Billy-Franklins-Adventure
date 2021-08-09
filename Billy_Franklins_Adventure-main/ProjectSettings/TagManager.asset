@@ -70,9 +70,6 @@ TagManager:
   - name: Scaffolding
     uniqueID: 557562933
     locked: 0
-  - name: Highlight
-    uniqueID: 1492175765
-    locked: 0
   - name: Backround metal
     uniqueID: 1233121997
     locked: 0
@@ -87,6 +84,9 @@ TagManager:
     locked: 0
   - name: Bucket
     uniqueID: 2425811557
+    locked: 0
+  - name: Highlight
+    uniqueID: 1492175765
     locked: 0
   - name: Lanterns
     uniqueID: 2113548409

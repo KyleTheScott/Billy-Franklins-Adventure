@@ -8,14 +8,14 @@ public class Cloud : MonoBehaviour
     [SerializeField] private float lightningTimer = 0;
     [SerializeField] private float maxLightningTimer = 10;
 
-    [SerializeField] private float minLightLightningTimer = 5;
-    [SerializeField] private float maxLightLightningTimer = 10;
+    [SerializeField] private float minLightLightningTimer = 6;
+    [SerializeField] private float maxLightLightningTimer = 8;
 
-    [SerializeField] private float minMediumLightningTimer = 2;
-    [SerializeField] private float maxMediumLightningTimer = 5;
+    [SerializeField] private float minMediumLightningTimer = 4;
+    [SerializeField] private float maxMediumLightningTimer = 6;
 
-    [SerializeField] private float minHeavyLightningTimer = 0;
-    [SerializeField] private float maxHeavyLightningTimer = 2;
+    [SerializeField] private float minHeavyLightningTimer = 2;
+    [SerializeField] private float maxHeavyLightningTimer = 4;
 
     private bool noLightning;
 

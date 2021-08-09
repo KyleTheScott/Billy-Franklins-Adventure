@@ -22,6 +22,7 @@ public class Shooting : MonoBehaviour
 
     [SerializeField] private bool firstAiming = true;
 
+
     //variable for aim line disappearing and appearing with mouse movement
     //private bool mouseClick;
     //float timeLeft = 1;
@@ -61,6 +62,8 @@ public class Shooting : MonoBehaviour
     [SerializeField] private Lightning lightning;
     private Vector2 lightningStartPos;
     private Vector2 lightningTargetPos;
+
+    [SerializeField] GameObject lightningStartPosition;
 
     private Vector3 frontOfPlayer;
     private Vector3 forwardVector;
@@ -341,7 +344,7 @@ public class Shooting : MonoBehaviour
                             canShoot = false;
                             charges.UseLightCharges();
 
-                            lightning.SetStartPosition(lightningStartPos);
+                            lightning.SetStartPosition(lightningStartPosition.transform.position);
                             lightning.SetTargetPosition(lightningTargetPos);
                             lightning.SetShootLightning(true);
                             //Set projectile's parent to player

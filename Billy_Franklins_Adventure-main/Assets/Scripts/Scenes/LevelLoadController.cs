@@ -24,6 +24,7 @@ public class LevelLoadController : MonoBehaviour
     private bool has_level_loaded_ = false;
     IEnumerator LoadNextLevel()
     {
+        ElectricityController.instanceElectrical.SetNewScene();
         AsyncOperation load_scene_op = SceneManager.LoadSceneAsync(next_scene_to_load_, LoadSceneMode.Additive);
         while (!load_scene_op.isDone)
         {
@@ -33,6 +34,7 @@ public class LevelLoadController : MonoBehaviour
 
         if (next_scene_position_ != null)
         {
+            
             Debug.Log("The next scene position is set");
             GameObject[] root_level_objs = GameObject.FindGameObjectsWithTag("LevelRoot");
 
@@ -53,6 +55,7 @@ public class LevelLoadController : MonoBehaviour
         GlobalGameController.instance.GetComponent<CheckPointSystem>().SetCheckPoint(next_scene_to_load_);
         FindObjectOfType<Charges>().GetComponent<Charges>().SetLampOn(false);
         has_level_loaded_ = true;
+       
     }
 
    

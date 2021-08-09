@@ -91,12 +91,14 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
             //metal will stop following player
             if (beingMoved)
             {
+                PlayerObjectInteractions.playerObjectIInstance.SetInteracting(false);
                 beingMoved = false;
                 //player.SetPlayerState(Player.PlayerState.MOVING_OBJECT_END);
             }
             //metal will start following player
             else
             {
+                PlayerObjectInteractions.playerObjectIInstance.SetInteracting(true);
                 beingMoved = true;
                 if (connectedDoors.Count > 0)
                 {
@@ -262,6 +264,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
 
     public void DisconnectMetalFromPlayer()
     {
+        PlayerObjectInteractions.playerObjectIInstance.SetInteracting(false);
         Debug.Log("Disconnect Metal");
         beingMoved = false;
         //hingeJointPointLeft.connectedBody = null;

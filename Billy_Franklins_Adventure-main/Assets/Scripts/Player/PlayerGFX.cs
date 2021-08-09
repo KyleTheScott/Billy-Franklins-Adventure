@@ -302,6 +302,7 @@ public class PlayerGFX : MonoBehaviour
         Debug.Log("KickBucketOver");
         player.InteractWithObject();
         player.SetPlayerState(Player.PlayerState.IDLE);
+        PlayerObjectInteractions.playerObjectIInstance.SetInteracting(false);
     }
 
     //--------

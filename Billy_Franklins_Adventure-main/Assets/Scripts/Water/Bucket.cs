@@ -47,9 +47,10 @@ public class Bucket : MonoBehaviour, IInteractable
             
 
             bucketAnimator.SetBool("BucketTipped", true);
+            PlayerObjectInteractions.playerObjectIInstance.DisconnectObject(gameObject);
 
            // Debug.LogError("Water collider state before: " + waterObject.GetComponent<Collider2D>().enabled);
-            //waterObject.GetComponent<Collider2D>().enabled = true;
+           //waterObject.GetComponent<Collider2D>().enabled = true;
             waterObject.GetComponent<Water>().SetWaterByItself(true);
            // Debug.LogError("Water collider state after: " + waterObject.GetComponent<Collider2D>().enabled);
             waterObject.GetComponent<Water>().SpillWater(facingRight);

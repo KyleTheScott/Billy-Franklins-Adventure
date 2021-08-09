@@ -376,7 +376,7 @@ public class Player : MonoBehaviour
             {
                 fallFixSwitch = true;
                 //Character flip
-                if (playerGFX.GetFacingRight() && !movingMetal)
+                if (playerGFX.GetFacingRight() && !movingMetal && shooting.GetAimLineState() == Shooting.AimLineState.NOT_AIMED)
                 {
                     if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                         playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
@@ -460,7 +460,7 @@ public class Player : MonoBehaviour
                 fallFixSwitch = true;
 
                 //Character flip
-                if (!playerGFX.GetFacingRight() && !movingMetal)
+                if (!playerGFX.GetFacingRight() && !movingMetal && shooting.GetAimLineState() == Shooting.AimLineState.NOT_AIMED)
                 {
                     if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING &&
                         playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING &&
@@ -614,6 +614,7 @@ public class Player : MonoBehaviour
                                 {
                                     playerState = PlayerState.KICK_BUCKET_START;
                                     comp.GetComponent<Bucket>().SetInKickingRange();
+                                    PlayerObjectInteractions.playerObjectIInstance.SetInteracting(true);
                                 }
                             }
 
@@ -622,6 +623,7 @@ public class Player : MonoBehaviour
                             {
                                 InteractWithObject();
                                 charges.UseLightCharges();
+                                PlayerObjectInteractions.playerObjectIInstance.SetInteracting(true);
                             }
                             
                             if (comp.GetComponent<Collider2D>().CompareTag("Metal"))
@@ -646,6 +648,7 @@ public class Player : MonoBehaviour
 
                                     }
                                     InteractWithObject();
+                                    PlayerObjectInteractions.playerObjectIInstance.SetInteracting(true);
                                 }
                                 
                             }
@@ -657,7 +660,6 @@ public class Player : MonoBehaviour
             {
                 PlayerObjectInteractions.playerObjectIInstance.ToggleObjects();
             }
-            //}
         }
     }
 
@@ -964,7 +966,6 @@ public class Player : MonoBehaviour
     //-------------
     // UI functions
     //-------------
-
     public void ClosePauseMenu() {
         if(pauseMenuUI != null)
         {
