@@ -17,7 +17,6 @@ public class ObjectsCollision : MonoBehaviour
 
     private void Update()
     {
-
         if (checkForElectric.Count > 0)
         {
             //checks if player is being electricuted
@@ -49,6 +48,7 @@ public class ObjectsCollision : MonoBehaviour
         checkForElectric.Clear();
         FindObjectOfType<PlayerObjectInteractions>().EmptyObjects();
         FindObjectOfType<ElectricityController>().EmptyObjects();
+        player.GetComponent<Player>().SetPlayerState(Player.PlayerState.IDLE);
     }
 
     //add electrifiable object connected to the player

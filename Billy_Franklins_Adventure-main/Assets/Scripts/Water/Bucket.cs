@@ -9,12 +9,36 @@ public class Bucket : MonoBehaviour, IInteractable
     private Animator bucketAnimator;
     private bool tippedOver;
     [SerializeField] private GameObject highlight;
+    private bool setCollider = true;
+    private CircleCollider2D collider;
 
     // Start is called before the first frame update
     void Start()
     {
         bucketAnimator = gameObject.GetComponent<Animator>();
         player = FindObjectOfType<Player>();
+        collider = gameObject.GetComponent<CircleCollider2D>();
+    }
+
+    void Update()
+    {
+        
+        //if (player.GetMetalMoving())
+        //{
+        //    if (setCollider)
+        //    {
+        //        setCollider = false;
+        //        collider.enabled = false;
+        //    }
+        //}
+        //else
+        //{
+        //    if (!setCollider)
+        //    {
+        //        setCollider = true;
+        //        collider.enabled = true;
+        //    }
+        //}
     }
 
     public bool GetTippedOver()
@@ -49,6 +73,7 @@ public class Bucket : MonoBehaviour, IInteractable
             bucketAnimator.SetBool("BucketTipped", true);
             PlayerObjectInteractions.playerObjectIInstance.DisconnectObject(gameObject);
 
+            collider.enabled = false;
            // Debug.LogError("Water collider state before: " + waterObject.GetComponent<Collider2D>().enabled);
            //waterObject.GetComponent<Collider2D>().enabled = true;
             waterObject.GetComponent<Water>().SetWaterByItself(true);

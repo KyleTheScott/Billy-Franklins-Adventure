@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class LevelLoadController : MonoBehaviour
 {
     [SerializeField] private string next_scene_to_load_ = "";
@@ -24,7 +25,9 @@ public class LevelLoadController : MonoBehaviour
     private bool has_level_loaded_ = false;
     IEnumerator LoadNextLevel()
     {
-        ElectricityController.instanceElectrical.SetNewScene();
+        Debug.LogError("Loading");
+        ElectricityController.instanceElectrical.SetNewElectrifiableScene();
+        FindObjectOfType<ObjectsCollision>().EmptyObjects();
         AsyncOperation load_scene_op = SceneManager.LoadSceneAsync(next_scene_to_load_, LoadSceneMode.Additive);
         while (!load_scene_op.isDone)
         {
@@ -34,7 +37,6 @@ public class LevelLoadController : MonoBehaviour
 
         if (next_scene_position_ != null)
         {
-            
             Debug.Log("The next scene position is set");
             GameObject[] root_level_objs = GameObject.FindGameObjectsWithTag("LevelRoot");
 

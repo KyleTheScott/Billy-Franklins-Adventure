@@ -43,8 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 553e30bf72b82f249aff0aa8cfc9fc79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  electrifiables: {fileID: 8790613968345490636}
+  electrifiables: {fileID: 0}
   connectedGameObjects: []
   availableNum: 1
   debugging: 1
-  sceneName: root_Puzzle10
