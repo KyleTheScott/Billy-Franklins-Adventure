@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -248,6 +249,27 @@ public class PlayerGFX : MonoBehaviour
     {
         //end electrify interaction
     }
+
+    public void ElectricityDeathEnd()
+    {
+
+    }
+
+    public void OutOfChargesDeathEnd()
+    {
+
+    }
+
+    public void ElectrifyKiteLightning()
+    {
+
+    }
+
+    public void ElectrifyKiteEnd()
+    {
+
+    }
+
 
 
     //------------------

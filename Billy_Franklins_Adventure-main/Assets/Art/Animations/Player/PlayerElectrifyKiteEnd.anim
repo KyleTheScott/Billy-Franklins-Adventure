@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerOutOfChargesDeathEnd
+  m_Name: PlayerElectrifyKiteEnd
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,9 +20,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 6759323758529108314, guid: e371a28d2458f454a84b34c6c810747a, type: 3}
+      value: {fileID: 2904320454372436259, guid: 17efe1b0e52607f49bb6e6817b0b0fa4, type: 3}
     - time: 0.033333335
-      value: {fileID: 6759323758529108314, guid: e371a28d2458f454a84b34c6c810747a, type: 3}
+      value: {fileID: 2904320454372436259, guid: 17efe1b0e52607f49bb6e6817b0b0fa4, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -42,8 +42,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 6759323758529108314, guid: e371a28d2458f454a84b34c6c810747a, type: 3}
-    - {fileID: 6759323758529108314, guid: e371a28d2458f454a84b34c6c810747a, type: 3}
+    - {fileID: 2904320454372436259, guid: 17efe1b0e52607f49bb6e6817b0b0fa4, type: 3}
+    - {fileID: 2904320454372436259, guid: 17efe1b0e52607f49bb6e6817b0b0fa4, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -70,7 +70,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: OutOfChargesDeathEnd
+    functionName: ElectrifyKiteEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
