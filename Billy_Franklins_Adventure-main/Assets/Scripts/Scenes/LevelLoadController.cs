@@ -18,11 +18,17 @@ public class LevelLoadController : MonoBehaviour
     [SerializeField] private GhostWallController ghostWall;
     [SerializeField] private bool LowerWallOnTriggerEnter = true;
     [SerializeField] private PuzzleController puzzleController;
-    [SerializeField]
-    bool InstantLoadLevel = false;
+    [SerializeField] bool InstantLoadLevel = false;
+    private Player player;
 
 
     private bool has_level_loaded_ = false;
+
+    void Start()
+    {
+        player = FindObjectOfType<Player>();
+    }
+
     IEnumerator LoadNextLevel()
     {
         Debug.LogError("Loading");
@@ -52,6 +58,12 @@ public class LevelLoadController : MonoBehaviour
                 }
             }
                 
+        }
+
+        if (prev_scene_to_destroy_ == null)
+        {
+            player.SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
+            player.SetAnimationMovement(true);
         }
 
         GlobalGameController.instance.GetComponent<CheckPointSystem>().SetCheckPoint(next_scene_to_load_);
@@ -97,7 +109,8 @@ public class LevelLoadController : MonoBehaviour
             if (prev_scene_to_destroy_ != "" && SceneManager.GetSceneByName(prev_scene_to_destroy_).isLoaded)
             {
                 SceneManager.UnloadSceneAsync(prev_scene_to_destroy_);
-               
+                player.SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
+                player.SetAnimationMovement(true);
             }
 
             if (LowerWallOnTriggerEnter)

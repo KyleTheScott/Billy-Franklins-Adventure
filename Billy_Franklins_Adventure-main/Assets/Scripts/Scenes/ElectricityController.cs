@@ -135,22 +135,26 @@ public class ElectricityController : MonoBehaviour
 
     public void SetNewElectrifiableScene()
     {
-        foreach (Transform obj in electrifiables.transform)
+        if (electrifiables != null)
         {
-            if (obj.gameObject.name == "ElectrifiableGroup")
+            foreach (Transform obj in electrifiables.transform)
             {
-                foreach (Transform obj2 in obj)
+                if (obj.gameObject.name == "ElectrifiableGroup")
                 {
-                    obj2.GetComponent<IElectrifiable>().SetIsOldElectrifiable(true);
-                    
+                    foreach (Transform obj2 in obj)
+                    {
+                        obj2.GetComponent<IElectrifiable>().SetIsOldElectrifiable(true);
+
+                    }
+                }
+                else
+                {
+                    obj.GetComponent<IElectrifiable>().SetIsOldElectrifiable(true);
                 }
             }
-            else
-            {
-                obj.GetComponent<IElectrifiable>().SetIsOldElectrifiable(true);
-            }
+
+            started = false;
         }
-        started = false;
     }
 
 

@@ -38,6 +38,8 @@ public class PauseMenu : MonoBehaviour
         FindObjectOfType<ObjectsCollision>().EmptyObjects();
         FindObjectOfType<MusicController>().PlayMenuSelect();
         checkPointSystem.PlayerDeath();
+        Time.timeScale = 1;
+        FindObjectOfType<Player>().GetComponent<Player>().ClosePauseMenu();
     }
 
     public void MainMenu()
