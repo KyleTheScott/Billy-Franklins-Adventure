@@ -51,6 +51,8 @@ public class Player : MonoBehaviour
     public PlayerState PlayersState => playerState;
     [SerializeField] bool debugMode = false;
 
+    [SerializeField] bool playerInLevel = false;
+
     [Header("Movement")]
     [SerializeField] private bool onGround = true; // keeps track if player is  on ground
 
@@ -127,6 +129,15 @@ public class Player : MonoBehaviour
     [Header("Dialogue")]
     public bool isReading = false;
     public Dialogue dialogue = new Dialogue();
+
+    public void SetPlayerInLevel(bool state)
+    {
+        playerInLevel = state;
+    }
+    public bool GetPlayerInLevel()
+    {
+        return playerInLevel;
+    }
 
     // Start is called before the first frame update
     void Start()

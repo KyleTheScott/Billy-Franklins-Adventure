@@ -69,6 +69,7 @@ public class PuzzleController : MonoBehaviour
         FindObjectOfType<CinemachineConfiner>().m_BoundingShape2D = cameraBoundingBox;
         player.SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
         player.SetAnimationMovement(true);
+        player.SetPlayerInLevel(true);
     }
 
     private void LoadInPrefabs()
