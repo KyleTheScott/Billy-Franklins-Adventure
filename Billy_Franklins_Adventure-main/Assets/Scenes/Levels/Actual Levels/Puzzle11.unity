@@ -134,22 +134,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterByItself (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.0010824203
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.079343796
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.05693531
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.x
-      value: 2.2921848
-      objectReference: {fileID: 0}
     - target: {fileID: 8181144266666333444, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: lanternInWater.Array.size
       value: 0
@@ -290,22 +274,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterByItself (12)
       objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.0060492754
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.08478093
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.05693531
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.x
-      value: 2.2921848
-      objectReference: {fileID: 0}
     - target: {fileID: 8181144266666333444, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: lanternInWater.Array.size
       value: 0
@@ -445,22 +413,6 @@ PrefabInstance:
     - target: {fileID: 8181144266666333440, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: m_Name
       value: WaterByItself (10)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.008586049
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.090792894
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.05693531
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.x
-      value: 2.2921848
       objectReference: {fileID: 0}
     - target: {fileID: 8181144266666333444, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: lanternInWater.Array.size
@@ -719,22 +671,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterByItself (9)
       objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.0037664175
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.08803725
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.05693531
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.x
-      value: 2.2921848
-      objectReference: {fileID: 0}
     - target: {fileID: 8181144266666333444, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: lanternInWater.Array.size
       value: 0
@@ -854,22 +790,6 @@ PrefabInstance:
     - target: {fileID: 8181144266666333440, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: m_Name
       value: WaterByItself (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.004397154
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.08419466
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.05693531
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.x
-      value: 2.2921848
       objectReference: {fileID: 0}
     - target: {fileID: 8181144266666333444, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: lanternInWater.Array.size
@@ -1150,30 +1070,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterByItself (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.011077642
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.09800959
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.05693531
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.x
-      value: 2.2921848
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333444, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: lanternInWater.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333446, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b4170eb53abd5f0448fed3cd91139eff, type: 3}
     - target: {fileID: 8181144266666333447, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.014843
@@ -1217,14 +1113,6 @@ PrefabInstance:
     - target: {fileID: 8181144266666333447, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333447, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333447, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
@@ -1502,22 +1390,6 @@ PrefabInstance:
     - target: {fileID: 8181144266666333440, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: m_Name
       value: WaterByItself (14)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.0062850714
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.09760451
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.05693531
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.x
-      value: 2.2921848
       objectReference: {fileID: 0}
     - target: {fileID: 8181144266666333444, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: lanternInWater.Array.size
@@ -2698,30 +2570,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterByItself (11)
       objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.0065227747
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.08132291
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.05693531
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.x
-      value: 2.2921848
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333444, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: lanternInWater.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333446, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b4170eb53abd5f0448fed3cd91139eff, type: 3}
     - target: {fileID: 8181144266666333447, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.9251556
@@ -2765,14 +2613,6 @@ PrefabInstance:
     - target: {fileID: 8181144266666333447, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333447, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333447, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
@@ -3177,22 +3017,6 @@ PrefabInstance:
     - target: {fileID: 8181144266666333440, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: m_Name
       value: WaterByItself (13)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.0023629665
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.100931644
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.05693531
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.x
-      value: 2.2921848
       objectReference: {fileID: 0}
     - target: {fileID: 8181144266666333444, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: lanternInWater.Array.size
@@ -3696,22 +3520,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterByItself (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.0049231052
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.08250666
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.05693531
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.x
-      value: 2.2921848
-      objectReference: {fileID: 0}
     - target: {fileID: 8181144266666333444, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: lanternInWater.Array.size
       value: 0
@@ -3990,22 +3798,6 @@ PrefabInstance:
     - target: {fileID: 8181144266666333440, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: m_Name
       value: WaterByItself (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.0075939894
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.0750072
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.05693531
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.x
-      value: 2.2921848
       objectReference: {fileID: 0}
     - target: {fileID: 8181144266666333444, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: lanternInWater.Array.size
@@ -5652,22 +5444,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterByItself (8)
       objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.010714889
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.079892874
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.05693531
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.x
-      value: 2.2921848
-      objectReference: {fileID: 0}
     - target: {fileID: 8181144266666333444, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: lanternInWater.Array.size
       value: 0
@@ -6694,22 +6470,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterByItself (15)
       objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.014892101
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.09755421
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.05693531
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.x
-      value: 2.2921848
-      objectReference: {fileID: 0}
     - target: {fileID: 8181144266666333444, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: lanternInWater.Array.size
       value: 0
@@ -7327,22 +7087,6 @@ PrefabInstance:
     - target: {fileID: 8181144266666333440, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: m_Name
       value: WaterByItself (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.015081763
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.097099066
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.05693531
-      objectReference: {fileID: 0}
-    - target: {fileID: 8181144266666333441, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
-      propertyPath: m_Size.x
-      value: 2.2921848
       objectReference: {fileID: 0}
     - target: {fileID: 8181144266666333444, guid: 173ed61c907b8374885eda7a7a45bd4b, type: 3}
       propertyPath: lanternInWater.Array.size
