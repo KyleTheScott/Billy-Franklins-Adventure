@@ -133,14 +133,20 @@ public class Water : MonoBehaviour, IElectrifiable
                 l.GetComponent<Lantern>().LanternToggle();
                 GlobalGameController.instance.IncreaseCurrentLitLanternNum();
             }
-            
         }
     }
 
     //gets all the objects directly connected
     public List<GameObject> GetConnectedObjects()
     {
-        return connectedGameObjects;
+        if (connectedGameObjects == null)
+        {
+            return null;
+        }
+        else
+        {
+            return connectedGameObjects;
+        }
     }
 
     public void ElectrifyConnectedObjects()
