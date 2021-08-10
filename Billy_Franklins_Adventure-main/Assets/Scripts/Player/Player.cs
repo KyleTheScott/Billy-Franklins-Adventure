@@ -741,8 +741,11 @@ public class Player : MonoBehaviour
 
     public void InteractWithObject()
     {
-        GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject(); 
-        comp.GetComponent<IInteractable>().Interact(); // call interact function
+        GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject();
+        if (comp != null)
+        {
+            comp.GetComponent<IInteractable>().Interact(); // call interact function
+        }
     }
 
     //----------------------------
