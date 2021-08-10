@@ -109,15 +109,21 @@ public class LevelLoadController : MonoBehaviour
             if (prev_scene_to_destroy_ != "" && SceneManager.GetSceneByName(prev_scene_to_destroy_).isLoaded)
             {
                 SceneManager.UnloadSceneAsync(prev_scene_to_destroy_);
-                player.SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
+
+                player.SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START); 
                 player.SetAnimationMovement(true);
+                
             }
 
             if (LowerWallOnTriggerEnter)
             {
                 if (puzzleController != null)
                 {
-                    puzzleController.LoadPuzzle();
+                    if (!player.GetPlayerInLevel())
+                    {
+                        player.SetPlayerInLevel(true);
+                        puzzleController.LoadPuzzle();
+                    }
                 }
                 if (ghostWall != null)
                 {
