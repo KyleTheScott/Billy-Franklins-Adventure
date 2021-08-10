@@ -295,8 +295,6 @@ public class ElectricityController : MonoBehaviour
 
     public void DisconnectObjects(GameObject object1, GameObject object2)
     {
-        
-
         bool bothWater = false;
         if (object1.CompareTag("Water") && object2.CompareTag("Water"))
         {
@@ -307,8 +305,7 @@ public class ElectricityController : MonoBehaviour
         {
             Debug.LogError("Disconnecting object 1:" + object1.name);
             Debug.LogError("Disconnecting object 2:" + object2.name);
-            //Debug.LogError("Object 2 Test:" + object2.name);
-            //Debug.LogError("Object 1 Test:" + object1.name);
+            
             //object to add subgroups made up of only connected connected objects from the original group 
             GameObject electrifiableSubGroups = new GameObject("ElectrifiableSubGroups");
             //is a child of the main scene in the hierarchy
@@ -327,30 +324,32 @@ public class ElectricityController : MonoBehaviour
                 GameObject electrifiableSubGroup = new GameObject("ElectrifiableSubGroup");
                 //the sub group is part of the subGroups parent object
                 electrifiableSubGroup.transform.parent = electrifiableSubGroups.transform;
-                //loop through the current object's parent
+                //loop through the current object's parent which is the group that it is part of
                 foreach (Transform obj in currentObject.transform.parent)
                 {
                     //check every other object but the current object
                     if (obj != currentObject)
                     {
-                        if (obj.name != "ElectrifiableGroup")
+                        if (obj != null)
                         {
                             //make a list of the objects connected to obj to check if they are connected to the current object
                             List<GameObject> connectedToCurrent = new List<GameObject>();
-                            connectedToCurrent = obj.gameObject.GetComponent<IElectrifiable>().GetConnectedObjects();
-                            foreach (GameObject objConnected in connectedToCurrent)
+                            if (obj.gameObject.GetComponent<IElectrifiable>() != null)
                             {
-                                /*one of the connected objects is connected to current object so they are
-                                 added to the sub group created at the beginning of the while loop*/
-                                if (currentObject == objConnected)
+                                connectedToCurrent = obj.gameObject.GetComponent<IElectrifiable>().GetConnectedObjects();
+                                foreach (GameObject objConnected in connectedToCurrent)
                                 {
-                                    obj.gameObject.transform.parent = electrifiableSubGroup.transform;
+                                    /*one of the connected objects is connected to current object so they are
+                                     added to the sub group created at the beginning of the while loop*/
+                                    if (currentObject == objConnected)
+                                    {
+                                        obj.gameObject.transform.parent = electrifiableSubGroup.transform;
+                                    }
                                 }
                             }
                         }
                     }
                 }
-
                 //the current object is added to the sub group created at the beginning of the while loop 
                 currentObject.transform.parent = electrifiableSubGroup.transform;
                 //the start group with object1 is now empty so everything has been added to sub groups
@@ -389,12 +388,15 @@ public class ElectricityController : MonoBehaviour
                             //check each electrifiable in the sub group
                             foreach (Transform subObjects in subObj.transform)
                             {
-                                if (subObjects.name != "ElectrifiableSubGroup")
-                                { 
-                                    /*make a list to check if the objects that are connected to the current electrifiable are
-                                        connected to the objects in current sub group*/ 
+                                //if (subObjects.name != "ElectrifiableSubGroup" && subObjects != null)
+                                //{ 
+                                /*make a list to check if the objects that are connected to the current electrifiable are
+                                    connected to the objects in current sub group*/
+                                if (subObjects.gameObject.GetComponent<IElectrifiable>() != null)
+                                {
                                     List<GameObject> connectedToCurrentSub = new List<GameObject>();
                                     connectedToCurrentSub = subObjects.gameObject.GetComponent<IElectrifiable>().GetConnectedObjects();
+                                
                                     //looping through connected objects
                                     foreach (GameObject objConnected in connectedToCurrentSub)
                                     {
@@ -406,6 +408,8 @@ public class ElectricityController : MonoBehaviour
                                         }
                                     }
                                 }
+
+                                //}
                             }
                         }
                     }
@@ -474,24 +478,50 @@ public class ElectricityController : MonoBehaviour
                     }
                 }
             }
-
             foreach (GameObject destroyObj in destroyGroup)
             {
-                bool connected = false;
-                List<GameObject> connectedToCurrent = new List<GameObject>();
-                connectedToCurrent = destroyObj.GetComponent<IElectrifiable>().GetConnectedObjects();
-                foreach (GameObject objConnected in connectedToCurrent)
+                if (destroyObj.GetComponent<IElectrifiable>() != null)
                 {
-                    if (objConnected.transform.parent.name == "ElectrifiableGroup")
+                    bool connected = false;
+                    List<GameObject> connectedToCurrent = new List<GameObject>();
+                    connectedToCurrent = destroyObj.GetComponent<IElectrifiable>().GetConnectedObjects();
+                    if (connectedToCurrent != null)
                     {
-                        connected = true;
+                        foreach (GameObject objConnected in connectedToCurrent)
+                        {
+                            if (objConnected != null)
+                            {
+                                if (objConnected.transform.parent.name == "ElectrifiableGroup")
+                                {
+                                    connected = true;
+                                }
+                            }
+                        }
+
+                        if (!connected)
+                        {
+                            Destroy(destroyObj);
+                        }
                     }
                 }
-                if (!connected)
+            }
+        }
+        List<GameObject> destroyObjects = new List<GameObject>();
+        //object2.transform.parent = object1.transform.parent;
+        for (int i = 0; i < electrifiables.transform.childCount; i++)
+        {
+            if (electrifiables.transform.GetChild(i).name == "ElectrifiableGroup")
+            {
+                if (electrifiables.transform.GetChild(i).transform.childCount < 1)
                 {
-                    Destroy(destroyObj);
+                    destroyObjects.Add(electrifiables.transform.GetChild(i).gameObject);
+
                 }
             }
+        }
+        foreach (GameObject obj in destroyObjects)
+        {
+            Destroy(obj);
         }
     }
 

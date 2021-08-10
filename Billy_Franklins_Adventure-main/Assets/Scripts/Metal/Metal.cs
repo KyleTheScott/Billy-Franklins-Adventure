@@ -417,12 +417,17 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         }
     }
 
-
-
     //returns objects directly connected
     public List<GameObject> GetConnectedObjects()
     {
-        return connectedGameObjects;
+        if (connectedGameObjects == null)
+        {
+            return null;
+        }
+        else
+        {
+            return connectedGameObjects;
+        }
     }
     // electrifies connected objects
     public void ElectrifyConnectedObjects()
@@ -589,7 +594,6 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-       
         //disconnect objects
         if (collision.CompareTag("Metal"))
         {
