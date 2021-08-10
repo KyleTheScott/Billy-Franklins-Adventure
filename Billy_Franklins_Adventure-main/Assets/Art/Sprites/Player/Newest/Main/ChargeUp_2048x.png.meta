@@ -1,187 +1,187 @@
 fileFormatVersion: 2
-guid: 093fc6373806e194aa0b7b5bf8863912
+guid: 17efe1b0e52607f49bb6e6817b0b0fa4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1254187586003237897
-    second: ChargeUp_2048x_0
+      213: -1585570789856494526
+    second: ChargeUp_2048x (1)_0
   - first:
-      213: 406458209540907263
-    second: ChargeUp_2048x_1
+      213: -6697028562169045730
+    second: ChargeUp_2048x (1)_1
   - first:
-      213: 4997723425985834414
-    second: ChargeUp_2048x_2
+      213: 4728399013899066543
+    second: ChargeUp_2048x (1)_2
   - first:
-      213: -8824136545602834151
-    second: ChargeUp_2048x_3
+      213: -3880251883584028983
+    second: ChargeUp_2048x (1)_3
   - first:
-      213: 4460945327605765234
-    second: ChargeUp_2048x_4
+      213: -4256898235772825633
+    second: ChargeUp_2048x (1)_4
   - first:
-      213: 3518200926273064209
-    second: ChargeUp_2048x_5
+      213: -2958722373516265204
+    second: ChargeUp_2048x (1)_5
   - first:
-      213: 7211350336148543045
-    second: ChargeUp_2048x_6
+      213: 866288924384946614
+    second: ChargeUp_2048x (1)_6
   - first:
-      213: -3581073364920070309
-    second: ChargeUp_2048x_7
+      213: 393358375176195236
+    second: ChargeUp_2048x (1)_7
   - first:
-      213: -5275953548844376070
-    second: ChargeUp_2048x_8
+      213: -6665712193733947175
+    second: ChargeUp_2048x (1)_8
   - first:
-      213: -1501387960921394857
-    second: ChargeUp_2048x_9
+      213: 6361740192677655175
+    second: ChargeUp_2048x (1)_9
   - first:
-      213: 7020810662335391533
-    second: ChargeUp_2048x_10
+      213: 2800961013630436086
+    second: ChargeUp_2048x (1)_10
   - first:
-      213: 7740925162635414780
-    second: ChargeUp_2048x_11
+      213: -8249902636566390306
+    second: ChargeUp_2048x (1)_11
   - first:
-      213: 3992553400673350174
-    second: ChargeUp_2048x_12
+      213: -4633226511237942937
+    second: ChargeUp_2048x (1)_12
   - first:
-      213: 6843108562891786297
-    second: ChargeUp_2048x_13
+      213: -840709530208959532
+    second: ChargeUp_2048x (1)_13
   - first:
-      213: 6667907169555579677
-    second: ChargeUp_2048x_14
+      213: 6904570243892908628
+    second: ChargeUp_2048x (1)_14
   - first:
-      213: 3861680956434211886
-    second: ChargeUp_2048x_15
+      213: 3838880170986027114
+    second: ChargeUp_2048x (1)_15
   - first:
-      213: 7945048662866653168
-    second: ChargeUp_2048x_16
+      213: -8944643516851321421
+    second: ChargeUp_2048x (1)_16
   - first:
-      213: -1104901561622095625
-    second: ChargeUp_2048x_17
+      213: 6442975491536500689
+    second: ChargeUp_2048x (1)_17
   - first:
-      213: -5508496069782206172
-    second: ChargeUp_2048x_18
+      213: -1581954925697697720
+    second: ChargeUp_2048x (1)_18
   - first:
-      213: -3986156937343407344
-    second: ChargeUp_2048x_19
+      213: -5440981679717428044
+    second: ChargeUp_2048x (1)_19
   - first:
-      213: -3299174501933465036
-    second: ChargeUp_2048x_20
+      213: 8514308937413353840
+    second: ChargeUp_2048x (1)_20
   - first:
-      213: -1367143723644860158
-    second: ChargeUp_2048x_21
+      213: -1840319649570839438
+    second: ChargeUp_2048x (1)_21
   - first:
-      213: 2851804058569830046
-    second: ChargeUp_2048x_22
+      213: -4638290386468769443
+    second: ChargeUp_2048x (1)_22
   - first:
-      213: -2528246805372597639
-    second: ChargeUp_2048x_23
+      213: 3920699478518924606
+    second: ChargeUp_2048x (1)_23
   - first:
-      213: -5233885449031206215
-    second: ChargeUp_2048x_24
+      213: -7303641629914577892
+    second: ChargeUp_2048x (1)_24
   - first:
-      213: -3306925868498284994
-    second: ChargeUp_2048x_25
+      213: 8160190931509049119
+    second: ChargeUp_2048x (1)_25
   - first:
-      213: -321340946932647781
-    second: ChargeUp_2048x_26
+      213: -4451628626861566743
+    second: ChargeUp_2048x (1)_26
   - first:
-      213: 7221757188412822628
-    second: ChargeUp_2048x_27
+      213: 4400847985851441763
+    second: ChargeUp_2048x (1)_27
   - first:
-      213: 3685594453230831863
-    second: ChargeUp_2048x_28
+      213: -2692270687214155286
+    second: ChargeUp_2048x (1)_28
   - first:
-      213: 1801196613914505038
-    second: ChargeUp_2048x_29
+      213: 4485922155485319566
+    second: ChargeUp_2048x (1)_29
   - first:
-      213: 3461974910756097163
-    second: ChargeUp_2048x_30
+      213: -7119145748593201007
+    second: ChargeUp_2048x (1)_30
   - first:
-      213: 7915892689493513550
-    second: ChargeUp_2048x_31
+      213: 2176311591160648513
+    second: ChargeUp_2048x (1)_31
   - first:
-      213: 4553997365652726914
-    second: ChargeUp_2048x_32
+      213: -5248762176236865603
+    second: ChargeUp_2048x (1)_32
   - first:
-      213: 5712004797797316341
-    second: ChargeUp_2048x_33
+      213: 3934905197040101862
+    second: ChargeUp_2048x (1)_33
   - first:
-      213: -1857152972530024680
-    second: ChargeUp_2048x_34
+      213: 4892932187281308290
+    second: ChargeUp_2048x (1)_34
   - first:
-      213: 308437648377474047
-    second: ChargeUp_2048x_35
+      213: -5784420092552880241
+    second: ChargeUp_2048x (1)_35
   - first:
-      213: -8759242619410027661
-    second: ChargeUp_2048x_36
+      213: -8912722714461061718
+    second: ChargeUp_2048x (1)_36
   - first:
-      213: -1505253454268037971
-    second: ChargeUp_2048x_37
+      213: -7287443365260157935
+    second: ChargeUp_2048x (1)_37
   - first:
-      213: -5132641261742595982
-    second: ChargeUp_2048x_38
+      213: -2417570012091215890
+    second: ChargeUp_2048x (1)_38
   - first:
-      213: -5088747180448083655
-    second: ChargeUp_2048x_39
+      213: -5277849070136021382
+    second: ChargeUp_2048x (1)_39
   - first:
-      213: 5173357944703948981
-    second: ChargeUp_2048x_40
+      213: 2897552573564564254
+    second: ChargeUp_2048x (1)_40
   - first:
-      213: 1393736471028867581
-    second: ChargeUp_2048x_41
+      213: 4425853775475404778
+    second: ChargeUp_2048x (1)_41
   - first:
-      213: -1918174009799456292
-    second: ChargeUp_2048x_42
+      213: 1301224206468356171
+    second: ChargeUp_2048x (1)_42
   - first:
-      213: -8784900994706642992
-    second: ChargeUp_2048x_43
+      213: 2381462888660083898
+    second: ChargeUp_2048x (1)_43
   - first:
-      213: 7112287724615141821
-    second: ChargeUp_2048x_44
+      213: -8475576694491405257
+    second: ChargeUp_2048x (1)_44
   - first:
-      213: 3355099366258412526
-    second: ChargeUp_2048x_45
+      213: 3921821741870452317
+    second: ChargeUp_2048x (1)_45
   - first:
-      213: -8880429177769544142
-    second: ChargeUp_2048x_46
+      213: 5203039071292667434
+    second: ChargeUp_2048x (1)_46
   - first:
-      213: -6807034954052653067
-    second: ChargeUp_2048x_47
+      213: 889969175345084642
+    second: ChargeUp_2048x (1)_47
   - first:
-      213: 8399502945562072380
-    second: ChargeUp_2048x_48
+      213: 8959975985650809916
+    second: ChargeUp_2048x (1)_48
   - first:
-      213: 1206477709776937897
-    second: ChargeUp_2048x_49
+      213: -2656240739384858518
+    second: ChargeUp_2048x (1)_49
   - first:
-      213: -2525286312013098848
-    second: ChargeUp_2048x_50
+      213: -9221028679389950123
+    second: ChargeUp_2048x (1)_50
   - first:
-      213: -5744210924591786647
-    second: ChargeUp_2048x_51
+      213: 3348614183569685141
+    second: ChargeUp_2048x (1)_51
   - first:
-      213: 7785355239420129066
-    second: ChargeUp_2048x_52
+      213: -5002650723033035598
+    second: ChargeUp_2048x (1)_52
   - first:
-      213: 6799101386021504287
-    second: ChargeUp_2048x_53
+      213: 6957813797538782629
+    second: ChargeUp_2048x (1)_53
   - first:
-      213: 5281513955925112445
-    second: ChargeUp_2048x_54
+      213: 430894445022740261
+    second: ChargeUp_2048x (1)_54
   - first:
-      213: 723641174313520112
-    second: ChargeUp_2048x_55
+      213: 2166394114125573861
+    second: ChargeUp_2048x (1)_55
   - first:
-      213: 306254614825912902
-    second: ChargeUp_2048x_56
+      213: 2984106131773929300
+    second: ChargeUp_2048x (1)_56
   - first:
-      213: -586824484606623605
-    second: ChargeUp_2048x_57
+      213: -7653169799658234566
+    second: ChargeUp_2048x (1)_57
   - first:
-      213: -8595001059801683099
-    second: ChargeUp_2048x_58
+      213: 4224281618604927816
+    second: ChargeUp_2048x (1)_58
   - first:
-      213: -5492159493754942848
-    second: ChargeUp_2048x_59
+      213: 2904320454372436259
+    second: ChargeUp_2048x (1)_59
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -293,7 +293,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChargeUp_2048x_0
+      name: ChargeUp_2048x (1)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -307,14 +307,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f38296190b389ee0800000000000000
-      internalID: -1254187586003237897
+      spriteID: 24c3e5074cbeef9e0800000000000000
+      internalID: -1585570789856494526
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_1
+      name: ChargeUp_2048x (1)_1
       rect:
         serializedVersion: 2
         x: 2048
@@ -328,14 +328,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff02abb869704a500800000000000000
-      internalID: 406458209540907263
+      spriteID: e1dd44d41006f03a0800000000000000
+      internalID: -6697028562169045730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_2
+      name: ChargeUp_2048x (1)_2
       rect:
         serializedVersion: 2
         x: 4096
@@ -349,14 +349,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eada8831afa7b5540800000000000000
-      internalID: 4997723425985834414
+      spriteID: facd2cbd9d5ae9140800000000000000
+      internalID: 4728399013899066543
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_3
+      name: ChargeUp_2048x (1)_3
       rect:
         serializedVersion: 2
         x: 6144
@@ -370,14 +370,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 911fcc5609e5a8580800000000000000
-      internalID: -8824136545602834151
+      spriteID: 9cefee76873962ac0800000000000000
+      internalID: -3880251883584028983
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_4
+      name: ChargeUp_2048x (1)_4
       rect:
         serializedVersion: 2
         x: 8192
@@ -391,14 +391,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 274516ee32678ed30800000000000000
-      internalID: 4460945327605765234
+      spriteID: fdf06cbcb957ce4c0800000000000000
+      internalID: -4256898235772825633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_5
+      name: ChargeUp_2048x (1)_5
       rect:
         serializedVersion: 2
         x: 10240
@@ -412,14 +412,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11dc4fa2a1923d030800000000000000
-      internalID: 3518200926273064209
+      spriteID: c09ff816da180f6d0800000000000000
+      internalID: -2958722373516265204
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_6
+      name: ChargeUp_2048x (1)_6
       rect:
         serializedVersion: 2
         x: 12288
@@ -433,14 +433,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54617016cecd31460800000000000000
-      internalID: 7211350336148543045
+      spriteID: 6b9e1dadf2da50c00800000000000000
+      internalID: 866288924384946614
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_7
+      name: ChargeUp_2048x (1)_7
       rect:
         serializedVersion: 2
         x: 14336
@@ -454,14 +454,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5f83597fb87d4ec0800000000000000
-      internalID: -3581073364920070309
+      spriteID: 4ac4dcdab5d757500800000000000000
+      internalID: 393358375176195236
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_8
+      name: ChargeUp_2048x (1)_8
       rect:
         serializedVersion: 2
         x: 0
@@ -475,14 +475,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aff5ba5533c08c6b0800000000000000
-      internalID: -5275953548844376070
+      spriteID: 9d09f758312ae73a0800000000000000
+      internalID: -6665712193733947175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_9
+      name: ChargeUp_2048x (1)_9
       rect:
         serializedVersion: 2
         x: 2048
@@ -496,14 +496,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7517b3faa9ff92be0800000000000000
-      internalID: -1501387960921394857
+      spriteID: 78270e1dff0794850800000000000000
+      internalID: 6361740192677655175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_10
+      name: ChargeUp_2048x (1)_10
       rect:
         serializedVersion: 2
         x: 4096
@@ -517,14 +517,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d27a6cb791eee6160800000000000000
-      internalID: 7020810662335391533
+      spriteID: 6f20927a3330fd620800000000000000
+      internalID: 2800961013630436086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_11
+      name: ChargeUp_2048x (1)_11
       rect:
         serializedVersion: 2
         x: 6144
@@ -538,14 +538,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cfc44c71c6a4d6b60800000000000000
-      internalID: 7740925162635414780
+      spriteID: ed9d6eb0345728d80800000000000000
+      internalID: -8249902636566390306
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_12
+      name: ChargeUp_2048x (1)_12
       rect:
         serializedVersion: 2
         x: 8192
@@ -559,14 +559,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e12b9e91a26686730800000000000000
-      internalID: 3992553400673350174
+      spriteID: 7617db1390973bfb0800000000000000
+      internalID: -4633226511237942937
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_13
+      name: ChargeUp_2048x (1)_13
       rect:
         serializedVersion: 2
         x: 10240
@@ -580,14 +580,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 938499a4bfa97fe50800000000000000
-      internalID: 6843108562891786297
+      spriteID: 4d30c94f2233554f0800000000000000
+      internalID: -840709530208959532
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_14
+      name: ChargeUp_2048x (1)_14
       rect:
         serializedVersion: 2
         x: 12288
@@ -601,14 +601,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1304ac1e3a298c50800000000000000
-      internalID: 6667907169555579677
+      spriteID: 45218f90e06f1df50800000000000000
+      internalID: 6904570243892908628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_15
+      name: ChargeUp_2048x (1)_15
       rect:
         serializedVersion: 2
         x: 14336
@@ -622,14 +622,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e24e62cae52779530800000000000000
-      internalID: 3861680956434211886
+      spriteID: a68b9ee1d21764530800000000000000
+      internalID: 3838880170986027114
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_16
+      name: ChargeUp_2048x (1)_16
       rect:
         serializedVersion: 2
         x: 0
@@ -643,14 +643,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ffeb590aab724e60800000000000000
-      internalID: 7945048662866653168
+      spriteID: 3b58397bc1e3ed380800000000000000
+      internalID: -8944643516851321421
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_17
+      name: ChargeUp_2048x (1)_17
       rect:
         serializedVersion: 2
         x: 2048
@@ -664,14 +664,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f89dbb32e99aa0f0800000000000000
-      internalID: -1104901561622095625
+      spriteID: 1d7b49db21c0a6950800000000000000
+      internalID: 6442975491536500689
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_18
+      name: ChargeUp_2048x (1)_18
       rect:
         serializedVersion: 2
         x: 4096
@@ -685,14 +685,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4290ff18204ed83b0800000000000000
-      internalID: -5508496069782206172
+      spriteID: 848fb1b6064cb0ae0800000000000000
+      internalID: -1581954925697697720
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_19
+      name: ChargeUp_2048x (1)_19
       rect:
         serializedVersion: 2
         x: 6144
@@ -706,14 +706,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01befa292635ea8c0800000000000000
-      internalID: -3986156937343407344
+      spriteID: 4b4d8076dffbd74b0800000000000000
+      internalID: -5440981679717428044
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_20
+      name: ChargeUp_2048x (1)_20
       rect:
         serializedVersion: 2
         x: 8192
@@ -727,14 +727,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 432ca30354af632d0800000000000000
-      internalID: -3299174501933465036
+      spriteID: 071e47a2ed6e82670800000000000000
+      internalID: 8514308937413353840
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_21
+      name: ChargeUp_2048x (1)_21
       rect:
         serializedVersion: 2
         x: 10240
@@ -748,14 +748,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2094e3bd60ee60de0800000000000000
-      internalID: -1367143723644860158
+      spriteID: 274a826770fd576e0800000000000000
+      internalID: -1840319649570839438
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_22
+      name: ChargeUp_2048x (1)_22
       rect:
         serializedVersion: 2
         x: 12288
@@ -769,14 +769,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9e62188ea4a39720800000000000000
-      internalID: 2851804058569830046
+      spriteID: d517b6dd77b71afb0800000000000000
+      internalID: -4638290386468769443
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_23
+      name: ChargeUp_2048x (1)_23
       rect:
         serializedVersion: 2
         x: 14336
@@ -790,14 +790,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97a004dfcecd9ecd0800000000000000
-      internalID: -2528246805372597639
+      spriteID: e350e28276f196630800000000000000
+      internalID: 3920699478518924606
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_24
+      name: ChargeUp_2048x (1)_24
       rect:
         serializedVersion: 2
         x: 0
@@ -811,14 +811,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9bab8671ae08d57b0800000000000000
-      internalID: -5233885449031206215
+      spriteID: c14cf2a42a044aa90800000000000000
+      internalID: -7303641629914577892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_25
+      name: ChargeUp_2048x (1)_25
       rect:
         serializedVersion: 2
         x: 2048
@@ -832,14 +832,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3e0c9581707b12d0800000000000000
-      internalID: -3306925868498284994
+      spriteID: f17f5fbea62de3170800000000000000
+      internalID: 8160190931509049119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_26
+      name: ChargeUp_2048x (1)_26
       rect:
         serializedVersion: 2
         x: 4096
@@ -853,14 +853,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b98ba4e7c1e5a8bf0800000000000000
-      internalID: -321340946932647781
+      spriteID: 9e4d4ff7953a832c0800000000000000
+      internalID: -4451628626861566743
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_27
+      name: ChargeUp_2048x (1)_27
       rect:
         serializedVersion: 2
         x: 6144
@@ -874,14 +874,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 464587d76e5d83460800000000000000
-      internalID: 7221757188412822628
+      spriteID: 3622b2b2de3f21d30800000000000000
+      internalID: 4400847985851441763
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_28
+      name: ChargeUp_2048x (1)_28
       rect:
         serializedVersion: 2
         x: 8192
@@ -895,14 +895,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f849fac0acd52330800000000000000
-      internalID: 3685594453230831863
+      spriteID: ae94761031223aad0800000000000000
+      internalID: -2692270687214155286
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_29
+      name: ChargeUp_2048x (1)_29
       rect:
         serializedVersion: 2
         x: 10240
@@ -916,14 +916,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4fa207f6c22ff810800000000000000
-      internalID: 1801196613914505038
+      spriteID: e81d1c7de62314e30800000000000000
+      internalID: 4485922155485319566
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_30
+      name: ChargeUp_2048x (1)_30
       rect:
         serializedVersion: 2
         x: 12288
@@ -937,14 +937,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8c8ee8c6d76b0030800000000000000
-      internalID: 3461974910756097163
+      spriteID: 190bed619a6b33d90800000000000000
+      internalID: -7119145748593201007
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_31
+      name: ChargeUp_2048x (1)_31
       rect:
         serializedVersion: 2
         x: 14336
@@ -958,14 +958,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e455f5df576eadd60800000000000000
-      internalID: 7915892689493513550
+      spriteID: 14312bf8cdfc33e10800000000000000
+      internalID: 2176311591160648513
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_32
+      name: ChargeUp_2048x (1)_32
       rect:
         serializedVersion: 2
         x: 0
@@ -979,14 +979,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 284abc7d97c033f30800000000000000
-      internalID: 4553997365652726914
+      spriteID: db735ee1c96a827b0800000000000000
+      internalID: -5248762176236865603
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_33
+      name: ChargeUp_2048x (1)_33
       rect:
         serializedVersion: 2
         x: 2048
@@ -1000,14 +1000,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f63900a91e154f40800000000000000
-      internalID: 5712004797797316341
+      spriteID: 6e9e96ebd679b9630800000000000000
+      internalID: 3934905197040101862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_34
+      name: ChargeUp_2048x (1)_34
       rect:
         serializedVersion: 2
         x: 4096
@@ -1021,14 +1021,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81f79ca06311a36e0800000000000000
-      internalID: -1857152972530024680
+      spriteID: 28a3af486ef27e340800000000000000
+      internalID: 4892932187281308290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_35
+      name: ChargeUp_2048x (1)_35
       rect:
         serializedVersion: 2
         x: 6144
@@ -1042,14 +1042,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffb65e2386ac74400800000000000000
-      internalID: 308437648377474047
+      spriteID: f8fd0cfa29c99bfa0800000000000000
+      internalID: -5784420092552880241
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_36
+      name: ChargeUp_2048x (1)_36
       rect:
         serializedVersion: 2
         x: 8192
@@ -1063,14 +1063,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37b6a900f3be07680800000000000000
-      internalID: -8759242619410027661
+      spriteID: aad3efea9e5af4480800000000000000
+      internalID: -8912722714461061718
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_37
+      name: ChargeUp_2048x (1)_37
       rect:
         serializedVersion: 2
         x: 10240
@@ -1084,14 +1084,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da48c6165f34c1be0800000000000000
-      internalID: -1505253454268037971
+      spriteID: 11c14ecaedccdda90800000000000000
+      internalID: -7287443365260157935
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_38
+      name: ChargeUp_2048x (1)_38
       rect:
         serializedVersion: 2
         x: 12288
@@ -1105,14 +1105,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 270e15267f135c8b0800000000000000
-      internalID: -5132641261742595982
+      spriteID: eef8aa102e0137ed0800000000000000
+      internalID: -2417570012091215890
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_39
+      name: ChargeUp_2048x (1)_39
       rect:
         serializedVersion: 2
         x: 14336
@@ -1126,14 +1126,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9311f9596632169b0800000000000000
-      internalID: -5088747180448083655
+      spriteID: a7eaa64eb3051c6b0800000000000000
+      internalID: -5277849070136021382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_40
+      name: ChargeUp_2048x (1)_40
       rect:
         serializedVersion: 2
         x: 0
@@ -1147,14 +1147,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b8160e14a57bc740800000000000000
-      internalID: 5173357944703948981
+      spriteID: e13b559b6bc263820800000000000000
+      internalID: 2897552573564564254
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_41
+      name: ChargeUp_2048x (1)_41
       rect:
         serializedVersion: 2
         x: 2048
@@ -1168,14 +1168,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df1ae22afeb875310800000000000000
-      internalID: 1393736471028867581
+      spriteID: aef68034f8acb6d30800000000000000
+      internalID: 4425853775475404778
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_42
+      name: ChargeUp_2048x (1)_42
       rect:
         serializedVersion: 2
         x: 4096
@@ -1189,14 +1189,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd94488a6e64165e0800000000000000
-      internalID: -1918174009799456292
+      spriteID: b489fa78580ee0210800000000000000
+      internalID: 1301224206468356171
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_43
+      name: ChargeUp_2048x (1)_43
       rect:
         serializedVersion: 2
         x: 6144
@@ -1210,14 +1210,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d7e887f613c51680800000000000000
-      internalID: -8784900994706642992
+      spriteID: ab42c5431e7ac0120800000000000000
+      internalID: 2381462888660083898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_44
+      name: ChargeUp_2048x (1)_44
       rect:
         serializedVersion: 2
         x: 8192
@@ -1231,14 +1231,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db98e06c00ce3b260800000000000000
-      internalID: 7112287724615141821
+      spriteID: 734a242e6e3b06a80800000000000000
+      internalID: -8475576694491405257
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_45
+      name: ChargeUp_2048x (1)_45
       rect:
         serializedVersion: 2
         x: 10240
@@ -1252,14 +1252,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eeb88f7f815bf8e20800000000000000
-      internalID: 3355099366258412526
+      spriteID: d5e8794781c1d6630800000000000000
+      internalID: 3921821741870452317
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_46
+      name: ChargeUp_2048x (1)_46
       rect:
         serializedVersion: 2
         x: 12288
@@ -1273,14 +1273,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 236380e96b062c480800000000000000
-      internalID: -8880429177769544142
+      spriteID: a26b0ece778e43840800000000000000
+      internalID: 5203039071292667434
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_47
+      name: ChargeUp_2048x (1)_47
       rect:
         serializedVersion: 2
         x: 14336
@@ -1294,14 +1294,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ff260646cd8881a0800000000000000
-      internalID: -6807034954052653067
+      spriteID: 2e8bd7def3ec95c00800000000000000
+      internalID: 889969175345084642
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_48
+      name: ChargeUp_2048x (1)_48
       rect:
         serializedVersion: 2
         x: 0
@@ -1315,14 +1315,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3513103d67019470800000000000000
-      internalID: 8399502945562072380
+      spriteID: c3c3fbcdfaa385c70800000000000000
+      internalID: 8959975985650809916
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_49
+      name: ChargeUp_2048x (1)_49
       rect:
         serializedVersion: 2
         x: 2048
@@ -1336,14 +1336,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a36ea8b5154eb010800000000000000
-      internalID: 1206477709776937897
+      spriteID: a686b03fe13232bd0800000000000000
+      internalID: -2656240739384858518
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_50
+      name: ChargeUp_2048x (1)_50
       rect:
         serializedVersion: 2
         x: 4096
@@ -1357,14 +1357,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a09d409a7164fcd0800000000000000
-      internalID: -2525286312013098848
+      spriteID: 55fc54d6543580080800000000000000
+      internalID: -9221028679389950123
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_51
+      name: ChargeUp_2048x (1)_51
       rect:
         serializedVersion: 2
         x: 6144
@@ -1378,14 +1378,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 965d9c429967840b0800000000000000
-      internalID: -5744210924591786647
+      spriteID: 59a7185bbdaa87e20800000000000000
+      internalID: 3348614183569685141
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_52
+      name: ChargeUp_2048x (1)_52
       rect:
         serializedVersion: 2
         x: 8192
@@ -1399,14 +1399,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2fecd777532b0c60800000000000000
-      internalID: 7785355239420129066
+      spriteID: 2bcc34e2ca3039ab0800000000000000
+      internalID: -5002650723033035598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_53
+      name: ChargeUp_2048x (1)_53
       rect:
         serializedVersion: 2
         x: 10240
@@ -1420,14 +1420,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f158da9ffa24b5e50800000000000000
-      internalID: 6799101386021504287
+      spriteID: 5ad5c97e8ce1f8060800000000000000
+      internalID: 6957813797538782629
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_54
+      name: ChargeUp_2048x (1)_54
       rect:
         serializedVersion: 2
         x: 12288
@@ -1441,14 +1441,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d763f23d5f4bb4940800000000000000
-      internalID: 5281513955925112445
+      spriteID: 52ff44bf638daf500800000000000000
+      internalID: 430894445022740261
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_55
+      name: ChargeUp_2048x (1)_55
       rect:
         serializedVersion: 2
         x: 14336
@@ -1462,14 +1462,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fbcdc360d3ea0a00800000000000000
-      internalID: 723641174313520112
+      spriteID: 5eea3fff7f3901e10800000000000000
+      internalID: 2166394114125573861
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_56
+      name: ChargeUp_2048x (1)_56
       rect:
         serializedVersion: 2
         x: 0
@@ -1483,14 +1483,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64ac58713f8004400800000000000000
-      internalID: 306254614825912902
+      spriteID: 457337467bca96920800000000000000
+      internalID: 2984106131773929300
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_57
+      name: ChargeUp_2048x (1)_57
       rect:
         serializedVersion: 2
         x: 2048
@@ -1504,14 +1504,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8045898d3e2bd7f0800000000000000
-      internalID: -586824484606623605
+      spriteID: a3d9f9d8d9a7ac590800000000000000
+      internalID: -7653169799658234566
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_58
+      name: ChargeUp_2048x (1)_58
       rect:
         serializedVersion: 2
         x: 4096
@@ -1525,14 +1525,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56b2a6a031c68b880800000000000000
-      internalID: -8595001059801683099
+      spriteID: 84ba82c30c9af9a30800000000000000
+      internalID: 4224281618604927816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChargeUp_2048x_59
+      name: ChargeUp_2048x (1)_59
       rect:
         serializedVersion: 2
         x: 6144
@@ -1546,8 +1546,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08a82f40a0ee7c3b0800000000000000
-      internalID: -5492159493754942848
+      spriteID: 32925c4c0183e4820800000000000000
+      internalID: 2904320454372436259
       vertices: []
       indices: 
       edges: []
