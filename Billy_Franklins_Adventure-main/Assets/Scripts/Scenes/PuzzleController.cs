@@ -67,6 +67,8 @@ public class PuzzleController : MonoBehaviour
 
         GlobalGameController.instance.SetLanternAmount(lanternNum, lanternLitNum);
         FindObjectOfType<CinemachineConfiner>().m_BoundingShape2D = cameraBoundingBox;
+        player.SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
+        player.SetAnimationMovement(true);
     }
 
     private void LoadInPrefabs()

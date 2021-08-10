@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
     [SerializeField] bool debugMode = false;
 
     [Header("Movement")]
-    [SerializeField] private bool onGround = false; // keeps track if player is  on ground
+    [SerializeField] private bool onGround = true; // keeps track if player is  on ground
 
     private Vector3 lastPosition; // used to store the players position each frame
     [SerializeField] private float moveSpeed = 4.0f; // regular speed of the player
@@ -143,7 +143,10 @@ public class Player : MonoBehaviour
         playerGFX.SetFacingRight(true);
 
         // setting some generally player movement variables
-        playerState = PlayerState.JUMPING;
+        //playerState = PlayerState.JUMPING;
+        SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
+        SetAnimationMovement(true);
+
         transform.Rotate(0f, 180f, 0f);
         playerCollision = GameObject.FindObjectOfType<PlayerCollision>();
 
