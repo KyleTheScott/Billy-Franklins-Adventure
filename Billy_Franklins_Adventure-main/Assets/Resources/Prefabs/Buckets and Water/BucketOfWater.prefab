@@ -130,7 +130,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012302947517295726}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.06100011, y: 0.25199986, z: 0}
+  m_LocalPosition: {x: -0.32, y: 0.25199986, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1590051018120151483}
@@ -340,7 +340,7 @@ BoxCollider2D:
   m_Offset: {x: 0.67848814, y: 0.108504415}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.2540826, y: 0.5098414}
+    pivot: {x: 0.25, y: 0.5}
     oldSize: {x: 2.6335294, y: 0.51411766}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -369,6 +369,9 @@ MonoBehaviour:
   waterByItself: 0
   lanternInWater:
   - {fileID: 0}
+  oldElectrifiable: 0
+  started: 0
+  starting: 0
   bucketKickEventRef: event:/Player Sounds/Kicking bucket over
   bucketKickVolume: 0.8
   groupNum: 0
