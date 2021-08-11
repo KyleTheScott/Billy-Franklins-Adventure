@@ -43,6 +43,7 @@ public class LevelLoadController : MonoBehaviour
 
         if (next_scene_position_ != null)
         {
+            player.SetPlayerInLevel(false);
             Debug.Log("The next scene position is set");
             GameObject[] root_level_objs = GameObject.FindGameObjectsWithTag("LevelRoot");
 
@@ -60,11 +61,11 @@ public class LevelLoadController : MonoBehaviour
                 
         }
 
-        if (prev_scene_to_destroy_ == null)
-        {
-            player.SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
-            player.SetAnimationMovement(true);
-        }
+        //if (prev_scene_to_destroy_ == null)
+        //{
+        //    player.SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
+        //    player.SetAnimationMovement(true);
+        //}
 
         GlobalGameController.instance.GetComponent<CheckPointSystem>().SetCheckPoint(next_scene_to_load_);
         FindObjectOfType<Charges>().GetComponent<Charges>().SetLampOn(false);
@@ -112,7 +113,8 @@ public class LevelLoadController : MonoBehaviour
 
                 player.SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START); 
                 player.SetAnimationMovement(true);
-                
+                Debug.LogError("connect connected 0");
+                ElectricityController.instanceElectrical.ConnectConnectedObjects();
             }
 
             if (LowerWallOnTriggerEnter)
@@ -122,9 +124,11 @@ public class LevelLoadController : MonoBehaviour
                     if (!player.GetPlayerInLevel())
                     {
                         player.SetPlayerInLevel(true);
-                        puzzleController.LoadPuzzle();
+                        player.SetPlayerKiteLightning();
                     }
+                    puzzleController.LoadPuzzle();
                 }
+                
                 if (ghostWall != null)
                 {
                     ghostWall.LowerGhostWall();

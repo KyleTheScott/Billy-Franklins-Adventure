@@ -6,13 +6,12 @@ public class ObjectsCollision : MonoBehaviour
 {
     private GameObject player = null;
 
-    private CheckPointSystem checkPointSystem = null;
+    
     public List<GameObject> checkForElectric = new List<GameObject>();
 
     private void Start()
     {
         player = player = FindObjectOfType<Player>().gameObject;
-        checkPointSystem = GameObject.Find("GlobalGameController").GetComponent<CheckPointSystem>();
     }
 
     private void Update()
@@ -26,7 +25,7 @@ public class ObjectsCollision : MonoBehaviour
                 if (item.CompareTag("Water") && item.GetComponent<Water>().GetElectrified())
                 {
                     EmptyObjects();
-                    checkPointSystem.PlayerDeath();
+                    player.GetComponent<Player>().SetPlayerState(Player.PlayerState.PLAYER_DEATH_ELECTRIFIED_START);
                     break;
                 }
                 //metal
@@ -35,7 +34,7 @@ public class ObjectsCollision : MonoBehaviour
                     if (item.GetComponent<Metal>().GetMovable())
                     {
                         EmptyObjects();
-                        checkPointSystem.PlayerDeath();
+                        player.GetComponent<Player>().SetPlayerState(Player.PlayerState.PLAYER_DEATH_ELECTRIFIED_START);
                         break;
                     }
                 }

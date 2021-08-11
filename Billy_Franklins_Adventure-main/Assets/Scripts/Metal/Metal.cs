@@ -442,6 +442,14 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
         //add animation code here
         //then set electrified false at the end of the animation with an animation event
         electrified = true;
+        StartCoroutine("TemporaryElectrify", (1));
+    }
+    IEnumerator TemporaryElectrify(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        electrified = false;
+        // Code to execute after the delay
     }
 
     public void RemoveDisconnectedObject(GameObject disconnectObject)

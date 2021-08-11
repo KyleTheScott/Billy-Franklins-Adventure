@@ -51,7 +51,16 @@ public class Player : MonoBehaviour
     public PlayerState PlayersState => playerState;
     [SerializeField] bool debugMode = false;
 
-    [SerializeField] bool playerInLevel = false;
+    //public enum PlayerInLevelState
+    //{
+    //    IN_LEVEL,
+    //    CHANGING_LEVEL,
+    //    LEVEL_CHANGE
+    //}
+
+    //[SerializeField] private PlayerInLevelState playerInLevelState = PlayerInLevelState.IN_LEVEL;
+    [SerializeField] private bool playerInLevel;
+
 
     [Header("Movement")]
     [SerializeField] private bool onGround = true; // keeps track if player is  on ground
@@ -129,6 +138,15 @@ public class Player : MonoBehaviour
     [Header("Dialogue")]
     public bool isReading = false;
     public Dialogue dialogue = new Dialogue();
+
+
+    public void SetPlayerKiteLightning()
+    {
+        SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
+        SetAnimationMovement(true);
+        SetPlayerInLevel(true);
+    }
+
 
     public void SetPlayerInLevel(bool state)
     {
