@@ -8,6 +8,7 @@ public class Bucket : MonoBehaviour, IInteractable
     [SerializeField] private GameObject waterObject;
     private Animator bucketAnimator;
     private bool tippedOver;
+    private bool facingRight;
     [SerializeField] private GameObject highlight;
     private bool setCollider = true;
     private CircleCollider2D collider;
@@ -56,7 +57,7 @@ public class Bucket : MonoBehaviour, IInteractable
            
             tippedOver = true;
             SetHighlighted(false);
-            bool facingRight = true;
+            facingRight = true;
             if (player.transform.position.x >= transform.position.x)
             {
                 transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
@@ -74,11 +75,11 @@ public class Bucket : MonoBehaviour, IInteractable
             PlayerObjectInteractions.playerObjectIInstance.DisconnectObject(gameObject);
 
             collider.enabled = false;
-           // Debug.LogError("Water collider state before: " + waterObject.GetComponent<Collider2D>().enabled);
-           //waterObject.GetComponent<Collider2D>().enabled = true;
-            waterObject.GetComponent<Water>().SetWaterByItself(true);
-           // Debug.LogError("Water collider state after: " + waterObject.GetComponent<Collider2D>().enabled);
-            waterObject.GetComponent<Water>().SpillWater(facingRight);
+           //// Debug.LogError("Water collider state before: " + waterObject.GetComponent<Collider2D>().enabled);
+           ////waterObject.GetComponent<Collider2D>().enabled = true;
+           // waterObject.GetComponent<Water>().SetWaterByItself(true);
+           //// Debug.LogError("Water collider state after: " + waterObject.GetComponent<Collider2D>().enabled);
+           // waterObject.GetComponent<Water>().SpillWater(facingRight);
         }
     }
 
@@ -100,6 +101,15 @@ public class Bucket : MonoBehaviour, IInteractable
                 player.SetMovingRight(true);
             }
         }
+    }
+
+    public void SetDownWater()
+    {
+        // Debug.LogError("Water collider state before: " + waterObject.GetComponent<Collider2D>().enabled);
+        //waterObject.GetComponent<Collider2D>().enabled = true;
+        waterObject.GetComponent<Water>().SetWaterByItself(true);
+        // Debug.LogError("Water collider state after: " + waterObject.GetComponent<Collider2D>().enabled);
+        waterObject.GetComponent<Water>().SpillWater(facingRight);
     }
 
 
