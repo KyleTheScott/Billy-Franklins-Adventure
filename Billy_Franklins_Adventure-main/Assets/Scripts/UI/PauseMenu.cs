@@ -35,8 +35,11 @@ public class PauseMenu : MonoBehaviour
         //reload level and move player
         //SceneManager.LoadScene(checkPointSystem.GetCheckPoint(), LoadSceneMode.Single);
         //FindObjectOfType<Player>().gameObject.transform.position = GameObject.Find("PlayerSpawnPoint").GetComponent<Transform>().transform.position;
+        FindObjectOfType<ObjectsCollision>().EmptyObjects();
         FindObjectOfType<MusicController>().PlayMenuSelect();
         checkPointSystem.PlayerDeath();
+        Time.timeScale = 1;
+        FindObjectOfType<Player>().GetComponent<Player>().ClosePauseMenu();
     }
 
     public void MainMenu()

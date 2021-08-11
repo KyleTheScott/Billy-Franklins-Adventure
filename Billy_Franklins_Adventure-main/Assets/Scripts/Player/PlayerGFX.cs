@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -9,9 +10,13 @@ public class PlayerGFX : MonoBehaviour
     private SpriteRenderer playerSprite;
     private Animator playerAnimator;
     private Player player;
+    private KiteLightning kiteLightning;
     [SerializeField] private bool isFacingRight = false; //Is character facing right side? for Character flip
     private bool settingFacingRight;
     private Player.PlayerState currentPlayerState;
+
+    private CheckPointSystem checkPointSystem = null;
+
 
     [Header("Shooting")]
     private Shooting shooting;
@@ -33,6 +38,8 @@ public class PlayerGFX : MonoBehaviour
         shooting = FindObjectOfType<Shooting>();
         footstepScript = FindObjectOfType<FMODStudioFootstepScript>();
         movingMetal = FindObjectOfType<MovingMetal>();
+        kiteLightning = FindObjectOfType<KiteLightning>();
+        checkPointSystem = GameObject.Find("GlobalGameController").GetComponent<CheckPointSystem>();
 
         isFacingRight = true;
         playerAnimator.SetInteger("PlayerAnimState", 0);
@@ -94,7 +101,6 @@ public class PlayerGFX : MonoBehaviour
                         player.SetKinematic(true);
                         playerAnimator.SetInteger("PlayerAnimState", 7);
                     }
-
                     break;
                 case Player.PlayerState.MOVING_OBJECT:
                     playerAnimator.SetInteger("PlayerAnimState", 9);
@@ -139,10 +145,14 @@ public class PlayerGFX : MonoBehaviour
 
 
                     break;
-                case Player.PlayerState.INTERACT:
-
+                case Player.PlayerState.LIGHTNING_CHARGES_START:
+                    playerAnimator.SetInteger("PlayerAnimState", 15);
+                    player.SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES);
                     break;
-
+                case Player.PlayerState.PLAYER_DEATH_ELECTRIFIED_START:
+                    playerAnimator.SetInteger("PlayerAnimState", 13);
+                    player.SetPlayerState(Player.PlayerState.PLAYER_DEATH_ELECTRIFIED);
+                    break;
             }
         }
         //used for automated animations
@@ -248,6 +258,28 @@ public class PlayerGFX : MonoBehaviour
     {
         //end electrify interaction
     }
+
+    public void ElectricityDeathEnd()
+    {
+        checkPointSystem.PlayerDeath();
+    }
+
+    public void OutOfChargesDeathEnd()
+    {
+
+    }
+
+    public void ElectrifyKiteLightning()
+    {
+        kiteLightning.KiteElectrifyStart();
+    }
+
+    public void ElectrifyKiteEnd()
+    {
+        player.SetPlayerState(Player.PlayerState.IDLE);
+        player.SetAnimationMovement(false);
+    }
+
 
 
     //------------------

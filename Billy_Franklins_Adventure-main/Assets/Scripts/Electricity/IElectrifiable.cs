@@ -8,6 +8,11 @@ public interface IElectrifiable
 
     bool GetElectrified();
     void SetElectrified(bool state);
+    bool IsOldElectrifiable();
+    void SetIsOldElectrifiable(bool state);
+
+    //bool GetStarted();
+    //void SetStarted(bool state);
 
     List<GameObject> GetConnectedObjects();
     void ElectrifyConnectedObjects();

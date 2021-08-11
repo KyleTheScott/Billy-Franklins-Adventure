@@ -51,8 +51,19 @@ public class Player : MonoBehaviour
     public PlayerState PlayersState => playerState;
     [SerializeField] bool debugMode = false;
 
+    //public enum PlayerInLevelState
+    //{
+    //    IN_LEVEL,
+    //    CHANGING_LEVEL,
+    //    LEVEL_CHANGE
+    //}
+
+    //[SerializeField] private PlayerInLevelState playerInLevelState = PlayerInLevelState.IN_LEVEL;
+    [SerializeField] private bool playerInLevel;
+
+
     [Header("Movement")]
-    [SerializeField] private bool onGround = false; // keeps track if player is  on ground
+    [SerializeField] private bool onGround = true; // keeps track if player is  on ground
 
     private Vector3 lastPosition; // used to store the players position each frame
     [SerializeField] private float moveSpeed = 4.0f; // regular speed of the player
@@ -128,6 +139,24 @@ public class Player : MonoBehaviour
     public bool isReading = false;
     public Dialogue dialogue = new Dialogue();
 
+
+    public void SetPlayerKiteLightning()
+    {
+        SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
+        SetAnimationMovement(true);
+        SetPlayerInLevel(true);
+    }
+
+
+    public void SetPlayerInLevel(bool state)
+    {
+        playerInLevel = state;
+    }
+    public bool GetPlayerInLevel()
+    {
+        return playerInLevel;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -143,7 +172,10 @@ public class Player : MonoBehaviour
         playerGFX.SetFacingRight(true);
 
         // setting some generally player movement variables
-        playerState = PlayerState.JUMPING;
+        //playerState = PlayerState.JUMPING;
+        SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
+        SetAnimationMovement(true);
+
         transform.Rotate(0f, 180f, 0f);
         playerCollision = GameObject.FindObjectOfType<PlayerCollision>();
 
@@ -741,8 +773,11 @@ public class Player : MonoBehaviour
 
     public void InteractWithObject()
     {
-        GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject(); 
-        comp.GetComponent<IInteractable>().Interact(); // call interact function
+        GameObject comp = PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject();
+        if (comp != null)
+        {
+            comp.GetComponent<IInteractable>().Interact(); // call interact function
+        }
     }
 
     //----------------------------

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class LevelLoadController : MonoBehaviour
 {
     [SerializeField] private string next_scene_to_load_ = "";
@@ -17,14 +18,22 @@ public class LevelLoadController : MonoBehaviour
     [SerializeField] private GhostWallController ghostWall;
     [SerializeField] private bool LowerWallOnTriggerEnter = true;
     [SerializeField] private PuzzleController puzzleController;
-    [SerializeField]
-    bool InstantLoadLevel = false;
+    [SerializeField] bool InstantLoadLevel = false;
+    private Player player;
 
 
     private bool has_level_loaded_ = false;
+
+    void Start()
+    {
+        player = FindObjectOfType<Player>();
+    }
+
     IEnumerator LoadNextLevel()
     {
-        ElectricityController.instanceElectrical.SetNewScene();
+        Debug.LogError("Loading");
+        ElectricityController.instanceElectrical.SetNewElectrifiableScene();
+        FindObjectOfType<ObjectsCollision>().EmptyObjects();
         AsyncOperation load_scene_op = SceneManager.LoadSceneAsync(next_scene_to_load_, LoadSceneMode.Additive);
         while (!load_scene_op.isDone)
         {
@@ -34,7 +43,7 @@ public class LevelLoadController : MonoBehaviour
 
         if (next_scene_position_ != null)
         {
-            
+            player.SetPlayerInLevel(false);
             Debug.Log("The next scene position is set");
             GameObject[] root_level_objs = GameObject.FindGameObjectsWithTag("LevelRoot");
 
@@ -51,6 +60,12 @@ public class LevelLoadController : MonoBehaviour
             }
                 
         }
+
+        //if (prev_scene_to_destroy_ == null)
+        //{
+        //    player.SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
+        //    player.SetAnimationMovement(true);
+        //}
 
         GlobalGameController.instance.GetComponent<CheckPointSystem>().SetCheckPoint(next_scene_to_load_);
         FindObjectOfType<Charges>().GetComponent<Charges>().SetLampOn(false);
@@ -95,15 +110,25 @@ public class LevelLoadController : MonoBehaviour
             if (prev_scene_to_destroy_ != "" && SceneManager.GetSceneByName(prev_scene_to_destroy_).isLoaded)
             {
                 SceneManager.UnloadSceneAsync(prev_scene_to_destroy_);
-               
+
+                player.SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START); 
+                player.SetAnimationMovement(true);
+                Debug.LogError("connect connected 0");
+                ElectricityController.instanceElectrical.ConnectConnectedObjects();
             }
 
             if (LowerWallOnTriggerEnter)
             {
                 if (puzzleController != null)
                 {
+                    if (!player.GetPlayerInLevel())
+                    {
+                        player.SetPlayerInLevel(true);
+                        player.SetPlayerKiteLightning();
+                    }
                     puzzleController.LoadPuzzle();
                 }
+                
                 if (ghostWall != null)
                 {
                     ghostWall.LowerGhostWall();
