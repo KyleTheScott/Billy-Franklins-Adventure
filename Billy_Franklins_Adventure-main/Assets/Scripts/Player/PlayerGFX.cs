@@ -132,6 +132,7 @@ public class PlayerGFX : MonoBehaviour
                     if (player.GetAnimationMovement())
                     {
                         playerAnimator.SetInteger("PlayerAnimState", 6);
+                        player.SetAnimationMovement(true);
                         player.SetPlayerState(Player.PlayerState.KICKING_BUCKET);
                     }
                     else
@@ -164,7 +165,6 @@ public class PlayerGFX : MonoBehaviour
                     if (Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
                         .GetCurrentObject().transform.position.x)) < .5f)
                     {
-                        player.SetAnimationMovement(false);
                         playerAnimator.SetInteger("PlayerAnimState", 0);
                         player.SetPlayerState(Player.PlayerState.KICK_BUCKET);
                     }
@@ -333,15 +333,22 @@ public class PlayerGFX : MonoBehaviour
     {
         Debug.Log("KickBucketOver");
         player.InteractWithObject();
+        
+    }
+
+    public void KickBucketOverEnd()
+    {
+        player.SetAnimationMovement(false);
         player.SetPlayerState(Player.PlayerState.IDLE);
         PlayerObjectInteractions.playerObjectIInstance.SetInteracting(false);
+        
     }
 
     //--------
-    //Shooting
-    //--------
+        //Shooting
+        //--------
 
-    public void StopAiming()
+        public void StopAiming()
     {
         shooting.SetAimLineState(Shooting.AimLineState.NOT_AIMED);
     }

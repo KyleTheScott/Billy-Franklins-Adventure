@@ -49,7 +49,6 @@ public class CheckPointSystem : MonoBehaviour
             FindObjectOfType<Player>().transform.position = FindObjectOfType<PuzzleController>().PlayerSpawnPoint.position;
             FindObjectOfType<PuzzleController>().LoadPuzzle();
             FindObjectOfType<Player>().SetPlayerKiteLightning();
-            FindObjectOfType<Player>().SetPlayerKiteLightning();
             playerDied = false;
 
         }
