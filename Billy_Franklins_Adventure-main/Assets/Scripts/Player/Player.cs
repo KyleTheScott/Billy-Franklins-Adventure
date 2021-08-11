@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
 [DefaultExecutionOrder(-100)] //ensure this script runs before all other player scripts to prevent laggy input
@@ -139,14 +140,21 @@ public class Player : MonoBehaviour
     public bool isReading = false;
     public Dialogue dialogue = new Dialogue();
 
-
     public void SetPlayerKiteLightning()
     {
+        StartCoroutine(WaitTillOnGround());
+    }
+
+    IEnumerator WaitTillOnGround()
+    {
+        while (!IsPlayerOnGround())
+        {
+            yield return null;
+        }
         SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
         SetAnimationMovement(true);
         SetPlayerInLevel(true);
     }
-
 
     public void SetPlayerInLevel(bool state)
     {
@@ -210,6 +218,10 @@ public class Player : MonoBehaviour
             {
                 case PlayerState.KICKING_BUCKET:
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+                    break;
+                case PlayerState.KICK_BUCKET:
+                    rb.velocity = Vector2.zero;
+                    rb.isKinematic = true;
                     break;
                 case PlayerState.MOVING_OBJECT_START:
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
@@ -715,7 +727,7 @@ public class Player : MonoBehaviour
             case PlayerState.MOVING_OBJECT:
                 rb.velocity = Vector2.zero;
                 rb.isKinematic = true;
-                Debug.Log("Player State: " + rb.velocity);
+                //Debug.Log("Player State: " + rb.velocity);
                 currentPlayerState = playerState;
                 break;
         }

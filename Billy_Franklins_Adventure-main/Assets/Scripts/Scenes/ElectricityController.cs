@@ -55,7 +55,7 @@ public class ElectricityController : MonoBehaviour
                     int currentSceneNum = SceneManager.sceneCount - 1;
                     string sceneName = "root_" + SceneManager.GetSceneAt(SceneManager.sceneCount - 1).name;
 
-                    Debug.LogError("String" + sceneName);
+                    //Debug.LogError("String" + sceneName);
                     GameObject sceneObject = GameObject.Find(sceneName);
                     foreach (Transform obj in sceneObject.transform)
                     {
@@ -121,7 +121,7 @@ public class ElectricityController : MonoBehaviour
             int currentSceneNum = SceneManager.sceneCount - 1;
             string sceneName = "root_" + SceneManager.GetSceneAt(SceneManager.sceneCount - 1).name;
 
-            Debug.LogError("String" + sceneName);
+            //Debug.LogError("String" + sceneName);
             GameObject sceneObject = GameObject.Find(sceneName);
             foreach (Transform obj in sceneObject.transform)
             {
@@ -168,7 +168,7 @@ public class ElectricityController : MonoBehaviour
             int currentSceneNum = SceneManager.sceneCount - 1;
             string sceneName = "root_" + SceneManager.GetSceneAt(SceneManager.sceneCount - 1).name;
 
-            Debug.LogError("String" + sceneName);
+            //Debug.LogError("String" + sceneName);
             GameObject sceneObject = GameObject.Find(sceneName);
             foreach (Transform obj in sceneObject.transform)
             {
@@ -245,11 +245,11 @@ public class ElectricityController : MonoBehaviour
 
     public void ConnectConnectedObjects()
     {
-        Debug.LogError("connect connected 1");
+        //Debug.LogError("connect connected 1");
         int currentSceneNum = SceneManager.sceneCount - 1;
         string sceneName = "root_" + SceneManager.GetSceneAt(SceneManager.sceneCount - 1).name;
 
-        Debug.LogError("String" + sceneName);
+        //Debug.LogError("String" + sceneName);
         GameObject sceneObject = GameObject.Find(sceneName);
         foreach (Transform obj in sceneObject.transform)
         {
@@ -259,12 +259,12 @@ public class ElectricityController : MonoBehaviour
                 break;
             }
         }
-        Debug.LogError("connect connected 2");
+        //Debug.LogError("connect connected 2");
         if (electrifiables != null)
         {
             if (electrifiables.transform.childCount > 0)
             {
-                Debug.LogError("connect connected 3");
+                //Debug.LogError("connect connected 3");
                 foreach (Transform obj in electrifiables.transform)
                 {
                     if (obj.gameObject.name == "ElectrifiableGroup")
@@ -395,8 +395,8 @@ public class ElectricityController : MonoBehaviour
 
         if (object1.transform.parent == object2.transform.parent && !bothWater)
         {
-            Debug.LogError("Disconnecting object 1:" + object1.name);
-            Debug.LogError("Disconnecting object 2:" + object2.name);
+            //Debug.LogError("Disconnecting object 1:" + object1.name);
+            //Debug.LogError("Disconnecting object 2:" + object2.name);
             
             //object to add subgroups made up of only connected connected objects from the original group 
             GameObject electrifiableSubGroups = new GameObject("ElectrifiableSubGroups");
