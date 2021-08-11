@@ -26,6 +26,7 @@ public class CheckPointSystem : MonoBehaviour
         charges.SetLampOn(false);
         playerDied = true;
         SceneManager.LoadScene(checkPointScene, LoadSceneMode.Single);
+        FindObjectOfType<Player>().SetMovingRight(true);
     }
 
     public void SetCheckPoint(string sceneName)
@@ -47,6 +48,8 @@ public class CheckPointSystem : MonoBehaviour
             Debug.Log("DEATH");
             FindObjectOfType<Player>().transform.position = FindObjectOfType<PuzzleController>().PlayerSpawnPoint.position;
             FindObjectOfType<PuzzleController>().LoadPuzzle();
+            FindObjectOfType<Player>().SetPlayerKiteLightning();
+            FindObjectOfType<Player>().SetPlayerKiteLightning();
             playerDied = false;
 
         }

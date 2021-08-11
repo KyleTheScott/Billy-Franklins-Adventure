@@ -15,6 +15,9 @@ public class PlayerGFX : MonoBehaviour
     private bool settingFacingRight;
     private Player.PlayerState currentPlayerState;
 
+    private CheckPointSystem checkPointSystem = null;
+
+
     [Header("Shooting")]
     private Shooting shooting;
     private Shooting.AimLineState currentAimLineState;
@@ -36,6 +39,7 @@ public class PlayerGFX : MonoBehaviour
         footstepScript = FindObjectOfType<FMODStudioFootstepScript>();
         movingMetal = FindObjectOfType<MovingMetal>();
         kiteLightning = FindObjectOfType<KiteLightning>();
+        checkPointSystem = GameObject.Find("GlobalGameController").GetComponent<CheckPointSystem>();
 
         isFacingRight = true;
         playerAnimator.SetInteger("PlayerAnimState", 0);
@@ -145,8 +149,9 @@ public class PlayerGFX : MonoBehaviour
                     playerAnimator.SetInteger("PlayerAnimState", 15);
                     player.SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES);
                     break;
-                case Player.PlayerState.LIGHTNING_CHARGES:
-
+                case Player.PlayerState.PLAYER_DEATH_ELECTRIFIED_START:
+                    playerAnimator.SetInteger("PlayerAnimState", 13);
+                    player.SetPlayerState(Player.PlayerState.PLAYER_DEATH_ELECTRIFIED);
                     break;
             }
         }
@@ -256,7 +261,7 @@ public class PlayerGFX : MonoBehaviour
 
     public void ElectricityDeathEnd()
     {
-
+        checkPointSystem.PlayerDeath();
     }
 
     public void OutOfChargesDeathEnd()
