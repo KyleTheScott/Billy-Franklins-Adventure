@@ -369,6 +369,8 @@ MonoBehaviour:
   waterByItself: 0
   lanternInWater:
   - {fileID: 0}
+  bucketKickEventRef: event:/Player Sounds/Kicking bucket over
+  bucketKickVolume: 0.8
   groupNum: 0
 --- !u!95 &2364727190617079403
 Animator:

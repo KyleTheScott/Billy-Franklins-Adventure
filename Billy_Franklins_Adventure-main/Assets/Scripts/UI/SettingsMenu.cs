@@ -32,11 +32,13 @@ public class SettingsMenu : MonoBehaviour
         {
             mainMenuUI.gameObject.SetActive(true);
             mainMenuUI.GetComponent<MainMenu>().MainMenuUICalled();
+            FindObjectOfType<MusicController>().PlayMenuSelect();
         }
         else if (pauseMenuUI != null)
         {
             pauseMenuUI.gameObject.SetActive(true);
             pauseMenuUI.GetComponent<PauseMenu>().PauseMenuCalled();
+            FindObjectOfType<MusicController>().PlayMenuSelect();
         }
     }
 
@@ -55,7 +57,6 @@ public class SettingsMenu : MonoBehaviour
     public void SetPauseMenuUIReference(Canvas reference)
     {
         pauseMenuUI = reference;
-        //FindObjectOfType<MusicController>().PlayMenuSelect();
 
     }
 }
