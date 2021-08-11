@@ -401,6 +401,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3283143666902785204}
     m_Modifications:
+    - target: {fileID: 4014139622218159889, guid: bcd195b0af3d05c4a8bf9c4b0d4b679d, type: 3}
+      propertyPath: lightingVolume
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 4014139622218159902, guid: bcd195b0af3d05c4a8bf9c4b0d4b679d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
