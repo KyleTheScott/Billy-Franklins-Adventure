@@ -262,164 +262,124 @@ public class ElectricityController : MonoBehaviour
         Debug.LogError("connect connected 2");
         if (electrifiables != null)
         {
-            Debug.LogError("connect connected 3");
-            foreach (Transform obj in electrifiables.transform)
+            if (electrifiables.transform.childCount > 0)
             {
-                if (obj.gameObject.name == "ElectrifiableGroup")
-                {
-                    foreach (Transform obj2 in obj.transform)
-                    {
-                        obj2.transform.parent = electrifiables.transform;
-                    }
-                }
-            }
-
-            bool disconnect = false;
-            while (!disconnect)
-            {
-                disconnect = true;
+                Debug.LogError("connect connected 3");
                 foreach (Transform obj in electrifiables.transform)
                 {
-                    if (obj.gameObject.name != "ElectrifiableGroup")
+                    if (obj.gameObject.name == "ElectrifiableGroup")
                     {
-                        GameObject electrifiableGroup = new GameObject("ElectrifiableGroup");
-                        electrifiableGroup.transform.parent = electrifiables.transform;
-                        obj.transform.parent = electrifiableGroup.transform;
-                        electrifiableGroup.tag = "ElectrifiableGroup";
-                        disconnect = false;
-                    }
-                }
-            }
-
-            GameObject currentSubObject = electrifiables.transform.GetChild(0).gameObject;
-
-            int groupPos = 1;
-            int connectionNum = 0;
-            bool reconnected = false;
-            while (!reconnected)
-            {
-                connectionNum = 0;
-
-                //loops through the current sub group
-                foreach (Transform obj in currentSubObject.transform)
-                {
-                    //loops through all sub groups
-                    foreach (Transform subObj in electrifiables.transform)
-                    {
-                        //makes sure the subObj is not checking against current sub object that the other groups are being compared against
-                        if (subObj.transform != currentSubObject.transform)
+                        foreach (Transform obj2 in obj.transform)
                         {
-                            //check each electrifiable in the sub group
-                            foreach (Transform subObjects in subObj.transform)
-                            {
-                                //if (subObjects.name != "ElectrifiableSubGroup" && subObjects != null)
-                                //{ 
-                                /*make a list to check if the objects that are connected to the current electrifiable are
-                                    connected to the objects in current sub group*/
-                                if (subObjects.gameObject.GetComponent<IElectrifiable>() != null)
-                                {
-                                    List<GameObject> connectedToCurrentSub = new List<GameObject>();
-                                    connectedToCurrentSub = subObjects.gameObject.GetComponent<IElectrifiable>().GetConnectedObjects();
-
-                                    //looping through connected objects
-                                    foreach (GameObject objConnected in connectedToCurrentSub)
-                                    {
-                                        // if the sub group electrifiable is connected to the current object in the current sub group
-                                        if (obj.gameObject == objConnected)
-                                        {
-                                            connectionNum++;
-                                            subObjects.transform.parent = currentSubObject.transform;
-                                        }
-                                    }
-                                }
-
-                                //}
-                            }
+                            obj2.transform.parent = electrifiables.transform;
                         }
                     }
                 }
-                //deleting empty sub groups
-                foreach (Transform obj in electrifiables.transform)
+
+                bool disconnect = false;
+                while (!disconnect)
                 {
-                    if (obj.childCount < 1)
+                    disconnect = true;
+                    foreach (Transform obj in electrifiables.transform)
                     {
-                        Destroy(obj.gameObject);
+                        if (obj.gameObject.name != "ElectrifiableGroup")
+                        {
+                            GameObject electrifiableGroup = new GameObject("ElectrifiableGroup");
+                            electrifiableGroup.transform.parent = electrifiables.transform;
+                            obj.transform.parent = electrifiableGroup.transform;
+                            electrifiableGroup.tag = "ElectrifiableGroup";
+                            disconnect = false;
+                        }
                     }
                 }
-                //checking if any connections were made
-                if (connectionNum == 0)
+
+                GameObject currentSubObject = electrifiables.transform.GetChild(0).gameObject;
+
+                int groupPos = 1;
+                int connectionNum = 0;
+                bool reconnected = false;
+                while (!reconnected)
                 {
-                    //checks if it has looped through all the groups and made connections
-                    if (groupPos >= electrifiables.transform.childCount)
+                    connectionNum = 0;
+
+                    //loops through the current sub group
+                    foreach (Transform obj in currentSubObject.transform)
                     {
-                        reconnected = true;
+                        //loops through all sub groups
+                        foreach (Transform subObj in electrifiables.transform)
+                        {
+                            //makes sure the subObj is not checking against current sub object that the other groups are being compared against
+                            if (subObj.transform != currentSubObject.transform)
+                            {
+                                //check each electrifiable in the sub group
+                                foreach (Transform subObjects in subObj.transform)
+                                {
+                                    /*make a list to check if the objects that are connected to the current electrifiable are
+                                        connected to the objects in current sub group*/
+                                    if (subObjects.gameObject.GetComponent<IElectrifiable>() != null)
+                                    {
+                                        List<GameObject> connectedToCurrentSub = new List<GameObject>();
+                                        connectedToCurrentSub = subObjects.gameObject.GetComponent<IElectrifiable>()
+                                            .GetConnectedObjects();
+
+                                        //looping through connected objects
+                                        foreach (GameObject objConnected in connectedToCurrentSub)
+                                        {
+                                            // if the sub group electrifiable is connected to the current object in the current sub group
+                                            if (obj.gameObject == objConnected)
+                                            {
+                                                connectionNum++;
+                                                subObjects.transform.parent = currentSubObject.transform;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
-                    //if not the position is incremented to make more connections
-                    else
+
+                    //deleting empty sub groups
+                    foreach (Transform obj in electrifiables.transform)
                     {
-                        //changes the current sub object to the next position
-                        currentSubObject = electrifiables.transform.GetChild(groupPos).gameObject;
-                        groupPos++;
+                        if (obj.childCount < 1)
+                        {
+                            Destroy(obj.gameObject);
+                        }
+                    }
+
+                    //checking if any connections were made
+                    if (connectionNum == 0)
+                    {
+                        //checks if it has looped through all the groups and made connections
+                        if (groupPos >= electrifiables.transform.childCount)
+                        {
+                            reconnected = true;
+                        }
+                        //if not the position is incremented to make more connections
+                        else
+                        {
+                            //changes the current sub object to the next position
+                            currentSubObject = electrifiables.transform.GetChild(groupPos).gameObject;
+                            groupPos++;
+                        }
                     }
                 }
-            }
-
-
-
-
-
-
-
-            
-
-            //bool reconnected = false;
-            //while (!reconnected)
-            //{
-            //    reconnected = true;
-            //    //looping through electrifiables
-            //    foreach (Transform obj in electrifiables.transform)
-            //    {
-            //        //looping through the current electrifiable group
-            //        foreach (Transform obj2 in obj.transform)
-            //        {
-            //            //looping through electrifiables for each electrifiable group to compare
-            //            foreach (Transform obj3 in electrifiables.transform)
-            //            {
-            //                //looping through the objects in each comparison electrifiable groups
-            //                foreach (Transform obj4 in obj3.transform)
-            //                {
-            //                    List<GameObject> connectedToCurrent = new List<GameObject>();
-            //                    if (obj4.gameObject.GetComponent<IElectrifiable>() != null)
-            //                    {
-            //                        connectedToCurrent = obj4.gameObject.GetComponent<IElectrifiable>().GetConnectedObjects();
-            //                        foreach (GameObject objConnected in connectedToCurrent)
-            //                        {
-            //                            if (objConnected == obj2.gameObject)
-            //                            {
-            //                                reconnected = false;
-            //                                obj4.transform.parent = obj2.transform.parent;
-            //                            }
-            //                        }
-            //                    }
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
-            List<GameObject> destroyObjects = new List<GameObject>();
-            for (int i = 0; i < electrifiables.transform.childCount; i++)
-            {
-                if (electrifiables.transform.GetChild(i).name == "ElectrifiableGroup")
+                List<GameObject> destroyObjects = new List<GameObject>();
+                for (int i = 0; i < electrifiables.transform.childCount; i++)
                 {
-                    if (electrifiables.transform.GetChild(i).transform.childCount < 1)
+                    if (electrifiables.transform.GetChild(i).name == "ElectrifiableGroup")
                     {
-                        destroyObjects.Add(electrifiables.transform.GetChild(i).gameObject);
+                        if (electrifiables.transform.GetChild(i).transform.childCount < 1)
+                        {
+                            destroyObjects.Add(electrifiables.transform.GetChild(i).gameObject);
+                        }
                     }
                 }
-            }
-            foreach (GameObject obj in destroyObjects)
-            {
-                Destroy(obj);
+
+                foreach (GameObject obj in destroyObjects)
+                {
+                    Destroy(obj);
+                }
             }
         }
     }
@@ -496,7 +456,6 @@ public class ElectricityController : MonoBehaviour
                     currentObject = elecrifiableStartGroup.transform.GetChild(0).gameObject;
                 }
             }
-
             //to check if the subgroups are reconnected to other groups that are connected still after disconnecting
             bool reconnected = false;
             //set the current sub object to the first sub group in the sub groups
@@ -540,8 +499,6 @@ public class ElectricityController : MonoBehaviour
                                         }
                                     }
                                 }
-
-                                //}
                             }
                         }
                     }
