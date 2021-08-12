@@ -84,6 +84,8 @@ public class PlayerGFX : MonoBehaviour
 
                     break;
                 case Player.PlayerState.JUMP_FALLING:
+                    Debug.LogError("Changed to falling");
+                   
                     break;
                 case Player.PlayerState.FALLING:
                     playerAnimator.SetInteger("PlayerAnimState", 4);
@@ -236,6 +238,19 @@ public class PlayerGFX : MonoBehaviour
     {
         playerAnimator.SetInteger("PlayerAnimState", animNum);
     }
+
+    public void StartPlayerJump()
+    {
+        player.StartJump();
+    }
+
+    public void EndPlayerJump()
+    {
+        playerAnimator.SetInteger("PlayerAnimState", 4);
+        //player.SetAnimationMovement(false);
+    }
+
+
 
 
     public bool GetFacingRight()

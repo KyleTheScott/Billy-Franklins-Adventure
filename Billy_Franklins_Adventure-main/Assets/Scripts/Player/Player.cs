@@ -243,18 +243,11 @@ public class Player : MonoBehaviour
                     break;
                 //the start of the jump
                 case PlayerState.JUMP:
-                    if (playerGFX.GetFacingRight())
-                    {
-                        rb.velocity = new Vector2(jumpMoveSpeed, jumpForce);
-                    }
-                    else
-                    {
-                        rb.velocity = new Vector2(-jumpMoveSpeed, jumpForce);
-                    }
-                    playerState = PlayerState.JUMPING;
+                    //rb.velocity = new Vector2(moveVelocity / 4, rb.velocity.y);
                     break;
                 //in the air of the jump
                 case PlayerState.JUMPING:
+                    Debug.Log("Jumping");
                     if (rb.velocity.y > 0)
                     {
                         rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier * 1) * Time.deltaTime;
@@ -288,6 +281,7 @@ public class Player : MonoBehaviour
                     break;
                 //falling from a jump
                 case PlayerState.JUMP_FALLING:
+                    Debug.Log("Falling");
                     rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier * 1) * Time.deltaTime;
                     if (moveVelocity != 0)
                     {
@@ -402,7 +396,7 @@ public class Player : MonoBehaviour
             }
         }
         //movementEnabled is used when menu is open
-        else if (movementEnabled && !animationMovement)
+        else if (movementEnabled && !animationMovement && playerState != PlayerState.JUMP)
         {
             //to open menu
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -627,13 +621,14 @@ public class Player : MonoBehaviour
 
                     if (onGround)
                     {
-                        jumpFix = true;
-                        rb.isKinematic = false;
+                        //jumpFix = true;
+                        rb.isKinematic = true;
                         currentPlayerState = PlayerState.IDLE;
                         playerState = PlayerState.JUMP;
-                        rb.gravityScale = jumpGravity;
-                        onGround = false;
-                        FMODUnity.RuntimeManager.PlayOneShot(jumpSound, jumpSoundVolume);
+                        //SetAnimationMovement(true);
+                        //rb.gravityScale = jumpGravity;
+                        //onGround = false;
+                        //FMODUnity.RuntimeManager.PlayOneShot(jumpSound, jumpSoundVolume);
                     }
                 }
             }
@@ -711,6 +706,27 @@ public class Player : MonoBehaviour
     //-------------------------
     // General player functions
     //-------------------------
+
+    public void StartJump()
+    {
+        if (playerGFX.GetFacingRight())
+        {
+            rb.velocity = new Vector2(jumpMoveSpeed, jumpForce);
+        }
+        else
+        {
+            rb.velocity = new Vector2(-jumpMoveSpeed, jumpForce);
+        }
+        //SetAnimationMovement(false);
+        playerState = PlayerState.JUMPING;
+        jumpFix = true;
+        rb.isKinematic = false;
+        //currentPlayerState = PlayerState.IDLE;
+        //playerState = PlayerState.JUMP;
+        rb.gravityScale = jumpGravity;
+        onGround = false;
+        FMODUnity.RuntimeManager.PlayOneShot(jumpSound, jumpSoundVolume);
+    }
 
     public PlayerState GetPlayerState()
     {
