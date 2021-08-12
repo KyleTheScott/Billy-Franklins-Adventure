@@ -705,6 +705,12 @@ public class Player : MonoBehaviour
     // General player functions
     //-------------------------
 
+    public void StartPlayerOutOfChargesDeath()
+    {
+        playerState = PlayerState.PLAYER_DEATH_CHARGES_START;
+    }
+
+
     public void ElectrifyInteract()
     {
         InteractWithObject();
