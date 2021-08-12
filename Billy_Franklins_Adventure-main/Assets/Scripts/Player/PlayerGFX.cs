@@ -156,6 +156,9 @@ public class PlayerGFX : MonoBehaviour
                     playerAnimator.SetInteger("PlayerAnimState", 13);
                     player.SetPlayerState(Player.PlayerState.PLAYER_DEATH_ELECTRIFIED);
                     break;
+                case Player.PlayerState.INTERACT:
+                    playerAnimator.SetInteger("PlayerAnimState", 12);
+                    break;
             }
         }
         //used for automated animations
@@ -250,6 +253,15 @@ public class PlayerGFX : MonoBehaviour
         //player.SetAnimationMovement(false);
     }
 
+    public void ElectrifyInteract()
+    {
+        player.ElectrifyInteract();
+    }
+    public void EndElectrifyInteract()
+    {
+        playerAnimator.SetInteger("PlayerAnimState", 0);
+        player.SetPlayerState(Player.PlayerState.IDLE);
+    }
 
 
 
@@ -267,11 +279,6 @@ public class PlayerGFX : MonoBehaviour
     public void PlayFootStep()
     {
         footstepScript.PlayerFootsteep();
-    }
-
-    public void ElectrifyInteractionEnd()
-    {
-        //end electrify interaction
     }
 
     public void ElectricityDeathEnd()
