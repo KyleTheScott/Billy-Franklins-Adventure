@@ -33,6 +33,9 @@ public class CheckPointSystem : MonoBehaviour
     {
         checkPointScene = sceneName;
         Debug.Log("SetCheckpoint: " + sceneName);
+
+        //save checkpoint
+        SaveGame.instance.SaveCheckpoint(sceneName);
     }
 
     public string GetCheckPoint()
