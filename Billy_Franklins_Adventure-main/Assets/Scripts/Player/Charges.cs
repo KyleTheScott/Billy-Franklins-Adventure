@@ -102,7 +102,6 @@ public class Charges : MonoBehaviour
         {
             StartCoroutine(WaitForLatern());
         }
-
     }
 
     private IEnumerator WaitForLatern()

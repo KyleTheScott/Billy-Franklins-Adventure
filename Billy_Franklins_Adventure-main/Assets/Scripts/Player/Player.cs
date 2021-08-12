@@ -247,7 +247,7 @@ public class Player : MonoBehaviour
                     break;
                 //in the air of the jump
                 case PlayerState.JUMPING:
-                    Debug.Log("Jumping");
+                    //Debug.Log("Jumping");
                     if (rb.velocity.y > 0)
                     {
                         rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier * 1) * Time.deltaTime;
