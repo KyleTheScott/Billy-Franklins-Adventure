@@ -332,24 +332,20 @@ public class Shooting : MonoBehaviour
                     if (loadedProjectile != null)
                     {
                         //Debug.Log("Shoot");
-                        aimLineState = AimLineState.NOT_AIMED;
+
                         if (loadedProjectile != null)
                         {
-                            loadedProjectile.SetProjectileDirection(lastShootingLine);
-                            loadedProjectile.GetComponent<Collider2D>().enabled = true;
-                            loadedProjectile.SetProjectileTarget(lightningTargetPos);
-                            StopAiming();
+                            //    loadedProjectile.SetProjectileDirection(lastShootingLine);
+                            //    loadedProjectile.GetComponent<Collider2D>().enabled = true;
+                            //    loadedProjectile.SetProjectileTarget(lightningTargetPos);
+                            //    StopAiming();
+                            playerGFX.SetAnimation(16);
+                        //Can't shoot projectile continousely
+                        //canShoot = false;
 
-                            //Can't shoot projectile continousely
-                            canShoot = false;
-                            charges.UseLightCharges();
-
-                            lightning.SetStartPosition(lightningStartPosition.transform.position);
-                            lightning.SetTargetPosition(lightningTargetPos);
-                            lightning.SetShootLightning(true);
-                            //Set projectile's parent to player
-                            //loadedProjectile.transform.SetParent(null);
-                            //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                        //Set projectile's parent to player
+                        //loadedProjectile.transform.SetParent(null);
+                        //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
                         }
                     }
@@ -359,7 +355,7 @@ public class Shooting : MonoBehaviour
                     //not aiming anymore
                     UnloadProjectile();
                     StopAiming();
-                    playerGFX.SetAnimation(0);
+                    playerGFX.SetAnimation(17);
                     //mouseGlitchFix = false;
                     //timeLeft = visibleCursorTimer;
                     //cursorSpriteRenderer.sprite = null;
@@ -374,6 +370,35 @@ public class Shooting : MonoBehaviour
             //catchCursor = true;
         }
     }
+
+    public void StartShooting()
+    {
+        loadedProjectile.SetProjectileDirection(lastShootingLine);
+        loadedProjectile.GetComponent<Collider2D>().enabled = true;
+        loadedProjectile.SetProjectileTarget(lightningTargetPos);
+        StopAiming();
+        canShoot = false;
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+
+            playerGFX.SetAnimation(1);
+        }
+        else
+        {
+            playerGFX.SetAnimation(0);
+        }
+        charges.UseLightCharges();
+
+        lightning.SetStartPosition(lightningStartPosition.transform.position);
+        lightning.SetTargetPosition(lightningTargetPos);
+        lightning.SetShootLightning(true);
+    }
+
+    public void StopShooting()
+    {
+        aimLineState = AimLineState.NOT_AIMED;
+    }
+
 
     private void StopAiming()
     {
