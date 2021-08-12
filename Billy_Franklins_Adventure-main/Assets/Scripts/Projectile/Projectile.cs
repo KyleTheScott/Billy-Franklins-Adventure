@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour
     Rigidbody2D rb; //Projectile's rigid body
     Camera mainCam = null;
 
-    public float speed = 20f; //projectile speed
+    public float speed = 10f; //projectile speed
     [SerializeField] private float endSpeed = 5;
 
     public Shooting owner = null; //Who owns this projectile?
