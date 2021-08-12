@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 3283143667714501974}
   - component: {fileID: 3283143667714501969}
   - component: {fileID: 3283143667714501975}
+  - component: {fileID: 706375046318919144}
   m_Layer: 0
   m_Name: GlobalGameController
   m_TagString: Untagged
@@ -168,6 +169,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkPointScene: 
+--- !u!114 &706375046318919144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3283143667714501968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27dec103f09f12f4c9cd3464565469db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3283143667901227629
 GameObject:
   m_ObjectHideFlags: 0

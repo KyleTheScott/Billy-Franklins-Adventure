@@ -111,9 +111,8 @@ public class LevelLoadController : MonoBehaviour
             {
                 SceneManager.UnloadSceneAsync(prev_scene_to_destroy_);
 
-                player.SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START); 
-                player.SetAnimationMovement(true);
-                Debug.LogError("connect connected 0");
+                player.SetPlayerKiteLightning();
+                //Debug.LogError("connect connected 0");
                 ElectricityController.instanceElectrical.ConnectConnectedObjects();
             }
 
@@ -137,8 +136,8 @@ public class LevelLoadController : MonoBehaviour
                 
             }
         }
-        
     }
+
 
     private void DestroyDDOLObjects()
     {

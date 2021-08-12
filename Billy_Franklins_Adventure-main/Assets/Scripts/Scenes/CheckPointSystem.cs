@@ -33,6 +33,9 @@ public class CheckPointSystem : MonoBehaviour
     {
         checkPointScene = sceneName;
         Debug.Log("SetCheckpoint: " + sceneName);
+
+        //save checkpoint
+        SaveGame.instance.SaveCheckpoint(sceneName);
     }
 
     public string GetCheckPoint()
@@ -48,7 +51,6 @@ public class CheckPointSystem : MonoBehaviour
             Debug.Log("DEATH");
             FindObjectOfType<Player>().transform.position = FindObjectOfType<PuzzleController>().PlayerSpawnPoint.position;
             FindObjectOfType<PuzzleController>().LoadPuzzle();
-            FindObjectOfType<Player>().SetPlayerKiteLightning();
             FindObjectOfType<Player>().SetPlayerKiteLightning();
             playerDied = false;
 

@@ -84,6 +84,8 @@ public class PlayerGFX : MonoBehaviour
 
                     break;
                 case Player.PlayerState.JUMP_FALLING:
+                    Debug.LogError("Changed to falling");
+                   
                     break;
                 case Player.PlayerState.FALLING:
                     playerAnimator.SetInteger("PlayerAnimState", 4);
@@ -132,6 +134,7 @@ public class PlayerGFX : MonoBehaviour
                     if (player.GetAnimationMovement())
                     {
                         playerAnimator.SetInteger("PlayerAnimState", 6);
+                        player.SetAnimationMovement(true);
                         player.SetPlayerState(Player.PlayerState.KICKING_BUCKET);
                     }
                     else
@@ -153,6 +156,9 @@ public class PlayerGFX : MonoBehaviour
                     playerAnimator.SetInteger("PlayerAnimState", 13);
                     player.SetPlayerState(Player.PlayerState.PLAYER_DEATH_ELECTRIFIED);
                     break;
+                case Player.PlayerState.INTERACT:
+                    playerAnimator.SetInteger("PlayerAnimState", 12);
+                    break;
             }
         }
         //used for automated animations
@@ -164,7 +170,6 @@ public class PlayerGFX : MonoBehaviour
                     if (Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
                         .GetCurrentObject().transform.position.x)) < .5f)
                     {
-                        player.SetAnimationMovement(false);
                         playerAnimator.SetInteger("PlayerAnimState", 0);
                         player.SetPlayerState(Player.PlayerState.KICK_BUCKET);
                     }
@@ -237,6 +242,28 @@ public class PlayerGFX : MonoBehaviour
         playerAnimator.SetInteger("PlayerAnimState", animNum);
     }
 
+    public void StartPlayerJump()
+    {
+        player.StartJump();
+    }
+
+    public void EndPlayerJump()
+    {
+        playerAnimator.SetInteger("PlayerAnimState", 4);
+        //player.SetAnimationMovement(false);
+    }
+
+    public void ElectrifyInteract()
+    {
+        player.ElectrifyInteract();
+    }
+    public void EndElectrifyInteract()
+    {
+        playerAnimator.SetInteger("PlayerAnimState", 0);
+        player.SetPlayerState(Player.PlayerState.IDLE);
+    }
+
+
 
     public bool GetFacingRight()
     {
@@ -252,11 +279,6 @@ public class PlayerGFX : MonoBehaviour
     public void PlayFootStep()
     {
         footstepScript.PlayerFootsteep();
-    }
-
-    public void ElectrifyInteractionEnd()
-    {
-        //end electrify interaction
     }
 
     public void ElectricityDeathEnd()
@@ -333,15 +355,22 @@ public class PlayerGFX : MonoBehaviour
     {
         Debug.Log("KickBucketOver");
         player.InteractWithObject();
+        
+    }
+
+    public void KickBucketOverEnd()
+    {
+        player.SetAnimationMovement(false);
         player.SetPlayerState(Player.PlayerState.IDLE);
         PlayerObjectInteractions.playerObjectIInstance.SetInteracting(false);
+        
     }
 
     //--------
-    //Shooting
-    //--------
+        //Shooting
+        //--------
 
-    public void StopAiming()
+        public void StopAiming()
     {
         shooting.SetAimLineState(Shooting.AimLineState.NOT_AIMED);
     }
