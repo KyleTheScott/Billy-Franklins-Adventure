@@ -9,15 +9,13 @@ public class Lamp : MonoBehaviour, IInteractable
     SpriteRenderer spriteRenderer = null; //spriteRenderer of this lantern
     Light2D light2D = null;
     BoxCollider2D boxCollider = null;
-
-    [SerializeField] Sprite lanternOnSprite = null;
-    [SerializeField] Sprite lanternOffSprite = null;
+    [SerializeField] private Animator animator;
     [SerializeField] private GameObject highlight;
     [SerializeField] GhostWallController ghostWall;
     [SerializeField] private Player player;
 
     [SerializeField] private List<GameObject> ghosts = new List<GameObject>();
-    Charges charges ;
+    Charges charges;
     [HideInInspector]
     public UnityEvent onLampOn; //Invoke when lamp is on, darkborder will subscribe this
 
@@ -45,7 +43,7 @@ public class Lamp : MonoBehaviour, IInteractable
     public void Interact()
     {
         charges.SetLampOn(true);
-        LanternToggle();
+        LanternToggleOn();
 
         //Turn off collider
         if (boxCollider != null)
@@ -80,50 +78,61 @@ public class Lamp : MonoBehaviour, IInteractable
                 
             }
             charges.SetLampOn(true);
-            LanternToggle();
+            LanternToggleOn();
         }
     }
 
-    private void LanternToggle()
+    private void LanternToggleOn()
     {
         //Change lantern's sprite
-        if (spriteRenderer != null && lanternOnSprite != null && lanternOffSprite != null)
-        {
-            SetHighlighted(false);
-            ghostWall.RaiseGhostWall();
-            DissipateAllGhosts();
-            if (spriteRenderer.sprite == lanternOnSprite)
-            {
-                spriteRenderer.sprite = lanternOffSprite;
-                if (light2D != null)
-                {
-                    light2D.intensity = 0.0f;
-                }
-                else
-                {
-                    Debug.LogWarning("Light2D is null, Check Lantern");
-                }
-            }
-            else
-            {
-                spriteRenderer.sprite = lanternOnSprite;
-                if (light2D != null)
-                {
-                    light2D.intensity = 1.0f;
-                }
-                else
-                {
-                    Debug.LogWarning("Light2D is null, Check Lantern");
-                }
-            }
-        }
-        else
-        {
-            Debug.Log("Lantern On, Off sprite is not set!!!");
-        }
+        animator.SetBool("IsLit", true);
+        SetHighlighted(false);
+        ghostWall.RaiseGhostWall();
+        DissipateAllGhosts();
+        light2D.intensity = 1.0f;
+
+        //if (spriteRenderer != null && lanternOnSprite != null && lanternOffSprite != null)
+        //{
+        //    SetHighlighted(false);
+        //    ghostWall.RaiseGhostWall();
+        //    DissipateAllGhosts();
+        //    if (spriteRenderer.sprite == lanternOnSprite)
+        //    {
+        //        spriteRenderer.sprite = lanternOffSprite;
+        //        if (light2D != null)
+        //        {
+        //            light2D.intensity = 0.0f;
+        //        }
+        //        else
+        //        {
+        //            Debug.LogWarning("Light2D is null, Check Lantern");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        spriteRenderer.sprite = lanternOnSprite;
+        //        if (light2D != null)
+        //        {
+        //            light2D.intensity = 1.0f;
+        //        }
+        //        else
+        //        {
+        //            Debug.LogWarning("Light2D is null, Check Lantern");
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    Debug.Log("Lantern On, Off sprite is not set!!!");
+        //}
     }
 
     void OnAllLanternOnCallback()
+    {
+        animator.SetBool("IsUnlocked", true);
+    }
+
+    public void UnlockLamp()
     {
         //Turn on collider
         if (boxCollider != null)

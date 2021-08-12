@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4712783627052555751}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.64, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 73726605780385059}
@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 5221921762151653292}
   - component: {fileID: 7859557848668478918}
   - component: {fileID: 5365355902765999897}
+  - component: {fileID: 6085667456886985799}
   m_Layer: 0
   m_Name: GhostWallSprite
   m_TagString: Untagged
@@ -105,11 +106,11 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -524046797
-  m_SortingLayer: 17
+  m_SortingLayer: 19
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d9ee93d303854d34ea18bc7c2103e1ac, type: 3}
+  m_Sprite: {fileID: 5922108783707980234, guid: 98c84664b5572c941ace7f5568388b69, type: 3}
   m_Color: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 24.689999, y: 24.689999}
@@ -131,19 +132,38 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.25059694, y: -0.0017578006}
+  m_Offset: {x: -0.040126793, y: -0.0017578006}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.302, y: 1.5}
+    oldSize: {x: 2.1799998, y: 3.8604755}
     newSize: {x: 24.689999, y: 24.689999}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16925393, y: 1.5027364}
+  m_Size: {x: 0.14676127, y: 1.5027364}
   m_EdgeRadius: 0
+--- !u!95 &6085667456886985799
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5105629281839764552}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6953784f0c12dc4bbf978f2fef37fbc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5741954430375760914
 GameObject:
   m_ObjectHideFlags: 0
