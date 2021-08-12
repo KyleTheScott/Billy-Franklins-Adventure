@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     private LoadingMenu loadingUI = null;
     private Canvas settingsUI = null;
     public string level = "Puzzle1";
+    private string save = "";
 
-    // Start is called before the first frame update
     private void Awake()
     {
         try
@@ -24,17 +25,32 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    //start/load last saverd puzzle (need saving system)
+    private void Start()
+    {
+        //try to get save (if it exists)
+        save = PlayerPrefs.GetString("scene", "");
+
+        //if save exists then show continue game
+        if (save.CompareTo("") == 0)
+        {
+           Button button = GameObject.Find("ContinueGame Button").GetComponent<Button>();
+           button.interactable = false;
+           button.image.color = Color.grey;
+        }
+    }
+
+    //load last saved puzzle
     public void ContinueGame()
     {
-        //temp until saving is implemented...
-        LoadLevel(level);
+        LoadLevel(save);     
     }
 
     //start/load puzzle1
     public void NewGame()
     {
-        //might change later...
+        //Delete old save
+        PlayerPrefs.DeleteKey("scene");
+
         LoadLevel(level);
     }
 
