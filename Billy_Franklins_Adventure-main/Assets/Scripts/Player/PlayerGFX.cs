@@ -223,7 +223,15 @@ public class PlayerGFX : MonoBehaviour
             }
             else
             {
-                playerAnimator.SetInteger("PlayerAnimState", 0);
+                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+                {
+
+                    playerAnimator.SetInteger("PlayerAnimState", 1);
+                }
+                else
+                {
+                    playerAnimator.SetInteger("PlayerAnimState", 0);
+                }
             }
         }
         //sets to current player state and and aim state to check for changes later  
@@ -249,6 +257,7 @@ public class PlayerGFX : MonoBehaviour
 
     public void EndPlayerJump()
     {
+        player.SetPlayerState(Player.PlayerState.JUMP_FALLING);
         playerAnimator.SetInteger("PlayerAnimState", 4);
         //player.SetAnimationMovement(false);
     }
@@ -259,7 +268,6 @@ public class PlayerGFX : MonoBehaviour
     }
     public void EndElectrifyInteract()
     {
-        playerAnimator.SetInteger("PlayerAnimState", 0);
         player.SetPlayerState(Player.PlayerState.IDLE);
     }
 
@@ -298,7 +306,7 @@ public class PlayerGFX : MonoBehaviour
 
     public void ElectrifyKiteEnd()
     {
-        player.SetPlayerState(Player.PlayerState.IDLE);
+        player.SetPlayerState(Player.PlayerState.WALKING);
         player.SetAnimationMovement(false);
     }
 
@@ -369,9 +377,20 @@ public class PlayerGFX : MonoBehaviour
     //--------
         //Shooting
         //--------
-
-        public void StopAiming()
+    public void StopAiming()
     {
         shooting.SetAimLineState(Shooting.AimLineState.NOT_AIMED);
+    }
+
+    public void StartShooting()
+    {
+        shooting.StartShooting();
+    }
+
+    public void EndShooting()
+    {
+        shooting.StopShooting();
+        player.SetPlayerState(Player.PlayerState.WALKING);
+        playerAnimator.SetInteger("PlayerAnimState", 1);
     }
 }
