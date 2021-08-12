@@ -396,7 +396,7 @@ public class Player : MonoBehaviour
             }
         }
         //movementEnabled is used when menu is open
-        else if (movementEnabled && !animationMovement && playerState != PlayerState.JUMP)
+        else if (movementEnabled && !animationMovement && playerState != PlayerState.JUMP && playerState != PlayerState.INTERACT)
         {
             //to open menu
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -660,9 +660,7 @@ public class Player : MonoBehaviour
                             if (comp.GetComponent<Collider2D>().CompareTag("Lantern") ||
                                 comp.GetComponent<Collider2D>().CompareTag("Switch"))
                             {
-                                InteractWithObject();
-                                charges.UseLightCharges();
-                                PlayerObjectInteractions.playerObjectIInstance.SetInteracting(true);
+                                playerState = PlayerState.INTERACT;
                             }
                             
                             if (comp.GetComponent<Collider2D>().CompareTag("Metal"))
@@ -706,6 +704,14 @@ public class Player : MonoBehaviour
     //-------------------------
     // General player functions
     //-------------------------
+
+    public void ElectrifyInteract()
+    {
+        InteractWithObject();
+        charges.UseLightCharges();
+        PlayerObjectInteractions.playerObjectIInstance.SetInteracting(true);
+    }
+
 
     public void StartJump()
     {
