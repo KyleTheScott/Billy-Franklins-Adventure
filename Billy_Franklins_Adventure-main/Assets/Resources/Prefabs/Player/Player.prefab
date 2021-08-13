@@ -45,7 +45,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.02277878, y: 0.72896093}
+  m_Offset: {x: 0.15, y: 0.72896093}
   serializedVersion: 2
   m_Radius: 0.19080812
 --- !u!114 &157297043
@@ -105,8 +105,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.086185455, y: 0.36389494}
-  m_Size: {x: 0.5, y: 1.9576182}
+  m_Offset: {x: 0.15815994, y: 0.36389494}
+  m_Size: {x: 0.44801158, y: 1.9576182}
   m_Direction: 0
 --- !u!114 &648864826
 MonoBehaviour:
@@ -219,7 +219,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.11716843, y: -0.90147436}
+  m_Offset: {x: 0.18, y: -0.90147436}
   serializedVersion: 2
   m_Radius: 0.3452977
 --- !u!114 &1039994938
@@ -306,8 +306,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.11995268, y: 0.061006486}
-  m_Size: {x: 0.14649582, y: 1.224253}
+  m_Offset: {x: 0.15349525, y: 0.10468769}
+  m_Size: {x: 0.28584635, y: 1.1368906}
   m_Direction: 0
 --- !u!114 &1651558284
 MonoBehaviour:
@@ -741,6 +741,7 @@ MonoBehaviour:
   playerCollision: {fileID: 0}
   playerState: 3
   debugMode: 1
+  playerInLevel: 0
   onGround: 1
   moveSpeed: 4
   jumpMoveSpeed: 8
@@ -1123,7 +1124,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 58978
+  m_InstanceId: 87956
 --- !u!95 &731963993
 Animator:
   serializedVersion: 3
@@ -1313,8 +1314,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.11995268, y: 0.2622499}
-  m_Size: {x: 0.14649582, y: 0.9701911}
+  m_Offset: {x: 0.1607847, y: 0.2622499}
+  m_Size: {x: 0.25047275, y: 0.9701911}
   m_Direction: 0
 --- !u!1 &5050909007917655629
 GameObject:

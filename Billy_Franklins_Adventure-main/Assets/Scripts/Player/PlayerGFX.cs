@@ -260,8 +260,12 @@ public class PlayerGFX : MonoBehaviour
 
     public void EndPlayerJump()
     {
-        player.SetPlayerState(Player.PlayerState.JUMP_FALLING);
-        playerAnimator.SetInteger("PlayerAnimState", 4);
+        if (!player.IsPlayerOnGround())
+        {
+            player.SetPlayerState(Player.PlayerState.JUMP_FALLING);
+            playerAnimator.SetInteger("PlayerAnimState", 4);
+        }
+
         //player.SetAnimationMovement(false);
     }
 
