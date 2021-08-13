@@ -472,6 +472,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 5365355902765999897, guid: d96327a73afc3714e8142ec5a2dcaf24, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.015361011
+      objectReference: {fileID: 0}
+    - target: {fileID: 5365355902765999897, guid: d96327a73afc3714e8142ec5a2dcaf24, type: 3}
+      propertyPath: m_Size.y
+      value: 3.8583074
+      objectReference: {fileID: 0}
     - target: {fileID: 5741954430375760914, guid: d96327a73afc3714e8142ec5a2dcaf24, type: 3}
       propertyPath: m_Name
       value: Ghost Wall
@@ -482,11 +490,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5741954430375760918, guid: d96327a73afc3714e8142ec5a2dcaf24, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.96
+      value: 4.89
       objectReference: {fileID: 0}
     - target: {fileID: 5741954430375760918, guid: d96327a73afc3714e8142ec5a2dcaf24, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.57
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5741954430375760918, guid: d96327a73afc3714e8142ec5a2dcaf24, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1520,7 +1528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5741954430375760918, guid: d96327a73afc3714e8142ec5a2dcaf24, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.58
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5741954430375760918, guid: d96327a73afc3714e8142ec5a2dcaf24, type: 3}
       propertyPath: m_LocalPosition.z
