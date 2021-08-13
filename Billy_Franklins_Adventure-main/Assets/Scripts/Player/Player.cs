@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
 
     private Vector3 lastPosition; // used to store the players position each frame
     [SerializeField] private float moveSpeed = 4.0f; // regular speed of the player
-    [SerializeField] private float jumpMoveSpeed = 8.0f; // jump speed of the player
+    [SerializeField] private float jumpMoveSpeed = 10.0f; // jump speed of the player
     [SerializeField] private float moveObjectSpeed = 3.0f; // speed of the player moving while moving an object
     [SerializeField] private float moveVelocity = 0; //
 
@@ -622,7 +622,7 @@ public class Player : MonoBehaviour
                     if (onGround)
                     {
                         //jumpFix = true;
-                        rb.isKinematic = true;
+                        //rb.isKinematic = true;
                         currentPlayerState = PlayerState.IDLE;
                         playerState = PlayerState.JUMP;
                         //SetAnimationMovement(true);
@@ -704,6 +704,12 @@ public class Player : MonoBehaviour
     //-------------------------
     // General player functions
     //-------------------------
+
+    public void StartPlayerOutOfChargesDeath()
+    {
+        playerState = PlayerState.PLAYER_DEATH_CHARGES_START;
+    }
+
 
     public void ElectrifyInteract()
     {
@@ -984,6 +990,8 @@ public class Player : MonoBehaviour
         //could be causing the falling with metal problem
         //if (!fallFromMetal)
         //{
+        //rb.velocity = Vector2.zero;
+        //rb.isKinematic = true;
         Debug.Log("Test Player");
         onGround = state;
         //player state when landing on ground is different depending on what the player state was before falling
@@ -996,7 +1004,6 @@ public class Player : MonoBehaviour
         {
             playerState = currentPlayerState;
         }
-        
         rb.gravityScale = groundGravity;
         //}
     }

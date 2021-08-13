@@ -156,6 +156,9 @@ public class PlayerGFX : MonoBehaviour
                     playerAnimator.SetInteger("PlayerAnimState", 13);
                     player.SetPlayerState(Player.PlayerState.PLAYER_DEATH_ELECTRIFIED);
                     break;
+                case Player.PlayerState.PLAYER_DEATH_CHARGES_START:
+                    playerAnimator.SetInteger("PlayerAnimState", 14);
+                    break;
                 case Player.PlayerState.INTERACT:
                     playerAnimator.SetInteger("PlayerAnimState", 12);
                     break;
@@ -257,8 +260,12 @@ public class PlayerGFX : MonoBehaviour
 
     public void EndPlayerJump()
     {
-        player.SetPlayerState(Player.PlayerState.JUMP_FALLING);
-        playerAnimator.SetInteger("PlayerAnimState", 4);
+        if (!player.IsPlayerOnGround())
+        {
+            player.SetPlayerState(Player.PlayerState.JUMP_FALLING);
+            playerAnimator.SetInteger("PlayerAnimState", 4);
+        }
+
         //player.SetAnimationMovement(false);
     }
 
@@ -296,7 +303,8 @@ public class PlayerGFX : MonoBehaviour
 
     public void OutOfChargesDeathEnd()
     {
-
+        FindObjectOfType<ObjectsCollision>().EmptyObjects();
+        FindObjectOfType<CheckPointSystem>().PlayerDeath();
     }
 
     public void ElectrifyKiteLightning()

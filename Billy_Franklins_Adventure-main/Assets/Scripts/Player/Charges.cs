@@ -110,8 +110,7 @@ public class Charges : MonoBehaviour
         
         if (!lampOn)
         {
-            FindObjectOfType<ObjectsCollision>().EmptyObjects();
-            FindObjectOfType<CheckPointSystem>().PlayerDeath();
+            FindObjectOfType<Player>().StartPlayerOutOfChargesDeath();
         }
 
     }
