@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Metal : MonoBehaviour, IInteractable, IElectrifiable
 {
+    //try to merge
     [Header("Electrical")] [SerializeField]
     private bool electrified = false;
 
