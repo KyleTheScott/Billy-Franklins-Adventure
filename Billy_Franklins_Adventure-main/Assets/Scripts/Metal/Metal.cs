@@ -12,6 +12,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
     [SerializeField] private bool temporaryElectrified = false;
     [SerializeField] private List<GameObject> connectedGameObjects = new List<GameObject>();
     [SerializeField] private List<GameObject> connectedDoors = new List<GameObject>();
+    [SerializeField] private float tempElectrifiedTime = 1.0f;
 
 
     [Header("General")] 
@@ -441,13 +442,17 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
     {
         //add animation code here
         //then set electrified false at the end of the animation with an animation event
+        temporaryElectrified = true;
+        metalAnimator.SetBool("TempElectrified", true);
         electrified = true;
-        StartCoroutine("TemporaryElectrify", (1));
+        StartCoroutine("TemporaryElectrify", (tempElectrifiedTime));
     }
     IEnumerator TemporaryElectrify(float time)
     {
         yield return new WaitForSeconds(time);
 
+        temporaryElectrified = false;
+        metalAnimator.SetBool("TempElectrified", false);
         electrified = false;
         // Code to execute after the delay
     }
