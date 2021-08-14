@@ -13,7 +13,7 @@ public class WallGhostMovementScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        centre = transform.position;
+        centre = transform.localPosition;
     }
 
     // Update is called once per frame
@@ -22,6 +22,6 @@ public class WallGhostMovementScript : MonoBehaviour
         angle += RotateSpeed * Time.deltaTime;
 
         Vector2 offset = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * Radius;
-        transform.position = centre + offset;
+        transform.localPosition = centre + offset;
     }
 }

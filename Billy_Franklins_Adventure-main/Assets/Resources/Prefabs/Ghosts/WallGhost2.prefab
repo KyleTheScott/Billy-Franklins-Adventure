@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 4925911510288538520}
   - component: {fileID: 4925911510288538527}
   - component: {fileID: 4925911510288538526}
-  - component: {fileID: 4925911510288538525}
   - component: {fileID: 4925911510288538522}
   - component: {fileID: 4925911510288538521}
+  - component: {fileID: -5346141210029955713}
   m_Layer: 0
   m_Name: WallGhost2
-  m_TagString: Untagged
+  m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,19 +103,6 @@ MonoBehaviour:
   minTransparency: 0
   dissipatedByLantern: 0
   ghostState: 0
---- !u!65 &4925911510288538525
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4925911510288538524}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.9525, y: 0.585, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &4925911510288538522
 Animator:
   serializedVersion: 3
@@ -149,3 +136,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotateSpeed: 3
   Radius: 0.15
+--- !u!61 &-5346141210029955713
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4925911510288538524}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.6, y: 1.1175}
+    newSize: {x: 0.9525, y: 0.585}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.6, y: 1.1175}
+  m_EdgeRadius: 0

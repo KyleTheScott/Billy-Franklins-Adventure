@@ -80,7 +80,11 @@ public class GhostWallController : MonoBehaviour
         if (currentWallSpirteAlpha <= raiseWallSpirteAlpha)
         {
             ghostWallState = GhostWallState.RAISED;
-        }
+            foreach (Ghost ghost in ghosts)
+            {
+                ghost.gameObject.SetActive(false);
+            }
+        } 
     }
 
     private void LoweringGhostWall()
@@ -100,6 +104,7 @@ public class GhostWallController : MonoBehaviour
         ghostWallSoundEvent.setVolume(ghostWallSoundVolume);
         foreach (Ghost ghost in ghosts)
         {
+            ghost.gameObject.SetActive(true);
             ghost.SetGhostAppearing();
         }
         ghostWallState = GhostWallState.LOWERING;
