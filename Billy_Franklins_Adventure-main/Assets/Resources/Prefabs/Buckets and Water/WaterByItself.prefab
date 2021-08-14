@@ -102,7 +102,7 @@ BoxCollider2D:
   m_Offset: {x: 0.6846557, y: 0.006465435}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.2540826, y: 0.5098414}
+    pivot: {x: 0.25, y: 0.5}
     oldSize: {x: 2.6335294, y: 0.51411766}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -130,6 +130,13 @@ MonoBehaviour:
   colliderStayCheck: 0
   waterByItself: 1
   lanternInWater: []
+  oldElectrifiable: 0
+  started: 0
+  starting: 0
+  bucketKickEventRef: event:/Player Sounds/Kicking bucket over
+  bucketKickVolume: 0.8
+  electricWaterEventRef: event:/Game Sounds/Electrified Water
+  electricWaterVolume: 0.8
   groupNum: 0
 --- !u!50 &-7863115331637910122
 Rigidbody2D:

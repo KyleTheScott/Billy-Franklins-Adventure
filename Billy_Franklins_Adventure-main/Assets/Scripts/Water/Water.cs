@@ -25,6 +25,12 @@ public class Water : MonoBehaviour, IElectrifiable
     private string bucketKickEventRef;
     [SerializeField]
     private float bucketKickVolume = 0.8f;
+    [SerializeField]
+    [FMODUnity.EventRef]
+    private string electricWaterEventRef;
+    private FMOD.Studio.EventInstance electricWaterEvent;
+    [SerializeField]
+    private float electricWaterVolume = 0.8f;
 
     [SerializeField] private int groupNum = 0;
 
@@ -63,6 +69,10 @@ public class Water : MonoBehaviour, IElectrifiable
         {
             waterAnimator.SetBool("WaterSpilt", true);
         }
+        electricWaterEvent = FMODUnity.RuntimeManager.CreateInstance(electricWaterEventRef);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(electricWaterEvent, transform, GetComponent<Rigidbody>());
+        electricWaterEvent.setVolume(electricWaterVolume);
+
         //int currentSceneNum = SceneManager.sceneCount - 1;
         //string sceneName = "root_" + SceneManager.GetSceneAt(SceneManager.sceneCount - 1).name;
 
@@ -80,7 +90,7 @@ public class Water : MonoBehaviour, IElectrifiable
     }
     //public void SetCollider()
     //{
-       
+
     //}
 
 
@@ -126,6 +136,14 @@ public class Water : MonoBehaviour, IElectrifiable
     {
         electrified = state;
         waterAnimator.SetBool("Electrified", true);
+        if (electrified)
+        {
+            electricWaterEvent.start();
+        }
+        else
+        {
+            electricWaterEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
         if (lanternInWater.Count >= 1)
         {
             foreach (GameObject l in lanternInWater)

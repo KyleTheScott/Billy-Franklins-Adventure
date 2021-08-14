@@ -1124,7 +1124,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 54200
+  m_InstanceId: 25042
 --- !u!95 &731963993
 Animator:
   serializedVersion: 3
@@ -1432,6 +1432,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 854217fbbd4b5a349b036668bdc5abdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kiteLightingEventRef: event:/Player Sounds/Being struck with lightning
+  kiteLightingVolume: 0.8
 --- !u!1 &6370559049283957530
 GameObject:
   m_ObjectHideFlags: 0
