@@ -303,6 +303,7 @@ public class PlayerGFX : MonoBehaviour
 
     public void OutOfChargesDeathEnd()
     {
+        Debug.LogError("Death animation");
         FindObjectOfType<ObjectsCollision>().EmptyObjects();
         FindObjectOfType<CheckPointSystem>().PlayerDeath();
     }
