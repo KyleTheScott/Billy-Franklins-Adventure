@@ -40,7 +40,6 @@ public class GameplayUI : MonoBehaviour
     public void ResetFadeOut()
     {
         StopAllCoroutines();
-        Debug.Log("ResetFadeOut");
         Color newColor = fadeOutImage.color;
         newColor.a = 0.0f;
         fadeOutImage.color = newColor;
