@@ -709,6 +709,7 @@ public class Player : MonoBehaviour
     public void StartPlayerOutOfChargesDeath()
     {
         playerState = PlayerState.PLAYER_DEATH_CHARGES_START;
+        GameplayUI.instanceGameplayUI.FadeOut();
     }
 
 
