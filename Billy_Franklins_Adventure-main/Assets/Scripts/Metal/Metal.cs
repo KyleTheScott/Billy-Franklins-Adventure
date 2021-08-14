@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Metal : MonoBehaviour, IInteractable, IElectrifiable
 {
+    //try to merge
     [Header("Electrical")] [SerializeField]
     private bool electrified = false;
 
@@ -285,7 +286,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
             hingeJointPointRight.enabled = true; 
             hingeJointPointRight.connectedBody = MovingMetal.movingMetalInstance.GetMovingMetalRigidbody();
             transform.position = new Vector2(transform.position.x, transform.position.y + .4f);
-            transform.Rotate(0f, 0f, 40);
+            transform.Rotate(0f, 0f, 20);
             transform.Rotate(0f, 0f, 0);
 
             //StartCoroutine("RotateToMoveRight");
@@ -302,7 +303,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
             hingeJointPointLeft.enabled = true;
             hingeJointPointLeft.connectedBody = MovingMetal.movingMetalInstance.GetMovingMetalRigidbody();
             transform.position = new Vector2(transform.position.x, transform.position.y + .4f);
-            transform.Rotate(0f, 0f, -40);
+            transform.Rotate(0f, 0f, -20);
             transform.Rotate(0f, 0f, 0);
         }
         player.SetKinematic(true);

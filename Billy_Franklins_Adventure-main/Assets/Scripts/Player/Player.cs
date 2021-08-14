@@ -396,7 +396,8 @@ public class Player : MonoBehaviour
             }
         }
         //movementEnabled is used when menu is open
-        else if (movementEnabled && !animationMovement && playerState != PlayerState.JUMP && playerState != PlayerState.INTERACT)
+        else if (movementEnabled && !animationMovement && playerState != PlayerState.JUMP 
+                 && playerState != PlayerState.INTERACT && playerState != PlayerState.PLAYER_DEATH_CHARGES_START)
         {
             //to open menu
             if (Input.GetKeyDown(KeyCode.Escape))

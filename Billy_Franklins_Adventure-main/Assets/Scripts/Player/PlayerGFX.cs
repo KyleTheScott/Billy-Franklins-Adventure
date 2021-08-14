@@ -157,6 +157,7 @@ public class PlayerGFX : MonoBehaviour
                     player.SetPlayerState(Player.PlayerState.PLAYER_DEATH_ELECTRIFIED);
                     break;
                 case Player.PlayerState.PLAYER_DEATH_CHARGES_START:
+                    Debug.LogError("Out Of the Charges");
                     playerAnimator.SetInteger("PlayerAnimState", 14);
                     break;
                 case Player.PlayerState.INTERACT:
@@ -303,6 +304,7 @@ public class PlayerGFX : MonoBehaviour
 
     public void OutOfChargesDeathEnd()
     {
+        Debug.LogError("Death animation");
         FindObjectOfType<ObjectsCollision>().EmptyObjects();
         FindObjectOfType<CheckPointSystem>().PlayerDeath();
     }
@@ -397,8 +399,13 @@ public class PlayerGFX : MonoBehaviour
 
     public void EndShooting()
     {
-        shooting.StopShooting();
-        player.SetPlayerState(Player.PlayerState.WALKING);
-        playerAnimator.SetInteger("PlayerAnimState", 1);
+        Debug.LogError("Out of charges Test");
+
+        if (FindObjectOfType<Charges>().GetLightCharges() > 0)
+        {
+            shooting.StopShooting();
+            player.SetPlayerState(Player.PlayerState.WALKING);
+            playerAnimator.SetInteger("PlayerAnimState", 1);
+        }
     }
 }
