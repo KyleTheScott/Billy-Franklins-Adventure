@@ -130,6 +130,7 @@ public class Lamp : MonoBehaviour, IInteractable
     void OnAllLanternOnCallback()
     {
         animator.SetBool("IsUnlocked", true);
+        UnlockLamp();
     }
 
     public void UnlockLamp()
