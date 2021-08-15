@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
@@ -11,8 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Charges charges;
     [SerializeField] private Shooting shooting;
 
-    [Header("General")]
-    Rigidbody2D rb = null; //player's rigid body
+    [Header("General")] Rigidbody2D rb = null; //player's rigid body
 
     [SerializeField] private PlayerGFX playerGFX; // players animations
     [SerializeField] private PlayerCollision playerCollision; // player collision with ground
@@ -63,8 +63,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool playerInLevel;
 
 
-    [Header("Movement")]
-    [SerializeField] private bool onGround = true; // keeps track if player is  on ground
+    [Header("Movement")] [SerializeField] private bool onGround = true; // keeps track if player is  on ground
 
     private Vector3 lastPosition; // used to store the players position each frame
     [SerializeField] private float moveSpeed = 4.0f; // regular speed of the player
@@ -76,7 +75,9 @@ public class Player : MonoBehaviour
     //changes in gravity
     [SerializeField] private float jumpGravity = 1f; // gravity while jumping
     [SerializeField] private float fallGravity = 5f; // gravity while falling
-    [SerializeField] private float groundGravity = 10f; // gravity while the player is walking on a surface tagged ground 
+
+    [SerializeField]
+    private float groundGravity = 10f; // gravity while the player is walking on a surface tagged ground 
 
     //variable for jump and fall from jump
     [SerializeField] private float jumpForce = 10f; //How strong does player jump
@@ -89,7 +90,10 @@ public class Player : MonoBehaviour
     private float jumpFixTime = .1f;
 
 
-    [SerializeField] private PlayerState currentPlayerState;// player state used to set player state after a jump or fall when hitting ground
+    [SerializeField]
+    private PlayerState
+        currentPlayerState; // player state used to set player state after a jump or fall when hitting ground
+
     //variables used for when player is on moving platforms to make the player fall and move with the platform
     [SerializeField] private float fallFixTimer = 0;
     [SerializeField] private float fallFixMax = .1f;
@@ -103,41 +107,45 @@ public class Player : MonoBehaviour
     private float dropMetalTimer = 0;
     private float dropMetalTime = 2f;
 
-    
+
+    [SerializeField] private bool onDiagonalPlatform = false;
+
+    [SerializeField] private GameObject currentPlatform;
+
+    //private Quaternion rotation;
+
+    public GameObject worldScale;
+
 
     [Header("FMOD Setting")]
     //FMOD Event Refs
     [FMODUnity.EventRef]
     public string jumpSound;
-    [SerializeField]
-    private float jumpSoundVolume = 0.8f;
-    [FMODUnity.EventRef]
-    [SerializeField]
-    private string metalMovingEventRef;
+
+    [SerializeField] private float jumpSoundVolume = 0.8f;
+    [FMODUnity.EventRef] [SerializeField] private string metalMovingEventRef;
     private FMOD.Studio.EventInstance metalMovingEvent;
-    [SerializeField]
-    private float metalMovingVolume = 0.8f;
+    [SerializeField] private float metalMovingVolume = 0.8f;
 
     [Header("Interact")]
     //stores object the player is currently moving 
-    [SerializeField] private GameObject currentMovingObject;
+    [SerializeField]
+    private GameObject currentMovingObject;
+
     [SerializeField] private Metal currentPlayerMetal;
 
-    [Header("Animation")] 
-    private bool animationMovement = false; // an automated animation is happening
+    [Header("Animation")] private bool animationMovement = false; // an automated animation is happening
 
     [SerializeField] private bool movingMetal = false; // player is moving metal
 
     [SerializeField] private GameObject pickUpMetalPos;
 
 
-    [Header("Menus")]
-    [SerializeField] private Canvas pauseMenuUI = null;
+    [Header("Menus")] [SerializeField] private Canvas pauseMenuUI = null;
     private Canvas settingsMenuUI = null;
     private bool movementEnabled = true;
 
-    [Header("Dialogue")]
-    public bool isReading = false;
+    [Header("Dialogue")] public bool isReading = false;
     public Dialogue dialogue = new Dialogue();
 
     public void SetPlayerKiteLightning()
@@ -151,6 +159,7 @@ public class Player : MonoBehaviour
         {
             yield return null;
         }
+
         SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
         SetAnimationMovement(true);
         SetPlayerInLevel(true);
@@ -160,14 +169,84 @@ public class Player : MonoBehaviour
     {
         playerInLevel = state;
     }
+
     public bool GetPlayerInLevel()
     {
         return playerInLevel;
     }
 
-    // Start is called before the first frame update
+    public void SetCurrentPlatform(GameObject obj)
+    {
+        //rotation = transform.rotation;
+        currentPlatform = obj;
+        if (onDiagonalPlatform)
+        {
+            Vector3 fixRotation = transform.eulerAngles;
+            fixRotation.z = 0;
+            transform.eulerAngles = fixRotation;
+            //transform.localScale = new Vector3(transform.localToWorldMatrix.lossyScale.x, transform.localToWorldMatrix.lossyScale.y, transform.localToWorldMatrix.lossyScale.z);
+            ////transform.localScale = new Vector3(1, 1, transform.localToWorldMatrix.lossyScale.z);
+
+            //transform.localScale = new  Vector3 (worldScale.transform.worldToLocalMatrix.lossyScale.x, 
+            //    worldScale.transform.worldToLocalMatrix.lossyScale.y, worldScale.transform.worldToLocalMatrix.lossyScale.z)  ;
+            //Vector3 worldScale = new Vector3(1, 1, 1);
+            //transform.parent.InverseTransformVector(worldScale);
+            //float xDiff = 1 / transform.parent.localScale.x;
+            //float yDiff = 1 / transform.parent.localScale.y;
+            //transform.localScale = new Vector3(transform.localScale.x + xDiff, transform.localScale.y + yDiff, transform.localScale.z);
+
+            //Debug.LogError("Platform Scale x: " + currentPlatform.transform.localScale.x);
+            //Debug.LogError("Platform Scale y: " + currentPlatform.transform.localScale.y);
+            //Debug.LogError("Platform Scale z: " + currentPlatform.transform.localScale.z);
+            //Debug.LogError("Player Scale z: " + transform.lossyScale.x);
+            //Debug.LogError("Player Scale z: " + transform.lossyScale.y);
+            //Debug.LogError("Player Scale z: " + transform.lossyScale.z);
+
+            //float x = 1 / currentPlatform.transform.lossyScale.x;
+            //float y = 1 / currentPlatform.transform.lossyScale.y;
+
+            //transform.localScale = new Vector3(transform.lossyScale.x * x, transform.lossyScale.y * y, 1);
+            //;
+
+            //transform.localScale = transform.parent.InverseTransformVector(worldScale);
+        }
+        //Vector3 fixRotation = transform.eulerAngles;
+        //fixRotation.z = 0;
+        //if (currentPlatform != null)
+        //{
+        //    ////fixRotation.z += 0 - currentPlatform.transform.eulerAngles.z;
+        //    if (currentPlatform.transform.eulerAngles.z > 0)
+        //    {
+        //        Debug.LogError("Platform Euler z: " + currentPlatform.transform.eulerAngles.z);
+        //        Debug.LogError("Player Euler z: " + fixRotation.z);
+        //        //transform.localRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z - currentPlatform.transform.rotation.z);
+        //        //fixRotation.z += currentPlatform.transform.eulerAngles.z - 45;
+        //        //fixRotation.z = 0;
+        //    }
+        //    else
+        //    {
+        //        //fixRotation.z = 0;
+        //        //transform.localRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z - currentPlatform.transform.rotation.z);
+        //        //fixRotation.z -= Mathf.Abs(45 - currentPlatform.transform.eulerAngles.z);
+        //    }
+
+        //    transform.eulerAngles = fixRotation;
+        //}
+
+    }
+    public void SetRotation()
+    {
+        Vector3 fixRotation = transform.eulerAngles;
+        fixRotation.z = 0;
+        transform.eulerAngles = fixRotation;
+    }
+
+
+
+// Start is called before the first frame update
     void Start()
     {
+        
         metalMovingEvent = FMODUnity.RuntimeManager.CreateInstance(metalMovingEventRef);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(metalMovingEvent, transform, GetComponent<Rigidbody>());
 
@@ -199,6 +278,9 @@ public class Player : MonoBehaviour
             Debug.Log("Couldn't find pause menu UI...");
         }
         Debug.Log("Y Angle: " + transform.eulerAngles.y);
+
+        worldScale = GameObject.Find("WorldScale");
+        //rotation = transform.rotation;
         //kite.SetKiteStartPosition(transform.position);
     }
 
@@ -379,8 +461,83 @@ public class Player : MonoBehaviour
         HandleInput();
     }
 
+    void LateUpdate()
+    {
+       
+        //    Debug.Log("Rotation Problem");
+            //    Vector3 fixRotation = transform.eulerAngles;
+            //    if (currentPlatform != null)
+            //    {
+            //        ////fixRotation.z += 0 - currentPlatform.transform.eulerAngles.z;
+            //        if (currentPlatform.transform.eulerAngles.z > 0)
+            //        {
+            //            Debug.LogError("Platform Euler z: " + currentPlatform.transform.eulerAngles.z);
+            //            Debug.LogError("Player Euler z: " + fixRotation.z);
+            //            //transform.localRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z - currentPlatform.transform.rotation.z);
+            //            //fixRotation.z += (currentPlatform.transform.eulerAngles.z -( 45 - currentPlatform.transform.eulerAngles.z)) ;
+            //            //fixRotation.z = 0;
+            //        }
+            //        else
+            //        {
+            //            //fixRotation.z = 0;
+            //            //transform.localRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z - currentPlatform.transform.rotation.z);
+            //            //fixRotation.z -= Mathf.Abs(45 - currentPlatform.transform.eulerAngles.z);
+            //        }
+
+            //    }
+            //    else
+            //    {
+            //        fixRotation.z = 0;
+            //    }
+            //    transform.eulerAngles = fixRotation;
+            //}
+
+
+            //    //float h = Input.GetAxis("Horizontal") * 30 * Time.deltaTime;
+            //    //float z = transform.eulerAngles.z;
+            //    //float x = transform.eulerAngles.x;
+            //    //float y = transform.eulerAngles.y;
+            //    //Vector3 desiredRot = new Vector3(x, y, z + h);
+            //    //if (desiredRot.z > 30)
+            //    //{
+            //    //    desiredRot = new Vector3(x, y, 30);
+            //    //}
+            //    //else if (desiredRot.z < -30)
+            //    //{
+            //    //    desiredRot = new Vector3(x, y, -30);
+            //    //}
+
+            //    //transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0);
+
+
+
+            //    //onPlatformRotation = false;
+            //    //rotationTimer = 0;
+            //}
+
+            //if (onDiagonalPlatform)
+            //{
+            //    transform.rotation = rotation;
+            //}
+        }
+
+
+    public void SetOnDiagonalPlatform(bool state)
+    {
+        onDiagonalPlatform = state;
+        //worldScale = transform.localScale;
+    }
+
+    public bool GetOnDiagonalPlatform()
+    {
+        return onDiagonalPlatform;
+    }
+
     void HandleInput()
     {
+
+        
+
         //for when player is reading tutorials
         if (isReading)
         {
