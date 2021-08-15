@@ -757,6 +757,9 @@ MonoBehaviour:
   fallFixTimer: 0
   fallFixMax: 0.1
   fallFixStayMax: 1
+  onDiagonalPlatform: 0
+  currentPlatform: {fileID: 0}
+  worldScale: {fileID: 0}
   jumpSound: event:/Player Sounds/Footsteps
   jumpSoundVolume: 0.8
   metalMovingEventRef: event:/Player Sounds/Pushing-pulling objects
@@ -1124,7 +1127,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 25042
+  m_InstanceId: 29596
 --- !u!95 &731963993
 Animator:
   serializedVersion: 3
@@ -1460,7 +1463,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6370559049283957530}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.15, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1596798626382368133}

@@ -9,6 +9,9 @@ public class PlayerCollision : MonoBehaviour
     private float fallTime = 0.5f;
     [SerializeField] private bool fallingTimeDone = true;
 
+
+
+
     public void SetFallWait()
     {
         fallTimer = 0;
@@ -33,19 +36,44 @@ public class PlayerCollision : MonoBehaviour
     //collision for the player with ground
     public void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Ground") && playerScript.GetFalling() && Vector2.Angle(Vector2.up, collision.GetContact(0).normal) <= 45f)
+        if (Vector2.Angle(Vector2.up, collision.GetContact(0).normal) <= 45f)
         {
-            Debug.Log("On ground Test");
-            playerScript.SetOnGround(true);
+           
+            if (collision.collider.CompareTag("Ground") && playerScript.GetFalling())
+            {
+                Debug.Log("On ground Test");
+                playerScript.SetOnGround(true);
+               
+            }
+            else if (collision.collider.CompareTag("Ground") && collision.collider.gameObject.layer == 19 && playerScript.GetCurrentMovingObject() == null)
+            {
+                if (collision.collider.gameObject.layer == 19)
+                {
+                    Debug.LogError("Player Diagonal");
+                    playerScript.SetOnDiagonalPlatform(true);
+                    playerScript.transform.parent = collision.gameObject.transform.parent;
+                    //if (playerScript.GetCurrentMovingObject() != null)
+                    //{
+                    //    playerScript.GetCurrentMovingObject().transform.parent = collision.gameObject.transform.parent;
+                    //}
+                    playerScript.SetCurrentPlatform(collision.gameObject);
+                }
+            }
+            else if (collision.gameObject.name == "Scaffolding" && playerScript.GetPlayerState() == Player.PlayerState.JUMPING 
+                    && Mathf.Abs(collision.GetContact(0).point.y - (playerScript.gameObject.transform.position.y - 1.23f)) <= .5f && !playerScript.GetJumpFix())
+            {
+                playerScript.SetOnGroundJumpFix(true);
+                playerScript.SetPlayerState(Player.PlayerState.IDLE);
+                if (collision.gameObject.layer == 19)
+                {
+                    playerScript.transform.parent = null;
+                }
+            }
         }
-        else if (collision.gameObject.name == "Scaffolding" && playerScript.GetPlayerState() == Player.PlayerState.JUMPING &&
-                 Vector2.Angle(Vector2.up, collision.GetContact(0).normal) <= 45f && Mathf.Abs(collision.GetContact(0).point.y - (playerScript.gameObject.transform.position.y - 1.23f)) <= .5f &&
-                 !playerScript.GetJumpFix())
-        {
-            playerScript.SetOnGroundJumpFix(true);
-            playerScript.SetPlayerState(Player.PlayerState.IDLE);
-        }
+       
     }
+
+   
 
     public void OnTriggerExit2D(Collider2D collision)
     {

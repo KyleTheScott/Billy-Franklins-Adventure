@@ -84,7 +84,7 @@ public class PlayerGFX : MonoBehaviour
 
                     break;
                 case Player.PlayerState.JUMP_FALLING:
-                    Debug.LogError("Changed to falling");
+                    //Debug.LogError("Changed to falling");
                    
                     break;
                 case Player.PlayerState.FALLING:
