@@ -374,6 +374,8 @@ MonoBehaviour:
   starting: 0
   bucketKickEventRef: event:/Player Sounds/Kicking bucket over
   bucketKickVolume: 0.8
+  electricWaterEventRef: event:/Game Sounds/Electrified Water
+  electricWaterVolume: 0.8
   groupNum: 0
 --- !u!95 &2364727190617079403
 Animator:
