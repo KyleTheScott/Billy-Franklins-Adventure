@@ -324,7 +324,7 @@ public class PlayerGFX : MonoBehaviour
 
     public void ElectrifyKiteEnd()
     {
-        Debug.LogError("End electrify kite");
+        //Debug.LogError("End electrify kite");
         player.SetPlayerState(Player.PlayerState.WALKING);
         FindObjectOfType<Shooting>().SetAimLineState(Shooting.AimLineState.NOT_AIMED);
         //GameObject lightToTurnOn = GameObject.Find("Light");
