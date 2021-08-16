@@ -44,7 +44,8 @@ public class Lamp : MonoBehaviour, IInteractable
     {
         charges.SetLampOn(true);
         LanternToggleOn();
-
+        ElectricityController.instanceElectrical.SetNewElectrifiableScene();
+       
         //Turn off collider
         if (boxCollider != null)
         {

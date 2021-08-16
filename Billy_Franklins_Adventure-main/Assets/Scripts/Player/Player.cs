@@ -369,7 +369,7 @@ public class Player : MonoBehaviour
                     break;
                 //falling from a jump
                 case PlayerState.JUMP_FALLING:
-                    Debug.Log("Falling");
+                    //Debug.Log("Falling");
                     rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier * 1) * Time.deltaTime;
                     if (moveVelocity != 0)
                     {
@@ -505,10 +505,10 @@ public class Player : MonoBehaviour
             //to open menu
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Debug.Log("Pause");
+                //Debug.Log("Pause");
                 if (pauseMenuUI != null)
                 {
-                    Debug.Log("Pause 2");
+                    //Debug.Log("Pause 2");
                     pauseMenuUI.gameObject.SetActive(true);
                 }
                 PlayerControlsStatus(false);
@@ -538,7 +538,7 @@ public class Player : MonoBehaviour
                         {
                             movingMetal = true;
                         }
-                        Debug.Log("Input5");
+                        //Debug.Log("Input5");
                         playerGFX.SetFacingRight(false); // facing left
                         transform.Rotate(0f, 180f, 0f); //rotate player and aiming to the left 
                         shooting.SetLastShootingLine(-1);
@@ -625,7 +625,7 @@ public class Player : MonoBehaviour
                         playerGFX.SetFacingRight(true);
                         transform.Rotate(0f, 180f, 0f); //rotate player and aiming to the left
                         shooting.SetLastShootingLine(1);
-                        Debug.Log("Input6");
+                        //Debug.Log("Input6");
                     }
                 }
                 else
@@ -795,7 +795,6 @@ public class Player : MonoBehaviour
                                     InteractWithObject();
                                     PlayerObjectInteractions.playerObjectIInstance.SetInteracting(true);
                                 }
-                                
                             }
                         }
                     }
@@ -1068,7 +1067,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Debug.Log("Jumping");
+            //Debug.Log("Jumping");
             onGround = false;
 
             if (playerState != PlayerState.JUMP && playerState != PlayerState.JUMPING)
@@ -1081,7 +1080,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                Debug.Log("Jumping 2");
+                //Debug.Log("Jumping 2");
                 rb.gravityScale = jumpGravity;
             }
         }

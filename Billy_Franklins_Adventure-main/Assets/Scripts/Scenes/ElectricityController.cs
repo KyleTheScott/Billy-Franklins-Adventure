@@ -44,68 +44,68 @@ public class ElectricityController : MonoBehaviour
 
     //[SerializeField] private string sceneName = "root_Puzzle10";
 
-    void Update()
-    {
-        if (!started)
-        {
-            if (timer >= time)
-            {
-                if (electrifiables == null)
-                {
-                    int currentSceneNum = SceneManager.sceneCount - 1;
-                    string sceneName = "root_" + SceneManager.GetSceneAt(SceneManager.sceneCount - 1).name;
+    //void Update()
+    //{
+        //if (!started)
+        //{
+        //    if (timer >= time)
+        //    {
+        //        if (electrifiables == null)
+        //        {
+        //            int currentSceneNum = SceneManager.sceneCount - 1;
+        //            string sceneName = "root_" + SceneManager.GetSceneAt(SceneManager.sceneCount - 1).name;
 
-                    //Debug.LogError("String" + sceneName);
-                    GameObject sceneObject = GameObject.Find(sceneName);
-                    foreach (Transform obj in sceneObject.transform)
-                    {
-                        if (obj.gameObject.name == "Electrifiables")
-                        {
-                            electrifiables = obj.gameObject;
-                            break;
-                        }
-                    }
-                }
-                //Debug.LogError("Update Electrify");
-                foreach (Transform obj in electrifiables.transform)
-                {
-                    if (obj.gameObject.name == "ElectrifiableGroup")
-                    {
-                        foreach (Transform obj2 in obj)
-                        {
-                            if (obj2.GetComponent<IElectrifiable>() != null)
-                            {
-                                List<GameObject> connectedToCurrent = new List<GameObject>();
-                                connectedToCurrent = obj2.GetComponent<IElectrifiable>().GetConnectedObjects();
-                                foreach (GameObject objConnected in connectedToCurrent)
-                                {
-                                    ConnectObjects(obj2.gameObject, objConnected);
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (obj.GetComponent<IElectrifiable>() != null)
-                        {
-                            List<GameObject> connectedToCurrent = new List<GameObject>();
-                            connectedToCurrent = obj.GetComponent<IElectrifiable>().GetConnectedObjects();
-                            foreach (GameObject objConnected in connectedToCurrent)
-                            {
-                                ConnectObjects(obj.gameObject, objConnected);
-                            }
-                        }
-                    }
-                }
-                timer = 0;
-                started = true;
-            }
-            else
-            {
-                timer += Time.deltaTime;
-            }
-        }
-    }
+        //            //Debug.LogError("String" + sceneName);
+        //            GameObject sceneObject = GameObject.Find(sceneName);
+        //            foreach (Transform obj in sceneObject.transform)
+        //            {
+        //                if (obj.gameObject.name == "Electrifiables")
+        //                {
+        //                    electrifiables = obj.gameObject;
+        //                    break;
+        //                }
+        //            }
+        //        }
+        //        //Debug.LogError("Update Electrify");
+        //        foreach (Transform obj in electrifiables.transform)
+        //        {
+        //            if (obj.gameObject.name == "ElectrifiableGroup")
+        //            {
+        //                foreach (Transform obj2 in obj)
+        //                {
+        //                    if (obj2.GetComponent<IElectrifiable>() != null)
+        //                    {
+        //                        List<GameObject> connectedToCurrent = new List<GameObject>();
+        //                        connectedToCurrent = obj2.GetComponent<IElectrifiable>().GetConnectedObjects();
+        //                        foreach (GameObject objConnected in connectedToCurrent)
+        //                        {
+        //                            ConnectObjects(obj2.gameObject, objConnected);
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //            else
+        //            {
+        //                if (obj.GetComponent<IElectrifiable>() != null)
+        //                {
+        //                    List<GameObject> connectedToCurrent = new List<GameObject>();
+        //                    connectedToCurrent = obj.GetComponent<IElectrifiable>().GetConnectedObjects();
+        //                    foreach (GameObject objConnected in connectedToCurrent)
+        //                    {
+        //                        ConnectObjects(obj.gameObject, objConnected);
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        timer = 0;
+        //        started = true;
+        //    }
+        //    else
+        //    {
+        //        timer += Time.deltaTime;
+        //    }
+        //}
+    //}
 
 
     public void EmptyObjects()
@@ -116,26 +116,27 @@ public class ElectricityController : MonoBehaviour
     void Start()
     {
         player = GameObject.FindObjectOfType<Player>();
-        if (electrifiables == null)
-        {
-            int currentSceneNum = SceneManager.sceneCount - 1;
-            string sceneName = "root_" + SceneManager.GetSceneAt(SceneManager.sceneCount - 1).name;
+        //if (electrifiables == null)
+        //{
+        //    int currentSceneNum = SceneManager.sceneCount - 1;
+        //    string sceneName = "root_" + SceneManager.GetSceneAt(SceneManager.sceneCount - 1).name;
 
-            //Debug.LogError("String" + sceneName);
-            GameObject sceneObject = GameObject.Find(sceneName);
-            foreach (Transform obj in sceneObject.transform)
-            {
-                if (obj.gameObject.name == "Electrifiables")
-                {
-                    electrifiables = obj.gameObject;
-                    break;
-                }
-            }
-        }
+        //    //Debug.LogError("String" + sceneName);
+        //    GameObject sceneObject = GameObject.Find(sceneName);
+        //    foreach (Transform obj in sceneObject.transform)
+        //    {
+        //        if (obj.gameObject.name == "Electrifiables")
+        //        {
+        //            electrifiables = obj.gameObject;
+        //            break;
+        //        }
+        //    }
+        //}
     }
 
     public void SetNewElectrifiableScene()
     {
+        //Debug.LogError("Test");
         if (electrifiables != null)
         {
             foreach (Transform obj in electrifiables.transform)
@@ -153,9 +154,8 @@ public class ElectricityController : MonoBehaviour
                     obj.GetComponent<IElectrifiable>().SetIsOldElectrifiable(true);
                 }
             }
-
-            started = false;
         }
+        //started = false;
     }
 
 
@@ -163,12 +163,13 @@ public class ElectricityController : MonoBehaviour
 
     public void ConnectObjects(GameObject object1, GameObject object2)
     {
+
         if (electrifiables == null)
         {
             int currentSceneNum = SceneManager.sceneCount - 1;
             string sceneName = "root_" + SceneManager.GetSceneAt(SceneManager.sceneCount - 1).name;
 
-            //Debug.LogError("String" + sceneName);
+            Debug.LogError("String Connect" + sceneName);
             GameObject sceneObject = GameObject.Find(sceneName);
             foreach (Transform obj in sceneObject.transform)
             {
@@ -179,73 +180,94 @@ public class ElectricityController : MonoBehaviour
                 }
             }
         }
-        //object1 is not in a group
-        if (object1.transform.parent == electrifiables.transform)
-        {
-            //object2 is not in a group
-            if (object2.transform.parent == electrifiables.transform)
-            {
-                GameObject electrifiableGroup = new GameObject("ElectrifiableGroup");
-                electrifiableGroup.transform.parent = electrifiables.transform;
-                electrifiableGroup.tag = "ElectrifiableGroup";
-                object1.transform.parent = electrifiableGroup.transform;
-                object2.transform.parent = electrifiableGroup.transform;
-            }
-            //object2 is in a group
-            else
-            {
-                object1.transform.parent = object2.transform.parent;
-            }
-        }
-        //object1 is in a group
         else
         {
-            //object2 is not in a group
-            if (object2.transform.parent == electrifiables.transform)
+            if (object1.transform.parent.name == "ElectrifiableGroup")
             {
-                object2.transform.parent = object1.transform.parent;
+                electrifiables = object1.transform.parent.parent.gameObject;
             }
-            //object2 is in a group
             else
             {
-                if (object1.transform.parent != object2.transform.parent && object1 != object2)
+                electrifiables = object1.transform.parent.gameObject;
+            }
+            
+        }
+
+        //object1 is not in a group
+            if (object1.transform.parent == electrifiables.transform)
+            {
+                //object2 is not in a group
+                if (object2.transform.parent == electrifiables.transform)
                 {
-                    Transform parentObject2 = object2.transform.parent.gameObject.transform;
-
-                    while (parentObject2.childCount > 0)
+                    GameObject electrifiableGroup = new GameObject("ElectrifiableGroup");
+                    electrifiableGroup.transform.parent = electrifiables.transform;
+                    electrifiableGroup.tag = "ElectrifiableGroup";
+                    object1.transform.parent = electrifiableGroup.transform;
+                    object2.transform.parent = electrifiableGroup.transform;
+                }
+                //object2 is in a group
+                else
+                {
+                    object1.transform.parent = object2.transform.parent;
+                }
+            }
+            //object1 is in a group
+            else
+            {
+                //object2 is not in a group
+                if (object2.transform.parent == electrifiables.transform)
+                {
+                    object2.transform.parent = object1.transform.parent;
+                }
+                //object2 is in a group
+                else
+                {
+                    if (object1.transform.parent != object2.transform.parent && object1 != object2)
                     {
-                        for (int i = 0; i < parentObject2.childCount; i++)
-                        {
-                            parentObject2.GetChild(i).parent = object1.transform.parent;
-                        }
-                    }
+                        Transform parentObject2 = object2.transform.parent.gameObject.transform;
 
-                    List<GameObject> destroyObjects = new List<GameObject>();
-                    //object2.transform.parent = object1.transform.parent;
-                    for (int i = 0; i < electrifiables.transform.childCount; i++)
-                    {
-                        if (electrifiables.transform.GetChild(i).name == "ElectrifiableGroup")
+                        while (parentObject2.childCount > 0)
                         {
-                            if (electrifiables.transform.GetChild(i).transform.childCount < 1)
+                            for (int i = 0; i < parentObject2.childCount; i++)
                             {
-                                destroyObjects.Add(electrifiables.transform.GetChild(i).gameObject);
-                                
+                                parentObject2.GetChild(i).parent = object1.transform.parent;
                             }
                         }
-                    }
-                    foreach (GameObject obj in destroyObjects)
-                    {
-                        Destroy(obj);
+
+                        List<GameObject> destroyObjects = new List<GameObject>();
+                        //object2.transform.parent = object1.transform.parent;
+                        for (int i = 0; i < electrifiables.transform.childCount; i++)
+                        {
+                            if (electrifiables.transform.GetChild(i).name == "ElectrifiableGroup")
+                            {
+                                if (electrifiables.transform.GetChild(i).transform.childCount < 1)
+                                {
+                                    destroyObjects.Add(electrifiables.transform.GetChild(i).gameObject);
+
+                                }
+                                else if (electrifiables.transform.GetChild(i).transform.childCount == 1)
+                                {
+                                    electrifiables.transform.GetChild(i).transform.GetChild(0).transform.parent = electrifiables.transform;
+                                    destroyObjects.Add(electrifiables.transform.GetChild(i).gameObject);
+                                }
+                        }
+                        }
+
+                        foreach (GameObject obj in destroyObjects)
+                        {
+                            Destroy(obj);
+                        }
                     }
                 }
             }
-        }
-        ElectrifyConnectedFallingObjects(object1);
+
+            ElectrifyConnectedFallingObjects(object1);
+        
     }
 
     public void ConnectConnectedObjects()
     {
-        //Debug.LogError("connect connected 1");
+
         int currentSceneNum = SceneManager.sceneCount - 1;
         string sceneName = "root_" + SceneManager.GetSceneAt(SceneManager.sceneCount - 1).name;
 
@@ -259,6 +281,7 @@ public class ElectricityController : MonoBehaviour
                 break;
             }
         }
+
         //Debug.LogError("connect connected 2");
         if (electrifiables != null)
         {
@@ -371,6 +394,11 @@ public class ElectricityController : MonoBehaviour
                     {
                         if (electrifiables.transform.GetChild(i).transform.childCount < 1)
                         {
+                            destroyObjects.Add(electrifiables.transform.GetChild(i).gameObject);
+                        }
+                        else if (electrifiables.transform.GetChild(i).transform.childCount == 1)
+                        {
+                            electrifiables.transform.GetChild(i).transform.GetChild(0).transform.parent = electrifiables.transform;
                             destroyObjects.Add(electrifiables.transform.GetChild(i).gameObject);
                         }
                     }
@@ -605,6 +633,11 @@ public class ElectricityController : MonoBehaviour
                 {
                     destroyObjects.Add(electrifiables.transform.GetChild(i).gameObject);
 
+                }
+                else if (electrifiables.transform.GetChild(i).transform.childCount == 1)
+                {
+                    electrifiables.transform.GetChild(i).transform.GetChild(0).transform.parent = electrifiables.transform;
+                    destroyObjects.Add(electrifiables.transform.GetChild(i).gameObject);
                 }
             }
         }
