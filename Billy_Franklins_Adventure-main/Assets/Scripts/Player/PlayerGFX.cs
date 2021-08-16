@@ -197,6 +197,7 @@ public class PlayerGFX : MonoBehaviour
                                 player.SetMovingRight(true);
                             }
 
+                           
 
                             playerAnimator.SetInteger("PlayerAnimState", 9);
                         }
@@ -213,7 +214,7 @@ public class PlayerGFX : MonoBehaviour
                             {
                                 player.SetMovingRight(false);
                             }
-
+                            
                         }
                     }
 
@@ -357,6 +358,10 @@ public class PlayerGFX : MonoBehaviour
     {
         player.SetKinematic(true);
         PlayerObjectInteractions.playerObjectIInstance.ConnectMetalToPlayer();
+        if (player.GetOnDiagonalPlatform())
+        {
+            player.SetPlayerMoveMetalOnPlatform();
+        }
 
     }
 

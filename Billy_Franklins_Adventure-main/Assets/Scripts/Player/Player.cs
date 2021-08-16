@@ -91,9 +91,7 @@ public class Player : MonoBehaviour
     private float jumpFixTime = .1f;
 
 
-    [SerializeField]
-    private PlayerState
-        currentPlayerState; // player state used to set player state after a jump or fall when hitting ground
+    [SerializeField] private PlayerState currentPlayerState; // player state used to set player state after a jump or fall when hitting ground
 
     //variables used for when player is on moving platforms to make the player fall and move with the platform
     [SerializeField] private float fallFixTimer = 0;
@@ -1009,6 +1007,17 @@ public class Player : MonoBehaviour
     {
         return movingMetal;
     }
+
+    public void SetPlayerMoveMetalOnPlatform()
+    {
+        SetOnDiagonalPlatform(false);
+        transform.parent = null;
+        DontDestroyOnLoad(gameObject);
+        SetCurrentPlatform(null);
+        transform.localScale = new Vector3(1, 1, 1);
+    }
+
+
     //sets everything to begin dragging metal
     public void StartMovingMetal(GameObject metal)
     {
