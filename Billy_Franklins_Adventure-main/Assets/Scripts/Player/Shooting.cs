@@ -93,9 +93,6 @@ public class Shooting : MonoBehaviour
         //aimLine = GetComponentInChildren<AimLine>();
     }
 
-   
-
-
     public AimLineState GetAimLineState()
     {
         return aimLineState;

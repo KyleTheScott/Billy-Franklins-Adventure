@@ -41,7 +41,7 @@ public class PlayerCollision : MonoBehaviour
            
             if (collision.collider.CompareTag("Ground") && playerScript.GetFalling())
             {
-                Debug.Log("On ground Test");
+                //Debug.Log("On ground Test");
                 playerScript.SetOnGround(true);
                
             }
@@ -49,7 +49,7 @@ public class PlayerCollision : MonoBehaviour
             {
                 if (collision.collider.gameObject.layer == 19)
                 {
-                    Debug.LogError("Player Diagonal");
+                    //Debug.LogError("Player Diagonal");
                     playerScript.SetOnDiagonalPlatform(true);
                     playerScript.transform.parent = collision.gameObject.transform.parent;
                     //if (playerScript.GetCurrentMovingObject() != null)

@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [Header("General")] Rigidbody2D rb = null; //player's rigid body
 
     [SerializeField] private PlayerGFX playerGFX; // players animations
+    [SerializeField] private GameObject aimLine;
     [SerializeField] private PlayerCollision playerCollision; // player collision with ground
 
     public enum PlayerState
@@ -114,7 +115,7 @@ public class Player : MonoBehaviour
 
     //private Quaternion rotation;
 
-    public GameObject worldScale;
+    //public GameObject worldScale;
 
 
     [Header("FMOD Setting")]
@@ -134,7 +135,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Metal currentPlayerMetal;
 
-    [Header("Animation")] private bool animationMovement = false; // an automated animation is happening
+    [Header("Animation")] 
+    [SerializeField] private bool animationMovement = false; // an automated animation is happening
 
     [SerializeField] private bool movingMetal = false; // player is moving metal
 
@@ -279,9 +281,13 @@ public class Player : MonoBehaviour
         }
         Debug.Log("Y Angle: " + transform.eulerAngles.y);
 
-        worldScale = GameObject.Find("WorldScale");
+        //worldScale = GameObject.Find("WorldScale");
+        aimLine = FindObjectOfType<AimLine>().gameObject;
         //rotation = transform.rotation;
         //kite.SetKiteStartPosition(transform.position);
+        
+        
+        
     }
 
 
@@ -461,67 +467,6 @@ public class Player : MonoBehaviour
         HandleInput();
     }
 
-    void LateUpdate()
-    {
-       
-        //    Debug.Log("Rotation Problem");
-            //    Vector3 fixRotation = transform.eulerAngles;
-            //    if (currentPlatform != null)
-            //    {
-            //        ////fixRotation.z += 0 - currentPlatform.transform.eulerAngles.z;
-            //        if (currentPlatform.transform.eulerAngles.z > 0)
-            //        {
-            //            Debug.LogError("Platform Euler z: " + currentPlatform.transform.eulerAngles.z);
-            //            Debug.LogError("Player Euler z: " + fixRotation.z);
-            //            //transform.localRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z - currentPlatform.transform.rotation.z);
-            //            //fixRotation.z += (currentPlatform.transform.eulerAngles.z -( 45 - currentPlatform.transform.eulerAngles.z)) ;
-            //            //fixRotation.z = 0;
-            //        }
-            //        else
-            //        {
-            //            //fixRotation.z = 0;
-            //            //transform.localRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z - currentPlatform.transform.rotation.z);
-            //            //fixRotation.z -= Mathf.Abs(45 - currentPlatform.transform.eulerAngles.z);
-            //        }
-
-            //    }
-            //    else
-            //    {
-            //        fixRotation.z = 0;
-            //    }
-            //    transform.eulerAngles = fixRotation;
-            //}
-
-
-            //    //float h = Input.GetAxis("Horizontal") * 30 * Time.deltaTime;
-            //    //float z = transform.eulerAngles.z;
-            //    //float x = transform.eulerAngles.x;
-            //    //float y = transform.eulerAngles.y;
-            //    //Vector3 desiredRot = new Vector3(x, y, z + h);
-            //    //if (desiredRot.z > 30)
-            //    //{
-            //    //    desiredRot = new Vector3(x, y, 30);
-            //    //}
-            //    //else if (desiredRot.z < -30)
-            //    //{
-            //    //    desiredRot = new Vector3(x, y, -30);
-            //    //}
-
-            //    //transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0);
-
-
-
-            //    //onPlatformRotation = false;
-            //    //rotationTimer = 0;
-            //}
-
-            //if (onDiagonalPlatform)
-            //{
-            //    transform.rotation = rotation;
-            //}
-        }
-
-
     public void SetOnDiagonalPlatform(bool state)
     {
         onDiagonalPlatform = state;
@@ -535,9 +480,9 @@ public class Player : MonoBehaviour
 
     void HandleInput()
     {
-
         
 
+        //Debug.Log("Input");
         //for when player is reading tutorials
         if (isReading)
         {
@@ -556,6 +501,7 @@ public class Player : MonoBehaviour
         else if (movementEnabled && !animationMovement && playerState != PlayerState.JUMP 
                  && playerState != PlayerState.INTERACT && playerState != PlayerState.PLAYER_DEATH_CHARGES_START)
         {
+            //Debug.Log("Input2");
             //to open menu
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -592,6 +538,7 @@ public class Player : MonoBehaviour
                         {
                             movingMetal = true;
                         }
+                        Debug.Log("Input5");
                         playerGFX.SetFacingRight(false); // facing left
                         transform.Rotate(0f, 180f, 0f); //rotate player and aiming to the left 
                         shooting.SetLastShootingLine(-1);
@@ -630,6 +577,7 @@ public class Player : MonoBehaviour
                             else
                             {
                                 moveVelocity = 0f - moveSpeed;
+                                //Debug.Log("Input3");
                             }
                         }
                     }
@@ -677,6 +625,7 @@ public class Player : MonoBehaviour
                         playerGFX.SetFacingRight(true);
                         transform.Rotate(0f, 180f, 0f); //rotate player and aiming to the left
                         shooting.SetLastShootingLine(1);
+                        Debug.Log("Input6");
                     }
                 }
                 else
@@ -712,6 +661,7 @@ public class Player : MonoBehaviour
                             else
                             {
                                 moveVelocity = moveSpeed;
+                                //Debug.Log("Input4");
                             }
                         }
                     }
@@ -865,8 +815,10 @@ public class Player : MonoBehaviour
 
     public void StartPlayerOutOfChargesDeath()
     {
+        
         playerState = PlayerState.PLAYER_DEATH_CHARGES_START;
         GameplayUI.instanceGameplayUI.FadeOut();
+        
     }
 
 
