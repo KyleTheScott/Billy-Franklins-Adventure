@@ -485,7 +485,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
             {
                 if (!IsOldElectrifiable() && !collision.GetComponent<IElectrifiable>().IsOldElectrifiable())
                 {
-                    Debug.Log("Test Metal 1");
+                    //Debug.Log("Test Metal 1");
                     bool alreadyExists = false;
                     for (int i = 0; i < connectedGameObjects.Count; i++)
                     {
@@ -615,7 +615,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
             {
                 RemoveDisconnectedObject(collision.gameObject);
                 collision.gameObject.GetComponent<Metal>().RemoveDisconnectedObject(gameObject);
-                Debug.Log("Test Metal 2");
+                //Debug.Log("Test Metal 2");
                 bool object2Electrified = collision.gameObject.GetComponent<Metal>().GetElectrified();
                 int object2GroupNum = collision.gameObject.GetComponent<Metal>().GetGroupNum();
                 ElectricityController.instanceElectrical.DisconnectObjects(gameObject, collision.gameObject);

@@ -32,9 +32,13 @@ public class LevelLoadController : MonoBehaviour
     IEnumerator LoadNextLevel()
     {
         Debug.LogError("Loading");
-        ElectricityController.instanceElectrical.SetNewElectrifiableScene();
+        
         FindObjectOfType<ObjectsCollision>().EmptyObjects();
+        
         AsyncOperation load_scene_op = SceneManager.LoadSceneAsync(next_scene_to_load_, LoadSceneMode.Additive);
+        
+
+
         while (!load_scene_op.isDone)
         {
             Debug.Log(">>> Loading next scene: " + next_scene_to_load_);
@@ -82,6 +86,7 @@ public class LevelLoadController : MonoBehaviour
             {
                 if (InstantLoadLevel)
                 {
+                    Debug.LogError("New Level Load");
                     DestroyDDOLObjects();
                     SceneManager.LoadScene(next_scene_to_load_, LoadSceneMode.Single);
                     has_level_loaded_ = true;
@@ -109,11 +114,12 @@ public class LevelLoadController : MonoBehaviour
                
             if (prev_scene_to_destroy_ != "" && SceneManager.GetSceneByName(prev_scene_to_destroy_).isLoaded)
             {
+                
                 SceneManager.UnloadSceneAsync(prev_scene_to_destroy_);
-
+                
                 player.SetPlayerKiteLightning();
-                //Debug.LogError("connect connected 0");
                 ElectricityController.instanceElectrical.ConnectConnectedObjects();
+                //Debug.LogError("connect connected 0");
             }
 
             if (LowerWallOnTriggerEnter)
