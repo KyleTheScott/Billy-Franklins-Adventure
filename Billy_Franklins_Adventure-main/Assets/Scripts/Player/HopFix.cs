@@ -8,6 +8,7 @@ public class HopFix : MonoBehaviour
     private bool onGround = true;
     private Player player = null;
 
+
     private void Start()
     {
         player = player = FindObjectOfType<Player>();
@@ -23,6 +24,8 @@ public class HopFix : MonoBehaviour
             onGround = true;
         }
     }
+
+
     //checks if player has left the hop fix collider so the player doesn't leave ground from every hop
     public void OnTriggerExit2D(Collider2D collision)
     {
@@ -41,5 +44,19 @@ public class HopFix : MonoBehaviour
                 player.GetComponent<Player>().LeavingTheGround();
             }
         }
+        if (collision.gameObject.layer == 19)
+        {
+            //Debug.LogError("Player Diagonal");
+            player.SetOnDiagonalPlatform(false);
+            player.transform.parent = null;
+            DontDestroyOnLoad(player);
+            player.SetCurrentPlatform(null);
+            player.transform.localScale = new Vector3(1, 1, 1);
+            
+        }
+        
+
     }
+
+
 }

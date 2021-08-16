@@ -27,9 +27,9 @@ public class GameplayUI : MonoBehaviour
     [SerializeField]
     private Image fadeOutImage;
     [SerializeField]
-    private float maxAlpha = 0.3f;
+    private float maxAlpha = 1f;
     [SerializeField]
-    private float fadeOutRate = 0.1f;
+    private float fadeOutRate = 0.2f;
     private float currentAlpha = 0.0f;
 
     private void Start()

@@ -17,6 +17,8 @@ public class PlayerGFX : MonoBehaviour
 
     private CheckPointSystem checkPointSystem = null;
 
+    [SerializeField] private GameObject playerLight;
+
 
     [Header("Shooting")]
     private Shooting shooting;
@@ -40,7 +42,7 @@ public class PlayerGFX : MonoBehaviour
         movingMetal = FindObjectOfType<MovingMetal>();
         kiteLightning = FindObjectOfType<KiteLightning>();
         checkPointSystem = GameObject.Find("GlobalGameController").GetComponent<CheckPointSystem>();
-
+        playerLight = GameObject.Find("PlayerLight");
         isFacingRight = true;
         playerAnimator.SetInteger("PlayerAnimState", 0);
     }
@@ -84,7 +86,7 @@ public class PlayerGFX : MonoBehaviour
 
                     break;
                 case Player.PlayerState.JUMP_FALLING:
-                    Debug.LogError("Changed to falling");
+                    //Debug.LogError("Changed to falling");
                    
                     break;
                 case Player.PlayerState.FALLING:
@@ -309,6 +311,12 @@ public class PlayerGFX : MonoBehaviour
         FindObjectOfType<CheckPointSystem>().PlayerDeath();
     }
 
+    public void OutOfChargesTurnLightOff()
+    {
+        playerLight.SetActive(false);
+    }
+
+
     public void ElectrifyKiteLightning()
     {
         kiteLightning.KiteElectrifyStart();
@@ -316,7 +324,11 @@ public class PlayerGFX : MonoBehaviour
 
     public void ElectrifyKiteEnd()
     {
+        Debug.LogError("End electrify kite");
         player.SetPlayerState(Player.PlayerState.WALKING);
+        FindObjectOfType<Shooting>().SetAimLineState(Shooting.AimLineState.NOT_AIMED);
+        //GameObject lightToTurnOn = GameObject.Find("Light");
+        playerLight.SetActive(true);
         player.SetAnimationMovement(false);
     }
 
@@ -399,7 +411,7 @@ public class PlayerGFX : MonoBehaviour
 
     public void EndShooting()
     {
-        Debug.LogError("Out of charges Test");
+        //Debug.LogError("Out of charges Test");
 
         if (FindObjectOfType<Charges>().GetLightCharges() > 0)
         {

@@ -112,6 +112,7 @@ public class Charges : MonoBehaviour
         {
             Debug.LogError("Out of charges");
             FindObjectOfType<Player>().StartPlayerOutOfChargesDeath();
+           
         }
 
     }

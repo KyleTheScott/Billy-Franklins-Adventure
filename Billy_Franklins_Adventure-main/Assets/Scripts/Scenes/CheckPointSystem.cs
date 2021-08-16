@@ -5,12 +5,14 @@ public class CheckPointSystem : MonoBehaviour
 {
     public string checkPointScene = "";
     private bool playerDied;
+    private Shooting shooting;
 
     private void Awake()
     {
         //set checkpoint once next level is loaded
         checkPointScene = SceneManager.GetActiveScene().name;
         SceneManager.sceneLoaded += OnSceneLoaded;
+        shooting = FindObjectOfType<Shooting>();
     }
 
     public void Start()
@@ -28,6 +30,8 @@ public class CheckPointSystem : MonoBehaviour
         GameplayUI.instanceGameplayUI.ResetFadeOut();
         SceneManager.LoadScene(checkPointScene, LoadSceneMode.Single);
         FindObjectOfType<Player>().SetMovingRight(true);
+       
+
     }
 
     public void SetCheckPoint(string sceneName)
@@ -54,7 +58,6 @@ public class CheckPointSystem : MonoBehaviour
             FindObjectOfType<PuzzleController>().LoadPuzzle();
             FindObjectOfType<Player>().SetPlayerKiteLightning();
             playerDied = false;
-
         }
     }
 }
