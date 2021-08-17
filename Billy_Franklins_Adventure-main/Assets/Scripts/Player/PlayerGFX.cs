@@ -313,6 +313,7 @@ public class PlayerGFX : MonoBehaviour
     public void ElectricityDeathEnd()
     {
         Debug.LogError("Death Working End");
+        FindObjectOfType<ObjectsCollision>().EmptyObjects();
         checkPointSystem.PlayerDeath();
     }
 
@@ -320,7 +321,7 @@ public class PlayerGFX : MonoBehaviour
     {
         Debug.LogError("Death animation");
         FindObjectOfType<ObjectsCollision>().EmptyObjects();
-        FindObjectOfType<CheckPointSystem>().PlayerDeath();
+        checkPointSystem.PlayerDeath();
     }
 
     public void OutOfChargesTurnLightOff()

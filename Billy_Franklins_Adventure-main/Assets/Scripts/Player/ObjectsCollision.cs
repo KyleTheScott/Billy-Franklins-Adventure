@@ -18,7 +18,7 @@ public class ObjectsCollision : MonoBehaviour
     {
         if (checkForElectric.Count > 0)
         {
-            //checks if player is being electricuted
+            //checks if player is being electrocuted
             foreach (GameObject item in checkForElectric)
             {
                 //water

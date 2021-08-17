@@ -7,6 +7,7 @@ public class CheckPointSystem : MonoBehaviour
     private bool playerDied;
     private Shooting shooting;
 
+
     private void Awake()
     {
         //set checkpoint once next level is loaded
@@ -29,8 +30,11 @@ public class CheckPointSystem : MonoBehaviour
         playerDied = true;
         GameplayUI.instanceGameplayUI.ResetFadeOut();
         SceneManager.LoadScene(checkPointScene, LoadSceneMode.Single);
-        FindObjectOfType<Player>().SetMovingRight(true);
-       
+        Player player = FindObjectOfType<Player>();
+        player.SetMovingRight(true);
+        player.SetPlayerState(Player.PlayerState.IDLE);
+        player.SetOnGround(true);
+
 
     }
 
