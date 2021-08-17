@@ -33,14 +33,17 @@ public class PlayerGFX : MonoBehaviour
 
     private float playerMetalStuckTimer = 0;
     private float playerMetalStuckTimerMax = 1;
-    
 
+    void Awake()
+    {
+        playerAnimator = gameObject.GetComponent<Animator>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         playerSprite = gameObject.GetComponent<SpriteRenderer>();
-        playerAnimator = gameObject.GetComponent<Animator>();
+        
         player = FindObjectOfType<Player>();
         shooting = FindObjectOfType<Shooting>();
         footstepScript = FindObjectOfType<FMODStudioFootstepScript>();
@@ -72,6 +75,9 @@ public class PlayerGFX : MonoBehaviour
                 playerSprite.flipX = true;
             }
         }
+
+        
+
         // change animations state based on changes in player state
         if (currentPlayerState != player.GetPlayerState())
         {
@@ -157,8 +163,13 @@ public class PlayerGFX : MonoBehaviour
 
                     break;
                 case Player.PlayerState.LIGHTNING_CHARGES_START:
+                    Debug.LogError("Lightning");
                     playerAnimator.SetInteger("PlayerAnimState", 15);
-                    player.SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES);
+                    
+                    break;
+                case Player.PlayerState.LIGHTNING_CHARGES:
+                    Debug.LogError("Lightning 2");
+                    playerAnimator.SetInteger("PlayerAnimState", 0);
                     break;
                 case Player.PlayerState.PLAYER_DEATH_ELECTRIFIED_START:
                     Debug.LogError("Electrified");
@@ -254,6 +265,10 @@ public class PlayerGFX : MonoBehaviour
         //sets to current player state and and aim state to check for changes later  
         currentAimLineState = shooting.GetAimLineState();
         currentPlayerState = player.GetPlayerState();
+        if (currentPlayerState == Player.PlayerState.LIGHTNING_CHARGES_START)
+        {
+            player.SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES);
+        }
     }
 
 
@@ -319,9 +334,11 @@ public class PlayerGFX : MonoBehaviour
 
     public void OutOfChargesDeathEnd()
     {
+        Debug.LogError("Death 2");
         //Debug.LogError("Death animation");
         FindObjectOfType<ObjectsCollision>().EmptyObjects();
         checkPointSystem.PlayerDeath();
+        
     }
 
     public void OutOfChargesTurnLightOff()
@@ -343,7 +360,7 @@ public class PlayerGFX : MonoBehaviour
 
     public void ElectrifyKiteEnd()
     {
-        //Debug.LogError("End electrify kite");
+        Debug.LogError("End electrify kite");
         player.SetPlayerState(Player.PlayerState.WALKING);
         FindObjectOfType<Shooting>().SetAimLineState(Shooting.AimLineState.NOT_AIMED);
         //GameObject lightToTurnOn = GameObject.Find("Light");
