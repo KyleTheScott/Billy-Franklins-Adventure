@@ -31,6 +31,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        DestroyDDOLObjects();
         //try to get save (if it exists)
         save = PlayerPrefs.GetString("scene", "");
 
@@ -41,6 +42,25 @@ public class MainMenu : MonoBehaviour
            button.interactable = false;
            button.image.color = Color.grey;
         }
+
+        if (PlayerPrefs.GetInt("LoadCredits", 1) == 1)
+        {
+            PlayerPrefs.SetInt("LoadCredits", 0);
+            Credits();
+        }
+    }
+
+    private void DestroyDDOLObjects()
+    {
+        GameObject.Find("Player(Clone)").GetComponent<Player>().DestroyUI();
+        Destroy(GameObject.Find("Player(Clone)"));
+        Destroy(GameObject.Find("Main Camera(Clone)"));
+        Destroy(GameObject.Find("ControllerManager(Clone)"));
+        //Destroy(GameObject.Find("Settings UI(Clone)"));
+        //Destroy(GameObject.Find("Pause Menu UI(Clone)"));
+        Destroy(GameObject.Find("Global Light 2D(Clone)"));
+        Destroy(GameObject.Find("UI(Clone)"));
+
     }
 
     //load last saved puzzle

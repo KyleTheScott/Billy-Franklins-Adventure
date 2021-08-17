@@ -4758,6 +4758,10 @@ PrefabInstance:
         picture the people of this great city are relying on you now. I know you
         can do it.
       objectReference: {fileID: 0}
+    - target: {fileID: 8050688128019160808, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
+      propertyPath: isFinalTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8050688128019160809, guid: 2f19661c77843984c9e5abcfb6cfd4ea, type: 3}
       propertyPath: m_Offset.y
       value: 0.28382492

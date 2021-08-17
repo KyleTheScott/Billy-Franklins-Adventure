@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
 [DefaultExecutionOrder(-100)] //ensure this script runs before all other player scripts to prevent laggy input
@@ -147,6 +148,9 @@ public class Player : MonoBehaviour
 
     [Header("Dialogue")] public bool isReading = false;
     public Dialogue dialogue = new Dialogue();
+    public bool finalDialogue = false;
+    [SerializeField]
+    private string MainMenuScene;
 
     public void SetPlayerKiteLightning()
     {
@@ -495,6 +499,11 @@ public class Player : MonoBehaviour
                 if (!DialogueManager.instance.isOpen)
                 {
                     isReading = false;
+                    if (finalDialogue)
+                    {
+                        PlayerPrefs.SetInt("LoadCredits", 1);
+                        SceneManager.LoadScene(MainMenuScene, LoadSceneMode.Single);
+                    }
                     PlayerControlsStatus(true);
                 }
             }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
+    public bool isFinalTrigger = false;
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -14,6 +15,10 @@ public class DialogueTrigger : MonoBehaviour
             if (player != null)
             {
                 player.dialogue = dialogue;
+                if (isFinalTrigger)
+                {
+                    player.finalDialogue = true;
+                }
                 Destroy(gameObject);
             }
         }
