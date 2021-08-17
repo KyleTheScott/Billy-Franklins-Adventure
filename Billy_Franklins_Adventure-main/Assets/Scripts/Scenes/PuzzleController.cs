@@ -90,6 +90,7 @@ public class PuzzleController : MonoBehaviour
         DontDestroyOnLoad(pauseMenuUI);
         SetUIReferences();
         GlobalGameController.instance.GetComponent<CheckPointSystem>().SetCheckPoint(SceneManager.GetActiveScene().name);
+        GameplayUI.instanceGameplayUI.FadeIn();
 
 
     }

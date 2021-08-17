@@ -30,6 +30,8 @@ public class GameplayUI : MonoBehaviour
     private float maxAlpha = 1f;
     [SerializeField]
     private float fadeOutRate = 0.2f;
+    [SerializeField]
+    private float fadeInRate = 0.2f;
     private float currentAlpha = 0.0f;
     private PlayerGFX playerGFX;
     private Player player;
@@ -37,13 +39,29 @@ public class GameplayUI : MonoBehaviour
 
     private void Start()
     {
-        currentAlpha = fadeOutImage.color.a;
+        currentAlpha = 1.0f;
+        Color newColor = fadeOutImage.color;
+        newColor.a = currentAlpha;
+        fadeOutImage.color = newColor;
+        currentAlpha = 1.0f;
         playerGFX = FindObjectOfType<PlayerGFX>();
         player = FindObjectOfType<Player>();
     }
+    public void ResetFadeIn()
+    {
+        Debug.LogError("Problem");
+        StopAllCoroutines();
+        Color newColor = fadeOutImage.color;
+        newColor.a = 1.0f;
+        fadeOutImage.color = newColor;
+        currentAlpha = 1.0f;
+    }
+
+
 
     public void ResetFadeOut()
     {
+        Debug.LogError("Problem");
         StopAllCoroutines();
         Color newColor = fadeOutImage.color;
         newColor.a = 0.0f;
@@ -71,11 +89,14 @@ public class GameplayUI : MonoBehaviour
     {
         while (currentAlpha >= 0)
         {
+            Debug.LogError("Fade in");
             Color newColor = fadeOutImage.color;
-            newColor.a = currentAlpha -= fadeOutRate * Time.deltaTime;
+            newColor.a = currentAlpha -= fadeInRate * Time.deltaTime;
             fadeOutImage.color = newColor;
+            Debug.LogError("Current Alpha" + currentAlpha);
             yield return null;
         }
+        FindObjectOfType<CheckPointSystem>().PlayerDeathLoadLevel();
     }
 
     private void OnLevelWasLoaded(int level)
@@ -87,12 +108,14 @@ public class GameplayUI : MonoBehaviour
 
     public void FadeIn()
     {
+        ResetFadeIn();
         StopAllCoroutines();
         StartCoroutine(StartFadeIn());
     }
 
     public void FadeOut()
     {
+        ResetFadeOut();
         StopAllCoroutines();
         StartCoroutine(StartFadeOut());
     }
