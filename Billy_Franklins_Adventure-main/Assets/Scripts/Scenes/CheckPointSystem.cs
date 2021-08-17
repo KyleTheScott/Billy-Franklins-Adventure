@@ -34,8 +34,14 @@ public class CheckPointSystem : MonoBehaviour
         player.SetMovingRight(true);
         player.SetPlayerState(Player.PlayerState.IDLE);
         player.SetOnGround(true);
+        Debug.LogError("Death 1");
+    }
 
-
+    public void PlayerDeathLoadLevel()
+    {
+        Debug.LogError("Death 0");
+        FindObjectOfType<PlayerGFX>().SetAnimation(0);
+        FindObjectOfType<Player>().SetPlayerKiteLightning();
     }
 
     public void SetCheckPoint(string sceneName)
@@ -60,7 +66,6 @@ public class CheckPointSystem : MonoBehaviour
             Debug.Log("DEATH");
             FindObjectOfType<Player>().transform.position = FindObjectOfType<PuzzleController>().PlayerSpawnPoint.position;
             FindObjectOfType<PuzzleController>().LoadPuzzle();
-            FindObjectOfType<Player>().SetPlayerKiteLightning();
             playerDied = false;
         }
     }

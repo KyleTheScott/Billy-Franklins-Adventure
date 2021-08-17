@@ -154,6 +154,7 @@ public class Player : MonoBehaviour
 
     public void SetPlayerKiteLightning()
     {
+        Debug.LogError("Death 3");
         StartCoroutine(WaitTillOnGround());
     }
 
@@ -163,7 +164,7 @@ public class Player : MonoBehaviour
         {
             yield return null;
         }
-
+        Debug.LogError("Death 4");
         SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
         SetAnimationMovement(true);
         SetPlayerInLevel(true);
@@ -264,7 +265,8 @@ public class Player : MonoBehaviour
 
         // setting some generally player movement variables
         //playerState = PlayerState.JUMPING;
-        SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
+        GameplayUI.instanceGameplayUI.ResetFadeIn();
+        GameplayUI.instanceGameplayUI.FadeIn();
         SetAnimationMovement(true);
 
         transform.Rotate(0f, 180f, 0f);
@@ -291,7 +293,6 @@ public class Player : MonoBehaviour
         
         
     }
-
 
     //used for moving player depending on state
     private void FixedUpdate()
