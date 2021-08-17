@@ -110,7 +110,7 @@ public class Charges : MonoBehaviour
         
         if (!lampOn)
         {
-            Debug.LogError("Out of charges");
+            //Debug.LogError("Out of charges");
             FindObjectOfType<Player>().StartPlayerOutOfChargesDeath();
            
         }

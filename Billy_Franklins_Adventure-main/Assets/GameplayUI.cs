@@ -57,6 +57,17 @@ public class GameplayUI : MonoBehaviour
         }
     }
 
+    private IEnumerator StartFadeIn()
+    {
+        while (currentAlpha >= 0)
+        {
+            Color newColor = fadeOutImage.color;
+            newColor.a = currentAlpha -= fadeOutRate * Time.deltaTime;
+            fadeOutImage.color = newColor;
+            yield return null;
+        }
+    }
+
     private void OnLevelWasLoaded(int level)
     {
         Color newColor = fadeOutImage.color;
@@ -64,8 +75,15 @@ public class GameplayUI : MonoBehaviour
         fadeOutImage.color = newColor;
     }
 
+    public void FadeIn()
+    {
+        StopAllCoroutines();
+        StartCoroutine(StartFadeIn());
+    }
+
     public void FadeOut()
     {
+        StopAllCoroutines();
         StartCoroutine(StartFadeOut());
     }
 

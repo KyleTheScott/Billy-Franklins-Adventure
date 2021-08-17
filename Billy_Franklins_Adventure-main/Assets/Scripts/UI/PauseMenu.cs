@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -37,9 +38,18 @@ public class PauseMenu : MonoBehaviour
         //FindObjectOfType<Player>().gameObject.transform.position = GameObject.Find("PlayerSpawnPoint").GetComponent<Transform>().transform.position;
         FindObjectOfType<ObjectsCollision>().EmptyObjects();
         FindObjectOfType<MusicController>().PlayMenuSelect();
-        checkPointSystem.PlayerDeath();
         Time.timeScale = 1;
         FindObjectOfType<Player>().GetComponent<Player>().ClosePauseMenu();
+        FindObjectOfType<Player>().GetComponent<Player>().PlayerControlsStatus(false);
+        FindObjectOfType<Player>().StartCoroutine(ReloadCheckpointFadeOut());
+    }
+
+    private IEnumerator ReloadCheckpointFadeOut()
+    {
+        GameplayUI.instanceGameplayUI.FadeOut();
+        yield return new WaitForSeconds(2.0f);
+        FindObjectOfType<Player>().GetComponent<Player>().PlayerControlsStatus(true);
+        checkPointSystem.PlayerDeath();
     }
 
     public void MainMenu()

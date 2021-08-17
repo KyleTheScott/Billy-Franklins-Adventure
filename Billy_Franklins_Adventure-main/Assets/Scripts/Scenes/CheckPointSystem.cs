@@ -28,7 +28,7 @@ public class CheckPointSystem : MonoBehaviour
         Charges charges = FindObjectOfType<Charges>();
         charges.SetLampOn(false);
         playerDied = true;
-        GameplayUI.instanceGameplayUI.ResetFadeOut();
+        GameplayUI.instanceGameplayUI.FadeIn();
         SceneManager.LoadScene(checkPointScene, LoadSceneMode.Single);
         Player player = FindObjectOfType<Player>();
         player.SetMovingRight(true);
