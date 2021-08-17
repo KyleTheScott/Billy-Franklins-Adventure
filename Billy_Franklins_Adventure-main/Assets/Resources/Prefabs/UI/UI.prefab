@@ -753,7 +753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeOutImage: {fileID: 7426770784043787021}
   maxAlpha: 1
-  fadeOutRate: 0.4
+  fadeOutRate: 0.8
 --- !u!95 &8919046937132545419
 Animator:
   serializedVersion: 3

@@ -31,10 +31,15 @@ public class GameplayUI : MonoBehaviour
     [SerializeField]
     private float fadeOutRate = 0.2f;
     private float currentAlpha = 0.0f;
+    private PlayerGFX playerGFX;
+    private Player player;
+
 
     private void Start()
     {
         currentAlpha = fadeOutImage.color.a;
+        playerGFX = FindObjectOfType<PlayerGFX>();
+        player = FindObjectOfType<Player>();
     }
 
     public void ResetFadeOut()
@@ -54,6 +59,11 @@ public class GameplayUI : MonoBehaviour
             newColor.a = currentAlpha += fadeOutRate * Time.deltaTime;
             fadeOutImage.color = newColor;
             yield return null;
+        }
+
+        if (player.GetPlayerState() == Player.PlayerState.PLAYER_DEATH_CHARGES_START)
+        {
+            playerGFX.OutOfChargesDeathEnd();
         }
     }
 
