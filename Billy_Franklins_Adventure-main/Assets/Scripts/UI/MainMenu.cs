@@ -31,7 +31,10 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        DestroyDDOLObjects();
+        if (FindObjectOfType<Player>() != null)
+        {
+            DestroyDDOLObjects();
+        }
         //try to get save (if it exists)
         save = PlayerPrefs.GetString("scene", "");
 
@@ -52,7 +55,7 @@ public class MainMenu : MonoBehaviour
 
     private void DestroyDDOLObjects()
     {
-        GameObject.Find("Player(Clone)").GetComponent<Player>().DestroyUI();
+        GameObject.Find("Player(Clone)")?.GetComponent<Player>().DestroyUI();
         Destroy(GameObject.Find("Player(Clone)"));
         Destroy(GameObject.Find("Main Camera(Clone)"));
         Destroy(GameObject.Find("ControllerManager(Clone)"));
