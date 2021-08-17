@@ -24,15 +24,17 @@ public class ObjectsCollision : MonoBehaviour
                 //water
                 if (item.CompareTag("Water") && item.GetComponent<Water>().GetElectrified())
                 {
+                    Debug.LogError("Death Working Water");
                     EmptyObjects();
                     player.GetComponent<Player>().SetPlayerState(Player.PlayerState.PLAYER_DEATH_ELECTRIFIED_START);
                     break;
                 }
                 //metal
-                else if (item.CompareTag("Metal") && item.GetComponent<Metal>().GetElectrified())
+                if (item.CompareTag("Metal") && item.GetComponent<Metal>().GetElectrified())
                 {
                     if (item.GetComponent<Metal>().GetMovable())
                     {
+                        Debug.LogError("Death Working Metal");
                         EmptyObjects();
                         player.GetComponent<Player>().SetPlayerState(Player.PlayerState.PLAYER_DEATH_ELECTRIFIED_START);
                         break;

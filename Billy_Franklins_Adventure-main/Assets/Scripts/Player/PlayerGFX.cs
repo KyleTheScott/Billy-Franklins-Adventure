@@ -161,6 +161,7 @@ public class PlayerGFX : MonoBehaviour
                     player.SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES);
                     break;
                 case Player.PlayerState.PLAYER_DEATH_ELECTRIFIED_START:
+                    Debug.LogError("Electrified");
                     playerAnimator.SetInteger("PlayerAnimState", 13);
                     player.SetPlayerState(Player.PlayerState.PLAYER_DEATH_ELECTRIFIED);
                     break;
@@ -311,6 +312,7 @@ public class PlayerGFX : MonoBehaviour
 
     public void ElectricityDeathEnd()
     {
+        Debug.LogError("Death Working End");
         checkPointSystem.PlayerDeath();
     }
 
@@ -393,7 +395,11 @@ public class PlayerGFX : MonoBehaviour
     private void MetalStuckStop()
     {
         player.SetAnimationMovement(false);
-        PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject().GetComponent<Metal>().SetMoving(false);
+        if (PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject() != null)
+        {
+            PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject().GetComponent<Metal>().SetMoving(false);
+        }
+
         player.SetPlayerState(Player.PlayerState.IDLE);
         player.SetMovingMetalStop();
         playerAnimator.SetInteger("PlayerAnimState", 0);
