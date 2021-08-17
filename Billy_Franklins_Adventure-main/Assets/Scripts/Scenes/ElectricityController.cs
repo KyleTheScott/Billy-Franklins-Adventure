@@ -169,7 +169,7 @@ public class ElectricityController : MonoBehaviour
             int currentSceneNum = SceneManager.sceneCount - 1;
             string sceneName = "root_" + SceneManager.GetSceneAt(SceneManager.sceneCount - 1).name;
 
-            Debug.LogError("String Connect" + sceneName);
+            //Debug.LogError("String Connect" + sceneName);
             GameObject sceneObject = GameObject.Find(sceneName);
             foreach (Transform obj in sceneObject.transform)
             {

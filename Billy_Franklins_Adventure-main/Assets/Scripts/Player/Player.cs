@@ -310,6 +310,7 @@ public class Player : MonoBehaviour
                     rb.isKinematic = true;
                     break;
                 case PlayerState.MOVING_OBJECT_START:
+                    Debug.LogError("Moving");
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                     break;
             }
@@ -982,11 +983,13 @@ public class Player : MonoBehaviour
     //Disconnect from metal// might be the problem with falling with metal issue 
     public void SetObjectDisconnected()
     {
+        Debug.LogError("Metal Fixed");
         if (currentMovingObject != null)
         {
             currentMovingObject = null;
-            if (playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING)
+            if (playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING && playerState != PlayerState.MOVING_OBJECT_START)
             {
+                Debug.LogError("Switch to walking");
                 playerState = PlayerState.WALKING;
             }
         }
@@ -1021,13 +1024,18 @@ public class Player : MonoBehaviour
     //sets everything to begin dragging metal
     public void StartMovingMetal(GameObject metal)
     {
-        playerState = PlayerState.MOVING_OBJECT_START;
-        metalMovingEvent.start();
-        currentMovingObject = metal;
-        currentPlayerMetal = currentMovingObject.GetComponent<Metal>();
-        movingMetal = true;
-        currentMovingObject.GetComponent<Metal>().SetPickUpMetalDirection();
+        if (metal != null)
+        {
+            Debug.LogError("Player moving To metal 1");
+            playerState = PlayerState.MOVING_OBJECT_START;
+            metalMovingEvent.start();
+            currentMovingObject = metal;
+            currentPlayerMetal = currentMovingObject.GetComponent<Metal>();
+            movingMetal = true;
+            currentMovingObject.GetComponent<Metal>().SetPickUpMetalDirection();
+        }
     }
+
     //used while player is dropping metal to check for SuspendedPlatform
     public bool IsDroppingMetal()
     {
