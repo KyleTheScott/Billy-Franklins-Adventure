@@ -172,7 +172,7 @@ MonoBehaviour:
       m_Calls: []
   keyChargesList: []
   shootSound: event:/Player Sounds/Shooting Lightning
-  shootVolume: 0.8
+  shootVolume: 0.7
 --- !u!1 &1039994935
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,7 +760,6 @@ MonoBehaviour:
   fallFixStayMax: 1
   onDiagonalPlatform: 0
   currentPlatform: {fileID: 0}
-  worldScale: {fileID: 0}
   jumpSound: event:/Player Sounds/Footsteps
   jumpSoundVolume: 0.8
   metalMovingEventRef: event:/Player Sounds/Pushing-pulling objects
@@ -1129,7 +1128,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 87382
+  m_InstanceId: 39066
 --- !u!95 &731963993
 Animator:
   serializedVersion: 3
@@ -1162,6 +1161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFacingRight: 0
+  playerLight: {fileID: 0}
 --- !u!1 &4354019522875970580
 GameObject:
   m_ObjectHideFlags: 0
