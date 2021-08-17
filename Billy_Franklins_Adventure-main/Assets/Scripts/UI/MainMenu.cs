@@ -5,8 +5,12 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField]
     private LoadingMenu loadingUI = null;
+    [SerializeField]
     private Canvas settingsUI = null;
+    [SerializeField]
+    private CreditsUI creditsUI = null;
     public string level = "Puzzle1";
     private string save = "";
 
@@ -14,10 +18,10 @@ public class MainMenu : MonoBehaviour
     {
         try
         {
-            settingsUI = GameObject.Find("Settings UI").GetComponent<Canvas>();
             settingsUI.gameObject.SetActive(false);
-            loadingUI = GameObject.Find("Loading UI").GetComponent<LoadingMenu>();
             loadingUI.gameObject.SetActive(false);
+            creditsUI.gameObject.SetActive(false);
+
         }
         catch 
         {
@@ -64,6 +68,11 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    public void Credits()
+    {
+        creditsUI?.gameObject.SetActive(true);
+    }
+
     //closes game
     public void ExitGame()
     {
@@ -73,6 +82,7 @@ public class MainMenu : MonoBehaviour
     public void MainMenuUICalled()
     {
         settingsUI.gameObject.SetActive(false);
+        creditsUI.gameObject.SetActive(false);
     }
 
     public void LoadLevel (string sceneName)
