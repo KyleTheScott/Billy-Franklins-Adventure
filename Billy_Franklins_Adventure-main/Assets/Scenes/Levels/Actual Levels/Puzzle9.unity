@@ -261,6 +261,10 @@ PrefabInstance:
       propertyPath: bucketKickEventRef
       value: event:/Player Sounds/Kicking bucket over
       objectReference: {fileID: 0}
+    - target: {fileID: 6174799480970443163, guid: 23310605dced4cf4f906488abe1ef7fc, type: 3}
+      propertyPath: lanternsRightOfBucket
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6174799480970443167, guid: 23310605dced4cf4f906488abe1ef7fc, type: 3}
       propertyPath: m_Name
       value: BucketOfWater

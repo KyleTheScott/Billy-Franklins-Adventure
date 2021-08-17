@@ -372,6 +372,7 @@ MonoBehaviour:
   oldElectrifiable: 0
   started: 0
   starting: 0
+  lanternsRightOfBucket: 1
   bucketKickEventRef: event:/Player Sounds/Kicking bucket over
   bucketKickVolume: 0.8
   electricWaterEventRef: event:/Game Sounds/Electrified Water

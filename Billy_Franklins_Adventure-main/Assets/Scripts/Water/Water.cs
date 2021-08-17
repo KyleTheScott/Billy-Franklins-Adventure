@@ -18,6 +18,8 @@ public class Water : MonoBehaviour, IElectrifiable
     [SerializeField] private bool oldElectrifiable;
     [SerializeField] private bool started;
     [SerializeField] private bool starting;
+    [SerializeField] private bool lanternsRightOfBucket;
+    private bool waterRightOfBucket;
 
     [Header("FMOD Settings")]
     [SerializeField]
@@ -102,6 +104,7 @@ public class Water : MonoBehaviour, IElectrifiable
             transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
         }
         waterAnimator.SetBool("WaterSpilt", true);
+        waterRightOfBucket = facingRight;
         waterByItself = true;
         FMODUnity.RuntimeManager.PlayOneShot(bucketKickEventRef, bucketKickVolume);
     }
@@ -144,7 +147,7 @@ public class Water : MonoBehaviour, IElectrifiable
         {
             electricWaterEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
-        if (lanternInWater.Count >= 1)
+        if (lanternInWater.Count >= 1 && (lanternsRightOfBucket == waterRightOfBucket)) 
         {
             foreach (GameObject l in lanternInWater)
             {
