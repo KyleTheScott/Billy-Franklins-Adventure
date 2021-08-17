@@ -788,7 +788,7 @@ MonoBehaviour:
   FootstepsEventPath: event:/Player Sounds/Footsteps
   MaterialParameterName: Material
   footstepVolume: 0.8
-  RayDistance: 1.2
+  RayDistance: 2
   materialCheckLayerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -1128,7 +1128,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 39066
+  m_InstanceId: 39778
 --- !u!95 &731963993
 Animator:
   serializedVersion: 3
