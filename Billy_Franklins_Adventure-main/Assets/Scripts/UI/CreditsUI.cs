@@ -15,10 +15,30 @@ public class CreditsUI : MonoBehaviour
     private float displayFullyTime;
     [SerializeField]
     private Image spriteDisplay;
+    [SerializeField]
+    private Image backgroundImage;
     private Queue<Sprite> creditQueue = new Queue<Sprite>();
     private float timer;
     // Start is called before the first frame update
     private void OnEnable()
+    {
+        AdjustCreditsSize();
+        LoadCredits();
+        
+    }
+
+    private void AdjustCreditsSize()
+    {
+        float spriteWidth = backgroundImage.sprite.bounds.size.x;
+        float spriteHeight = backgroundImage.sprite.bounds.size.y;
+
+        float worldScreenHeight = Camera.main.orthographicSize * 2.0f;
+        float worldScreenWidth = worldScreenHeight / Screen.height * Screen.width;
+
+        transform.localScale = new Vector2(worldScreenWidth / spriteWidth, worldScreenHeight / spriteHeight) * 1.01f;
+    }
+
+    private void LoadCredits()
     {
         creditQueue.Clear();
         foreach (Sprite creditPage in credits)
@@ -29,7 +49,6 @@ public class CreditsUI : MonoBehaviour
         {
             StartCoroutine(FadeInCredits());
         }
-        
     }
 
     private IEnumerator FadeInCredits()
@@ -55,10 +74,8 @@ public class CreditsUI : MonoBehaviour
     private IEnumerator DisplaySprite()
     {
         yield return new WaitForSeconds(displayFullyTime);
-        if (creditQueue.Count > 0)
-        {
-            StartCoroutine(FadeOutCredits());
-        }
+
+        StartCoroutine(FadeOutCredits());
     }
 
     private IEnumerator FadeOutCredits()
@@ -72,7 +89,15 @@ public class CreditsUI : MonoBehaviour
             spriteDisplay.color = newColor;
             yield return new WaitForEndOfFrame();
         }
-        StartCoroutine(FadeInCredits());
+        if (creditQueue.Count == 0)
+        {
+            LoadCredits();
+        }
+        else
+        {
+            StartCoroutine(FadeInCredits());
+        }
+        
     }
 
 

@@ -104,9 +104,9 @@ public class MainMenu : MonoBehaviour
 
         while (!operation.isDone)
         {
-            float progress = Mathf.Clamp01(operation.progress / 0.9f);
-            loadingUI.slider.value = progress;
-            loadingUI.progressText.text = progress * 100.0f + "%";
+            //float progress = Mathf.Clamp01(operation.progress / 0.9f);
+            //loadingUI.slider.value = progress;
+            //loadingUI.progressText.text = progress * 100.0f + "%";
             yield return null;
 
         }

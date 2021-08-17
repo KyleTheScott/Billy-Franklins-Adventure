@@ -252,6 +252,7 @@ MonoBehaviour:
   fadeOutTime: 3
   displayFullyTime: 5
   spriteDisplay: {fileID: 7282270590354043273}
+  backgroundImage: {fileID: 7346575411380553904}
 --- !u!1 &4713625610195621469
 GameObject:
   m_ObjectHideFlags: 0
