@@ -335,6 +335,11 @@ public class PlayerGFX : MonoBehaviour
         kiteLightning.KiteElectrifyStart();
     }
 
+    public void ElectrifyDeathStart()
+    {
+        GameplayUI.instanceGameplayUI.FadeOut();
+    }
+
     public void ElectrifyKiteEnd()
     {
         //Debug.LogError("End electrify kite");
