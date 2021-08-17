@@ -326,7 +326,8 @@ public class PlayerGFX : MonoBehaviour
 
     public void OutOfChargesTurnLightOff()
     {
-        playerLight.SetActive(false);
+        GameplayUI.instanceGameplayUI.FadeOut();
+        //playerLight.SetActive(false);
     }
 
 

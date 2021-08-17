@@ -827,7 +827,7 @@ public class Player : MonoBehaviour
     {
         
         playerState = PlayerState.PLAYER_DEATH_CHARGES_START;
-        GameplayUI.instanceGameplayUI.FadeOut();
+        
         
     }
 
@@ -1017,7 +1017,6 @@ public class Player : MonoBehaviour
     {
         movingMetal = false;
     }
-
 
     //return the metal being dragged
     public GameObject GetCurrentMovingObject()
