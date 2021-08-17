@@ -31,6 +31,11 @@ public class PlayerGFX : MonoBehaviour
     [Header("Sound")]
     private FMODStudioFootstepScript footstepScript;
 
+    private float playerMetalStuckTimer = 0;
+    private float playerMetalStuckTimerMax = 1;
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -96,6 +101,7 @@ public class PlayerGFX : MonoBehaviour
 
                     break;
                 case Player.PlayerState.MOVING_OBJECT_START:
+                    playerMetalStuckTimer = 0;
                     if (player.GetAnimationMovement())
                     {
                         playerAnimator.SetInteger("PlayerAnimState", 8);
@@ -181,35 +187,42 @@ public class PlayerGFX : MonoBehaviour
                     }
 
                     break;
-                case Player.PlayerState.MOVING_OBJECT_START: 
-                    player.SetKinematic(false);
-                    
-
-                    if (goingToRightMetal)
+                case Player.PlayerState.MOVING_OBJECT_START:
+                    playerMetalStuckTimer += Time.deltaTime;
+                    if (playerMetalStuckTimer >= playerMetalStuckTimerMax)
                     {
-
-                        if (Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
-                            .GetMetalRightPos().transform.position.x)) < .1f)
-                        {
-                            player.SetPlayerState(Player.PlayerState.MOVING_OBJECT);
-                            playerAnimator.SetInteger("PlayerAnimState", 9);
-                            if (!isFacingRight)
-                            {
-                                player.SetMovingRight(true);
-                            }
-                            
-                        }
+                        
+                        MetalStuckStop();
                     }
                     else
                     {
-                        if (Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
-                            .GetMetalLeftPos().transform.position.x)) < .1f)
+                        player.SetKinematic(false);
+                        if (goingToRightMetal)
                         {
-                            player.SetPlayerState(Player.PlayerState.MOVING_OBJECT);
-                            playerAnimator.SetInteger("PlayerAnimState", 9);
-                            if (isFacingRight)
+
+                            if (Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
+                                .GetMetalRightPos().transform.position.x)) < .1f)
                             {
-                                player.SetMovingRight(false);
+                                player.SetPlayerState(Player.PlayerState.MOVING_OBJECT);
+                                playerAnimator.SetInteger("PlayerAnimState", 9);
+                                if (!isFacingRight)
+                                {
+                                    player.SetMovingRight(true);
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            if (Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
+                                .GetMetalLeftPos().transform.position.x)) < .1f)
+                            {
+                                player.SetPlayerState(Player.PlayerState.MOVING_OBJECT);
+                                playerAnimator.SetInteger("PlayerAnimState", 9);
+                                if (isFacingRight)
+                                {
+                                    player.SetMovingRight(false);
+                                }
                             }
                         }
                     }
@@ -371,10 +384,21 @@ public class PlayerGFX : MonoBehaviour
         {
             player.SetMovingRight(true);
         }
-
+        player.SetAnimationMovement(false);
         PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject().GetComponent<Metal>().SetMoving(false);
         player.SetPlayerState(Player.PlayerState.IDLE);
+        player.SetMovingMetalStop();
     }
+
+    private void MetalStuckStop()
+    {
+        player.SetAnimationMovement(false);
+        PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject().GetComponent<Metal>().SetMoving(false);
+        player.SetPlayerState(Player.PlayerState.IDLE);
+        player.SetMovingMetalStop();
+        playerAnimator.SetInteger("PlayerAnimState", 0);
+    }
+
 
     //------------------
     // Bucket functions 

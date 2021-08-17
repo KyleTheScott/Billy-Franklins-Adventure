@@ -310,7 +310,10 @@ public class Player : MonoBehaviour
                     rb.isKinematic = true;
                     break;
                 case PlayerState.MOVING_OBJECT_START:
-                    Debug.LogError("Moving");
+                    rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+                    break;
+                case PlayerState.MOVING_OBJECT:
+                    animationMovement = false;
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                     break;
             }
@@ -987,13 +990,25 @@ public class Player : MonoBehaviour
         if (currentMovingObject != null)
         {
             currentMovingObject = null;
-            if (playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING && playerState != PlayerState.MOVING_OBJECT_START)
+            if (playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING && playerState != PlayerState.MOVING_OBJECT_START && playerState != PlayerState.MOVING_OBJECT_END)
             {
                 Debug.LogError("Switch to walking");
                 playerState = PlayerState.WALKING;
+                if (movingMetal)
+                {
+                    SetAnimationMovement(false);
+                    PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject().GetComponent<Metal>().SetMoving(false);
+                    movingMetal = false;
+                }
             }
         }
     }
+
+    public void SetMovingMetalStop()
+    {
+        movingMetal = false;
+    }
+
 
     //return the metal being dragged
     public GameObject GetCurrentMovingObject()
@@ -1119,7 +1134,6 @@ public class Player : MonoBehaviour
         //{
         //rb.velocity = Vector2.zero;
         //rb.isKinematic = true;
-        Debug.Log("Test Player");
         onGround = state;
         //player state when landing on ground is different depending on what the player state was before falling
         if (currentPlayerState == PlayerState.MOVING_OBJECT_IDLE || currentPlayerState == PlayerState.MOVING_OBJECT ||
