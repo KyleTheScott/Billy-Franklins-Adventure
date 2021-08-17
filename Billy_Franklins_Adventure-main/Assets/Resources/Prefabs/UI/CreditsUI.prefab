@@ -247,7 +247,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 255a0cf6057d05045addbb3aeff618f7, type: 3}
   - {fileID: 21300000, guid: e1d59d92532e7ed48b52caa860d7437b, type: 3}
   - {fileID: 21300000, guid: cbf5eba8531bf4849a3fc1026b3d0f80, type: 3}
-  - {fileID: 21300000, guid: 1538e8ce3430271468816aefd409c384, type: 3}
+  - {fileID: 21300000, guid: 490938dc51fac8e47b78300b065921d7, type: 3}
   fadeInTime: 3
   fadeOutTime: 3
   displayFullyTime: 5
