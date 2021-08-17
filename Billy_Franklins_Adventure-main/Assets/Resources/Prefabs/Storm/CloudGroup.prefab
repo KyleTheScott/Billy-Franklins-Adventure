@@ -48,12 +48,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightningTimer: 0
   maxLightningTimer: 10
-  minLightLightningTimer: 5
+  minLightLightningTimer: 8
   maxLightLightningTimer: 20
-  minMediumLightningTimer: 2
-  maxMediumLightningTimer: 10
-  minHeavyLightningTimer: 0
-  maxHeavyLightningTimer: 5
+  minMediumLightningTimer: 10
+  maxMediumLightningTimer: 6
+  minHeavyLightningTimer: 2
+  maxHeavyLightningTimer: 6
   lightningGroups: []
 --- !u!1 &893877751756869357
 GameObject:
