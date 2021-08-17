@@ -184,10 +184,6 @@ public class PlayerObjectInteractions : MonoBehaviour
         }
     }
 
-    
-
-
-
     private void DisconnectMetal ()
     {
         metalLeftPos = null;
