@@ -6079,11 +6079,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8805516298577024167, guid: e68a5756a0a88d045872a43661baac42, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
-      value: -5
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 8805516298577024167, guid: e68a5756a0a88d045872a43661baac42, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
-      value: -5
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805516298577024167, guid: e68a5756a0a88d045872a43661baac42, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
+      value: 83
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805516298577024167, guid: e68a5756a0a88d045872a43661baac42, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
+      value: 83
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805516298577024167, guid: e68a5756a0a88d045872a43661baac42, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805516298577024167, guid: e68a5756a0a88d045872a43661baac42, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e68a5756a0a88d045872a43661baac42, type: 3}

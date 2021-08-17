@@ -3358,8 +3358,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0, y: -5}
-      - {x: 60, y: -5}
-      - {x: 60, y: 8}
+      - {x: 90, y: -5}
+      - {x: 90, y: 8}
       - {x: 0, y: 8}
 --- !u!1001 &1558574684
 PrefabInstance:
