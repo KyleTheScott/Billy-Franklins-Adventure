@@ -192,13 +192,12 @@ public class PlayerGFX : MonoBehaviour
                             .GetMetalRightPos().transform.position.x)) < .1f)
                         {
                             player.SetPlayerState(Player.PlayerState.MOVING_OBJECT);
+                            playerAnimator.SetInteger("PlayerAnimState", 9);
                             if (!isFacingRight)
                             {
                                 player.SetMovingRight(true);
                             }
-
-
-                            playerAnimator.SetInteger("PlayerAnimState", 9);
+                            
                         }
                     }
                     else
@@ -208,12 +207,10 @@ public class PlayerGFX : MonoBehaviour
                         {
                             player.SetPlayerState(Player.PlayerState.MOVING_OBJECT);
                             playerAnimator.SetInteger("PlayerAnimState", 9);
-
                             if (isFacingRight)
                             {
                                 player.SetMovingRight(false);
                             }
-
                         }
                     }
 
@@ -357,6 +354,10 @@ public class PlayerGFX : MonoBehaviour
     {
         player.SetKinematic(true);
         PlayerObjectInteractions.playerObjectIInstance.ConnectMetalToPlayer();
+        if (player.GetOnDiagonalPlatform())
+        {
+            player.SetPlayerMoveMetalOnPlatform();
+        }
 
     }
 

@@ -91,9 +91,7 @@ public class Player : MonoBehaviour
     private float jumpFixTime = .1f;
 
 
-    [SerializeField]
-    private PlayerState
-        currentPlayerState; // player state used to set player state after a jump or fall when hitting ground
+    [SerializeField] private PlayerState currentPlayerState; // player state used to set player state after a jump or fall when hitting ground
 
     //variables used for when player is on moving platforms to make the player fall and move with the platform
     [SerializeField] private float fallFixTimer = 0;
@@ -312,6 +310,7 @@ public class Player : MonoBehaviour
                     rb.isKinematic = true;
                     break;
                 case PlayerState.MOVING_OBJECT_START:
+                    Debug.LogError("Moving");
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                     break;
             }
@@ -984,11 +983,13 @@ public class Player : MonoBehaviour
     //Disconnect from metal// might be the problem with falling with metal issue 
     public void SetObjectDisconnected()
     {
+        Debug.LogError("Metal Fixed");
         if (currentMovingObject != null)
         {
             currentMovingObject = null;
-            if (playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING)
+            if (playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING && playerState != PlayerState.MOVING_OBJECT_START)
             {
+                Debug.LogError("Switch to walking");
                 playerState = PlayerState.WALKING;
             }
         }
@@ -1009,16 +1010,32 @@ public class Player : MonoBehaviour
     {
         return movingMetal;
     }
+
+    public void SetPlayerMoveMetalOnPlatform()
+    {
+        SetOnDiagonalPlatform(false);
+        transform.parent = null;
+        DontDestroyOnLoad(gameObject);
+        SetCurrentPlatform(null);
+        transform.localScale = new Vector3(1, 1, 1);
+    }
+
+
     //sets everything to begin dragging metal
     public void StartMovingMetal(GameObject metal)
     {
-        playerState = PlayerState.MOVING_OBJECT_START;
-        metalMovingEvent.start();
-        currentMovingObject = metal;
-        currentPlayerMetal = currentMovingObject.GetComponent<Metal>();
-        movingMetal = true;
-        currentMovingObject.GetComponent<Metal>().SetPickUpMetalDirection();
+        if (metal != null)
+        {
+            Debug.LogError("Player moving To metal 1");
+            playerState = PlayerState.MOVING_OBJECT_START;
+            metalMovingEvent.start();
+            currentMovingObject = metal;
+            currentPlayerMetal = currentMovingObject.GetComponent<Metal>();
+            movingMetal = true;
+            currentMovingObject.GetComponent<Metal>().SetPickUpMetalDirection();
+        }
     }
+
     //used while player is dropping metal to check for SuspendedPlatform
     public bool IsDroppingMetal()
     {

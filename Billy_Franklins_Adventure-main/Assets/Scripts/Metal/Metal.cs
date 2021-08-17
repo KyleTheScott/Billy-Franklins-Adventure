@@ -163,11 +163,12 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
 
     public void SetPickUpMetalDirection()
     {
-        //Debug.Log("Pick up metal");
+
+        Debug.Log("Pick up metal");
         bool leftOnGround = pickUpPointLeft.GetComponent<MetalEndObjectInteraction>().GetTouchingGround();
         bool rightOnGround = pickUpPointLeft.GetComponent<MetalEndObjectInteraction>().GetTouchingGround();
 
-        //bothe sides of the metal are on the ground
+        //both sides of the metal are on the ground
         if (leftOnGround && rightOnGround)
         {
             float distToLeft = Mathf.Abs(player.transform.position.x - pickUpPointLeft.transform.position.x);
@@ -191,7 +192,7 @@ public class Metal : MonoBehaviour, IInteractable, IElectrifiable
                     //player is to the left of the left side of the metal
                     else
                     {
-                        //Debug.Log("Move to metal right");
+                        Debug.LogError("Move to metal left going right");
                         player.SetMovingRight(true);
                     }
                 }
