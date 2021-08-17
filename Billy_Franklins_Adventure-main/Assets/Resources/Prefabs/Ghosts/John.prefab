@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1697829659077193303}
   - component: {fileID: 1697829659077193305}
   - component: {fileID: 1697829659077193306}
-  - component: {fileID: 4198728723783698224}
+  - component: {fileID: 323497179776838942}
   m_Layer: 0
   m_Name: John
   m_TagString: Ghost
@@ -118,7 +118,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.93875
---- !u!95 &4198728723783698224
+--- !u!95 &323497179776838942
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -128,7 +128,7 @@ Animator:
   m_GameObject: {fileID: 1697829659077193302}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 39fdca00c23ce9b4f815adb347215096, type: 2}
+  m_Controller: {fileID: 9100000, guid: 39c443ed13d894741a71e7888f612bec, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
