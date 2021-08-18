@@ -213,7 +213,7 @@ public class PlayerGFX : MonoBehaviour
                             if (Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
                                 .GetMetalRightPos().transform.position.x)) < .1f)
                             {
-                                player.SetPlayerState(Player.PlayerState.MOVING_OBJECT);
+                                player.SetPlayerState(Player.PlayerState.MOVING_OBJECT_LIFTING);
                                 playerAnimator.SetInteger("PlayerAnimState", 9);
                                 if (!isFacingRight)
                                 {
@@ -227,7 +227,7 @@ public class PlayerGFX : MonoBehaviour
                             if (Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
                                 .GetMetalLeftPos().transform.position.x)) < .1f)
                             {
-                                player.SetPlayerState(Player.PlayerState.MOVING_OBJECT);
+                                player.SetPlayerState(Player.PlayerState.MOVING_OBJECT_LIFTING);
                                 playerAnimator.SetInteger("PlayerAnimState", 9);
                                 if (isFacingRight)
                                 {
@@ -383,6 +383,7 @@ public class PlayerGFX : MonoBehaviour
 
     public void StartDraggingMetal()
     {
+        player.SetPlayerState(Player.PlayerState.MOVING_OBJECT);
         player.SetAnimationMovement(false);
     }
 

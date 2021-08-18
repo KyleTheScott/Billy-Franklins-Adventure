@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
         FALL_FIX,
         WALKING,
         MOVING_OBJECT_START,
+        MOVING_OBJECT_LIFTING,
         MOVING_OBJECT,
         MOVING_OBJECT_END,
         MOVING_OBJECT_IDLE,
@@ -316,8 +317,14 @@ public class Player : MonoBehaviour
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                     break;
                 case PlayerState.MOVING_OBJECT:
+                    Debug.LogError("Moving");
                     animationMovement = false;
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+                    break;
+                case PlayerState.MOVING_OBJECT_LIFTING:
+                    Debug.LogError("Moving");
+                    rb.isKinematic = false;
+                    rb.velocity = Vector2.zero;
                     break;
             }
         }
@@ -1000,7 +1007,8 @@ public class Player : MonoBehaviour
         if (currentMovingObject != null)
         {
             currentMovingObject = null;
-            if (playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING && playerState != PlayerState.MOVING_OBJECT_START && playerState != PlayerState.MOVING_OBJECT_END)
+            if (playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING && playerState != PlayerState.MOVING_OBJECT_START && 
+                playerState != PlayerState.MOVING_OBJECT_END && playerState != PlayerState.MOVING_OBJECT_LIFTING)
             {
                 Debug.LogError("Switch to walking");
                 playerState = PlayerState.WALKING;
@@ -1055,6 +1063,7 @@ public class Player : MonoBehaviour
             currentMovingObject = metal;
             currentPlayerMetal = currentMovingObject.GetComponent<Metal>();
             movingMetal = true;
+            animationMovement = true;
             currentMovingObject.GetComponent<Metal>().SetPickUpMetalDirection();
         }
     }
@@ -1093,7 +1102,7 @@ public class Player : MonoBehaviour
                         {
                             SetMovingRight(true);
                         }
-
+                        Debug.LogError("Leave Ground");
                         animationMovement = false;
                         movingMetal = false;
                         onGround = false;
