@@ -22,8 +22,12 @@ public class SaveGame : MonoBehaviour
 
     public void SaveCheckpoint(string scene)
     {
-        PlayerPrefs.SetString("scene", scene);
-        PlayerPrefs.Save();
+        //don't save on puzzle 1
+        if (scene.CompareTo("Puzzle1") != 0)
+        {
+            PlayerPrefs.SetString("scene", scene);
+            PlayerPrefs.Save();
+        }
     }
     public void DeleteCheckpoint()
     {
