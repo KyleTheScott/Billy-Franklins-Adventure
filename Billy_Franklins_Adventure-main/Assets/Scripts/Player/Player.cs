@@ -466,7 +466,7 @@ public class Player : MonoBehaviour
         }
 
      
-        if (!isReading && dialogue != null && dialogue.sentences.Length != 0 && IsPlayerOnGround())
+        if (!isReading && dialogue != null && dialogue?.sentences.Length != 0 && IsPlayerOnGround())
         {
             isReading = true;
             DialogueManager.instance.StartDialogue(dialogue);
