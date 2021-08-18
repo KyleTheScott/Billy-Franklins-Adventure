@@ -154,7 +154,6 @@ public class Player : MonoBehaviour
 
     public void SetPlayerKiteLightning()
     {
-        Debug.LogError("Death 3");
         StartCoroutine(WaitTillOnGround());
     }
 
@@ -164,7 +163,6 @@ public class Player : MonoBehaviour
         {
             yield return null;
         }
-        Debug.LogError("Death 4");
         SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
         SetAnimationMovement(true);
         SetPlayerInLevel(true);

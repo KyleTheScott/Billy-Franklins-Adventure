@@ -89,7 +89,6 @@ public class LevelLoadController : MonoBehaviour
                     Debug.LogError("New Level Load");
                     DestroyDDOLObjects();
                     SceneManager.LoadScene(next_scene_to_load_, LoadSceneMode.Single);
-                    GameplayUI.instanceGameplayUI.FadeIn();
                     has_level_loaded_ = true;
                 }
                 else
@@ -118,15 +117,12 @@ public class LevelLoadController : MonoBehaviour
                 
                 SceneManager.UnloadSceneAsync(prev_scene_to_destroy_);
 
-                //player.SetPlayerKiteLightning();
-                GameplayUI.instanceGameplayUI.FadeIn();
+                player.SetPlayerKiteLightning();
+                //GameplayUI.instanceGameplayUI.FadeIn();
                 ElectricityController.instanceElectrical.ConnectConnectedObjects();
                 //Debug.LogError("connect connected 0");
             }
-            else
-            {
-                GameplayUI.instanceGameplayUI.FadeIn();
-            }
+
 
             if (LowerWallOnTriggerEnter)
             {
