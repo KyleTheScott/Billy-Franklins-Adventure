@@ -70,7 +70,7 @@ public class LevelLoadController : MonoBehaviour
         //    player.SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
         //    player.SetAnimationMovement(true);
         //}
-
+        Debug.LogError("Load");
         GlobalGameController.instance.GetComponent<CheckPointSystem>().SetCheckPoint(next_scene_to_load_);
         FindObjectOfType<Charges>().GetComponent<Charges>().SetLampOn(false);
         has_level_loaded_ = true;
@@ -93,7 +93,10 @@ public class LevelLoadController : MonoBehaviour
                 }
                 else
                 {
-                    StartCoroutine("LoadNextLevel");
+                    Debug.LogError("Load 1");
+                    StartCoroutine(DontLoadUntilOnGround());
+
+                    //StartCoroutine("LoadNextLevel");
                 }
             }
             else
@@ -121,6 +124,9 @@ public class LevelLoadController : MonoBehaviour
                 //  }
                 //else
                 //{
+                Debug.LogError("Load 2");
+                
+                
                 player.SetPlayerKiteLightning();
                 //}  SetKiteLightningWhenOnGround();
                 
@@ -156,13 +162,13 @@ public class LevelLoadController : MonoBehaviour
         }
     }
 
-    IEnumerator SetKiteLightningWhenOnGround()
+    IEnumerator DontLoadUntilOnGround()
     {
         if (!player.IsPlayerOnGround())
         {
             yield return null;
         }
-        player.SetPlayerKiteLightning();
+        StartCoroutine(LoadNextLevel());
     }
 
     private void DestroyDDOLObjects()
