@@ -34,6 +34,8 @@ public class PlayerGFX : MonoBehaviour
     private float playerMetalStuckTimer = 0;
     private float playerMetalStuckTimerMax = 1;
 
+    private bool lampIsOn = false;
+
     void Awake()
     {
         playerAnimator = gameObject.GetComponent<Animator>();
@@ -61,6 +63,11 @@ public class PlayerGFX : MonoBehaviour
         ChooseAnimation();
     }
 
+    public void SetLampOn(bool state)
+    {
+        lampIsOn = state;
+    }
+
     private void ChooseAnimation()
     {
         if (settingFacingRight)
@@ -85,7 +92,6 @@ public class PlayerGFX : MonoBehaviour
             {
                 case Player.PlayerState.IDLE:
                     playerAnimator.SetInteger("PlayerAnimState", 0);
-
                     break;
                 case Player.PlayerState.WALKING:
                     playerAnimator.SetInteger("PlayerAnimState", 1);
@@ -450,8 +456,8 @@ public class PlayerGFX : MonoBehaviour
     }
 
     //--------
-        //Shooting
-        //--------
+    //Shooting
+    //--------
     public void StopAiming()
     {
         shooting.SetAimLineState(Shooting.AimLineState.NOT_AIMED);
@@ -466,11 +472,12 @@ public class PlayerGFX : MonoBehaviour
     {
         //Debug.LogError("Out of charges Test");
 
-        if (FindObjectOfType<Charges>().GetLightCharges() > 0)
+        if (FindObjectOfType<Charges>().GetLightCharges() > 0 || lampIsOn)
         {
             shooting.StopShooting();
             player.SetPlayerState(Player.PlayerState.WALKING);
             playerAnimator.SetInteger("PlayerAnimState", 1);
+            lampIsOn = false;
         }
     }
 }
