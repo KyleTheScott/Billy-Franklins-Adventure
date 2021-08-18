@@ -31,7 +31,7 @@ public class LevelLoadController : MonoBehaviour
 
     IEnumerator LoadNextLevel()
     {
-        Debug.LogError("Loading");
+        Debug.Log("Loading");
         
         FindObjectOfType<ObjectsCollision>().EmptyObjects();
         
@@ -70,7 +70,7 @@ public class LevelLoadController : MonoBehaviour
         //    player.SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
         //    player.SetAnimationMovement(true);
         //}
-        Debug.LogError("Load");
+        Debug.Log("Load");
         GlobalGameController.instance.GetComponent<CheckPointSystem>().SetCheckPoint(next_scene_to_load_);
         FindObjectOfType<Charges>().GetComponent<Charges>().SetLampOn(false);
         has_level_loaded_ = true;
@@ -86,14 +86,14 @@ public class LevelLoadController : MonoBehaviour
             {
                 if (InstantLoadLevel)
                 {
-                    Debug.LogError("New Level Load");
+                    Debug.Log("New Level Load");
                     DestroyDDOLObjects();
                     SceneManager.LoadScene(next_scene_to_load_, LoadSceneMode.Single);
                     has_level_loaded_ = true;
                 }
                 else
                 {
-                    Debug.LogError("Load 1");
+                    Debug.Log("Load 1");
                     StartCoroutine(DontLoadUntilOnGround());
 
                     //StartCoroutine("LoadNextLevel");

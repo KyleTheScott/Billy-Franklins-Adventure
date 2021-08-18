@@ -169,11 +169,11 @@ public class PlayerGFX : MonoBehaviour
 
                     break;
                 case Player.PlayerState.LIGHTNING_CHARGES_START:
-                    Debug.LogError("Lightning Start");
+                    Debug.Log("Lightning Start");
                     playerAnimator.SetInteger("PlayerAnimState", 15);
                     break;
                 case Player.PlayerState.LIGHTNING_CHARGES:
-                    Debug.LogError("Lightning Start 2");
+                    Debug.Log("Lightning Start 2");
                     playerAnimator.SetInteger("PlayerAnimState", 0);
                     break;
                 case Player.PlayerState.PLAYER_DEATH_ELECTRIFIED_START:

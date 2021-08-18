@@ -165,7 +165,7 @@ public class Player : MonoBehaviour
         {
             yield return null;
         }
-        Debug.LogError("On Ground Start");
+        Debug.Log("On Ground Start");
         SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
         SetAnimationMovement(true);
         SetPlayerInLevel(true);

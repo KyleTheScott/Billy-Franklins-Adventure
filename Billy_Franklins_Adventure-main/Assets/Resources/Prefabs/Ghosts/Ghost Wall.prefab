@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 7859557848668478918}
   - component: {fileID: 5365355902765999897}
   - component: {fileID: 6085667456886985799}
+  - component: {fileID: 7081206742729721930}
   m_Layer: 0
   m_Name: GhostWallSprite
   m_TagString: Untagged
@@ -163,6 +164,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7081206742729721930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5105629281839764552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3025a6d07e6c89c49b4ab33d57dd3362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostWall: {fileID: 1336841529337937597}
 --- !u!1 &5741954430375760914
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,12 +224,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 5365355902765999897}
   ghostWallspriteRenderer: {fileID: 7859557848668478918}
-  lowerWallSpirteAlpha: 1
-  raiseWallSpirteAlpha: 0
-  dissipationRate: 0.01
-  RaiseOnStart: 0
+  animator: {fileID: 6085667456886985799}
   ghostwallEventPath: event:/Ambient Sounds/Ghostly Sounds
   ghostWallSoundVolume: 0.2
+  ghostwallDisappearEventPath: event:/Game Sounds/Disperse
+  ghostWallDisappearVolume: 0.2
 --- !u!1001 &184139505790527680
 PrefabInstance:
   m_ObjectHideFlags: 0

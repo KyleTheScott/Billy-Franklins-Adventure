@@ -9,15 +9,10 @@ public class GhostWallController : MonoBehaviour
     private Collider2D boxCollider;
     [SerializeField]
     private SpriteRenderer ghostWallspriteRenderer;
+    [SerializeField]
+    private Animator animator;
     private List<Ghost> ghosts = new List<Ghost>();
     private bool isLowered;
-    [SerializeField]
-    private float lowerWallSpirteAlpha = 0f;
-    private float currentWallSpirteAlpha;
-    [SerializeField]
-    private float raiseWallSpirteAlpha = 1f;
-    [SerializeField]
-    private float dissipationRate = 0.01f;
     [SerializeField]
     private bool RaiseOnStart = false;
     public bool IsLowered => isLowered;
@@ -27,6 +22,11 @@ public class GhostWallController : MonoBehaviour
     [SerializeField]
     private float ghostWallSoundVolume;
     private FMOD.Studio.EventInstance ghostWallSoundEvent;
+    [FMODUnity.EventRef]
+    [SerializeField]
+    private string ghostwallDisappearEventPath;
+    [SerializeField]
+    private float ghostWallDisappearVolume;
     private GhostWallState ghostWallState = GhostWallState.LOWERED;
     public enum GhostWallState
     {
@@ -40,86 +40,69 @@ public class GhostWallController : MonoBehaviour
     void Start()
     {
         ghosts.AddRange(GetComponentsInChildren<Ghost>());
-        foreach (Ghost ghost in ghosts)
-        {
-            ghost.SetDissipationRate(dissipationRate);
-        }
+        //foreach (Ghost ghost in ghosts)
+        //{
+        //    ghost.SetDissipationRate(dissipationRate);
+        //}
 
         ghostWallSoundEvent = FMODUnity.RuntimeManager.CreateInstance(ghostwallEventPath);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(ghostWallSoundEvent, transform, GetComponent<Rigidbody>());
         ghostWallSoundEvent.start();
         ghostWallSoundEvent.setVolume(ghostWallSoundVolume);
 
-        ghostWallspriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, lowerWallSpirteAlpha);
-        currentWallSpirteAlpha = lowerWallSpirteAlpha;
-
         if (RaiseOnStart)
         {
-            RaiseGhostWall();
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        switch (ghostWallState)
-        {
-            case (GhostWallState.LOWERING):
-                LoweringGhostWall();
-                break;
-            case (GhostWallState.RAISING):
-                RaisingGhostWall();
-                break;
-        }
-    }
-
-    private void RaisingGhostWall()
-    {
-        currentWallSpirteAlpha -= dissipationRate;
-        ghostWallspriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, currentWallSpirteAlpha);
-        if (currentWallSpirteAlpha <= raiseWallSpirteAlpha)
-        {
-            ghostWallState = GhostWallState.RAISED;
             foreach (Ghost ghost in ghosts)
             {
                 ghost.gameObject.SetActive(false);
             }
-        } 
-    }
-
-    private void LoweringGhostWall()
-    {
-        currentWallSpirteAlpha += dissipationRate;
-        ghostWallspriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, currentWallSpirteAlpha);
-        if (currentWallSpirteAlpha >= lowerWallSpirteAlpha)
-        {
-            ghostWallState = GhostWallState.LOWERED;
-            boxCollider.isTrigger = false;
+            RaiseGhostWall();
         }
     }
 
     public void LowerGhostWall()
     {
+        animator.SetTrigger("Appear");
         ghostWallSoundEvent.start();
         ghostWallSoundEvent.setVolume(ghostWallSoundVolume);
+        ghostWallState = GhostWallState.LOWERING;
+    }
+
+    public void LowerGhostWallEnd()
+    {
         foreach (Ghost ghost in ghosts)
         {
             ghost.gameObject.SetActive(true);
             ghost.SetGhostAppearing();
         }
-        ghostWallState = GhostWallState.LOWERING;
+        boxCollider.isTrigger = false;
+ 
+        ghostWallState = GhostWallState.LOWERED;
     }
 
     public void RaiseGhostWall()
     {
+        FMODUnity.RuntimeManager.PlayOneShot(ghostwallDisappearEventPath, ghostWallDisappearVolume, transform.position);
         ghostWallSoundEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         boxCollider.isTrigger = true;
         foreach (Ghost ghost in ghosts)
         {
             ghost.SetGhostDissipation();
         }
+        animator.SetTrigger("Disappear");
         ghostWallState = GhostWallState.RAISING;
     }
 
-    
+    public void RaiseGhostWallEnd()
+    {
+        foreach (Ghost ghost in ghosts)
+        {
+            ghost.gameObject.SetActive(false);
+        }
+        ghostWallspriteRenderer.enabled = false;
+        ghostWallState = GhostWallState.RAISING;
+    }
+
+
+
 }
