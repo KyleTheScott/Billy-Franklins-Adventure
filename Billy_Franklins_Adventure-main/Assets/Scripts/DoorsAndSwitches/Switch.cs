@@ -30,6 +30,7 @@ public class Switch : MonoBehaviour, IInteractable
         gateLiftingEvent.start();
         for (int i = 0; i < doors.Count; i++)
         {
+            Debug.LogError("Switch");
             doors[i].GetComponent<Door>().SetDoorState();
         }
     }

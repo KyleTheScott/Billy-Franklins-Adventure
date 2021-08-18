@@ -911,6 +911,11 @@ Transform:
   m_Father: {fileID: 539233116}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &386991927 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3093061155417387641, guid: 4df786959ae486f4f9256924d39e862b, type: 3}
+  m_PrefabInstance: {fileID: 2094881581}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &424412969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3672,6 +3677,14 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2607798901181199849, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
+      propertyPath: connectedDoors.Array.data[0]
+      value: 
+      objectReference: {fileID: 1751630305}
+    - target: {fileID: 2607798901181199849, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
+      propertyPath: puzzleObject
+      value: 
+      objectReference: {fileID: 386991927}
     - target: {fileID: 2607798901181199850, guid: f2b3d80ab18435141aa18a46a3927674, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.355
@@ -4519,6 +4532,10 @@ PrefabInstance:
       propertyPath: doors.Array.data[0]
       value: 
       objectReference: {fileID: 1751630305}
+    - target: {fileID: 282665556118096281, guid: 64a969669041e7541b7703af54a907ec, type: 3}
+      propertyPath: gateLiftingVolume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 282665556118096282, guid: 64a969669041e7541b7703af54a907ec, type: 3}
       propertyPath: m_Name
       value: Switch
@@ -4820,7 +4837,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 288686495153921894, guid: 4df786959ae486f4f9256924d39e862b, type: 3}
   m_PrefabInstance: {fileID: 2094881581}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 386991927}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb6271b323987ba4cb585b777c600fab, type: 3}
