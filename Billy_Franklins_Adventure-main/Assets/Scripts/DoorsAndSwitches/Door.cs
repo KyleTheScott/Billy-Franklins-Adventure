@@ -25,6 +25,8 @@ public class Door : MonoBehaviour
 
     private Rigidbody2D doorRB;
 
+    [SerializeField] private GameObject puzzleObject;
+
     void Start()
     {
         doorRB = gameObject.GetComponent<Rigidbody2D>();
@@ -40,19 +42,19 @@ public class Door : MonoBehaviour
         switch (doorState)
         {
             case DoorState.DOOR_OPENING:
-                if (transform.position.y < moveMax)
+                if (transform.position.y < moveMax + puzzleObject.transform.position.y)
                 {
                     transform.position += new Vector3(0, moveSpeed * Time.deltaTime, 0);
-                    //Debug.Log("Y: " + transform.position.y + "Max: " + moveMax);
+                    Debug.Log("Y: " + transform.position.y + "Max: " + moveMax);
                 }
                 else
                 {
                     doorState = DoorState.DOOR_STOPPED_OPEN;
-                    transform.position = new Vector2(transform.position.x, moveMax);
+                    transform.position = new Vector2(transform.position.x, moveMax + puzzleObject.transform.position.y);
                 }
                 break;
             case DoorState.DOOR_CLOSING:
-                if (transform.position.y > moveMin)
+                if (transform.position.y > moveMin + puzzleObject.transform.position.y)
                 {
                     transform.position += new Vector3(0, -moveSpeed * Time.deltaTime, 0);
                     Debug.Log("Y: " + transform.position.y + "Min: " + moveMin);
@@ -60,7 +62,7 @@ public class Door : MonoBehaviour
                 else
                 {
                     doorState = DoorState.DOOR_STOPPED_CLOSED;
-                    transform.position = new Vector2(transform.position.x, moveMin);
+                    transform.position = new Vector2(transform.position.x, moveMin + puzzleObject.transform.position.y);
                 }
                 break;
         }
@@ -81,26 +83,31 @@ public class Door : MonoBehaviour
     */
     public void SetDoorState()
     {
+        Debug.LogError("Problem 1");
         if (doorState == DoorState.DOOR_STOPPED_OPEN || doorState == DoorState.DOOR_STOPPED_CLOSED)
         {
+            Debug.LogError("Problem 2");
             bool doorsActive = false;
             for (int i = 0; i < connectedDoors.Count; i++)
             {
                 DoorState tempDoorState = connectedDoors[i].GetComponent<Door>().GetDoorState();
                 if (tempDoorState == DoorState.DOOR_OPENING || tempDoorState == DoorState.DOOR_CLOSING)
                 {
+                    Debug.LogError("Problem 3");
                     doorsActive = true;
                 }
             }
-
             if (!doorsActive)
             {
+                Debug.LogError("Problem 4");
                 if (doorState == DoorState.DOOR_STOPPED_OPEN)
                 {
+                    Debug.LogError("Problem 5");
                     doorState = DoorState.DOOR_CLOSING;
                 }
                 else
                 {
+                    Debug.LogError("Problem 6");
                     doorState = DoorState.DOOR_OPENING;
                 }
 
@@ -109,10 +116,12 @@ public class Door : MonoBehaviour
                     DoorState tempDoorState = connectedDoors[i].GetComponent<Door>().GetDoorState();
                     if (tempDoorState == DoorState.DOOR_STOPPED_OPEN)
                     {
+                        Debug.LogError("Problem 7");
                         connectedDoors[i].GetComponent<Door>().SetDoorState(DoorState.DOOR_CLOSING);
                     }
                     else
                     {
+                        Debug.LogError("Problem 8");
                         connectedDoors[i].GetComponent<Door>().SetDoorState(DoorState.DOOR_OPENING);
                     }
                 }
