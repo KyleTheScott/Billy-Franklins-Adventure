@@ -39,7 +39,6 @@ public class CheckPointSystem : MonoBehaviour
 
     public void PlayerDeathLoadLevel()
     {
-        Debug.LogError("Death 0");
         FindObjectOfType<PlayerGFX>().SetAnimation(0);
         FindObjectOfType<Player>().SetPlayerKiteLightning();
     }

@@ -41,9 +41,10 @@ public class MainMenu : MonoBehaviour
         //if save exists then show continue game
         if (save.CompareTo("") == 0)
         {
-           Button button = GameObject.Find("ContinueGame Button").GetComponent<Button>();
-           button.interactable = false;
-           button.image.color = Color.grey;
+            Debug.LogError("Continue");
+            Button button = GameObject.Find("ContinueGame Button").GetComponent<Button>();
+            button.interactable = false;
+            button.image.color = Color.grey;
         }
 
         if (PlayerPrefs.GetInt("LoadCredits", 1) == 1)

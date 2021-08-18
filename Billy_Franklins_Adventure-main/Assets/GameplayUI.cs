@@ -49,7 +49,6 @@ public class GameplayUI : MonoBehaviour
     }
     public void ResetFadeIn()
     {
-        Debug.LogError("Problem");
         StopAllCoroutines();
         Color newColor = fadeOutImage.color;
         newColor.a = 1.0f;
@@ -89,11 +88,9 @@ public class GameplayUI : MonoBehaviour
     {
         while (currentAlpha >= 0)
         {
-            Debug.LogError("Fade in");
             Color newColor = fadeOutImage.color;
             newColor.a = currentAlpha -= fadeInRate * Time.deltaTime;
             fadeOutImage.color = newColor;
-            Debug.LogError("Current Alpha" + currentAlpha);
             yield return null;
         }
         FindObjectOfType<CheckPointSystem>().PlayerDeathLoadLevel();
