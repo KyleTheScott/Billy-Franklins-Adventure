@@ -76,7 +76,7 @@ public class Lamp : MonoBehaviour, IInteractable
                 
                 Debug.Log("Lamp on");
                 onLampOn.Invoke();
-                
+                FindObjectOfType<PlayerGFX>().SetLampOn(true);
             }
             charges.SetLampOn(true);
             LanternToggleOn();

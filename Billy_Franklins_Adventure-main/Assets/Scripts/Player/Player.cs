@@ -330,7 +330,6 @@ public class Player : MonoBehaviour
         }
         else
         {
-
             switch (playerState)
             {
                 case PlayerState.IDLE:
