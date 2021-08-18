@@ -16,10 +16,6 @@ public class CheckPointSystem : MonoBehaviour
         shooting = FindObjectOfType<Shooting>();
     }
 
-    public void Start()
-    {
-    }
-
     public void PlayerDeath()
     {
         Debug.Log("Died");
@@ -34,7 +30,6 @@ public class CheckPointSystem : MonoBehaviour
         player.SetMovingRight(true);
         player.SetPlayerState(Player.PlayerState.IDLE);
         player.SetOnGround(true);
-        Debug.LogError("Death 1");
     }
 
     public void PlayerDeathLoadLevel()

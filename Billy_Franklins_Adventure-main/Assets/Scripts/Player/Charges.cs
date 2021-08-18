@@ -48,7 +48,7 @@ public class Charges : MonoBehaviour
             for(byte i=0; i < 12; i++)
             {
                 keyChargesList.Add(GameObject.Find("KeyImage" + (i + 1)));
-                Debug.Log("keyChargesList[" + i + "] set. KeyImage" + (i + 1));
+                //Debug.Log("keyChargesList[" + i + "] set. KeyImage" + (i + 1));
             }
         }
         for(int i=0; i < 12; i++)

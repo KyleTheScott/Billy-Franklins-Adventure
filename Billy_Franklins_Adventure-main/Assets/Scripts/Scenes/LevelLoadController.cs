@@ -116,8 +116,17 @@ public class LevelLoadController : MonoBehaviour
             {
                 
                 SceneManager.UnloadSceneAsync(prev_scene_to_destroy_);
-
+                //if (player.IsPlayerOnGround())
+                //{
+                //  }
+                //else
+                //{
                 player.SetPlayerKiteLightning();
+                //}  SetKiteLightningWhenOnGround();
+                
+
+                
+                
                 //GameplayUI.instanceGameplayUI.FadeIn();
                 ElectricityController.instanceElectrical.ConnectConnectedObjects();
                 //Debug.LogError("connect connected 0");
@@ -147,6 +156,14 @@ public class LevelLoadController : MonoBehaviour
         }
     }
 
+    IEnumerator SetKiteLightningWhenOnGround()
+    {
+        if (!player.IsPlayerOnGround())
+        {
+            yield return null;
+        }
+        player.SetPlayerKiteLightning();
+    }
 
     private void DestroyDDOLObjects()
     {
