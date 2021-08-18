@@ -47,7 +47,7 @@ public class MainMenu : MonoBehaviour
             button.image.color = Color.grey;
         }
 
-        if (PlayerPrefs.GetInt("LoadCredits") == 1)
+        if (PlayerPrefs.GetInt("LoadCredits", 0) == 1)
         {
             PlayerPrefs.SetInt("LoadCredits", 0);
             Credits();
