@@ -163,16 +163,14 @@ public class PlayerGFX : MonoBehaviour
 
                     break;
                 case Player.PlayerState.LIGHTNING_CHARGES_START:
-                    Debug.LogError("Lightning");
+                    Debug.LogError("Lightning Start");
                     playerAnimator.SetInteger("PlayerAnimState", 15);
-                    
                     break;
                 case Player.PlayerState.LIGHTNING_CHARGES:
-                    Debug.LogError("Lightning 2");
+                    Debug.LogError("Lightning Start 2");
                     playerAnimator.SetInteger("PlayerAnimState", 0);
                     break;
                 case Player.PlayerState.PLAYER_DEATH_ELECTRIFIED_START:
-                    Debug.LogError("Electrified");
                     playerAnimator.SetInteger("PlayerAnimState", 13);
                     player.SetPlayerState(Player.PlayerState.PLAYER_DEATH_ELECTRIFIED);
                     break;
@@ -360,7 +358,6 @@ public class PlayerGFX : MonoBehaviour
 
     public void ElectrifyKiteEnd()
     {
-        Debug.LogError("End electrify kite");
         player.SetPlayerState(Player.PlayerState.WALKING);
         FindObjectOfType<Shooting>().SetAimLineState(Shooting.AimLineState.NOT_AIMED);
         //GameObject lightToTurnOn = GameObject.Find("Light");
