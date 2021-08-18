@@ -7078,11 +7078,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5594739182090962409, guid: 45970c84a76d94f48b632e1e823a6d8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.52
+      value: 20.73
       objectReference: {fileID: 0}
     - target: {fileID: 5594739182090962409, guid: 45970c84a76d94f48b632e1e823a6d8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.259333
+      value: 6.6
       objectReference: {fileID: 0}
     - target: {fileID: 5594739182090962409, guid: 45970c84a76d94f48b632e1e823a6d8b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7758,7 +7758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6271b323987ba4cb585b777c600fab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playersNewMaxCharge: 5
+  playersNewMaxCharge: 4
   lanternNum: 4
   lanternLitNum: 0
   playerSpawnPoint: {fileID: 233626037}

@@ -1804,6 +1804,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9039086012570199009, guid: 0bab5e205cdbd014dbcfca9ec3c4c985, type: 3}
   m_PrefabInstance: {fileID: 905031686}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &919743857 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6459828722871576397, guid: c36c650dccddcab4ba2b1f6b56d8b013, type: 3}
+  m_PrefabInstance: {fileID: 1461810295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &961272589
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1867,6 +1872,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lantern
       objectReference: {fileID: 0}
+    - target: {fileID: 6188749757494484414, guid: be730290d04e27f4a839b2040601189c, type: 3}
+      propertyPath: ghosts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6188749757494484414, guid: be730290d04e27f4a839b2040601189c, type: 3}
+      propertyPath: ghosts.Array.data[0]
+      value: 
+      objectReference: {fileID: 1528992447}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be730290d04e27f4a839b2040601189c, type: 3}
 --- !u!4 &961272590 stripped
@@ -3259,6 +3272,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9eab5506f6059a347b743daa14a584a9, type: 3}
+--- !u!1 &1528992447 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1697829659077193302, guid: 648209c0989799e4199cb1485f07663e, type: 3}
+  m_PrefabInstance: {fileID: 424412969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1536281353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4006,9 +4024,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7108738080389315902, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: ghosts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108738080389315902, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
       propertyPath: ghostWall
       value: 
       objectReference: {fileID: 562345257}
+    - target: {fileID: 7108738080389315902, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
+      propertyPath: ghosts.Array.data[0]
+      value: 
+      objectReference: {fileID: 919743857}
     - target: {fileID: 7108738080389315903, guid: 06f45cbfebacf02449a53428867339b1, type: 3}
       propertyPath: m_Name
       value: Lamp
