@@ -156,6 +156,7 @@ public class Player : MonoBehaviour
     {
         StartCoroutine(WaitTillOnGround());
     }
+    //public 
 
     IEnumerator WaitTillOnGround()
     {
@@ -163,6 +164,7 @@ public class Player : MonoBehaviour
         {
             yield return null;
         }
+        Debug.LogError("On Ground Start");
         SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
         SetAnimationMovement(true);
         SetPlayerInLevel(true);
@@ -281,8 +283,6 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Couldn't find pause menu UI...");
         }
-        Debug.Log("Y Angle: " + transform.eulerAngles.y);
-
         //worldScale = GameObject.Find("WorldScale");
         aimLine = FindObjectOfType<AimLine>().gameObject;
         //rotation = transform.rotation;
@@ -459,6 +459,7 @@ public class Player : MonoBehaviour
             }
         }
 
+     
         if (!isReading && dialogue != null && dialogue.sentences.Length != 0 && IsPlayerOnGround())
         {
             isReading = true;
@@ -466,6 +467,7 @@ public class Player : MonoBehaviour
             PlayerControlsStatus(false);
             dialogue = null;
         }
+        
 
 
         //player input
@@ -1048,7 +1050,6 @@ public class Player : MonoBehaviour
     {
         if (metal != null)
         {
-            Debug.LogError("Player moving To metal 1");
             playerState = PlayerState.MOVING_OBJECT_START;
             metalMovingEvent.start();
             currentMovingObject = metal;
