@@ -762,7 +762,7 @@ MonoBehaviour:
   jumpSound: event:/Player Sounds/Footsteps
   jumpSoundVolume: 0.8
   metalMovingEventRef: event:/Player Sounds/Pushing-pulling objects
-  metalMovingVolume: 0.8
+  metalMovingVolume: 1
   currentMovingObject: {fileID: 0}
   currentPlayerMetal: {fileID: 0}
   animationMovement: 0
@@ -1130,7 +1130,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 53084
+  m_InstanceId: 82808
 --- !u!95 &731963993
 Animator:
   serializedVersion: 3
@@ -1327,7 +1327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kiteLightingEventRef: event:/Player Sounds/Being struck with lightning
-  kiteLightingVolume: 0.7
+  kiteLightingVolume: 0.9
 --- !u!1 &6370559049283957530
 GameObject:
   m_ObjectHideFlags: 0
