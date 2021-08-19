@@ -139,7 +139,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Metal currentPlayerMetal;
 
     [Header("Animation")] 
-    [SerializeField] private bool animationMovement = false; // an automated animation is happening
+    [SerializeField] private bool animationMovement = true; // an automated animation is happening
 
     [SerializeField] private bool movingMetal = false; // player is moving metal
 
@@ -148,9 +148,9 @@ public class Player : MonoBehaviour
 
     [Header("Menus")] [SerializeField] private Canvas pauseMenuUI = null;
     private Canvas settingsMenuUI = null;
-    private bool movementEnabled = true;
+    private bool movementEnabled = false;
 
-    private bool stoppingPlayerMovement = false;
+    [SerializeField] private bool stoppingPlayerMovement = true;
 
     [Header("Dialogue")] public bool isReading = false;
     public Dialogue dialogue = new Dialogue();
@@ -477,7 +477,7 @@ public class Player : MonoBehaviour
             }
         }
         //movementEnabled is used when menu is open
-        else if (movementEnabled && !animationMovement && playerState != PlayerState.JUMP 
+        else if (!stoppingPlayerMovement && movementEnabled && !animationMovement && playerState != PlayerState.JUMP 
                  && playerState != PlayerState.INTERACT && playerState != PlayerState.PLAYER_DEATH_CHARGES_START)
         {
             stoppingPlayerMovement = false;
@@ -485,15 +485,22 @@ public class Player : MonoBehaviour
             //to open menu
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                //Debug.Log("Pause");
-                if (pauseMenuUI != null)
+                if (playerState != PlayerState.PLAYER_END_GAME_START && playerState != PlayerState.LIGHTNING_CHARGES &&
+                    playerState != PlayerState.LIGHTNING_CHARGES_START && playerState != PlayerState.LIGHTNING_CHARGES_END &&
+                    playerState != PlayerState.PLAYER_DEATH_ELECTRIFIED && playerState != PlayerState.PLAYER_DEATH_ELECTRIFIED_START && 
+                    playerState != PlayerState.PLAYER_DEATH_CHARGES_START && playerState != PlayerState.PLAYER_DEATH_CHARGES)
                 {
-                    //Debug.Log("Pause 2");
-                    
-                    pauseMenuUI.gameObject.SetActive(true);
+                    //Debug.Log("Pause");
+                    if (pauseMenuUI != null)
+                    {
+                        //Debug.Log("Pause 2");
+
+                        pauseMenuUI.gameObject.SetActive(true);
+                    }
+
+                    PlayerControlsStatus(false);
+                    StartCoroutine(StopMovementWhenOnGroundForPause());
                 }
-                PlayerControlsStatus(false);
-                StartCoroutine(StopMovementWhenOnGroundForPause());
             }
             //Horizontal move
             if (Input.GetKey(KeyCode.A))
@@ -1186,6 +1193,8 @@ public class Player : MonoBehaviour
             pauseMenuUI.gameObject.SetActive(false);
         }
         PlayerControlsStatus(true);
+        StartPlayerMovement();
+
     }
     public void ReferencePauseMenuUI(Canvas pauseMenu)
     {
@@ -1207,7 +1216,6 @@ public class Player : MonoBehaviour
     {
         if (onGround)
         {
-            Debug.LogError("Stop Movement");
             rb.isKinematic = true;
             rb.velocity = Vector2.zero;
             moveVelocity = 0;
@@ -1227,9 +1235,10 @@ public class Player : MonoBehaviour
         StopPlayerMovementOnPause();
     }
 
-   
-
-
+    public void StartPlayerMovement()
+    {
+        stoppingPlayerMovement = false;
+    }
 
     public void DestroyUI()
     {

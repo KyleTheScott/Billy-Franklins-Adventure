@@ -330,13 +330,12 @@ public class Shooting : MonoBehaviour
                     {
                         //Debug.Log("Shoot");
 
-                        if (loadedProjectile != null)
-                        {
                             //    loadedProjectile.SetProjectileDirection(lastShootingLine);
                             //    loadedProjectile.GetComponent<Collider2D>().enabled = true;
                             //    loadedProjectile.SetProjectileTarget(lightningTargetPos);
                             //    StopAiming();
-                            playerGFX.SetAnimation(16);
+                        playerGFX.SetAnimation(16);
+                        player.SetAnimationMovement(true);
                         //Can't shoot projectile continousely
                         //canShoot = false;
 
@@ -344,7 +343,7 @@ public class Shooting : MonoBehaviour
                         //loadedProjectile.transform.SetParent(null);
                         //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
-                        }
+                        
                     }
                 }
                 else if (Input.GetMouseButtonDown(1))

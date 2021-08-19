@@ -30,6 +30,7 @@ public class CheckPointSystem : MonoBehaviour
         player.SetMovingRight(true);
         player.SetPlayerState(Player.PlayerState.IDLE);
         player.SetOnGround(true);
+        player.SetAnimationMovement(true);
     }
 
     public void PlayerDeathLoadLevel()

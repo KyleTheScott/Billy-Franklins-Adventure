@@ -26,7 +26,9 @@ public class ObjectsCollision : MonoBehaviour
                 {
                     //Debug.LogError("Death Working Water");
                     EmptyObjects();
-                    player.GetComponent<Player>().SetPlayerState(Player.PlayerState.PLAYER_DEATH_ELECTRIFIED_START);
+                    Player player = FindObjectOfType<Player>();
+                    player.SetPlayerState(Player.PlayerState.PLAYER_DEATH_ELECTRIFIED_START);
+                    player.PlayerControlsStatus(false);
                     break;
                 }
                 //metal
@@ -36,7 +38,9 @@ public class ObjectsCollision : MonoBehaviour
                     {
                         //Debug.LogError("Death Working Metal");
                         EmptyObjects();
-                        player.GetComponent<Player>().SetPlayerState(Player.PlayerState.PLAYER_DEATH_ELECTRIFIED_START);
+                        Player player = FindObjectOfType<Player>();
+                        player.SetPlayerState(Player.PlayerState.PLAYER_DEATH_ELECTRIFIED_START);
+                        player.PlayerControlsStatus(false);
                         break;
                     }
                 }
