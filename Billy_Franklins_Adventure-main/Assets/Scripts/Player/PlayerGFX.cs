@@ -169,11 +169,9 @@ public class PlayerGFX : MonoBehaviour
 
                     break;
                 case Player.PlayerState.LIGHTNING_CHARGES_START:
-                    Debug.Log("Lightning Start");
                     playerAnimator.SetInteger("PlayerAnimState", 15);
                     break;
                 case Player.PlayerState.LIGHTNING_CHARGES:
-                    Debug.Log("Lightning Start 2");
                     playerAnimator.SetInteger("PlayerAnimState", 0);
                     break;
                 case Player.PlayerState.PLAYER_DEATH_ELECTRIFIED_START:
@@ -419,6 +417,7 @@ public class PlayerGFX : MonoBehaviour
         }
         player.SetAnimationMovement(false);
         PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject().GetComponent<Metal>().SetMoving(false);
+        PlayerObjectInteractions.playerObjectIInstance.GetCurrentObject().GetComponent<IInteractable>().SetHighlighted(true);
         player.SetPlayerState(Player.PlayerState.IDLE);
         player.SetMovingMetalStop();
     }

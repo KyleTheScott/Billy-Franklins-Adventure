@@ -93,8 +93,10 @@ public class Ghost : MonoBehaviour
 
     public void SetTransparency(float newTransparency)
     {
-        ghostSprite.color = new Color(1.0f, 1.0f, 1.0f, newTransparency);
-        currentTransparency = newTransparency;
+        if (ghostSprite != null)
+        {
+            ghostSprite.color = new Color(1.0f, 1.0f, 1.0f, newTransparency);
+            currentTransparency = newTransparency;
+        }
     }
-
 }
