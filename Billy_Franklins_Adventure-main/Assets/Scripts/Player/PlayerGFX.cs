@@ -185,6 +185,11 @@ public class PlayerGFX : MonoBehaviour
                 case Player.PlayerState.INTERACT:
                     playerAnimator.SetInteger("PlayerAnimState", 12);
                     break;
+                case Player.PlayerState.PLAYER_END_GAME_START:
+                    player.SetMovingRight(true);
+                    playerAnimator.SetInteger("PlayerAnimState", 1);
+                    break;
+
             }
         }
         //used for automated animations
@@ -241,6 +246,10 @@ public class PlayerGFX : MonoBehaviour
                         }
                     }
 
+                    break;
+                case Player.PlayerState.PLAYER_END_GAME:
+
+                    
                     break;
             }
         }
