@@ -49,7 +49,10 @@ public class PlayerObjectInteractions : MonoBehaviour
         interacting = state;
         if (currentToggleObject != null)
         {
-            currentToggleObject.GetComponent<IInteractable>().SetHighlighted(false);
+            if (!currentToggleObject.CompareTag("Switch"))
+            {
+                currentToggleObject.GetComponent<IInteractable>().SetHighlighted(false);
+            }
         }
     }
 

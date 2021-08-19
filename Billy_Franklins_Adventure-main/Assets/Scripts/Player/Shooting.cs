@@ -273,7 +273,6 @@ public class Shooting : MonoBehaviour
                     {
                         if (Input.GetMouseButtonDown(0))
                         {
-                            Debug.LogError("Aiming");
                             aimLineState = AimLineState.AIMING;
                             //Get projectile from list
                             if (listOfProjectile.Count != 0)
@@ -394,7 +393,7 @@ public class Shooting : MonoBehaviour
 
     public void StopShooting()
     {
-        Debug.LogError("STOP SHOOTING");
+        //Debug.LogError("STOP SHOOTING");
         aimLineState = AimLineState.NOT_AIMED;
     }
 

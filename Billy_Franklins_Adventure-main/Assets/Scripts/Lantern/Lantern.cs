@@ -80,7 +80,7 @@ public class Lantern : MonoBehaviour, IInteractable
             lanterOn = true;
             lanternAnimator.SetBool("Lit", true);
             FMODUnity.RuntimeManager.PlayOneShot(inputSound, inputVolume);
-            Debug.Log("LanternToggle");
+            //Debug.Log("LanternToggle");
             FMODUnity.RuntimeManager.PlayOneShot(lanternHummingSound, lanternHumingVolume);
             DissipateGhosts();
             if (light2D != null)
@@ -102,7 +102,7 @@ public class Lantern : MonoBehaviour, IInteractable
     {
         for (int i = 0; i < ghosts.Count; i++)
         {
-            Debug.Log("Lantern");
+            //Debug.Log("Lantern");
             Ghost ghost = ghosts[i].GetComponent<Ghost>();
             ghost.SetDissipatedByLantern(true);
             ghost.SetGhostDissipation();

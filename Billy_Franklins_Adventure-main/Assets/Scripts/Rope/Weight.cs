@@ -6,6 +6,7 @@ public class Weight : MonoBehaviour
     [SerializeField] private GameObject connectedPlatform;
     [SerializeField] float distanceFromChainEnd = .05f;
 
+
     //connects the final weight link to the last link
     public void ConnectRopeEnd(Rigidbody2D endRB)
     {
