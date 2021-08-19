@@ -147,9 +147,6 @@ public class PlayerGFX : MonoBehaviour
                 case Player.PlayerState.MOVING_OBJECT_STOPPED_RIGHT:
                     playerAnimator.SetInteger("PlayerAnimState", 11);
                     break;
-                case Player.PlayerState.DEATH:
-
-                    break;
                 case Player.PlayerState.KICK_BUCKET_START:
                     if (player.GetAnimationMovement())
                     {
@@ -379,6 +376,8 @@ public class PlayerGFX : MonoBehaviour
         //GameObject lightToTurnOn = GameObject.Find("Light");
         playerLight.SetActive(true);
         player.SetAnimationMovement(false);
+        player.PlayerControlsStatus(true);
+        player.StartPlayerMovement();
     }
 
 
@@ -489,6 +488,7 @@ public class PlayerGFX : MonoBehaviour
             player.SetPlayerState(Player.PlayerState.WALKING);
             playerAnimator.SetInteger("PlayerAnimState", 1);
             lampIsOn = false;
+            player.SetAnimationMovement(false);
         }
     }
 }

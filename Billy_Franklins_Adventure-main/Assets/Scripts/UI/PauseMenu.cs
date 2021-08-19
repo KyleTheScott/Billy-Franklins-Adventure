@@ -17,7 +17,9 @@ public class PauseMenu : MonoBehaviour
     {
         FindObjectOfType<MusicController>().PlayMenuSelect();
         Time.timeScale = 1;
-        FindObjectOfType<Player>().GetComponent<Player>().ClosePauseMenu();
+        Player player = FindObjectOfType<Player>();
+        player.ClosePauseMenu();
+
     }
 
     public void Settings()
@@ -46,9 +48,9 @@ public class PauseMenu : MonoBehaviour
 
     private IEnumerator ReloadCheckpointFadeOut()
     {
+        FindObjectOfType<Player>().GetComponent<Player>().PlayerControlsStatus(false);
         GameplayUI.instanceGameplayUI.FadeOut();
         yield return new WaitForSeconds(2.0f);
-        FindObjectOfType<Player>().GetComponent<Player>().PlayerControlsStatus(true);
         checkPointSystem.PlayerDeath();
     }
 
