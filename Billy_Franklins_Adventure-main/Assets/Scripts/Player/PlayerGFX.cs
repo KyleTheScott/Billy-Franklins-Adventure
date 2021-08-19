@@ -308,10 +308,13 @@ public class PlayerGFX : MonoBehaviour
     }
     public void EndElectrifyInteract()
     {
+      
         player.SetPlayerState(Player.PlayerState.IDLE);
+        if (FindObjectOfType<Charges>().GetLightCharges() <= 0 && !FindObjectOfType<Charges>().GetLampOn())
+        {
+            FindObjectOfType<Player>().StartPlayerOutOfChargesDeath();
+        }
     }
-
-
 
     public bool GetFacingRight()
     {

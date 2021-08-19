@@ -37,13 +37,12 @@ public class Switch : MonoBehaviour, IInteractable
     //sets whether the switch is highlighted or not
     public void SetHighlighted(bool state)
     {
+        Debug.LogError("Highlight" + state);
         highlight.SetActive(state);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-
+    { 
         //switch is hit by lightning and sets door movement
         if (collision.CompareTag("Lightning"))
         {
