@@ -295,14 +295,17 @@ public class PlayerObjectInteractions : MonoBehaviour
                     //if the exiting object is metal
                     if (collision.gameObject.CompareTag("Metal"))
                     {
-
                         if (toggleObjects[i] == currentToggleObject)
                         {
+                            toggleObjects[i].GetComponent<IInteractable>().SetHighlighted(false);
                             interacting = false;
                             DisconnectMetal();
                             ChangeToggleObject();
                             toggleObjects.RemoveAt(i);
-                            
+                            if (toggleObjects.Count < 1)
+                            {
+                                currentToggleObject = null;
+                            }
                         }
                         else
                         {
@@ -322,9 +325,14 @@ public class PlayerObjectInteractions : MonoBehaviour
                     {
                         if (toggleObjects[i] == currentToggleObject)
                         {
+                            toggleObjects[i].GetComponent<IInteractable>().SetHighlighted(false);
                             interacting = false;
                             ChangeToggleObject();
                             toggleObjects.RemoveAt(i);
+                            if (toggleObjects.Count < 1)
+                            {
+                                currentToggleObject = null;
+                            }
                         }
                         else
                         {

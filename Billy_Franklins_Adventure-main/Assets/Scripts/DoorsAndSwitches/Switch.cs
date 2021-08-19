@@ -41,9 +41,7 @@ public class Switch : MonoBehaviour, IInteractable
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-
+    { 
         //switch is hit by lightning and sets door movement
         if (collision.CompareTag("Lightning"))
         {

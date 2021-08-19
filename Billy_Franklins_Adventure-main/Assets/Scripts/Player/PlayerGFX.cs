@@ -310,7 +310,7 @@ public class PlayerGFX : MonoBehaviour
     {
       
         player.SetPlayerState(Player.PlayerState.IDLE);
-        if (FindObjectOfType<Charges>().GetLightCharges() <= 0)
+        if (FindObjectOfType<Charges>().GetLightCharges() <= 0 && !FindObjectOfType<Charges>().GetLampOn())
         {
             FindObjectOfType<Player>().StartPlayerOutOfChargesDeath();
         }
