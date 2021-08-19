@@ -52,19 +52,24 @@ public class GhostWallController : MonoBehaviour
 
         if (RaiseOnStart)
         {
+            ghostWallspriteRenderer.enabled = false;
             foreach (Ghost ghost in ghosts)
             {
                 ghost.SetTransparency(0);
                 ghost.gameObject.SetActive(false);
             }
-            RaiseGhostWall();
+            boxCollider.isTrigger = true;
+            animator.SetTrigger("Gone");
+            RaiseGhostWallEnd();
         }
     }
 
     public void LowerGhostWall()
     {
-        animator.SetTrigger("Appear");
         ghostWallspriteRenderer.enabled = true;
+        Debug.Log("LowerWall");
+        animator.SetTrigger("Appear");
+        animator.SetBool("setToAppear", true);
         ghostWallSoundEvent.start();
         ghostWallSoundEvent.setVolume(ghostWallSoundVolume);
         ghostWallState = GhostWallState.LOWERING;
@@ -82,6 +87,7 @@ public class GhostWallController : MonoBehaviour
     public void LowerGhostWallEnd()
     {
         Debug.Log("LowerGhostWallEnd");
+        animator.SetBool("setToAppear", false);
         boxCollider.isTrigger = false;
  
         ghostWallState = GhostWallState.LOWERED;
@@ -102,12 +108,12 @@ public class GhostWallController : MonoBehaviour
 
     public void RaiseGhostWallEnd()
     {
+        
         foreach (Ghost ghost in ghosts)
         {
             ghost.gameObject.SetActive(false);
         }
-        ghostWallspriteRenderer.enabled = false;
-        ghostWallState = GhostWallState.RAISING;
+        ghostWallState = GhostWallState.RAISED;
     }
 
 
