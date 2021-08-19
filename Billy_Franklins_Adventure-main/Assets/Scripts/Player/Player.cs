@@ -147,6 +147,8 @@ public class Player : MonoBehaviour
     private Canvas settingsMenuUI = null;
     private bool movementEnabled = true;
 
+    private bool stoppingPlayerMovement = false;
+
     [Header("Dialogue")] public bool isReading = false;
     public Dialogue dialogue = new Dialogue();
     public bool finalDialogue = false;
@@ -519,6 +521,7 @@ public class Player : MonoBehaviour
         else if (movementEnabled && !animationMovement && playerState != PlayerState.JUMP 
                  && playerState != PlayerState.INTERACT && playerState != PlayerState.PLAYER_DEATH_CHARGES_START)
         {
+            stoppingPlayerMovement = false;
             //Debug.Log("Input2");
             //to open menu
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -527,9 +530,11 @@ public class Player : MonoBehaviour
                 if (pauseMenuUI != null)
                 {
                     //Debug.Log("Pause 2");
+                    
                     pauseMenuUI.gameObject.SetActive(true);
                 }
                 PlayerControlsStatus(false);
+                StartCoroutine(StopMovementWhenOnGroundForPause());
             }
             //Horizontal move
             if (Input.GetKey(KeyCode.A))
@@ -823,6 +828,14 @@ public class Player : MonoBehaviour
                 PlayerObjectInteractions.playerObjectIInstance.ToggleObjects();
             }
         }
+        else if (stoppingPlayerMovement)
+        {
+            if (onGround)
+            {
+                StopPlayerMovementOnPause();
+            }
+        }
+
     }
 
 
@@ -1218,8 +1231,38 @@ public class Player : MonoBehaviour
 
     public void PlayerControlsStatus(bool status)
     {
+        
         movementEnabled = status;
     }
+
+    public void StopPlayerMovementOnPause()
+    {
+        if (onGround)
+        {
+            Debug.LogError("Stop Movement");
+            rb.isKinematic = true;
+            rb.velocity = Vector2.zero;
+            moveVelocity = 0;
+            playerGFX.SetAnimation(0);
+            playerState = PlayerState.IDLE;
+        }
+    }
+
+    IEnumerator StopMovementWhenOnGroundForPause()
+    {
+        if (!onGround)
+        {
+            yield return null;
+        }
+        stoppingPlayerMovement = true;
+        Debug.LogError("Enabled: " + movementEnabled);
+        StopPlayerMovementOnPause();
+    }
+
+   
+
+
+
     public void DestroyUI()
     {
         Destroy(pauseMenuUI.gameObject);
