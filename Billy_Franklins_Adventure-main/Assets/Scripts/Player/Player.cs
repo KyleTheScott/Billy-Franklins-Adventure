@@ -1216,11 +1216,17 @@ public class Player : MonoBehaviour
     {
         if (onGround)
         {
-            rb.isKinematic = true;
-            rb.velocity = Vector2.zero;
-            moveVelocity = 0;
-            playerGFX.SetAnimation(0);
-            playerState = PlayerState.IDLE;
+            switch (playerState)
+            {
+                case PlayerState.IDLE:
+                case PlayerState.WALKING:
+                    rb.isKinematic = true;
+                    rb.velocity = Vector2.zero;
+                    moveVelocity = 0;
+                    playerGFX.SetAnimation(0);
+                    playerState = PlayerState.IDLE;
+                    break;
+            }
         }
     }
 
