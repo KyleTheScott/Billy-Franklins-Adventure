@@ -29,6 +29,8 @@ public class GameplayUI : MonoBehaviour
     [SerializeField]
     private float maxAlpha = 1f;
     [SerializeField]
+    private GameObject endText;
+    [SerializeField]
     private float fadeOutRate = 0.2f;
     [SerializeField]
     private float fadeInRate = 0.2f;
@@ -115,6 +117,11 @@ public class GameplayUI : MonoBehaviour
         ResetFadeOut();
         StopAllCoroutines();
         StartCoroutine(StartFadeOut());
+    }
+
+    public void DisplayEndText(bool enabled)
+    {
+        endText.SetActive(enabled);
     }
 
 }
