@@ -16,4 +16,9 @@ public class GhostWallGFX : MonoBehaviour
     {
         ghostWall.RaiseGhostWallEnd();
     }
+
+    public void GhostsAppear()
+    {
+        ghostWall.MakeGhostsAppear();
+    }
 }

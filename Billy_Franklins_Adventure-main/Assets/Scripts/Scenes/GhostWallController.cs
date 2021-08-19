@@ -54,6 +54,7 @@ public class GhostWallController : MonoBehaviour
         {
             foreach (Ghost ghost in ghosts)
             {
+                ghost.SetTransparency(0);
                 ghost.gameObject.SetActive(false);
             }
             RaiseGhostWall();
@@ -69,14 +70,18 @@ public class GhostWallController : MonoBehaviour
         ghostWallState = GhostWallState.LOWERING;
     }
 
-    public void LowerGhostWallEnd()
+    public void MakeGhostsAppear()
     {
-        Debug.Log("LowerGhostWallEnd");
         foreach (Ghost ghost in ghosts)
         {
             ghost.gameObject.SetActive(true);
             ghost.SetGhostAppearing();
         }
+    }
+
+    public void LowerGhostWallEnd()
+    {
+        Debug.Log("LowerGhostWallEnd");
         boxCollider.isTrigger = false;
  
         ghostWallState = GhostWallState.LOWERED;
