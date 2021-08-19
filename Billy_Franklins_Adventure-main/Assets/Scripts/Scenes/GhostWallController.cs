@@ -63,6 +63,7 @@ public class GhostWallController : MonoBehaviour
     public void LowerGhostWall()
     {
         animator.SetTrigger("Appear");
+        ghostWallspriteRenderer.enabled = true;
         ghostWallSoundEvent.start();
         ghostWallSoundEvent.setVolume(ghostWallSoundVolume);
         ghostWallState = GhostWallState.LOWERING;
@@ -70,6 +71,7 @@ public class GhostWallController : MonoBehaviour
 
     public void LowerGhostWallEnd()
     {
+        Debug.Log("LowerGhostWallEnd");
         foreach (Ghost ghost in ghosts)
         {
             ghost.gameObject.SetActive(true);
