@@ -316,8 +316,6 @@ public class PlayerGFX : MonoBehaviour
         }
     }
 
-
-
     public bool GetFacingRight()
     {
         return isFacingRight;

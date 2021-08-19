@@ -167,7 +167,17 @@ public class PlayerObjectInteractions : MonoBehaviour
             {
                 currentToggleObject.GetComponent<IInteractable>().SetHighlighted(false);
             }
-            currentToggleObject = toggleObjects[0];
+
+            for (int i = 0; i < toggleObjects.Count; i++)
+            {
+                //if a certain toggle object is the exiting object
+                if (currentToggleObject.gameObject != toggleObjects[i])
+                {
+                    currentToggleObject = toggleObjects[i];
+                    break;
+                }
+            }
+
             currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
             if (currentToggleObject.CompareTag("Metal"))
             {
@@ -325,6 +335,7 @@ public class PlayerObjectInteractions : MonoBehaviour
                     {
                         if (toggleObjects[i] == currentToggleObject)
                         {
+                            Debug.LogError("Highlight 1");
                             toggleObjects[i].GetComponent<IInteractable>().SetHighlighted(false);
                             interacting = false;
                             ChangeToggleObject();
@@ -336,6 +347,7 @@ public class PlayerObjectInteractions : MonoBehaviour
                         }
                         else
                         {
+                            Debug.LogError("Highlight 2");
                             toggleObjects[i].GetComponent<IInteractable>().SetHighlighted(false);
                             toggleObjects.RemoveAt(i);
                             if (toggleObjects.Count < 1)
