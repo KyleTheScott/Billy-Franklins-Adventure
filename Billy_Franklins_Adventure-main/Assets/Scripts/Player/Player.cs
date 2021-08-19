@@ -1113,6 +1113,15 @@ public class Player : MonoBehaviour
     //Set from PlayerCollision collider to set when the player is on the ground 
     public bool GetOnGround()
     {
+        switch (playerState)
+        {
+            case PlayerState.JUMP:
+            case PlayerState.JUMPING:
+            case PlayerState.FALL_FIX:
+            case PlayerState.JUMP_FALLING:
+            case PlayerState.FALLING:
+                return false;
+        }
         return onGround;
     }
 
