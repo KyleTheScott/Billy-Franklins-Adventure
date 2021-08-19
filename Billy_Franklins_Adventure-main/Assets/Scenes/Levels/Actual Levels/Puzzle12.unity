@@ -1083,6 +1083,10 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.y
       value: 0.08930233
       objectReference: {fileID: 0}
+    - target: {fileID: 7584460514335225775, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
+      propertyPath: puzzleGameObject
+      value: 
+      objectReference: {fileID: 2029034749}
     - target: {fileID: 7584460514356402065, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
       propertyPath: minUpMoveSpeedLight
       value: 0
@@ -2920,6 +2924,10 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.y
       value: 0.014861706
       objectReference: {fileID: 0}
+    - target: {fileID: 7584460514335225775, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
+      propertyPath: puzzleGameObject
+      value: 
+      objectReference: {fileID: 2029034749}
     - target: {fileID: 7584460514356402069, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
       propertyPath: m_LocalPosition.y
       value: -4.3234

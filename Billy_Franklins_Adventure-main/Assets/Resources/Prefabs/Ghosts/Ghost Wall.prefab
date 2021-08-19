@@ -225,10 +225,11 @@ MonoBehaviour:
   boxCollider: {fileID: 5365355902765999897}
   ghostWallspriteRenderer: {fileID: 7859557848668478918}
   animator: {fileID: 6085667456886985799}
+  RaiseOnStart: 0
   ghostwallEventPath: event:/Ambient Sounds/Ghostly Sounds
   ghostWallSoundVolume: 0.2
   ghostwallDisappearEventPath: event:/Game Sounds/Disperse
-  ghostWallDisappearVolume: 0.2
+  ghostWallDisappearVolume: 0.8
 --- !u!1001 &184139505790527680
 PrefabInstance:
   m_ObjectHideFlags: 0

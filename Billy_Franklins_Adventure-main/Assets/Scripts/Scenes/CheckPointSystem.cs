@@ -57,7 +57,7 @@ public class CheckPointSystem : MonoBehaviour
         Debug.Log("SceneLoaded");
         if (playerDied)
         {
-            Debug.Log("DEATH");
+            //Debug.Log("DEATH");
             FindObjectOfType<Player>().transform.position = FindObjectOfType<PuzzleController>().PlayerSpawnPoint.position;
             FindObjectOfType<PuzzleController>().LoadPuzzle();
             playerDied = false;

@@ -3289,6 +3289,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1213363782}
     m_Modifications:
+    - target: {fileID: 1595970596, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595970596, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671949080, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -3.2757764
+      objectReference: {fileID: 0}
     - target: {fileID: 7584460513719926771, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.204
@@ -3300,6 +3312,10 @@ PrefabInstance:
     - target: {fileID: 7584460514096828377, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
       propertyPath: m_Name
       value: PlatformAndRope
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584460514096828378, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
+      propertyPath: links
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7584460514096828381, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3345,6 +3361,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7584460514335225760, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.028999805
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584460514335225763, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584460514335225775, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
+      propertyPath: puzzleGameObject
+      value: 
+      objectReference: {fileID: 386991927}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bfa6697da8e93148bc55f8b9208cf86, type: 3}
 --- !u!4 &1536281354 stripped
