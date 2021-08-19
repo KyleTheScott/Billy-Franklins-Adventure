@@ -48,7 +48,9 @@ public class Player : MonoBehaviour
         PLAYER_DEATH_ELECTRIFIED_START,
         PLAYER_DEATH_ELECTRIFIED,
         PLAYER_DEATH_CHARGES_START,
-        PLAYER_DEATH_CHARGES
+        PLAYER_DEATH_CHARGES,
+        PLAYER_END_GAME_START,
+        PLAYER_END_GAME
     }
 
     [SerializeField] private PlayerState playerState = PlayerState.WALKING;
@@ -192,55 +194,7 @@ public class Player : MonoBehaviour
             Vector3 fixRotation = transform.eulerAngles;
             fixRotation.z = 0;
             transform.eulerAngles = fixRotation;
-            //transform.localScale = new Vector3(transform.localToWorldMatrix.lossyScale.x, transform.localToWorldMatrix.lossyScale.y, transform.localToWorldMatrix.lossyScale.z);
-            ////transform.localScale = new Vector3(1, 1, transform.localToWorldMatrix.lossyScale.z);
-
-            //transform.localScale = new  Vector3 (worldScale.transform.worldToLocalMatrix.lossyScale.x, 
-            //    worldScale.transform.worldToLocalMatrix.lossyScale.y, worldScale.transform.worldToLocalMatrix.lossyScale.z)  ;
-            //Vector3 worldScale = new Vector3(1, 1, 1);
-            //transform.parent.InverseTransformVector(worldScale);
-            //float xDiff = 1 / transform.parent.localScale.x;
-            //float yDiff = 1 / transform.parent.localScale.y;
-            //transform.localScale = new Vector3(transform.localScale.x + xDiff, transform.localScale.y + yDiff, transform.localScale.z);
-
-            //Debug.LogError("Platform Scale x: " + currentPlatform.transform.localScale.x);
-            //Debug.LogError("Platform Scale y: " + currentPlatform.transform.localScale.y);
-            //Debug.LogError("Platform Scale z: " + currentPlatform.transform.localScale.z);
-            //Debug.LogError("Player Scale z: " + transform.lossyScale.x);
-            //Debug.LogError("Player Scale z: " + transform.lossyScale.y);
-            //Debug.LogError("Player Scale z: " + transform.lossyScale.z);
-
-            //float x = 1 / currentPlatform.transform.lossyScale.x;
-            //float y = 1 / currentPlatform.transform.lossyScale.y;
-
-            //transform.localScale = new Vector3(transform.lossyScale.x * x, transform.lossyScale.y * y, 1);
-            //;
-
-            //transform.localScale = transform.parent.InverseTransformVector(worldScale);
         }
-        //Vector3 fixRotation = transform.eulerAngles;
-        //fixRotation.z = 0;
-        //if (currentPlatform != null)
-        //{
-        //    ////fixRotation.z += 0 - currentPlatform.transform.eulerAngles.z;
-        //    if (currentPlatform.transform.eulerAngles.z > 0)
-        //    {
-        //        Debug.LogError("Platform Euler z: " + currentPlatform.transform.eulerAngles.z);
-        //        Debug.LogError("Player Euler z: " + fixRotation.z);
-        //        //transform.localRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z - currentPlatform.transform.rotation.z);
-        //        //fixRotation.z += currentPlatform.transform.eulerAngles.z - 45;
-        //        //fixRotation.z = 0;
-        //    }
-        //    else
-        //    {
-        //        //fixRotation.z = 0;
-        //        //transform.localRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z - currentPlatform.transform.rotation.z);
-        //        //fixRotation.z -= Mathf.Abs(45 - currentPlatform.transform.eulerAngles.z);
-        //    }
-
-        //    transform.eulerAngles = fixRotation;
-        //}
-
     }
     public void SetRotation()
     {
@@ -327,6 +281,9 @@ public class Player : MonoBehaviour
                     Debug.LogError("Moving");
                     rb.isKinematic = false;
                     rb.velocity = Vector2.zero;
+                    break;
+                case PlayerState.PLAYER_END_GAME_START:
+                    rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                     break;
             }
         }
@@ -493,10 +450,14 @@ public class Player : MonoBehaviour
         return onDiagonalPlatform;
     }
 
+    public void LoadEndCredits()
+    {
+        PlayerPrefs.SetInt("LoadCredits", 1);
+        SceneManager.LoadScene(MainMenuScene, LoadSceneMode.Single);
+    }
+
     void HandleInput()
     {
-        
-
         //Debug.Log("Input");
         //for when player is reading tutorials
         if (isReading)
@@ -510,8 +471,9 @@ public class Player : MonoBehaviour
                     isReading = false;
                     if (finalDialogue)
                     {
-                        PlayerPrefs.SetInt("LoadCredits", 1);
-                        SceneManager.LoadScene(MainMenuScene, LoadSceneMode.Single);
+                        Debug.LogError("END");
+                        playerState = PlayerState.PLAYER_END_GAME_START;
+                        animationMovement = true;
                     }
                     PlayerControlsStatus(true);
                 }
