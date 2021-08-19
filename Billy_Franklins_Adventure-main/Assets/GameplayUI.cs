@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameplayUI : MonoBehaviour
 {
@@ -34,7 +35,10 @@ public class GameplayUI : MonoBehaviour
     private float fadeOutRate = 0.2f;
     [SerializeField]
     private float fadeInRate = 0.2f;
+    [SerializeField]
+    private float fadeInTextRate = 0.1f;
     private float currentAlpha = 0.0f;
+    private float currntTextAlpha = 0.0f;
     private PlayerGFX playerGFX;
     private Player player;
 
@@ -124,4 +128,20 @@ public class GameplayUI : MonoBehaviour
         endText.SetActive(enabled);
     }
 
+    public void FadeInText()
+    {
+        StartCoroutine(StartFadeInText());
+    }
+
+    private IEnumerator StartFadeInText()
+    {
+        while (currntTextAlpha >= 0)
+        {
+            Color newColor = fadeOutImage.color;
+            newColor.a = currntTextAlpha += fadeInTextRate * Time.deltaTime;
+            endText.GetComponent<TextMeshProUGUI>().color = newColor;
+            yield return null;
+        }
+        FindObjectOfType<CheckPointSystem>().PlayerDeathLoadLevel();
+    }
 }

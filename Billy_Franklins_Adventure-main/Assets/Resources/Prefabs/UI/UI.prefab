@@ -757,6 +757,7 @@ MonoBehaviour:
   endText: {fileID: 9138062767736484214}
   fadeOutRate: 0.8
   fadeInRate: 1.5
+  fadeInTextRate: 1
 --- !u!95 &8919046937132545419
 Animator:
   serializedVersion: 3

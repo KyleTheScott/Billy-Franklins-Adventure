@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D))]
 [DefaultExecutionOrder(-100)] //ensure this script runs before all other player scripts to prevent laggy input
@@ -450,12 +451,6 @@ public class Player : MonoBehaviour
         return onDiagonalPlatform;
     }
 
-    public void LoadEndCredits()
-    {
-        PlayerPrefs.SetInt("LoadCredits", 1);
-        SceneManager.LoadScene(MainMenuScene, LoadSceneMode.Single);
-    }
-
     void HandleInput()
     {
         //Debug.Log("Input");
@@ -473,6 +468,8 @@ public class Player : MonoBehaviour
                     {
                         Debug.LogError("END");
                         playerState = PlayerState.PLAYER_END_GAME_START;
+                        FindObjectOfType<CinemachineBrain>().enabled = false;
+                        PlayerPrefs.SetInt("LoadCredits", 1);
                         animationMovement = true;
                     }
                     PlayerControlsStatus(true);
