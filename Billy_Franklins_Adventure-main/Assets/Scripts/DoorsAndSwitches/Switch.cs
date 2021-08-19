@@ -37,6 +37,7 @@ public class Switch : MonoBehaviour, IInteractable
     //sets whether the switch is highlighted or not
     public void SetHighlighted(bool state)
     {
+        Debug.LogError("Highlight" + state);
         highlight.SetActive(state);
     }
 
