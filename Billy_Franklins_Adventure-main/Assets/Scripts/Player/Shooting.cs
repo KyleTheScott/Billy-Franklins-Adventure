@@ -329,21 +329,17 @@ public class Shooting : MonoBehaviour
                     if (loadedProjectile != null)
                     {
                         //Debug.Log("Shoot");
-
-                            //    loadedProjectile.SetProjectileDirection(lastShootingLine);
-                            //    loadedProjectile.GetComponent<Collider2D>().enabled = true;
-                            //    loadedProjectile.SetProjectileTarget(lightningTargetPos);
-                            //    StopAiming();
+                        //loadedProjectile.SetProjectileDirection(lastShootingLine);
+                        //loadedProjectile.GetComponent<Collider2D>().enabled = true;
+                        //loadedProjectile.SetProjectileTarget(lightningTargetPos);
+                        //StopAiming();
                         playerGFX.SetAnimation(16);
                         player.SetAnimationMovement(true);
-                        //Can't shoot projectile continousely
+                        //Can't shoot projectile continuously
                         //canShoot = false;
-
                         //Set projectile's parent to player
                         //loadedProjectile.transform.SetParent(null);
                         //loadedProjectile.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-
-                        
                     }
                 }
                 else if (Input.GetMouseButtonDown(1))
@@ -388,6 +384,8 @@ public class Shooting : MonoBehaviour
         lightning.SetStartPosition(lightningStartPosition.transform.position);
         lightning.SetTargetPosition(lightningTargetPos);
         lightning.SetShootLightning(true);
+        Debug.LogError("Shooting Start");
+
     }
 
     public void StopShooting()

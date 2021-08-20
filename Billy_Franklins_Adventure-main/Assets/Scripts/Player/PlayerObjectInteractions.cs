@@ -46,7 +46,7 @@ public class PlayerObjectInteractions : MonoBehaviour
         {
             if (!currentToggleObject.CompareTag("Switch"))
             {
-                Debug.LogError("highlight Set interacting");
+                //Debug.LogError("highlight Set interacting");
                 currentToggleObject.GetComponent<IInteractable>().SetHighlighted(state);
             }
         }
@@ -83,7 +83,7 @@ public class PlayerObjectInteractions : MonoBehaviour
                 {
                     togglePos++;
                 }
-                Debug.LogError("Toggle highlight");
+                //Debug.LogError("Toggle highlight");
                 currentToggleObject.GetComponent<IInteractable>().SetHighlighted(false);
                 currentToggleObject = toggleObjects[togglePos];
                 if (currentToggleObject.GetComponent<Collider2D>().CompareTag("Metal"))
@@ -149,7 +149,7 @@ public class PlayerObjectInteractions : MonoBehaviour
     {
         if (currentToggleObject != null)
         {
-            Debug.LogError("Highlight off");
+            //Debug.LogError("Highlight off");
             currentToggleObject.GetComponent<IInteractable>().SetHighlighted(false);
         }
         currentToggleObject = currentObject;
@@ -315,7 +315,7 @@ public class PlayerObjectInteractions : MonoBehaviour
                     {
                         if (toggleObjects[i] == currentToggleObject)
                         {
-                            Debug.LogError("highlight false");
+                            //Debug.LogError("highlight false");
                             toggleObjects[i].GetComponent<IInteractable>().SetHighlighted(false);
                             interacting = false;
                             DisconnectMetal();
@@ -328,7 +328,7 @@ public class PlayerObjectInteractions : MonoBehaviour
                         }
                         else
                         {
-                            Debug.LogError("highlight false");
+                            //Debug.LogError("highlight false");
                             toggleObjects[i].GetComponent<IInteractable>().SetHighlighted(false);
                             toggleObjects.RemoveAt(i);
                             if (toggleObjects.Count < 1)
@@ -345,7 +345,7 @@ public class PlayerObjectInteractions : MonoBehaviour
                     {
                         if (toggleObjects[i] == currentToggleObject)
                         {
-                            Debug.LogError("highlight false");
+                            //Debug.LogError("highlight false");
                             toggleObjects[i].GetComponent<IInteractable>().SetHighlighted(false);
                             interacting = false;
                             ChangeToggleObject();
@@ -357,7 +357,7 @@ public class PlayerObjectInteractions : MonoBehaviour
                         }
                         else
                         {
-                            Debug.LogError("highlight false");
+                            //Debug.LogError("highlight false");
                             toggleObjects[i].GetComponent<IInteractable>().SetHighlighted(false);
                             toggleObjects.RemoveAt(i);
                             if (toggleObjects.Count < 1)

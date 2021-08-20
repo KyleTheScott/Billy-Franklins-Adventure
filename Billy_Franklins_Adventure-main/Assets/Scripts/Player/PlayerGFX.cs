@@ -511,6 +511,7 @@ public class PlayerGFX : MonoBehaviour
             playerAnimator.SetInteger("PlayerAnimState", 1);
             lampIsOn = false;
             player.SetAnimationMovement(false);
+            Debug.LogError("Shooting end");
         }
     }
 }
