@@ -152,7 +152,7 @@ public class Water : MonoBehaviour, IElectrifiable
             foreach (GameObject l in lanternInWater)
             {
                 l.GetComponent<Lantern>().LanternToggle();
-                GlobalGameController.instance.IncreaseCurrentLitLanternNum();
+                //GlobalGameController.instance.IncreaseCurrentLitLanternNum();
             }
         }
     }

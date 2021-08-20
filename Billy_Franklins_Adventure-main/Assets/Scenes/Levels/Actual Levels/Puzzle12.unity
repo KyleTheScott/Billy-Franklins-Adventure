@@ -3515,6 +3515,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6174799480970443163, guid: 23310605dced4cf4f906488abe1ef7fc, type: 3}
+      propertyPath: lanternInWater.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174799480970443163, guid: 23310605dced4cf4f906488abe1ef7fc, type: 3}
       propertyPath: lanternInWater.Array.data[0]
       value: 
       objectReference: {fileID: 999481232}
@@ -7767,7 +7771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playersNewMaxCharge: 4
-  lanternNum: 4
+  lanternNum: 5
   lanternLitNum: 0
   playerSpawnPoint: {fileID: 233626037}
   playerPrefab: {fileID: 1596798624625240177, guid: 6a6b16f17162f084987c80e001fb2ead, type: 3}

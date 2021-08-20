@@ -757,6 +757,7 @@ public class Player : MonoBehaviour
                             if (comp.GetComponent<Collider2D>().CompareTag("Lantern") ||
                                 comp.GetComponent<Collider2D>().CompareTag("Switch"))
                             {
+                                PlayerObjectInteractions.playerObjectIInstance.SetCurrentHighLighted(false);
                                 playerState = PlayerState.INTERACT;
                             }
                             
@@ -774,12 +775,13 @@ public class Player : MonoBehaviour
                                         rb.isKinematic = true;
                                         currentMovingObject = null;
                                         droppingMetal = true;
+                                        PlayerObjectInteractions.playerObjectIInstance.SetCurrentHighLighted(false);
                                     }
                                     else
                                     {
                                         Debug.Log("Wasn't moving and now is moving");
                                         StartMovingMetal(comp);
-
+                                        PlayerObjectInteractions.playerObjectIInstance.SetCurrentHighLighted(true);
                                     }
                                     InteractWithObject();
                                     PlayerObjectInteractions.playerObjectIInstance.SetInteracting(true);
@@ -822,7 +824,9 @@ public class Player : MonoBehaviour
     {
         InteractWithObject();
         charges.UseLightCharges();
+        
         PlayerObjectInteractions.playerObjectIInstance.SetInteracting(true);
+        
     }
 
 

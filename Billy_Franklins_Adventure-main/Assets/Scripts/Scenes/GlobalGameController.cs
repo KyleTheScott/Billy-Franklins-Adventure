@@ -32,6 +32,7 @@ public class GlobalGameController : MonoBehaviour
 
     public void SetLanternAmount(int LanternNum, int CurrentLitLanternNum = 0)
     {
+        Debug.Log(LanternNum + " " + CurrentLitLanternNum );
         currentLitLanternNum = CurrentLitLanternNum;
         maxLitLanternNum = LanternNum;
     }
@@ -39,6 +40,7 @@ public class GlobalGameController : MonoBehaviour
     public void IncreaseCurrentLitLanternNum()
     {
         currentLitLanternNum += 1;
+        Debug.Log("current lit: " + currentLitLanternNum);
 
         //When all latern is on...
         if(currentLitLanternNum == maxLitLanternNum)

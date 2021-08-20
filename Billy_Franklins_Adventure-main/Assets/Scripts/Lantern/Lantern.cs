@@ -92,7 +92,7 @@ public class Lantern : MonoBehaviour, IInteractable
             {
                 Debug.LogWarning("Light2D is null, Check Lantern");
             }
-
+            Debug.Log("lantern: " + gameObject.name);
             //Increase current lit lantern number
             GlobalGameController.instance.IncreaseCurrentLitLanternNum();
         }
