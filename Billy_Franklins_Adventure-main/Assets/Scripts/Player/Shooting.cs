@@ -17,7 +17,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] Vector3 shootingLine = new Vector3(1, 0, 0); //Direction for loaded projectile
     [SerializeField] Vector3 lastShootingLine = new Vector3(1, 0, 0);
     bool IsShootingLineInAngle = false;
-    [SerializeField] LayerMask aimLineCollisionMask; //should be tile or obstacle
+    [SerializeField] LayerMask aimLineCollisionMask; 
     [SerializeField] Transform aimCone = null;
 
     [SerializeField] private bool firstAiming = true;
