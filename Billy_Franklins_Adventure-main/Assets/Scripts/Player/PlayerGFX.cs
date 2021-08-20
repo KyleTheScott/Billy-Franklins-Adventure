@@ -213,31 +213,53 @@ public class PlayerGFX : MonoBehaviour
                     else
                     {
                         player.SetKinematic(false);
-                        if (goingToRightMetal)
+                        //player is walking right to metal
+                        if (isFacingRight)
                         {
-
-                            if (Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
-                                .GetMetalRightPos().transform.position.x)) < .1f)
+                            //walking to right metal
+                            if (goingToRightMetal)
                             {
-                                player.SetPlayerState(Player.PlayerState.MOVING_OBJECT_LIFTING);
-                                playerAnimator.SetInteger("PlayerAnimState", 9);
-                                if (!isFacingRight)
+                                if (PlayerObjectInteractions.playerObjectIInstance.GetMetalRightPos().transform.position.x -
+                                    player.transform.position.x <= 0)
                                 {
-                                    player.SetMovingRight(true);
+                                    player.SetPlayerState(Player.PlayerState.MOVING_OBJECT_LIFTING);
+                                    playerAnimator.SetInteger("PlayerAnimState", 9);
                                 }
-
+                            }
+                            //walking to left metal
+                            else
+                            {
+                                if (PlayerObjectInteractions.playerObjectIInstance.GetMetalLeftPos().transform.position.x -
+                                    player.transform.position.x <= 0)
+                                {
+                                    player.SetPlayerState(Player.PlayerState.MOVING_OBJECT_LIFTING);
+                                    playerAnimator.SetInteger("PlayerAnimState", 9);
+                                    player.SetMovingRight(false);
+                                }
                             }
                         }
+                        //player is walking left to metal
                         else
                         {
-                            if (Mathf.Abs(player.transform.position.x - (PlayerObjectInteractions.playerObjectIInstance
-                                .GetMetalLeftPos().transform.position.x)) < .1f)
+                            //walking to right metal
+                            if (goingToRightMetal)
                             {
-                                player.SetPlayerState(Player.PlayerState.MOVING_OBJECT_LIFTING);
-                                playerAnimator.SetInteger("PlayerAnimState", 9);
-                                if (isFacingRight)
+                                if (player.transform.position.x -
+                                    PlayerObjectInteractions.playerObjectIInstance.GetMetalRightPos().transform.position.x <= 0)
                                 {
-                                    player.SetMovingRight(false);
+                                    player.SetPlayerState(Player.PlayerState.MOVING_OBJECT_LIFTING);
+                                    playerAnimator.SetInteger("PlayerAnimState", 9);
+                                    player.SetMovingRight(true);
+                                }
+                            }
+                            //walking to left metal
+                            else
+                            {
+                                if (player.transform.position.x -
+                                    PlayerObjectInteractions.playerObjectIInstance.GetMetalLeftPos().transform.position.x <= 0)
+                                {
+                                    player.SetPlayerState(Player.PlayerState.MOVING_OBJECT_LIFTING);
+                                    playerAnimator.SetInteger("PlayerAnimState", 9);
                                 }
                             }
                         }
