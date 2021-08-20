@@ -115,6 +115,7 @@ public class Bucket : MonoBehaviour, IInteractable
 
     public void SetHighlighted(bool state)
     {
+        Debug.LogError("highlight bucket: " + state);
         highlight.SetActive(state);
     }
 }
