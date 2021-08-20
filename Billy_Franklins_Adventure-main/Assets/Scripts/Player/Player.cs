@@ -256,10 +256,10 @@ public class Player : MonoBehaviour
         //for if an automated animation is happening
         if (animationMovement)
         {
-            if (playerState != PlayerState.MOVING_OBJECT)
-            {
-                rb.isKinematic = false;
-            }
+            //if (playerState != PlayerState.MOVING_OBJECT && shooting.GetCanShoot())
+            //{
+            //    rb.isKinematic = false;
+            //}
 
             switch (playerState)
             {
@@ -274,12 +274,12 @@ public class Player : MonoBehaviour
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                     break;
                 case PlayerState.MOVING_OBJECT:
-                    Debug.LogError("Moving");
+                    //Debug.LogError("Moving");
                     animationMovement = false;
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
                     break;
                 case PlayerState.MOVING_OBJECT_LIFTING:
-                    Debug.LogError("Moving");
+                    //Debug.LogError("Moving");
                     rb.isKinematic = false;
                     rb.velocity = Vector2.zero;
                     break;
@@ -424,8 +424,6 @@ public class Player : MonoBehaviour
                 jumpFixTimer = 0;
             }
         }
-
-     
         if (!isReading && dialogue != null && dialogue?.sentences.Length != 0 && IsPlayerOnGround())
         {
             isReading = true;
@@ -433,9 +431,6 @@ public class Player : MonoBehaviour
             PlayerControlsStatus(false);
             dialogue = null;
         }
-        
-
-
         //player input
         HandleInput();
     }
@@ -767,7 +762,7 @@ public class Player : MonoBehaviour
                                 {
                                     if (comp.GetComponent<Metal>().IsMoving())
                                     {
-                                        Debug.Log("Was moving and now isn't moving");
+                                        //Debug.Log("Was moving and now isn't moving");
                                         movingMetal = false;
                                         playerState = PlayerState.MOVING_OBJECT_END;
                                         metalMovingEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
@@ -779,7 +774,7 @@ public class Player : MonoBehaviour
                                     }
                                     else
                                     {
-                                        Debug.Log("Wasn't moving and now is moving");
+                                        //Debug.Log("Wasn't moving and now is moving");
                                         StartMovingMetal(comp);
                                         PlayerObjectInteractions.playerObjectIInstance.SetCurrentHighLighted(true);
                                     }
@@ -819,7 +814,6 @@ public class Player : MonoBehaviour
         
     }
 
-
     public void ElectrifyInteract()
     {
         InteractWithObject();
@@ -828,7 +822,6 @@ public class Player : MonoBehaviour
         PlayerObjectInteractions.playerObjectIInstance.SetInteracting(true);
         
     }
-
 
     public void StartJump()
     {
@@ -1247,6 +1240,7 @@ public class Player : MonoBehaviour
 
     public void StartPlayerMovement()
     {
+        //Debug.LogError("Stop player movement: " + stoppingPlayerMovement);
         stoppingPlayerMovement = false;
     }
 
