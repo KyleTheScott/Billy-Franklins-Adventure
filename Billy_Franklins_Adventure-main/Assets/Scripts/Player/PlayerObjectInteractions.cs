@@ -27,31 +27,27 @@ public class PlayerObjectInteractions : MonoBehaviour
     [SerializeField] private GameObject metalLeftPos;
     [SerializeField] private GameObject metalRightPos;
     [SerializeField] private Player player;
-
-
-
     [SerializeField] private int togglePos = 0; // position of selected interactable object in the list of interactable objects 
-
     [SerializeField] private bool interacting = false;
-
-
-
-
 
     void Start()
     {
         player = FindObjectOfType<Player>();
-
     }
 
     public void SetInteracting(bool state)
     {
         interacting = state;
+    }
+
+    public void SetCurrentHighLighted(bool state)
+    {
         if (currentToggleObject != null)
         {
             if (!currentToggleObject.CompareTag("Switch"))
             {
-                currentToggleObject.GetComponent<IInteractable>().SetHighlighted(false);
+                Debug.LogError("highlight Set interacting");
+                currentToggleObject.GetComponent<IInteractable>().SetHighlighted(state);
             }
         }
     }
@@ -79,8 +75,6 @@ public class PlayerObjectInteractions : MonoBehaviour
                         togglePos = i;
                     }
                 }
-
-
                 if (togglePos == toggleObjects.Count - 1)
                 {
                     togglePos = 0;
@@ -89,7 +83,7 @@ public class PlayerObjectInteractions : MonoBehaviour
                 {
                     togglePos++;
                 }
-
+                Debug.LogError("Toggle highlight");
                 currentToggleObject.GetComponent<IInteractable>().SetHighlighted(false);
                 currentToggleObject = toggleObjects[togglePos];
                 if (currentToggleObject.GetComponent<Collider2D>().CompareTag("Metal"))
@@ -155,6 +149,7 @@ public class PlayerObjectInteractions : MonoBehaviour
     {
         if (currentToggleObject != null)
         {
+            Debug.LogError("Highlight off");
             currentToggleObject.GetComponent<IInteractable>().SetHighlighted(false);
         }
         currentToggleObject = currentObject;
@@ -207,8 +202,18 @@ public class PlayerObjectInteractions : MonoBehaviour
     {
         ChangeToggleObject();
         toggleObjects.Remove(obj);
+        FindNewToggleObject();
     }
 
+    public void FindNewToggleObject()
+    {
+        if (toggleObjects.Count >= 1)
+        {
+            SetNewToggleObjectToCurrent(toggleObjects[0]);
+            Debug.LogError("New highlight");
+            toggleObjects[0].GetComponent<IInteractable>().SetHighlighted(true);
+        }
+    }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -310,6 +315,7 @@ public class PlayerObjectInteractions : MonoBehaviour
                     {
                         if (toggleObjects[i] == currentToggleObject)
                         {
+                            Debug.LogError("highlight false");
                             toggleObjects[i].GetComponent<IInteractable>().SetHighlighted(false);
                             interacting = false;
                             DisconnectMetal();
@@ -322,6 +328,7 @@ public class PlayerObjectInteractions : MonoBehaviour
                         }
                         else
                         {
+                            Debug.LogError("highlight false");
                             toggleObjects[i].GetComponent<IInteractable>().SetHighlighted(false);
                             toggleObjects.RemoveAt(i);
                             if (toggleObjects.Count < 1)
@@ -338,7 +345,7 @@ public class PlayerObjectInteractions : MonoBehaviour
                     {
                         if (toggleObjects[i] == currentToggleObject)
                         {
-                            Debug.LogError("Highlight 1");
+                            Debug.LogError("highlight false");
                             toggleObjects[i].GetComponent<IInteractable>().SetHighlighted(false);
                             interacting = false;
                             ChangeToggleObject();
@@ -350,7 +357,7 @@ public class PlayerObjectInteractions : MonoBehaviour
                         }
                         else
                         {
-                            Debug.LogError("Highlight 2");
+                            Debug.LogError("highlight false");
                             toggleObjects[i].GetComponent<IInteractable>().SetHighlighted(false);
                             toggleObjects.RemoveAt(i);
                             if (toggleObjects.Count < 1)
@@ -361,32 +368,6 @@ public class PlayerObjectInteractions : MonoBehaviour
                     }
                 }
             }
-           
-            //if (toggleObjects.Count >= 1 && currentToggleObject == null)
-            //{
-            //    if (toggleObjects[0].CompareTag("Bucket"))
-            //    {
-            //        if (!toggleObjects[0].GetComponent<Bucket>().GetTippedOver())
-            //        {
-            //            togglePos = 0;
-            //            currentToggleObject = toggleObjects[togglePos];
-            //            if (currentToggleObject != null)
-            //            {
-            //                currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
-            //            }
-            //        }
-            //    }
-            //    else
-            //    {
-            //        togglePos = 0;
-            //        currentToggleObject = toggleObjects[togglePos];
-            //        if (currentToggleObject != null)
-            //        {
-            //            currentToggleObject.GetComponent<IInteractable>().SetHighlighted(true);
-            //        }
-            //    }
-               
-            //}
         }
     }
 }
