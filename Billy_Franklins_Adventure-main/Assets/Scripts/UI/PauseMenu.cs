@@ -19,6 +19,11 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         Player player = FindObjectOfType<Player>();
         player.ClosePauseMenu();
+        PlayerGFX playerGFX = FindObjectOfType<PlayerGFX>(); 
+        if (playerGFX.GetAnimation() == 20)
+        {
+            playerGFX.SetAnimation(3);
+        }
 
     }
 
@@ -42,6 +47,8 @@ public class PauseMenu : MonoBehaviour
         FindObjectOfType<MusicController>().PlayMenuSelect();
         Time.timeScale = 1;
         FindObjectOfType<Player>().GetComponent<Player>().ClosePauseMenu();
+        
+        
         FindObjectOfType<Player>().GetComponent<Player>().PlayerControlsStatus(false);
         FindObjectOfType<Player>().StartCoroutine(ReloadCheckpointFadeOut());
     }
@@ -51,6 +58,7 @@ public class PauseMenu : MonoBehaviour
         FindObjectOfType<Player>().GetComponent<Player>().PlayerControlsStatus(false);
         GameplayUI.instanceGameplayUI.FadeOut();
         yield return new WaitForSeconds(2.0f);
+        FindObjectOfType<PlayerGFX>().SetAnimation(0);
         checkPointSystem.PlayerDeath();
     }
 
