@@ -70,7 +70,7 @@ public class Charges : MonoBehaviour
     }
 
 
-
+    //handles using a charge from interacting or shooting lightning
     public void UseLightCharges()
     {
         if (lightCharges <= 0)
@@ -103,14 +103,13 @@ public class Charges : MonoBehaviour
             StartCoroutine(WaitForLatern());
         }
     }
-
+    //used for a delay before out of charges death
     private IEnumerator WaitForLatern()
     {
         yield return new WaitForSeconds(1.0f);
         
         if (!lampOn)
         {
-            //Debug.LogError("Out of charges");
             FindObjectOfType<Player>().StartPlayerOutOfChargesDeath();
            
         }

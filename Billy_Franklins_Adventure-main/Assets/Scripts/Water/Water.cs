@@ -8,14 +8,15 @@ public class Water : MonoBehaviour, IElectrifiable
     [Header("Electrical")]
     [SerializeField] private bool electrified = false;
     [SerializeField] List<GameObject> connectedGameObjects = new List<GameObject>();
+    [SerializeField] private bool oldElectrifiable;
 
     [Header("General")]
     [SerializeField] private BoxCollider2D waterCollider;
-    [SerializeField] private bool colliderStayCheck = true;
+    [SerializeField] private bool colliderStayCheck = true; // used for collision when water starts in a bucket
     [SerializeField] private bool waterByItself;
     [SerializeField] private List<GameObject> lanternInWater = new List<GameObject>();
     private Animator waterAnimator;
-    [SerializeField] private bool oldElectrifiable;
+    
     [SerializeField] private bool started;
     [SerializeField] private bool starting;
     [SerializeField] private bool lanternsRightOfBucket;
@@ -36,32 +37,16 @@ public class Water : MonoBehaviour, IElectrifiable
 
     [SerializeField] private int groupNum = 0;
 
-    //[SerializeField] private ElectricityController electricityController;
-
-    //[SerializeField] private bool startingOut = true;
-    //[SerializeField] private bool starting = false;
-    //[SerializeField] private bool started = false;
-
-
-    //public void SetStarted()
-    //{
-    //    started = true;
-    //}
-    //public bool GetStarted()
-    //{
-    //    return started;
-    //}
-
+    //check if water is in the last level when switching levels and electrifiables
     public bool IsOldElectrifiable()
     {
         return oldElectrifiable;
     }
-
+    //sets water so it will stay in last level when the new level is loaded
     public void SetIsOldElectrifiable(bool state)
     {
         oldElectrifiable = state;
     }
-
 
     void Start()
     {
@@ -74,27 +59,7 @@ public class Water : MonoBehaviour, IElectrifiable
         electricWaterEvent = FMODUnity.RuntimeManager.CreateInstance(electricWaterEventRef);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(electricWaterEvent, transform, GetComponent<Rigidbody>());
         electricWaterEvent.setVolume(electricWaterVolume);
-
-        //int currentSceneNum = SceneManager.sceneCount - 1;
-        //string sceneName = "root_" + SceneManager.GetSceneAt(SceneManager.sceneCount - 1).name;
-
-        //GameObject sceneObject = GameObject.Find(sceneName);
-        //Debug.LogError("String" + sceneName + sceneObject.name);
-        //foreach (Transform obj in sceneObject.transform)
-        //{
-        //    if (obj.gameObject.name == "ElectricityController")
-        //    {
-        //        electricityController = obj.gameObject.GetComponent<ElectricityController>();
-        //        break;
-        //    }
-        //}
-        //starting = true;
     }
-    //public void SetCollider()
-    //{
-
-    //}
-
 
     //this is called from the bucket and spills the water out of the tipped bucket
     public void SpillWater(bool facingRight)
@@ -152,7 +117,6 @@ public class Water : MonoBehaviour, IElectrifiable
             foreach (GameObject l in lanternInWater)
             {
                 l.GetComponent<Lantern>().LanternToggle();
-                //GlobalGameController.instance.IncreaseCurrentLitLanternNum();
             }
         }
     }
@@ -169,7 +133,7 @@ public class Water : MonoBehaviour, IElectrifiable
             return connectedGameObjects;
         }
     }
-
+    //electrify objects directly connected to this water
     public void ElectrifyConnectedObjects()
     {
         foreach (GameObject obj in connectedGameObjects)

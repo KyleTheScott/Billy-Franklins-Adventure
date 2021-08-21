@@ -58,15 +58,7 @@ public class Player : MonoBehaviour
     public PlayerState PlayersState => playerState;
     [SerializeField] bool debugMode = false;
 
-    //public enum PlayerInLevelState
-    //{
-    //    IN_LEVEL,
-    //    CHANGING_LEVEL,
-    //    LEVEL_CHANGE
-    //}
-
-    //[SerializeField] private PlayerInLevelState playerInLevelState = PlayerInLevelState.IN_LEVEL;
-    [SerializeField] private bool playerInLevel;
+    [SerializeField] private bool playerInLevel; // used during level loading
 
 
     [Header("Movement")] [SerializeField] private bool onGround = true; // keeps track if player is  on ground
@@ -158,52 +150,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private string MainMenuScene;
 
-    public void SetPlayerKiteLightning()
-    {
-        StartCoroutine(WaitTillOnGround());
-    }
-    //public 
-
-    IEnumerator WaitTillOnGround()
-    {
-        while (!IsPlayerOnGround())
-        {
-            yield return null;
-        }
-       
-        Debug.Log("On Ground Start");
-        SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
-        SetAnimationMovement(true);
-        SetPlayerInLevel(true);
-    }
-
-    public void SetPlayerInLevel(bool state)
-    {
-        playerInLevel = state;
-    }
-
-    public bool GetPlayerInLevel()
-    {
-        return playerInLevel;
-    }
-
-    public void SetCurrentPlatform(GameObject obj)
-    {
-        //rotation = transform.rotation;
-        currentPlatform = obj;
-        if (onDiagonalPlatform)
-        {
-            Vector3 fixRotation = transform.eulerAngles;
-            fixRotation.z = 0;
-            transform.eulerAngles = fixRotation;
-        }
-    }
-    public void SetRotation()
-    {
-        Vector3 fixRotation = transform.eulerAngles;
-        fixRotation.z = 0;
-        transform.eulerAngles = fixRotation;
-    }
+   
 
 
 
@@ -307,7 +254,6 @@ public class Player : MonoBehaviour
                     break;
                 //in the air of the jump
                 case PlayerState.JUMPING:
-                    //Debug.Log("Jumping");
                     if (rb.velocity.y > 0)
                     {
                         rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier * 1) * Time.deltaTime;
@@ -341,7 +287,6 @@ public class Player : MonoBehaviour
                     break;
                 //falling from a jump
                 case PlayerState.JUMP_FALLING:
-                    //Debug.Log("Falling");
                     rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier * 1) * Time.deltaTime;
                     if (moveVelocity != 0)
                     {
@@ -378,7 +323,6 @@ public class Player : MonoBehaviour
                     break;
                 case PlayerState.WALKING:
                     rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
-                    //Debug.Log(rb.velocity);
                     break;
                 //walking moving object
                 case PlayerState.MOVING_OBJECT:
@@ -436,16 +380,7 @@ public class Player : MonoBehaviour
         HandleInput();
     }
 
-    public void SetOnDiagonalPlatform(bool state)
-    {
-        onDiagonalPlatform = state;
-        //worldScale = transform.localScale;
-    }
-
-    public bool GetOnDiagonalPlatform()
-    {
-        return onDiagonalPlatform;
-    }
+  
 
     void HandleInput()
     {
@@ -707,14 +642,8 @@ public class Player : MonoBehaviour
 
                     if (onGround)
                     {
-                        //jumpFix = true;
-                        //rb.isKinematic = true;
                         currentPlayerState = PlayerState.IDLE;
                         playerState = PlayerState.JUMP;
-                        //SetAnimationMovement(true);
-                        //rb.gravityScale = jumpGravity;
-                        //onGround = false;
-                        //FMODUnity.RuntimeManager.PlayOneShot(jumpSound, jumpSoundVolume);
                     }
                 }
             }
@@ -800,100 +729,46 @@ public class Player : MonoBehaviour
     // General player functions
     //-------------------------
 
+  
+
+
+
     public void StartPlayerOutOfChargesDeath()
     {
         
         playerState = PlayerState.PLAYER_DEATH_CHARGES_START;
-        
-        
     }
 
-    public void ElectrifyInteract()
+    public void SetPlayerKiteLightning()
     {
-        InteractWithObject();
-        charges.UseLightCharges();
-        
-        PlayerObjectInteractions.playerObjectIInstance.SetInteracting(true);
-        
+        StartCoroutine(WaitTillOnGround());
     }
+    //public 
 
-    public void StartJump()
+    IEnumerator WaitTillOnGround()
     {
-        if (playerGFX.GetFacingRight())
+        while (!IsPlayerOnGround())
         {
-            rb.velocity = new Vector2(jumpMoveSpeed, jumpForce);
-        }
-        else
-        {
-            rb.velocity = new Vector2(-jumpMoveSpeed, jumpForce);
-        }
-        //SetAnimationMovement(false);
-        playerState = PlayerState.JUMPING;
-        jumpFix = true;
-        rb.isKinematic = false;
-        //currentPlayerState = PlayerState.IDLE;
-        //playerState = PlayerState.JUMP;
-        rb.gravityScale = jumpGravity;
-        onGround = false;
-        FMODUnity.RuntimeManager.PlayOneShot(jumpSound, jumpSoundVolume);
-    }
-
-    public PlayerState GetPlayerState()
-    {
-        return playerState;
-    }
-    public void SetPlayerState(PlayerState state)
-    {
-        playerState = state;
-
-        switch (playerState)
-        {
-            case PlayerState.IDLE:
-            case PlayerState.KICK_BUCKET:
-            case PlayerState.MOVING_OBJECT:
-                rb.velocity = Vector2.zero;
-                rb.isKinematic = true;
-                //Debug.Log("Player State: " + rb.velocity);
-                currentPlayerState = playerState;
-                break;
-        }
-    }
-    //used to make player stop when idle so they don't slide
-    public void SetKinematic(bool state)
-    {
-        rb.isKinematic = state;
-    }
-
-    //used to change direction
-    public void SetMovingRight(bool state)
-    {
-        if (state && !playerGFX.GetFacingRight())
-        {
-            playerGFX.SetFacingRight(true);
-            transform.Rotate(0f, 180f, 0f);
-            shooting.SetLastShootingLine(1);
-        }
-        else if (!state && playerGFX.GetFacingRight())
-        {
-            playerGFX.SetFacingRight(false);
-            transform.Rotate(0f, 180f, 0f);
-            shooting.SetLastShootingLine(-1);
+            yield return null;
         }
 
-        if (playerGFX.GetFacingRight())
-        {
-            moveVelocity = moveSpeed;
-        }
-        else
-        {
-            moveVelocity = 0f - moveSpeed;
-        }
+        Debug.Log("On Ground Start");
+        SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
+        SetAnimationMovement(true);
+        SetPlayerInLevel(true);
     }
 
-    public bool IsPlayerOnGround()
+    public void SetPlayerInLevel(bool state)
     {
-        return onGround;
+        playerInLevel = state;
     }
+
+    public bool GetPlayerInLevel()
+    {
+        return playerInLevel;
+    }
+
+   
 
     //private void OnDrawGizmosSelected()
     //{
@@ -917,6 +792,15 @@ public class Player : MonoBehaviour
             comp.GetComponent<IInteractable>().Interact(); // call interact function
         }
     }
+    public void ElectrifyInteract()
+    {
+        InteractWithObject();
+        charges.UseLightCharges();
+
+        PlayerObjectInteractions.playerObjectIInstance.SetInteracting(true);
+
+    }
+
 
     //----------------------------
     // Animation related functions
@@ -1171,6 +1055,117 @@ public class Player : MonoBehaviour
         rb.isKinematic = false;
         fallFixTimer = 0;
         onGround = false;
+    }
+
+    //jumping
+    public void StartJump()
+    {
+        if (playerGFX.GetFacingRight())
+        {
+            rb.velocity = new Vector2(jumpMoveSpeed, jumpForce);
+        }
+        else
+        {
+            rb.velocity = new Vector2(-jumpMoveSpeed, jumpForce);
+        }
+        //SetAnimationMovement(false);
+        playerState = PlayerState.JUMPING;
+        jumpFix = true;
+        rb.isKinematic = false;
+        //currentPlayerState = PlayerState.IDLE;
+        //playerState = PlayerState.JUMP;
+        rb.gravityScale = jumpGravity;
+        onGround = false;
+        FMODUnity.RuntimeManager.PlayOneShot(jumpSound, jumpSoundVolume);
+    }
+
+    //movement
+    public PlayerState GetPlayerState()
+    {
+        return playerState;
+    }
+    public void SetPlayerState(PlayerState state)
+    {
+        playerState = state;
+
+        switch (playerState)
+        {
+            case PlayerState.IDLE:
+            case PlayerState.KICK_BUCKET:
+            case PlayerState.MOVING_OBJECT:
+                rb.velocity = Vector2.zero;
+                rb.isKinematic = true;
+                //Debug.Log("Player State: " + rb.velocity);
+                currentPlayerState = playerState;
+                break;
+        }
+    }
+    //used to make player stop when idle so they don't slide
+    public void SetKinematic(bool state)
+    {
+        rb.isKinematic = state;
+    }
+
+    //used to change direction
+    public void SetMovingRight(bool state)
+    {
+        if (state && !playerGFX.GetFacingRight())
+        {
+            playerGFX.SetFacingRight(true);
+            transform.Rotate(0f, 180f, 0f);
+            shooting.SetLastShootingLine(1);
+        }
+        else if (!state && playerGFX.GetFacingRight())
+        {
+            playerGFX.SetFacingRight(false);
+            transform.Rotate(0f, 180f, 0f);
+            shooting.SetLastShootingLine(-1);
+        }
+
+        if (playerGFX.GetFacingRight())
+        {
+            moveVelocity = moveSpeed;
+        }
+        else
+        {
+            moveVelocity = 0f - moveSpeed;
+        }
+    }
+
+    public bool IsPlayerOnGround()
+    {
+        return onGround;
+    }
+
+    //moving on platforms
+    public void SetCurrentPlatform(GameObject obj)
+    {
+        //rotation = transform.rotation;
+        currentPlatform = obj;
+        if (onDiagonalPlatform)
+        {
+            Vector3 fixRotation = transform.eulerAngles;
+            fixRotation.z = 0;
+            transform.eulerAngles = fixRotation;
+        }
+    }
+    public void SetRotation()
+    {
+        Vector3 fixRotation = transform.eulerAngles;
+        fixRotation.z = 0;
+        transform.eulerAngles = fixRotation;
+    }
+
+
+    //used to keep track of if the player is on diagonal platforms or not to change how the player moves on those surfaces
+    public void SetOnDiagonalPlatform(bool state)
+    {
+        onDiagonalPlatform = state;
+    }
+
+    public bool GetOnDiagonalPlatform()
+    {
+        return onDiagonalPlatform;
     }
 
     //-------------

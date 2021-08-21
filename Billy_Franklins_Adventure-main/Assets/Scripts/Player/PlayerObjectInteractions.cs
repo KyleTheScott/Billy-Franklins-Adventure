@@ -24,8 +24,8 @@ public class PlayerObjectInteractions : MonoBehaviour
 
     [SerializeField] private List<GameObject> toggleObjects = new List<GameObject>(); // list of interactable objects in interactable circle 
     [SerializeField] private GameObject currentToggleObject; // current selected interactable object in interactable circle
-    [SerializeField] private GameObject metalLeftPos;
-    [SerializeField] private GameObject metalRightPos;
+    [SerializeField] private GameObject metalLeftPos; // position the player walks toward on the left side of the metal    
+    [SerializeField] private GameObject metalRightPos; // position the player walks toward on right side of the metal 
     [SerializeField] private Player player;
     [SerializeField] private int togglePos = 0; // position of selected interactable object in the list of interactable objects 
     [SerializeField] private bool interacting = false;
@@ -35,11 +35,14 @@ public class PlayerObjectInteractions : MonoBehaviour
         player = FindObjectOfType<Player>();
     }
 
+    // sets if the player is in th middle of interacting with the current toggle object
     public void SetInteracting(bool state)
     {
         interacting = state;
     }
 
+    /*set the highlight of the current toggle object
+    */
     public void SetCurrentHighLighted(bool state)
     {
         if (currentToggleObject != null)
@@ -83,7 +86,6 @@ public class PlayerObjectInteractions : MonoBehaviour
                 {
                     togglePos++;
                 }
-                //Debug.LogError("Toggle highlight");
                 currentToggleObject.GetComponent<IInteractable>().SetHighlighted(false);
                 currentToggleObject = toggleObjects[togglePos];
                 if (currentToggleObject.GetComponent<Collider2D>().CompareTag("Metal"))
@@ -96,6 +98,7 @@ public class PlayerObjectInteractions : MonoBehaviour
         }
     }
 
+    //left side of the metal position that the player is walking toward
     public GameObject GetMetalLeftPos()
     {
         if (metalLeftPos == null)
@@ -105,6 +108,7 @@ public class PlayerObjectInteractions : MonoBehaviour
         return metalLeftPos;
     }
 
+    //right side of the metal position that the player is walking toward
     public GameObject GetMetalRightPos()
     {
         if (metalRightPos == null)
@@ -121,12 +125,12 @@ public class PlayerObjectInteractions : MonoBehaviour
         currentToggleObject.GetComponent<Metal>().ConnectMetalToPlayer();
     }
 
+    //set the left or right positions of the metal the player can walk toward to pick up
     private void SetMetalPos()
     {
         metalLeftPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointLeft();
         metalRightPos = currentToggleObject.GetComponent<Metal>().GetPickUpPointRight();
     }
-
 
     //returns selected object when interacting with interactable objects
     public GameObject GetCurrentObject()
@@ -198,6 +202,7 @@ public class PlayerObjectInteractions : MonoBehaviour
         metalRightPos = null;
     }
 
+    //remove a a certain toggle object and calls function the changes current toggle object if current toggle object is being removed
     public void DisconnectObject(GameObject obj)
     {
         ChangeToggleObject();
@@ -205,6 +210,7 @@ public class PlayerObjectInteractions : MonoBehaviour
         FindNewToggleObject();
     }
 
+    //highlight and set new current toggle object if there is one
     public void FindNewToggleObject()
     {
         if (toggleObjects.Count >= 1)
