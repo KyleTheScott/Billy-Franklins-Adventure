@@ -113,6 +113,7 @@ public class GameplayUI : MonoBehaviour
     {
         ResetFadeIn();
         StopAllCoroutines();
+        FindObjectOfType<Shooting>().StopAiming();
         StartCoroutine(StartFadeIn());
     }
 

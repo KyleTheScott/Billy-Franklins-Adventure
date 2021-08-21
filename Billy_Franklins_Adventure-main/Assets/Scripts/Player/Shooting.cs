@@ -384,7 +384,7 @@ public class Shooting : MonoBehaviour
         lightning.SetStartPosition(lightningStartPosition.transform.position);
         lightning.SetTargetPosition(lightningTargetPos);
         lightning.SetShootLightning(true);
-        Debug.LogError("Shooting Start");
+        //Debug.LogError("Shooting Start");
 
     }
 
@@ -395,7 +395,7 @@ public class Shooting : MonoBehaviour
     }
 
 
-    private void StopAiming()
+    public void StopAiming()
     {
         loadedProjectile = null;
         canShoot = false;
