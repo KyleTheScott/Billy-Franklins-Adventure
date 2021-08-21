@@ -44,9 +44,9 @@ public class HopFix : MonoBehaviour
                 player.GetComponent<Player>().LeavingTheGround();
             }
         }
+        //player is leaving diagonal platform so this makes the player a child of the diagonal platform
         if (collision.gameObject.layer == 19)
         {
-            //Debug.LogError("Player Diagonal");
             player.SetOnDiagonalPlatform(false);
             player.transform.parent = null;
             DontDestroyOnLoad(player);
@@ -54,9 +54,5 @@ public class HopFix : MonoBehaviour
             player.transform.localScale = new Vector3(1, 1, 1);
             
         }
-        
-
     }
-
-
 }

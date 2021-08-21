@@ -196,7 +196,7 @@ public class PlayerGFX : MonoBehaviour
 
             }
         }
-        //used for automated animations
+        //used for automated animations when animation movement is true in the player script
         else
         {
             switch (player.GetPlayerState())
@@ -313,7 +313,7 @@ public class PlayerGFX : MonoBehaviour
     // General functions 
     //------------------
 
-    //used if there is a situation where you have to set the animation state from another script
+    //used if there is a situation where you have to set or get the animation state from another script
     public void SetAnimation(int animNum)
     {
         playerAnimator.SetInteger("PlayerAnimState", animNum);
@@ -370,37 +370,13 @@ public class PlayerGFX : MonoBehaviour
         footstepScript.PlayerFootsteep();
     }
 
-    public void ElectricityDeathEnd()
-    {
-        //Debug.LogError("Death Working End");
-        FindObjectOfType<ObjectsCollision>().EmptyObjects();
-        checkPointSystem.PlayerDeath();
-    }
-
-    public void OutOfChargesDeathEnd()
-    {
-        //Debug.LogError("Death 2");
-        //Debug.LogError("Death animation");
-        FindObjectOfType<ObjectsCollision>().EmptyObjects();
-        checkPointSystem.PlayerDeath();
-        
-    }
-
-    public void OutOfChargesTurnLightOff()
-    {
-        GameplayUI.instanceGameplayUI.FadeOut();
-        //playerLight.SetActive(false);
-    }
-
+    //-------------------------
+    // Electrify kite functions 
+    //-------------------------
 
     public void ElectrifyKiteLightning()
     {
         kiteLightning.KiteElectrifyStart();
-    }
-
-    public void ElectrifyDeathStart()
-    {
-        GameplayUI.instanceGameplayUI.FadeOut();
     }
 
     public void ElectrifyKiteEnd()
@@ -414,7 +390,34 @@ public class PlayerGFX : MonoBehaviour
         player.StartPlayerMovement();
     }
 
+    //----------------
+    // Death functions 
+    //----------------
+    public void ElectrifyDeathStart()
+    {
+        GameplayUI.instanceGameplayUI.FadeOut();
+    }
 
+    public void ElectricityDeathEnd()
+    {
+        //Debug.LogError("Death Working End");
+        FindObjectOfType<ObjectsCollision>().EmptyObjects();
+        checkPointSystem.PlayerDeath();
+    }
+
+    public void OutOfChargesTurnLightOff()
+    {
+        GameplayUI.instanceGameplayUI.FadeOut();
+        //playerLight.SetActive(false);
+    }
+
+    public void OutOfChargesDeathEnd()
+    {
+        //Debug.LogError("Death 2");
+        //Debug.LogError("Death animation");
+        FindObjectOfType<ObjectsCollision>().EmptyObjects();
+        checkPointSystem.PlayerDeath();
+    }
 
     //------------------
     // Metal functions 
@@ -428,7 +431,6 @@ public class PlayerGFX : MonoBehaviour
     {
         return goingToRightMetal;
     }
-
 
     public void StartDraggingMetal()
     {
@@ -444,7 +446,6 @@ public class PlayerGFX : MonoBehaviour
         {
             player.SetPlayerMoveMetalOnPlatform();
         }
-
     }
 
     public void EndPuttingMetalDown()
@@ -498,9 +499,9 @@ public class PlayerGFX : MonoBehaviour
         
     }
 
-    //--------
-    //Shooting
-    //--------
+    //------------------
+    //Shooting functions
+    //------------------
     public void StopAiming()
     {
         shooting.SetAimLineState(Shooting.AimLineState.NOT_AIMED);
