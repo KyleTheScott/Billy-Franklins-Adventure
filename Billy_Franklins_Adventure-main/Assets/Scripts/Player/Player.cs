@@ -170,6 +170,7 @@ public class Player : MonoBehaviour
         {
             yield return null;
         }
+       
         Debug.Log("On Ground Start");
         SetPlayerState(Player.PlayerState.LIGHTNING_CHARGES_START);
         SetAnimationMovement(true);
@@ -484,14 +485,7 @@ public class Player : MonoBehaviour
                     playerState != PlayerState.LIGHTNING_CHARGES_START && playerState != PlayerState.LIGHTNING_CHARGES_END &&
                     playerState != PlayerState.PLAYER_DEATH_ELECTRIFIED && playerState != PlayerState.PLAYER_DEATH_ELECTRIFIED_START && 
                     playerState != PlayerState.PLAYER_DEATH_CHARGES_START && playerState != PlayerState.PLAYER_DEATH_CHARGES)
-                {
-                    //Debug.Log("Pause");
-                    if (pauseMenuUI != null)
-                    {
-                        //Debug.Log("Pause 2");
-
-                        pauseMenuUI.gameObject.SetActive(true);
-                    }
+                { 
 
                     PlayerControlsStatus(false);
                     StartCoroutine(StopMovementWhenOnGroundForPause());
@@ -978,14 +972,13 @@ public class Player : MonoBehaviour
     //Disconnect from metal// might be the problem with falling with metal issue 
     public void SetObjectDisconnected()
     {
-        Debug.LogError("Metal Fixed");
         if (currentMovingObject != null)
         {
             currentMovingObject = null;
             if (playerState != PlayerState.FALLING && playerState != PlayerState.JUMP_FALLING && playerState != PlayerState.MOVING_OBJECT_START && 
                 playerState != PlayerState.MOVING_OBJECT_END && playerState != PlayerState.MOVING_OBJECT_LIFTING)
             {
-                Debug.LogError("Switch to walking");
+                //Debug.LogError("Switch to walking");
                 playerState = PlayerState.WALKING;
                 if (movingMetal)
                 {
@@ -1077,7 +1070,6 @@ public class Player : MonoBehaviour
                         {
                             SetMovingRight(true);
                         }
-                        Debug.LogError("Leave Ground");
                         animationMovement = false;
                         movingMetal = false;
                         onGround = false;
@@ -1191,7 +1183,7 @@ public class Player : MonoBehaviour
         }
         PlayerControlsStatus(true);
         StartPlayerMovement();
-
+        
     }
     public void ReferencePauseMenuUI(Canvas pauseMenu)
     {
@@ -1220,8 +1212,17 @@ public class Player : MonoBehaviour
                     rb.isKinematic = true;
                     rb.velocity = Vector2.zero;
                     moveVelocity = 0;
-                    playerGFX.SetAnimation(0);
-                    playerState = PlayerState.IDLE;
+                    if (playerGFX.GetAnimation() == 3 || playerGFX.GetAnimation() == 20)
+                    {
+                        //Debug.LogError("Animation 1");
+                        playerGFX.SetAnimation(20);
+                    }
+                    else
+                    {
+                        playerGFX.SetAnimation(0);
+                        playerState = PlayerState.IDLE;
+                    }
+                    
                     break;
             }
         }
@@ -1234,14 +1235,23 @@ public class Player : MonoBehaviour
             yield return null;
         }
         stoppingPlayerMovement = true;
-        Debug.LogError("Enabled: " + movementEnabled);
+        //Debug.LogError("Enabled: " + movementEnabled);
         StopPlayerMovementOnPause();
+        //Debug.Log("Pause");
+        if (pauseMenuUI != null)
+        {
+            //Debug.Log("Pause 2");
+
+            pauseMenuUI.gameObject.SetActive(true);
+        }
     }
 
     public void StartPlayerMovement()
     {
         //Debug.LogError("Stop player movement: " + stoppingPlayerMovement);
         stoppingPlayerMovement = false;
+       
+
     }
 
     public void DestroyUI()

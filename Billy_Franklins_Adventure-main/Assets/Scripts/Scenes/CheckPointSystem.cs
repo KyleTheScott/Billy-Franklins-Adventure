@@ -18,7 +18,7 @@ public class CheckPointSystem : MonoBehaviour
 
     public void PlayerDeath()
     {
-        Debug.Log("Died");
+        //Debug.Log("Died");
         //if player dies then reload scene
         //Player player = GameObject.FindObjectOfType<Player>().GetComponent<Player>();
         Charges charges = FindObjectOfType<Charges>();
@@ -35,7 +35,17 @@ public class CheckPointSystem : MonoBehaviour
 
     public void PlayerDeathLoadLevel()
     {
-        FindObjectOfType<PlayerGFX>().SetAnimation(0);
+        PlayerGFX playerGFX = FindObjectOfType<PlayerGFX>();
+        if (playerGFX.GetAnimation() == 20)
+        {
+            //Debug.LogError("LOAD");
+            playerGFX.SetAnimation(0);
+        }
+        //else
+        //{
+        //playerGFX.SetAnimation(0);
+        //}
+
         FindObjectOfType<Player>().SetPlayerKiteLightning();
     }
 

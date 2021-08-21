@@ -166,7 +166,14 @@ public class PlayerGFX : MonoBehaviour
 
                     break;
                 case Player.PlayerState.LIGHTNING_CHARGES_START:
-                    playerAnimator.SetInteger("PlayerAnimState", 15);
+                    if (GetAnimation() == 3)
+                    {
+                        SetAnimation(20);
+                    }
+                    else
+                    {
+                        playerAnimator.SetInteger("PlayerAnimState", 15);
+                    }
                     break;
                 case Player.PlayerState.LIGHTNING_CHARGES:
                     playerAnimator.SetInteger("PlayerAnimState", 0);
@@ -264,11 +271,9 @@ public class PlayerGFX : MonoBehaviour
                             }
                         }
                     }
-
                     break;
                 case Player.PlayerState.PLAYER_END_GAME:
 
-                    
                     break;
             }
         }
@@ -281,14 +286,16 @@ public class PlayerGFX : MonoBehaviour
             }
             else
             {
-                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+                if (player.GetMovementEnabled())
                 {
-
-                    playerAnimator.SetInteger("PlayerAnimState", 1);
-                }
-                else
-                {
-                    playerAnimator.SetInteger("PlayerAnimState", 0);
+                    if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+                    {
+                        playerAnimator.SetInteger("PlayerAnimState", 1);
+                    }
+                    else
+                    {
+                        playerAnimator.SetInteger("PlayerAnimState", 0);
+                    }
                 }
             }
         }
@@ -310,6 +317,11 @@ public class PlayerGFX : MonoBehaviour
     public void SetAnimation(int animNum)
     {
         playerAnimator.SetInteger("PlayerAnimState", animNum);
+    }
+
+    public int GetAnimation()
+    {
+        return playerAnimator.GetInteger("PlayerAnimState");
     }
 
     public void StartPlayerJump()
@@ -360,14 +372,14 @@ public class PlayerGFX : MonoBehaviour
 
     public void ElectricityDeathEnd()
     {
-        Debug.LogError("Death Working End");
+        //Debug.LogError("Death Working End");
         FindObjectOfType<ObjectsCollision>().EmptyObjects();
         checkPointSystem.PlayerDeath();
     }
 
     public void OutOfChargesDeathEnd()
     {
-        Debug.LogError("Death 2");
+        //Debug.LogError("Death 2");
         //Debug.LogError("Death animation");
         FindObjectOfType<ObjectsCollision>().EmptyObjects();
         checkPointSystem.PlayerDeath();
@@ -474,7 +486,6 @@ public class PlayerGFX : MonoBehaviour
     //when player kicks bucket
     public void KickBucketOver()
     {
-        Debug.Log("KickBucketOver");
         player.InteractWithObject();
         
     }
@@ -511,7 +522,16 @@ public class PlayerGFX : MonoBehaviour
             playerAnimator.SetInteger("PlayerAnimState", 1);
             lampIsOn = false;
             player.SetAnimationMovement(false);
-            Debug.LogError("Shooting end");
+            //Debug.LogError("Shooting end");
         }
     }
+
+    public void EndAimForReset()
+    {
+        //Debug.LogError("Stop Shooting");
+        //shooting.StopAiming();
+
+
+    }
+
 }
